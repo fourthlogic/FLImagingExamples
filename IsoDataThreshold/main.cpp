@@ -1,0 +1,123 @@
+#include <cstdio>
+
+#include <FLImaging.h>
+#include "../CommomHeader/ErrorPrint.h" 
+
+
+int main()
+{
+	// 이미지 객체 선언 // Declare the image object
+	CFLImage fliISrcImage;
+	CFLImage fliIDstImage;
+
+	// 이미지 뷰 선언 // Declare the image view
+	CGUIViewImageWrap viewImage[2];
+
+	do
+	{
+		// 동작 결과 // operation result
+		CResult eResult = EResult_UnknownError;
+
+		// 이미지 로드 // Loads image
+		if(IsFail(eResult = fliISrcImage.Load(L"../../ExampleImages/Threshold/Circuit.flif")))
+		{
+			ErrorPrint(eResult, "Failed to load the image file.\n");
+			break;
+		}
+
+		// 이미지 뷰 생성 // Create image view
+		if(IsFail(eResult = viewImage[0].Create(300, 0, 300 + 384, 384)))
+		{
+			ErrorPrint(eResult, "Failed to create the image view.\n");
+			break;
+		}
+
+		if(IsFail(eResult = viewImage[1].Create(300 + 384, 0, 300 + 384 * 2, 384)))
+		{
+			ErrorPrint(eResult, "Failed to create the image view.\n");
+			break;
+		}
+
+		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
+		if(IsFail(eResult = viewImage[0].SetImagePtr(&fliISrcImage)))
+		{
+			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			break;
+		}
+
+		if(IsFail(eResult = viewImage[1].SetImagePtr(&fliIDstImage)))
+		{
+			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			break;
+		}
+
+		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views. 
+		if(IsFail(eResult = viewImage[0].SynchronizePointOfView(&viewImage[1])))
+		{
+			ErrorPrint(eResult, "Failed to synchronize view\n");
+			break;
+		}
+
+		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
+		if(IsFail(eResult = viewImage[0].SynchronizeWindow(&viewImage[1])))
+		{
+			ErrorPrint(eResult, "Failed to synchronize window\n");
+			break;
+		}
+
+		// IsoDataThreshold 객체 생성 // Create IsoDataThreshold object
+		CIsoDataThreshold threshold;
+
+		// Source 이미지 설정 // Set source image 
+		threshold.SetSourceImage(fliISrcImage);
+
+		// Destination 이미지 설정 // Set destination image
+		threshold.SetDestinationImage(fliIDstImage);
+
+		// MultiVar 객체 생성 // Create MultiVar object
+		CMultiVarL mvCondition;
+		CMultiVar<double> mvThreshold;
+
+		// 1채널 논리조건 입력 // 1Channel condition push
+		mvCondition.PushBack(ELogicalCondition_Greater);
+
+		// 논리 조건 설정 // Set condition value
+		threshold.SetLogicalCondition(mvCondition);
+
+		// 계산된 Threshold 값을 추출 // get result threshold value
+		mvThreshold = threshold.GetResultThreshold();
+
+		// Console창에 Threshold 값 출력 // Output the threshold value to the console window
+		printf("Result Threshold Value : %d", (int)mvThreshold[0]);
+
+		// 알고리즘 수행 // Execute the algorithm
+		if((eResult = threshold.Execute()).IsFail())
+		{
+			ErrorPrint(eResult, "Failed to execute IsoData Threshold.");
+			break;
+		}
+
+		// Threshold 값 문자열 생성 // Create threshold value String
+		Base::CFLString<wchar_t> flStrThresholdValue;
+		flStrThresholdValue.Format(L"%d < threshold", (int)mvThreshold[0]);
+
+		// 레이어는 따로 해제하지 않아도 View가 해제 될 때 같이 해제된다. // The layer is released together when View is released without releasing it separately.
+		CGUIViewImageLayerWrap layer = viewImage[1].GetLayer(0);
+
+		if(IsFail(eResult = layer.DrawTextCanvas(&CFLPointD(0, 0), flStrThresholdValue.GetBuffer(), YELLOW, BLACK, 30, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false)))
+		{
+			ErrorPrint(eResult, "Failed to draw text on the image view.\n");
+			break;
+		}
+
+		// 이미지 뷰를 갱신 합니다. // Update the image view.
+		viewImage[1].Invalidate(true);
+
+		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
+		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable())
+			CThreadUtilities::Sleep(1);
+	}
+	while(false);
+
+	return 0;
+}
