@@ -253,14 +253,11 @@ int main()
 			CThreadUtilities::Sleep(1);
 
 			// 마지막 미니 배치 최대 반복 횟수 받기 // Get the last maximum number of iterations of the last mini batch 
-			int32_t i32MaxIteration = 0;
-			semanticSegmentation.GetLastMaxIteration(i32MaxIteration);
+			int32_t i32MaxIteration = semanticSegmentation.GetLastMiniBatchCount();
 			// 마지막 미니 배치 반복 횟수 받기 // Get the last number of mini batch iterations
-			int32_t i32Iteration = 0;
-			semanticSegmentation.GetLastIteration(i32Iteration);
+			int32_t i32Iteration = semanticSegmentation.GetLastIteration();
 			// 마지막 학습 횟수 받기 // Get the last epoch learning
-			int32_t i32Epoch = 0;
-			semanticSegmentation.GetLastEpoch(i32Epoch);
+			int32_t i32Epoch = semanticSegmentation.GetLastEpoch();
 
 			// 미니 배치 반복이 완료되면 cost와 validation 값을 디스플레이 
 			// Display cost and validation value if iterations of the mini batch is completed 
