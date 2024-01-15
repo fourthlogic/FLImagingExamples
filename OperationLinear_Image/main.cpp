@@ -22,20 +22,20 @@ int main() {
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((eResult = fliSourceImage.Load(L"../../ExampleImages/OperationLinearPolynomial/Space.flif")).IsFail())
+		if((eResult = fliSourceImage.Load(L"../../ExampleImages/OperationLinear/Space.flif")).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Operand1 이미지 로드 // Loads the operand image
-		if((eResult = fliOperandImage1.Load(L"../../ExampleImages/OperationLinearPolynomial/circle.flif")).IsFail())
+		if((eResult = fliOperandImage1.Load(L"../../ExampleImages/OperationLinear/circle.flif")).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
 		}
 
-		if((eResult = fliOperandImage2.Load(L"../../ExampleImages/OperationLinearPolynomial/Sky.flif")).IsFail())
+		if((eResult = fliOperandImage2.Load(L"../../ExampleImages/OperationLinear/Sky.flif")).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;

@@ -20,7 +20,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((eResult = fliSourceImage.Load(L"../../ExampleImages/OperationLinearPolynomial/Space.flif")).IsFail())
+		if((eResult = fliSourceImage.Load(L"../../ExampleImages/OperationLinear/Space.flif")).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
