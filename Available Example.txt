@@ -1226,15 +1226,12 @@
 
 - [Misc]
 
-  - SNAP
-    - The example of loading and running a snap file.
-    - 스냅 파일 로드 및 실행 예제.
-
-  - Stencil
-    - The example of a stencil class that converts a string to a figure shaped by the selected font.
-    - 입력된 문자열을 설정한 폰트 모양의 도형으로 변환하는 스텐실 클래스 예제.
-
   - ImageDrawing
     - The example of a class that draws shapes and strings on an image.
     - 이미지에 도형 및 문자열을 그리는 클래스 예제.
-
+  - SNAP
+    - The example of loading and running a snap file.
+    - 스냅 파일 로드 및 실행 예제.
+  - Stencil
+    - The example of a stencil class that converts a string to a figure shaped by the selected font.
+    - 입력된 문자열을 설정한 폰트 모양의 도형으로 변환하는 스텐실 클래스 예제.
