@@ -82,7 +82,7 @@ namespace FLImaging
 			CTensor<float>& m_tsrCost;
 			CTensor<float>& m_tsrAnswer;
 
-			CInternalOptimizerAdamGD<float>* m_pOptAdam;
+			COptimizer<float>* m_pOpt;
 
 			CComputationalGraph<float>* m_pGfCost;
 			CComputationalGraph<float>* m_pGfEvaluation;

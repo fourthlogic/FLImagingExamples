@@ -81,7 +81,7 @@ FLImaging::GUI::CPropertyMenuFullyConnectedXOR::CPropertyMenuFullyConnectedXOR()
 	, m_tsrEvaluation(*new CTensor<float>)
 	, m_tsrCost(*new CTensor<float>)
 	, m_tsrAnswer(*new CTensor<float>)
-	, m_pOptAdam(nullptr)
+	, m_pOpt(nullptr)
 	, m_pGfCost(nullptr)
 	, m_pGfEvaluation(nullptr)
 	, m_pPane(nullptr)
@@ -92,6 +92,14 @@ FLImaging::GUI::CPropertyMenuFullyConnectedXOR::CPropertyMenuFullyConnectedXOR()
 FLImaging::GUI::CPropertyMenuFullyConnectedXOR::~CPropertyMenuFullyConnectedXOR()
 {
 	CloseProgressDialog();
+
+	if(m_pGfCost)
+	{
+		CComputationalGraphUtilities<float>::Delete((CComputationalBase<float>*)m_pGfCost, false);
+
+		m_pGfCost = nullptr;
+		m_pGfEvaluation = nullptr;
+	}
 
 	if(m_pThread)
 	{
@@ -231,22 +239,26 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuFullyConnectedXOR::T
 			CCGFNodeVar(gfHypothesis, CCGFSigmoid(CCGFAffine(gfLayerH2, tsrW2, tsrB2)));
 			CCGFNodeVar(gfCost, CCGFMultiply(CCGFReduceMean(CCGFAdd(CCGFMultiply(gfPlaceHolderY, CCGFLog(gfHypothesis)), CCGFMultiply(CCGFSubtract(1, gfPlaceHolderY), CCGFLog(CCGFSubtract(1, gfHypothesis)))), {0}), -1));
 
-			CInternalOptimizerAdamGD<float> adam;
+			COptimizer<float> optm;
+			COptimizerSpecAdamGradientDescent<float> adam;
 			CLRSConstant<float> lrs;
 
 			//Optimizer parameter 설정
 			lrs.SetLearningRate(f32LearningRate);
-			adam.SetLearningRateScheduler(lrs);
+			//m_optm.SetLearningRateScheduler(lrs);
 
 			m_pGfCost = &gfCost;
 			m_pGfEvaluation = &gfHypothesis;
 
-			adam.SetFunction(*m_pGfCost);
 			adam.SetBeta1(f32Beta1);
 			adam.SetBeta2(f32Beta2);
 			adam.SetEpsilon(f32Epsilon);
-			adam.Initialize();
-			m_pOptAdam = &adam;
+				
+			optm.SetLearningRateScheduler(lrs);
+			optm.SetOptimizerSpec(&adam);
+			optm.SetFunction(*m_pGfCost);
+			optm.Initialize();
+			m_pOpt = &optm;
 
 			// 작업 스레드 생성
 			m_pThread = new std::future<void>(std::async(CPropertyMenuFullyConnectedXOR::AlgorithmThreadForSimpleDialog, this, &m_pThread));
@@ -520,14 +532,6 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::CloseProgressDialo
 			m_pDlgProgress = nullptr;
 		}
 
-		if(m_pGfCost)
-		{
-			CComputationalGraphUtilities<float>::Delete((CComputationalBase<float>*)m_pGfCost, false);
-
-			m_pGfCost = nullptr;
-			m_pGfEvaluation = nullptr;
-		}
-
 		cr = EResult_OK;
 	}
 	while(false);
@@ -605,7 +609,7 @@ void FLImaging::GUI::CPropertyMenuFullyConnectedXOR::AlgorithmThreadForSimpleDia
 			pInstance->m_pViewGraph->RedrawWindow();
 			pInstance->m_pViewGraph->Invalidate();
 
-			pInstance->m_pOptAdam->Fit();
+			pInstance->m_pOpt->Fit();
 			pInstance->m_i32Epoch++;
 
 			Sleep(1);
