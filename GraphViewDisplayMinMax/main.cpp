@@ -84,25 +84,25 @@ int main()
 		}
 
 		// 전체 차트에 대한 Y 축의 최솟값과 차트 이름 표시 // Display the Y-Axis minimum value for the entire charts and name.
-		arrViewGraph[0].IndicateEntireChart(EViewGraphRange_MinX, EViewGraphIndicateType_Value | EViewGraphIndicateType_Name);
+		arrViewGraph[0].IndicateEntireChart(EViewGraphExtrema_MinX, EViewGraphIndicateType_Value | EViewGraphIndicateType_Name);
 
 		// 전체 차트에 대한 Y 축의 최댓값과 이름 표시 // Display the Y-Axis maximum value for the entire charts and name.
-		arrViewGraph[0].IndicateEntireChart(EViewGraphRange_MaxY, EViewGraphIndicateType_Value | EViewGraphIndicateType_Name);
+		arrViewGraph[0].IndicateEntireChart(EViewGraphExtrema_MaxY, EViewGraphIndicateType_Value | EViewGraphIndicateType_Name);
 
 
 		// 모든 차트에 각각 X 축의 최대, 최솟값과 Y 축의 최대, 최솟값을 표시 // Display the range and label for every individual chart.
-		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphRange_MinX, EViewGraphIndicateType_All);
-		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphRange_MaxX, EViewGraphIndicateType_All);
-		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphRange_MinY, EViewGraphIndicateType_All);
-		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphRange_MaxY, EViewGraphIndicateType_All);
+		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphExtrema_MinX, EViewGraphIndicateType_All);
+		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphExtrema_MaxX, EViewGraphIndicateType_All);
+		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphExtrema_MinY, EViewGraphIndicateType_All);
+		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphExtrema_MaxY, EViewGraphIndicateType_All);
 
 
 		// 특정 차트(2번째 차트)에 Y 축의 최대/최소값을 표시 // Display the Y-Axis minimum/maximum value and name for a particular chart(chart index 0).
 		int i32ChartIndex = 2;
-		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphRange_MinX, EViewGraphIndicateType_None);
-		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphRange_MaxX, EViewGraphIndicateType_None);
-		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphRange_MinY, EViewGraphIndicateType_All);
-		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphRange_MaxY, EViewGraphIndicateType_All);
+		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphExtrema_MinX, EViewGraphIndicateType_None);
+		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphExtrema_MaxX, EViewGraphIndicateType_None);
+		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphExtrema_MinY, EViewGraphIndicateType_All);
+		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphExtrema_MaxY, EViewGraphIndicateType_All);
 
 		// Graph 뷰의 마우스 커서 위치에 십자선 표시 해제 // Set the crosshair on mouse cursor invisible.
 		arrViewGraph[0].ShowCrosshair(false);
