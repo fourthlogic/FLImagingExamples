@@ -98,7 +98,7 @@ int main()
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((eResult = linear.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute operation Linear Polynomial.");
+			ErrorPrint(eResult, "Failed to execute operation Linear.");
 			break;
 		}
 
