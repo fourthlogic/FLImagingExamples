@@ -36,7 +36,7 @@ int main()
 		}
 
 		// Destination 이미지 로드 // Loads the destination image
-		if((eResult = fliDestinationImage.Create(250, 250)).IsFail())
+		if((eResult = fliDestinationImage.Load(L"../../ExampleImages/OperationBinaryComplement/circle.flif")).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
