@@ -158,7 +158,7 @@ int main() {
 
 
 		linear.SetOperationOrder(EOperationOrder_CoefficientConstant);
-		linear.SetOperationMode(EOperationMode_Overflow);
+		linear.SetOverflowMethod(EOverflowMethod_Wrapping);
 
 		// Destination 이미지 설정 // Set the destination image
 		linear.SetDestinationImage(fliDestinationImage);

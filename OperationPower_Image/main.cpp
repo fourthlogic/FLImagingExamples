@@ -224,8 +224,8 @@ int main()
 		power.SetOperandImage(arrFliImage1[EType_Operand]);
 		// Destination 이미지 설정 // Set the destination image
 		power.SetDestinationImage(arrFliImage1[EType_Destination]);
-		// Operation Mode Overflow 옵션으로 설정 // Set Operation Mode to overflow option
-		power.SetOperationMode(EOperationMode_Overflow);
+		// Overflow Method Wrapping 옵션으로 설정 // Set Overflow Method to Wrapping option
+		power.SetOverflowMethod(EOverflowMethod_Wrapping);
 		// Image Operation 모드로 설정 // Set operation mode to image
 		power.SetOperationSource(EOperationSource_Image);
 

@@ -206,8 +206,8 @@ int main()
 		power.SetDestinationImage(arrFliImage[EType_Destination1]);
 		// Scalar Operation 모드로 설정 // Set operation mode to scalar
 		power.SetOperationSource(EOperationSource_Scalar);
-		// Operation Mode Saturation 옵션으로 설정 // Set Operation Mode to saturation option
-		power.SetOperationMode(EOperationMode_Saturated);
+		// Overflow Method Clamping 옵션으로 설정 // Set Overflow Method to Clamping option
+		power.SetOverflowMethod(EOverflowMethod_Clamping);
 
 		// exponent 값 설정 // Set exponent value
 		power.SetScalarValue(CMultiVar<double>(1.1, 1.2, 1.5));
@@ -224,8 +224,8 @@ int main()
 		power.SetDestinationImage(arrFliImage[EType_Destination2]);
 		// Scalar Operation 모드로 설정 // Set operation mode to scalar
 		power.SetOperationSource(EOperationSource_Scalar);
-		// Operation Mode Saturation 옵션으로 설정 // Set Operation Mode to saturation option
-		power.SetOperationMode(EOperationMode_Saturated);
+		// Overflow Method Clamping 옵션으로 설정 // Set Overflow Method to Clamping option
+		power.SetOverflowMethod(EOverflowMethod_Clamping);
 
 		// exponent 값 설정 // Set exponent value
 		power.SetScalarValue(CMultiVar<double>(0.8, 0.8, 1.1));
@@ -242,8 +242,8 @@ int main()
 		power.SetDestinationImage(arrFliImage[EType_Destination3]);
 		// Scalar Operation 모드로 설정 // Set operation mode to scalar
 		power.SetOperationSource(EOperationSource_Scalar);
-		// Operation Mode Overflow 옵션으로 설정 // Set Operation Mode to overflow option
-		power.SetOperationMode(EOperationMode_Overflow);
+		// Overflow Method Wrapping 옵션으로 설정 // Set Overflow Method to Wrapping option
+		power.SetOverflowMethod(EOverflowMethod_Wrapping);
 
 		// power 값 설정 // Set power value
 		power.SetScalarValue(CMultiVar<double>(2.5, 2.5, 2.5));
@@ -260,8 +260,8 @@ int main()
 		power.SetDestinationImage(arrFliImage[EType_Destination4]);
 		// Scalar Operation 모드로 설정 // Set operation mode to scalar
 		power.SetOperationSource(EOperationSource_Scalar);
-		// Operation Mode Saturation 옵션으로 설정 // Set Operation Mode to saturation option
-		power.SetOperationMode(EOperationMode_Saturated);
+		// Overflow Method Clamping 옵션으로 설정 // Set Overflow Method to Clamping option
+		power.SetOverflowMethod(EOverflowMethod_Clamping);
 
 		// exponent 값 설정 // Set exponent value
 		power.SetScalarValue(CMultiVar<double>(2.5, 2.5, 2.5));
@@ -278,8 +278,8 @@ int main()
 		power.SetDestinationImage(arrFliImage[EType_Destination5]);
 		// Scalar Operation 모드로 설정 // Set operation mode to scalar
 		power.SetOperationSource(EOperationSource_Scalar);
-		// Operation Mode Overflow 옵션으로 설정 // Set Operation Mode to overflow option
-		power.SetOperationMode(EOperationMode_Overflow);
+		// Overflow Method Wrapping 옵션으로 설정 // Set Overflow Method to Wrapping option
+		power.SetOverflowMethod(EOverflowMethod_Wrapping);
 
 		// exponent 값 설정 // Set exponent value
 		power.SetScalarValue(CMultiVar<double>(10, 10, 10));
