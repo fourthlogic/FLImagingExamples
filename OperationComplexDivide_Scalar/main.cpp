@@ -8,7 +8,7 @@ int main()
 {
 	// 이미지 객체 선언 // Declare image object
 	CFLImage fliSourceImage;
-	CFLImage fliSourceDestinationImage;
+	CFLImage fliDestinationImage;
 
 	// 이미지 뷰 선언 // Declare image view
 	CGUIViewImageWrap viewImageSrc;
@@ -20,14 +20,14 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((eResult = fliSourceImage.Load(L"../../ExampleImages/OperationBinaryComplement/gradation.flif")).IsFail())
+		if((eResult = fliSourceImage.Load(L"../../ExampleImages/OperationComplexDivide/ExampleSource.flif")).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination 이미지를 Source 이미지와 동일하게 설정 // Assign the Source image to Destination image
-		if((eResult = fliSourceDestinationImage.Assign(fliSourceImage)).IsFail())
+		if((eResult = fliDestinationImage.Assign(fliSourceImage)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
@@ -62,7 +62,7 @@ int main()
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-		if((eResult = viewIamgeDst.SetImagePtr(&fliSourceDestinationImage)).IsFail())
+		if((eResult = viewIamgeDst.SetImagePtr(&fliDestinationImage)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
 			break;
@@ -75,28 +75,26 @@ int main()
 			break;
 		}
 
-		// Operation BitwiseAnd 객체 생성 // Create Operation BitwiseAnd object
-		COperationBinaryComplement bc;
+		// Operation ComplexDivide 객체 생성 // Create Operation ComplexDivide object
+		COperationComplexDivide cd;
 
 		// Source 이미지 설정 // Set the source image
-		bc.SetSourceImage(fliSourceDestinationImage);
-
-		// Source 이미지의 ROI 범위 설정 // Set the Source ROI value
-		CFLCircleL flcSourceROI(128, 128, 80, 0, 0, 360, EArcClosingMethod_EachOther);
-
-		// Source 이미지의 ROI 지정 // Set the Source ROI
-		bc.SetSourceROI(flcSourceROI);
+		cd.SetSourceImage(fliSourceImage);
+		cd.SetDestinationImage(fliDestinationImage);
 
 		// Scalar Operation 소스로 설정 // Set Operation Source to scalar
-		bc.SetOperationSource(EOperationSource_Scalar);
+		cd.SetOperationSource(EOperationSource_Scalar);
+
+		// 오버플로 처리 방법 설정 // Set the overflow handling method
+		cd.SetOverflowMethod(EOverflowMethod_Clamping);
 
 		// 스칼라 값 지정 // Set the Scalar value
-		bc.SetScalarValue(CMultiVar<double>(2));
+		cd.SetScalarValue(CMultiVar<double>(5, 1));
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = bc.Execute()).IsFail())
+		if((eResult = cd.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute operation binary complement.");
+			ErrorPrint(eResult, "Failed to execute operation complex divide.");
 			break;
 		}
 
@@ -109,14 +107,6 @@ int main()
 		layerSource.Clear();
 		layerDestination.Clear();
 
-		// FLImaging의 Figure객체들은 어떤 도형모양이든 상관없이 하나의 함수로 디스플레이가 가능
-		// Source ROI 영역이 어디인지 알기 위해 디스플레이 한다
-		if((eResult = layerSource.DrawFigureImage(&flcSourceROI, LIME)).IsFail())
-			ErrorPrint(eResult, "Failed to draw figure\n");
-		
-		if((eResult = layerDestination.DrawFigureImage(&flcSourceROI, LIME)).IsFail())
-			ErrorPrint(eResult, "Failed to draw figure\n");
-
 		// 이미지 뷰 정보 표시 // Display image view information
 		if((eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
 		{
@@ -124,7 +114,7 @@ int main()
 			break;
 		}
 
-		if((eResult = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Source & Destination Image", YELLOW, BLACK, 30)).IsFail())
+		if((eResult = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;

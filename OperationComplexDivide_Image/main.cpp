@@ -22,21 +22,21 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((eResult = fliSourceImage.Load(L"../../ExampleImages/OperationBinaryComplement/square.flif")).IsFail())
+		if((eResult = fliSourceImage.Load(L"../../ExampleImages/OperationComplexDivide/ExampleSource.flif")).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Operand 이미지 로드 // Loads the operand image
-		if((eResult = fliOperandImage.Load(L"../../ExampleImages/OperationBinaryComplement/circle.flif")).IsFail())
+		if((eResult = fliOperandImage.Load(L"../../ExampleImages/OperationComplexDivide/ExampleOperand.flif")).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination 이미지 로드 // Loads the destination image
-		if((eResult = fliDestinationImage.Load(L"../../ExampleImages/OperationBinaryComplement/circle.flif")).IsFail())
+		// Destination 이미지를 Source 이미지와 동일하게 설정 // Assign the Source image to Destination image
+		if((eResult = fliDestinationImage.Assign(fliSourceImage)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
@@ -112,29 +112,32 @@ int main()
 			break;
 		}
 
-		// OperationBitwiseAnd 객체 생성 // Create OperationBitwiseAnd object
-		COperationBinaryComplement bc;
+		// OperationComplexDivide 객체 생성 // Create OperationComplexDivide object
+		COperationComplexDivide cd;
 
 		// Source 이미지 설정 // Set the source image
-		bc.SetSourceImage(fliSourceImage);
+		cd.SetSourceImage(fliSourceImage);
 
 		// Operand 이미지 설정 // Set the operand image
-		bc.SetOperandImage(fliOperandImage);
-
+		cd.SetOperandImage(fliOperandImage);
+		
 		// Destination 이미지 설정 // Set the destination image
-		bc.SetDestinationImage(fliDestinationImage);
+		cd.SetDestinationImage(fliDestinationImage);
+
+		// 오버플로 처리 방법 설정 // Set the overflow handling method
+		cd.SetOverflowMethod(EOverflowMethod_Wrapping);
 
 		// Image Operation 소스로 설정 // Set Operation Source to image
-		bc.SetOperationSource(EOperationSource_Image);
+		cd.SetOperationSource(EOperationSource_Image);
 
 		// 공백 색상 칠하기 모드 해제 // Set the Fill blank color mode false
 		// 결과 이미지가 이미 존재할 경우 연산되지 않은 영역을 공백 색상으로 칠하지 않고 원본 그대로 둔다. // If the destination image already exists, the uncomputed area is left intact without being painted in a blank color.
-		bc.EnableFillBlankColorMode(false);
+		cd.EnableFillBlankColorMode(false);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = bc.Execute()).IsFail())
+		if((eResult = cd.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute operation binary complement.");
+			ErrorPrint(eResult, "Failed to execute operation complex divide.");
 			break;
 		}
 
