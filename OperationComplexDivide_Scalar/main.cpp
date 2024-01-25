@@ -34,14 +34,14 @@ int main()
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if((eResult = viewImageSrc.Create(100, 0, 612, 512)).IsFail())
+		if((eResult = viewImageSrc.Create(100, 0, 600, 500)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create the Destination image view
-		if((eResult = viewIamgeDst.Create(612, 0,1124, 512)).IsFail())
+		if((eResult = viewIamgeDst.Create(600, 0,1100, 500)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
