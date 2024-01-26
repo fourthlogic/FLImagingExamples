@@ -121,29 +121,27 @@ int main()
 		CClassifierDL classifier;
 
 		// OptimizerSpec 객체 생성 // Create OptimizerSpec object
-		COptimizerSpec optSpec;
+		COptimizerSpecAdamGradientDescent optSpec;
 
 		// 학습할 이미지 설정 // Set the image to learn
-		classifier.SetLearnImage(fliLearnImage);
+		classifier.SetLearningImage(fliLearnImage);
 		// 검증할 이미지 설정 // Set the image to validate
-		classifier.SetLearnValidationImage(fliSourceImage);
+		classifier.SetLearningValidationImage(fliSourceImage);
 		// 분류할 이미지 설정 // Set the image to classify
 		classifier.SetSourceImage(fliSourceImage);
 
 		// 학습할 Classifier 모델 설정 // Set up Classifier model to learn
 		classifier.SetModel(CClassifierDL::EModel_FL_CF_C);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
-		classifier.SetLearnEpoch(150);
+		classifier.SetLearningEpoch(150);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
 		classifier.SetInterpoloationMethod(EInterpolationMethod_Bilinear);
 		
-		// Classifier의 Optimizer 타입 설정 // Set Optimizer type of Classifier
-		optSpec.SetOptimizerType(COptimizerSpec::EOptimizerType_AdamGradientDescent);
 		// Optimizer의 학습률 설정 // Set learning rate of Optimizer
 		optSpec.SetLearningRate(1e-3f);
 
 		// 설정한 Optimizer를 Classifier에 적용 // Apply the Optimizer that we set up to Classifier
-		classifier.SetLearnOptimizerSpec(optSpec);
+		classifier.SetLearningOptimizerSpec(optSpec);
 
 		// Learn 동작을 하는 핸들 객체 선언 // Declare HANDLE object execute learn function
 		HANDLE hThread;
@@ -154,7 +152,7 @@ int main()
 		while(!classifier.IsRunning() && !g_bTerminated)
 			CThreadUtilities::Sleep(1);
 
-		int32_t i32MaxEpoch = classifier.GetLearnEpoch();
+		int32_t i32MaxEpoch = classifier.GetLearningEpoch();
 		int32_t i32PrevEpoch = 0;
 		int32_t i32PrevCostCount = 0;
 		int32_t i32PrevValidationCount = 0;
@@ -164,11 +162,11 @@ int main()
 			CThreadUtilities::Sleep(1);
 
 			// 마지막 미니 배치 최대 반복 횟수 받기 // Get the last maximum number of iterations of the last mini batch 
-			int i32MiniBatchCount = classifier.GetLastMiniBatchCount();
+			int i32MiniBatchCount = classifier.GetActualMiniBatchCount();
 			// 마지막 미니 배치 최대 반복 횟수 받기 // Get the last maximum number of iterations of the last mini batch 
-			int32_t i32MaxIteration = classifier.GetLastMiniBatchCount();
+			int32_t i32MaxIteration = classifier.GetActualMiniBatchCount();
 			// 마지막 미니 배치 반복 횟수 받기 // Get the last number of mini batch iterations
-			int32_t i32Iteration = classifier.GetLastIteration();
+			int32_t i32Iteration = classifier.GetCurrentIteration();
 			// 마지막 학습 횟수 받기 // Get the last epoch learning
 			int32_t i32Epoch = classifier.GetLastEpoch();
 
@@ -178,10 +176,10 @@ int main()
 			{
 				// 마지막 학습 결과 비용 받기 // Get the last cost of the learning result
 				float f32CurrCost;
-				classifier.GetLastCost(f32CurrCost);
+				classifier.GetLearningResultLastCost(f32CurrCost);
 				// 마지막 검증 결과 받기 // Get the last validation result
 				float f32Validation = 0;
-				classifier.GetLastValidation(f32Validation);
+				classifier.GetLearningResultValidation(f32Validation);
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
 				printf("Cost : %.6f Validation : %.6f Epoch %d / %d\n", f32CurrCost, f32Validation, i32Epoch, i32MaxEpoch);
 				
@@ -190,7 +188,7 @@ int main()
 				CFLArray<float> vctCosts;
 				CFLArray<float> vctValidations;
 
-				classifier.GetResultAllHistory(&vctCosts, &vctValidations);
+				classifier.GetLearningResultAllHistory(&vctCosts, &vctValidations);
 
 				// 비용 기록이나 검증 결과 기록이 있다면 출력 // Print results if cost or validation history exists
 				if((vctCosts.GetCount() && i32PrevCostCount != (int32_t)vctCosts.GetCount()) || (vctValidations.GetCount() && i32PrevValidationCount != (int32_t)vctValidations.GetCount()))
@@ -202,7 +200,7 @@ int main()
 					// Graph View 데이터 입력 // Input Graph View Data
 					viewGraph.Plot(vctCosts, EChartType_Line, RED, L"Cost");
 
-					int32_t i32Step = classifier.GetLearnValidationStep();
+					int32_t i32Step = classifier.GetLearningValidationStep();
 					CFLArray<float> flaX;
 
 					for(int64_t i = 0; i < vctValidations.GetCount() - 1; ++i)
@@ -238,7 +236,7 @@ int main()
 		}
 
 		// 추론 결과 정보에 대한 설정 // Set for the inference result information
-		classifier.SetClassfierResult(CClassifierDL::EClassifierResult_ClassNum_ClassName_Percentage);
+		classifier.SetInferenceResultItemSettings(CClassifierDL::EInferenceResultItemSettings_ClassNum_ClassName_Percentage);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if(IsFail(eResult = classifier.Execute()))
