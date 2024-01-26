@@ -47,7 +47,7 @@ int main()
 			break;
 		}
 
-		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
+		// 두 이미지 뷰의 시점을 동기화한다 // Synchronize the viewpoints of the two image views
 		if((eResult = viewImageSrc.SynchronizePointOfView(&viewIamgeDst)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to synchronize view\n");
@@ -68,7 +68,7 @@ int main()
 			break;
 		}
 
-		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
+		// 두 이미지 뷰 윈도우의 위치를 동기화한다 // Synchronize the positions of the two image view windows
 		if((eResult = viewImageSrc.SynchronizeWindow(&viewIamgeDst)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to synchronize window.\n");
@@ -80,15 +80,17 @@ int main()
 
 		// Source 이미지 설정 // Set the source image
 		cd.SetSourceImage(fliSourceImage);
+
+		// Destination 이미지 설정 // Set the destination image
 		cd.SetDestinationImage(fliDestinationImage);
 
-		// Scalar Operation 소스로 설정 // Set Operation Source to scalar
+		// 연산 방식 스칼라로 설정 // Set operation source to scalar
 		cd.SetOperationSource(EOperationSource_Scalar);
 
 		// 오버플로 처리 방법 설정 // Set the overflow handling method
 		cd.SetOverflowMethod(EOverflowMethod_Clamping);
 
-		// 스칼라 값 지정 // Set the Scalar value
+		// 나눌 스칼라 값 지정 // Set the Scalar divisor
 		cd.SetScalarValue(CMultiVar<double>(5, 1));
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
@@ -108,13 +110,15 @@ int main()
 		layerDestination.Clear();
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
+		CFLPoint<double> flpPoint = CFLPoint<double>(0, 0);
+
+		if((eResult = layerSource.DrawTextCanvas(&flpPoint, L"Source Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)).IsFail())
+		if((eResult = layerDestination.DrawTextCanvas(&flpPoint, L"Destination Image(Divided by 5 + 1i)", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;

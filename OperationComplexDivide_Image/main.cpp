@@ -63,14 +63,14 @@ int main()
 			break;
 		}
 
-		// Source 이미지 뷰와 Operand 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the source view and the operand view
+		// Source 이미지 뷰와 Operand 이미지 뷰의 시점을 동기화한다 // Synchronize the viewpoints of the source view and the operand view
 		if((eResult = viewImageSource.SynchronizePointOfView(&viewImageOperand)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to synchronize view\n");
 			break;
 		}
 
-		// Source 이미지 뷰와 Destination 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the source view and the destination view
+		// Source 이미지 뷰와 Destination 이미지 뷰의 시점을 동기화한다 // Synchronize the viewpoints of the source view and the destination view
 		if((eResult = viewImageSource.SynchronizePointOfView(&viewImageDestination)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to synchronize view\n");
@@ -98,14 +98,14 @@ int main()
 			break;
 		}
 
-		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
+		// 두 이미지 뷰 윈도우의 위치를 동기화한다 // Synchronize the positions of the two image view windows
 		if((eResult = viewImageSource.SynchronizeWindow(&viewImageOperand)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
+		// 두 이미지 뷰 윈도우의 위치를 동기화한다 // Synchronize the positions of the two image view windows
 		if((eResult = viewImageSource.SynchronizeWindow(&viewImageDestination)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to synchronize window.\n");
@@ -127,7 +127,7 @@ int main()
 		// 오버플로 처리 방법 설정 // Set the overflow handling method
 		cd.SetOverflowMethod(EOverflowMethod_Wrapping);
 
-		// Image Operation 소스로 설정 // Set Operation Source to image
+		// 연산 방식 이미지로 설정 // Set operation source to image
 		cd.SetOperationSource(EOperationSource_Image);
 
 		// 공백 색상 칠하기 모드 해제 // Set the Fill blank color mode false
@@ -153,19 +153,21 @@ int main()
 		layerDestination.Clear();
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
+		CFLPoint<double> flpPoint = CFLPoint<double>(0, 0);
+
+		if((eResult = layerSource.DrawTextCanvas(&flpPoint, L"Source Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerOperand.DrawTextCanvas(&CFLPointD(0, 0), L"Operand Image", YELLOW, BLACK, 30)).IsFail())
+		if((eResult = layerOperand.DrawTextCanvas(&flpPoint, L"Operand Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)).IsFail())
+		if((eResult = layerDestination.DrawTextCanvas(&flpPoint, L"Destination Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
