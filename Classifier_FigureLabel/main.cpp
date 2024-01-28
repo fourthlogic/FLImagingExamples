@@ -158,9 +158,9 @@ int main()
 		classifier.SetSourceImage(fliSourceImage);
 
 		// 학습할 Classifier 모델 설정 // Set up Classifier model to learn
-		classifier.SetModel(CClassifierDL::EModel_LeNet);
+		classifier.SetModel(CClassifierDL::EModel_FL_CF_C);
 		// 학습할 Classifier 모델 설정 // Set up Classifier model to learn
-		classifier.SetModelVersion(CClassifierDL::EModelVersion_LeNet_V1_28);
+		classifier.SetModelVersion(CClassifierDL::EModelVersion_FL_CF_C_V1_32);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
 		classifier.SetLearningEpoch(150);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
