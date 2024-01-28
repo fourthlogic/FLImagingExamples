@@ -240,22 +240,15 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuFullyConnectedXOR::T
 			CCGFNodeVar(gfCost, CCGFMultiply(CCGFReduceMean(CCGFAdd(CCGFMultiply(gfPlaceHolderY, CCGFLog(gfHypothesis)), CCGFMultiply(CCGFSubtract(1, gfPlaceHolderY), CCGFLog(CCGFSubtract(1, gfHypothesis)))), {0}), -1));
 
 			COptimizer<float> optm;
-			COptimizerSpecAdamGradientDescent<float> adam;
 			CLRSConstant<float> lrs;
 
 			//Optimizer parameter ¼³Á¤
 			lrs.SetLearningRate(f32LearningRate);
-			//m_optm.SetLearningRateScheduler(lrs);
 
 			m_pGfCost = &gfCost;
 			m_pGfEvaluation = &gfHypothesis;
 
-			adam.SetBeta1(f32Beta1);
-			adam.SetBeta2(f32Beta2);
-			adam.SetEpsilon(f32Epsilon);
-				
 			optm.SetLearningRateScheduler(lrs);
-			optm.SetOptimizerSpec(&adam);
 			optm.SetFunction(*m_pGfCost);
 			optm.Initialize();
 			m_pOpt = &optm;
