@@ -9,15 +9,16 @@
 #include <process.h>
 
 bool g_bTerminated = false;
+CResult g_resLearnResult;
 // 
 unsigned int __stdcall LearnThread(void* pParam)
 {
 	CClassifierDL* pClassifier = (CClassifierDL*)pParam;
 
-	CResult er = pClassifier->Learn();
+	g_resLearnResult = pClassifier->Learn();
 	g_bTerminated = true;
 
-	return unsigned int(er);
+	return unsigned int(g_resLearnResult);
 };
 
 int main()
@@ -260,6 +261,12 @@ int main()
 				CloseHandle(hThread);
 				break;
 			}
+		}
+
+		if(g_resLearnResult.IsFail())
+		{
+			ErrorPrint(g_resLearnResult, "Failed to Learn.\n");
+			break;
 		}
 
 		// 추론 결과 정보에 대한 설정 // Set for the inference result information
