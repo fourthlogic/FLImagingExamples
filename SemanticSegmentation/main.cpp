@@ -266,19 +266,19 @@ int main()
 				semanticSegmentation.GetLearningResultLastCost(f32CurrCost);
 				// 마지막 검증 결과 받기 // Get the last validation result
 				float f32ValidationPa = 0;
-				float f32ValidationMIoU = 0;
+				float f32ValidationMeanIoU = 0;
 				semanticSegmentation.GetLearningResultLastPixelAccuracy(f32ValidationPa);
-				semanticSegmentation.GetLearningResultLastMIoU(f32ValidationMIoU);
+				semanticSegmentation.GetLearningResultLastMeanIoU(f32ValidationMeanIoU);
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
-				printf("Cost : %.6f Validation : %.6f mIoU : %.6f Epoch %d / %d\n", f32CurrCost, f32ValidationPa, f32ValidationMIoU, i32Epoch, i32MaxEpoch);
+				printf("Cost : %.6f Validation : %.6f mIoU : %.6f Epoch %d / %d\n", f32CurrCost, f32ValidationPa, f32ValidationMeanIoU, i32Epoch, i32MaxEpoch);
 
 				// 학습 결과 비용과 검증 결과 기록을 받아 그래프 뷰에 출력  
 				// Get the history of cost and validation and print it at graph view
 				CFLArray<float> vctCosts;
 				CFLArray<float> vctVadliationPixelAccuracy;
-				CFLArray<float> vctMIoU;
+				CFLArray<float> vctMeanIoU;
 
-				semanticSegmentation.GetLearningResultAllHistory(&vctCosts, &vctVadliationPixelAccuracy, &vctMIoU);
+				semanticSegmentation.GetLearningResultAllHistory(&vctCosts, &vctVadliationPixelAccuracy, &vctMeanIoU);
 
 				// 비용 기록이나 검증 결과 기록이 있다면 출력 // Print results if cost or validation history exists
 				if((vctCosts.GetCount() && i32PrevCostCount != (int32_t)vctCosts.GetCount()) || (vctVadliationPixelAccuracy.GetCount() && i32PrevValidationCount != (int32_t)vctVadliationPixelAccuracy.GetCount()))
@@ -299,7 +299,7 @@ int main()
 
 					// Graph View 데이터 입력 // Input Graph View Data
 					viewGraph.Plot(flaX, vctVadliationPixelAccuracy, EChartType_Line, BLUE, L"PixelAccuracy(Zero Exception)");
-					viewGraph.Plot(flaX, vctMIoU, EChartType_Line, PINK, L"mIoU");
+					viewGraph.Plot(flaX, vctMeanIoU, EChartType_Line, PINK, L"mIoU");
 					viewGraph.UnlockUpdate();
 
 					viewGraph.UpdateWindow();
