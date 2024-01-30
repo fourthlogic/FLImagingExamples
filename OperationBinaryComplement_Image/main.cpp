@@ -43,21 +43,21 @@ int main()
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if((eResult = viewImageSource.Create(100, 0, 600, 500)).IsFail())
+		if((eResult = viewImageSource.Create(100, 0, 600, 545)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Operand 이미지 뷰 생성 // Creates operand image view
-		if((eResult = viewImageOperand.Create(600, 0, 1100, 500)).IsFail())
+		if((eResult = viewImageOperand.Create(600, 0, 1100, 545)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create destination image view
-		if((eResult = viewImageDestination.Create(1100, 0,1600, 500)).IsFail())
+		if((eResult = viewImageDestination.Create(1100, 0,1600, 545)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
@@ -150,19 +150,19 @@ int main()
 		layerDestination.Clear();
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
+		if((eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerOperand.DrawTextCanvas(&CFLPointD(0, 0), L"Operand Image", YELLOW, BLACK, 30)).IsFail())
+		if((eResult = layerOperand.DrawTextCanvas(&CFLPointD(0, 0), L"Operand Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)).IsFail())
+		if((eResult = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;

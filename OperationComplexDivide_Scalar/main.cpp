@@ -34,14 +34,14 @@ int main()
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if((eResult = viewImageSrc.Create(100, 0, 600, 500)).IsFail())
+		if((eResult = viewImageSrc.Create(100, 0, 600, 545)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create the Destination image view
-		if((eResult = viewIamgeDst.Create(600, 0,1100, 500)).IsFail())
+		if((eResult = viewIamgeDst.Create(600, 0,1100, 545)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
@@ -112,13 +112,13 @@ int main()
 		// 이미지 뷰 정보 표시 // Display image view information
 		CFLPoint<double> flpPoint = CFLPoint<double>(0, 0);
 
-		if((eResult = layerSource.DrawTextCanvas(&flpPoint, L"Source Image", YELLOW, BLACK, 30)).IsFail())
+		if((eResult = layerSource.DrawTextCanvas(&flpPoint, L"Source Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerDestination.DrawTextCanvas(&flpPoint, L"Destination Image(Divided by 5 + 1i)", YELLOW, BLACK, 30)).IsFail())
+		if((eResult = layerDestination.DrawTextCanvas(&flpPoint, L"Destination Image(Divided by 5 + 1i)", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
