@@ -822,6 +822,9 @@
     - OperationCompare 
       - The algorithm that compares an image with scalar or another image and outputs the absolute value of the difference.
       - 이미지를 스칼라 또는 다른 이미지와 비교하여 차이의 절대 값을 출력하는 알고리즘.
+    - OperationComplexDivide
+      - The algorithm that performs Complex Divide operation on the source image.
+      - 이미지에 Complex Divide 연산을 수행하는 알고리즘
     - OperationCosecant
       - The algorithm that performs Cosecant operation on the source image.
       - 이미지에 Cosecant 연산을 수행하는 알고리즘
@@ -912,7 +915,8 @@
     - OperationTangent
       - The algorithm that performs Tangent operation on the source image.
       - 이미지에 Tangent 연산을 수행하는 알고리즘
-      
+
+
   - [Inpainting]
     
     - InpaintingCoherenceTransport
