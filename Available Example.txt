@@ -897,6 +897,9 @@
     - OperationOverlay 
       - The algorithm that performs overlay operations on an image with other image.
       - 이미지를 다른 이미지와 겹침 연산을 수행하는 알고리즘.
+    - OperationScaledDivide
+      - The algorithm that performs a Scaled Divide operation with an image or scalar value.
+      - 이미지를 스칼라 또는 다른 이미지와 스케일 나눗셈 연산을 수행하는 알고리즘.
     - OperationScaledMultiply
       - The algorithm that perform Scaled Multiply operation an image with scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 스케일 곱셈 연산을 수행하는 알고리즘.
