@@ -170,10 +170,12 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 
 			pMenuBar->ClearUserDefinedInfo();
 
-			// 객체 생성 및 문자열, 배경색 설정
+			// 객체 생성 및 문자열, 배경색 설정 
+			// Creating an object and setting background color and string
 			CGUIMenuBarUserDefinedInfo udi(L"Stopped", RGB(128, 0, 0));
 
 			// Current model name 사각형의 왼쪽 방향으로 하나씩 추가됩니다.
+			// Object is added in the left direction of the current model name rectangle.
 			pMenuBar->PushBackUserDefinedInfo(udi);
 
 			pMenuBar->Invalidate();
@@ -207,14 +209,18 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 			if(!pMenuBar)
 				break;
 
-			// 추가한 아이템을 얻기
+			// 0번 인덱스의 아이템을 얻어 오기
+			// Get the item at 0
 			CGUIMenuBarUserDefinedInfo* pUDI = pMenuBar->GetUserDefinedInfoAt(0);
 
 			if(pUDI && pUDI->GetText() == L"Stopped")
 			{
 				// 문자열 변경
+				// Modify text
 				pUDI->SetText(L"Running..");
+
 				// 배경 색상 변경
+				// Modify background color
 				pUDI->SetBackgroundColor(RGB(0, 128, 0));
 			}
 
@@ -249,14 +255,18 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 			if(!pMenuBar)
 				break;
 
-			// 추가한 아이템을 얻기
+			// 0번 인덱스의 아이템을 얻어 오기
+			// Get the item at 0
 			CGUIMenuBarUserDefinedInfo* pUDI = pMenuBar->GetUserDefinedInfoAt(0);
 
 			if(pUDI && pUDI->GetText() == L"Running..")
 			{
 				// 문자열 변경
+				// Modify text
 				pUDI->SetText(L"Stopped");
+
 				// 배경 색상 변경
+				// Modify background color
 				pUDI->SetBackgroundColor(RGB(128, 0, 0));
 			}
 
@@ -301,19 +311,21 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 			int32_t i32Index;
 
 			// "Add" 카테고리 하위 프로퍼티에서 입력한 값 얻어 오기
+			// Obtain parameters from the properties under "Add" category
 			GetParameters(L"Add", i32Index, str, clrBackground, clrText, bShow, eAlign, eStringTrimming);
 
 			// 얻어온 값으로 CGUIMenuBarUserDefinedInfo 객체 생성
+			// Create CGUIMenuBarUserDefinedInfo object with obtained value
 			CGUIMenuBarUserDefinedInfo udi(str, clrBackground, clrText, bShow, eAlign, eStringTrimming);
 
 			CFLString<wchar_t> strPos = pPIDD->GetValue();
 
 			if(strPos == L"PushBack")
-				pMenuBar->PushBackUserDefinedInfo(udi); // 맨 뒤에 추가
+				pMenuBar->PushBackUserDefinedInfo(udi); // 맨 뒤에 추가 // Add to the back
 			else if(strPos == L"PushFront")
-				pMenuBar->PushFrontUserDefinedInfo(udi); // 맨 앞에 추가
+				pMenuBar->PushFrontUserDefinedInfo(udi); // 맨 앞에 추가 // Add to the front
 			else if(strPos == L"InsertAt")
-				pMenuBar->InsertUserDefinedInfoAt(i32Index, udi); // 설정한 인덱스 위치에 삽입
+				pMenuBar->InsertUserDefinedInfoAt(i32Index, udi); // 설정한 인덱스 위치에 삽입 // Insert in the index you set
 
 			pMenuBar->Invalidate();
 		}
@@ -355,16 +367,41 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 			int32_t i32Index;
 
 			// "Remove" 카테고리 하위 프로퍼티에서 입력한 값 얻어 오기
+			// Obtain parameters from the properties under "Remove" category
 			GetParameters(L"Remove", i32Index, str, clrBackground, clrText, bShow, eAlign, eStringTrimming);
 
 			CFLString<wchar_t> strPos = pPIDD->GetValue();
 
 			if(strPos == L"PopBack")
-				pMenuBar->PopBackUserDefinedInfo();  // 맨 뒤의 객체 제거
+			{
+				// 맨 뒤의 객체 제거하며 얻어 오기
+				// Obtain the last object by PopBack
+				CGUIMenuBarUserDefinedInfo* pUdiReturn = pMenuBar->PopBackUserDefinedInfo(); 
+
+				// 메모리 누수를 방지하기 위해 얻어온 객체 제거
+				// Destroy the object to prevent memory leakage
+				if(pUdiReturn)
+				{
+					delete pUdiReturn;
+					pUdiReturn = nullptr;
+				}
+			}
 			else if(strPos == L"PopFront")
-				pMenuBar->PopFrontUserDefinedInfo(); // 맨 앞의 객체 제거
+			{
+				// 맨 앞의 객체 제거하며 얻어 오기
+				// Obtain the first object by PopFront
+				CGUIMenuBarUserDefinedInfo* pUdiReturn = pMenuBar->PopFrontUserDefinedInfo(); 
+
+				// 메모리 누수를 방지하기 위해 얻어온 객체 제거
+				// Destroy the object to prevent memory leakage
+				if(pUdiReturn)
+				{
+					delete pUdiReturn;
+					pUdiReturn = nullptr;
+				}
+			}
 			else if(strPos == L"RemoveAt")
-				pMenuBar->RemoveUserDefinedInfoAt(i32Index); // 설정한 인덱스 위치의 객체 제거
+				pMenuBar->RemoveUserDefinedInfoAt(i32Index); // 설정한 인덱스 위치의 객체 제거 // Remove objects at the index you set
 
 			pMenuBar->Invalidate();
 		}
@@ -401,15 +438,18 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 			int32_t i32Index;
 
 			// "Set" 카테고리 하위 프로퍼티에서 입력한 값 얻어 오기
+			// Obtain parameters from the properties under "Set" category
 			GetParameters(L"Set", i32Index, str, clrBackground, clrText, bShow, eAlign, eStringTrimming);
 
 			// i32Index 인덱스의 CGUIMenuBarUserDefinedInfo 객체 포인터 얻어 오기
+			// Obtain CGUIMenuBarUserDefinedInfo object pointer from i32Index index
 			CGUIMenuBarUserDefinedInfo* pUdi = pMenuBar->GetUserDefinedInfoAt(i32Index);
 
 			if(!pUdi)
 				break;
 
 			// 프로퍼티에 입력한 값을 얻어온 객체에 설정
+			// Set the value entered in the property to the object
 			pUdi->Set(str, clrBackground, clrText, bShow, eAlign, eStringTrimming);
 
 			pMenuBar->Invalidate();
