@@ -284,7 +284,7 @@ int main()
 		CFLImage fliTexture;
 
 		// Texture 이미지 로드 // Load the texture image
-		if((eResult = fliTexture.Load(L"../../ExampleImages/Moire3D/text.flif")))
+		if((eResult = fliTexture.Load(L"../../ExampleImages/Moire3D/text.flif")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the image file.\n");
 			break;

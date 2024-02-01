@@ -18,7 +18,7 @@ int main()
 		CResult eResult = EResult_UnknownError;
 
 		// Source 이미지 로드 // Load the source image
-		if((eResult = fliSrcImage.Load(L"../../ExampleImages/LaserTriangulation/SrcProfile.flif")))
+		if((eResult = fliSrcImage.Load(L"../../ExampleImages/LaserTriangulation/SrcProfile.flif")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the image file.\n");
 			break;
