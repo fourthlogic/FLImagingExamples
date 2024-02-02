@@ -383,6 +383,8 @@ int main()
 			flsLabel.Format(L"%d(%s)", i32ClassNumber, flaNames[0].GetString());
 			flfaResultContourCur->SetName(flsLabel);
 			fliResultLabelFigureImage.PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flfaResultContourCur));
+			//ResultLabel 이미지의 세그먼테이션 라벨 텍스트 설정 // Set segmentation label text for tthe result label image
+			viewImageResultLabel.SetSegmentationLabelText(0, (double)i32ClassNumber, flaNames[0].GetString());
 		}
 
 		// ResultLabel 뷰에 Floating Value Range를 설정 // Set Floating Value Range in ResultLabel view
