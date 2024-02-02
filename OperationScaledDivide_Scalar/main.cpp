@@ -7,8 +7,8 @@
 enum EType
 {
 	EType_Source = 0,
-	EType_Operand,
-	EType_Destination,
+	EType_Destination1,
+	EType_Destination2,
 	ETypeCount,
 };
 
@@ -26,21 +26,21 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationScaledMultiply/Generator.flif")))
+		if(IsFail(eResult = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationScaledDivide/Generator.flif")))
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Operand 이미지 로드 // Loads the operand image
-		if(IsFail(eResult = arrFliImage[EType_Operand].Load(L"../../ExampleImages/OperationScaledMultiply/Gradation_R2W.flif")))
+		// Destination1 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination1 image as same as source image
+		if(IsFail(eResult = arrFliImage[EType_Destination1].Assign(arrFliImage[EType_Source])))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(eResult, "Failed to assign the image file.\n");
 			break;
 		}
 
-		// Destination 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination image as same as source image
-		if(IsFail(eResult = arrFliImage[EType_Destination].Assign(arrFliImage[EType_Source])))
+		// Destination1 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination1 image as same as source image
+		if(IsFail(eResult = arrFliImage[EType_Destination2].Assign(arrFliImage[EType_Source])))
 		{
 			ErrorPrint(eResult, "Failed to assign the image file.\n");
 			break;
@@ -53,15 +53,15 @@ int main()
 			break;
 		}
 
-		// Operand 이미지 뷰 생성 // Creates operand image view
-		if(IsFail(eResult = arrViewImage[EType_Operand].Create(612, 0,1124, 512)))
+		// Destination1 이미지 뷰 생성 // Create destination1 image view
+		if(IsFail(eResult = arrViewImage[EType_Destination1].Create(612, 0,1124, 512)))
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination 이미지 뷰 생성 // Create destination image view
-		if(IsFail(eResult = arrViewImage[EType_Destination].Create(1124, 0,1636, 512)))
+		// Destination2 이미지 뷰 생성 // Create destination2 image view
+		if(IsFail(eResult = arrViewImage[EType_Destination2].Create(1124, 0,1636, 512)))
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
@@ -84,48 +84,62 @@ int main()
 			break;
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Operand])))
+		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination1])))
 		{
 			ErrorPrint(eResult, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination])))
+		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination2])))
 		{
 			ErrorPrint(eResult, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Operand])))
+		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination1])))
 		{
 			ErrorPrint(eResult, "Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination])))
+		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination2])))
 		{
 			ErrorPrint(eResult, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// Operation ScaledMultiply 객체 생성 // Create Operation ScaledMultiply object
-		COperationScaledMultiply scaledMultiply;
+		// Operation ScaledDivide 객체 생성 // Create Operation ScaledDivide object
+		COperationScaledDivide scaledDivide;
 		// Source 이미지 설정 // Set the source image
-		scaledMultiply.SetSourceImage(arrFliImage[EType_Source]);
-		// Operand 이미지 설정 // Set the operand image
-		scaledMultiply.SetOperandImage(arrFliImage[EType_Operand]);
+		scaledDivide.SetSourceImage(arrFliImage[EType_Source]);
 		// Destination 이미지 설정 // Set the destination image
-		scaledMultiply.SetDestinationImage(arrFliImage[EType_Destination]);
+		scaledDivide.SetDestinationImage(arrFliImage[EType_Destination1]);
 		// 연산 방식 설정 // Set operation source
-		scaledMultiply.SetOperationSource(EOperationSource_Image);
+		scaledDivide.SetOperationSource(EOperationSource_Scalar);
+		// ScaledDivide 값 설정 // Set ScaledDivide value
+		scaledDivide.SetScalarValue(CMultiVar<double>(192, 192, 192));
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = scaledMultiply.Execute()))
+		if(IsFail(eResult = scaledDivide.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute operation ScaledMultiply.");
+			ErrorPrint(eResult, "Failed to execute operation ScaledDivide.");
+			break;
+		}
+
+		// Destination 이미지 설정 // Set the destination image
+		scaledDivide.SetDestinationImage(arrFliImage[EType_Destination2]);
+		// 연산 방식 설정 // Set operation source
+		scaledDivide.SetOperationSource(EOperationSource_Scalar);
+		// ScaledDivide 값 설정 // Set ScaledDivide value
+		scaledDivide.SetScalarValue(CMultiVar<double>(512, 512, 512));
+
+		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
+		if(IsFail(eResult = scaledDivide.Execute()))
+		{
+			ErrorPrint(eResult, "Failed to execute operation ScaledDivide.");
 			break;
 		}
 
@@ -148,19 +162,19 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 10)))
+		if(IsFail(eResult = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 18)))
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_Operand].DrawTextCanvas(&CFLPointD(0, 0), L"Operand Image", YELLOW, BLACK, 10)))
+		if(IsFail(eResult = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(0, 0), L"Destination1 Image(ScaledDivide 192)", YELLOW, BLACK, 18)))
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_Destination].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 10)))
+		if(IsFail(eResult = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(0, 0), L"Destination2 Image(ScaledDivide 512)", YELLOW, BLACK, 18)))
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
@@ -168,13 +182,13 @@ int main()
 
 		// 이미지 뷰를 갱신 // Update image view
 		arrViewImage[EType_Source].Invalidate(true);
-		arrViewImage[EType_Operand].Invalidate(true);
-		arrViewImage[EType_Destination].Invalidate(true);
+		arrViewImage[EType_Destination1].Invalidate(true);
+		arrViewImage[EType_Destination2].Invalidate(true);
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
 		while(arrViewImage[EType_Source].IsAvailable()
-			&& arrViewImage[EType_Operand].IsAvailable()
-			&& arrViewImage[EType_Destination].IsAvailable())
+			&& arrViewImage[EType_Destination1].IsAvailable()
+			&& arrViewImage[EType_Destination2].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);

@@ -26,14 +26,14 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationScaledMultiply/Generator.flif")))
+		if(IsFail(eResult = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationScaledDivide/Generator.flif")))
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Operand 이미지 로드 // Loads the operand image
-		if(IsFail(eResult = arrFliImage[EType_Operand].Load(L"../../ExampleImages/OperationScaledMultiply/Gradation_R2W.flif")))
+		if(IsFail(eResult = arrFliImage[EType_Operand].Load(L"../../ExampleImages/OperationScaledDivide/Gradation_R2W.flif")))
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
@@ -111,21 +111,21 @@ int main()
 			break;
 		}
 
-		// Operation ScaledMultiply 객체 생성 // Create Operation ScaledMultiply object
-		COperationScaledMultiply scaledMultiply;
+		// Operation ScaledDivide 객체 생성 // Create Operation ScaledDivide object
+		COperationScaledDivide scaledDivide;
 		// Source 이미지 설정 // Set the source image
-		scaledMultiply.SetSourceImage(arrFliImage[EType_Source]);
+		scaledDivide.SetSourceImage(arrFliImage[EType_Source]);
 		// Operand 이미지 설정 // Set the operand image
-		scaledMultiply.SetOperandImage(arrFliImage[EType_Operand]);
+		scaledDivide.SetOperandImage(arrFliImage[EType_Operand]);
 		// Destination 이미지 설정 // Set the destination image
-		scaledMultiply.SetDestinationImage(arrFliImage[EType_Destination]);
+		scaledDivide.SetDestinationImage(arrFliImage[EType_Destination]);
 		// 연산 방식 설정 // Set operation source
-		scaledMultiply.SetOperationSource(EOperationSource_Image);
+		scaledDivide.SetOperationSource(EOperationSource_Image);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = scaledMultiply.Execute()))
+		if(IsFail(eResult = scaledDivide.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute operation ScaledMultiply.");
+			ErrorPrint(eResult, "Failed to execute operation ScaledDivide.");
 			break;
 		}
 
@@ -148,19 +148,19 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 10)))
+		if(IsFail(eResult = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 18)))
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_Operand].DrawTextCanvas(&CFLPointD(0, 0), L"Operand Image", YELLOW, BLACK, 10)))
+		if(IsFail(eResult = arrLayer[EType_Operand].DrawTextCanvas(&CFLPointD(0, 0), L"Operand Image", YELLOW, BLACK, 18)))
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_Destination].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 10)))
+		if(IsFail(eResult = arrLayer[EType_Destination].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 18)))
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
