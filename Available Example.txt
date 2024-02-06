@@ -762,6 +762,9 @@
     - AdaptiveEqualization
       - Algorithm that processes images through values of local equalization.
       - 지역 균일화 값을 통해 이미지를 처리하는 알고리즘 예제.
+    - Demoire
+      - Algorithm that remove moire pattern.
+      - Moire 패턴을 제거하는 알고리즘 예제.
     - Equalization
       - The example of an algorithm that processes a equalize.
       - 이미지에서 균일화 처리하는 알고리즘 예제.
