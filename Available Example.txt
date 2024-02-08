@@ -159,10 +159,13 @@
 
     - [Drawing Match]
     
-      - DrawingMatch
+      - DrawingMatch_UsingFigure
         - The algorithm example that learns geometric information within drawing figure and searches for matching geometric patterns in a dectected image.
         - 하나의 도면 기하학적 정보를 학습하여, 검출 이미지에서 일치하는 기하학적 패턴을 탐색하는 알고리즘 예제.
-  
+      - DrawingMatch_UsingGerber
+        - The algorithm example that learns geometric information within drawing gerber and searches for matching geometric patterns in a dectected image.
+        - 하나의 거버 파일의 도면 기하학적 정보를 학습하여, 검출 이미지에서 일치하는 기하학적 패턴을 탐색하는 알고리즘 예제.
+        
     - [Geometric Match]
     
       - GeometricMatch

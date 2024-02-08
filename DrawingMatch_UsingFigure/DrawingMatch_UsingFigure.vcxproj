@@ -22,7 +22,7 @@
     <ProjectGuid>{0F00D462-07AA-44D1-BB1B-34500C98C90A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>ConnectedComponent_Contour</RootNamespace>
-    <ProjectName>DrawingMatch</ProjectName>
+    <ProjectName>DrawingMatch_UsingFigure</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
