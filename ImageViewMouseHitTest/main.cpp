@@ -40,7 +40,7 @@ public:
 			// 메세지의 채널을 확인
 			switch(pMessage->GetChannel())
 			{
-			case EGUIBroadcast_ViewImage_MouseMove:
+			case EGUIBroadcast_ViewImage_PostMouseMove:
 				{
 					// pMessage 객체를 CBroadcastMessage_GUI_ViewImage_MouseEvent 로 캐스팅
 					CBroadcastMessage_GUI_ViewImage_MouseEvent* pMsgMouseEvent = dynamic_cast<CBroadcastMessage_GUI_ViewImage_MouseEvent*>((CBroadcastMessage*)pMessage);

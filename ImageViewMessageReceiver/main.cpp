@@ -36,7 +36,7 @@ public:
 			// 메세지의 채널을 확인
 			switch(pMessage->GetChannel())
 			{
-			case EGUIBroadcast_ViewImage_MouseMove:
+			case EGUIBroadcast_ViewImage_PostMouseMove:
 				{
 					// GetCaller() 가 등록한 이미지뷰인지 확인
 					if(pMessage->GetCaller() != (const CFLBase*)m_pViewImage->GetMessageCallerPtr())
