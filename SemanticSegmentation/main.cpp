@@ -204,7 +204,7 @@ int main()
 		// 검증할 이미지 설정 // Set the image to validate
 		semanticSegmentation.SetLearningValidationImage(fliValidationImage);
 		// 분류할 이미지 설정 // Set the image to classify
-		semanticSegmentation.SetSourceImage(fliValidationImage);
+		semanticSegmentation.SetInferenceImage(fliValidationImage);
 
 		// 학습할 SemanticSegmentation 모델 설정 // Set up SemanticSegmentation model to learn
 		semanticSegmentation.SetModel(CSemanticSegmentationDL::EModel_FL_SS_GP);
@@ -228,7 +228,8 @@ int main()
 		augSpec.SetCommonInterpolationMethod(FLImaging::ImageProcessing::EInterpolationMethod_Bilinear);
 		augSpec.EnableRotation(true);
 		augSpec.SetRotationParam(180., false);
-		augSpec.EnableFlip(true);
+		augSpec.EnableHorizontalFlip(true);
+		augSpec.EnableVerticalFlip(true);
 		augSpec.EnableGaussianNoise(true);
 		semanticSegmentation.SetLearningAugmentationSpec(&augSpec);
 
@@ -277,8 +278,10 @@ int main()
 				CFLArray<float> vctCosts;
 				CFLArray<float> vctVadliationPixelAccuracy;
 				CFLArray<float> vctMeanIoU;
+				CFLArray<float> vctVadliationPixelAccuracyZE;
+				CFLArray<float> vctMeanIoUZE;
 
-				semanticSegmentation.GetLearningResultAllHistory(&vctCosts, &vctVadliationPixelAccuracy, &vctMeanIoU);
+				semanticSegmentation.GetLearningResultAllHistory(&vctCosts, &vctVadliationPixelAccuracy, &vctMeanIoU, &vctVadliationPixelAccuracyZE, &vctMeanIoUZE);
 
 				// 비용 기록이나 검증 결과 기록이 있다면 출력 // Print results if cost or validation history exists
 				if((vctCosts.GetCount() && i32PrevCostCount != (int32_t)vctCosts.GetCount()) || (vctVadliationPixelAccuracy.GetCount() && i32PrevValidationCount != (int32_t)vctVadliationPixelAccuracy.GetCount()))
@@ -333,9 +336,6 @@ int main()
 			ErrorPrint(eResult, "Failed to execute.\n");
 			break;
 		}
-
-		// ResultLabelImage 받아오기 // Get The ResultLabelImage
-		semanticSegmentation.GetInferenceResultImage(&fliResultLabelImage);
 
 		// SegmentationRegionExtractor를 이용하여 라벨 이미지를 피겨로 추출 // Extract label image into figure using SegmentationRegionExtractor
 		// SegmentationRegionExtractor 객체 생성 // Create the SegmentationRegionExtractor object
