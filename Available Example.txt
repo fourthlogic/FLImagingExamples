@@ -909,6 +909,9 @@
     - OperationScaledMultiply
       - The algorithm that perform Scaled Multiply operation an image with scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 스케일 곱셈 연산을 수행하는 알고리즘.
+    - OperationScaledSubtract
+      - The algorithm that perform Scaled Subtract operation an image with scalar or other image.
+      - 이미지를 스칼라 또는 다른 이미지와 스케일 뺄셈 연산을 수행하는 알고리즘.
     - OperationSine 
       - The algorithm that performs Sine operation on the source image.
       - 이미지에 Sine 연산을 수행하는 알고리즘
