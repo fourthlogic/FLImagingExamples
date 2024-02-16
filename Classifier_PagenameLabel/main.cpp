@@ -139,7 +139,7 @@ int main()
 		classifier.SetLearningEpoch(150);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
 		classifier.SetInterpoloationMethod(EInterpolationMethod_Bilinear);
-		
+
 		// Optimizer의 학습률 설정 // Set learning rate of Optimizer
 		optSpec.SetLearningRate(1e-3f);
 
@@ -178,14 +178,12 @@ int main()
 			if(i32Epoch != i32PrevEpoch && i32Iteration == i32MaxIteration && i32Epoch > 0)
 			{
 				// 마지막 학습 결과 비용 받기 // Get the last cost of the learning result
-				float f32CurrCost;
-				classifier.GetLearningResultLastCost(f32CurrCost);
+				float f32CurrCost = classifier.GetLearningResultLastCost();
 				// 마지막 검증 결과 받기 // Get the last validation result
-				float f32Validation = 0;
-				classifier.GetLearningResultValidation(f32Validation);
+				float f32Validation = classifier.GetLearningResultValidation();
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
 				printf("Cost : %.6f Validation : %.6f Epoch %d / %d\n", f32CurrCost, f32Validation, i32Epoch, i32MaxEpoch);
-				
+
 				// 학습 결과 비용과 검증 결과 기록을 받아 그래프 뷰에 출력  
 				// Get the history of cost and validation and print it at graph view
 				CFLArray<float> vctCosts;

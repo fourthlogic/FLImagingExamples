@@ -263,13 +263,11 @@ int main()
 			if(i32Epoch != i32PrevEpoch && i32Iteration == i32MaxIteration && i32Epoch > 0)
 			{
 				// 마지막 학습 결과 비용 받기 // Get the last cost of the learning result
-				float f32CurrCost;
-				semanticSegmentation.GetLearningResultLastCost(f32CurrCost);
+				float f32CurrCost = semanticSegmentation.GetLearningResultLastCost();
 				// 마지막 검증 결과 받기 // Get the last validation result
-				float f32ValidationPa = 0;
-				float f32ValidationMeanIoU = 0;
-				semanticSegmentation.GetLearningResultLastPixelAccuracy(f32ValidationPa);
-				semanticSegmentation.GetLearningResultLastMeanIoU(f32ValidationMeanIoU);
+				float f32ValidationPa = semanticSegmentation.GetLearningResultLastPixelAccuracy();
+				float f32ValidationMeanIoU = semanticSegmentation.GetLearningResultLastMeanIoU();
+
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
 				printf("Cost : %.6f Validation : %.6f mIoU : %.6f Epoch %d / %d\n", f32CurrCost, f32ValidationPa, f32ValidationMeanIoU, i32Epoch, i32MaxEpoch);
 

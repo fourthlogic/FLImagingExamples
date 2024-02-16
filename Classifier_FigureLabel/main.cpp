@@ -203,11 +203,9 @@ int main()
 			if(i32Epoch != i32PrevEpoch && i32Iteration == i32MaxIteration && i32Epoch > 0)
 			{
 				// 마지막 학습 결과 비용 받기 // Get the last cost of the learning result
-				float f32CurrCost;
-				classifier.GetLearningResultLastCost(f32CurrCost);
+				float f32CurrCost = classifier.GetLearningResultLastCost();
 				// 마지막 검증 결과 받기 // Get the last validation result
-				float f32Validation = 0;
-				classifier.GetLearningResultValidation(f32Validation);
+				float f32Validation = classifier.GetLearningResultValidation();
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
 				printf("Cost : %.6f Validation : %.6f Epoch %d / %d\n", f32CurrCost, f32Validation, i32Epoch, i32MaxEpoch);
 
@@ -217,7 +215,7 @@ int main()
 				CFLArray<float> vctValidations;
 
 				classifier.GetLearningResultAllHistory(&vctCosts, &vctValidations);
-				
+
 				// 비용 기록이나 검증 결과 기록이 있다면 출력 // Print results if cost or validation history exists
 				if((vctCosts.GetCount() && i32PrevCostCount != (int32_t)vctCosts.GetCount()) || (vctValidations.GetCount() && i32PrevValidationCount != (int32_t)vctValidations.GetCount()))
 				{
