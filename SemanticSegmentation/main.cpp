@@ -205,7 +205,7 @@ int main()
 		semanticSegmentation.SetLearningValidationImage(fliValidationImage);
 		// 분류할 이미지 설정 // Set the image to classify
 		semanticSegmentation.SetInferenceImage(fliValidationImage);
-
+		semanticSegmentation.SetInferenceResultImage(fliResultLabelImage);
 		// 학습할 SemanticSegmentation 모델 설정 // Set up SemanticSegmentation model to learn
 		semanticSegmentation.SetModel(CSemanticSegmentationDL::EModel_FL_SS_GP);
 		// 학습할 SemanticSegmentation 모델의 버전 설정 // Set up SemanticSegmentation model version to learn
