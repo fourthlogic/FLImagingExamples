@@ -122,31 +122,31 @@ int main() // Tiling
 		
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(0);
-		fliSrcImage.PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flRect));
-		fliSrcImages[0].PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flRect));
+		fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
+		fliSrcImages[0].PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
 
 		flRect = CFLRectD(260, 135, 415, 440);
 		flRect.SetName(L"1");
-		fliSrcImage.PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flRect));
-		fliSrcImages[0].PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flRect));
+		fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
+		fliSrcImages[0].PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
 
 		flRect = CFLRectD(280, 250, 480, 480);
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(1);
-		fliSrcImage.PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flRect));
-		fliSrcImages[1].PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flRect));
+		fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
+		fliSrcImages[1].PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
 
 		flRect = CFLRectD(110, 150, 350, 440);
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(2);
-		fliSrcImage.PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flRect));
-		fliSrcImages[2].PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flRect));
+		fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
+		fliSrcImages[2].PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
 
 		flRect = CFLRectD(220, 230, 470, 450);
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(3);
-		fliSrcImage.PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flRect));
-		fliSrcImages[3].PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flRect));
+		fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
+		fliSrcImages[3].PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
 
 		// Destination 이미지에 ROI 추가 // Add ROI to destination image
 		fliDstImage.PushBackFigure(L"D(79.292035, 67.964602, 292.247788, 267.327434, INFO[NAME(0_0)])");

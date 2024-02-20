@@ -79,7 +79,7 @@ int main()
 
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
 		{
-			strFigure.Format(L"[%d]\n %s\n", i, CROIUtilities::ConvertFigureObjectToString(flfa.GetAt(i)).GetString());
+			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtils::ConvertFigureObjectToString(flfa.GetAt(i)).GetString());
 			wprintf(L"%s", strFigure.GetString());
 		}
 
@@ -105,7 +105,7 @@ int main()
 
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
 		{
-			strFigure.Format(L"[%d]\n %s\n", i, CROIUtilities::ConvertFigureObjectToString(flfaCenter.GetAt(i)).GetString());
+			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtils::ConvertFigureObjectToString(flfaCenter.GetAt(i)).GetString());
 			wprintf(L"%s", strFigure.GetString());
 		}
 
@@ -156,7 +156,7 @@ int main()
 
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
 		{
-			strFigure.Format(L"[%d]\n %s\n", i, CROIUtilities::ConvertFigureObjectToString(flfaCenterOfGravity.GetAt(i)).GetString());
+			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtils::ConvertFigureObjectToString(flfaCenterOfGravity.GetAt(i)).GetString());
 			wprintf(L"%s", strFigure.GetString());
 		}
 
@@ -179,7 +179,7 @@ int main()
 
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
 		{
-			strFigure.Format(L"[%d]\n %s\n", i, CROIUtilities::ConvertFigureObjectToString(flfaMER.GetAt(i)).GetString());
+			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtils::ConvertFigureObjectToString(flfaMER.GetAt(i)).GetString());
 			wprintf(L"%s", strFigure.GetString());
 		}
 

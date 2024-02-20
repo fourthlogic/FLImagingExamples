@@ -294,7 +294,7 @@ void CImageViewIntoDialogDlg::OnBnClickedButtonFigureObjectPopFront()
 			break;
 
 		// Figure 를 문자열로 얻어온다.
-		CFLString<wchar_t> flStrFigure = CROIUtilities::ConvertFigureObjectToString(pFlFigure);
+		CFLString<wchar_t> flStrFigure = CFigureUtils::ConvertFigureObjectToString(pFlFigure);
 
 		strFigureInfo = flStrFigure;
 	}

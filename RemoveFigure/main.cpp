@@ -256,16 +256,16 @@ int main()
 
 		// Console 출력 // Console output
 		wprintf(L"Source1 Figure Array\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(&flfaSource1).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaSource1).GetString());
 
 		wprintf(L"Result1 Figure that vertexcount > 1 or area > 400 || (center.x > 300 || center.y < 100)\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(&flfaResult1).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaResult1).GetString());
 
 		wprintf(L"Source2 Figure Array\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(&flfaSource2).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaSource2).GetString());
 
 		wprintf(L"Result2 Figure that area >= mean('area')\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(&flfaResult2).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaResult2).GetString());
 
 		// 이미지 뷰를 갱신 합니다. // Update image view
 		for(int32_t i = 0; i < 4; ++i)

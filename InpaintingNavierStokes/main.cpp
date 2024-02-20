@@ -133,7 +133,7 @@ int main()
 		}
 
 		// Painting region을 source image에 디스플레이 // Display painting region on the source image
-		if(fliSrcImage.PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flaInpaintingRegion)) == -1)
+		if(fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flaInpaintingRegion)) == -1)
 		{
 			ErrorPrint(eResult, L"Failed to push figure on image\n");
 			break;

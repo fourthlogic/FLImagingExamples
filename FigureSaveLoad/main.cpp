@@ -63,10 +63,10 @@ int main()
 		CFLString<wchar_t> strFigure;
 		wprintf(L"Figure To Save\n");
 
-		strFigure.Format(L"Rect : %s\n", CROIUtilities::ConvertFigureObjectToString(&flr).GetString());
+		strFigure.Format(L"Rect : %s\n", CFigureUtils::ConvertFigureObjectToString(&flr).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
-		strFigure.Format(L"Figure Array : %s\n\n", CROIUtilities::ConvertFigureObjectToString(&flfa).GetString());
+		strFigure.Format(L"Figure Array : %s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfa).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
 		// SourceView의 0번 레이어에 그리기 // Draw on Layer 0 of SourceView
@@ -104,10 +104,10 @@ int main()
 
 		wprintf(L"Loaded Figure\n");
 
-		strFigure.Format(L"Rect : %s\n", CROIUtilities::ConvertFigureObjectToString(&flrLoad).GetString());
+		strFigure.Format(L"Rect : %s\n", CFigureUtils::ConvertFigureObjectToString(&flrLoad).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
-		strFigure.Format(L"Figure Array : %s\n\n", CROIUtilities::ConvertFigureObjectToString(&flfaLoad).GetString());
+		strFigure.Format(L"Figure Array : %s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaLoad).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
 		// DestinationView의 0번 레이어에 그리기 // Draw on Layer 0 of DestinationView

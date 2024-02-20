@@ -261,14 +261,14 @@ int main()
 		}
 
 		// Painting region을 source image에 디스플레이 // Display painting region on the source image
-		if(fliSrcImage.PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flfaPaintingRegion)) == -1)
+		if(fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flfaPaintingRegion)) == -1)
 		{
 			ErrorPrint(eResult, L"Failed to push figure on image\n");
 			break;
 		}
 
 		// Painting region을 source image에 디스플레이 // Display painting region on the source image
-		if(fliSrcImage2.PushBackFigure(CROIUtilities::ConvertFigureObjectToString(flfaPaintingRegion2)) == -1)
+		if(fliSrcImage2.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flfaPaintingRegion2)) == -1)
 		{
 			ErrorPrint(eResult, L"Failed to push figure on image\n");
 			break;

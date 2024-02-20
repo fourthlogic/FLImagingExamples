@@ -202,10 +202,10 @@ int main()
 
 		// Console Ãâ·Â // Console output
 		wprintf(L"Source1 CFLPointArray\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(flpaSource1).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(flpaSource1).GetString());
 
 		wprintf(L"Destination1 CFLCircle<double>\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(flcDestination1).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(flcDestination1).GetString());
 
 		wprintf(L"Result1 Index of Maximum distance\n");
 		wprintf(L"%lld\n\n", flvSrc.v);
@@ -213,10 +213,10 @@ int main()
 		wprintf(L"\n\n");
 
 		wprintf(L"Source2 CFLFigureArray\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(flfaSource2).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(flfaSource2).GetString());
 
 		wprintf(L"Destination2 CFLFigureArray\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(flfaDestination2).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(flfaDestination2).GetString());
 
 		wprintf(L"Src Result2 Index of Maximum distance\n");
 		wprintf(L"Depth1 : %lld\nDepth2 : %lld\n\n", flvSrcDepth1.v, flvSrcDepth2.v);

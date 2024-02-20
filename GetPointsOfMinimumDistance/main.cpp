@@ -180,13 +180,13 @@ int main()
 
 		// Console Ãâ·Â // Console output
 		wprintf(L"Source1 CFLCircle<double>\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(&flcSource1).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flcSource1).GetString());
 
 		wprintf(L"Operand1 CFLQuad<double>\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(&flqOperand1).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flqOperand1).GetString());
 
 		wprintf(L"Result1 Points of Minimum distance\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(&flpaResult1).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flpaResult1).GetString());
 
 		wprintf(L"Result1 Minimum distance\n");
 		wprintf(L"%lf\n\n", f64MinimumDistance1);
@@ -194,13 +194,13 @@ int main()
 		wprintf(L"\n\n");
 
 		wprintf(L"Source2 CFLFigureArray\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(&flfaSource2).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaSource2).GetString());
 
 		wprintf(L"Operand2 CFLFigureArray\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(&flfaOperand2).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaOperand2).GetString());
 
 		wprintf(L"Result2 Points of Minimum distance\n");
-		wprintf(L"%s\n\n", CROIUtilities::ConvertFigureObjectToString(&flpaResult2).GetString());
+		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flpaResult2).GetString());
 
 		wprintf(L"Result2 Minimum distance\n");
 		wprintf(L"%lf\n\n", f64MinimumDistance2);
