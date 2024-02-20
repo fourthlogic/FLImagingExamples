@@ -26,14 +26,14 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationScaledSubtract/Generator.flif")))
+		if(IsFail(eResult = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationScaledSubtract/CityNight.flif")))
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Operand 이미지 로드 // Loads the operand image
-		if(IsFail(eResult = arrFliImage[EType_Operand].Load(L"../../ExampleImages/OperationScaledSubtract/Gradation_R2W.flif")))
+		if(IsFail(eResult = arrFliImage[EType_Operand].Load(L"../../ExampleImages/OperationScaledSubtract/Gradation.flif")))
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
