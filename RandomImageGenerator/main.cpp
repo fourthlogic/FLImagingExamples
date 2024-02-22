@@ -27,7 +27,7 @@ int main()
 		CResult eResult = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = arrFliImage[EType_Src].Load(L"../../ExampleImages/RandomGenerator/Figure.flif")))
+		if(IsFail(eResult = arrFliImage[EType_Src].Load(L"../../ExampleImages/RandomImageGenerator/Figure.flif")))
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
@@ -91,24 +91,24 @@ int main()
 		if(bError)
 			break;
 
-		// Random Generator 객체 생성 // Create Random Generator object
-		CRandomGenerator RandomGenerator;
+		// Random Image Generator 객체 생성 // Create Random Image Generator object
+		CRandomImageGenerator RandomImageGenerator;
 
-		// Random Generator ROI 지정 // Create ROI range
+		// Random Image Generator ROI 지정 // Create ROI range
 		CFLFigureArray flfaSrcROI;
 
-		flfaSrcROI.Load(L"../../ExampleImages/RandomGenerator/FigureROI.fig");
+		flfaSrcROI.Load(L"../../ExampleImages/RandomImageGenerator/FigureROI.fig");
 
 		// Source 이미지 설정 // Set source image 
-		RandomGenerator.SetSourceImage(arrFliImage[EType_Dst]);
+		RandomImageGenerator.SetSourceImage(arrFliImage[EType_Dst]);
 
-		// Random Generator 영역 지정 // set source ROI 
-		RandomGenerator.SetSourceROI(flfaSrcROI);
+		// Random Image Generator 영역 지정 // set source ROI 
+		RandomImageGenerator.SetSourceROI(flfaSrcROI);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((eResult = RandomGenerator.Execute()).IsFail())
+		if((eResult = RandomImageGenerator.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Random Generator.");
+			ErrorPrint(eResult, "Failed to execute Random Image Generator.");
 			break;
 		}
 
@@ -133,13 +133,13 @@ int main()
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_Dst].DrawTextCanvas(&CFLPointD(0, 0), L"RandomGenerator Image", YELLOW, BLACK, 20)))
+		if(IsFail(eResult = arrLayer[EType_Dst].DrawTextCanvas(&CFLPointD(0, 0), L"RandomImageGenerator Image", YELLOW, BLACK, 20)))
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		// RandomGenerator 영역 표기 // RandomGenerator Area draw
+		// RandomImageGenerator 영역 표기 // RandomImageGenerator Area draw
 		if(IsFail(eResult = arrLayer[EType_Src].DrawFigureImage(&flfaSrcROI, LIME)))
 			ErrorPrint(eResult, "Failed to draw figure\n");
 
