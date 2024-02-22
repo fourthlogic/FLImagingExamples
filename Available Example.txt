@@ -1134,6 +1134,10 @@
         - An example of an algorithm for applying gradation to an image.
         - 이미지에 그라데이션을 적용하는 알고리즘 예제.		 
 
+      - RandomGenerator 
+        - An example of an algorithm to generate Random values using SAH256 within the region of interest in an image.
+        - 이미지의 관심영역 내에서 SAH256을 이용하여 Random 값을 생성하는 알고리즘 예제.
+
     - [Integral]
 
       - Integral_Polynomial
