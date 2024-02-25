@@ -207,9 +207,9 @@ int main()
 		semanticSegmentation.SetInferenceImage(fliValidationImage);
 		semanticSegmentation.SetInferenceResultImage(fliResultLabelImage);
 		// 학습할 SemanticSegmentation 모델 설정 // Set up SemanticSegmentation model to learn
-		semanticSegmentation.SetModel(CSemanticSegmentationDL::EModel_FL_SS_GP);
+		semanticSegmentation.SetModel(CSemanticSegmentationDL::EModel_FLNet);
 		// 학습할 SemanticSegmentation 모델의 버전 설정 // Set up SemanticSegmentation model version to learn
-		semanticSegmentation.SetModelVersion(CSemanticSegmentationDL::EModelVersion_FL_SS_GP_V1_512);
+		semanticSegmentation.SetModelVersion(CSemanticSegmentationDL::EModelVersion_FLNet_V1_512_B3);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
 		semanticSegmentation.SetLearningEpoch(120);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
