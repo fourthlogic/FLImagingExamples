@@ -135,8 +135,10 @@ int main()
 		// amplitude = 20 설정
 		fastGuidedFilter.SetAmplitude(20);
 
+		// Sampling Factor = 5 설정
 		fastGuidedFilter.SetSamplingFactor(5);
 
+		// Interpolation = true 설정
 		fastGuidedFilter.EnableInterpolation(true);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters

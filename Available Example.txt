@@ -649,6 +649,9 @@
     - EntropyFilter	   
       - The example of an algorithm that show entropy distribution.
       - 이미지의 Entropy 분포를 나타내는 알고리즘 예제
+    - FastGuidedFilter
+      - The example of an algorithm that processes a fast guided filter to an image.
+      - 이미지에서 fast guided 필터를 처리하는 알고리즘 예제.
     - FreiFilter
       - The example of an algorithm that detects image edges.
       - 이미지 경계를 검출하는 알고리즘 예제.
