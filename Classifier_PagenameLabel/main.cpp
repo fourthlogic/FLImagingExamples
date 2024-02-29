@@ -130,6 +130,7 @@ int main()
 		classifier.SetLearningValidationImage(fliSourceImage);
 		// 분류할 이미지 설정 // Set the image to classify
 		classifier.SetInferenceImage(fliSourceImage);
+		classifier.SetInferenceResultImage(fliSourceImage);
 
 		// 학습할 Classifier 모델 설정 // Set up Classifier model to learn
 		classifier.SetModel(CClassifierDL::EModel_FL_CF_C);

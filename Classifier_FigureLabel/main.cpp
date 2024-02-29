@@ -157,6 +157,7 @@ int main()
 		classifier.SetLearningValidationImage(fliValidateImage);
 		// 분류할 이미지 설정 // Set the image to classify
 		classifier.SetInferenceImage(fliSourceImage);
+		classifier.SetInferenceResultImage(fliSourceImage);
 
 		// 학습할 Classifier 모델 설정 // Set up Classifier model to learn
 		classifier.SetModel(CClassifierDL::EModel_FL_CF_C);
@@ -283,6 +284,8 @@ int main()
 		viewImageValidate.Invalidate(true);
 		// 그래프 뷰를 갱신 // Update the Graph view.
 		viewGraph.Invalidate(true);
+
+		wprintf(L"Inference Complete\n");
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
 		while(viewImageLearn.IsAvailable() && viewImageSource.IsAvailable() && viewImageValidate.IsAvailable() && viewGraph.IsAvailable())
