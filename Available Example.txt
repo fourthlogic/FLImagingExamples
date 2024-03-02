@@ -849,6 +849,9 @@
     - OperationGreater
       - The algorithm that performs Greater operations on an image scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 Greater 연산을 수행하는 알고리즘.
+    - OperationGreatestCommonDivisor
+      - The algorithm that performs GCD operations on an image scalar or other image.
+      - 이미지를 스칼라 또는 다른 이미지와 GCD 연산을 수행하는 알고리즘.
     - OperationHypotenuse
       - The algorithm that performs Hypotenuse operations on an image scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 Hypotenuse 연산을 수행하는 알고리즘.
