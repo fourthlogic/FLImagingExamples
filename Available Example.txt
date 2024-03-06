@@ -371,6 +371,9 @@
     - DeviceCameraHIK 
        - Example of connecting and operating HIK Camera.
        - HIK Camera 연결 및 구동하는 예제.
+	- DeviceCameraiRAYPLE 
+       - Example of connecting and operating iRAYPLE Camera.
+       - iRAYPLE Camera 연결 및 구동하는 예제.
 	- DeviceCameraPylon 
        - Example of connecting and operating Pylon Camera.
        - Pylon Camera 연결 및 구동하는 예제.
