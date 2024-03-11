@@ -1158,7 +1158,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LeastCommonMultiple", "Leas
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationLeastCommonMultiple_Image", "OperationLeastCommonMultiple_Image\OperationLeastCommonMultiple_Image.vcxproj", "{EFB22046-C192-427D-9654-EF40D0E8E133}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationGreatestCommonDivisor_Scalar", "OperationLeastCommonMultiple_Scalar\OperationGreatestCommonDivisor_Scalar.vcxproj", "{B01F4A90-1488-41D0-83BC-E7A236272955}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationLeastCommonMultiple_Scalar", "OperationLeastCommonMultiple_Scalar\OperationLeastCommonMultiple_Scalar.vcxproj", "{B01F4A90-1488-41D0-83BC-E7A236272955}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -4878,7 +4878,7 @@ Global
 		{B01F4A90-1488-41D0-83BC-E7A236272955} = {E75551D1-27D9-4823-8D06-6C23C5656A0C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
+		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 	EndGlobalSection
 EndGlobal
