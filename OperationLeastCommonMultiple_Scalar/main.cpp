@@ -33,16 +33,16 @@ int main()
 		}
 
 		// Destination1 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination1 image as same as source image
-		if(IsFail(eResult = arrFliImage[EType_Destination1].Assign(arrFliImage[EType_Source])))
+		if(IsFail(eResult = arrFliImage[EType_Destination1].Load(L"../../ExampleImages/OperationLeastCommonMultiple/PlateDestination.flif")))
 		{
-			ErrorPrint(eResult, "Failed to assign the image file.\n");
+			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination1 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination1 image as same as source image
-		if(IsFail(eResult = arrFliImage[EType_Destination2].Assign(arrFliImage[EType_Source])))
+		if(IsFail(eResult = arrFliImage[EType_Destination2].Load(L"../../ExampleImages/OperationLeastCommonMultiple/PlateDestination.flif")))
 		{
-			ErrorPrint(eResult, "Failed to assign the image file.\n");
+			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
 		}
 
