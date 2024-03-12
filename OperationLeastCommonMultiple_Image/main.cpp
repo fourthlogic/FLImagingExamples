@@ -40,7 +40,7 @@ int main()
 		}
 
 		// Destination 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination image as same as source image
-		if(IsFail(eResult = arrFliImage[EType_Destination].Assign(arrFliImage[EType_Source])))
+		if(IsFail(eResult = arrFliImage[EType_Destination].Load(L"../../ExampleImages/OperationLeastCommonMultiple/PlateDestination.flif")))
 		{
 			ErrorPrint(eResult, "Failed to assign the image file.\n");
 			break;
