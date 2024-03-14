@@ -4,7 +4,7 @@
 #include "../CommomHeader/ErrorPrint.h"
 
 
-int main() // Merge
+int main() // Alignment Tiling
 {
 	const int32_t i32SrcImageCount = 4;
 
@@ -72,7 +72,6 @@ int main() // Merge
 			}
 		}
 
-
 		// Destination 이미지 뷰 생성 // Create the destination image view
 		if(IsFail(eResult = viewImageDst.Create(912, 0, 1424, 612)))
 		{
@@ -130,7 +129,7 @@ int main() // Merge
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(eResult = alignmentTiling.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute merge.");
+			ErrorPrint(eResult, "Failed to execute alignment tiling.");
 			break;
 		}
 
