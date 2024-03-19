@@ -199,24 +199,24 @@ int main()
 			// 마지막 학습 횟수 받기 // Get the last epoch learning
 			int32_t i32Epoch = classifier.GetLastEpoch();
 
+			// 학습 결과 비용과 검증 결과 기록을 받아 그래프 뷰에 출력  
+			// Get the history of cost and validation and print it at graph view
+			CFLArray<float> vctCosts;
+			CFLArray<float> vctValidations;
+			CFLArray<float> vctF1Score;
+
+			classifier.GetLearningResultAllHistory(vctCosts, vctValidations, vctF1Score);
+
 			// 미니 배치 반복이 완료되면 cost와 validation 값을 디스플레이 
 			// Display cost and validation value if iterations of the mini batch is completed 
-			if(i32Epoch != i32PrevEpoch && i32Iteration == i32MaxIteration && i32Epoch > 0)
+			if(vctCosts.GetCount() && i32Epoch != i32PrevEpoch && i32Iteration == i32MaxIteration && i32Epoch > 0)
 			{
-				// 학습 결과 비용과 검증 결과 기록을 받아 그래프 뷰에 출력  
-				// Get the history of cost and validation and print it at graph view
-				CFLArray<float> vctCosts;
-				CFLArray<float> vctValidations;
-				CFLArray<float> vctF1Score;
-
-				classifier.GetLearningResultAllHistory(vctCosts, vctValidations, vctF1Score);
-
 				// 마지막 학습 결과 비용 받기 // Get the last cost of the learning result
 				float f32CurrCost = vctCosts.Back();
 				// 마지막 검증 결과 받기 // Get the last validation result
-				float f32Validation = vctValidations.Back();
+				float f32Validation = vctValidations.GetCount() ? vctValidations.Back() : 0;
 				// 마지막 F1점수 결과 받기 // Get the last F1 Score result
-				float f32F1Score = vctF1Score.Back();
+				float f32F1Score = vctF1Score.GetCount() ? vctF1Score.Back() : 0;
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
 				printf("Cost : %.6f Validation : %.6f F1 Score : %.6f Epoch %d / %d\n", f32CurrCost, f32Validation, f32F1Score, i32Epoch, i32MaxEpoch);
 
