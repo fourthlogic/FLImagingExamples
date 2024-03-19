@@ -369,14 +369,14 @@ int main()
 		// ResultContours 인덱스와 매칭 되는 라벨 번호배열을 가져오기 // ResultContours Get an array of label numbers matching the index.
 		semanticRE.GetResultSegmentationLabels(flaLabelList);
 
-		int64_t i64ResultCount = flaLabelList.GetCount();
+		int64_t i64ResultCount = flfaResultContours.GetCount();
 
 		for(int64_t i = 0; i < i64ResultCount; ++i)
 		{
 			Base::CFLArray<Base::CFLStringW> flaNames;
 			CFLFigureArray* flfaResultContourCur = (CFLFigureArray * )flfaResultContours.GetAt(i);
 			CFLStringW flsLabel;
-			int64_t i32ClassNumber = flaLabelList[i];
+			int64_t i32ClassNumber = _wtoi(flfaResultContourCur->GetName());
 
 			semanticSegmentation.GetLearningResultClassNames(i32ClassNumber, &flaNames);
 			flsLabel.Format(L"%d(%s)", i32ClassNumber, flaNames[0].GetString());
