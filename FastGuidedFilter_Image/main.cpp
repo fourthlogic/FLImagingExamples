@@ -126,9 +126,6 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		fastGuidedFilter.SetDestinationImage(fliDestinationImage);
 
-		// Image Operation 소스로 설정 // Set Operation Source to image
-		fastGuidedFilter.SetOperationSource(EOperationSource_Image);
-
 		// filter mask radius = 3 설정
 		fastGuidedFilter.SetRadius(3);
 
