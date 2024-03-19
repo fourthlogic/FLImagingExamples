@@ -179,8 +179,9 @@ int main()
 			CFLArray<float> vctCosts;
 			CFLArray<float> vctValidations;
 			CFLArray<float> vctF1Score;
+			CFLArray<int32_t> vctValidationEpoch;
 
-			classifier.GetLearningResultAllHistory(vctCosts, vctValidations, vctF1Score);
+			classifier.GetLearningResultAllHistory(vctCosts, vctValidations, vctF1Score, vctValidationEpoch);
 
 			// 미니 배치 반복이 완료되면 cost와 validation 값을 디스플레이 
 			// Display cost and validation value if iterations of the mini batch is completed 
