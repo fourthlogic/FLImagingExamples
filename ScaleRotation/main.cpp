@@ -100,7 +100,7 @@ int main()
 		}
 
 		// Scale 비율 설정 // set scale ratio
-		scaleRotation.SetScale(1.5, 1.5);
+		scaleRotation.SetScale(0.7, 1.5);
 		// 회전 각도 설정 // set rotation angle
 		scaleRotation.SetAngle(30.0);
 		// Image Resize 설정 // Set Image Resize
@@ -116,13 +116,15 @@ int main()
 		}
 
 		// Scale 비율 설정 // set scale ratio
-		scaleRotation.SetScale(1.5, 1.5);
+		scaleRotation.SetScale(1.5, 0.7);
 		// 회전 각도 설정 // set rotation angle
 		scaleRotation.SetAngle(240.0);
 		// Image Resize 설정 // Set Image Resize
 		scaleRotation.SetResizeMethod(EResizeMethod_Resize);
 		// Source Image 설정 // Set Source Image
 		scaleRotation.SetSourceImage(arrFliImage[EType_Dst3]);
+		// Rotation First 설정 // Set Rotation First
+		scaleRotation.EnableRotationFirst(true);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(eResult = scaleRotation.Execute()))
