@@ -6,10 +6,10 @@
 int main()
 {
 	// 이미지 객체 선언 // Declare image object
-	CFLImage arrFliImage[3];
+	CFLImage arrFliImage[4];
 
 	// 이미지 뷰 선언 // Declare image view
-	CGUIViewImageWrap viewImage[3];
+	CGUIViewImageWrap viewImage[4];
 
 	 // 수행 결과 객체 선언 // Declare the execution result object
 	CResult eResult = EResult_UnknownError;
@@ -23,36 +23,50 @@ int main()
 			break;
 		}
 
-		// Operand 이미지 로드 // Loads the operand image
-		if((eResult = arrFliImage[1].Load(L"../../ExampleImages/ConditionalExtractor/CatOperand.flif")).IsFail())
+		// Operand1 이미지 로드 // Loads the operand1 image
+		if((eResult = arrFliImage[1].Load(L"../../ExampleImages/ConditionalExtractor/CatOperandDual1.flif")).IsFail())
+		{
+			ErrorPrint(eResult, "Failed to load the image file.\n");
+			break;
+		}
+
+		// Operand2 이미지 로드 // Loads the operand2 image
+		if((eResult = arrFliImage[2].Load(L"../../ExampleImages/ConditionalExtractor/CatOperandDual2.flif")).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination image as same as source image
-		if((eResult = arrFliImage[2].Assign(arrFliImage[0])).IsFail())
+		if((eResult = arrFliImage[3].Assign(arrFliImage[0])).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to assign the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if((eResult = viewImage[0].Create(100, 0, 612, 512)).IsFail())
+		if((eResult = viewImage[0].Create(100, 0, 500, 400)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Operand 이미지 뷰 생성 // Creates operand image view
-		if((eResult = viewImage[1].Create(612, 0, 1124, 512)).IsFail())
+		// Operand1 이미지 뷰 생성 // Creates operand1 image view
+		if((eResult = viewImage[1].Create(500, 0, 900, 400)).IsFail())
+		{
+			ErrorPrint(eResult, "Failed to create the image view.\n");
+			break;
+		}
+
+		// Operand2 이미지 뷰 생성 // Creates operand2 image view
+		if((eResult = viewImage[2].Create(900, 0, 1300, 400)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create destination image view
-		if((eResult = viewImage[2].Create(1124, 0, 1636, 512)).IsFail())
+		if((eResult = viewImage[3].Create(1300, 0, 1700, 400)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to create the image view.\n");
 			break;
@@ -61,7 +75,7 @@ int main()
 		bool bError = false;
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		for(int32_t i = 0; i < 3; ++i)
+		for(int32_t i = 0; i < 4; ++i)
 		{
 			if((eResult = viewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
 			{
@@ -74,15 +88,22 @@ int main()
 		if(bError)
 			break;
 
-		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
+		// Source 이미지 뷰와 Operand1 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the source view and the operand1 view
 		if((eResult = viewImage[0].SynchronizePointOfView(&viewImage[1])).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to synchronize view\n");
 			break;
 		}
 
-		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
+		// Source 이미지 뷰와 Operand2 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the source view and the operand2 view
 		if((eResult = viewImage[0].SynchronizePointOfView(&viewImage[2])).IsFail())
+		{
+			ErrorPrint(eResult, "Failed to synchronize view\n");
+			break;
+		}
+
+		// Source 이미지 뷰와 Destination 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the source view and the destination view
+		if((eResult = viewImage[0].SynchronizePointOfView(&viewImage[3])).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to synchronize view\n");
 			break;
@@ -102,14 +123,23 @@ int main()
 			break;
 		}
 
+		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
+		if((eResult = viewImage[0].SynchronizeWindow(&viewImage[3])).IsFail())
+		{
+			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			break;
+		}
+
 		// Conditional Extractor 객체 생성 // Create Conditional Extractor object
 		CConditionalExtractor conditionalExtractor;
 		// Source 이미지 설정 // Set the source image
 		conditionalExtractor.SetSourceImage(arrFliImage[0]);
-		// Operand 이미지 설정 // Set the operand image
+		// Operand1 이미지 설정 // Set the operand1 image
 		conditionalExtractor.SetOperandImage(arrFliImage[1]);
+		// Operand2 이미지 설정 // Set the operand2 image
+		conditionalExtractor.SetOperandImage2(arrFliImage[2]);
 		// Destination 이미지 설정 // Set the destination image
-		conditionalExtractor.SetDestinationImage(arrFliImage[2]);
+		conditionalExtractor.SetDestinationImage(arrFliImage[3]);
 
 		// Operation Source 설정 // Set the Operation Source
 		conditionalExtractor.SetOperationSource(EOperationSource_Image);
@@ -121,12 +151,12 @@ int main()
 		CMultiVarL mvCondition1, mvCondition2;
 
 		// 논리 조건 입력 // Push the logical condition
-		mvCondition1.PushBack(ELogicalCondition_Less);
+		mvCondition1.PushBack(ELogicalCondition_Greater);
 		mvCondition2.PushBack(ELogicalCondition_Equal);
 
 		// 논리 조건 설정 // Set the logical condition
 		conditionalExtractor.SetLogicalCondition(mvCondition1);
-		conditionalExtractor.SetLogicalCondition(mvCondition2,EThresholdIndex_Second);
+		conditionalExtractor.SetLogicalCondition(mvCondition2, EThresholdIndex_Second);
 
 		// 조건이 거짓일 경우 Out of Range 값 설정 여부 결정 // Determine the Out of Range value if the condition is false
 		conditionalExtractor.EnableOutOfRange(true);
@@ -148,9 +178,9 @@ int main()
 			break;
 		}
 
-		CGUIViewImageLayerWrap arrLayer[3];
+		CGUIViewImageLayerWrap arrLayer[4];
 
-		for(int32_t i = 0; i < 3; ++i)
+		for(int32_t i = 0; i < 4; ++i)
 		{
 			// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 			// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
@@ -173,13 +203,19 @@ int main()
 			break;
 		}
 
-		if((eResult = arrLayer[1].DrawTextCanvas(&CFLPointD(0, 0), L"Operand Image", YELLOW, BLACK, 30)).IsFail())
+		if((eResult = arrLayer[1].DrawTextCanvas(&CFLPointD(0, 0), L"Operand1 Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = arrLayer[2].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image\nDual Or(Less, Equal)", YELLOW, BLACK, 30)).IsFail())
+		if((eResult = arrLayer[2].DrawTextCanvas(&CFLPointD(0, 0), L"Operand2 Image", YELLOW, BLACK, 30)).IsFail())
+		{
+			ErrorPrint(eResult, "Failed to draw text\n");
+			break;
+		}
+
+		if((eResult = arrLayer[3].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image\nDual Or(Greater, Equal)", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to draw text\n");
 			break;
@@ -189,11 +225,13 @@ int main()
 		viewImage[0].Invalidate(true);
 		viewImage[1].Invalidate(true);
 		viewImage[2].Invalidate(true);
+		viewImage[3].Invalidate(true);
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
 		while(viewImage[0].IsAvailable()
 			  && viewImage[1].IsAvailable()
-			  && viewImage[2].IsAvailable())
+			  && viewImage[2].IsAvailable()
+			  && viewImage[3].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
