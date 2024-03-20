@@ -355,6 +355,15 @@
        - Example of an algorithm for SemanticSegmentation validation images with figures using models learned through SemanticSegmentation for training images with figures.
        - Figure가 있는 학습 이미지들에 대해 SemanticSegmentation을 통하여 학습한 모델을 사용하여 Figure가 있는 검증 이미지를 분류하는 알고리즘 예제.
 
+  - [Utilites]
+    
+    - AutoLabeler
+       - Algorithm example that performs Auto Labeling using learned SemanticSegmenation objects
+       - 학습된 SemanticSegmenation 객체를 이용하여 Auto Labeling 작업을 해주는 알고리즘 예제
+    - ValidationImageExtractor
+       - Algorithm example that classifies source images into Train Set and Validation Set at a fixed ratio.
+       - Source Image를 정해진 비율로 Train Set과 Validation Set으로 분류하는 알고리즘 예제
+
 - [Applications]
 
   - Mask_withBlob 

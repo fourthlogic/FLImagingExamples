@@ -141,6 +141,7 @@ int main()
 		// Validation Set에 최소한 몇 개의 클래스가 1개 이상 씩 포함될 것인지 설정 // Set how many classes each will be included in the Validation Set
 		int64_t i64MinimumClassIncluded = 2;
 
+		// Validation Extractor 실행 // Validaiton Exctractor Execute 
 		if(IsFail(eResult = CValidationImageExtractorDL::Extract(&fliSourceImage, &fliResultLearnImage, &fliResultValidationImage, f32Ratio, eDatasetType, i64MinimumClassIncluded)))
 		{
 			ErrorPrint(eResult, "Failed to Process\n");
