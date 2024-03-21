@@ -112,13 +112,13 @@ int main()
 			break;
 		}
 
-		viewImageResultAutoLabel.EnablePixelSegmentationMode(true);
-
 		if(IsFail(eResult = viewImageResultAutoLabel.SetImagePtr(&fliResultAutoLabelImage)))
 		{
 			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
 			break;
 		}
+
+		fliResultAutoLabelImage.ClearFigures();
 
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
@@ -178,7 +178,7 @@ int main()
 		// 학습할 SemanticSegmentation 모델의 버전 설정 // Set up SemanticSegmentation model version to learn
 		semanticSegmentation.SetModelVersion(CSemanticSegmentationDL::EModelVersion_FLSegNet_V1_512_B3);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
-		semanticSegmentation.SetLearningEpoch(120);
+		semanticSegmentation.SetLearningEpoch(50);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
 		semanticSegmentation.SetInterpoloationMethod(EInterpolationMethod_Bilinear);
 
