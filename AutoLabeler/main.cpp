@@ -178,7 +178,7 @@ int main()
 		// 학습할 SemanticSegmentation 모델의 버전 설정 // Set up SemanticSegmentation model version to learn
 		semanticSegmentation.SetModelVersion(CSemanticSegmentationDL::EModelVersion_FLSegNet_V1_512_B3);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
-		semanticSegmentation.SetLearningEpoch(50);
+		semanticSegmentation.SetLearningEpoch(120);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
 		semanticSegmentation.SetInterpoloationMethod(EInterpolationMethod_Bilinear);
 
