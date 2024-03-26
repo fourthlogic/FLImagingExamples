@@ -117,7 +117,7 @@ int main()
 		WienerDeconvolutionFilter.SetAngle(45);
 
 		// Motion Blur 값 설정 // Set the Motion Blur value
-		WienerDeconvolutionFilter.EnableMotionBlur(true);
+		WienerDeconvolutionFilter.SetOperationType(CWienerDeconvolutionFilter::EOperationType_Convolution);
  
  		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
  		if((eResult = WienerDeconvolutionFilter.Execute()).IsFail())
@@ -136,7 +136,7 @@ int main()
 		WienerDeconvolutionFilter.SetResultFrequency(arrFliImage[EType_Destination4]);
 
 		// WienerDeconvolutionFilter Motion Blur 설정 / Set the Motion Blur value
-		WienerDeconvolutionFilter.EnableMotionBlur(false);
+		WienerDeconvolutionFilter.SetOperationType(CWienerDeconvolutionFilter::EOperationType_Deconvolution);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((eResult = WienerDeconvolutionFilter.Execute()).IsFail())
