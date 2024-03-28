@@ -142,7 +142,7 @@ int main()
 		int64_t i64MinimumClassIncluded = 2;
 
 		// Validation Extractor ½ÇÇà // Validaiton Exctractor Execute 
-		if(IsFail(eResult = CValidationImageExtractorDL::Extract(&fliSourceImage, &fliResultLearnImage, &fliResultValidationImage, f32Ratio, eDatasetType, i64MinimumClassIncluded)))
+		if(IsFail(eResult = CValidationImageExtractorDL::Extract(&fliSourceImage, f32Ratio, eDatasetType, &fliResultLearnImage, &fliResultValidationImage, i64MinimumClassIncluded)))
 		{
 			ErrorPrint(eResult, "Failed to Process\n");
 			break;
