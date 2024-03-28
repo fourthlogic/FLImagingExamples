@@ -1193,6 +1193,9 @@
     - Crop 
       - The example of an algorithm that cuts an image to fit the ROI area.
       - 이미지를 ROI 영역에 맞게 잘라내는 알고리즘 예제.	 
+    - Decolorization
+      - Example of preserving the color contrast of an image and converting it to a grayscale image.
+      - 이미지의 색대비를 보존하면서 회색조 이미지로 변환하는 예제.
     - Flip 
       - The example of an algorithm that flip source image.
       - 소스 이미지를 뒤집어 넣어주는 알고리즘 예제. 
