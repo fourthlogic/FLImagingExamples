@@ -1154,7 +1154,11 @@
           
       - Gradation 
         - An example of an algorithm for applying gradation to an image.
-        - 이미지에 그라데이션을 적용하는 알고리즘 예제.		 
+        - 이미지에 그라데이션을 적용하는 알고리즘 예제.
+        
+      - RadialGradation 
+        - An example of an algorithm for applying radial gradation to an image.
+        - 이미지에 방사형 그라데이션을 적용하는 알고리즘 예제.
 
       - RandomImageGenerator 
         - An example of an algorithm to generate Random values using SHA256 within the region of interest in an image.
