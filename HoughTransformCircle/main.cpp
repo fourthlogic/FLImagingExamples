@@ -13,28 +13,28 @@ int main()
 	CGUIViewImageWrap viewImageSource;
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 1 로드 // Load image 1
-		if(IsFail(eResult = fliSourceImage.Load(L"../../ExampleImages/HoughTransform/coins.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/HoughTransform/coins.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성(이미지 1) // Create the Source image view (Image 1)
-		if(IsFail(eResult = viewImageSource.Create(100, 0, 100 + 600, 600)))
+		if(IsFail(res = viewImageSource.Create(100, 0, 100 + 600, 600)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 뷰에 이미지를 디스플레이 // Display the image in the view
-		if(IsFail(eResult = viewImageSource.SetImagePtr(&fliSourceImage)))
+		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -84,9 +84,9 @@ int main()
 
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = HoughTransform.Execute()))
+		if(IsFail(res = HoughTransform.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute HoughTransform.");
+			ErrorPrint(res, "Failed to execute HoughTransform.");
 			break;
 		}
 
@@ -107,9 +107,9 @@ int main()
 			HoughTransform.GetResultCircle(i, flcResult);
 
 			// 이미지 뷰에 검출된 원 객체 출력 // Output the detected original object to the image view
-			if(IsFail(eResult = layerSource.DrawFigureImage(flcResult, LIGHTGREEN, 1)))
+			if(IsFail(res = layerSource.DrawFigureImage(flcResult, LIGHTGREEN, 1)))
 			{
-				ErrorPrint(eResult, "Failed to draw Figure\n");
+				ErrorPrint(res, "Failed to draw Figure\n");
 				break;
 			}
 		}

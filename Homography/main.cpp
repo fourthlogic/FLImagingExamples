@@ -15,55 +15,55 @@ int main()
 	CGUIViewImageWrap viewImageDestination;
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 로드 // Load image
-		if(IsFail(eResult = fliSourceImage.Load(L"../../ExampleImages/Homography/calendar.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/Homography/calendar.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(eResult = fliDestinationImage.Load(L"../../ExampleImages/Homography/space.flif")))
+		if(IsFail(res = fliDestinationImage.Load(L"../../ExampleImages/Homography/space.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if(IsFail(eResult = viewImageSource.Create(400, 0, 912, 384)))
+		if(IsFail(res = viewImageSource.Create(400, 0, 912, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create destination image view
-		if(IsFail(eResult = viewImageDestination.Create(912, 0,1424, 384)))
+		if(IsFail(res = viewImageDestination.Create(912, 0,1424, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the source image view
-		if(IsFail(eResult = viewImageSource.SetImagePtr(&fliSourceImage)))
+		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-		if(IsFail(eResult = viewImageDestination.SetImagePtr(&fliDestinationImage)))
+		if(IsFail(res = viewImageDestination.SetImagePtr(&fliDestinationImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImageSource.SynchronizeWindow(&viewImageDestination)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImageDestination)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
@@ -129,9 +129,9 @@ int main()
 		homography.EnableFillBlankColorMode(true);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = homography.Execute()))
+		if(IsFail(res = homography.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute homography.\n");
+			ErrorPrint(res, "Failed to execute homography.\n");
 			break;
 		}
 
@@ -146,23 +146,23 @@ int main()
 
 		// FLImaging의 Figure객체들은 어떤 도형모양이든 상관없이 하나의 함수로 디스플레이가 가능 // FLImaging's figure objects can be displayed with a single function, regardless of the shape of the figure
 		// Source Projection 영역이 어디인지 알기 위해 디스플레이 한다 // Display to know where the Source Projection area is
-		if(IsFail(eResult = layerSource.DrawFigureImage(&flpaSourceProjection, LIME, 3)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = layerSource.DrawFigureImage(&flpaSourceProjection, LIME, 3)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
 		// Destination Projection 영역이 어디인지 알기 위해 디스플레이한다. // Display to know where the Destination Projection area is.
-		if(IsFail(eResult = layerDestination.DrawFigureImage(&flpaDestinationProjection, LIME, 3)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = layerDestination.DrawFigureImage(&flpaDestinationProjection, LIME, 3)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

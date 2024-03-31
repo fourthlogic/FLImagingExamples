@@ -11,7 +11,7 @@ int main()
 	// 이미지 뷰 선언 // Declare image view
 	CGUIViewImageWrap arrViewImage[4];
 
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
@@ -21,9 +21,9 @@ int main()
 		int32_t arrBottom[4] = {500, 500, 1000, 1000};
 
 		// Source 이미지 로드 // Load the source image
-		if((eResult =arrFliImage[0].Load(L"../../ExampleImages/BicubicSplineWarping/chess.flif")).IsFail())
+		if((res =arrFliImage[0].Load(L"../../ExampleImages/BicubicSplineWarping/chess.flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
@@ -32,15 +32,15 @@ int main()
 		for(; i < 4; ++i)
 		{
 			// 이미지 뷰 생성 // Create image view
-			if((eResult =arrViewImage[i].Create(arrLeft[i], arrTop[i], arrRight[i], arrBottom[i])).IsFail())
+			if((res =arrViewImage[i].Create(arrLeft[i], arrTop[i], arrRight[i], arrBottom[i])).IsFail())
 			{
-				ErrorPrint(eResult, L"Failed to create the image view.\n");
+				ErrorPrint(res, L"Failed to create the image view.\n");
 				break;
 			} 
 			//이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-			if((eResult =arrViewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
+			if((res =arrViewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
 			{
-				ErrorPrint(eResult, L"Failed to create the image view.\n");
+				ErrorPrint(res, L"Failed to create the image view.\n");
 				break;
 			}
 		}
@@ -53,16 +53,16 @@ int main()
 		for(; i < 4; i += 2)
 		{
 		    // 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-			if((eResult =arrViewImage[i].SynchronizePointOfView(&arrViewImage[i + 1])).IsFail())
+			if((res =arrViewImage[i].SynchronizePointOfView(&arrViewImage[i + 1])).IsFail())
 			{
-				ErrorPrint(eResult, L"Failed to synchronize view\n");
+				ErrorPrint(res, L"Failed to synchronize view\n");
 				break;
 			}
 
 			// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-			if((eResult =arrViewImage[i].SynchronizeWindow(&arrViewImage[i + 1])).IsFail())
+			if((res =arrViewImage[i].SynchronizeWindow(&arrViewImage[i + 1])).IsFail())
 			{
-				ErrorPrint(eResult, L"Failed to synchronize window.\n");
+				ErrorPrint(res, L"Failed to synchronize window.\n");
 				break;
 			}
 		}
@@ -130,23 +130,23 @@ int main()
 		BicubicSplineWarping.SetCalibrationPointArray(flpaSourcePoints, flpaTargetPoints);
 
 		// 앞서 설정된 Source Image, Calibration Point Array를 기반으로 Calibrate 수행 // Calibrate based on the previously set Source Image and Calibration Point Array
-		if((eResult =BicubicSplineWarping.Calibrate()).IsFail())
+		if((res =BicubicSplineWarping.Calibrate()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute BicubicSplineWarping.");
+			ErrorPrint(res, L"Failed to execute BicubicSplineWarping.");
 			break;
 		}
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult =BicubicSplineWarping.Execute()).IsFail())
+		if((res =BicubicSplineWarping.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute BicubicSplineWarping.");
+			ErrorPrint(res, L"Failed to execute BicubicSplineWarping.");
 			break;
 		}
 
 		// Destination 이미지가 새로 생성됨으로 Zoom fit 을 통해 디스플레이 되는 이미지 배율을 화면에 맞춰준다. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
-		if((eResult =arrViewImage[1].ZoomFit()).IsFail())
+		if((res =arrViewImage[1].ZoomFit()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to zoom fit of the image view.\n");
+			ErrorPrint(res, L"Failed to zoom fit of the image view.\n");
 			break;
 		}
 
@@ -164,16 +164,16 @@ int main()
 		BicubicSplineWarping.SetExtension(2);
 
 		// 앞서 설정된 Source Image, Calibration Point Array를 기반으로 Calibrate 수행
-		if((eResult =BicubicSplineWarping.Calibrate()).IsFail())
+		if((res =BicubicSplineWarping.Calibrate()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute BicubicSplineWarping.");
+			ErrorPrint(res, L"Failed to execute BicubicSplineWarping.");
 			break;
 		}
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult =BicubicSplineWarping.Execute()).IsFail())
+		if((res =BicubicSplineWarping.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute BicubicSplineWarping.");
+			ErrorPrint(res, L"Failed to execute BicubicSplineWarping.");
 			break;
 		}
 
@@ -194,21 +194,21 @@ int main()
 			CFLFigureArray flfaArrow = fllDrawLine.MakeArrowWithRatio(0.25, true, 20);
 
 			// Source Vertex를 좌/우측 View Layer에 Drawing // Drawing the source vertex on the left/right view layer
-			if((eResult =layer.DrawFigureImage(&flpSource, RED, 1)).IsFail())
+			if((res =layer.DrawFigureImage(&flpSource, RED, 1)).IsFail())
 			{
-				ErrorPrint(eResult, L"Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, L"Failed to draw figure objects on the image view.\n");
 				break;
 			}
 
-			if((eResult =layer.DrawFigureImage(&flpTarget, BLUE, 1)).IsFail())
+			if((res =layer.DrawFigureImage(&flpTarget, BLUE, 1)).IsFail())
 			{
-				ErrorPrint(eResult, L"Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, L"Failed to draw figure objects on the image view.\n");
 				break;
 			}
 
-			if((eResult =layer.DrawFigureImage(&flfaArrow, YELLOW, 1)).IsFail())
+			if((res =layer.DrawFigureImage(&flfaArrow, YELLOW, 1)).IsFail())
 			{
-				ErrorPrint(eResult, L"Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, L"Failed to draw figure objects on the image view.\n");
 				break;
 			}
 
@@ -216,21 +216,21 @@ int main()
 			flfaArrow = fllDrawLine.MakeArrowWithRatio(0.25, true, 20);
 
 			// Source Vertex를 좌/우측 View Layer에 Drawing // Drawing the source vertex on the left/right view layer
-			if((eResult =layer2.DrawFigureImage(&flpSource, RED, 1)).IsFail())
+			if((res =layer2.DrawFigureImage(&flpSource, RED, 1)).IsFail())
 			{
-				ErrorPrint(eResult, L"Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, L"Failed to draw figure objects on the image view.\n");
 				break;
 			}
 
-			if((eResult =layer2.DrawFigureImage(&flpTarget, BLUE, 1)).IsFail())
+			if((res =layer2.DrawFigureImage(&flpTarget, BLUE, 1)).IsFail())
 			{
-				ErrorPrint(eResult, L"Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, L"Failed to draw figure objects on the image view.\n");
 				break;
 			}
 
-			if((eResult =layer2.DrawFigureImage(&flfaArrow, YELLOW, 1)).IsFail())
+			if((res =layer2.DrawFigureImage(&flfaArrow, YELLOW, 1)).IsFail())
 			{
-				ErrorPrint(eResult, L"Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, L"Failed to draw figure objects on the image view.\n");
 				break;
 			}
 		}
@@ -254,27 +254,27 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if((eResult =layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
+		if((res =layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if((eResult =layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
+		if((res =layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if((eResult =layerSrc2.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image2", YELLOW, BLACK, 20)).IsFail())
+		if((res =layerSrc2.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image2", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if((eResult =layerDst2.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image2", YELLOW, BLACK, 20)).IsFail())
+		if((res =layerDst2.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image2", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 

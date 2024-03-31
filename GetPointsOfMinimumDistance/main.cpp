@@ -10,32 +10,32 @@ int main()
 	CGUIViewImageWrap viewImage[4];
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage[0].Create(400, 0, 812, 384)))
+		if(IsFail(res = viewImage[0].Create(400, 0, 812, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[1].Create(812, 0, 1224, 384)))
+		if(IsFail(res = viewImage[1].Create(812, 0, 1224, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[2].Create(400, 384, 812, 768)))
+		if(IsFail(res = viewImage[2].Create(400, 384, 812, 768)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[3].Create(812, 384, 1224, 768)))
+		if(IsFail(res = viewImage[3].Create(812, 384, 1224, 768)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
@@ -54,25 +54,25 @@ int main()
 		Dst2Layer0.DrawTextCanvas(TPoint<double>(0, 20), L"Minimum Distance", CYAN, BLACK);
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = viewImage[0].SynchronizePointOfView(&viewImage[1])))
+		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = viewImage[2].SynchronizePointOfView(&viewImage[3])))
+		if(IsFail(res = viewImage[2].SynchronizePointOfView(&viewImage[3])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
 		for(int32_t i = 1; i < 4; ++i)
 		{
-			if(IsFail(eResult = viewImage[0].SynchronizeWindow(&viewImage[i])))
+			if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize window.\n");
+				ErrorPrint(res, "Failed to synchronize window.\n");
 				break;
 			}
 		}
@@ -84,28 +84,28 @@ int main()
 		CFLFigureArray flfaOperand2;
 
 		// Source Figure 불러오기 // Load source figure
-		if(IsFail(eResult = flcSource1.Load(L"../../ExampleImages/Figure/Circle1.fig")))
+		if(IsFail(res = flcSource1.Load(L"../../ExampleImages/Figure/Circle1.fig")))
 		{
-			ErrorPrint(eResult, "Failed to load the figure file.\n");
+			ErrorPrint(res, "Failed to load the figure file.\n");
 			break;
 		}
 
-		if(IsFail(eResult = flfaSource2.Load(L"../../ExampleImages/Figure/various shapes_Top.fig")))
+		if(IsFail(res = flfaSource2.Load(L"../../ExampleImages/Figure/various shapes_Top.fig")))
 		{
-			ErrorPrint(eResult, "Failed to load the figure file.\n");
+			ErrorPrint(res, "Failed to load the figure file.\n");
 			break;
 		}
 
 		// Operand Figure 불러오기 // Load Operand Figure
-		if(IsFail(eResult = flqOperand1.Load(L"../../ExampleImages/Figure/Quad1.fig")))
+		if(IsFail(res = flqOperand1.Load(L"../../ExampleImages/Figure/Quad1.fig")))
 		{
-			ErrorPrint(eResult, "Failed to load the figure file.\n");
+			ErrorPrint(res, "Failed to load the figure file.\n");
 			break;
 		}
 
-		if(IsFail(eResult = flfaOperand2.Load(L"../../ExampleImages/Figure/various shapes_Bottom.fig")))
+		if(IsFail(res = flfaOperand2.Load(L"../../ExampleImages/Figure/various shapes_Bottom.fig")))
 		{
-			ErrorPrint(eResult, "Failed to load the figure file.\n");
+			ErrorPrint(res, "Failed to load the figure file.\n");
 			break;
 		}
 
@@ -113,34 +113,34 @@ int main()
 		// Figure 사이의 최소 거리를 나타내는 점을 추출 // Get the point representing the minimum distance between figures
 		CFLPointArray flpaResult1;
 
-		if(IsFail(eResult = flcSource1.GetPointsOfMinimumDistance(flqOperand1, &flpaResult1)))
+		if(IsFail(res = flcSource1.GetPointsOfMinimumDistance(flqOperand1, &flpaResult1)))
 		{
-			ErrorPrint(eResult, "Failed to process.\n");
+			ErrorPrint(res, "Failed to process.\n");
 			break;
 		}
 
 		CFLPointArray flpaResult2;
 
-		if(IsFail(eResult = flfaSource2.GetPointsOfMinimumDistance(flfaOperand2, &flpaResult2)))
+		if(IsFail(res = flfaSource2.GetPointsOfMinimumDistance(flfaOperand2, &flpaResult2)))
 		{
-			ErrorPrint(eResult, "Failed to process.\n");
+			ErrorPrint(res, "Failed to process.\n");
 			break;
 		}
 
 		// Figure 사이의 최소 거리를 계산 // Calculate the minimum distance between figures
 		double f64MinimumDistance1 = 0.;
 
-		if(IsFail(eResult = flcSource1.GetMinimumDistance(flqOperand1, &f64MinimumDistance1)))
+		if(IsFail(res = flcSource1.GetMinimumDistance(flqOperand1, &f64MinimumDistance1)))
 		{
-			ErrorPrint(eResult, "Failed to process.\n");
+			ErrorPrint(res, "Failed to process.\n");
 			break;
 		}
 
 		double f64MinimumDistance2 = 0.;
 
-		if(IsFail(eResult = flfaSource2.GetMinimumDistance(flfaOperand2, &f64MinimumDistance2)))
+		if(IsFail(res = flfaSource2.GetMinimumDistance(flfaOperand2, &f64MinimumDistance2)))
 		{
-			ErrorPrint(eResult, "Failed to process.\n");
+			ErrorPrint(res, "Failed to process.\n");
 			break;
 		}
 
@@ -180,13 +180,13 @@ int main()
 
 		// Console 출력 // Console output
 		wprintf(L"Source1 CFLCircle<double>\n");
-		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flcSource1).GetString());
+		wprintf(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flcSource1).GetString());
 
 		wprintf(L"Operand1 CFLQuad<double>\n");
-		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flqOperand1).GetString());
+		wprintf(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flqOperand1).GetString());
 
 		wprintf(L"Result1 Points of Minimum distance\n");
-		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flpaResult1).GetString());
+		wprintf(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flpaResult1).GetString());
 
 		wprintf(L"Result1 Minimum distance\n");
 		wprintf(L"%lf\n\n", f64MinimumDistance1);
@@ -194,13 +194,13 @@ int main()
 		wprintf(L"\n\n");
 
 		wprintf(L"Source2 CFLFigureArray\n");
-		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaSource2).GetString());
+		wprintf(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flfaSource2).GetString());
 
 		wprintf(L"Operand2 CFLFigureArray\n");
-		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaOperand2).GetString());
+		wprintf(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flfaOperand2).GetString());
 
 		wprintf(L"Result2 Points of Minimum distance\n");
-		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flpaResult2).GetString());
+		wprintf(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flpaResult2).GetString());
 
 		wprintf(L"Result2 Minimum distance\n");
 		wprintf(L"%lf\n\n", f64MinimumDistance2);

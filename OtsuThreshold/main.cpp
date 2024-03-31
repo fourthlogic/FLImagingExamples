@@ -16,52 +16,52 @@ int main()
 	do
 	{
 		// 동작 결과 // operation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliISrcImage.Load(L"../../ExampleImages/Threshold/BallChip.flif")))
+		if(IsFail(res = fliISrcImage.Load(L"../../ExampleImages/Threshold/BallChip.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage[0].Create(300, 0, 300 + 384, 384)))
+		if(IsFail(res = viewImage[0].Create(300, 0, 300 + 384, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[1].Create(300 + 384, 0, 300 + 384 * 2, 384)))
+		if(IsFail(res = viewImage[1].Create(300 + 384, 0, 300 + 384 * 2, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-		if(IsFail(eResult = viewImage[0].SetImagePtr(&fliISrcImage)))
+		if(IsFail(res = viewImage[0].SetImagePtr(&fliISrcImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[1].SetImagePtr(&fliIDstImage)))
+		if(IsFail(res = viewImage[1].SetImagePtr(&fliIDstImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
-			break;
-		}
-
-		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImage[0].SynchronizePointOfView(&viewImage[1])))
-		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImage[0].SynchronizeWindow(&viewImage[1])))
+		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
+			break;
+		}
+
+		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
+		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
+		{
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
@@ -91,9 +91,9 @@ int main()
 		printf("Result Threshold Value : %d", (int)mvThreshold[0]);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((eResult = threshold.Execute()).IsFail())
+		if((res = threshold.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Otsu Threshold.");
+			ErrorPrint(res, "Failed to execute Otsu Threshold.");
 			break;
 		}
 
@@ -104,9 +104,9 @@ int main()
 		// 레이어는 따로 해제하지 않아도 View가 해제 될 때 같이 해제된다. // The layer is released together when View is released without releasing it separately.
 		CGUIViewImageLayerWrap layer = viewImage[1].GetLayer(0);
 
-		if(IsFail(eResult = layer.DrawTextCanvas(&CFLPointD(0, 0), flStrThresholdValue.GetBuffer(), YELLOW, BLACK, 30, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false)))
+		if(IsFail(res = layer.DrawTextCanvas(&CFLPointD(0, 0), flStrThresholdValue.GetBuffer(), YELLOW, BLACK, 30, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false)))
 		{
-			ErrorPrint(eResult, "Failed to draw text on the image view.\n");
+			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
 		}
 

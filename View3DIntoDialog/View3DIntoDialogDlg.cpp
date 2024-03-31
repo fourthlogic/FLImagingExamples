@@ -112,10 +112,10 @@ BOOL CView3DIntoDialogDlg::OnInitDialog()
 	GetDlgItem(IDC_STATIC_VIEW3D)->GetClientRect(crView3D);
 
 	// 3D 뷰 생성
-	CResult eResult = m_view3D.Create(0, 0, 1024, 1024);
+	CResult res = m_view3D.Create(0, 0, 1024, 1024);
 
-	if(eResult.IsFail())
-		ErrorMessageBox(eResult);
+	if(res.IsFail())
+		ErrorMessageBox(res);
 
 	// 3D 뷰의 윈도우를 얻어온다.
 	HWND hWndView3D = (HWND)m_view3D.GetWindowHandle();

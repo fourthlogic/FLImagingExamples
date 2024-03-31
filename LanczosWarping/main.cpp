@@ -14,7 +14,7 @@ int main()
 	do
 	{
 		// 알고리즘 동작 결과 // Algorithmic executation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		int32_t arrLeft[4] = { 400, 912, 400, 912 };
 		int32_t arrTop[4] = { 0, 0, 500, 500 };
@@ -22,9 +22,9 @@ int main()
 		int32_t arrBottom[4] = { 500, 500, 1000, 1000 };
 
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = arrFliImage[0].Load(L"../../ExampleImages/LanczosWarping/chess.flif")))
+		if(IsFail(res = arrFliImage[0].Load(L"../../ExampleImages/LanczosWarping/chess.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
@@ -33,15 +33,15 @@ int main()
 		for(; i < 4; ++i)
 		{
 			// 이미지 뷰 생성 // Create image view
-			if(IsFail(eResult = arrViewImage[i].Create(arrLeft[i], arrTop[i], arrRight[i], arrBottom[i])))
+			if(IsFail(res = arrViewImage[i].Create(arrLeft[i], arrTop[i], arrRight[i], arrBottom[i])))
 			{
-				ErrorPrint(eResult, "Failed to create the image view.\n");
+				ErrorPrint(res, "Failed to create the image view.\n");
 				break;
 			}
 			//이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-			if(IsFail(eResult = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
+			if(IsFail(res = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to create the image view.\n");
+				ErrorPrint(res, "Failed to create the image view.\n");
 				break;
 			}
 		}
@@ -54,16 +54,16 @@ int main()
 		for(; i < 4; i += 2)
 		{
 			// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-			if(IsFail(eResult = arrViewImage[i].SynchronizePointOfView(&arrViewImage[i + 1])))
+			if(IsFail(res = arrViewImage[i].SynchronizePointOfView(&arrViewImage[i + 1])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize view\n");
+				ErrorPrint(res, "Failed to synchronize view\n");
 				break;
 			}
 
 			// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-			if(IsFail(eResult = arrViewImage[i].SynchronizeWindow(&arrViewImage[i + 1])))
+			if(IsFail(res = arrViewImage[i].SynchronizeWindow(&arrViewImage[i + 1])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize window.\n");
+				ErrorPrint(res, "Failed to synchronize window.\n");
 				break;
 			}
 		}
@@ -130,23 +130,23 @@ int main()
 		LanczosWarping.SetCalibrationPointArray(flpaSourcePoints, flpaTargetPoints);
 
 		// 앞서 설정된 Source Image, Calibration Point Array를 기반으로 Calibrate 수행 // Calibrate based on the previously set Source Image and Calibration Point Array
-		if(IsFail(eResult = LanczosWarping.Calibrate()))
+		if(IsFail(res = LanczosWarping.Calibrate()))
 		{
-			ErrorPrint(eResult, "Failed to execute LanczosWarping.");
+			ErrorPrint(res, "Failed to execute LanczosWarping.");
 			break;
 		}
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = LanczosWarping.Execute()))
+		if(IsFail(res = LanczosWarping.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute LanczosWarping.");
+			ErrorPrint(res, "Failed to execute LanczosWarping.");
 			break;
 		}
 
 		// Destination 이미지가 새로 생성됨으로 Zoom fit 을 통해 디스플레이 되는 이미지 배율을 화면에 맞춰준다. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
-		if(IsFail(eResult = arrViewImage[1].ZoomFit()))
+		if(IsFail(res = arrViewImage[1].ZoomFit()))
 		{
-			ErrorPrint(eResult, "Failed to zoom fit of the image view.\n");
+			ErrorPrint(res, "Failed to zoom fit of the image view.\n");
 			break;
 		}
 
@@ -162,16 +162,16 @@ int main()
 		LanczosWarping.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 
 		// 앞서 설정된 Source Image, Calibration Point Array를 기반으로 Calibrate 수행
-		if(IsFail(eResult = LanczosWarping.Calibrate()))
+		if(IsFail(res = LanczosWarping.Calibrate()))
 		{
-			ErrorPrint(eResult, "Failed to execute LanczosWarping.");
+			ErrorPrint(res, "Failed to execute LanczosWarping.");
 			break;
 		}
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = LanczosWarping.Execute()))
+		if(IsFail(res = LanczosWarping.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute LanczosWarping.");
+			ErrorPrint(res, "Failed to execute LanczosWarping.");
 			break;
 		}
 
@@ -192,21 +192,21 @@ int main()
 			CFLFigureArray flfaArrow = fllDrawLine.MakeArrowWithRatio(0.25, true, 20);
 
 			// Source Vertex를 좌/우측 View Layer에 Drawing // Drawing the source vertex on the left/right view layer
-			if(IsFail(eResult = layer.DrawFigureImage(&flpSource, RED, 1)))
+			if(IsFail(res = layer.DrawFigureImage(&flpSource, RED, 1)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				break;
 			}
 
-			if(IsFail(eResult = layer.DrawFigureImage(&flpTarget, BLUE, 1)))
+			if(IsFail(res = layer.DrawFigureImage(&flpTarget, BLUE, 1)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				break;
 			}
 
-			if(IsFail(eResult = layer.DrawFigureImage(&flfaArrow, YELLOW, 1)))
+			if(IsFail(res = layer.DrawFigureImage(&flfaArrow, YELLOW, 1)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				break;
 			}
 
@@ -214,21 +214,21 @@ int main()
 			flfaArrow = fllDrawLine.MakeArrowWithRatio(0.25, true, 20);
 
 			// Source Vertex를 좌/우측 View Layer에 Drawing // Drawing the source vertex on the left/right view layer
-			if(IsFail(eResult = layer2.DrawFigureImage(&flpSource, RED, 1)))
+			if(IsFail(res = layer2.DrawFigureImage(&flpSource, RED, 1)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				break;
 			}
 
-			if(IsFail(eResult = layer2.DrawFigureImage(&flpTarget, BLUE, 1)))
+			if(IsFail(res = layer2.DrawFigureImage(&flpTarget, BLUE, 1)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				break;
 			}
 
-			if(IsFail(eResult = layer2.DrawFigureImage(&flfaArrow, YELLOW, 1)))
+			if(IsFail(res = layer2.DrawFigureImage(&flfaArrow, YELLOW, 1)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				break;
 			}
 		}
@@ -252,27 +252,27 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerSrc2.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image2", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerSrc2.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image2", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerDst2.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image2", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerDst2.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image2", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

@@ -7,77 +7,77 @@ bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fl
 {
 	bool bResult = false;
 	
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = fliSourceImage.Load(L"../../ExampleImages/CameraCalibrator/Undistortion.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/CameraCalibrator/Undistortion.flif")))
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination 이미지 생성 // Create destination image
-		if(IsFail(eResult = fliDestinationImage.Create(fliSourceImage.GetWidth(), fliSourceImage.GetHeight(), CMultiVarLL(0), fliSourceImage.GetPixelFormat())))
+		if(IsFail(res = fliDestinationImage.Create(fliSourceImage.GetWidth(), fliSourceImage.GetHeight(), CMultiVarLL(0), fliSourceImage.GetPixelFormat())))
 		{
-			ErrorPrint(eResult, L"Failed to create the image file.\n");
+			ErrorPrint(res, L"Failed to create the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if(IsFail(eResult = viewImageSource.Create(400, 480, 1040, 960)))
+		if(IsFail(res = viewImageSource.Create(400, 480, 1040, 960)))
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Creates the Destination image view
-		if(IsFail(eResult = viewImageDestination.Create(1040, 480, 1680, 960)))
+		if(IsFail(res = viewImageDestination.Create(1040, 480, 1680, 960)))
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the Source ImageView
-		if(IsFail(eResult = viewImageSource.SetImagePtr(&fliSourceImage)))
+		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the Destination image view
-		if(IsFail(eResult = viewImageDestination.SetImagePtr(&fliDestinationImage)))
+		if(IsFail(res = viewImageDestination.SetImagePtr(&fliDestinationImage)))
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Source 이미지 설정 // Set Source image
-		if(IsFail(eResult = sCC.SetSourceImage(&fliSourceImage)))
+		if(IsFail(res = sCC.SetSourceImage(&fliSourceImage)))
 		{
-			ErrorPrint(eResult, L"Failed to Loads image\n");
+			ErrorPrint(res, L"Failed to Loads image\n");
 			break;
 		}
 		 
 		// Destination 이미지 설정 // Set destination image
-		if(IsFail(eResult = sCC.SetDestinationImage(&fliDestinationImage)))
+		if(IsFail(res = sCC.SetDestinationImage(&fliDestinationImage)))
 		{
-			ErrorPrint(eResult, L"Failed to Loads image\n");
+			ErrorPrint(res, L"Failed to Loads image\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImageSource.SynchronizeWindow(&viewImageDestination)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImageDestination)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
 		// Interpolation 알고리즘 설정 // Set the Interpolation Algorithm
-		if(IsFail(eResult = sCC.SetInterpolationMethod(ImageProcessing::EInterpolationMethod_Bilinear)))
+		if(IsFail(res = sCC.SetInterpolationMethod(ImageProcessing::EInterpolationMethod_Bilinear)))
 		{
-			ErrorPrint(eResult, L"Failed to set interpolation method\n");
+			ErrorPrint(res, L"Failed to set interpolation method\n");
 			break;
 		}
 
@@ -86,9 +86,9 @@ bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fl
 		sPC.Start();
 
 		// Undistortion 실행 // Execute Undistortion
-		if(IsFail(eResult = sCC.Execute()))
+		if(IsFail(res = sCC.Execute()))
 		{
-			ErrorPrint(eResult, L"Undistortion failed\n");
+			ErrorPrint(res, L"Undistortion failed\n");
 			break;
 		}
 
@@ -104,9 +104,9 @@ bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fl
 		
 		CFLPointD ptTop(20,20);
 
-		if(IsFail(eResult = layerDestination.DrawTextImage(&ptTop, L"Undistortion - Bilinear method", GREEN, BLACK, 20)))
+		if(IsFail(res = layerDestination.DrawTextImage(&ptTop, L"Undistortion - Bilinear method", GREEN, BLACK, 20)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
@@ -117,9 +117,9 @@ bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fl
 		strMS.Format(L"elapsed time: %.2lf ms", f64ElapsedMS);
 		CFLPointD ptMS(20, 50);
 		
-		if(IsFail(eResult = layerDestination.DrawTextImage(&ptMS, strMS.GetBuffer(), GREEN, BLACK, 20)))
+		if(IsFail(res = layerDestination.DrawTextImage(&ptMS, strMS.GetBuffer(), GREEN, BLACK, 20)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
@@ -134,7 +134,7 @@ bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fl
 
 int main()
 {
-	CResult eResult;
+	CResult res;
 
 	// 이미지 객체 선언 // Declare the image object
 	CFLImage fliSourceImage, fliDestinationImage;
@@ -169,15 +169,15 @@ int main()
 		sDist.f64P2 = arrF64Dist[3];
 		sDist.f64F3 = arrF64Dist[4];
 
-		if(IsFail(eResult = sCC.SetIntrinsicParameters(sIntrinc)))
+		if(IsFail(res = sCC.SetIntrinsicParameters(sIntrinc)))
 		{
-			ErrorPrint(eResult, L"Failed to set intrinsic parameters\n");
+			ErrorPrint(res, L"Failed to set intrinsic parameters\n");
 			break;
 		}
 			
-		if(IsFail(eResult = sCC.SetDistortionCoefficients(sDist)))
+		if(IsFail(res = sCC.SetDistortionCoefficients(sDist)))
 		{
-			ErrorPrint(eResult, L"Failed to set distortion coefficients\n");
+			ErrorPrint(res, L"Failed to set distortion coefficients\n");
 			break;
 		}
 
@@ -203,27 +203,27 @@ int main()
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Intrinsic Parameters: ", YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Intrinsic Parameters: ", YELLOW, BLACK, 13)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 20), strMatrix, YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 20), strMatrix, YELLOW, BLACK, 13)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 40), L"Distortion Coefficients: ", YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 40), L"Distortion Coefficients: ", YELLOW, BLACK, 13)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 60), strDistVal, YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 60), strDistVal, YELLOW, BLACK, 13)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

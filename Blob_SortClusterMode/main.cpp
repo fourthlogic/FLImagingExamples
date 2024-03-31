@@ -24,7 +24,7 @@ int main()
 
 	do
 	{
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
@@ -33,9 +33,9 @@ int main()
 			flsFileName.Format(L"../../ExampleImages/Blob/Blob Sort %d.flif", i + 1);
 
 			// 이미지 로드 // Load image
-			if(IsFail(eResult = arrFliImage[i].Load(flsFileName)))
+			if(IsFail(res = arrFliImage[i].Load(flsFileName)))
 			{
-				ErrorPrint(eResult, "Failed to load the image file.\n");
+				ErrorPrint(res, "Failed to load the image file.\n");
 				break;
 			}
 
@@ -43,41 +43,41 @@ int main()
 			int32_t i32Y = i / 2;
 
 			// 이미지 뷰 생성 // Create image view
-			if(IsFail(eResult = arrViewImage[i].Create(i32X * 400 + 400, i32Y * 400, i32X * 400 + 400 + 400, i32Y * 400 + 400)))
+			if(IsFail(res = arrViewImage[i].Create(i32X * 400 + 400, i32Y * 400, i32X * 400 + 400 + 400, i32Y * 400 + 400)))
 			{
-				ErrorPrint(eResult, "Failed to create the image view.\n");
+				ErrorPrint(res, "Failed to create the image view.\n");
 				bError = true;
 				break;
 			}
 
 			// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-			if(IsFail(eResult = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
+			if(IsFail(res = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				bError = true;
 				break;
 			}
 
-			if(IsFail(eResult = arrViewImage[i].ZoomFit()))
+			if(IsFail(res = arrViewImage[i].ZoomFit()))
 			{
-				ErrorPrint(eResult, "Failed to zoom fit\n");
+				ErrorPrint(res, "Failed to zoom fit\n");
 				break;
 			}
 
 			// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
 			if(i != EType_Src0)
 			{
-				if(IsFail(eResult = arrViewImage[EType_Src0].SynchronizePointOfView(&arrViewImage[i])))
+				if(IsFail(res = arrViewImage[EType_Src0].SynchronizePointOfView(&arrViewImage[i])))
 				{
-					ErrorPrint(eResult, "Failed to synchronize view\n");
+					ErrorPrint(res, "Failed to synchronize view\n");
 					bError = true;
 					break;
 				}
 
 				// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-				if(IsFail(eResult = arrViewImage[EType_Src0].SynchronizeWindow(&arrViewImage[i])))
+				if(IsFail(res = arrViewImage[EType_Src0].SynchronizeWindow(&arrViewImage[i])))
 				{
-					ErrorPrint(eResult, "Failed to synchronize window.\n");
+					ErrorPrint(res, "Failed to synchronize window.\n");
 					bError = true;
 					break;
 				}
@@ -101,9 +101,9 @@ int main()
 			blob.SetThreshold(100);
 
 			// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-			if(IsFail(eResult = blob.Execute()))
+			if(IsFail(res = blob.Execute()))
 			{
-				ErrorPrint(eResult, "Failed to execute Blob.");
+				ErrorPrint(res, "Failed to execute Blob.");
 				break;
 			}
 
@@ -116,16 +116,16 @@ int main()
 			//////////////////////////////////////////////////////////////////////////
 
 			// SortClusterMode 함수를 통해 영역을 정렬 (객체의 Center좌표를 바탕으로 1순위 Y오름차순, 2순위 X오름차순)
-			if(IsFail(eResult = blob.SortClusterMode(CBlob::ESortClusterModeMethod_Center_Y_Asc_X_Asc)))
+			if(IsFail(res = blob.SortClusterMode(CBlob::ESortClusterModeMethod_Center_Y_Asc_X_Asc)))
 			{
-				ErrorPrint(eResult, "Failed to get sort from the Blob object.");
+				ErrorPrint(res, "Failed to get sort from the Blob object.");
 				break;
 			}
 
 			// SortClusterMode한 Blob 결과들 중 Boundary Rectangle 을 얻어옴
-			if(IsFail(eResult = blob.GetResultBoundaryRects(flfaSortClusterModeBoundaryRects)))
+			if(IsFail(res = blob.GetResultBoundaryRects(flfaSortClusterModeBoundaryRects)))
 			{
-				ErrorPrint(eResult, "Failed to get boundary rects from the Blob object.");
+				ErrorPrint(res, "Failed to get boundary rects from the Blob object.");
 				break;
 			}
 
@@ -134,9 +134,9 @@ int main()
 
 			CGUIViewImageLayerWrap layerSortClusterMode = arrViewImage[k].GetLayer(0);
 
-			if(IsFail(eResult = layerSortClusterMode.DrawTextCanvas(&CFLPointD(), L"(Y Asc, X Asc)", YELLOW, BLACK, 30)))
+			if(IsFail(res = layerSortClusterMode.DrawTextCanvas(&CFLPointD(), L"(Y Asc, X Asc)", YELLOW, BLACK, 30)))
 			{
-				ErrorPrint(eResult, "Failed to draw text on the image view.\n");
+				ErrorPrint(res, "Failed to draw text on the image view.\n");
 				break;
 			}
 
@@ -145,9 +145,9 @@ int main()
 			// 맨 마지막 두개의 파라미터는 불투명도 값이고 1일경우 불투명, 0일경우 완전 투명을 의미한다. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
 			// 여기서 0.25이므로 옅은 반투명 상태라고 볼 수 있다.
 			// 파라미터 순서 : 레이어 -> Figure 객체 -> 선 색 -> 선 두께 -> 면 색 -> 펜 스타일 -> 선 알파값(불투명도) -> 면 알파값 (불투명도) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)			
-			if(IsFail(eResult = layerSortClusterMode.DrawFigureImage(&flfaSortClusterModeBoundaryRects, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
+			if(IsFail(res = layerSortClusterMode.DrawFigureImage(&flfaSortClusterModeBoundaryRects, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				break;
 			}
 

@@ -20,35 +20,35 @@ int main()
 	CGUIViewImageWrap arrViewImage[ETypeCount];
 
 	 // 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((eResult = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationBitwiseNot/Blossom.flif")).IsFail())
+		if((res = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationBitwiseNot/Blossom.flif")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination image as same as source image
-		if((eResult = arrFliImage[EType_Destination].Assign(arrFliImage[EType_Source])).IsFail())
+		if((res = arrFliImage[EType_Destination].Assign(arrFliImage[EType_Source])).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to assign the image file.\n");
+			ErrorPrint(res, "Failed to assign the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if((eResult = arrViewImage[EType_Source].Create(100, 0, 612, 512)).IsFail())
+		if((res = arrViewImage[EType_Source].Create(100, 0, 612, 512)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create the Destination image view
-		if((eResult = arrViewImage[EType_Destination].Create(612, 0,1124, 512)).IsFail())
+		if((res = arrViewImage[EType_Destination].Create(612, 0,1124, 512)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
@@ -57,9 +57,9 @@ int main()
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			if((eResult = arrViewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
+			if((res = arrViewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
 			{
-				ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				bError = true;
 				break;
 			}
@@ -69,16 +69,16 @@ int main()
 			break;
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if((eResult = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination])).IsFail())
+		if((res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination])).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if((eResult = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination])).IsFail())
+		if((res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination])).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
@@ -90,9 +90,9 @@ int main()
 		bitwiseNot.SetDestinationImage(arrFliImage[EType_Destination]);
 
 		// Operation BitwiseNot 수행 // Execute the Bitwise algorithm
-		if((eResult = bitwiseNot.Execute()).IsFail())
+		if((res = bitwiseNot.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute operation bitwiseNot.");
+			ErrorPrint(res, "Failed to execute operation bitwiseNot.");
 			break;
 		}
 
@@ -115,15 +115,15 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if((eResult = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
+		if((res = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = arrLayer[EType_Destination].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)).IsFail())
+		if((res = arrLayer[EType_Destination].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

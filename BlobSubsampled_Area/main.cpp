@@ -14,25 +14,25 @@ int main()
 
 	do
 	{
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 		// 이미지 로드 // Load image
-		if(IsFail(eResult = fliImage.Load(L"../../ExampleImages/Blob/AlignBall.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Blob/AlignBall.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage.Create(400, 0, 1424, 768)))
+		if(IsFail(res = viewImage.Create(400, 0, 1424, 768)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if(IsFail(eResult = viewImage.SetImagePtr(&fliImage)))
+		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -58,16 +58,16 @@ int main()
 		blob.SetSubsamplingLevel(3);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = blob.Execute()))
+		if(IsFail(res = blob.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute BlobSubsampled.");
+			ErrorPrint(res, "Failed to execute BlobSubsampled.");
 			break;
 		}
 
 		// 면적이 100보다 작은 객체들을 제거(작은 노이즈 제거)
-		if(IsFail(eResult = blob.Filter(CBlobSubsampled::EFilterItem_Area, 100, ELogicalCondition_Less)))
+		if(IsFail(res = blob.Filter(CBlobSubsampled::EFilterItem_Area, 100, ELogicalCondition_Less)))
 		{
-			ErrorPrint(eResult, "BlobSubsampled filtering algorithm error occurred.");
+			ErrorPrint(res, "BlobSubsampled filtering algorithm error occurred.");
 			break;
 		}
 
@@ -76,16 +76,16 @@ int main()
 		CFLArray<double> flaArea;
 
 		// BlobSubsampled 결과들 중 Contour 을 얻어옴
-		if(IsFail(eResult = blob.GetResultContours(flfaContours)))
+		if(IsFail(res = blob.GetResultContours(flfaContours)))
 		{
-			ErrorPrint(eResult, "Failed to get contours from the BlobSubsampled object.");
+			ErrorPrint(res, "Failed to get contours from the BlobSubsampled object.");
 			break;
 		}
 
 		// BlobSubsampled 결과들 중 Area 을 얻어옴
-		if(IsFail(eResult = blob.GetResultAreas(flaArea)))
+		if(IsFail(res = blob.GetResultAreas(flaArea)))
 		{
-			ErrorPrint(eResult, "Failed to get area from the BlobSubsampled object.");
+			ErrorPrint(res, "Failed to get area from the BlobSubsampled object.");
 			break;
 		}
 
@@ -101,9 +101,9 @@ int main()
 		// 맨 마지막 두개의 파라미터는 불투명도 값이고 1일경우 불투명, 0일경우 완전 투명을 의미한다. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
 		// 여기서 0.25이므로 옅은 반투명 상태라고 볼 수 있다.
 		// 파라미터 순서 : 레이어 -> Figure 객체 -> 선 색 -> 선 두께 -> 면 색 -> 펜 스타일 -> 선 알파값(불투명도) -> 면 알파값 (불투명도) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
-		if(IsFail(eResult = layer.DrawFigureImage(&flfaContours, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
+		if(IsFail(res = layer.DrawFigureImage(&flfaContours, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
 		{
-			ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+			ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 			break;
 		}
 

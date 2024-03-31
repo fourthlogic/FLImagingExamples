@@ -160,35 +160,35 @@ int main()
 	// 메세지를 전달 받을 CMessageReceiver 객체 생성 // Create 메세지를 전달 받을 CMessageReceiver object
 	CMessageReceiver msgReceiver(&viewImage[0]);
 
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage[0].Create(300, 0, 300 + 520, 430)))
+		if(IsFail(res = viewImage[0].Create(300, 0, 300 + 520, 430)))
 		{
-			ErrorPrint(eResult,"Failed to create the image view.\n");
+			ErrorPrint(res,"Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage[1].Create(300 + 520, 0, 300 + 520 * 2, 430)))
+		if(IsFail(res = viewImage[1].Create(300 + 520, 0, 300 + 520 * 2, 430)))
 		{
-			ErrorPrint(eResult,"Failed to create the image view.\n");
+			ErrorPrint(res,"Failed to create the image view.\n");
 			break;
 		}
 
 		// 뷰의 시점을 동기화 한다
-		if(IsFail(eResult = viewImage[0].SynchronizePointOfView(&viewImage[1])))
+		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
-			ErrorPrint(eResult,"Failed to synchronize view\n");
+			ErrorPrint(res,"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImage[0].SynchronizeWindow(&viewImage[1])))
+		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
-			ErrorPrint(eResult,"Failed to synchronize window\n");
+			ErrorPrint(res,"Failed to synchronize window\n");
 			break;
 		}
 

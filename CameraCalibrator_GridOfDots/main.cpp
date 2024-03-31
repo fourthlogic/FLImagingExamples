@@ -14,14 +14,14 @@ bool Calibration(CCameraCalibrator& sCC, CFLImage& fliLearnImage)
 {
 	bool bResult = false;
 
-	CResult eResult;
+	CResult res;
 
 	do
 	{ 
 		// Learn 이미지 설정 // Learn image settings
-		if(IsFail(eResult = sCC.SetLearnImageForCameraCalibration(&fliLearnImage)))
+		if(IsFail(res = sCC.SetLearnImageForCameraCalibration(&fliLearnImage)))
 		{
-			ErrorPrint(eResult, L"Failed to set image\n");
+			ErrorPrint(res, L"Failed to set image\n");
 			break;
 		}
 
@@ -31,9 +31,9 @@ bool Calibration(CCameraCalibrator& sCC, CFLImage& fliLearnImage)
 		sCC.SetOptimalSolutionAccuracy();
 
 		// Calibration 실행 // Execute Calibration
-		if(IsFail(eResult = sCC.Calibrate()))
+		if(IsFail(res = sCC.Calibrate()))
 		{
-			ErrorPrint(eResult, L"Calibration failed\n");
+			ErrorPrint(res, L"Calibration failed\n");
 			break;
 		}
 
@@ -48,35 +48,35 @@ bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fl
 {
 	bool bResult = false;
 
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// Source 이미지 설정 // Set Source image
-		if(IsFail(eResult = sCC.SetSourceImage(&fliSourceImage)))
+		if(IsFail(res = sCC.SetSourceImage(&fliSourceImage)))
 		{
-			ErrorPrint(eResult, L"Failed to Loads image\n");
+			ErrorPrint(res, L"Failed to Loads image\n");
 			break;
 		}
 
 		// Destination 이미지 설정 // Set destination image
-		if(IsFail(eResult = sCC.SetDestinationImage(&fliDestinationImage)))
+		if(IsFail(res = sCC.SetDestinationImage(&fliDestinationImage)))
 		{
-			ErrorPrint(eResult, L"Failed to Loads image\n");
+			ErrorPrint(res, L"Failed to Loads image\n");
 			break;
 		}
 
 		// Interpolation 알고리즘 설정 // Set the Interpolation Algorithm
-		if(IsFail(eResult = sCC.SetInterpolationMethod(ImageProcessing::EInterpolationMethod_Bilinear)))
+		if(IsFail(res = sCC.SetInterpolationMethod(ImageProcessing::EInterpolationMethod_Bilinear)))
 		{
-			ErrorPrint(eResult, L"Failed to set interpolation method\n");
+			ErrorPrint(res, L"Failed to set interpolation method\n");
 			break;
 		}
 
 		// Undistortion 실행 // Execute Undistortion
-		if(IsFail(eResult = sCC.Execute()))
+		if(IsFail(res = sCC.Execute()))
 		{
-			ErrorPrint(eResult, L"Undistortion failed\n");
+			ErrorPrint(res, L"Undistortion failed\n");
 			break;
 		}
 
@@ -99,14 +99,14 @@ int main()
 
 	// Camera Calibrator 객체 생성 // Create Camera Calibrator object
 	CCameraCalibrator sCC;
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// Learn 이미지 로드 // Load the Learn image
-		if(IsFail(eResult = fliLearnImage.Load(L"../../ExampleImages/CameraCalibrator/GridOfDots/GridOfDots.flif")))
+		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/CameraCalibrator/GridOfDots/GridOfDots.flif")))
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
@@ -120,16 +120,16 @@ int main()
 		for(int32_t i = 0; i < 3; ++i)
 		{
 			// Learn 이미지 뷰 생성 // Create the Learn image view
-			if(IsFail(eResult = viewImageLearn[i].Create(300 + 480 * i, 0, 300 + 480 * (i + 1), 360)))
+			if(IsFail(res = viewImageLearn[i].Create(300 + 480 * i, 0, 300 + 480 * (i + 1), 360)))
 			{
-				ErrorPrint(eResult, L"Failed to create the image view.\n");
+				ErrorPrint(res, L"Failed to create the image view.\n");
 				break;
 			}
 
 			// Learn 이미지 뷰에 이미지를 디스플레이 // Display the image in the Learn image view
-			if(IsFail(eResult = viewImageLearn[i].SetImagePtr(&arrFliDisplay[i])))
+			if(IsFail(res = viewImageLearn[i].SetImagePtr(&arrFliDisplay[i])))
 			{
-				ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+				ErrorPrint(res, L"Failed to set image object on the image view.\n");
 				break;
 			}
 		}
@@ -138,9 +138,9 @@ int main()
 			break;
 
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = fliSourceImage.Load(L"../../ExampleImages/CameraCalibrator/GridOfDots/GridOfDots (1).flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/CameraCalibrator/GridOfDots/GridOfDots (1).flif")))
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
@@ -190,15 +190,15 @@ int main()
 					CFLPointD flpGridPoint2(pFlpGridPoint2->x, pFlpGridPoint2->y);
 					CFLLineD fllDrawLine(flpGridPoint1, flpGridPoint2);
 
-					if(IsFail(eResult = layerLearn.DrawFigureImage(fllDrawLine, BLACK, 5)))
+					if(IsFail(res = layerLearn.DrawFigureImage(fllDrawLine, BLACK, 5)))
 					{
-						ErrorPrint(eResult, L"Failed to draw figure\n");
+						ErrorPrint(res, L"Failed to draw figure\n");
 						break;
 					}
 
-					if(IsFail(eResult = layerLearn.DrawFigureImage(fllDrawLine, colorPool[i64GridIdx % 3], 3)))
+					if(IsFail(res = layerLearn.DrawFigureImage(fllDrawLine, colorPool[i64GridIdx % 3], 3)))
 					{
-						ErrorPrint(eResult, L"Failed to draw figure\n");
+						ErrorPrint(res, L"Failed to draw figure\n");
 						break;
 					}
 
@@ -211,15 +211,15 @@ int main()
 						CFLPointD flpGridPoint2(pFlpGridPoint2->x, pFlpGridPoint2->y);
 						CFLLineD fllDrawLine(flpGridPoint1, flpGridPoint2);
 
-						if(IsFail(eResult = layerLearn.DrawFigureImage(fllDrawLine, BLACK, 5)))
+						if(IsFail(res = layerLearn.DrawFigureImage(fllDrawLine, BLACK, 5)))
 						{
-							ErrorPrint(eResult, L"Failed to draw figure\n");
+							ErrorPrint(res, L"Failed to draw figure\n");
 							break;
 						}
 
-						if(IsFail(eResult = layerLearn.DrawFigureImage(fllDrawLine, YELLOW, 3)))
+						if(IsFail(res = layerLearn.DrawFigureImage(fllDrawLine, YELLOW, 3)))
 						{
-							ErrorPrint(eResult, L"Failed to draw figure\n");
+							ErrorPrint(res, L"Failed to draw figure\n");
 							break;
 						}
 					}
@@ -294,9 +294,9 @@ int main()
 						f64Pitch = std::min<double>(f64Pitch, sqrt(f64Dx * f64Dx + f64Dy * f64Dy));
 					}
 
-					if(IsFail(eResult = layerLearn.DrawTextImage(sArrGridDisplay[i].sGridData.arrGridData[i64Row][i64Col], CFLString<wchar_t>().Format(L"%d", i32VertexNumber++), crTextColor, BLACK, (int32_t)(f64Pitch / 3), true, f64Angle)))
+					if(IsFail(res = layerLearn.DrawTextImage(sArrGridDisplay[i].sGridData.arrGridData[i64Row][i64Col], CFLString<wchar_t>().Format(L"%d", i32VertexNumber++), crTextColor, BLACK, (int32_t)(f64Pitch / 3), true, f64Angle)))
 					{
-						ErrorPrint(eResult, L"Failed to draw figure\n");
+						ErrorPrint(res, L"Failed to draw figure\n");
 						break;
 					}
 
@@ -311,15 +311,15 @@ int main()
 			double f64Angle = flqBoardRegion.flpPoints[0].GetAngle(flqBoardRegion.flpPoints[1]);
 			CFLString<wchar_t> wstringData = CFLString<wchar_t>().Format(L"[%d] (%d X %d)", (int32_t)sArrGridDisplay[i].i64ObjectIdx, (int32_t)i64GridCol, (int32_t)i64GridRow);
 
-			if(IsFail(eResult = layerLearn.DrawFigureImage(flqBoardRegion, YELLOW, 3)))
+			if(IsFail(res = layerLearn.DrawFigureImage(flqBoardRegion, YELLOW, 3)))
 			{
-				ErrorPrint(eResult, L"Failed to draw figure\n");
+				ErrorPrint(res, L"Failed to draw figure\n");
 				break;
 			}
 
-			if(IsFail(eResult = layerLearn.DrawTextImage(flqBoardRegion.flpPoints[0], wstringData, YELLOW, BLACK, 15, false, f64Angle, EGUIViewImageTextAlignment_LEFT_BOTTOM, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_EXTRABOLD)))
+			if(IsFail(res = layerLearn.DrawTextImage(flqBoardRegion.flpPoints[0], wstringData, YELLOW, BLACK, 15, false, f64Angle, EGUIViewImageTextAlignment_LEFT_BOTTOM, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_EXTRABOLD)))
 			{
-				ErrorPrint(eResult, L"Failed to draw text\n");
+				ErrorPrint(res, L"Failed to draw text\n");
 				break;
 			}
 
@@ -327,60 +327,60 @@ int main()
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if(IsFail(eResult = viewImageSource.Create(300, 360, 780, 720)))
+		if(IsFail(res = viewImageSource.Create(300, 360, 780, 720)))
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Creates the Destination image view
-		if(IsFail(eResult = viewImageDestination.Create(780, 360, 1260, 720)))
+		if(IsFail(res = viewImageDestination.Create(780, 360, 1260, 720)))
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the Source ImageView
-		if(IsFail(eResult = viewImageSource.SetImagePtr(&fliSourceImage)))
+		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the Destination image view
-		if(IsFail(eResult = viewImageDestination.SetImagePtr(&fliDestinationImage)))
+		if(IsFail(res = viewImageDestination.SetImagePtr(&fliDestinationImage)))
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		for(int32_t i = 0; i < 3; ++i)
 		{
 			// 두 이미지 뷰의 시점을 동기화 한다. // Synchronize the viewpoints of the two image views.
-			if(IsFail(eResult = viewImageLearn[i].SynchronizePointOfView(&viewImageSource)))
+			if(IsFail(res = viewImageLearn[i].SynchronizePointOfView(&viewImageSource)))
 			{
-				ErrorPrint(eResult, "Failed to synchronize view\n");
+				ErrorPrint(res, "Failed to synchronize view\n");
 				break;
 			}
 
 			// 두 이미지 뷰의 시점을 동기화 한다. // Synchronize the viewpoints of the two image views.
-			if(IsFail(eResult = viewImageLearn[i].SynchronizePointOfView(&viewImageDestination)))
+			if(IsFail(res = viewImageLearn[i].SynchronizePointOfView(&viewImageDestination)))
 			{
-				ErrorPrint(eResult, "Failed to synchronize view\n");
+				ErrorPrint(res, "Failed to synchronize view\n");
 				break;
 			}
 
 			// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-			if(IsFail(eResult = viewImageLearn[i].SynchronizeWindow(&viewImageSource)))
+			if(IsFail(res = viewImageLearn[i].SynchronizeWindow(&viewImageSource)))
 			{
-				ErrorPrint(eResult, "Failed to synchronize window.\n");
+				ErrorPrint(res, "Failed to synchronize window.\n");
 				break;
 			}
 
 			// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-			if(IsFail(eResult = viewImageLearn[i].SynchronizeWindow(&viewImageDestination)))
+			if(IsFail(res = viewImageLearn[i].SynchronizeWindow(&viewImageDestination)))
 			{
-				ErrorPrint(eResult, "Failed to synchronize window.\n");
+				ErrorPrint(res, "Failed to synchronize window.\n");
 				break;
 			}
 		}
@@ -417,27 +417,27 @@ int main()
 		CFLPointD ptDist(100, 370);
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Intrinsic Parameters: ", YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Intrinsic Parameters: ", YELLOW, BLACK, 13)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 20), strMatrix, YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 20), strMatrix, YELLOW, BLACK, 13)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 40), L"Distortion Coefficients: ", YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 40), L"Distortion Coefficients: ", YELLOW, BLACK, 13)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 60), strDistVal, YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 60), strDistVal, YELLOW, BLACK, 13)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
@@ -445,9 +445,9 @@ int main()
 
 		CFLPointD ptTop(20, 20);
 
-		if(IsFail(eResult = layerDestination.DrawTextImage(&ptTop, L"Undistortion - Bilinear method", GREEN, BLACK, 20)))
+		if(IsFail(res = layerDestination.DrawTextImage(&ptTop, L"Undistortion - Bilinear method", GREEN, BLACK, 20)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 

@@ -22,42 +22,42 @@ int main()
 	// 3D 뷰 선언
 	CGUIView3DWrap view3D;
 
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// Model 이미지 로드
-		if(IsFail(eResult = arrFliImage[EType_Model].Load(L"../../ExampleImages/View3D/mountain.flif")))
+		if(IsFail(res = arrFliImage[EType_Model].Load(L"../../ExampleImages/View3D/mountain.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Texture 이미지 로드
-		if(IsFail(eResult = arrFliImage[EType_Texture].Load(L"../../ExampleImages/View3D/mountain_texture.flif")))
+		if(IsFail(res = arrFliImage[EType_Texture].Load(L"../../ExampleImages/View3D/mountain_texture.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Model 이미지 뷰 생성
-		if(IsFail(eResult = arrViewImage[EType_Model].Create(100, 0, 612, 512)))
+		if(IsFail(res = arrViewImage[EType_Model].Create(100, 0, 612, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Texture 이미지 뷰 생성
-		if(IsFail(eResult = arrViewImage[EType_Texture].Create(612, 0, 1124, 512)))
+		if(IsFail(res = arrViewImage[EType_Texture].Create(612, 0, 1124, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 3D 뷰 생성
-		if(IsFail(eResult = view3D.Create(1124, 0, 1636, 512)))
+		if(IsFail(res = view3D.Create(1124, 0, 1636, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the 3D view.\n");
+			ErrorPrint(res, "Failed to create the 3D view.\n");
 			break;
 		}
 
@@ -66,9 +66,9 @@ int main()
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			if(IsFail(eResult = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
+			if(IsFail(res = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				bError = true;
 				break;
 			}
@@ -78,37 +78,37 @@ int main()
 			break;
 
 		// 3D 뷰에 모델을 로드하여 디스플레이
-		if(IsFail(eResult = view3D.SetHeightMap(&arrFliImage[EType_Model])))
+		if(IsFail(res = view3D.SetHeightMap(&arrFliImage[EType_Model])))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the 3D view.\n");
+			ErrorPrint(res, "Failed to set image object on the 3D view.\n");
 			break;
 		}
 		
 		// 3D 뷰에 텍스처를 로드하여 디스플레이
-		if(IsFail(eResult = view3D.SetTexture(&arrFliImage[EType_Texture])))
+		if(IsFail(res = view3D.SetTexture(&arrFliImage[EType_Texture])))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the 3D view.\n");
+			ErrorPrint(res, "Failed to set image object on the 3D view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = arrViewImage[EType_Model].SynchronizePointOfView(&arrViewImage[EType_Texture])))
+		if(IsFail(res = arrViewImage[EType_Model].SynchronizePointOfView(&arrViewImage[EType_Texture])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = arrViewImage[EType_Model].SynchronizeWindow(&arrViewImage[EType_Texture])))
+		if(IsFail(res = arrViewImage[EType_Model].SynchronizeWindow(&arrViewImage[EType_Texture])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
 		// 이미지 뷰와 3D 뷰 윈도우의 위치를 맞춤
-		if(IsFail(eResult = arrViewImage[EType_Model].SynchronizeWindow(&view3D)))
+		if(IsFail(res = arrViewImage[EType_Model].SynchronizeWindow(&view3D)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
@@ -131,21 +131,21 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = arrLayer[EType_Model].DrawTextCanvas(&CFLPointD(0, 0), L"Model Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = arrLayer[EType_Model].DrawTextCanvas(&CFLPointD(0, 0), L"Model Image", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_Texture].DrawTextCanvas(&CFLPointD(0, 0), L"Texture Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = arrLayer[EType_Texture].DrawTextCanvas(&CFLPointD(0, 0), L"Texture Image", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = view3D.GetLayer(2).DrawTextCanvas(&CFLPointD(0, 0), L"3D View", YELLOW, BLACK, 30)))
+		if(IsFail(res = view3D.GetLayer(2).DrawTextCanvas(&CFLPointD(0, 0), L"3D View", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

@@ -13,28 +13,28 @@ int main()
 	CGUIViewImageWrap viewImage;
 	
     // 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// 이미지 로드 // Load image
-		if((eResult = fliImage.Load(L"../../ExampleImages/Statistics/StatisticsSource.flif")).IsFail())
+		if((res = fliImage.Load(L"../../ExampleImages/Statistics/StatisticsSource.flif")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the image file.");
+			ErrorPrint(res, "Failed to load the image file.");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if((eResult = viewImage.Create(400, 0, 1150, 500)).IsFail())
+		if((res = viewImage.Create(400, 0, 1150, 500)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to create the image view.");
+			ErrorPrint(res, "Failed to create the image view.");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if((eResult = viewImage.SetImagePtr(&fliImage)).IsFail())
+		if((res = viewImage.SetImagePtr(&fliImage)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.");
+			ErrorPrint(res, "Failed to set image object on the image view.");
 			break;
 		}
 
@@ -52,16 +52,16 @@ int main()
 		CMultiVar<double> mvSum, mvSumOfSquares;
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 합을 구하는 함수 // Function that calculate the sum of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetSum(mvSum)).IsFail())
+		if((res = statistics.GetSum(mvSum)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 제곱합을 구하는 함수 // Function that calculate the sum of squares of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetSumOfSquares(mvSumOfSquares)).IsFail())
+		if((res = statistics.GetSumOfSquares(mvSumOfSquares)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
@@ -73,16 +73,16 @@ int main()
 		CMultiVar<double> mvTrimmingSum, mvTrimmingSumOfSquares;
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 합을 구하는 함수 // Function that calculate the sum of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetSum(mvTrimmingSum)).IsFail())
+		if((res = statistics.GetSum(mvTrimmingSum)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 제곱합을 구하는 함수 // Function that calculate the sum of squares of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetSumOfSquares(mvTrimmingSumOfSquares)).IsFail())
+		if((res = statistics.GetSumOfSquares(mvTrimmingSumOfSquares)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
@@ -94,8 +94,8 @@ int main()
 		layer.Clear();
 
 		// ROI영역이 어디인지 알기 위해 디스플레이 한다 // Display to find out where ROI is
-		if((eResult = layer.DrawFigureImage(&flrROI, LIME)).IsFail())
-			ErrorPrint(eResult, "Failed to draw figure.");
+		if((res = layer.DrawFigureImage(&flrROI, LIME)).IsFail())
+			ErrorPrint(res, "Failed to draw figure.");
 
 		CFLString<wchar_t> strTrimming;
 		strTrimming.Format(L"Trimming Lower : %.2lf, Upper : %.2lf", statistics.GetTrimming(CImageStatistics::ETrimmingLocation_Lower), statistics.GetTrimming(CImageStatistics::ETrimmingLocation_Upper));
@@ -116,45 +116,45 @@ int main()
 		wprintf_s(L"%s\n", strTrimmingSumOfSquaresValue.GetString());
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 0), strSumValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 0), strSumValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text.");
+			ErrorPrint(res, "Failed to draw text.");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 30), strSumOfSquaresValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 30), strSumOfSquaresValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text.");
+			ErrorPrint(res, "Failed to draw text.");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 60), strTrimming.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 60), strTrimming.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text.");
+			ErrorPrint(res, "Failed to draw text.");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 90), strTrimmingSumValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 90), strTrimmingSumValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text.");
+			ErrorPrint(res, "Failed to draw text.");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 120), strTrimmingSumOfSquaresValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 120), strTrimmingSumOfSquaresValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text.");
+			ErrorPrint(res, "Failed to draw text.");
 			break;
 		}
 
-		if((eResult = layer.DrawFigureImage(&flrROI, BLUE, 1, LIGHTBLUE, GUI::EGUIViewImagePenStyle_Solid, 0.5F, 0.5F)).IsFail())
-			ErrorPrint(eResult, "Failed to draw figure.");
+		if((res = layer.DrawFigureImage(&flrROI, BLUE, 1, LIGHTBLUE, GUI::EGUIViewImagePenStyle_Solid, 0.5F, 0.5F)).IsFail())
+			ErrorPrint(res, "Failed to draw figure.");
 
-		if((eResult = layer.DrawFigureImage(&flrROI, LIME)).IsFail())
-			ErrorPrint(eResult, "Failed to draw figure.");
+		if((res = layer.DrawFigureImage(&flrROI, LIME)).IsFail())
+			ErrorPrint(res, "Failed to draw figure.");
 
 
 		// 이미지 뷰를 갱신 합니다. // Update image view

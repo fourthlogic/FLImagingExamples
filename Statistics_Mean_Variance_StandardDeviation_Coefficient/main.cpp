@@ -12,28 +12,28 @@ int main()
 	CGUIViewImageWrap viewImage;
 
     // 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// 이미지 로드 // Load image
-		if((eResult = fliImage.Load(L"../../ExampleImages/Statistics/StatisticsSource.flif")).IsFail())
+		if((res = fliImage.Load(L"../../ExampleImages/Statistics/StatisticsSource.flif")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if((eResult = viewImage.Create(400, 0, 1150, 500)).IsFail())
+		if((res = viewImage.Create(400, 0, 1150, 500)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
         // 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if((eResult = viewImage.SetImagePtr(&fliImage)).IsFail())
+		if((res = viewImage.SetImagePtr(&fliImage)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -51,30 +51,30 @@ int main()
 		CMultiVar<double> mvMean, mvVariance, mvStandardDeviation, mvCoefficientOfVariance;
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 평균을 구하는 함수 // Function that calculate the mean of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetMean(mvMean)).IsFail())
+		if((res = statistics.GetMean(mvMean)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 분산을 구하는 함수 // Function that calculate the variance of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetVariance(mvVariance)).IsFail())
+		if((res = statistics.GetVariance(mvVariance)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 표준편차를 구하는 함수 // Function that calculate the standard deviation of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetStandardDeviation(mvStandardDeviation)).IsFail())
+		if((res = statistics.GetStandardDeviation(mvStandardDeviation)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 변동계수을 구하는 함수 // Function that calculate the coefficient of variance of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetCoefficientOfVariance(mvCoefficientOfVariance)).IsFail())
+		if((res = statistics.GetCoefficientOfVariance(mvCoefficientOfVariance)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
@@ -86,30 +86,30 @@ int main()
 		CMultiVar<double> mvTrimmingMean, mvTrimmingVariance, mvTrimmingStandardDeviation, mvTrimmingCoefficientOfVariance;
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 평균을 구하는 함수 // Function that calculate the mean of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetMean(mvTrimmingMean)).IsFail())
+		if((res = statistics.GetMean(mvTrimmingMean)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 분산을 구하는 함수 // Function that calculate the variance of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetVariance(mvTrimmingVariance)).IsFail())
+		if((res = statistics.GetVariance(mvTrimmingVariance)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 표준편차를 구하는 함수 // Function that calculate the standard deviation of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetStandardDeviation(mvTrimmingStandardDeviation)).IsFail())
+		if((res = statistics.GetStandardDeviation(mvTrimmingStandardDeviation)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 변동계수을 구하는 함수 // Function that calculate the coefficient of variance of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetCoefficientOfVariance(mvTrimmingCoefficientOfVariance)).IsFail())
+		if((res = statistics.GetCoefficientOfVariance(mvTrimmingCoefficientOfVariance)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
@@ -121,8 +121,8 @@ int main()
 		layer.Clear();
 
 		// ROI영역이 어디인지 알기 위해 디스플레이 한다 // Display to find out where ROI is
-		if((eResult = layer.DrawFigureImage(&flrROI, LIME)).IsFail())
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if((res = layer.DrawFigureImage(&flrROI, LIME)).IsFail())
+			ErrorPrint(res, "Failed to draw figure\n");
 
 		CFLString<wchar_t> strTrimming;
 		strTrimming.Format(L"Trimming Lower : %.2lf, Upper : %.2lf", statistics.GetTrimming(CImageStatistics::ETrimmingLocation_Lower), statistics.GetTrimming(CImageStatistics::ETrimmingLocation_Upper));
@@ -152,73 +152,73 @@ int main()
 		wprintf_s(L"%s\n", strTrimmingCoefficientOfVariance.GetString());
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 0), strMeanValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 0), strMeanValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 30), strStandardDeviationValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 30), strStandardDeviationValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 60), strVarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 60), strVarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 90), strCoefficientOfVariance.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 90), strCoefficientOfVariance.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 120), strTrimming.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 120), strTrimming.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 150), strTrimmingMeanValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 150), strTrimmingMeanValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 180), strTrimmingStandardDeviationValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 180), strTrimmingStandardDeviationValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 210), strTrimmingVarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 210), strTrimmingVarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 240), strTrimmingCoefficientOfVariance.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 240), strTrimmingCoefficientOfVariance.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layer.DrawFigureImage(&flrROI, BLUE, 1, LIGHTBLUE, GUI::EGUIViewImagePenStyle_Solid, 0.5F, 0.5F)).IsFail())
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if((res = layer.DrawFigureImage(&flrROI, BLUE, 1, LIGHTBLUE, GUI::EGUIViewImagePenStyle_Solid, 0.5F, 0.5F)).IsFail())
+			ErrorPrint(res, "Failed to draw figure\n");
 
-		if((eResult = layer.DrawFigureImage(&flrROI, LIME)).IsFail())
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if((res = layer.DrawFigureImage(&flrROI, LIME)).IsFail())
+			ErrorPrint(res, "Failed to draw figure\n");
 
 
 		// 이미지 뷰를 갱신 합니다. // Update image view

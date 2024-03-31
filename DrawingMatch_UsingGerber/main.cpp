@@ -12,33 +12,33 @@ int main()
 	CGUIViewImageWrap viewImageLearn;
 	CGUIViewImageWrap viewImageFind;
 
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 	CFLFigureArray flfLearntDrawing;
 
 	do
 	{
-		if(IsFail(eResult = fliFindImage.Load(L"../../ExampleImages/Matching/DrawingImage.flif")))
+		if(IsFail(res = fliFindImage.Load(L"../../ExampleImages/Matching/DrawingImage.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Creates imageview
-		if(IsFail(eResult = viewImageLearn.Create(400, 0, 912, 384)))
+		if(IsFail(res = viewImageLearn.Create(400, 0, 912, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageFind.Create(912, 0, 1680, 576)))
+		if(IsFail(res = viewImageFind.Create(912, 0, 1680, 576)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageFind.SetImagePtr(&fliFindImage)))
+		if(IsFail(res = viewImageFind.SetImagePtr(&fliFindImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -48,15 +48,15 @@ int main()
 		layerLearn.Clear();
 		layerFind.Clear();
 
-		if(IsFail(eResult = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"LEARN", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"LEARN", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerFind.DrawTextCanvas(&CFLPointD(0, 0), L"FIND", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPointD(0, 0), L"FIND", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
@@ -82,9 +82,9 @@ int main()
 		FLDrawingMatch.EnablePreprocessing();
 
 		// 알고리즘 수행 // Execute the algorithm
-		if(IsFail(eResult = FLDrawingMatch.Learn()))
+		if(IsFail(res = FLDrawingMatch.Learn()))
 		{
-			ErrorPrint(eResult, "Failed to execute Learn.\n");
+			ErrorPrint(res, "Failed to execute Learn.\n");
 			break;
 		}
 
@@ -92,9 +92,9 @@ int main()
 		// 학습한 특징점이 찾고자하는 객체를 나타내기에 충분하게 잘 뽑혔는지 확인하고, 그렇지 않다면 학습 파라미터를 재조정함으로써 재확인하면 검출 시 더 효과적입니다. // Check whether the learned feature points are selected well enough to represent the object to be found.
 		flfLearntDrawing = FLDrawingMatch.GetLearntDrawing();
 
-		if(IsFail(eResult = layerLearn.DrawFigureImage(flfLearntDrawing, BLUE)))
+		if(IsFail(res = layerLearn.DrawFigureImage(flfLearntDrawing, BLUE)))
 		{
-			ErrorPrint(eResult, "Failed to draw figure\n");
+			ErrorPrint(res, "Failed to draw figure\n");
 			break;
 		}
 
@@ -132,11 +132,11 @@ int main()
 		FLDrawingMatch.EnablePreprocessing();
 
 		// 알고리즘 수행 // Execute the algorithm
-		eResult = FLDrawingMatch.Execute();
+		res = FLDrawingMatch.Execute();
 
-		if(IsFail(eResult))
+		if(IsFail(res))
 		{
-			ErrorPrint(eResult, "Failed to Execute\n");
+			ErrorPrint(res, "Failed to Execute\n");
 			break;
 		}
 
@@ -187,27 +187,27 @@ int main()
 			CFLFigureArray flfaPoint = flpPivot.MakeCrossHair(3, false);
 			flfaPoint.Rotate(f32Angle, &flpPivot);
 
-			if(IsFail(eResult = layerFind.DrawFigureImage(&flfaPoint, BLACK, 3)))
+			if(IsFail(res = layerFind.DrawFigureImage(&flfaPoint, BLACK, 3)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure\n");
+				ErrorPrint(res, "Failed to draw figure\n");
 				break;
 			}
 
-			if(IsFail(eResult = layerFind.DrawFigureImage(&flfaPoint, LIME)))
+			if(IsFail(res = layerFind.DrawFigureImage(&flfaPoint, LIME)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure\n");
+				ErrorPrint(res, "Failed to draw figure\n");
 				break;
 			}
 
-			if(IsFail(eResult = layerFind.DrawFigureImage(pFlfRegion, BLACK, 3)))
+			if(IsFail(res = layerFind.DrawFigureImage(pFlfRegion, BLACK, 3)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure\n");
+				ErrorPrint(res, "Failed to draw figure\n");
 				break;
 			}
 
-			if(IsFail(eResult = layerFind.DrawFigureImage(pFlfRegion, CYAN)))
+			if(IsFail(res = layerFind.DrawFigureImage(pFlfRegion, CYAN)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure\n");
+				ErrorPrint(res, "Failed to draw figure\n");
 				break;
 			}
 
@@ -218,9 +218,9 @@ int main()
 			CFLString<wchar_t> strText;
 			strText.Format(L"Score : %.3lf\nAngle : %.3lf\nScale : x%.3lf\n", f32Score, f32Angle, f32Scale);
 
-			if((eResult = layerFind.DrawTextImage(tpPosition, strText, YELLOW, BLACK, 15, false, 0, EGUIViewImageTextAlignment_LEFT_CENTER)).IsFail())
+			if((res = layerFind.DrawTextImage(tpPosition, strText, YELLOW, BLACK, 15, false, 0, EGUIViewImageTextAlignment_LEFT_CENTER)).IsFail())
 			{
-				ErrorPrint(eResult, "Failed to draw text");
+				ErrorPrint(res, "Failed to draw text");
 				break;
 			}
 		}

@@ -21,49 +21,49 @@ int main()
 	CGUIViewImageWrap arrViewImage[ETypeCount];
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = arrFliImage[EType_Source].Load(L"../../ExampleImages/Paste/ChessBoard.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Paste/ChessBoard.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination1 이미지 로드. // Load the destination1 image
-		if(IsFail(eResult = arrFliImage[EType_Destination1].Load(L"../../ExampleImages/Paste/Floor.flif")))
+		if(IsFail(res = arrFliImage[EType_Destination1].Load(L"../../ExampleImages/Paste/Floor.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination2 이미지를 Destination1 이미지와 동일한 이미지로 생성
-		if(IsFail(eResult = arrFliImage[EType_Destination2].Assign(arrFliImage[EType_Destination1])))
+		if(IsFail(res = arrFliImage[EType_Destination2].Assign(arrFliImage[EType_Destination1])))
 		{
-			ErrorPrint(eResult, "Failed to assign the image file.\n");
+			ErrorPrint(res, "Failed to assign the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if(IsFail(eResult = arrViewImage[EType_Source].Create(100, 0, 612, 512)))
+		if(IsFail(res = arrViewImage[EType_Source].Create(100, 0, 612, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination1 이미지 뷰 생성 // Create destination1 image view
-		if(IsFail(eResult = arrViewImage[EType_Destination1].Create(612, 0, 1124, 512)))
+		if(IsFail(res = arrViewImage[EType_Destination1].Create(612, 0, 1124, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination2 이미지 뷰 생성 // Create destination2 image view
-		if(IsFail(eResult = arrViewImage[EType_Destination2].Create(1124, 0, 1636, 512)))
+		if(IsFail(res = arrViewImage[EType_Destination2].Create(1124, 0, 1636, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
@@ -72,9 +72,9 @@ int main()
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			if(IsFail(eResult = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
+			if(IsFail(res = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				bError = true;
 				break;
 			}
@@ -84,30 +84,30 @@ int main()
 			break;
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination1])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination2])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination2])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination1])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination2])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination2])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
@@ -130,9 +130,9 @@ int main()
 		blob.SetContourResultType(CBlob::EContourResultType_Perforated);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = blob.Execute()))
+		if(IsFail(res = blob.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute Blob.");
+			ErrorPrint(res, "Failed to execute Blob.");
 			break;
 		}
 
@@ -140,9 +140,9 @@ int main()
 		CFLFigureArray flfaContours;
 
 		// Blob 결과들 중 Contour를 얻어옴 // Get Contour from Blob results
-		if(IsFail(eResult = blob.GetResultContours(flfaContours)))
+		if(IsFail(res = blob.GetResultContours(flfaContours)))
 		{
-			ErrorPrint(eResult, "Failed to get boundary rects from the Blob object.");
+			ErrorPrint(res, "Failed to get boundary rects from the Blob object.");
 			break;
 		}
 
@@ -164,16 +164,16 @@ int main()
 		paste.SetBlankColor(CMultiVar<double>(0., 0., 0.));
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = paste.Execute()))
+		if(IsFail(res = paste.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute paste.");
+			ErrorPrint(res, "Failed to execute paste.");
 			break;
 		}
 
 		// Destination 이미지가 새로 생성됨으로 Zoom fit 을 통해 디스플레이 되는 이미지 배율을 화면에 맞춰준다. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
-		if(IsFail(eResult = arrViewImage[EType_Destination2].ZoomFit()))
+		if(IsFail(res = arrViewImage[EType_Destination2].ZoomFit()))
 		{
-			ErrorPrint(eResult, "Failed to zoom fit of the image view.\n");
+			ErrorPrint(res, "Failed to zoom fit of the image view.\n");
 			break;
 		}
 
@@ -194,11 +194,11 @@ int main()
 		// 아래 함수 DrawFigureImage는 Image좌표를 기준으로 하는 Figure를 Drawing 한다는 것을 의미하며 // The function DrawFigureImage below means drawing a picture based on the image coordinates
 		// 맨 마지막 두개의 파라미터는 불투명도 값이고 1일경우 불투명, 0일경우 완전 투명을 의미한다. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
 		// 파라미터 순서 : 레이어 -> Figure 객체 -> 선 색 -> 선 두께 -> 면 색 -> 펜 스타일 -> 선 알파값(불투명도) -> 면 알파값 (불투명도) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
-		if(IsFail(eResult = arrLayer[EType_Source].DrawFigureImage(&flfaContours, LIME)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = arrLayer[EType_Source].DrawFigureImage(&flfaContours, LIME)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
-		if(IsFail(eResult = arrLayer[EType_Destination2].DrawFigureImage(&flfaContours, LIME)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = arrLayer[EType_Destination2].DrawFigureImage(&flfaContours, LIME)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
 
 		// View 정보를 디스플레이 한다. // Display view information
@@ -208,21 +208,21 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(0, 0), L"Result Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(0, 0), L"Result Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

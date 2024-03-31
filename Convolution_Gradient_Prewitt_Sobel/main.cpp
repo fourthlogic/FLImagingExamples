@@ -26,34 +26,34 @@ int main()
 
 	do
 	{
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = fliSrcImage.Load(L"../../ExampleImages/Convolution/Building.flif")))
+		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/Convolution/Building.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create the source image view
-		if(IsFail(eResult = viewImageSrc.Create(400, 0, 800, 400)))
+		if(IsFail(res = viewImageSrc.Create(400, 0, 800, 400)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the source image view
-		if(IsFail(eResult = viewImageSrc.SetImagePtr(&fliSrcImage)))
+		if(IsFail(res = viewImageSrc.SetImagePtr(&fliSrcImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		for(int32_t i = 0; i < EDstCount; ++i)
 		{
 			// Destination 이미지를 Src 이미지와 동일한 이미지로 생성
-			if(IsFail(eResult = arrFliDstImage[i].Assign(fliSrcImage)))
+			if(IsFail(res = arrFliDstImage[i].Assign(fliSrcImage)))
 			{
-				ErrorPrint(eResult, "Failed to assign the image file.\n");
+				ErrorPrint(res, "Failed to assign the image file.\n");
 				bError = true;
 				break;
 			}
@@ -62,33 +62,33 @@ int main()
 			int32_t i32Y = (i + 1) / 2;
 
 			// Destination 이미지 뷰 생성 // Create the destination image view
-			if(IsFail(eResult = arrViewImageDst[i].Create(i32X * 400 + 400, i32Y * 400, i32X * 400 + 400 + 400, i32Y * 400 + 400)))
+			if(IsFail(res = arrViewImageDst[i].Create(i32X * 400 + 400, i32Y * 400, i32X * 400 + 400 + 400, i32Y * 400 + 400)))
 			{
-				ErrorPrint(eResult, "Failed to create the image view.\n");
+				ErrorPrint(res, "Failed to create the image view.\n");
 				bError = true;
 				break;
 			}
 
 			// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-			if(IsFail(eResult = arrViewImageDst[i].SetImagePtr(&arrFliDstImage[i])))
+			if(IsFail(res = arrViewImageDst[i].SetImagePtr(&arrFliDstImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				bError = true;
 				break;
 			}
 
 			// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-			if(IsFail(eResult = viewImageSrc.SynchronizePointOfView(&arrViewImageDst[i])))
+			if(IsFail(res = viewImageSrc.SynchronizePointOfView(&arrViewImageDst[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize view\n");
+				ErrorPrint(res, "Failed to synchronize view\n");
 				bError = true;
 				break;
 			}
 
 			// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-			if(IsFail(eResult = viewImageSrc.SynchronizeWindow(&arrViewImageDst[i])))
+			if(IsFail(res = viewImageSrc.SynchronizeWindow(&arrViewImageDst[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize window.\n");
+				ErrorPrint(res, "Failed to synchronize window.\n");
 				bError = true;
 				break;
 			}
@@ -115,9 +115,9 @@ int main()
 		convolutionGradient.SetKernelMethod(CConvolutionGradient::EKernel_Gradient);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = convolutionGradient.Execute()))
+		if(IsFail(res = convolutionGradient.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute convolution gradient.");
+			ErrorPrint(res, "Failed to execute convolution gradient.");
 			break;
 		}
 
@@ -137,9 +137,9 @@ int main()
 		convolutionPrewitt.SetKernelMethod(CConvolutionPrewitt::EKernel_Prewitt);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = convolutionPrewitt.Execute()))
+		if(IsFail(res = convolutionPrewitt.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute convolution prewitt.");
+			ErrorPrint(res, "Failed to execute convolution prewitt.");
 			break;
 		}
 
@@ -159,9 +159,9 @@ int main()
 		convolutionSobel.SetKernelMethod(CConvolutionSobel::EKernel_Sobel);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = convolutionSobel.Execute()))
+		if(IsFail(res = convolutionSobel.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute convolution sobel.");
+			ErrorPrint(res, "Failed to execute convolution sobel.");
 			break;
 		}
 
@@ -188,17 +188,17 @@ int main()
 		// 아래 함수 DrawFigureImage는 Image좌표를 기준으로 하는 Figure를 Drawing 한다는 것을 의미하며 // The function DrawFigureImage below means drawing a picture based on the image coordinates
 		// 맨 마지막 두개의 파라미터는 불투명도 값이고 1일경우 불투명, 0일경우 완전 투명을 의미한다. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
 		// 파라미터 순서 : 레이어 -> Figure 객체 -> 선 색 -> 선 두께 -> 면 색 -> 펜 스타일 -> 선 알파값(불투명도) -> 면 알파값 (불투명도) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
-		if(IsFail(eResult = layerSrc.DrawFigureImage(&flrROI, LIME)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = layerSrc.DrawFigureImage(&flrROI, LIME)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
-		if(IsFail(eResult = arrLayerDst[EDst_Gradient].DrawFigureImage(&flrROI, LIME)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = arrLayerDst[EDst_Gradient].DrawFigureImage(&flrROI, LIME)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
-		if(IsFail(eResult = arrLayerDst[EDst_Prewitt].DrawFigureImage(&flrROI, LIME)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = arrLayerDst[EDst_Prewitt].DrawFigureImage(&flrROI, LIME)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
-		if(IsFail(eResult = arrLayerDst[EDst_Sobel].DrawFigureImage(&flrROI, LIME)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = arrLayerDst[EDst_Sobel].DrawFigureImage(&flrROI, LIME)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
 
 		// View 정보를 디스플레이 한다. // Display view information
@@ -208,17 +208,17 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
-			ErrorPrint(eResult, "Failed to draw text\n");
+		if(IsFail(res = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+			ErrorPrint(res, "Failed to draw text\n");
 
-		if(IsFail(eResult = arrLayerDst[EDst_Gradient].DrawTextCanvas(&CFLPointD(0, 0), L"Gradient Image", YELLOW, BLACK, 20)))
-			ErrorPrint(eResult, "Failed to draw text\n");
+		if(IsFail(res = arrLayerDst[EDst_Gradient].DrawTextCanvas(&CFLPointD(0, 0), L"Gradient Image", YELLOW, BLACK, 20)))
+			ErrorPrint(res, "Failed to draw text\n");
 
-		if(IsFail(eResult = arrLayerDst[EDst_Prewitt].DrawTextCanvas(&CFLPointD(0, 0), L"Prewitt Image", YELLOW, BLACK, 20)))
-			ErrorPrint(eResult, "Failed to draw text\n");
+		if(IsFail(res = arrLayerDst[EDst_Prewitt].DrawTextCanvas(&CFLPointD(0, 0), L"Prewitt Image", YELLOW, BLACK, 20)))
+			ErrorPrint(res, "Failed to draw text\n");
 
-		if(IsFail(eResult = arrLayerDst[EDst_Sobel].DrawTextCanvas(&CFLPointD(0, 0), L"Sobel Image", YELLOW, BLACK, 20)))
-			ErrorPrint(eResult, "Failed to draw text\n");
+		if(IsFail(res = arrLayerDst[EDst_Sobel].DrawTextCanvas(&CFLPointD(0, 0), L"Sobel Image", YELLOW, BLACK, 20)))
+			ErrorPrint(res, "Failed to draw text\n");
 
 
 		// 이미지 뷰를 갱신 합니다. // Update image view

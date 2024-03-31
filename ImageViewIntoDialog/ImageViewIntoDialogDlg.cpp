@@ -114,10 +114,10 @@ BOOL CImageViewIntoDialogDlg::OnInitDialog()
 	GetDlgItem(IDC_STATIC_IMAGE_VIEW)->GetClientRect(crImageView);
 
 	// 이미지 뷰 생성 // Create image view
-	CResult eResult = m_viewImage.Create(0, 0, 1024, 1024);
+	CResult res = m_viewImage.Create(0, 0, 1024, 1024);
 
-	if(eResult.IsFail())
-		ErrorMessageBox(eResult);
+	if(res.IsFail())
+		ErrorMessageBox(res);
 
 	// 이미지 뷰의 윈도우을 얻어온다.
 	HWND hWndImageView = (HWND)m_viewImage.GetWindowHandle();
@@ -294,7 +294,7 @@ void CImageViewIntoDialogDlg::OnBnClickedButtonFigureObjectPopFront()
 			break;
 
 		// Figure 를 문자열로 얻어온다.
-		CFLString<wchar_t> flStrFigure = CFigureUtils::ConvertFigureObjectToString(pFlFigure);
+		CFLString<wchar_t> flStrFigure = CFigureUtilities::ConvertFigureObjectToString(pFlFigure);
 
 		strFigureInfo = flStrFigure;
 	}

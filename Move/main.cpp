@@ -22,14 +22,14 @@ int main()
 	bool bError = false;
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = arrFliImage[EType_Src].Load(L"../../ExampleImages/Affine/Generator.flif")))
+		if(IsFail(res = arrFliImage[EType_Src].Load(L"../../ExampleImages/Affine/Generator.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
@@ -38,9 +38,9 @@ int main()
 			// Destination 이미지를 Src 이미지와 동일한 이미지로 생성 // Create the Destination image as the same image as the Src image
 			if(i != EType_Src)
 			{
-				if(IsFail(eResult = arrFliImage[i].Assign(arrFliImage[EType_Src])))
+				if(IsFail(res = arrFliImage[i].Assign(arrFliImage[EType_Src])))
 				{
-					ErrorPrint(eResult, "Failed to assign the image file.\n");
+					ErrorPrint(res, "Failed to assign the image file.\n");
 					bError = true;
 					break;
 				}
@@ -50,17 +50,17 @@ int main()
 			int32_t i32Y = i / 2;
 
 			// 이미지 뷰 생성 // Create image view
-			if(IsFail(eResult = arrViewImage[i].Create(i32X * 400 + 400, i32Y * 400, i32X * 400 + 400 + 400, i32Y * 400 + 400)))
+			if(IsFail(res = arrViewImage[i].Create(i32X * 400 + 400, i32Y * 400, i32X * 400 + 400 + 400, i32Y * 400 + 400)))
 			{
-				ErrorPrint(eResult, "Failed to create the image view.\n");
+				ErrorPrint(res, "Failed to create the image view.\n");
 				bError = true;
 				break;
 			}
 
 			// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-			if(IsFail(eResult = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
+			if(IsFail(res = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				bError = true;
 				break;
 			}
@@ -68,17 +68,17 @@ int main()
 			if(i != EType_Src)
 			{
 				// 두개의 뷰의 시점을 동기화 // Synchronize the views of the two views
-				if(IsFail(eResult = arrViewImage[EType_Src].SynchronizePointOfView(&arrViewImage[i])))
+				if(IsFail(res = arrViewImage[EType_Src].SynchronizePointOfView(&arrViewImage[i])))
 				{
-					ErrorPrint(eResult, "Failed to synchronize window.\n");
+					ErrorPrint(res, "Failed to synchronize window.\n");
 					bError = true;
 					break;
 				}
 
 				// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-				if(IsFail(eResult = arrViewImage[EType_Src].SynchronizeWindow(&arrViewImage[i])))
+				if(IsFail(res = arrViewImage[EType_Src].SynchronizeWindow(&arrViewImage[i])))
 				{
-					ErrorPrint(eResult, "Failed to synchronize window.\n");
+					ErrorPrint(res, "Failed to synchronize window.\n");
 					bError = true;
 					break;
 				}
@@ -106,9 +106,9 @@ int main()
 		move.SetMovement(15.f, 15.f);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = move.Execute()))
+		if(IsFail(res = move.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute move.\n");
+			ErrorPrint(res, "Failed to execute move.\n");
 			break;
 		}
 
@@ -127,15 +127,15 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = arrLayer[EType_Src].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Src].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_Dst].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Dst].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

@@ -274,10 +274,10 @@ void CGraphViewDlg::OnBnClickedButtonOpenGraphView()
 			break;
 
 		// 그래프 뷰 생성
-		CResult eResult = m_viewGraph.Create(0, 0, 500, 500);
+		CResult res = m_viewGraph.Create(0, 0, 500, 500);
 
-		if(eResult.IsFail())
-			ErrorMessageBox(eResult);
+		if(res.IsFail())
+			ErrorMessageBox(res);
 	}
 	while (false);
 }
@@ -293,10 +293,10 @@ void CGraphViewDlg::OnBnClickedButtonTerminateGraphView()
 			break;
 
 		// 그래프 뷰를 종료한다.
-		CResult eResult = m_viewGraph.Destroy();
+		CResult res = m_viewGraph.Destroy();
 
-		if(eResult.IsFail())
-			ErrorMessageBox(eResult);
+		if(res.IsFail())
+			ErrorMessageBox(res);
 	}
 	while (false);
 }

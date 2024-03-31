@@ -35,78 +35,78 @@ int main()
 
 	// 그래프 뷰 선언 // Declare the graph view
 	CGUIViewGraphWrap viewGraph;
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliLearnImage.Load(L"../../ExampleImages/Classifier/board_label 3.flif")))
+		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/Classifier/board_label 3.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(eResult = fliSourceImage.Load(L"../../ExampleImages/Classifier/board_label 1.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/Classifier/board_label 1.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(eResult = fliValidateImage.Load(L"../../ExampleImages/Classifier/board_label 1.flif")))
+		if(IsFail(res = fliValidateImage.Load(L"../../ExampleImages/Classifier/board_label 1.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Creates image view
-		if(IsFail(eResult = viewImageLearn.Create(100, 0, 612, 512)))
+		if(IsFail(res = viewImageLearn.Create(100, 0, 612, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource.Create(612, 0, 1124, 512)))
+		if(IsFail(res = viewImageSource.Create(612, 0, 1124, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageValidate.Create(1124, 0, 1636, 512)))
+		if(IsFail(res = viewImageValidate.Create(1124, 0, 1636, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Graph 뷰 생성 // Create graph view
-		if(IsFail(eResult = viewGraph.Create(100, 512, 612, 1024)))
+		if(IsFail(res = viewGraph.Create(100, 512, 612, 1024)))
 		{
-			ErrorPrint(eResult, " Failed to create the graph view. \n");
+			ErrorPrint(res, " Failed to create the graph view. \n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the imageview
-		if(IsFail(eResult = viewImageLearn.SetImagePtr(&fliLearnImage)))
+		if(IsFail(res = viewImageLearn.SetImagePtr(&fliLearnImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource.SetImagePtr(&fliSourceImage)))
+		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageValidate.SetImagePtr(&fliValidateImage)))
+		if(IsFail(res = viewImageValidate.SetImagePtr(&fliValidateImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImageValidate.SynchronizePointOfView(&viewImageSource)))
+		if(IsFail(res = viewImageValidate.SynchronizePointOfView(&viewImageSource)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
@@ -127,21 +127,21 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"LEARN", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"LEARN", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"SOURCE", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"SOURCE", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerValidate.DrawTextCanvas(&CFLPointD(0, 0), L"VALIDATE", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerValidate.DrawTextCanvas(&CFLPointD(0, 0), L"VALIDATE", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
@@ -276,9 +276,9 @@ int main()
 		classifier.SetInferenceResultItemSettings(CClassifierDL::EInferenceResultItemSettings_ClassNum_ClassName_Percentage);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if(IsFail(eResult = classifier.Execute()))
+		if(IsFail(res = classifier.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute Learn.\n");
+			ErrorPrint(res, "Failed to execute Learn.\n");
 			break;
 		}
 

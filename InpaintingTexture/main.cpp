@@ -19,126 +19,126 @@ int main()
 	CGUIViewImageWrap viewImageDst2;
 
 	// 알고리즘 동작 결과 // Algorithm execution result
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((eResult = fliSrcImage.Load(L"../../ExampleImages/InpaintingTexture/Seville.flif")).IsFail())
+		if((res = fliSrcImage.Load(L"../../ExampleImages/InpaintingTexture/Seville.flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
 		// Source 이미지 2 로드 // Load the source image
-		if((eResult = fliSrcImage2.Load(L"../../ExampleImages/InpaintingTexture/Wood.flif")).IsFail())
+		if((res = fliSrcImage2.Load(L"../../ExampleImages/InpaintingTexture/Wood.flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination image as same as source image
-		if((eResult = fliDstImage.Assign(fliSrcImage)).IsFail())
+		if((res = fliDstImage.Assign(fliSrcImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to assign the image file.\n");
+			ErrorPrint(res, L"Failed to assign the image file.\n");
 			break;
 		}
 
 		// Destination 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination image as same as source image
-		if((eResult = fliDstImage2.Assign(fliSrcImage2)).IsFail())
+		if((res = fliDstImage2.Assign(fliSrcImage2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create the source image view
-		if((eResult = viewImageSrc.Create(400, 0, 800, 400)).IsFail())
+		if((res = viewImageSrc.Create(400, 0, 800, 400)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 2 생성 // Create the source image view 2
-		if((eResult = viewImageSrc2.Create(400, 400, 800, 800)).IsFail())
+		if((res = viewImageSrc2.Create(400, 400, 800, 800)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the source image view
-		if((eResult = viewImageSrc.SetImagePtr(&fliSrcImage)).IsFail())
+		if((res = viewImageSrc.SetImagePtr(&fliSrcImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 2에 이미지를 디스플레이 // Display the image in the source image view
-		if((eResult = viewImageSrc2.SetImagePtr(&fliSrcImage2)).IsFail())
+		if((res = viewImageSrc2.SetImagePtr(&fliSrcImage2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create the destination image view
-		if((eResult = viewImageDst.Create(800, 0, 1200, 400)).IsFail())
+		if((res = viewImageDst.Create(800, 0, 1200, 400)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create the destination image view
-		if((eResult = viewImageDst2.Create(800, 400, 1200, 800)).IsFail())
+		if((res = viewImageDst2.Create(800, 400, 1200, 800)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-		if((eResult = viewImageDst.SetImagePtr(&fliDstImage)).IsFail())
+		if((res = viewImageDst.SetImagePtr(&fliDstImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-		if((eResult = viewImageDst2.SetImagePtr(&fliDstImage2)).IsFail())
+		if((res = viewImageDst2.SetImagePtr(&fliDstImage2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if((eResult = viewImageSrc.SynchronizePointOfView(&viewImageDst)).IsFail())
+		if((res = viewImageSrc.SynchronizePointOfView(&viewImageDst)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view\n");
+			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult = viewImageSrc.SynchronizeWindow(&viewImageDst)).IsFail())
+		if((res = viewImageSrc.SynchronizeWindow(&viewImageDst)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if((eResult = viewImageSrc2.SynchronizePointOfView(&viewImageDst2)).IsFail())
+		if((res = viewImageSrc2.SynchronizePointOfView(&viewImageDst2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view\n");
+			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult = viewImageSrc2.SynchronizeWindow(&viewImageDst2)).IsFail())
+		if((res = viewImageSrc2.SynchronizeWindow(&viewImageDst2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult = viewImageSrc.SynchronizeWindow(&viewImageSrc2)).IsFail())
+		if((res = viewImageSrc.SynchronizeWindow(&viewImageSrc2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
@@ -161,9 +161,9 @@ int main()
 		CFLFigureArray flfaPaintingRegion;
 
 		// 미리 그려둔 Painting region Figure Array 불러오기 // Load Pre-drawn Painting Region Figure Array
-		if((eResult = flfaPaintingRegion.Load(L"../../ExampleImages/InpaintingTexture/PaintingRegion.fig")).IsFail())
+		if((res = flfaPaintingRegion.Load(L"../../ExampleImages/InpaintingTexture/PaintingRegion.fig")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the figure file.");
+			ErrorPrint(res, L"Failed to load the figure file.");
 			break;
 		}
 
@@ -171,9 +171,9 @@ int main()
 		InpaintingTexture.SetPaintingRegion(&flfaPaintingRegion);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = InpaintingTexture.Execute()).IsFail())
+		if((res = InpaintingTexture.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute InpaintingTexture.");
+			ErrorPrint(res, L"Failed to execute InpaintingTexture.");
 			break;
 		}
 
@@ -193,9 +193,9 @@ int main()
 		CFLFigureArray flfaPaintingRegion2;
 
 		// 미리 그려둔 Painting region Figure Array 불러오기 // Load Pre-drawn Painting Region Figure Array
-		if((eResult = flfaPaintingRegion2.Load(L"../../ExampleImages/InpaintingTexture/PaintingRegion2.fig")).IsFail())
+		if((res = flfaPaintingRegion2.Load(L"../../ExampleImages/InpaintingTexture/PaintingRegion2.fig")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the figure file.");
+			ErrorPrint(res, L"Failed to load the figure file.");
 			break;
 		}
 
@@ -203,16 +203,16 @@ int main()
 		InpaintingTexture.SetPaintingRegion(&flfaPaintingRegion2);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = InpaintingTexture.Execute()).IsFail())
+		if((res = InpaintingTexture.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute InpaintingTexture.");
+			ErrorPrint(res, L"Failed to execute InpaintingTexture.");
 			break;
 		}
 
 		// Destination 이미지가 새로 생성됨으로 Zoom fit 을 통해 디스플레이 되는 이미지 배율을 화면에 맞춰준다. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
-		if((eResult = viewImageDst2.ZoomFit()).IsFail())
+		if((res = viewImageDst2.ZoomFit()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to zoom fit of the image view.\n");
+			ErrorPrint(res, L"Failed to zoom fit of the image view.\n");
 			break;
 		}
 
@@ -236,41 +236,41 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if((eResult = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerSrc2.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 2", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerSrc2.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 2", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerDst2.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image 2", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerDst2.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image 2", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
-			break;
-		}
-
-		// Painting region을 source image에 디스플레이 // Display painting region on the source image
-		if(fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flfaPaintingRegion)) == -1)
-		{
-			ErrorPrint(eResult, L"Failed to push figure on image\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
 		// Painting region을 source image에 디스플레이 // Display painting region on the source image
-		if(fliSrcImage2.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flfaPaintingRegion2)) == -1)
+		if(fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flfaPaintingRegion)) == -1)
 		{
-			ErrorPrint(eResult, L"Failed to push figure on image\n");
+			ErrorPrint(res, L"Failed to push figure on image\n");
+			break;
+		}
+
+		// Painting region을 source image에 디스플레이 // Display painting region on the source image
+		if(fliSrcImage2.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flfaPaintingRegion2)) == -1)
+		{
+			ErrorPrint(res, L"Failed to push figure on image\n");
 			break;
 		}
 

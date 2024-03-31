@@ -13,28 +13,28 @@ int main()
 	CGUIViewImageWrap viewImageSrc;
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = fliSrcImage.Load(L"../../ExampleImages/Mask/Moon.flif")))
+		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/Mask/Moon.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create the source image view
-		if(IsFail(eResult = viewImageSrc.Create(400, 0, 912, 612)))
+		if(IsFail(res = viewImageSrc.Create(400, 0, 912, 612)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the source image view
-		if(IsFail(eResult = viewImageSrc.SetImagePtr(&fliSrcImage)))
+		if(IsFail(res = viewImageSrc.SetImagePtr(&fliSrcImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -52,9 +52,9 @@ int main()
 		mask.SetMask(CMultiVar<double>(255., 255., 255.));
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = mask.Execute()))
+		if(IsFail(res = mask.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute mask.");
+			ErrorPrint(res, "Failed to execute mask.");
 			break;
 		}
 
@@ -70,8 +70,8 @@ int main()
 		// 아래 함수 DrawFigureImage는 Image좌표를 기준으로 하는 Figure를 Drawing 한다는 것을 의미하며 // The function DrawFigureImage below means drawing a picture based on the image coordinates
 		// 맨 마지막 두개의 파라미터는 불투명도 값이고 1일경우 불투명, 0일경우 완전 투명을 의미한다. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
 		// 파라미터 순서 : 레이어 -> Figure 객체 -> 선 색 -> 선 두께 -> 면 색 -> 펜 스타일 -> 선 알파값(불투명도) -> 면 알파값 (불투명도) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
-		if(IsFail(eResult = layerSrc.DrawFigureImage(&flclROI, LIME)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = layerSrc.DrawFigureImage(&flclROI, LIME)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
 
 		// View 정보를 디스플레이 한다. // Display view information
@@ -81,9 +81,9 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

@@ -19,49 +19,49 @@ int main()
 	// 이미지 뷰 선언 // Declare the image view
 	CGUIViewImageWrap arrViewImage[ETypeCount];
 
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((eResult =arrFliImage[EType_Source].Load(L"../../ExampleImages/EmphasizeFilter/houses.flif")).IsFail())
+		if((res =arrFliImage[EType_Source].Load(L"../../ExampleImages/EmphasizeFilter/houses.flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination1 이미지를 Source 이미지와 동일한 이미지로 생성 // Create the Destination1 image as the Source image.
-		if((eResult =arrFliImage[EType_Destination1].Assign(arrFliImage[EType_Source])).IsFail())
+		if((res =arrFliImage[EType_Destination1].Assign(arrFliImage[EType_Source])).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to assign the image file.\n");
+			ErrorPrint(res, L"Failed to assign the image file.\n");
 			break;
 		}
 
 		// Destination2 이미지를 Source 이미지와 동일한 이미지로 생성 // Create the Destination2 image as the Source image.
-		if((eResult =arrFliImage[EType_Destination2].Assign(arrFliImage[EType_Source])).IsFail())
+		if((res =arrFliImage[EType_Destination2].Assign(arrFliImage[EType_Source])).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to assign the image file.\n");
+			ErrorPrint(res, L"Failed to assign the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create the source image view
-		if((eResult =arrViewImage[EType_Source].Create(100, 0, 612, 512)).IsFail())
+		if((res =arrViewImage[EType_Source].Create(100, 0, 612, 512)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination1 이미지 뷰 생성  // Create the destination1 image
-		if((eResult =arrViewImage[EType_Destination1].Create(612, 0,1124, 512)).IsFail())
+		if((res =arrViewImage[EType_Destination1].Create(612, 0,1124, 512)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination2 이미지 뷰 생성 // Create the destination2 image
-		if((eResult =arrViewImage[EType_Destination2].Create(1124, 0,1636, 512)).IsFail())
+		if((res =arrViewImage[EType_Destination2].Create(1124, 0,1636, 512)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
@@ -70,9 +70,9 @@ int main()
 		// 이미지 뷰에 이미지를 디스플레이  Displays the image in the image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			if((eResult =arrViewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
+			if((res =arrViewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
 			{
-				ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+				ErrorPrint(res, L"Failed to set image object on the image view.\n");
 				bError = true;
 				break;
 			}
@@ -82,30 +82,30 @@ int main()
 			break;
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if((eResult =arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination1])).IsFail())
+		if((res =arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination1])).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view\n");
+			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views.
-		if((eResult =arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination2])).IsFail())
+		if((res =arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination2])).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view\n");
+			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult =arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination1])).IsFail())
+		if((res =arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination1])).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult =arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination2])).IsFail())
+		if((res =arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination2])).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
@@ -122,9 +122,9 @@ int main()
 		emphasizeFilter.SetPaddingMethod(EPaddingMethod_DecreasingKernel);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute the algorithm according to the previously set parameters
-		if((eResult =emphasizeFilter.Execute()).IsFail())
+		if((res =emphasizeFilter.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute operation rolling.");
+			ErrorPrint(res, L"Failed to execute operation rolling.");
 			break;
 		}
 
@@ -136,9 +136,9 @@ int main()
 		emphasizeFilter.SetFactor(2.5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute the algorithm according to the previously set parameters
-		if((eResult =emphasizeFilter.Execute()).IsFail())
+		if((res =emphasizeFilter.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute operation rolling.");
+			ErrorPrint(res, L"Failed to execute operation rolling.");
 			break;
 		}
 
@@ -161,21 +161,21 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if((eResult =arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if((res =arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if((eResult =arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(0, 0), L"EmphasizeFilter Mask: 7x7 Factor: 1.50", YELLOW, BLACK, 20)))
+		if((res =arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(0, 0), L"EmphasizeFilter Mask: 7x7 Factor: 1.50", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if((eResult =arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(0, 0), L"EmphasizeFilter Mask: 3x3 Factor: 2.50", YELLOW, BLACK, 20)))
+		if((res =arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(0, 0), L"EmphasizeFilter Mask: 3x3 Factor: 2.50", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 

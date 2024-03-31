@@ -12,35 +12,35 @@ int main()
 	CGUIViewImageWrap viewImage[2];
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// Get Similarity Matrix View 생성 // Create Get Similarity Matrix View
-		if(IsFail(eResult = viewImage[0].Create(200, 0, 700, 500)))
+		if(IsFail(res = viewImage[0].Create(200, 0, 700, 500)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Transformed View 생성 // Create Transformed View
-		if(IsFail(eResult = viewImage[1].Create(700, 0, 1200, 500)))
+		if(IsFail(res = viewImage[1].Create(700, 0, 1200, 500)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 각 이미지 뷰의 시점을 동기화 한다. // Synchronize the viewpoint of each image view.
-		if(IsFail(eResult = viewImage[0].SynchronizePointOfView(&viewImage[1])))
+		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 각 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the position of each image view window
-		if(IsFail(eResult = viewImage[0].SynchronizeWindow(&viewImage[1])))
+		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
@@ -61,9 +61,9 @@ int main()
 		CFLEllipse<double> fleSourceFig;
 
 		// Source Figure 불러오기 // Load source figure
-		if((eResult = fleSourceFig.Load(L"../../ExampleImages/Figure/Ellipse1.fig")).IsFail())
+		if((res = fleSourceFig.Load(L"../../ExampleImages/Figure/Ellipse1.fig")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load figure.\n");
+			ErrorPrint(res, "Failed to load figure.\n");
 			break;
 		}
 
@@ -112,9 +112,9 @@ int main()
 
 		// Similarity 행렬 계산 // Calculate the similarity matrix
 		CMatrix<double> matResult;
-		if((eResult = CMatrix<double>::GetSimilarity(flpaSource, flpaTransformedWithNoise, &matResult)).IsFail())
+		if((res = CMatrix<double>::GetSimilarity(flpaSource, flpaTransformedWithNoise, &matResult)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to calculate.\n");
+			ErrorPrint(res, "Failed to calculate.\n");
 			break;
 		}
 
@@ -171,9 +171,9 @@ int main()
 			matA.SetValue(1, 0, flpaSourceGrid.GetAt(i)->y);
 			matA.SetValue(2, 0, 1.);
 
-			if((eResult = matResult.Multiply(matA, &matB)).IsFail())
+			if((res = matResult.Multiply(matA, &matB)).IsFail())
 			{
-				ErrorPrint(eResult, "Failed to calculate Matrix Operation\n");
+				ErrorPrint(res, "Failed to calculate Matrix Operation\n");
 				break;
 			}
 

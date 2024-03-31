@@ -12,70 +12,70 @@ int main()
 	CGUIViewImageWrap viewImageSource;
 	CGUIViewImageWrap viewImageDestination;
 
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((eResult = fliSourceImage.Load(L"../../ExampleImages/Skeleton/SkeletonSource.flif")).IsFail())
+		if((res = fliSourceImage.Load(L"../../ExampleImages/Skeleton/SkeletonSource.flif")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination 이미지 로드 // Load the destination image
-		if((eResult = fliDestinationImage.Load(L"../../ExampleImages/Skeleton/SkeletonSource.flif")).IsFail())
+		if((res = fliDestinationImage.Load(L"../../ExampleImages/Skeleton/SkeletonSource.flif")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if((eResult = viewImageSource.Create(100, 0, 550, 480)).IsFail())
+		if((res = viewImageSource.Create(100, 0, 550, 480)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Operand 이미지 뷰 생성 // Creates operand image view
-		if((eResult = viewImageDestination.Create(550, 0, 1000, 480)).IsFail())
+		if((res = viewImageDestination.Create(550, 0, 1000, 480)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰와 Destination 이미지 뷰의 시점을 동기화 한다
-		if((eResult = viewImageSource.SynchronizePointOfView(&viewImageDestination)).IsFail())
+		if((res = viewImageSource.SynchronizePointOfView(&viewImageDestination)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the source image view
-		if((eResult = viewImageSource.SetImagePtr(&fliSourceImage)).IsFail())
+		if((res = viewImageSource.SetImagePtr(&fliSourceImage)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-		if((eResult = viewImageDestination.SetImagePtr(&fliDestinationImage)).IsFail())
+		if((res = viewImageDestination.SetImagePtr(&fliDestinationImage)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult = viewImageSource.SynchronizeWindow(&viewImageDestination)).IsFail())
+		if((res = viewImageSource.SynchronizeWindow(&viewImageDestination)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
 		viewImageSource.SetFixThumbnailView(true);
 
 		//알고리즘 동작 결과
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// Skeleton 객체 생성 // Create Skeleton object
 		CSkeleton skeleton;
@@ -87,9 +87,9 @@ int main()
 		skeleton.SetDestinationImage(fliDestinationImage);
 
 		// skeleton 알고리즘 수행
-		if((eResult = skeleton.Execute()).IsFail())
+		if((res = skeleton.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute skeleton.\n");
+			ErrorPrint(res, "Failed to execute skeleton.\n");
 			break;
 		}
 
@@ -103,15 +103,15 @@ int main()
 		layerDestination.Clear();
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
+		if((res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)).IsFail())
+		if((res = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

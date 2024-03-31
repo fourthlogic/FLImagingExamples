@@ -12,63 +12,63 @@ int main()
 	// 이미지 뷰 선언 // Declare image view
 	CGUIViewImageWrap viewImage;
 	CGUIViewImageWrap viewImageRecognize;
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 로드 // Load image
-		if((eResult = fliImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Learn.flif")).IsFail())
+		if((res = fliImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Learn.flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		if((eResult = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition.flif")).IsFail())
+		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition.flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if((eResult = viewImage.Create(200, 0, 712, 512)).IsFail())
+		if((res = viewImage.Create(200, 0, 712, 512)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Converted 이미지 뷰 생성
-		if((eResult = viewImageRecognize.Create(712, 0, 1224, 512)).IsFail())
+		if((res = viewImageRecognize.Create(712, 0, 1224, 512)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the source image view
-		if((eResult = viewImage.SetImagePtr(&fliImage)).IsFail())
+		if((res = viewImage.SetImagePtr(&fliImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Converted 이미지 뷰에 이미지를 디스플레이
-		if((eResult = viewImageRecognize.SetImagePtr(&fliRecognizeImage)).IsFail())
+		if((res = viewImageRecognize.SetImagePtr(&fliRecognizeImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if((eResult = viewImage.SynchronizeWindow(&viewImageRecognize)).IsFail())
+		if((res = viewImage.SynchronizeWindow(&viewImageRecognize)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if((eResult = viewImage.SynchronizePointOfView(&viewImageRecognize)).IsFail())
+		if((res = viewImage.SynchronizePointOfView(&viewImageRecognize)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view\n");
+			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
@@ -81,15 +81,15 @@ int main()
 		layer.Clear();
 		layerRecognize.Clear();
 
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 0), L"Learn", YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 0), L"Learn", YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text");
+			ErrorPrint(res, L"Failed to draw text");
 			break;
 		}
 
-		if((eResult = layerRecognize.DrawTextCanvas(&CFLPointD(0, 0), L"Recognition", YELLOW, BLACK, 30)).IsFail())
+		if((res = layerRecognize.DrawTextCanvas(&CFLPointD(0, 0), L"Recognition", YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text");
+			ErrorPrint(res, L"Failed to draw text");
 			break;
 		}
 
@@ -97,9 +97,9 @@ int main()
 		COCR ocr;
 
 		// 문자를 학습할 이미지 설정
-		if(IsFail(eResult = ocr.SetLearnImage(fliImage)))
+		if(IsFail(res = ocr.SetLearnImage(fliImage)))
 		{
-			ErrorPrint(eResult, L"Failed to set Source Image.");
+			ErrorPrint(res, L"Failed to set Source Image.");
 			break;
 		}
 
@@ -111,44 +111,44 @@ int main()
 		}*/
 
 		// 학습할 이미지에 저장되어있는 Figure 학습
-		if(IsFail(eResult = ocr.Learn()))
+		if(IsFail(res = ocr.Learn()))
 		{
-			ErrorPrint(eResult, L"Failed to train.");
+			ErrorPrint(res, L"Failed to train.");
 			break;
 		}
 
 	   // 문자를 인식할 이미지 설정
-		if(IsFail(eResult = ocr.SetSourceImage(fliRecognizeImage)))
+		if(IsFail(res = ocr.SetSourceImage(fliRecognizeImage)))
 		{
-			ErrorPrint(eResult, L"Failed to set Source Image.");
+			ErrorPrint(res, L"Failed to set Source Image.");
 			break;
 		}
 
 		// 인식할 각도의 범위를 설정
-		if(IsFail(eResult = ocr.SetAngleTolerance(0.)))
+		if(IsFail(res = ocr.SetAngleTolerance(0.)))
 		{
-			ErrorPrint(eResult, L"Failed to set noise filter size.");
+			ErrorPrint(res, L"Failed to set noise filter size.");
 			break;
 		}
 
 		// 인식할 이미지에서 문자의 Threshold 값을 입력 받지 않고 자동으로 찾는 모드를 설정
-		if(IsFail(eResult = ocr.EnableAutoScale(true)))
+		if(IsFail(res = ocr.EnableAutoScale(true)))
 		{
-			ErrorPrint(eResult, L"Failed to set threshold auto.");
+			ErrorPrint(res, L"Failed to set threshold auto.");
 			break;
 		}
 
 		// 인식할 최소 점수를 설정
-		if(IsFail(eResult = ocr.SetMinimumScore(0.7)))
+		if(IsFail(res = ocr.SetMinimumScore(0.7)))
 		{
-			ErrorPrint(eResult, L"Failed to set noise filter size.");
+			ErrorPrint(res, L"Failed to set noise filter size.");
 			break;
 		}
 
 		// 인식할 이미지에서 문자를 찾는 기능을 수행
-		if(IsFail(eResult = ocr.Execute()))
+		if(IsFail(res = ocr.Execute()))
 		{
-			ErrorPrint(eResult, eResult.GetString());
+			ErrorPrint(res, res.GetString());
 			break;
 		}
 

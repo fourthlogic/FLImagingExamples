@@ -10,47 +10,47 @@ int main()
 
 	// 이미지 뷰 선언 // Declare image view
 	CGUIViewImageWrap viewImage[i32ViewCount];
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage[0].Create(400, 0, 912, 384)))
+		if(IsFail(res = viewImage[0].Create(400, 0, 912, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[1].Create(912, 0, 1424, 384)))
+		if(IsFail(res = viewImage[1].Create(912, 0, 1424, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
-		if(IsFail(eResult = viewImage[2].Create(400, 384, 912, 768)))
+		if(IsFail(res = viewImage[2].Create(400, 384, 912, 768)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[3].Create(912, 384, 1424, 768)))
+		if(IsFail(res = viewImage[3].Create(912, 384, 1424, 768)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		for(int32_t i = 1; i < i32ViewCount; ++i)
 		{
 			// 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoint of the image view
-			if(IsFail(eResult = viewImage[0].SynchronizePointOfView(&viewImage[i])))
+			if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize view\n");
+				ErrorPrint(res, "Failed to synchronize view\n");
 				break;
 			}
 
 			// 이미지 뷰 윈도우의 위치를 맞춤 // Align the position of the image view window
-			if(IsFail(eResult = viewImage[0].SynchronizeWindow(&viewImage[i])))
+			if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize window.\n");
+				ErrorPrint(res, "Failed to synchronize window.\n");
 				break;
 			}
 		}
@@ -79,7 +79,7 @@ int main()
 
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
 		{
-			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtils::ConvertFigureObjectToString(flfa.GetAt(i)).GetString());
+			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtilities::ConvertFigureObjectToString(flfa.GetAt(i)).GetString());
 			wprintf(L"%s", strFigure.GetString());
 		}
 
@@ -105,7 +105,7 @@ int main()
 
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
 		{
-			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtils::ConvertFigureObjectToString(flfaCenter.GetAt(i)).GetString());
+			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtilities::ConvertFigureObjectToString(flfaCenter.GetAt(i)).GetString());
 			wprintf(L"%s", strFigure.GetString());
 		}
 
@@ -156,7 +156,7 @@ int main()
 
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
 		{
-			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtils::ConvertFigureObjectToString(flfaCenterOfGravity.GetAt(i)).GetString());
+			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtilities::ConvertFigureObjectToString(flfaCenterOfGravity.GetAt(i)).GetString());
 			wprintf(L"%s", strFigure.GetString());
 		}
 
@@ -179,7 +179,7 @@ int main()
 
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
 		{
-			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtils::ConvertFigureObjectToString(flfaMER.GetAt(i)).GetString());
+			strFigure.Format(L"[%d]\n %s\n", i, CFigureUtilities::ConvertFigureObjectToString(flfaMER.GetAt(i)).GetString());
 			wprintf(L"%s", strFigure.GetString());
 		}
 

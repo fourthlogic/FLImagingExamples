@@ -10,32 +10,32 @@ int main()
 	CGUIViewImageWrap viewImage[4];
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage[0].Create(400, 0, 912, 384)))
+		if(IsFail(res = viewImage[0].Create(400, 0, 912, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[1].Create(912, 0, 1424, 384)))
+		if(IsFail(res = viewImage[1].Create(912, 0, 1424, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[2].Create(400, 400, 912, 794)))
+		if(IsFail(res = viewImage[2].Create(400, 400, 912, 794)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[3].Create(912, 400, 1424, 794)))
+		if(IsFail(res = viewImage[3].Create(912, 400, 1424, 794)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
@@ -53,9 +53,9 @@ int main()
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
 		for(int32_t i = 1; i < 4; ++i)
 		{
-			if(IsFail(eResult = viewImage[0].SynchronizePointOfView(&viewImage[i])))
+			if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize view\n");
+				ErrorPrint(res, "Failed to synchronize view\n");
 				break;
 			}
 		}
@@ -63,9 +63,9 @@ int main()
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
 		for(int32_t i = 1; i < 4; ++i)
 		{
-			if(IsFail(eResult = viewImage[0].SynchronizeWindow(&viewImage[i])))
+			if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize window.\n");
+				ErrorPrint(res, "Failed to synchronize window.\n");
 				break;
 			}
 		}
@@ -73,9 +73,9 @@ int main()
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
 		for(int32_t i = 1; i < 4; ++i)
 		{
-			if(IsFail(eResult = viewImage[0].SynchronizeWindow(&viewImage[i])))
+			if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize window.\n");
+				ErrorPrint(res, "Failed to synchronize window.\n");
 				break;
 			}
 		}
@@ -125,12 +125,12 @@ int main()
 		CFLString<wchar_t> strFigure;
 		wprintf(L"Source Figure Array\n");
 
-		strFigure.Format(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaSource).GetString());
+		strFigure.Format(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flfaSource).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
 		wprintf(L"Region1\n");
 
-		strFigure.Format(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flcrRegion1).GetString());
+		strFigure.Format(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flcrRegion1).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
 		// SourceView1의 0번 레이어에 Source Figure, Region1 그리기 // Draw Source Figure, Region1 on Layer 0 of SourceView1
@@ -139,7 +139,7 @@ int main()
 
 		wprintf(L"Region2\n");
 
-		strFigure.Format(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flcrRegion2).GetString());
+		strFigure.Format(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flcrRegion2).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
 		// SourceView2의 0번 레이어에 Source Figure, Region2 그리기 // Draw Source Figure, Region2 on Layer 0 of SourceView2
@@ -152,7 +152,7 @@ int main()
 
 		wprintf(L"Result Figure Within Region1\n");
 
-		strFigure.Format(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaResult1).GetString());
+		strFigure.Format(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flfaResult1).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
 		// DstView1의 0번 레이어에 결과 그리기 // Draw the result on layer 0 of DstView1
@@ -166,7 +166,7 @@ int main()
 
 		wprintf(L"Result Figure Within Region2\n");
 
-		strFigure.Format(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(&flfaResult2).GetString());
+		strFigure.Format(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flfaResult2).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
 		// DstView1의 0번 레이어에 결과 그리기 // Draw the result on layer 0 of DstView1

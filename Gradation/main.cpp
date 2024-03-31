@@ -16,52 +16,52 @@ int main()
 	do
 	{
 		// 동작 결과 // operation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliISrcImage.Load(L"../../ExampleImages/Gradation/House.flif")))
+		if(IsFail(res = fliISrcImage.Load(L"../../ExampleImages/Gradation/House.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage[0].Create(300, 0, 300 + 384, 384)))
+		if(IsFail(res = viewImage[0].Create(300, 0, 300 + 384, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[1].Create(300 + 384, 0, 300 + 384 * 2, 384)))
+		if(IsFail(res = viewImage[1].Create(300 + 384, 0, 300 + 384 * 2, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-		if(IsFail(eResult = viewImage[0].SetImagePtr(&fliISrcImage)))
+		if(IsFail(res = viewImage[0].SetImagePtr(&fliISrcImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[1].SetImagePtr(&fliIDstImage)))
+		if(IsFail(res = viewImage[1].SetImagePtr(&fliIDstImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views. 
-		if(IsFail(eResult = viewImage[0].SynchronizePointOfView(&viewImage[1])))
+		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImage[0].SynchronizeWindow(&viewImage[1])))
+		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window\n");
+			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
@@ -97,9 +97,9 @@ int main()
 		Gradation.SetVector(fllVector);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((eResult = Gradation.Execute()).IsFail())
+		if((res = Gradation.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Gradation.");
+			ErrorPrint(res, "Failed to execute Gradation.");
 			break;
 		}
 
@@ -114,54 +114,54 @@ int main()
 		CFLRect<double> fllRect1(fllVector.flpPoints[0] - 15, fllVector.flpPoints[0] + 15);
 		CFLRect<double> fllRect2(fllVector.flpPoints[1] - 15, fllVector.flpPoints[1] + 15);
 
-		if(IsFail(eResult = layer1.DrawFigureImage(&fllRect1, BLUE, 5, BLUE, EGUIViewImagePenStyle_Solid)))
+		if(IsFail(res = layer1.DrawFigureImage(&fllRect1, BLUE, 5, BLUE, EGUIViewImagePenStyle_Solid)))
 		{
-			ErrorPrint(eResult, "Failed to draw text on the image view.\n");
+			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = layer1.DrawFigureImage(&fllRect2, RED, 5, RED, EGUIViewImagePenStyle_Solid)))
+		if(IsFail(res = layer1.DrawFigureImage(&fllRect2, RED, 5, RED, EGUIViewImagePenStyle_Solid)))
 		{
-			ErrorPrint(eResult, "Failed to draw text on the image view.\n");
+			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
 		}
 
 		// Gradation Vector 출력 // Draw gradation vector
-		if(IsFail(eResult = layer1.DrawFigureImage(&fllDrawVector, BLACK, 5)))
+		if(IsFail(res = layer1.DrawFigureImage(&fllDrawVector, BLACK, 5)))
 		{
-			ErrorPrint(eResult, "Failed to draw text on the image view.\n");
+			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = layer1.DrawFigureImage(&fllDrawVector, LIME, 3)))
+		if(IsFail(res = layer1.DrawFigureImage(&fllDrawVector, LIME, 3)))
 		{
-			ErrorPrint(eResult, "Failed to draw text on the image view.\n");
+			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
 		}
 
 		// text를 출력합니다. // Display text.
-		if(IsFail(eResult = layer1.DrawTextImage(&fllVector.flpPoints[0], L"Start Value(255, 0, 0)/Start Alpha(0, 0, 0)", YELLOW, BLACK, 15, false, EGUIViewImageTextAlignment_RIGHT)))
+		if(IsFail(res = layer1.DrawTextImage(&fllVector.flpPoints[0], L"Start Value(255, 0, 0)/Start Alpha(0, 0, 0)", YELLOW, BLACK, 15, false, EGUIViewImageTextAlignment_RIGHT)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layer1.DrawTextImage(&fllVector.flpPoints[1], L"End(0, 0, 255)/Start Alpha(0.1, 0.6, 0.9)", YELLOW, BLACK, 15)))
+		if(IsFail(res = layer1.DrawTextImage(&fllVector.flpPoints[1], L"End(0, 0, 255)/Start Alpha(0.1, 0.6, 0.9)", YELLOW, BLACK, 15)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// View 정보를 디스플레이 합니다. // Display View information.
-		if(IsFail(eResult = layer1.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layer1.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layer2.DrawTextCanvas(&CFLPointD(0, 0), L"Gradation Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layer2.DrawTextCanvas(&CFLPointD(0, 0), L"Gradation Image", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

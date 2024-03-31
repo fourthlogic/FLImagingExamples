@@ -16,40 +16,40 @@ int main()
 	do
 	{
 		// 동작 결과 // operation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliSourceImage.Load(L"../../ExampleImages/Histogram/Escherichia coli.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/Histogram/Escherichia coli.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImageSource.Create(100, 0, 100 + 440, 340)))
+		if(IsFail(res = viewImageSource.Create(100, 0, 100 + 440, 340)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Graph 뷰 생성 // Create graph view
-		if(IsFail(eResult = viewGraph.Create(100 + 440 * 1, 0, 100 + 440 * 2, 340)))
+		if(IsFail(res = viewGraph.Create(100 + 440 * 1, 0, 100 + 440 * 2, 340)))
 		{
-			ErrorPrint(eResult, " Failed to create the graph view. \n");
+			ErrorPrint(res, " Failed to create the graph view. \n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-		if(IsFail(eResult = viewImageSource.SetImagePtr(&fliSourceImage)))
+		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 윈도우의 위치를 동기화 한다 // / Synchronize the positions of windows
-		if(IsFail(eResult = viewImageSource.SynchronizeWindow(&viewGraph)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewGraph)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window\n");
+			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
@@ -66,9 +66,9 @@ int main()
 		Histogram.SetSourceROI(flrSrcROI);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((eResult = Histogram.Execute()).IsFail())
+		if((res = Histogram.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Histogram.");
+			ErrorPrint(res, "Failed to execute Histogram.");
 			break;
 		}
 
@@ -90,7 +90,7 @@ int main()
 			flaResult.Clear();
 
 			// Histogram 결과 값 가져오기 // get histogram result
-			if(IsFail(eResult = Histogram.GetResult(i, flaResult)))
+			if(IsFail(res = Histogram.GetResult(i, flaResult)))
 				break;
 
 			// 채널 String // Channel String
@@ -135,15 +135,15 @@ int main()
 		layerSource.Clear();
 
 		// View 정보를 디스플레이 합니다. // Display View information.
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// View ROI 디스플레이 합니다. // Display View ROI.
-		if(IsFail(eResult = layerSource.DrawFigureImage(&flrSrcROI, LIME)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = layerSource.DrawFigureImage(&flrSrcROI, LIME)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
 		// 이미지 뷰를 갱신 합니다. // Update the image view.
 		viewImageSource.Invalidate(true);

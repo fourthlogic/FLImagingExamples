@@ -12,40 +12,40 @@ int main()
 	do
 	{
 		// 동작 결과 // operation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// Graph 뷰 생성 // Create graph view
-		if(IsFail(eResult = arrViewGraph[0].Create(100, 0, 100 + 440, 340)))
+		if(IsFail(res = arrViewGraph[0].Create(100, 0, 100 + 440, 340)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Graph 뷰 생성 // Create graph view
-		if(IsFail(eResult = arrViewGraph[1].Create(100 + 440 * 1, 0, 100 + 440 * 2, 340)))
+		if(IsFail(res = arrViewGraph[1].Create(100 + 440 * 1, 0, 100 + 440 * 2, 340)))
 		{
-			ErrorPrint(eResult, " Failed to create the graph view. \n");
+			ErrorPrint(res, " Failed to create the graph view. \n");
 			break;
 		}
 
 		// Graph 뷰 생성 // Create graph view
-		if(IsFail(eResult = arrViewGraph[2].Create(100 + 440 * 2, 0, 100 + 440 * 3, 340)))
+		if(IsFail(res = arrViewGraph[2].Create(100 + 440 * 2, 0, 100 + 440 * 3, 340)))
 		{
-			ErrorPrint(eResult, " Failed to create the graph view. \n");
+			ErrorPrint(res, " Failed to create the graph view. \n");
 			break;
 		}
 
 		// Graph 뷰의 위치 동기화 // / Synchronize the positions of windows
-		if(IsFail(eResult = arrViewGraph[0].SynchronizeWindow(&arrViewGraph[1])))
+		if(IsFail(res = arrViewGraph[0].SynchronizeWindow(&arrViewGraph[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window\n");
+			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
 		// Graph 뷰의 위치 동기화 // / Synchronize the positions of windows
-		if(IsFail(eResult = arrViewGraph[1].SynchronizeWindow(&arrViewGraph[2])))
+		if(IsFail(res = arrViewGraph[1].SynchronizeWindow(&arrViewGraph[2])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window\n");
+			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 

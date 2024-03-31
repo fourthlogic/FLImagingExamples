@@ -19,57 +19,57 @@ int main()
 	do
 	{
 		// 동작 결과 // operation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliImage.Load(L"../../ExampleImages/FourierTransform/TempleNoise.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/FourierTransform/TempleNoise.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImageOriginal.Create(300, 0, 300 + 512, 384)))
+		if(IsFail(res = viewImageOriginal.Create(300, 0, 300 + 512, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageRFT.Create(300 + 512, 0, 300 + 512 * 2, 384)))
+		if(IsFail(res = viewImageRFT.Create(300 + 512, 0, 300 + 512 * 2, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageIRFT.Create(300 + 512 * 2, 0, 300 + 512 * 3, 384)))
+		if(IsFail(res = viewImageIRFT.Create(300 + 512 * 2, 0, 300 + 512 * 3, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-		if(IsFail(eResult = viewImageOriginal.SetImagePtr(&fliImage)))
+		if(IsFail(res = viewImageOriginal.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageIRFT.SetImagePtr(&fliIRFTImage)))
+		if(IsFail(res = viewImageIRFT.SetImagePtr(&fliIRFTImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImageOriginal.SynchronizeWindow(&viewImageRFT)))
+		if(IsFail(res = viewImageOriginal.SynchronizeWindow(&viewImageRFT)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window\n");
+			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageOriginal.SynchronizeWindow(&viewImageIRFT)))
+		if(IsFail(res = viewImageOriginal.SynchronizeWindow(&viewImageIRFT)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window\n");
+			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
@@ -86,16 +86,16 @@ int main()
 		fourierTransformReal.SetResultType(EFloatingPointAccuracy_Bit32);
 
 		// 알고리즘 수행(RFT) // Execute the algorithm(RFT)
-		if((eResult = fourierTransformReal.Execute()).IsFail())
+		if((res = fourierTransformReal.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Fourier Transform Real.");
+			ErrorPrint(res, "Failed to execute Fourier Transform Real.");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-		if(IsFail(eResult = viewImageRFT.SetImagePtr(&fliRFTImage)))
+		if(IsFail(res = viewImageRFT.SetImagePtr(&fliRFTImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -110,9 +110,9 @@ int main()
 		CFLFigureArray flaROIs;
 
 		// 미리 그려둔 Mask region Figure Array 불러오기 // Load Pre-drawn Mask Region Figure Array
-		if((eResult = flaROIs.Load(L"../../ExampleImages/FourierTransform/RFTRegion.fig")).IsFail())
+		if((res = flaROIs.Load(L"../../ExampleImages/FourierTransform/RFTRegion.fig")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the figure file.");
+			ErrorPrint(res, L"Failed to load the figure file.");
 			break;
 		}
 
@@ -123,9 +123,9 @@ int main()
 		imageMask.SetMask(CMultiVar<double>(0.0));
 
 		// 알고리즘 수행(mask) // Execute the algorithm(mask)		
-		if((eResult = imageMask.Execute()).IsFail())
+		if((res = imageMask.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Image Mask.");
+			ErrorPrint(res, "Failed to execute Image Mask.");
 			break;
 		}
 
@@ -139,9 +139,9 @@ int main()
 		fourierTransformReal.SetDestinationImage(fliIRFTImage);
 
 		// 알고리즘 수행(IRFT) // Execute the algorithm(IRFT)
-		if((eResult = fourierTransformReal.Execute()).IsFail())
+		if((res = fourierTransformReal.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Fourier Transform.");
+			ErrorPrint(res, "Failed to execute Fourier Transform.");
 			break;
 		}
 
@@ -155,25 +155,25 @@ int main()
 		layer1.Clear();
 
 		// Mask ROI 영역을 출력 // Display the mask ROI area
-		if(IsFail(eResult = layer2.DrawFigureImage(&flaROIs, LIME)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = layer2.DrawFigureImage(&flaROIs, LIME)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
 		// View 정보를 디스플레이 합니다. // Display View information.
-		if(IsFail(eResult = layer1.DrawTextCanvas(&CFLPointD(0, 0), L"Spatial Domain", YELLOW, BLACK, 30)))
+		if(IsFail(res = layer1.DrawTextCanvas(&CFLPointD(0, 0), L"Spatial Domain", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layer2.DrawTextCanvas(&CFLPointD(0, 0), L"Frequency Domain", YELLOW, BLACK, 30)))
+		if(IsFail(res = layer2.DrawTextCanvas(&CFLPointD(0, 0), L"Frequency Domain", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layer3.DrawTextCanvas(&CFLPointD(0, 0), L"Inverse RFT Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layer3.DrawTextCanvas(&CFLPointD(0, 0), L"Inverse RFT Image", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

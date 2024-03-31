@@ -24,12 +24,12 @@ int main()
 	do
 	{
 		// 동작 결과 // operation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = arrFliImage[EType_Src].Load(L"../../ExampleImages/Integral/Lake.flif")))
+		if(IsFail(res = arrFliImage[EType_Src].Load(L"../../ExampleImages/Integral/Lake.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
@@ -38,9 +38,9 @@ int main()
 			if(i != EType_Src)
 			{
 				// 이미지를 Copy // image copy
-				if(IsFail(eResult = arrFliImage[i].Assign(arrFliImage[EType_Src])))
+				if(IsFail(res = arrFliImage[i].Assign(arrFliImage[EType_Src])))
 				{
-					ErrorPrint(eResult, "Failed to assign the image file.\n");
+					ErrorPrint(res, "Failed to assign the image file.\n");
 					bError = true;
 					break;
 				}
@@ -50,17 +50,17 @@ int main()
 			int32_t i32Y = i / 2;
 
 			// 이미지 뷰 생성 // Create image view
-			if(IsFail(eResult = arrViewImage[i].Create(i32X * 400 + 400, i32Y * 400, i32X * 400 + 400 + 400, i32Y * 400 + 400)))
+			if(IsFail(res = arrViewImage[i].Create(i32X * 400 + 400, i32Y * 400, i32X * 400 + 400 + 400, i32Y * 400 + 400)))
 			{
-				ErrorPrint(eResult, "Failed to create the image view.\n");
+				ErrorPrint(res, "Failed to create the image view.\n");
 				bError = true;
 				break;
 			}
 
 			// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-			if(IsFail(eResult = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
+			if(IsFail(res = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				bError = true;
 				break;
 			}
@@ -68,17 +68,17 @@ int main()
 			if(i != EType_Src)
 			{
 				// 두개의 뷰의 시점을 동기화  // Synchronize the viewpoints of the two image views. 
-				if(IsFail(eResult = arrViewImage[EType_Src].SynchronizePointOfView(&arrViewImage[i])))
+				if(IsFail(res = arrViewImage[EType_Src].SynchronizePointOfView(&arrViewImage[i])))
 				{
-					ErrorPrint(eResult, "Failed to synchronize window.\n");
+					ErrorPrint(res, "Failed to synchronize window.\n");
 					bError = true;
 					break;
 				}
 
 				// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-				if(IsFail(eResult = arrViewImage[EType_Src].SynchronizeWindow(&arrViewImage[i])))
+				if(IsFail(res = arrViewImage[EType_Src].SynchronizeWindow(&arrViewImage[i])))
 				{
-					ErrorPrint(eResult, "Failed to synchronize window.\n");
+					ErrorPrint(res, "Failed to synchronize window.\n");
 					bError = true;
 					break;
 				}
@@ -108,9 +108,9 @@ int main()
 		Integral.SetCoefficients(CMultiVar<double>(0, 2.1, 0));
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((eResult = Integral.Execute()).IsFail())
+		if((res = Integral.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Integral.");
+			ErrorPrint(res, "Failed to execute Integral.");
 			break;
 		}
 
@@ -129,15 +129,15 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = arrLayer[EType_Src].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Src].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_Dst].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Dst].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

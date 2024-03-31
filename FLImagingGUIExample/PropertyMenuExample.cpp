@@ -241,7 +241,7 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuExample::DrawFigure(
 
 			// ROI를 받아옵니다.
 			CFLFigureArray flfaROI;
-			CFigureUtils::ConvertFigureStringToObject(&mu.GetValue(L"Example@Image", L"ROI"), &flfaROI);
+			CFigureUtilities::ConvertFigureStringToObject(&mu.GetValue(L"Example@Image", L"ROI"), &flfaROI);
 
 			pLayer->DrawFigureImage(flfaROI, RED, 3);
 

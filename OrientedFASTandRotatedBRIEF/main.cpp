@@ -13,28 +13,28 @@ int main()
 	CGUIViewImageWrap viewImage;
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 로드 // Load image
-		if(IsFail(eResult = fliImage.Load(L"../../ExampleImages/OrientedFASTandRotatedBRIEF/Chip.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/OrientedFASTandRotatedBRIEF/Chip.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage.Create(400, 0, 1168, 540)))
+		if(IsFail(res = viewImage.Create(400, 0, 1168, 540)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if(IsFail(eResult = viewImage.SetImagePtr(&fliImage)))
+		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -52,58 +52,58 @@ int main()
 		CFLRectL flrROI(100, 50, 450, 450);
 
 		// 처리할 이미지 설정
-		if(IsFail(eResult = ORB.SetSourceImage(fliImage)))
+		if(IsFail(res = ORB.SetSourceImage(fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set Source Image.");
+			ErrorPrint(res, "Failed to set Source Image.");
 			break;
 		}
 
 		// 처리할 ROI 설정
-		if(IsFail(eResult = ORB.SetSourceROI(flrROI)))
+		if(IsFail(res = ORB.SetSourceROI(flrROI)))
 		{
-			ErrorPrint(eResult, "Failed to set Source ROI.");
+			ErrorPrint(res, "Failed to set Source ROI.");
 			break;
 		}
 
 		// 특징점을 추출할 NLevels 수를 설정
-		if(IsFail(eResult = ORB.SetNLevels(4)))
+		if(IsFail(res = ORB.SetNLevels(4)))
 		{
-			ErrorPrint(eResult, "Failed to set NLevels.");
+			ErrorPrint(res, "Failed to set NLevels.");
 			break;
 		}
 
 		// 특징점을 추출할 Nfeature 수를 설정
-		if(IsFail(eResult = ORB.SetNfeature(500)))
+		if(IsFail(res = ORB.SetNfeature(500)))
 		{
-			ErrorPrint(eResult, "Failed to set Nfeature.");
+			ErrorPrint(res, "Failed to set Nfeature.");
 			break;
 		}
 
 		// 특징점을 추출할 ScoreType 설정
-		if(IsFail(eResult = ORB.SetScoreType(COrientedFASTandRotatedBRIEF::EScoreType_FastScore)))
+		if(IsFail(res = ORB.SetScoreType(COrientedFASTandRotatedBRIEF::EScoreType_FastScore)))
 		{
-			ErrorPrint(eResult, "Failed to set Score Type.");
+			ErrorPrint(res, "Failed to set Score Type.");
 			break;
 		}
 
 		// 추출할 특징점의 FAST Threshold 설정
-		if(IsFail(eResult = ORB.SetFASTThreshold(10)))
+		if(IsFail(res = ORB.SetFASTThreshold(10)))
 		{
-			ErrorPrint(eResult, "Failed to set FAST Threshold.");
+			ErrorPrint(res, "Failed to set FAST Threshold.");
 			break;
 		}
 
 		// ORB의 파라미터 Scale Factor 설정
-		if(IsFail(eResult = ORB.SetScaleFactor(1.2f)))
+		if(IsFail(res = ORB.SetScaleFactor(1.2f)))
 		{
-			ErrorPrint(eResult, "Failed to set Scale Factor.");
+			ErrorPrint(res, "Failed to set Scale Factor.");
 			break;
 		}
 
 		// ORB 실행 함수
-		if(IsFail(eResult = ORB.Execute()))
+		if(IsFail(res = ORB.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute.");
+			ErrorPrint(res, "Failed to execute.");
 			break;
 		}
 
@@ -111,9 +111,9 @@ int main()
 		Foundation::CFLPointArray flfaResultPoints;
 
 		// 키 포인트 점을 검출
-		if(IsFail(eResult = ORB.GetResultPoints(&flfaResultPoints)))
+		if(IsFail(res = ORB.GetResultPoints(&flfaResultPoints)))
 		{
-			ErrorPrint(eResult, "Failed to get result.");
+			ErrorPrint(res, "Failed to get result.");
 			break;
 		}
 
@@ -122,9 +122,9 @@ int main()
 
 		// ROI영역이 어디인지 알기 위해 디스플레이 한다 // Display to find out where ROI is
 		// FLImaging의 Figure객체들은 어떤 도형모양이든 상관없이 하나의 함수로 디스플레이가 가능
-		if(IsFail(eResult = layer.DrawFigureImage(&flrROI, BLUE)))
+		if(IsFail(res = layer.DrawFigureImage(&flrROI, BLUE)))
 		{
-			ErrorPrint(eResult, "Failed to draw figures objects on the image view.\n");
+			ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 			break;
 		}
 

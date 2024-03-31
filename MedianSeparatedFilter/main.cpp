@@ -16,75 +16,75 @@ int main()
 	do
 	{
         // 알고리즘 동작 결과 // Algorithmic executation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = fliSrcImage.Load(L"../../ExampleImages/MedianFilter/Chip_Noise.flif")))
+		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/MedianFilter/Chip_Noise.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 		
 		// Destination이미지를 Src 이미지와 동일한 이미지로 생성
-		if(IsFail(eResult = fliDstImage.Assign(fliSrcImage)))
+		if(IsFail(res = fliDstImage.Assign(fliSrcImage)))
 		{
-			ErrorPrint(eResult, "Failed to assign the image file.\n");
+			ErrorPrint(res, "Failed to assign the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create the source image view
-		if(IsFail(eResult = viewImageSrc.Create(400, 0, 912, 612)))
+		if(IsFail(res = viewImageSrc.Create(400, 0, 912, 612)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the source image view
-		if(IsFail(eResult = viewImageSrc.SetImagePtr(&fliSrcImage)))
+		if(IsFail(res = viewImageSrc.SetImagePtr(&fliSrcImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create the destination image view
-		if(IsFail(eResult = viewImageDst.Create(912, 0, 1424, 612)))
+		if(IsFail(res = viewImageDst.Create(912, 0, 1424, 612)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-		if(IsFail(eResult = viewImageDst.SetImagePtr(&fliDstImage)))
+		if(IsFail(res = viewImageDst.SetImagePtr(&fliDstImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Source이미지 뷰와 Dst 이미지 뷰의 초점을 맞춤
-		if(IsFail(eResult = viewImageSrc.SynchronizePointOfView(&viewImageDst)))
+		if(IsFail(res = viewImageSrc.SynchronizePointOfView(&viewImageDst)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImageSrc.SynchronizeWindow(&viewImageDst)))
+		if(IsFail(res = viewImageSrc.SynchronizeWindow(&viewImageDst)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
 		// Source Image 크기에 맞게 view의 크기를 조정
-		if(IsFail(eResult = viewImageSrc.ZoomFit()))
+		if(IsFail(res = viewImageSrc.ZoomFit()))
 		{
-			ErrorPrint(eResult, "Failed to zoom fit\n");
+			ErrorPrint(res, "Failed to zoom fit\n");
 			break;
 		}
 
 		// Destination Image 크기에 맞게 view의 크기를 조정
-		if(IsFail(eResult = viewImageDst.ZoomFit()))
+		if(IsFail(res = viewImageDst.ZoomFit()))
 		{
-			ErrorPrint(eResult, "Failed to zoom fit\n");
+			ErrorPrint(res, "Failed to zoom fit\n");
 			break;
 		}
 
@@ -109,9 +109,9 @@ int main()
 		medianSeparateFilter.SetKernel(11);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = medianSeparateFilter.Execute()))
+		if(IsFail(res = medianSeparateFilter.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute morphology MedianSeparate.");
+			ErrorPrint(res, "Failed to execute morphology MedianSeparate.");
 			break;
 		}
 
@@ -126,21 +126,21 @@ int main()
 
 		// ROI영역이 어디인지 알기 위해 디스플레이 한다 // Display to find out where ROI is
 		// FLImaging의 Figure객체들은 어떤 도형모양이든 상관없이 하나의 함수로 디스플레이가 가능
-		if(IsFail(eResult = layerSrc.DrawFigureImage(&flrROI, LIME)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = layerSrc.DrawFigureImage(&flrROI, LIME)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
-		if(IsFail(eResult = layerDst.DrawFigureImage(&flrROI, LIME)))
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if(IsFail(res = layerDst.DrawFigureImage(&flrROI, LIME)))
+			ErrorPrint(res, "Failed to draw figure\n");
 
-		if(IsFail(eResult = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

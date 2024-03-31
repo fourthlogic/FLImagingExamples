@@ -13,53 +13,53 @@ int main()
 	CGUIViewImageWrap viewImageLearn;
 	CGUIViewImageWrap viewImageFind;
 
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliLearnImage.Load(L"../../ExampleImages/Matching/Rectangle Array_0.flif")))
+		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/Matching/Rectangle Array_0.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(eResult = fliFindImage.Load(L"../../ExampleImages/Matching/Rectangle Array_1.flif")))
+		if(IsFail(res = fliFindImage.Load(L"../../ExampleImages/Matching/Rectangle Array_1.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Creates imageview
-		if(IsFail(eResult = viewImageLearn.Create(400, 0, 912, 384)))
+		if(IsFail(res = viewImageLearn.Create(400, 0, 912, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageFind.Create(912, 0, 1680, 576)))
+		if(IsFail(res = viewImageFind.Create(912, 0, 1680, 576)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the imageview
-		if(IsFail(eResult = viewImageLearn.SetImagePtr(&fliLearnImage)))
+		if(IsFail(res = viewImageLearn.SetImagePtr(&fliLearnImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageFind.SetImagePtr(&fliFindImage)))
+		if(IsFail(res = viewImageFind.SetImagePtr(&fliFindImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImageLearn.SynchronizeWindow(&viewImageFind)))
+		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImageFind)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
@@ -69,15 +69,15 @@ int main()
 		layerLearn.Clear();
 		layerFind.Clear();
 
-		if(IsFail(eResult = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"Measurement Array", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"Measurement Array", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerFind.DrawTextCanvas(&CFLPointD(0, 0), L"FIND", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPointD(0, 0), L"FIND", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
@@ -121,16 +121,16 @@ int main()
 
 
 		// 배열 측정 영역이 어디인지 알기 위해 디스플레이 한다 // Display to see where the array measurement area is
-		if((eResult = layerLearn.DrawFigureImage(flfaMeasurement, BLUE, 3, BLUE, GUI::EGUIViewImagePenStyle_Solid, 0.25, 0.25)).IsFail())
+		if((res = layerLearn.DrawFigureImage(flfaMeasurement, BLUE, 3, BLUE, GUI::EGUIViewImagePenStyle_Solid, 0.25, 0.25)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw figure\n");
+			ErrorPrint(res, "Failed to draw figure\n");
 			break;
 		}
 
 		// 알고리즘 수행 // Execute the algorithm
-		if(IsFail(eResult = arrayMatch.Execute()))
+		if(IsFail(res = arrayMatch.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute.\n");
+			ErrorPrint(res, "Failed to execute.\n");
 			break;
 		}
 
@@ -154,23 +154,23 @@ int main()
 			strDisplayResult.Format(L"Array Element ID : %lld\n Score : %.3lf\n Angle : %.3lf", sResult.i64Index, sResult.f64Score, sResult.f64Angle);
 
 			// 검출 결과 중 배열 하나의 결과를 디스플레이 합니다. // Display the result of one array among the detection results.
-			if((eResult = layerFind.DrawFigureImage(sResult.flrMeasuredRegion, BLACK, 3)).IsFail())
+			if((res = layerFind.DrawFigureImage(sResult.flrMeasuredRegion, BLACK, 3)).IsFail())
 			{
-				ErrorPrint(eResult, "Failed to draw figure\n");
+				ErrorPrint(res, "Failed to draw figure\n");
 				break;
 			}
 
 			// 검출 결과 중 배열 하나의 결과를 디스플레이 합니다. // Display the result of one array among the detection results.
-			if((eResult = layerFind.DrawFigureImage(sResult.flrMeasuredRegion, CYAN, 1)).IsFail())
+			if((res = layerFind.DrawFigureImage(sResult.flrMeasuredRegion, CYAN, 1)).IsFail())
 			{
-				ErrorPrint(eResult, "Failed to draw figure\n");
+				ErrorPrint(res, "Failed to draw figure\n");
 				break;
 			}
 
 			// 검출 결과 중 배열 하나의 결과의 중심점을 디스플레이 합니다. // Display the center point of the result of one of the detection results.
-			if((eResult = layerFind.DrawTextImage(flpRegionCenter, strDisplayResult, YELLOW, BLACK, 11)).IsFail())
+			if((res = layerFind.DrawTextImage(flpRegionCenter, strDisplayResult, YELLOW, BLACK, 11)).IsFail())
 			{
-				ErrorPrint(eResult, "Failed to draw text\n");
+				ErrorPrint(res, "Failed to draw text\n");
 				break;
 			}
 
@@ -205,9 +205,9 @@ int main()
 				CFLPointD flpArrayResult(f64MaxX, f64MaxY - 10);
 
 			    // 검출 결과 중 배열 하나의 결과의 정보를 디스플레이 합니다. // Display the information of the result of one of the detection results.
-				if((eResult = layerFind.DrawTextImage(flpArrayResult, strDisplayResult, GOLD, BLACK, 14)).IsFail())
+				if((res = layerFind.DrawTextImage(flpArrayResult, strDisplayResult, GOLD, BLACK, 14)).IsFail())
 				{
-					ErrorPrint(eResult, "Failed to draw text\n");
+					ErrorPrint(res, "Failed to draw text\n");
 					break;
 				}
 			}

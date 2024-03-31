@@ -12,28 +12,28 @@ int main()
 	CGUIViewImageWrap viewImage;
 
     // 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// 이미지 로드 // Load image
-		if((eResult = fliImage.Load(L"../../ExampleImages/Statistics/MultiChannelSource.flif")).IsFail())
+		if((res = fliImage.Load(L"../../ExampleImages/Statistics/MultiChannelSource.flif")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if((eResult = viewImage.Create(400, 0, 1150, 700)).IsFail())
+		if((res = viewImage.Create(400, 0, 1150, 700)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if((eResult = viewImage.SetImagePtr(&fliImage)).IsFail())
+		if((res = viewImage.SetImagePtr(&fliImage)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -49,16 +49,16 @@ int main()
 		double f64Covariance, f64CorrelationCoeff;
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 공분산을 구하는 함수 // Function that calculate the covariance of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetCovariance(f64Covariance)).IsFail())
+		if((res = statistics.GetCovariance(f64Covariance)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 상관계수를 구하는 함수 // Function that calculate the correlation coefficient of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetCorrelationCoefficient(f64CorrelationCoeff)).IsFail())
+		if((res = statistics.GetCorrelationCoefficient(f64CorrelationCoeff)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
@@ -69,16 +69,16 @@ int main()
 		double f64Covariance2, f64CorrelationCoeff2;
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 공분산을 구하는 함수 // Function that calculate the covariance of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetCovariance(f64Covariance2)).IsFail())
+		if((res = statistics.GetCovariance(f64Covariance2)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 상관계수를 구하는 함수 // Function that calculate the correlation coefficient of the pixel value of the image(or the region of ROI)
-		if((eResult = statistics.GetCorrelationCoefficient(f64CorrelationCoeff2)).IsFail())
+		if((res = statistics.GetCorrelationCoefficient(f64CorrelationCoeff2)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
@@ -108,44 +108,44 @@ int main()
 		wprintf_s(L"%s\n", strCorrelationCoeffValue2.GetString());
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 0), strCorrChannel.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 0), strCorrChannel.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 30), strCovarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 30), strCovarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 60), strCorrelationCoeffValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 60), strCorrelationCoeffValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 90), strCorrChannel2.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 90), strCorrChannel2.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 120), strCovarianceValue2.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 120), strCovarianceValue2.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 150), strCorrelationCoeffValue2.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 150), strCorrelationCoeffValue2.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

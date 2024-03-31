@@ -16,54 +16,54 @@ int main()
 
 	do
 	{
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Load image
-		if(IsFail(eResult = fliImageSrc.Load(L"../../ExampleImages/Mura/Line.flif")))
+		if(IsFail(res = fliImageSrc.Load(L"../../ExampleImages/Mura/Line.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImageSrc.Create(100, 0, 548, 448)))
+		if(IsFail(res = viewImageSrc.Create(100, 0, 548, 448)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if(IsFail(eResult = viewImageSrc.SetImagePtr(&fliImageSrc)))
+		if(IsFail(res = viewImageSrc.SetImagePtr(&fliImageSrc)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImageDst.Create(548, 0, 996, 448)))
+		if(IsFail(res = viewImageDst.Create(548, 0, 996, 448)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if(IsFail(eResult = viewImageDst.SetImagePtr(&fliImageDst)))
+		if(IsFail(res = viewImageDst.SetImagePtr(&fliImageDst)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views.
-		if(IsFail(eResult = viewImageSrc.SynchronizePointOfView(&viewImageDst)))
+		if(IsFail(res = viewImageSrc.SynchronizePointOfView(&viewImageDst)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImageSrc.SynchronizeWindow(&viewImageDst)))
+		if(IsFail(res = viewImageSrc.SynchronizeWindow(&viewImageDst)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
@@ -86,18 +86,18 @@ int main()
 		Mura.SetThreshold(0.8);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = Mura.Execute()))
+		if(IsFail(res = Mura.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute Mura.");
+			ErrorPrint(res, "Failed to execute Mura.");
 			break;
 		}
 
 		// 결과 객체들 중 해당되는 조건을 가진 객체를 제거
 
 		// 50보다 같거나 큰 징뱐 길이를 가진 객체들을 제거
-		if(IsFail(eResult = Mura.Filter(CBlob::EFilterItem_MinimumEnclosingRectangleLongSideLength, 50, ELogicalCondition_LessEqual)))
+		if(IsFail(res = Mura.Filter(CBlob::EFilterItem_MinimumEnclosingRectangleLongSideLength, 50, ELogicalCondition_LessEqual)))
 		{
-			ErrorPrint(eResult, "Blob filtering algorithm error occurs.");
+			ErrorPrint(res, "Blob filtering algorithm error occurs.");
 			break;
 		}
 
@@ -107,9 +107,9 @@ int main()
 		CFLFigureArray flfaContours;
 
 		// Mura 결과들 중 Contour를 얻어옴
-		if(IsFail(eResult = Mura.GetResultContours(flfaContours)))
+		if(IsFail(res = Mura.GetResultContours(flfaContours)))
 		{
-			ErrorPrint(eResult, "Failed to get boundary rects from the Mura object.");
+			ErrorPrint(res, "Failed to get boundary rects from the Mura object.");
 			break;
 		}
 
@@ -125,9 +125,9 @@ int main()
 		// 맨 마지막 두개의 파라미터는 불투명도 값이고 1일경우 불투명, 0일경우 완전 투명을 의미한다. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
 		// 여기서 0.25이므로 옅은 반투명 상태라고 볼 수 있다.
 		// 파라미터 순서 : 레이어 -> Figure 객체 -> 선 색 -> 선 두께 -> 면 색 -> 펜 스타일 -> 선 알파값(불투명도) -> 면 알파값 (불투명도) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
-		if(IsFail(eResult = layer.DrawFigureImage(&flfaContours, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
+		if(IsFail(res = layer.DrawFigureImage(&flfaContours, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
 		{
-			ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+			ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 			break;
 		}
 

@@ -10,32 +10,32 @@ int main()
 
 	// 이미지 뷰 선언 // Declare the image view
 	CGUIViewImageWrap viewImage;
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliImage.Load(L"../../ExampleImages/GridOfDotsDetector/GridOfDots.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/GridOfDotsDetector/GridOfDots.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Creates imageview
-		if(IsFail(eResult = viewImage.Create(400, 0, 1040, 480)))
+		if(IsFail(res = viewImage.Create(400, 0, 1040, 480)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the imageview
-		if(IsFail(eResult = viewImage.SetImagePtr(&fliImage)))
+		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// Grid Of Dots Detector 객체 생성 // Create Grid Of Dots Detector object
 		CGridOfDotsDetector gridofDots;
@@ -44,9 +44,9 @@ int main()
 		gridofDots.SetSourceImage(fliImage);
 
 		// Grid Of Dots Detector 수행 // Execute Grid Of Dots Detector
-		if(IsFail(eResult = gridofDots.Execute()))
+		if(IsFail(res = gridofDots.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute Grid Of Dots Detector.\n");
+			ErrorPrint(res, "Failed to execute Grid Of Dots Detector.\n");
 			break;
 		}
 
@@ -71,21 +71,21 @@ int main()
 		double f64Width = flqRegion.flpPoints[0].GetDistance(flqRegion.flpPoints[1]);
 		double f64Angle = flqRegion.flpPoints[0].GetAngle(flqRegion.flpPoints[1]);
 
-		if(IsFail(eResult = layer.DrawFigureImage(flqRegion, BLACK, 3)))
+		if(IsFail(res = layer.DrawFigureImage(flqRegion, BLACK, 3)))
 		{
-			ErrorPrint(eResult, L"Failed to draw figure\n");
+			ErrorPrint(res, L"Failed to draw figure\n");
 			break;
 		}
 
-		if(IsFail(eResult = layer.DrawFigureImage(flqRegion, YELLOW, 1)))
+		if(IsFail(res = layer.DrawFigureImage(flqRegion, YELLOW, 1)))
 		{
-			ErrorPrint(eResult, L"Failed to draw figure\n");
+			ErrorPrint(res, L"Failed to draw figure\n");
 			break;
 		}
 
-		if(IsFail(eResult = layer.DrawTextImage(flqRegion.flpPoints[0], CFLString<wchar_t>().Format(L"(%lld X %lld) Pitch [%.01lf]", i64ResultCol, i64ResultRow, f64AverageCellPitch), YELLOW, BLACK, (int32_t)(f64Width / 16), true, f64Angle, EGUIViewImageTextAlignment_LEFT_BOTTOM, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_EXTRABOLD)))
+		if(IsFail(res = layer.DrawTextImage(flqRegion.flpPoints[0], CFLString<wchar_t>().Format(L"(%lld X %lld) Pitch [%.01lf]", i64ResultCol, i64ResultRow, f64AverageCellPitch), YELLOW, BLACK, (int32_t)(f64Width / 16), true, f64Angle, EGUIViewImageTextAlignment_LEFT_BOTTOM, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_EXTRABOLD)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
@@ -107,15 +107,15 @@ int main()
 			{
 				CFLLineD fll(flpLastPoint, CFLPointD(fla2[0]));
 
-				if(IsFail(eResult = layer.DrawFigureImage(fll, BLACK, 5)))
+				if(IsFail(res = layer.DrawFigureImage(fll, BLACK, 5)))
 				{
-					ErrorPrint(eResult, L"Failed to draw figure\n");
+					ErrorPrint(res, L"Failed to draw figure\n");
 					break;
 				}
 
-				if(IsFail(eResult = layer.DrawFigureImage(fll, YELLOW, 3)))
+				if(IsFail(res = layer.DrawFigureImage(fll, YELLOW, 3)))
 				{
-					ErrorPrint(eResult, L"Failed to draw figure\n");
+					ErrorPrint(res, L"Failed to draw figure\n");
 					break;
 				}
 			}
@@ -126,15 +126,15 @@ int main()
 				{
 					CFLLineD fll(flpLastPoint, CFLPointD(fla2[k]));
 
-					if(IsFail(eResult = layer.DrawFigureImage(fll, BLACK, 5)))
+					if(IsFail(res = layer.DrawFigureImage(fll, BLACK, 5)))
 					{
-						ErrorPrint(eResult, L"Failed to draw figure\n");
+						ErrorPrint(res, L"Failed to draw figure\n");
 						break;
 					}
 
-					if(IsFail(eResult = layer.DrawFigureImage(fll, crTable[i32LineTransition++ % 3], 3)))
+					if(IsFail(res = layer.DrawFigureImage(fll, crTable[i32LineTransition++ % 3], 3)))
 					{
-						ErrorPrint(eResult, L"Failed to draw figure\n");
+						ErrorPrint(res, L"Failed to draw figure\n");
 						break;
 					}
 				}
@@ -180,9 +180,9 @@ int main()
 					f64Pitch = std::min<double>(f64Pitch, sqrt(f64Dx * f64Dx + f64Dy * f64Dy));
 				}
 
-				if(IsFail(eResult = layer.DrawTextImage(CFLPointD(fla2[k]), CFLString<wchar_t>().Format(L"%d", i32VertexNumber++), crTextColor, BLACK, (int32_t)(f64Pitch / 3), true, f64Angle)))
+				if(IsFail(res = layer.DrawTextImage(CFLPointD(fla2[k]), CFLString<wchar_t>().Format(L"%d", i32VertexNumber++), crTextColor, BLACK, (int32_t)(f64Pitch / 3), true, f64Angle)))
 				{
-					ErrorPrint(eResult, L"Failed to draw text\n");
+					ErrorPrint(res, L"Failed to draw text\n");
 					break;
 				}
 

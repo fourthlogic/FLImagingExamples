@@ -14,63 +14,63 @@ int main()
 	CGUIViewImageWrap viewImageDestination;
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((eResult = fliSourceImage.Load(L"../../ExampleImages/EntropyFilter/Cat3Ch.flif")).IsFail())
+		if((res = fliSourceImage.Load(L"../../ExampleImages/EntropyFilter/Cat3Ch.flif")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination 이미지 로드 // Load the destination image
-		if((eResult = fliDestinationImage.Load(L"../../ExampleImages/EntropyFilter/Cat3Ch.flif")).IsFail())
+		if((res = fliDestinationImage.Load(L"../../ExampleImages/EntropyFilter/Cat3Ch.flif")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if((eResult = viewImageSource.Create(100, 0, 550, 480)).IsFail())
+		if((res = viewImageSource.Create(100, 0, 550, 480)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create destination image view
-		if((eResult = viewImageDestination.Create(550, 0, 1000, 480)).IsFail())
+		if((res = viewImageDestination.Create(550, 0, 1000, 480)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰와 Destination 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the source view and the destination view
-		if((eResult = viewImageSource.SynchronizePointOfView(&viewImageDestination)).IsFail())
+		if((res = viewImageSource.SynchronizePointOfView(&viewImageDestination)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the source image view
-		if((eResult = viewImageSource.SetImagePtr(&fliSourceImage)).IsFail())
+		if((res = viewImageSource.SetImagePtr(&fliSourceImage)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-		if((eResult = viewImageDestination.SetImagePtr(&fliDestinationImage)).IsFail())
+		if((res = viewImageDestination.SetImagePtr(&fliDestinationImage)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult = viewImageSource.SynchronizeWindow(&viewImageDestination)).IsFail())
+		if((res = viewImageSource.SynchronizeWindow(&viewImageDestination)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
@@ -90,11 +90,11 @@ int main()
 		entropyFilter.SetKernelHeight(5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = entropyFilter.Execute()).IsFail())
+		if((res = entropyFilter.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute entropy filter.\n");
-			wprintf(eResult.GetString());
-			ErrorPrint(eResult, "\n");
+			ErrorPrint(res, "Failed to execute entropy filter.\n");
+			wprintf(res.GetString());
+			ErrorPrint(res, "\n");
 			break;
 		}
 
@@ -108,15 +108,15 @@ int main()
 		layerDestination.Clear();
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
+		if((res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)).IsFail())
+		if((res = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

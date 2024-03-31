@@ -10,32 +10,32 @@ int main()
 
 	// 이미지 뷰 선언 // Declare the image view
 	CGUIViewImageWrap viewImage;
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliImage.Load(L"../../ExampleImages/Moment/airEdge.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Moment/airEdge.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Creates imageview
-		if(IsFail(eResult = viewImage.Create(400, 0, 1424, 768)))
+		if(IsFail(res = viewImage.Create(400, 0, 1424, 768)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 		 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the imageview
-		if(IsFail(eResult = viewImage.SetImagePtr(&fliImage)))
+		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// Moment 객체 생성 // Create Moment object
 		CMoment moment;
@@ -69,9 +69,9 @@ int main()
 		moment.EnableHuMoment(bIsCalcHuMoment);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if(IsFail(eResult = moment.Execute()))
+		if(IsFail(res = moment.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute moment.\n");
+			ErrorPrint(res, "Failed to execute moment.\n");
 			break;
 		}
 
@@ -154,9 +154,9 @@ int main()
 		layer.Clear();
 
 		// ROI영역이 어디인지 알기 위해 디스플레이 한다 // Display to know where the ROI area is
-		if(IsFail(eResult = layer.DrawFigureImage(&flrROI, BLUE)))
+		if(IsFail(res = layer.DrawFigureImage(&flrROI, BLUE)))
 		{
-			ErrorPrint(eResult, "Failed to draw figure\n");
+			ErrorPrint(res, "Failed to draw figure\n");
 			break;
 		}
 

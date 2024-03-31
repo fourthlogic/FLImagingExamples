@@ -10,13 +10,13 @@ struct SGridDisplay
 
 CResult DrawGridPoints(SGridDisplay& sGridDisplay, CGUIViewImageLayerWrap pLayer)
 {
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		if(!sGridDisplay.sGridData.arrGridData.GetCount())
 		{
-			eResult = EResult_NoData;
+			res = EResult_NoData;
 			break;
 		}
 
@@ -115,11 +115,11 @@ CResult DrawGridPoints(SGridDisplay& sGridDisplay, CGUIViewImageLayerWrap pLayer
 		pLayer.DrawFigureImage(flqBoardRegion, YELLOW, 1);
 		pLayer.DrawTextImage(flqBoardRegion.flpPoints[0], wstringData, YELLOW, BLACK, (int32_t)(f64Width / 16), true, f64Angle, EGUIViewImageTextAlignment_LEFT_BOTTOM, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_EXTRABOLD);
 
-		eResult = EResult_OK;
+		res = EResult_OK;
 	}
 	while(false);
 
-	return eResult;
+	return res;
 }
 
 class CMessageReceiver : public CFLBase
@@ -195,42 +195,42 @@ bool Calibration(CStereoCalibrator& sSC, CFLImage& fliLearnImage, CFLImage& fliL
 	bool bResult = false;
 
 	// 결과 enum 선언 // Declare the result enum
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// Learn 이미지 설정 // Declare the learn image
-		if((eResult = sSC.SetLearnImage(&fliLearnImage)).IsFail())
+		if((res = sSC.SetLearnImage(&fliLearnImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image.\n");
+			ErrorPrint(res, L"Failed to set image.\n");
 			break;
 		}
 
 		// Learn 이미지 2 설정 // Declare the learn image
-		if((eResult = sSC.SetLearnImage2(&fliLearnImage2)).IsFail())
+		if((res = sSC.SetLearnImage2(&fliLearnImage2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image.\n");
+			ErrorPrint(res, L"Failed to set image.\n");
 			break;
 		}
 
 		// Optimal solution accuracy 설정 // Set optimal solution accuracy
-		if((eResult = sSC.SetOptimalSoutionAcccuracy(1e-5)).IsFail())
+		if((res = sSC.SetOptimalSoutionAcccuracy(1e-5)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set Optimal Solution Accuracy.\n");
+			ErrorPrint(res, L"Failed to set Optimal Solution Accuracy.\n");
 			break;
 		}
 
 		// Grid Type 설정 // Set grid type
-		if((eResult = sSC.SetGridType(CStereoCalibrator::EGridType_ChessBoard)).IsFail())
+		if((res = sSC.SetGridType(CStereoCalibrator::EGridType_ChessBoard)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set Grid Type.\n");
+			ErrorPrint(res, L"Failed to set Grid Type.\n");
 			break;
 		}
 
 		// Calibration 실행 // Execute Calibration
-		if((eResult = sSC.Calibrate()).IsFail())
+		if((res = sSC.Calibrate()).IsFail())
 		{
-			ErrorPrint(eResult, L"Calibration failed.\n");
+			ErrorPrint(res, L"Calibration failed.\n");
 			break;
 		}
 
@@ -246,49 +246,49 @@ bool Undistortion(CStereoCalibrator& sSC, CFLImage& fliSourceImage, CFLImage& fl
 	bool bResult = false;
 
 	// 결과 enum 선언
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// Source 이미지 설정 // Set source image
-		if((eResult = sSC.SetSourceImage(&fliSourceImage)).IsFail())
+		if((res = sSC.SetSourceImage(&fliSourceImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to Loads image.\n");
+			ErrorPrint(res, L"Failed to Loads image.\n");
 			break;
 		}
 
 		// Source 이미지 2 설정 // Set source image 2
-		if((eResult = sSC.SetSourceImage2(&fliSourceImage2)).IsFail())
+		if((res = sSC.SetSourceImage2(&fliSourceImage2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to Loads image.\n");
+			ErrorPrint(res, L"Failed to Loads image.\n");
 			break;
 		}
 
 		// Destination 이미지 설정 // Set destination image 
-		if((eResult = sSC.SetDestinationImage(&fliDestinationImage)).IsFail())
+		if((res = sSC.SetDestinationImage(&fliDestinationImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to Loads image.\n");
+			ErrorPrint(res, L"Failed to Loads image.\n");
 			break;
 		}
 
 		// Destination 이미지 2 설정 // Set destination image 2
-		if((eResult = sSC.SetDestinationImage2(&fliDestinationImage2)).IsFail())
+		if((res = sSC.SetDestinationImage2(&fliDestinationImage2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to Loads image.\n");
+			ErrorPrint(res, L"Failed to Loads image.\n");
 			break;
 		}
 
 		// Interpolation 메소드 설정 // Set interpolation method
-		if((eResult = sSC.SetInterpolationMethod(ImageProcessing::EInterpolationMethod_Bilinear)).IsFail())
+		if((res = sSC.SetInterpolationMethod(ImageProcessing::EInterpolationMethod_Bilinear)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set interpolation method.\n");
+			ErrorPrint(res, L"Failed to set interpolation method.\n");
 			break;
 		}
 
 		// Undistortion 실행 // Execute undistortion
-		if((eResult = sSC.Execute()).IsFail())
+		if((res = sSC.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Undistortion failed.\n");
+			ErrorPrint(res, L"Undistortion failed.\n");
 			break;
 		}
 
@@ -310,7 +310,7 @@ int main()
 	CGUIViewImageWrap viewImageLearn2, viewImageDestination2;
 
 	// 알고리즘 동작 결과 // Algorithm execution result
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	// Message Reciever 객체 생성 // Create Message Reciever object
 	CMessageReceiver msgReceiver(&viewImageLearn);
@@ -322,16 +322,16 @@ int main()
 	do
 	{
 		// Learn 이미지 로드  // Load learn image
-		if((eResult = fliLearnImage.Load(L"../../ExampleImages/StereoCalibrator/Left.flif")).IsFail())
+		if((res = fliLearnImage.Load(L"../../ExampleImages/StereoCalibrator/Left.flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
 		// Learn 이미지 2 로드 // Load learn image 2
-		if((eResult = fliLearnImage2.Load(L"../../ExampleImages/StereoCalibrator/Right.flif")).IsFail())
+		if((res = fliLearnImage2.Load(L"../../ExampleImages/StereoCalibrator/Right.flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
@@ -355,7 +355,7 @@ int main()
 		if(!Undistortion(sSC, fliSourceImage, fliSourceImage2, fliDestinationImage, fliDestinationImage2))
 			break;
 
-		// 화면에 격자 탐지 결과 출력 // Display the eResult of grid detection
+		// 화면에 격자 탐지 결과 출력 // Display the res of grid detection
 		SGridDisplay sArrGridDisplay[5];
 
 		for(int64_t i64ImgIdx = 0; i64ImgIdx < (int64_t)fliLearnImage.GetPageCount(); ++i64ImgIdx)
@@ -378,30 +378,30 @@ int main()
 		msgReceiver2.m_vctGridDisplay = sArrGridDisplay2;
 
 		// Learn 이미지 뷰 생성 // Create the learn image view
-		if((eResult = viewImageLearn.Create(300, 0, 300 + 480 * 1, 360)).IsFail())
+		if((res = viewImageLearn.Create(300, 0, 300 + 480 * 1, 360)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Learn 이미지 2 뷰 생성 // Create the learn image 2 view
-		if((eResult = viewImageLearn2.Create(300 + 480, 0, 300 + 480 * 2, 360)).IsFail())
+		if((res = viewImageLearn2.Create(300 + 480, 0, 300 + 480 * 2, 360)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Learn 이미지 뷰에 이미지를 디스플레이 // Display the learn image in the image view
-		if((eResult = viewImageLearn.SetImagePtr(&fliLearnImage)).IsFail())
+		if((res = viewImageLearn.SetImagePtr(&fliLearnImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Learn 이미지 2 뷰에 이미지를 디스플레이 // Display the learn image 2 in the image view
-		if((eResult = viewImageLearn2.SetImagePtr(&fliLearnImage2)).IsFail())
+		if((res = viewImageLearn2.SetImagePtr(&fliLearnImage2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -415,72 +415,72 @@ int main()
 		DrawGridPoints(sArrGridDisplay2[0], layerLearn2);
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if((eResult = viewImageDestination.Create(300, 360, 780, 720)).IsFail())
+		if((res = viewImageDestination.Create(300, 360, 780, 720)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create destination image view
-		if((eResult = viewImageDestination2.Create(780, 360, 1260, 720)).IsFail())
+		if((res = viewImageDestination2.Create(780, 360, 1260, 720)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the source image in the image view
-		if((eResult = viewImageDestination.SetImagePtr(&fliDestinationImage)).IsFail())
+		if((res = viewImageDestination.SetImagePtr(&fliDestinationImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the destination image in the image view
-		if((eResult = viewImageDestination2.SetImagePtr(&fliDestinationImage2)).IsFail())
+		if((res = viewImageDestination2.SetImagePtr(&fliDestinationImage2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views. 
-		if((eResult = viewImageLearn.SynchronizePointOfView(&viewImageLearn2)).IsFail())
+		if((res = viewImageLearn.SynchronizePointOfView(&viewImageLearn2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view.\n");
+			ErrorPrint(res, L"Failed to synchronize view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다. // Synchronize the viewpoints of the two image views. 
-		if((eResult = viewImageDestination.SynchronizePointOfView(&viewImageDestination2)).IsFail())
+		if((res = viewImageDestination.SynchronizePointOfView(&viewImageDestination2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view.\n");
+			ErrorPrint(res, L"Failed to synchronize view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult = viewImageLearn.SynchronizeWindow(&viewImageLearn2)).IsFail())
+		if((res = viewImageLearn.SynchronizeWindow(&viewImageLearn2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult = viewImageLearn.SynchronizeWindow(&viewImageDestination)).IsFail())
+		if((res = viewImageLearn.SynchronizeWindow(&viewImageDestination)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult = viewImageLearn.SynchronizeWindow(&viewImageDestination2)).IsFail())
+		if((res = viewImageLearn.SynchronizeWindow(&viewImageDestination2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 페이지 인덱스를 동기화 한다 // Synchronize the page index of the two image view windows
-		if((eResult = viewImageLearn.SynchronizePageIndex(&viewImageLearn2)).IsFail())
+		if((res = viewImageLearn.SynchronizePageIndex(&viewImageLearn2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view.\n");
+			ErrorPrint(res, L"Failed to synchronize view.\n");
 			break;
 		}
 

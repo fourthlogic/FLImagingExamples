@@ -13,28 +13,28 @@ int main()
 	CGUIViewImageWrap viewImage;
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 로드 // Load image
-		if(IsFail(eResult = fliImage.Load(L"../../ExampleImages/HarrisCornerDetector/Chip.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/HarrisCornerDetector/Chip.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage.Create(400, 0, 1168, 540)))
+		if(IsFail(res = viewImage.Create(400, 0, 1168, 540)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if(IsFail(eResult = viewImage.SetImagePtr(&fliImage)))
+		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -52,51 +52,51 @@ int main()
 		CFLRectL flrROI(100, 50, 450, 450);
 
 		// 처리할 이미지 설정
-		if(IsFail(eResult = harris.SetSourceImage(fliImage)))
+		if(IsFail(res = harris.SetSourceImage(fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set Source Image.");
+			ErrorPrint(res, "Failed to set Source Image.");
 			break;
 		}
 
 		// 처리할 ROI 설정
-		if(IsFail(eResult = harris.SetSourceROI(flrROI)))
+		if(IsFail(res = harris.SetSourceROI(flrROI)))
 		{
-			ErrorPrint(eResult, "Failed to set Source ROI.");
+			ErrorPrint(res, "Failed to set Source ROI.");
 			break;
 		}
 
 		// 코너를 검출하는 이미지의 Scale 값을 설정
-		if(IsFail(eResult = harris.SetScale(1.0)))
+		if(IsFail(res = harris.SetScale(1.0)))
 		{
-			ErrorPrint(eResult, "Failed to set scale.");
+			ErrorPrint(res, "Failed to set scale.");
 			break;
 		}
 
 		// 검출할 최대 점의 개수를 설정
-		if(IsFail(eResult = harris.SetMaxPoints(500)))
+		if(IsFail(res = harris.SetMaxPoints(500)))
 		{
-			ErrorPrint(eResult, "Failed to set max points.");
+			ErrorPrint(res, "Failed to set max points.");
 			break;
 		}
 
 		// 검출할 점수의 임계값을 설정
-		if(IsFail(eResult = harris.SetScoreThreshold(0.8f)))
+		if(IsFail(res = harris.SetScoreThreshold(0.8f)))
 		{
-			ErrorPrint(eResult, "Failed to set score threshold.");
+			ErrorPrint(res, "Failed to set score threshold.");
 			break;
 		}
 
 		// 해리스 코너 디텍터의 파리미터 K를 설정
-		if(IsFail(eResult = harris.SetParamK(0.04f)))
+		if(IsFail(res = harris.SetParamK(0.04f)))
 		{
-			ErrorPrint(eResult, "Failed to set param K.");
+			ErrorPrint(res, "Failed to set param K.");
 			break;
 		}
 
 		// 해리스 코너 디텍터 실행 함수
-		if(IsFail(eResult = harris.Execute()))
+		if(IsFail(res = harris.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute.");
+			ErrorPrint(res, "Failed to execute.");
 			break;
 		}
 
@@ -104,9 +104,9 @@ int main()
 		Foundation::CFLFigureArray flfaResultPoints;
 
 		// 해리스 코너 디텍터 실행 함수
-		if(IsFail(eResult = harris.GetResultPoints(&flfaResultPoints)))
+		if(IsFail(res = harris.GetResultPoints(&flfaResultPoints)))
 		{
-			ErrorPrint(eResult, "Failed to get result.");
+			ErrorPrint(res, "Failed to get result.");
 			break;
 		}
 
@@ -122,9 +122,9 @@ int main()
 
 		// ROI영역이 어디인지 알기 위해 디스플레이 한다 // Display to find out where ROI is
 		// FLImaging의 Figure객체들은 어떤 도형모양이든 상관없이 하나의 함수로 디스플레이가 가능
-		if(IsFail(eResult = layer.DrawFigureImage(&flrROI, BLUE)))
+		if(IsFail(res = layer.DrawFigureImage(&flrROI, BLUE)))
 		{
-			ErrorPrint(eResult, "Failed to draw figures objects on the image view.\n");
+			ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 			break;
 		}
 

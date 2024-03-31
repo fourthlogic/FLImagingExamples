@@ -10,32 +10,32 @@ int main()
 
 	// 이미지 뷰 선언 // Declare the image view
 	CGUIViewImageWrap viewImage;
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliImage.Load(L"../../ExampleImages/Gauge/CrossImage.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Gauge/CrossImage.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Loads image view
-		if(IsFail(eResult = viewImage.Create(400, 0, 1424, 768)))
+		if(IsFail(res = viewImage.Create(400, 0, 1424, 768)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the imageview
-		if(IsFail(eResult = viewImage.SetImagePtr(&fliImage)))
+		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// Cross Gauge 객체 생성 // Create Cross Gauge object
 		CCrossGauge CrossGauge;
@@ -71,9 +71,9 @@ int main()
 		CrossGauge.SetMeasurementMarginRatio();
 
 		// 알고리즘 수행 // Execute the algorithm
-		if(IsFail(eResult = CrossGauge.Execute()))
+		if(IsFail(res = CrossGauge.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute Cross gauge.\n");
+			ErrorPrint(res, "Failed to execute Cross gauge.\n");
 			break;
 		}
 
@@ -104,7 +104,7 @@ int main()
 		layer.DrawFigureImage(flfaResultLine, CYAN, 3);
 		
 
-		if(IsOK(eResult))
+		if(IsOK(res))
 		{
 			double f64ResultAngle;
 			CrossGauge.GetMeasuredAngle(f64ResultAngle);
@@ -122,9 +122,9 @@ int main()
 
 			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
-			if(IsFail(eResult = layer.DrawFigureImage(&flfaPoint, LIME)))
+			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, LIME)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure\n");
+				ErrorPrint(res, "Failed to draw figure\n");
 				break;
 			}
 		}
@@ -139,17 +139,17 @@ int main()
 
 			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
-			if(IsFail(eResult = layer.DrawFigureImage(&flfaPoint, RED)))
+			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, RED)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure\n");
+				ErrorPrint(res, "Failed to draw figure\n");
 				break;
 			}
 		}
 
 		// 측정 영역이 어디인지 알기 위해 디스플레이 한다 // Display to know where the measurement area is
-		if(IsFail(eResult = layer.DrawFigureImage(&measureRegion, BLUE)))
+		if(IsFail(res = layer.DrawFigureImage(&measureRegion, BLUE)))
 		{
-			ErrorPrint(eResult, "Failed to draw figures objects on the image view.\n");
+			ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 			break;
 		}
 		

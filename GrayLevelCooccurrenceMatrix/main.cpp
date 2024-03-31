@@ -12,28 +12,28 @@ int main()
 	CGUIViewImageWrap viewImage;
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// 이미지 로드 // Load image
-		if((eResult = fliImage.Load(L"../../ExampleImages/GrayLevelCooccurrenceMatrix/Texture.flif")).IsFail())
+		if((res = fliImage.Load(L"../../ExampleImages/GrayLevelCooccurrenceMatrix/Texture.flif")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the image file.");
+			ErrorPrint(res, "Failed to load the image file.");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if((eResult = viewImage.Create(400, 0, 912, 612)).IsFail())
+		if((res = viewImage.Create(400, 0, 912, 612)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to create the image view.");
+			ErrorPrint(res, "Failed to create the image view.");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if((eResult = viewImage.SetImagePtr(&fliImage)).IsFail())
+		if((res = viewImage.SetImagePtr(&fliImage)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.");
+			ErrorPrint(res, "Failed to set image object on the image view.");
 			break;
 		}
 
@@ -54,9 +54,9 @@ int main()
 		flaGLCM.SetDirection(CGrayLevelCooccurrenceMatrix::EDirection_Degree0);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((eResult = flaGLCM.Execute()).IsFail())
+		if((res = flaGLCM.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Gray Level Cooccurrence Matrix.");
+			ErrorPrint(res, "Failed to execute Gray Level Cooccurrence Matrix.");
 			break;
 		}
 
@@ -67,30 +67,30 @@ int main()
 		Base::CFLArray<Base::CFLArray<double>> flaContrast;
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 Energy를 구하는 함수 // Function that calculate Energy of the image(or the region of ROI)
-		if((eResult = flaGLCM.GetResultEnergy(flaEnergy)).IsFail())
+		if((res = flaGLCM.GetResultEnergy(flaEnergy)).IsFail())
 		{
-			ErrorPrint(eResult, "No Result");
+			ErrorPrint(res, "No Result");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 Correlation를 구하는 함수 // Function that calculate Correlation of the image(or the region of ROI)
-		if((eResult = flaGLCM.GetResultCorrelation(flaCorrelation)).IsFail())
+		if((res = flaGLCM.GetResultCorrelation(flaCorrelation)).IsFail())
 		{
-			ErrorPrint(eResult, "No Result");
+			ErrorPrint(res, "No Result");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 Homogeneity를 구하는 함수 // Function that calculate Homogeneity of the image(or the region of ROI)
-		if((eResult = flaGLCM.GetResultHomogeneity(flaHomogeneity)).IsFail())
+		if((res = flaGLCM.GetResultHomogeneity(flaHomogeneity)).IsFail())
 		{
-			ErrorPrint(eResult, "No Result");
+			ErrorPrint(res, "No Result");
 			break;
 		}
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 Contrast를 구하는 함수 // Function that calculate Contrast of the image(or the region of ROI)
-		if((eResult = flaGLCM.GetResultContrast(flaContrast)).IsFail())
+		if((res = flaGLCM.GetResultContrast(flaContrast)).IsFail())
 		{
-			ErrorPrint(eResult, "No Result");
+			ErrorPrint(res, "No Result");
 			break;
 		}
 
@@ -102,8 +102,8 @@ int main()
 		layer.Clear();
 
 		// ROI영역이 어디인지 알기 위해 디스플레이 한다 // Display to find out where ROI is
-		if((eResult = layer.DrawFigureImage(&flfSourceROI, LIME)).IsFail())
-			ErrorPrint(eResult, "Failed to draw figure\n");
+		if((res = layer.DrawFigureImage(&flfSourceROI, LIME)).IsFail())
+			ErrorPrint(res, "Failed to draw figure\n");
 
 		CFLString<wchar_t> strText;
 
@@ -126,9 +126,9 @@ int main()
 		wprintf_s(L"%s\n", strText.GetString());
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = layer.DrawTextCanvas(&CFLPointD(0, 0), strText.GetString(), YELLOW, BLACK, 25)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPointD(0, 0), strText.GetString(), YELLOW, BLACK, 25)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

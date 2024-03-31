@@ -15,26 +15,26 @@ int main()
 	do
 	{
 		// 동작 결과 // operation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliISrcImage.Load(L"../../ExampleImages/PixelCounter/Semiconductor.flif")))
+		if(IsFail(res = fliISrcImage.Load(L"../../ExampleImages/PixelCounter/Semiconductor.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage1.Create(300, 0, 300 + 512, 384)))
+		if(IsFail(res = viewImage1.Create(300, 0, 300 + 512, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-		if(IsFail(eResult = viewImage1.SetImagePtr(&fliISrcImage)))
+		if(IsFail(res = viewImage1.SetImagePtr(&fliISrcImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -68,9 +68,9 @@ int main()
 		PixelCounter.SetLogicalCondition(mvCondition);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((eResult = PixelCounter.Execute()).IsFail())
+		if((res = PixelCounter.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Pixel Counter.");
+			ErrorPrint(res, "Failed to execute Pixel Counter.");
 			break;
 		}
 
@@ -99,16 +99,16 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = layer.DrawTextCanvas(&CFLPointD(0, 0), flsDrawText, YELLOW, BLACK, 15, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false)))
+		if(IsFail(res = layer.DrawTextCanvas(&CFLPointD(0, 0), flsDrawText, YELLOW, BLACK, 15, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false)))
 		{
-			ErrorPrint(eResult, "Failed to draw text on the image view.\n");
+			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
 		}
 
 		// Source ROI 그리기 // Draw Source ROI
-		if(IsFail(eResult = layer.DrawFigureImage(flfSourceROI, LIME)))
+		if(IsFail(res = layer.DrawFigureImage(flfSourceROI, LIME)))
 		{
-			ErrorPrint(eResult, "Failed to draw Source ROI on the image view.\n");
+			ErrorPrint(res, "Failed to draw Source ROI on the image view.\n");
 			break;
 		}
 

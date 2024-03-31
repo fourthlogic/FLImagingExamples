@@ -61,7 +61,7 @@ protected:
 
 int main()
 {
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	// 이미지 뷰 선언 // Declare image view
 	CGUIViewImageWrap viewImage;
@@ -144,25 +144,25 @@ int main()
 		camMulticam.SetBoardTopology(eBoardTopology);
 
 		// 카메라를 초기화 합니다.
-		if(IsFail(eResult = camMulticam.Initialize()))
+		if(IsFail(res = camMulticam.Initialize()))
 		{
-			ErrorPrint(eResult, "Failed to initialize the camera.\n");
+			ErrorPrint(res, "Failed to initialize the camera.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage.Create(0, 0, 1000, 1000)))
+		if(IsFail(res = viewImage.Create(0, 0, 1000, 1000)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		eventImage.SetViewImage(&viewImage);
 
 		// 카메라를 Live 합니다.
-		if(IsFail(eResult = camMulticam.Live()))
+		if(IsFail(res = camMulticam.Live()))
 		{
-			ErrorPrint(eResult, "Failed to live the camera.\n");
+			ErrorPrint(res, "Failed to live the camera.\n");
 			break;
 		}
 

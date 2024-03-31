@@ -24,75 +24,75 @@ int main()
 	do
 	{
 		// 알고리즘 동작 결과 // Algorithmic executation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(eResult = arrFliImage[EType_Source].Load(L"../../ExampleImages/DistanceTransform/circle.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/DistanceTransform/circle.flif")))
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination1 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination1 image as same as source image
-		if(IsFail(eResult = arrFliImage[EType_DistanceTransform1].Assign(arrFliImage[EType_Source])))
+		if(IsFail(res = arrFliImage[EType_DistanceTransform1].Assign(arrFliImage[EType_Source])))
 		{
-			ErrorPrint(eResult, L"Failed to assign the image file.\n");
+			ErrorPrint(res, L"Failed to assign the image file.\n");
 			break;
 		}
 
 		// Destination2 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination2 image as same as source image
-		if(IsFail(eResult = arrFliImage[EType_DistanceTransform2].Assign(arrFliImage[EType_Source])))
+		if(IsFail(res = arrFliImage[EType_DistanceTransform2].Assign(arrFliImage[EType_Source])))
 		{
-			ErrorPrint(eResult, L"Failed to assign the image file.\n");
+			ErrorPrint(res, L"Failed to assign the image file.\n");
 			break;
 		}
 
 		// Destination3 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination3 image as same as source image
-		if(IsFail(eResult = arrFliImage[EType_DistanceTransform3].Assign(arrFliImage[EType_Source])))
+		if(IsFail(res = arrFliImage[EType_DistanceTransform3].Assign(arrFliImage[EType_Source])))
 		{
-			ErrorPrint(eResult, L"Failed to assign the image file.\n");
+			ErrorPrint(res, L"Failed to assign the image file.\n");
 			break;
 		}
 
 		// Destination4 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination4 image as same as source image
-		if(IsFail(eResult = arrFliImage[EType_DistanceTransform4].Assign(arrFliImage[EType_Source])))
+		if(IsFail(res = arrFliImage[EType_DistanceTransform4].Assign(arrFliImage[EType_Source])))
 		{
-			ErrorPrint(eResult, L"Failed to assign the image file.\n");
+			ErrorPrint(res, L"Failed to assign the image file.\n");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create Source image view
-		if(IsFail(eResult = arrViewImage[EType_Source].Create(100, 0, 612, 512)))
+		if(IsFail(res = arrViewImage[EType_Source].Create(100, 0, 612, 512)))
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination1 이미지 뷰 생성 // Create destination1 image view
-		if(IsFail(eResult = arrViewImage[EType_DistanceTransform1].Create(612, 0, 1124, 512)))
+		if(IsFail(res = arrViewImage[EType_DistanceTransform1].Create(612, 0, 1124, 512)))
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination2 이미지 뷰 생성 // Create destination2 image view
-		if(IsFail(eResult = arrViewImage[EType_DistanceTransform2].Create(100, 512, 612, 1024)))
+		if(IsFail(res = arrViewImage[EType_DistanceTransform2].Create(100, 512, 612, 1024)))
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination3 이미지 뷰 생성 // Create the destination3 image view
-		if(IsFail(eResult = arrViewImage[EType_DistanceTransform3].Create(612, 512, 1124, 1024)))
+		if(IsFail(res = arrViewImage[EType_DistanceTransform3].Create(612, 512, 1124, 1024)))
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination4 이미지 뷰 생성 // Create the destination4 image view
-		if(IsFail(eResult = arrViewImage[EType_DistanceTransform4].Create(1124, 512, 1636, 1024)))
+		if(IsFail(res = arrViewImage[EType_DistanceTransform4].Create(1124, 512, 1636, 1024)))
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
@@ -103,9 +103,9 @@ int main()
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			if(IsFail(eResult = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
+			if(IsFail(res = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
-				ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+				ErrorPrint(res, L"Failed to set image object on the image view.\n");
 				bError = true;
 				break;
 			}
@@ -115,58 +115,58 @@ int main()
 			break;
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_DistanceTransform1])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_DistanceTransform1])))
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view\n");
+			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_DistanceTransform2])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_DistanceTransform2])))
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view\n");
+			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_DistanceTransform3])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_DistanceTransform3])))
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view\n");
+			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_DistanceTransform4])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_DistanceTransform4])))
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view\n");
+			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_DistanceTransform1])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_DistanceTransform1])))
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_DistanceTransform2])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_DistanceTransform2])))
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_DistanceTransform3])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_DistanceTransform3])))
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_DistanceTransform4])))
+		if(IsFail(res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_DistanceTransform4])))
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
@@ -180,9 +180,9 @@ int main()
 		distance.SetMeasurementMethod(CDistanceTransform::EMeasurementMethod_Euclid);
 		
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = distance.Execute()))
+		if(IsFail(res = distance.Execute()))
 		{
-			ErrorPrint(eResult, L"Failed to execute distance.");
+			ErrorPrint(res, L"Failed to execute distance.");
 			break;
 		}
 
@@ -192,9 +192,9 @@ int main()
 		distance.SetMeasurementMethod(CDistanceTransform::EMeasurementMethod_CityBlock);
 		
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = distance.Execute()))
+		if(IsFail(res = distance.Execute()))
 		{
-			ErrorPrint(eResult, L"Failed to execute distance.");
+			ErrorPrint(res, L"Failed to execute distance.");
 			break;
 		}
 
@@ -204,9 +204,9 @@ int main()
 		distance.SetMeasurementMethod(CDistanceTransform::EMeasurementMethod_Chessboard);
 		
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = distance.Execute()))
+		if(IsFail(res = distance.Execute()))
 		{
-			ErrorPrint(eResult, L"Failed to execute distance.");
+			ErrorPrint(res, L"Failed to execute distance.");
 			break;
 		}
 
@@ -216,9 +216,9 @@ int main()
 		distance.SetMeasurementMethod(CDistanceTransform::EMeasurementMethod_QuasiEuclid);
 		
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = distance.Execute()))
+		if(IsFail(res = distance.Execute()))
 		{
-			ErrorPrint(eResult, L"Failed to execute distance.");
+			ErrorPrint(res, L"Failed to execute distance.");
 			break;
 		}
 
@@ -241,33 +241,33 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_DistanceTransform1].DrawTextCanvas(&CFLPointD(0, 0), L"DistanceTransform1 Euclid", YELLOW, BLACK, 30)))
+		if(IsFail(res = arrLayer[EType_DistanceTransform1].DrawTextCanvas(&CFLPointD(0, 0), L"DistanceTransform1 Euclid", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_DistanceTransform2].DrawTextCanvas(&CFLPointD(0, 0), L"DistanceTransform2 CityBlock", YELLOW, BLACK, 30)))
+		if(IsFail(res = arrLayer[EType_DistanceTransform2].DrawTextCanvas(&CFLPointD(0, 0), L"DistanceTransform2 CityBlock", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_DistanceTransform3].DrawTextCanvas(&CFLPointD(0, 0), L"DistanceTransform3 Chessboard", YELLOW, BLACK, 30)))
+		if(IsFail(res = arrLayer[EType_DistanceTransform3].DrawTextCanvas(&CFLPointD(0, 0), L"DistanceTransform3 Chessboard", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = arrLayer[EType_DistanceTransform4].DrawTextCanvas(&CFLPointD(0, 0), L"DistanceTransform4 Qusai-Euclid", YELLOW, BLACK, 30)))
+		if(IsFail(res = arrLayer[EType_DistanceTransform4].DrawTextCanvas(&CFLPointD(0, 0), L"DistanceTransform4 Qusai-Euclid", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 

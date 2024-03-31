@@ -115,10 +115,10 @@ BOOL CFigureOperationDlg::OnInitDialog()
 	GetDlgItem(IDC_STATIC_IMAGE_VIEW)->GetClientRect(crImageView);
 
 	// 이미지 뷰 생성 // Create image view
-	CResult eResult = m_viewImage.Create(0, 0, 1024, 1024);
+	CResult res = m_viewImage.Create(0, 0, 1024, 1024);
 
-	if(eResult.IsFail())
-		ErrorMessageBox(eResult);
+	if(res.IsFail())
+		ErrorMessageBox(res);
 
 	// 이미지 뷰의 윈도우를 얻어온다.
 	HWND hWndImageView = (HWND)m_viewImage.GetWindowHandle();
@@ -961,7 +961,7 @@ void CFigureOperationDlg::OnBnClickedButtonFigureObjectExecute()
 	// TODO: Add your control notification handler code here
 	CFLFigure* pFigure1 = nullptr;
 	CFLFigure* pFigure2 = nullptr;
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do 
 	{
@@ -975,7 +975,7 @@ void CFigureOperationDlg::OnBnClickedButtonFigureObjectExecute()
 
 		if(!pFigure1 || !pFigure2)
 		{
-			eResult = EResult_InvalidObject;
+			res = EResult_InvalidObject;
 			break;
 		}
 
@@ -986,27 +986,27 @@ void CFigureOperationDlg::OnBnClickedButtonFigureObjectExecute()
 		{
 		case 0:
 			// Intersection Operation 수행
-			eResult = pFigure1->GetRegionOfIntersection(pFigure2, &flfa);
+			res = pFigure1->GetRegionOfIntersection(pFigure2, &flfa);
 			break;
 
 		case 1:
 			// Union Operation 수행
-			eResult = pFigure1->GetRegionOfUnion(pFigure2, &flfa);
+			res = pFigure1->GetRegionOfUnion(pFigure2, &flfa);
 			break;
 
 		case 2:
 			// Subtraction Operation 수행
-			eResult = pFigure1->GetRegionOfSubtraction(pFigure2, &flfa);
+			res = pFigure1->GetRegionOfSubtraction(pFigure2, &flfa);
 			break;
 
 		case 3:
 			// Exclusive Or Operation 수행
-			eResult = pFigure1->GetRegionOfExclusiveOr(pFigure2, &flfa);
+			res = pFigure1->GetRegionOfExclusiveOr(pFigure2, &flfa);
 			break;
 		}
 
 		// 수행 결과를 확인한다.
-		if(IsFail(eResult))
+		if(IsFail(res))
 			break;
 
 		if(!flfa.GetCount())
@@ -1041,7 +1041,7 @@ void CFigureOperationDlg::OnBnClickedButtonFigureObjectExecute()
 	}
 
 	// 수행 결과 메세지를 표시한다.
-	DisplayMessage(eResult.GetString());
+	DisplayMessage(res.GetString());
 }
 
 void CFigureOperationDlg::OnCbnSelchangeComboFigureObjectSelect1()

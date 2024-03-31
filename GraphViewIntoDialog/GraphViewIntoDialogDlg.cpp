@@ -110,10 +110,10 @@ BOOL CGraphViewIntoDialogDlg::OnInitDialog()
 	GetDlgItem(IDC_STATIC_GRAPH_VIEW)->GetClientRect(crGraphView);
 
 	// 그래프 뷰 생성
-	CResult eResult = m_viewGraph.Create(0, 0, 1024, 1024);
+	CResult res = m_viewGraph.Create(0, 0, 1024, 1024);
 
-	if(eResult.IsFail())
-		ErrorMessageBox(eResult);
+	if(res.IsFail())
+		ErrorMessageBox(res);
 
 	// 그래프 뷰의 윈도우을 얻어온다.
 	HWND hWndGraphView = (HWND)m_viewGraph.GetWindowHandle();

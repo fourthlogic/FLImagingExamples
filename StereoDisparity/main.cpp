@@ -18,19 +18,19 @@ int main()
 	do
 	{
 		// 알고리즘 동작 결과 // Algorithm execution result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// Source 이미지 로드 // Load the source image
-		if((eResult = fliSrcImage.Load(L"../../ExampleImages/StereoDisparity/Left.flif")).IsFail())
+		if((res = fliSrcImage.Load(L"../../ExampleImages/StereoDisparity/Left.flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
 		// Source 이미지 2 로드 // Load the source image 2
-		if((eResult = fliSrcImage2.Load(L"../../ExampleImages/StereoDisparity/Right.flif")).IsFail())
+		if((res = fliSrcImage2.Load(L"../../ExampleImages/StereoDisparity/Right.flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
@@ -38,72 +38,72 @@ int main()
 		fliSrcImage2.SelectPage(0);
 
 		// Source 이미지 뷰 생성 // Create the source image view
-		if((eResult = viewImageSrc.Create(100, 0, 548, 448)).IsFail())
+		if((res = viewImageSrc.Create(100, 0, 548, 448)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the source image view
-		if((eResult = viewImageSrc.SetImagePtr(&fliSrcImage)).IsFail())
+		if((res = viewImageSrc.SetImagePtr(&fliSrcImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Source 이미지 2 뷰 생성 // Create the source image view 2
-		if((eResult = viewImageSrc2.Create(548, 0, 996, 448)).IsFail())
+		if((res = viewImageSrc2.Create(548, 0, 996, 448)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 2 뷰에 이미지를 디스플레이 // Display the image in the source image view 2
-		if((eResult = viewImageSrc2.SetImagePtr(&fliSrcImage2)).IsFail())
+		if((res = viewImageSrc2.SetImagePtr(&fliSrcImage2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create the destination image view
-		if((eResult = viewImageDst.Create(100, 448, 548, 896)).IsFail())
+		if((res = viewImageDst.Create(100, 448, 548, 896)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-		if((eResult = viewImageDst.SetImagePtr(&fliDstImage)).IsFail())
+		if((res = viewImageDst.SetImagePtr(&fliDstImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 3D 이미지 뷰 생성 // Create the destination 3D image view
-		if((eResult = view3DDst.Create(548, 448, 996, 896)).IsFail())
+		if((res = view3DDst.Create(548, 448, 996, 896)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult = viewImageSrc.SynchronizeWindow(&viewImageSrc2)).IsFail())
+		if((res = viewImageSrc.SynchronizeWindow(&viewImageSrc2)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult = viewImageSrc.SynchronizeWindow(&viewImageDst)).IsFail())
+		if((res = viewImageSrc.SynchronizeWindow(&viewImageDst)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// 두 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two view windows
-		if((eResult = viewImageSrc.SynchronizeWindow(&view3DDst)).IsFail())
+		if((res = viewImageSrc.SynchronizeWindow(&view3DDst)).IsFail())
 		{
-			ErrorPrint(eResult,L"Failed to synchronize window.\n");
+			ErrorPrint(res,L"Failed to synchronize window.\n");
 			break;
 		}
 
@@ -119,7 +119,7 @@ int main()
 		disparity.SetSourceImage2(fliSrcImage2);
 		// Destination 이미지 설정 // Set the destination image
 		disparity.SetDestinationImage(fliDstImage);
-		// 결과 Texture 이미지 설정 // Set the eResult texture image
+		// 결과 Texture 이미지 설정 // Set the res texture image
 		disparity.SetResultTextureImage(&fliTxtImage);
 		// 최소 허용 Disparity 값 설정 // Set the minimum allowed disparity value
 		disparity.SetMinimumDisparity(0);
@@ -139,16 +139,16 @@ int main()
 		disparity.SetMedianKernelSize(3);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = disparity.Execute()).IsFail())
+		if((res = disparity.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute algorithm.\n");
+			ErrorPrint(res, L"Failed to execute algorithm.\n");
 			break;
 		}
 
 		// Destination 이미지가 새로 생성됨으로 Zoom fit 을 통해 디스플레이 되는 이미지 배율을 화면에 맞춰준다. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
-		if((eResult = viewImageDst.ZoomFit()).IsFail())
+		if((res = viewImageDst.ZoomFit()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to zoom fit of the image view.\n");
+			ErrorPrint(res, L"Failed to zoom fit of the image view.\n");
 			break;
 		}
 
@@ -170,35 +170,35 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if((eResult = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text.\n");
+			ErrorPrint(res, L"Failed to draw text.\n");
 			break;
 		}
 
-		if((eResult = layerSrc2.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 2", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerSrc2.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 2", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text.\n");
+			ErrorPrint(res, L"Failed to draw text.\n");
 			break;
 		}
 
-		if((eResult = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text.\n");
+			ErrorPrint(res, L"Failed to draw text.\n");
 			break;
 		}
 
 		// 3D 이미지 뷰에 Height Map (Destination Image) 이미지를 디스플레이 // Display the Height Map (Destination Image) on the 3D image view
-		if((eResult = view3DDst.SetHeightMap(&fliDstImage)).IsFail())
+		if((res = view3DDst.SetHeightMap(&fliDstImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 3D 이미지 뷰에 Texture 이미지를 디스플레이 // Display the texture image on the 3D image view
-		if((eResult = view3DDst.SetTexture(&fliTxtImage)).IsFail())
+		if((res = view3DDst.SetTexture(&fliTxtImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 

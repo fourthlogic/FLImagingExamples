@@ -14,25 +14,25 @@ int main()
 
 	do
 	{
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 		// 이미지 로드 // Load image
-		if(IsFail(eResult = fliImage.Load(L"../../ExampleImages/UnifiedDataCode/FLImaging.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/UnifiedDataCode/FLImaging.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage.Create(400, 0, 1424, 768)))
+		if(IsFail(res = viewImage.Create(400, 0, 1424, 768)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if(IsFail(eResult = viewImage.SetImagePtr(&fliImage)))
+		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -44,9 +44,9 @@ int main()
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 
-		if(IsFail(eResult = udcDecoder.Execute()))
+		if(IsFail(res = udcDecoder.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute UnifiedData code decoder.");
+			ErrorPrint(res, "Failed to execute UnifiedData code decoder.");
 
 			break;
 		}
@@ -74,16 +74,16 @@ int main()
 			CFLQuadD flqdRegion;
 
 			// UnifiedData Code Decoder 결과들 중 Data Region 을 얻어옴
-			if(IsFail(eResult = udcDecoder.GetResultDataRegion(i, flqdRegion)))
+			if(IsFail(res = udcDecoder.GetResultDataRegion(i, flqdRegion)))
 			{
-				ErrorPrint(eResult, "Failed to get data region from the UnifiedData code decoder object.");
+				ErrorPrint(res, "Failed to get data region from the UnifiedData code decoder object.");
 				continue;
 			}
 		
 			// UnifiedData Code 의 영역을 디스플레이 한다.
-			if(IsFail(eResult = layer.DrawFigureImage(&flqdRegion, LIME, 2)))
+			if(IsFail(res = layer.DrawFigureImage(&flqdRegion, LIME, 2)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure object on the image view.\n");
+				ErrorPrint(res, "Failed to draw figure object on the image view.\n");
 				continue;
 			}
 
@@ -91,9 +91,9 @@ int main()
 			CFLString<wchar_t> flstrDecoded;
 
 			// UnifiedData Code Decoder 결과들 중 Decoded String 을 얻어옴
-			if(IsFail(eResult = udcDecoder.GetResultDecodedString(i, flstrDecoded)))
+			if(IsFail(res = udcDecoder.GetResultDecodedString(i, flstrDecoded)))
 			{
-				ErrorPrint(eResult, "Failed to get decoded string from the UnifiedData code decoder object.");
+				ErrorPrint(res, "Failed to get decoded string from the UnifiedData code decoder object.");
 				continue;
 			}
 
@@ -110,9 +110,9 @@ int main()
 			//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 			// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 			//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-			if(IsFail(eResult = layer.DrawTextImage(&flplPos, flstrDecoded, CYAN, BLACK, 12, false, 0., EGUIViewImageTextAlignment_LEFT_TOP)))
+			if(IsFail(res = layer.DrawTextImage(&flplPos, flstrDecoded, CYAN, BLACK, 12, false, 0., EGUIViewImageTextAlignment_LEFT_TOP)))
 			{
-				ErrorPrint(eResult, "Failed to draw string object on the image view.\n");
+				ErrorPrint(res, "Failed to draw string object on the image view.\n");
 				continue;
 			}
 		}

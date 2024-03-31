@@ -17,112 +17,112 @@ int main()
 	do
 	{
 		// 동작 결과 // operation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliSourceImage[0].Load(L"../../ExampleImages/ChannelIntegrator/Valley1.flif")))
+		if(IsFail(res = fliSourceImage[0].Load(L"../../ExampleImages/ChannelIntegrator/Valley1.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(eResult = fliSourceImage[1].Load(L"../../ExampleImages/ChannelIntegrator/Valley2.flif")))
+		if(IsFail(res = fliSourceImage[1].Load(L"../../ExampleImages/ChannelIntegrator/Valley2.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(eResult = fliSourceImage[2].Load(L"../../ExampleImages/ChannelIntegrator/Valley3.flif")))
+		if(IsFail(res = fliSourceImage[2].Load(L"../../ExampleImages/ChannelIntegrator/Valley3.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImageSource[0].Create(100, 0, 100 + 440, 340)))
+		if(IsFail(res = viewImageSource[0].Create(100, 0, 100 + 440, 340)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource[1].Create(100 + 440, 0, 100 + 440 * 2, 340)))
+		if(IsFail(res = viewImageSource[1].Create(100 + 440, 0, 100 + 440 * 2, 340)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource[2].Create(100 + 440 * 2, 0, 100 + 440 * 3, 340)))
+		if(IsFail(res = viewImageSource[2].Create(100 + 440 * 2, 0, 100 + 440 * 3, 340)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageDestination.Create(100 + 440 * 3, 0, 100 + 440 * 4, 340)))
+		if(IsFail(res = viewImageDestination.Create(100 + 440 * 3, 0, 100 + 440 * 4, 340)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views. 
-		if(IsFail(eResult = viewImageSource[0].SynchronizePointOfView(&viewImageSource[1])))
+		if(IsFail(res = viewImageSource[0].SynchronizePointOfView(&viewImageSource[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource[1].SynchronizePointOfView(&viewImageSource[2])))
+		if(IsFail(res = viewImageSource[1].SynchronizePointOfView(&viewImageSource[2])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource[2].SynchronizePointOfView(&viewImageDestination)))
+		if(IsFail(res = viewImageSource[2].SynchronizePointOfView(&viewImageDestination)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImageSource[0].SynchronizeWindow(&viewImageSource[1])))
+		if(IsFail(res = viewImageSource[0].SynchronizeWindow(&viewImageSource[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource[1].SynchronizeWindow(&viewImageSource[2])))
+		if(IsFail(res = viewImageSource[1].SynchronizeWindow(&viewImageSource[2])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource[2].SynchronizeWindow(&viewImageDestination)))
+		if(IsFail(res = viewImageSource[2].SynchronizeWindow(&viewImageDestination)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-		if(IsFail(eResult = viewImageSource[0].SetImagePtr(&fliSourceImage[0])))
+		if(IsFail(res = viewImageSource[0].SetImagePtr(&fliSourceImage[0])))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource[1].SetImagePtr(&fliSourceImage[1])))
+		if(IsFail(res = viewImageSource[1].SetImagePtr(&fliSourceImage[1])))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource[2].SetImagePtr(&fliSourceImage[2])))
+		if(IsFail(res = viewImageSource[2].SetImagePtr(&fliSourceImage[2])))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageDestination.SetImagePtr(&fliDestinationImage)))
+		if(IsFail(res = viewImageDestination.SetImagePtr(&fliDestinationImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -152,9 +152,9 @@ int main()
 		ChannelIntegrator.SetDestinationImage(fliDestinationImage);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((eResult = ChannelIntegrator.Execute()).IsFail())
+		if((res = ChannelIntegrator.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Channel Integrator.");
+			ErrorPrint(res, "Failed to execute Channel Integrator.");
 			break;
 		}
 
@@ -178,24 +178,24 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = layerSource[0].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 1", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource[0].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 1", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
-		if(IsFail(eResult = layerSource[1].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 2", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource[1].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 2", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
-		if(IsFail(eResult = layerSource[2].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 3", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource[2].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 3", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
-		if(IsFail(eResult = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 1 + 2 + 3", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image 1 + 2 + 3", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
@@ -206,9 +206,9 @@ int main()
 		viewImageDestination.Invalidate(true);
 
 		// Destination 이미지가 새로 생성됨으로 Zoom fit 을 통해 디스플레이 되는 이미지 배율을 화면에 맞춰준다. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
-		if((eResult = viewImageDestination.ZoomFit()).IsFail())
+		if((res = viewImageDestination.ZoomFit()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to zoom fit\n");
+			ErrorPrint(res, "Failed to zoom fit\n");
 			break;
 		}
 

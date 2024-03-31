@@ -12,52 +12,52 @@ int main()
 	CGUIViewImageWrap viewImage[3];
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// Source Coordinate View 생성 // Create Source Coordinate View
-		if(IsFail(eResult = viewImage[0].Create(200, 0, 700, 500)))
+		if(IsFail(res = viewImage[0].Create(200, 0, 700, 500)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination Coordinate View 생성 // Create Destination Coordinate View
-		if(IsFail(eResult = viewImage[1].Create(700, 0, 1200, 500)))
+		if(IsFail(res = viewImage[1].Create(700, 0, 1200, 500)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Restore Coordinate View 생성 // Create Restore Coordinate View
-		if(IsFail(eResult = viewImage[2].Create(1200, 0, 1700, 500)))
+		if(IsFail(res = viewImage[2].Create(1200, 0, 1700, 500)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 각 이미지 뷰의 시점을 동기화 한다. // Synchronize the viewpoint of each image view.
-		if(IsFail(eResult = viewImage[0].SynchronizePointOfView(&viewImage[1])))
+		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
-		if(IsFail(eResult = viewImage[1].SynchronizePointOfView(&viewImage[2])))
+		if(IsFail(res = viewImage[1].SynchronizePointOfView(&viewImage[2])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 각 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the position of each image view window
-		if(IsFail(eResult = viewImage[0].SynchronizeWindow(&viewImage[1])))
+		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
-		if(IsFail(eResult = viewImage[1].SynchronizeWindow(&viewImage[2])))
+		if(IsFail(res = viewImage[1].SynchronizeWindow(&viewImage[2])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
@@ -95,7 +95,7 @@ int main()
 		// If there is previously saved mapping data, load the data.
 		// Since the file will be created from the second execution, the setting process below will be skipped.
 		// If you want to test continuously creating new data, you can delete one line of the if statement related to the Load function below.
-		if(IsFail(eResult = lczm.Load(L"MappingData.fllcz")))
+		if(IsFail(res = lczm.Load(L"MappingData.fllcz")))
 		{
 			// 그리드를 (5,5)로 초기화하면서, 가상 확장 영역을 3으로 지정
 			// 확장영역 밖으로 값을 변환하려고 하면 값이 나오지 않기때문에 적절한 크기로 확장을 해야 하며,
@@ -131,9 +131,9 @@ int main()
 			// 반드시 이 함수를 호출해서 결과가 OK가 나와야 매핑 사용이 가능합니다.
 			// We proceed with the finishing work so that the set data can be mapped.
 			// You must call this function and the result must be OK to use the mapping.
-			if(IsFail(eResult = lczm.Finish()))
+			if(IsFail(res = lczm.Finish()))
 			{
-				ErrorPrint(eResult, "Failed to finalize\n");
+				ErrorPrint(res, "Failed to finalize\n");
 				break;
 			}
 
@@ -141,9 +141,9 @@ int main()
 			// 추후 Load함수를 통해 로드 시 위의 Initialize -> Set -> Finalize 과정을 생략할 수 있습니다.
 			// If Finalize is completed, it can be saved to a file through Save.
 			// When loading through the Load function later, the above Initialize -> Set -> Finalize process can be omitted.
-			if(IsFail(eResult = lczm.Save(L"MappingData.fllcz")))
+			if(IsFail(res = lczm.Save(L"MappingData.fllcz")))
 			{
-				ErrorPrint(eResult, "Failed to save mapping data\n");
+				ErrorPrint(res, "Failed to save mapping data\n");
 				break;
 			}
 		}
@@ -168,16 +168,16 @@ int main()
 					for(int32_t i = 0; i < 3; ++i)
 					{
 						// Target Vertex를 각 View Layer에 Drawing // Drawing the target vertex to each view layer
-						if(IsFail(eResult = layer[i].DrawFigureImage(&flpTarget, BLUE, 3)))
+						if(IsFail(res = layer[i].DrawFigureImage(&flpTarget, BLUE, 3)))
 						{
-							ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+							ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 							break;
 						}
 
 						// Source Vertex를 각 View Layer에 Drawing // Drawing source vertex to each view layer
-						if(IsFail(eResult = layer[i].DrawFigureImage(&flpSource, RED, 3)))
+						if(IsFail(res = layer[i].DrawFigureImage(&flpSource, RED, 3)))
 						{
-							ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+							ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 							break;
 						}
 					}
@@ -206,9 +206,9 @@ int main()
 				flpSource.x = (x / f64Slice);
 
 				// 연산을 수행할 Source 좌표를 View에 Display // Display the source coordinates to perform the operation on the View
-				if(IsFail(eResult = layer[0].DrawFigureImage(&flpSource, YELLOW)))
+				if(IsFail(res = layer[0].DrawFigureImage(&flpSource, YELLOW)))
 				{
-					ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+					ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 					break;
 				}
 
@@ -216,9 +216,9 @@ int main()
 				if(IsOK(lczm.ConvertSourceToTarget(flpSource, flpTarget)))
 				{
 					// Source 좌표에서 Target 좌표로 변환된 좌표를 View에 Display // Display coordinates converted from source coordinates to target coordinates on the View
-					if(IsFail(eResult = layer[1].DrawFigureImage(&flpTarget, LIME)))
+					if(IsFail(res = layer[1].DrawFigureImage(&flpTarget, LIME)))
 					{
-						ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+						ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 						break;
 					}
 
@@ -229,9 +229,9 @@ int main()
 						printf("Source (%.03lf,%.03lf) -> Target (%.03lf,%.03lf) -> Source (%.03lf,%.03lf)\n", flpSource.x, flpSource.y, flpTarget.x, flpTarget.y, flpConvertedSource.x, flpConvertedSource.y);
 
 						// 변환된 좌표를 View에 Display // Display the converted coordinates in the View
-						if(IsFail(eResult = layer[2].DrawFigureImage(&flpConvertedSource, CYAN)))
+						if(IsFail(res = layer[2].DrawFigureImage(&flpConvertedSource, CYAN)))
 						{
-							ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+							ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 							break;
 						}
 					}

@@ -29,76 +29,76 @@ int main()
 
 	/// 이미지 뷰 선언 // Declare the image view
 	CGUIViewImageWrap viewImageSource;
-	CGUIViewImageWrap viewImageResultLearn;
-	CGUIViewImageWrap viewImageResultValidation;
+	CGUIViewImageWrap viewImagresLearn;
+	CGUIViewImageWrap viewImagresValidation;
 
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliSourceImage.Load(L"../../ExampleImages/SemanticSegmentation/Train.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/SemanticSegmentation/Train.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Creates image view
-		if(IsFail(eResult = viewImageSource.Create(100, 0, 600, 500)))
+		if(IsFail(res = viewImageSource.Create(100, 0, 600, 500)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageResultLearn.Create(600, 0, 1100, 500)))
+		if(IsFail(res = viewImagresLearn.Create(600, 0, 1100, 500)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageResultValidation.Create(1100, 0, 1700, 500)))
+		if(IsFail(res = viewImagresValidation.Create(1100, 0, 1700, 500)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 세 개의 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the three image view windows
-		if(IsFail(eResult = viewImageSource.SynchronizeWindow(&viewImageResultLearn)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagresLearn)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource.SynchronizeWindow(&viewImageResultValidation)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagresValidation)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the imageview
-		if(IsFail(eResult = viewImageSource.SetImagePtr(&fliSourceImage)))
+		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageResultLearn.SetImagePtr(&fliResultLearnImage)))
+		if(IsFail(res = viewImagresLearn.SetImagePtr(&fliResultLearnImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageResultValidation.SetImagePtr(&fliResultValidationImage)))
+		if(IsFail(res = viewImagresValidation.SetImagePtr(&fliResultValidationImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerLearn = viewImageSource.GetLayer(0);
-		CGUIViewImageLayerWrap layerValidation = viewImageResultLearn.GetLayer(0);
-		CGUIViewImageLayerWrap layerResultLabel = viewImageResultValidation.GetLayer(0);
+		CGUIViewImageLayerWrap layerValidation = viewImagresLearn.GetLayer(0);
+		CGUIViewImageLayerWrap layerResultLabel = viewImagresValidation.GetLayer(0);
 
 		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 		layerLearn.Clear();
@@ -111,28 +111,28 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"SOURCE", RED, BLACK, 30)))
+		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"SOURCE", RED, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerValidation.DrawTextCanvas(&CFLPointD(0, 0), L"TRAIN(EXTRACTED (4/6))", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerValidation.DrawTextCanvas(&CFLPointD(0, 0), L"TRAIN(EXTRACTED (4/6))", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerResultLabel.DrawTextCanvas(&CFLPointD(0, 0), L"VALIDATION(EXTRACTED (2/6))", GREEN, BLACK, 30)))
+		if(IsFail(res = layerResultLabel.DrawTextCanvas(&CFLPointD(0, 0), L"VALIDATION(EXTRACTED (2/6))", GREEN, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰를 갱신 // Update the image view.
 		viewImageSource.RedrawWindow();
-		viewImageResultLearn.RedrawWindow();
-		viewImageResultValidation.RedrawWindow();
+		viewImagresLearn.RedrawWindow();
+		viewImagresValidation.RedrawWindow();
 		
 		// Validation Image 비율 설정 // Set ratio of validation image
 		float f32Ratio = 0.4f;
@@ -142,34 +142,34 @@ int main()
 		int64_t i64MinimumClassIncluded = 2;
 
 		// Validation Extractor 실행 // Validaiton Exctractor Execute 
-		if(IsFail(eResult = CValidationImageExtractorDL::Extract(&fliSourceImage, f32Ratio, eDatasetType, &fliResultLearnImage, &fliResultValidationImage, i64MinimumClassIncluded)))
+		if(IsFail(res = CValidationImageExtractorDL::Extract(&fliSourceImage, f32Ratio, eDatasetType, &fliResultLearnImage, &fliResultValidationImage, i64MinimumClassIncluded)))
 		{
-			ErrorPrint(eResult, "Failed to Process\n");
+			ErrorPrint(res, "Failed to Process\n");
 			break;
 		}
 
 		// 세 개의 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the three image view windows
-		if(IsFail(eResult = viewImageSource.SynchronizeWindow(&viewImageResultLearn)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagresLearn)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageSource.SynchronizeWindow(&viewImageResultValidation)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagresValidation)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
 		// 이미지 뷰를 갱신 // Update the image view.
-		viewImageResultLearn.ZoomFit();
-		viewImageResultValidation.ZoomFit();
+		viewImagresLearn.ZoomFit();
+		viewImagresValidation.ZoomFit();
 		viewImageSource.RedrawWindow();
-		viewImageResultLearn.RedrawWindow();
-		viewImageResultValidation.RedrawWindow();
+		viewImagresLearn.RedrawWindow();
+		viewImagresValidation.RedrawWindow();
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
-		while(viewImageSource.IsAvailable() && viewImageResultLearn.IsAvailable() && viewImageResultValidation.IsAvailable())
+		while(viewImageSource.IsAvailable() && viewImagresLearn.IsAvailable() && viewImagresValidation.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);

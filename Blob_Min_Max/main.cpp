@@ -12,31 +12,31 @@ int main()
 
 	do
 	{
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 		// 이미지 로드 // Load image
-		if(IsFail(eResult = fliImage.Load(L"../../ExampleImages/Blob/AlignBall.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Blob/AlignBall.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewSourceImage.Create(200, 0, 812, 512)))
+		if(IsFail(res = viewSourceImage.Create(200, 0, 812, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewSourceImage.SetImagePtr(&fliImage)))
+		if(IsFail(res = viewSourceImage.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Image 크기에 맞게 view의 크기를 조정 // Zoom the view to fit the image size
-		if(IsFail(eResult = viewSourceImage.ZoomFit()))
+		if(IsFail(res = viewSourceImage.ZoomFit()))
 		{
-			ErrorPrint(eResult, "Failed to zoom fit\n");
+			ErrorPrint(res, "Failed to zoom fit\n");
 			break;
 		}
 
@@ -55,25 +55,25 @@ int main()
 		blob.SetThresholdMode(EThresholdMode_Single);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = blob.Execute()))
+		if(IsFail(res = blob.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute Blob.");
+			ErrorPrint(res, "Failed to execute Blob.");
 			break;
 		}
 
 		// 결과 객체들 중 해당되는 조건을 가진 객체를 제거
 
 		// 20보다 작거나 큰 장변 길이를 가진 객체들을 제거
-		if(IsFail(eResult = blob.Filter(CBlob::EFilterItem_MinimumEnclosingRectangleLongSideLength, 20, ELogicalCondition_LessEqual)))
+		if(IsFail(res = blob.Filter(CBlob::EFilterItem_MinimumEnclosingRectangleLongSideLength, 20, ELogicalCondition_LessEqual)))
 		{
-			ErrorPrint(eResult, "Blob filtering algorithm error occurs.");
+			ErrorPrint(res, "Blob filtering algorithm error occurs.");
 			break;
 		}
 
 		// circularity 가 0.9보다 작은 객체들을 제거
-		if(IsFail(eResult = blob.Filter(CBlob::EFilterItem_Circularity, 0.9, ELogicalCondition_Less)))
+		if(IsFail(res = blob.Filter(CBlob::EFilterItem_Circularity, 0.9, ELogicalCondition_Less)))
 		{
-			ErrorPrint(eResult, "Blob filtering algorithm error occurred.");
+			ErrorPrint(res, "Blob filtering algorithm error occurred.");
 			break;
 		}
 
@@ -91,9 +91,9 @@ int main()
 		CFLFigureArray flfaContour;
 
 		// Blob 결과들 중 Contour 를 얻어옴
-		if(IsFail(eResult = blob.GetResultContours(flfaContour)))
+		if(IsFail(res = blob.GetResultContours(flfaContour)))
 		{
-			ErrorPrint(eResult, "Failed to get boundary rects from the Blob object.");
+			ErrorPrint(res, "Failed to get boundary rects from the Blob object.");
 			break;
 		}
 
@@ -106,9 +106,9 @@ int main()
 
 			CMultiVar<double> mvMin;
 
-			if(IsFail(eResult = imgStatistics.GetMin(mvMin)))
+			if(IsFail(res = imgStatistics.GetMin(mvMin)))
 			{
-				ErrorPrint(eResult, "Failed to get Min Value from the Blob object.");
+				ErrorPrint(res, "Failed to get Min Value from the Blob object.");
 				break;
 			}
 
@@ -118,9 +118,9 @@ int main()
 
 			CMultiVar<double> mvMax;
 
-			if(IsFail(eResult = imgStatistics.GetMax(mvMax)))
+			if(IsFail(res = imgStatistics.GetMax(mvMax)))
 			{
-				ErrorPrint(eResult, "Failed to get Max Value from the Blob object.");
+				ErrorPrint(res, "Failed to get Max Value from the Blob object.");
 				break;
 			}
 
@@ -137,9 +137,9 @@ int main()
 		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 		layerSource.Clear();
 
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(), L"Source", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(), L"Source", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text on the image view.\n");
+			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
 		}
 
@@ -148,9 +148,9 @@ int main()
 		// 맨 마지막 두개의 파라미터는 불투명도 값이고 1일경우 불투명, 0일경우 완전 투명을 의미한다. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
 		// 여기서 0.25이므로 옅은 반투명 상태라고 볼 수 있다.
 		// 파라미터 순서 : 레이어 -> Figure 객체 -> 선 색 -> 선 두께 -> 면 색 -> 펜 스타일 -> 선 알파값(불투명도) -> 면 알파값 (불투명도) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
-		if(IsFail(eResult = layerSource.DrawFigureImage(&flfaContour, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
+		if(IsFail(res = layerSource.DrawFigureImage(&flfaContour, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
 		{
-			ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+			ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 			break;
 		}
 

@@ -18,7 +18,7 @@ int main() // Tiling
 	CGUIViewImageWrap viewImageDst;
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
@@ -29,9 +29,9 @@ int main() // Tiling
 
 			flsFileName.Format(L"TilingSourceImage%d.flif", i);
 
-			if(IsFail(eResult = fliSrcImages[i].Load(L"../../ExampleImages/Tiling/" + flsFileName)))
+			if(IsFail(res = fliSrcImages[i].Load(L"../../ExampleImages/Tiling/" + flsFileName)))
 			{
-				ErrorPrint(eResult, "Failed to load the image file.\n");
+				ErrorPrint(res, "Failed to load the image file.\n");
 				break;
 			}
 		}		
@@ -45,9 +45,9 @@ int main() // Tiling
 		}
 
 		// Destination 이미지 로드 // Load the destination image
-		if(IsFail(eResult = fliDstImage.Load(L"../../ExampleImages/Tiling/TilingDestinationImage.flif")))
+		if(IsFail(res = fliDstImage.Load(L"../../ExampleImages/Tiling/TilingDestinationImage.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
@@ -56,17 +56,17 @@ int main() // Tiling
 		{
 			if(i < 2)
 			{
-				if(IsFail(eResult = arrViewImageSrc[i].Create(100 + 300 * i, 0, 400 + 300 * i, 300)))
+				if(IsFail(res = arrViewImageSrc[i].Create(100 + 300 * i, 0, 400 + 300 * i, 300)))
 				{
-					ErrorPrint(eResult, "Failed to create the image view.\n");
+					ErrorPrint(res, "Failed to create the image view.\n");
 					break;
 				}
 			}
 			else
 			{
-				if(IsFail(eResult = arrViewImageSrc[i].Create(100 + 300 * (i - 2), 300, 400 + 300 * (i - 2), 600)))
+				if(IsFail(res = arrViewImageSrc[i].Create(100 + 300 * (i - 2), 300, 400 + 300 * (i - 2), 600)))
 				{
-					ErrorPrint(eResult, "Failed to create the image view.\n");
+					ErrorPrint(res, "Failed to create the image view.\n");
 					break;
 				}
 			}
@@ -80,40 +80,40 @@ int main() // Tiling
 		{
 			// 얕은 복사된 해당 페이지를 선택한 이미지를 뷰에 디스플레이
 			// Display the selected image of the shallow-copied page in the view
-			if(IsFail(eResult = arrViewImageSrc[i].SetImagePtr(&fliSrcImages[i])))
+			if(IsFail(res = arrViewImageSrc[i].SetImagePtr(&fliSrcImages[i])))
 			{
-				ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				break;
 			}
 		}
 
 		// Destination 이미지 뷰 생성 // Create the destination image view
-		if(IsFail(eResult = viewImageDst.Create(912, 0, 1424, 612)))
+		if(IsFail(res = viewImageDst.Create(912, 0, 1424, 612)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-		if(IsFail(eResult = viewImageDst.SetImagePtr(&fliDstImage)))
+		if(IsFail(res = viewImageDst.SetImagePtr(&fliDstImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰 윈도우의 위치를 맞춤 // Align the position of the image view window
 		for(int32_t i = 1; i< i32SrcImageCount; ++i)
 		{
-			if(IsFail(eResult = arrViewImageSrc[0].SynchronizeWindow(&arrViewImageSrc[i])))
+			if(IsFail(res = arrViewImageSrc[0].SynchronizeWindow(&arrViewImageSrc[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize window.\n");
+				ErrorPrint(res, "Failed to synchronize window.\n");
 				break;
 			}
 		}
 
-		if(IsFail(eResult = arrViewImageSrc[0].SynchronizeWindow(&viewImageDst)))
+		if(IsFail(res = arrViewImageSrc[0].SynchronizeWindow(&viewImageDst)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window.\n");
+			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 		
@@ -122,31 +122,31 @@ int main() // Tiling
 		
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(0);
-		fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
-		fliSrcImages[0].PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
+		fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
+		fliSrcImages[0].PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 
 		flRect = CFLRectD(260, 135, 415, 440);
 		flRect.SetName(L"1");
-		fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
-		fliSrcImages[0].PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
+		fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
+		fliSrcImages[0].PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 
 		flRect = CFLRectD(280, 250, 480, 480);
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(1);
-		fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
-		fliSrcImages[1].PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
+		fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
+		fliSrcImages[1].PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 
 		flRect = CFLRectD(110, 150, 350, 440);
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(2);
-		fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
-		fliSrcImages[2].PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
+		fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
+		fliSrcImages[2].PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 
 		flRect = CFLRectD(220, 230, 470, 450);
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(3);
-		fliSrcImage.PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
-		fliSrcImages[3].PushBackFigure(CFigureUtils::ConvertFigureObjectToString(flRect));
+		fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
+		fliSrcImages[3].PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 
 		// Destination 이미지에 ROI 추가 // Add ROI to destination image
 		fliDstImage.PushBackFigure(L"D(79.292035, 67.964602, 292.247788, 267.327434, INFO[NAME(0_0)])");
@@ -164,16 +164,16 @@ int main() // Tiling
 		tiling.SetDestinationImage(fliDstImage);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = tiling.Execute()))
+		if(IsFail(res = tiling.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute tiling.");
+			ErrorPrint(res, "Failed to execute tiling.");
 			break;
 		}
 
 		// Destination 이미지가 새로 생성됨으로 Zoom fit 을 통해 디스플레이 되는 이미지 배율을 화면에 맞춰준다. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
-		if(IsFail(eResult = viewImageDst.ZoomFit()))
+		if(IsFail(res = viewImageDst.ZoomFit()))
 		{
-			ErrorPrint(eResult, "Failed to zoom fit of the image view.\n");
+			ErrorPrint(res, "Failed to zoom fit of the image view.\n");
 			break;
 		}
 
@@ -205,16 +205,16 @@ int main() // Tiling
 			CFLString<wchar_t> fls;
 			fls.Format(L"Source Image #%d", i);
 
-			if(IsFail(eResult = layerSrc[i].DrawTextCanvas(&CFLPointD(0, 0), fls, YELLOW, BLACK, 20)))
+			if(IsFail(res = layerSrc[i].DrawTextCanvas(&CFLPointD(0, 0), fls, YELLOW, BLACK, 20)))
 			{
-				ErrorPrint(eResult, "Failed to draw text\n");
+				ErrorPrint(res, "Failed to draw text\n");
 				break;
 			}
 		}
 
-		if(IsFail(eResult = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

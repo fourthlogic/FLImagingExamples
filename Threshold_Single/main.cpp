@@ -17,52 +17,52 @@ int main()
 	do
 	{
 		// 동작 결과 // operation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliISrcImage.Load(L"../../ExampleImages/Threshold/Mountain.flif")))
+		if(IsFail(res = fliISrcImage.Load(L"../../ExampleImages/Threshold/Mountain.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage1.Create(300, 0, 300 + 512, 384)))
+		if(IsFail(res = viewImage1.Create(300, 0, 300 + 512, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage2.Create(300 + 512, 0, 300 + 512 * 2, 384)))
+		if(IsFail(res = viewImage2.Create(300 + 512, 0, 300 + 512 * 2, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-		if(IsFail(eResult = viewImage1.SetImagePtr(&fliISrcImage)))
+		if(IsFail(res = viewImage1.SetImagePtr(&fliISrcImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage2.SetImagePtr(&fliIDstImage)))
+		if(IsFail(res = viewImage2.SetImagePtr(&fliIDstImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views. 
-		if(IsFail(eResult = viewImage1.SynchronizePointOfView(&viewImage2)))
+		if(IsFail(res = viewImage1.SynchronizePointOfView(&viewImage2)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImage1.SynchronizeWindow(&viewImage2)))
+		if(IsFail(res = viewImage1.SynchronizeWindow(&viewImage2)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window\n");
+			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
@@ -95,9 +95,9 @@ int main()
 		threshold.SetLogicalCondition(mvCondition);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((eResult = threshold.Execute()).IsFail())
+		if((res = threshold.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute Absolute Threshold.");
+			ErrorPrint(res, "Failed to execute Absolute Threshold.");
 			break;
 		}
 
@@ -110,9 +110,9 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(eResult = layer.DrawTextCanvas(&CFLPointD(0, 0), L"100 < threshold", YELLOW, BLACK, 30, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false)))
+		if(IsFail(res = layer.DrawTextCanvas(&CFLPointD(0, 0), L"100 < threshold", YELLOW, BLACK, 30, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false)))
 		{
-			ErrorPrint(eResult, "Failed to draw text on the image view.\n");
+			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
 		}
 

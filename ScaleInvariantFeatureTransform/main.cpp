@@ -13,28 +13,28 @@ int main()
 	CGUIViewImageWrap viewImage;
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 로드 // Load image
-		if(IsFail(eResult = fliImage.Load(L"../../ExampleImages/ScaleInvariantFeatureTransform/Chip.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/ScaleInvariantFeatureTransform/Chip.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage.Create(400, 0, 1168, 540)))
+		if(IsFail(res = viewImage.Create(400, 0, 1168, 540)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if(IsFail(eResult = viewImage.SetImagePtr(&fliImage)))
+		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -49,44 +49,44 @@ int main()
 		CScaleInvariantFeatureTransform SIFT;
 
 		// 처리할 이미지 설정
-		if(IsFail(eResult = SIFT.SetSourceImage(fliImage)))
+		if(IsFail(res = SIFT.SetSourceImage(fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set Source Image.");
+			ErrorPrint(res, "Failed to set Source Image.");
 			break;
 		}
 
 		// 특징점을 추출할 Octave Layer 수를 설정
-		if(IsFail(eResult = SIFT.SetOctaveLayers(3)))
+		if(IsFail(res = SIFT.SetOctaveLayers(3)))
 		{
-			ErrorPrint(eResult, "Failed to set octave layers.");
+			ErrorPrint(res, "Failed to set octave layers.");
 			break;
 		}
 
 		// 추출할 특징점의 대비 임계값 설정
-		if(IsFail(eResult = SIFT.SetContrastThreshold(0.04f)))
+		if(IsFail(res = SIFT.SetContrastThreshold(0.04f)))
 		{
-			ErrorPrint(eResult, "Failed to set contrast threshold.");
+			ErrorPrint(res, "Failed to set contrast threshold.");
 			break;
 		}
 
 		// 추출할 특징점의 에지 임계값 설정
-		if(IsFail(eResult = SIFT.SetEdgeThreshold(10.f)))
+		if(IsFail(res = SIFT.SetEdgeThreshold(10.f)))
 		{
-			ErrorPrint(eResult, "Failed to set edge threshold.");
+			ErrorPrint(res, "Failed to set edge threshold.");
 			break;
 		}
 
 		// SIFT의 파라미터 Sigma 설정
-		if(IsFail(eResult = SIFT.SetSigma(1.6f)))
+		if(IsFail(res = SIFT.SetSigma(1.6f)))
 		{
-			ErrorPrint(eResult, "Failed to set param sigma.");
+			ErrorPrint(res, "Failed to set param sigma.");
 			break;
 		}
 
 		// SIFT 실행 함수
-		if(IsFail(eResult = SIFT.Execute()))
+		if(IsFail(res = SIFT.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute.");
+			ErrorPrint(res, "Failed to execute.");
 			break;
 		}
 
@@ -94,9 +94,9 @@ int main()
 		Foundation::CFLPointArray flfaResultPoints;
 
 		// 키 포인트 점을 검출
-		if(IsFail(eResult = SIFT.GetResultPoints(&flfaResultPoints)))
+		if(IsFail(res = SIFT.GetResultPoints(&flfaResultPoints)))
 		{
-			ErrorPrint(eResult, "Failed to get result.");
+			ErrorPrint(res, "Failed to get result.");
 			break;
 		}
 

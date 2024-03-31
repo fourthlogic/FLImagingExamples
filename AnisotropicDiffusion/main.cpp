@@ -21,14 +21,14 @@ int main()
 	CGUIViewImageWrap viewImage[ETypeCount];
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((eResult = arrFliImage[EType_Source].Load(L"../../ExampleImages/AnisotropicDiffusion/Source.flif")).IsFail())
+		if((res = arrFliImage[EType_Source].Load(L"../../ExampleImages/AnisotropicDiffusion/Source.flif")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
@@ -37,9 +37,9 @@ int main()
 		for(int32_t i = EType_Destination1; i < ETypeCount; ++i)
 		{
 			// Destination 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination image as same as source image
-			if(IsFail(eResult = arrFliImage[i].Assign(arrFliImage[EType_Source])))
+			if(IsFail(res = arrFliImage[i].Assign(arrFliImage[EType_Source])))
 			{
-				ErrorPrint(eResult, "Failed to assign the image file.\n");
+				ErrorPrint(res, "Failed to assign the image file.\n");
 				bError = true;
 				break;
 			}
@@ -51,17 +51,17 @@ int main()
 			int32_t y = i / 2;
 
 			// 이미지 뷰 생성 // Create image view
-			if(IsFail(eResult = viewImage[i].Create(x * 400 + 400, y * 400, x * 400 + 400 + 400, y * 400 + 400)))
+			if(IsFail(res = viewImage[i].Create(x * 400 + 400, y * 400, x * 400 + 400 + 400, y * 400 + 400)))
 			{
-				ErrorPrint(eResult, "Failed to create the image view.\n");
+				ErrorPrint(res, "Failed to create the image view.\n");
 				bError = true;
 				break;
 			}
 
 			// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-			if(IsFail(eResult = viewImage[i].SetImagePtr(&arrFliImage[i])))
+			if(IsFail(res = viewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				bError = true;
 				break;
 			}
@@ -70,17 +70,17 @@ int main()
 				continue;
 
 			// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-			if(IsFail(eResult = viewImage[EType_Source].SynchronizePointOfView(&viewImage[i])))
+			if(IsFail(res = viewImage[EType_Source].SynchronizePointOfView(&viewImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize view\n");
+				ErrorPrint(res, "Failed to synchronize view\n");
 				bError = true;
 				break;
 			}
 
 			// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-			if(IsFail(eResult = viewImage[EType_Source].SynchronizeWindow(&viewImage[i])))
+			if(IsFail(res = viewImage[EType_Source].SynchronizeWindow(&viewImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize window.\n");
+				ErrorPrint(res, "Failed to synchronize window.\n");
 				bError = true;
 				break;
 			}
@@ -108,10 +108,10 @@ int main()
 		AnisotropicDiffusion.SetIteration(5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = AnisotropicDiffusion.Execute()).IsFail())
+		if((res = AnisotropicDiffusion.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute AnisotropicDiffusion.\n");
-			wprintf(eResult.GetString());
+			ErrorPrint(res, "Failed to execute AnisotropicDiffusion.\n");
+			wprintf(res.GetString());
 			break;
 		}
 
@@ -122,10 +122,10 @@ int main()
 		AnisotropicDiffusion.SetDiffusionMode(CAnisotropicDiffusion::EDiffusionCoefficientMode_PeronaMalik);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = AnisotropicDiffusion.Execute()).IsFail())
+		if((res = AnisotropicDiffusion.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute AnisotropicDiffusion.\n");
-			wprintf(eResult.GetString());
+			ErrorPrint(res, "Failed to execute AnisotropicDiffusion.\n");
+			wprintf(res.GetString());
 			break;
 		}
 
@@ -136,10 +136,10 @@ int main()
 		AnisotropicDiffusion.SetDiffusionMode(CAnisotropicDiffusion::EDiffusionCoefficientMode_Weickert);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = AnisotropicDiffusion.Execute()).IsFail())
+		if((res = AnisotropicDiffusion.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to execute AnisotropicDiffusion.\n");
-			wprintf(eResult.GetString());
+			ErrorPrint(res, "Failed to execute AnisotropicDiffusion.\n");
+			wprintf(res.GetString());
 			break;
 		}
 
@@ -155,27 +155,27 @@ int main()
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((eResult = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(0, 0), L"Destination1 Image (Parabolic Mode)", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(0, 0), L"Destination1 Image (Parabolic Mode)", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(0, 0), L"Destination2 Image (PeronaMalik Mode)", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(0, 0), L"Destination2 Image (PeronaMalik Mode)", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = arrLayer[EType_Destination3].DrawTextCanvas(&CFLPointD(0, 0), L"Destination3 Image (Weickert Mode)", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[EType_Destination3].DrawTextCanvas(&CFLPointD(0, 0), L"Destination3 Image (Weickert Mode)", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

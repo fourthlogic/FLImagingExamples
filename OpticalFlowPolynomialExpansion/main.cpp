@@ -84,14 +84,14 @@ int main()
 	CMessageReceiver msgReceiver(&viewImageSrc, &viewImageDst);
 
 	// 알고리즘 동작 결과 // Algorithm execution result
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((eResult = fliSrcImage.Load(L"../../ExampleImages/OpticalFlowPolynomialExpansion/Highway.flif")).IsFail())
+		if((res = fliSrcImage.Load(L"../../ExampleImages/OpticalFlowPolynomialExpansion/Highway.flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the image file.\n");
+			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
@@ -112,65 +112,65 @@ int main()
 		printf("Processing.....\n");
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = OpticalFlowPolynomialExpansion.Execute()).IsFail())
+		if((res = OpticalFlowPolynomialExpansion.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute algorithm.");
+			ErrorPrint(res, L"Failed to execute algorithm.");
 			break;
 		}
 
 		// Source 이미지 뷰 생성 // Create the source image view
-		if((eResult = viewImageSrc.Create(400, 0, 1012, 512)).IsFail())
+		if((res = viewImageSrc.Create(400, 0, 1012, 512)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰 생성 // Create the destination image view
-		if((eResult = viewImageDst.Create(1012, 0, 1624, 512)).IsFail())
+		if((res = viewImageDst.Create(1012, 0, 1624, 512)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to create the image view.\n");
+			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
 		// Source 이미지 뷰에 이미지를 디스플레이 // Display the image in the source image view
-		if((eResult = viewImageSrc.SetImagePtr(&fliSrcImage)).IsFail())
+		if((res = viewImageSrc.SetImagePtr(&fliSrcImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-		if((eResult = viewImageDst.SetImagePtr(&fliDstImage)).IsFail())
+		if((res = viewImageDst.SetImagePtr(&fliDstImage)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to set image object on the image view.\n");
+			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if((eResult = viewImageSrc.SynchronizePointOfView(&viewImageDst)).IsFail())
+		if((res = viewImageSrc.SynchronizePointOfView(&viewImageDst)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view\n");
+			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 페이지를 동기화 한다
-		if((eResult = viewImageSrc.SynchronizePageIndex(&viewImageDst)).IsFail())
+		if((res = viewImageSrc.SynchronizePageIndex(&viewImageDst)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize view\n");
+			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if((eResult = viewImageSrc.SynchronizeWindow(&viewImageDst)).IsFail())
+		if((res = viewImageSrc.SynchronizeWindow(&viewImageDst)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to synchronize window.\n");
+			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
 		// Destination 이미지가 새로 생성됨으로 Zoom fit 을 통해 디스플레이 되는 이미지 배율을 화면에 맞춰준다. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
-		if((eResult = viewImageDst.ZoomFit()).IsFail())
+		if((res = viewImageDst.ZoomFit()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to zoom fit of the image view.\n");
+			ErrorPrint(res, L"Failed to zoom fit of the image view.\n");
 			break;
 		}
 
@@ -190,15 +190,15 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if((eResult = layerSrc.DrawTextCanvas(&CFLPointD(0, 30), L"Source Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerSrc.DrawTextCanvas(&CFLPointD(0, 30), L"Source Image", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if((eResult = layerDst.DrawTextCanvas(&CFLPointD(0, 30), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerDst.DrawTextCanvas(&CFLPointD(0, 30), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to draw text\n");
+			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 

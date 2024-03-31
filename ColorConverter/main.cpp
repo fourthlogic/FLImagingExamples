@@ -17,52 +17,52 @@ int main()
 	do
 	{
 		// 동작 결과 // operation result
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliSourceImage.Load(L"../../ExampleImages/ColorConverter/city_3.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/ColorConverter/city_3.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImageSource.Create(112, 0, 912, 534)))
+		if(IsFail(res = viewImageSource.Create(112, 0, 912, 534)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageConverted.Create(913, 0, 1713, 534)))
+		if(IsFail(res = viewImageConverted.Create(913, 0, 1713, 534)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-		if(IsFail(eResult = viewImageSource.SetImagePtr(&fliSourceImage)))
+		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImageConverted.SetImagePtr(&fliConvertedImage)))
+		if(IsFail(res = viewImageConverted.SetImagePtr(&fliConvertedImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views. 
-		if(IsFail(eResult = viewImageSource.SynchronizePointOfView(&viewImageConverted)))
+		if(IsFail(res = viewImageSource.SynchronizePointOfView(&viewImageConverted)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(eResult = viewImageSource.SynchronizeWindow(&viewImageConverted)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImageConverted)))
 		{
-			ErrorPrint(eResult, "Failed to synchronize window\n");
+			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
@@ -70,44 +70,44 @@ int main()
 		CColorConverter ColorConverter;
 
 		// Source 이미지 설정 // Set source image 
-		if(IsFail(eResult = ColorConverter.SetSourceImage(fliSourceImage)))
+		if(IsFail(res = ColorConverter.SetSourceImage(fliSourceImage)))
 		{
-			ErrorPrint(eResult, "Failed to set Source Image.");
+			ErrorPrint(res, "Failed to set Source Image.");
 			break;
 		}
 
 		// Destination 이미지 설정 // Set destination image
-		if(IsFail(eResult = ColorConverter.SetDestinationImage(fliConvertedImage)))
+		if(IsFail(res = ColorConverter.SetDestinationImage(fliConvertedImage)))
 		{
-			ErrorPrint(eResult, "Failed to set Destination Image.");
+			ErrorPrint(res, "Failed to set Destination Image.");
 			break;
 		}
 
 		// 변환할 픽셀 포멧 입력(C3_U8 -> C4_U8) // Set the pixel format to convert(C3_U8 -> C4_U8)
-		if(IsFail(eResult = ColorConverter.SetPixelFormat(EPixelFormat_C4_U8)))
+		if(IsFail(res = ColorConverter.SetPixelFormat(EPixelFormat_C4_U8)))
 		{
-			ErrorPrint(eResult, "Failed to set PixelFormat.");
+			ErrorPrint(res, "Failed to set PixelFormat.");
 			break;
 		}
 
 		// 변환할 픽셀 포멧 입력 (RGB -> ARGB) // Set the color sequence to convert (RGB -> ARGB)
-		if(IsFail(eResult = ColorConverter.SetColorSequence(EColorSequence_ARGB)))
+		if(IsFail(res = ColorConverter.SetColorSequence(EColorSequence_ARGB)))
 		{
-			ErrorPrint(eResult, "Failed to set PixelFormat.");
+			ErrorPrint(res, "Failed to set PixelFormat.");
 			break;
 		}
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((eResult = ColorConverter.Execute()).IsFail())
+		if((res = ColorConverter.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.");
+			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
 		// 이미지 뷰의 zoom fit // image view zoom fit
-		if((eResult = viewImageConverted.ZoomFit()).IsFail())
+		if((res = viewImageConverted.ZoomFit()).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to zoom fit\n");
+			ErrorPrint(res, "Failed to zoom fit\n");
 			break;
 		}
 
@@ -121,15 +121,15 @@ int main()
 		layerConverted.Clear();
 
 		// View 정보를 디스플레이 합니다. // Display View information.
-		if(IsFail(eResult = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image (BGR)", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image (BGR)", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(eResult = layerConverted.DrawTextCanvas(&CFLPointD(0, 0), L"Converted Image (ARGB)", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerConverted.DrawTextCanvas(&CFLPointD(0, 0), L"Converted Image (ARGB)", YELLOW, BLACK, 30)))
 		{
-			ErrorPrint(eResult, "Failed to draw text\n");
+			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 

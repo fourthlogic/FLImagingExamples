@@ -10,32 +10,32 @@ int main()
 	CGUIViewImageWrap viewImage[4];
 
 	// 수행 결과 객체 선언 // Declare the execution result object
-	CResult eResult;
+	CResult res;
 
 	do
 	{
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage[0].Create(400, 0, 812, 384)))
+		if(IsFail(res = viewImage[0].Create(400, 0, 812, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[1].Create(812, 0, 1224, 384)))
+		if(IsFail(res = viewImage[1].Create(812, 0, 1224, 384)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[2].Create(400, 384, 812, 768)))
+		if(IsFail(res = viewImage[2].Create(400, 384, 812, 768)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(eResult = viewImage[3].Create(812, 384, 1224, 768)))
+		if(IsFail(res = viewImage[3].Create(812, 384, 1224, 768)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
@@ -54,25 +54,25 @@ int main()
 		Dst2Layer0.DrawTextCanvas(TPoint<double>(0, 20), L"Index of Maximum Distance", CYAN, BLACK);
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = viewImage[0].SynchronizePointOfView(&viewImage[1])))
+		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if(IsFail(eResult = viewImage[2].SynchronizePointOfView(&viewImage[3])))
+		if(IsFail(res = viewImage[2].SynchronizePointOfView(&viewImage[3])))
 		{
-			ErrorPrint(eResult, "Failed to synchronize view\n");
+			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
 		for(int32_t i = 1; i < 4; ++i)
 		{
-			if(IsFail(eResult = viewImage[0].SynchronizeWindow(&viewImage[i])))
+			if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[i])))
 			{
-				ErrorPrint(eResult, "Failed to synchronize window.\n");
+				ErrorPrint(res, "Failed to synchronize window.\n");
 				break;
 			}
 		}
@@ -84,46 +84,46 @@ int main()
 		CFLFigureArray flfaDestination2;
 
 		// Source Figure 불러오기 // Load Source figure
-		if((eResult = flpaSource1.Load(L"../../ExampleImages/Figure/PointArray1.fig")).IsFail())
+		if((res = flpaSource1.Load(L"../../ExampleImages/Figure/PointArray1.fig")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the figure file.\n");
+			ErrorPrint(res, "Failed to load the figure file.\n");
 			break;
 		}
 
-		if((eResult = flfaSource2.Load(L"../../ExampleImages/Figure/various_arrays.fig")).IsFail())
+		if((res = flfaSource2.Load(L"../../ExampleImages/Figure/various_arrays.fig")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the figure file.\n");
+			ErrorPrint(res, "Failed to load the figure file.\n");
 			break;
 		}
 
 		// Destination Figure 불러오기 // Load Destination Figure
-		if((eResult = flcDestination1.Load(L"../../ExampleImages/Figure/Circle2.fig")).IsFail())
+		if((res = flcDestination1.Load(L"../../ExampleImages/Figure/Circle2.fig")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the figure file.\n");
+			ErrorPrint(res, "Failed to load the figure file.\n");
 			break;
 		}
 
-		if((eResult = flfaDestination2.Load(L"../../ExampleImages/Figure/Circles2.fig")).IsFail())
+		if((res = flfaDestination2.Load(L"../../ExampleImages/Figure/Circles2.fig")).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to load the figure file.\n");
+			ErrorPrint(res, "Failed to load the figure file.\n");
 			break;
 		}
 
 		// Figure 사이의 최소 거리를 나타내는 인덱스를 추출 // Get the index of representing the minimum distance between figures
 		CFLFigureArray flfaResultSrc1;
 
-		if((eResult = flpaSource1.GetIndexOfMaximumDistance(flcDestination1, &flfaResultSrc1)).IsFail())
+		if((res = flpaSource1.GetIndexOfMaximumDistance(flcDestination1, &flfaResultSrc1)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.\n");
+			ErrorPrint(res, "Failed to process.\n");
 			break;
 		}
 
 		CFLFigureArray flfaResultSrc2;
 		CFLFigureArray flfaResultDst2;
 
-		if((eResult = flfaSource2.GetIndexOfMaximumDistance(flfaDestination2, &flfaResultSrc2, true, true, &flfaResultDst2)).IsFail())
+		if((res = flfaSource2.GetIndexOfMaximumDistance(flfaDestination2, &flfaResultSrc2, true, true, &flfaResultDst2)).IsFail())
 		{
-			ErrorPrint(eResult, "Failed to process.\n");
+			ErrorPrint(res, "Failed to process.\n");
 			break;
 		}
 
@@ -202,10 +202,10 @@ int main()
 
 		// Console 출력 // Console output
 		wprintf(L"Source1 CFLPointArray\n");
-		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(flpaSource1).GetString());
+		wprintf(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(flpaSource1).GetString());
 
 		wprintf(L"Destination1 CFLCircle<double>\n");
-		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(flcDestination1).GetString());
+		wprintf(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(flcDestination1).GetString());
 
 		wprintf(L"Result1 Index of Maximum distance\n");
 		wprintf(L"%lld\n\n", flvSrc.v);
@@ -213,10 +213,10 @@ int main()
 		wprintf(L"\n\n");
 
 		wprintf(L"Source2 CFLFigureArray\n");
-		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(flfaSource2).GetString());
+		wprintf(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(flfaSource2).GetString());
 
 		wprintf(L"Destination2 CFLFigureArray\n");
-		wprintf(L"%s\n\n", CFigureUtils::ConvertFigureObjectToString(flfaDestination2).GetString());
+		wprintf(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(flfaDestination2).GetString());
 
 		wprintf(L"Src Result2 Index of Maximum distance\n");
 		wprintf(L"Depth1 : %lld\nDepth2 : %lld\n\n", flvSrcDepth1.v, flvSrcDepth2.v);

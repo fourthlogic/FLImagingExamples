@@ -176,35 +176,35 @@ int main()
 
 	CMessageReceiver msgReceiver(&viewImage);
 
-	CResult eResult = EResult_UnknownError;
+	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// 이미지 로드 // Load image
-		if(IsFail(eResult =fliImage.Load(L"../../ExampleImages/PagePooling/Multiple File_Min.flif")))
+		if(IsFail(res =fliImage.Load(L"../../ExampleImages/PagePooling/Multiple File_Min.flif")))
 		{
-			ErrorPrint(eResult,"Failed to load the image file.\n");
+			ErrorPrint(res,"Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage.Create(300, 0, 300 + 520, 430)))
+		if(IsFail(res = viewImage.Create(300, 0, 300 + 520, 430)))
 		{
-			ErrorPrint(eResult,"Failed to create the image view.\n");
+			ErrorPrint(res,"Failed to create the image view.\n");
 			break;
 		}
 		
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if(IsFail(eResult =viewImage.SetImagePtr(&fliImage)))
+		if(IsFail(res =viewImage.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult,"Failed to set image object on the image view.\n");
+			ErrorPrint(res,"Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// Zoom fit 을 통해 디스플레이 되는 이미지 배율을 화면에 맞춰준다.
-		if(IsFail(eResult =viewImage.ZoomFit()))
+		if(IsFail(res =viewImage.ZoomFit()))
 		{
-			ErrorPrint(eResult,"Failed to zoom fit of the image view.\n");
+			ErrorPrint(res,"Failed to zoom fit of the image view.\n");
 			break;
 		}
 

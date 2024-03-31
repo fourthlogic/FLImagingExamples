@@ -14,25 +14,25 @@ int main()
 
 	do
 	{
-		CResult eResult = EResult_UnknownError;
+		CResult res = EResult_UnknownError;
 		// 이미지 로드 // Load image
-		if(IsFail(eResult = fliImage.Load(L"../../ExampleImages/DataMatrix/Module.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/DataMatrix/Module.flif")))
 		{
-			ErrorPrint(eResult, "Failed to load the image file.\n");
+			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(eResult = viewImage.Create(400, 0, 1424, 768)))
+		if(IsFail(res = viewImage.Create(400, 0, 1424, 768)))
 		{
-			ErrorPrint(eResult, "Failed to create the image view.\n");
+			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display an image in an image view
-		if(IsFail(eResult = viewImage.SetImagePtr(&fliImage)))
+		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
-			ErrorPrint(eResult, "Failed to set image object on the image view.\n");
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
@@ -51,9 +51,9 @@ int main()
 		dataMatrixDecoder.SetColorMode(EDataCodeColor_BlackOnWhite);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(eResult = dataMatrixDecoder.Execute()))
+		if(IsFail(res = dataMatrixDecoder.Execute()))
 		{
-			ErrorPrint(eResult, "Failed to execute data matrix decoder.");
+			ErrorPrint(res, "Failed to execute data matrix decoder.");
 
 			break;
 		}
@@ -71,9 +71,9 @@ int main()
 		// 아래 함수 DrawFigureImage는 Image좌표를 기준으로 하는 Figure를 Drawing 한다는 것을 의미하며 // The function DrawFigureImage below means drawing a picture based on the image coordinates
 		// 맨 마지막 두개의 파라미터는 불투명도 값이고 1일경우 불투명, 0일경우 완전 투명을 의미한다. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
 		// 파라미터 순서 : 레이어 -> Figure 객체 -> 선 색 -> 선 두께 -> 면 색 -> 펜 스타일 -> 선 알파값(불투명도) -> 면 알파값 (불투명도) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
-		if(IsFail(eResult = layer.DrawFigureImage(&flrROI, BLUE, 3, 0, EGUIViewImagePenStyle_Solid, 1, 0)))
+		if(IsFail(res = layer.DrawFigureImage(&flrROI, BLUE, 3, 0, EGUIViewImagePenStyle_Solid, 1, 0)))
 		{
-			ErrorPrint(eResult, "Failed to draw figures objects on the image view.\n");
+			ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 			break;
 		}
 
@@ -86,16 +86,16 @@ int main()
 			CFLQuadD flqdRegion;
 
 			// Data Matrix Decoder 결과들 중 Data Region 을 얻어옴
-			if(IsFail(eResult = dataMatrixDecoder.GetResultDataRegion(i, flqdRegion)))
+			if(IsFail(res = dataMatrixDecoder.GetResultDataRegion(i, flqdRegion)))
 			{
-				ErrorPrint(eResult, "Failed to get data region from the data matrix decoder object.");
+				ErrorPrint(res, "Failed to get data region from the data matrix decoder object.");
 				continue;
 			}
 
 			// Data Matrix 의 영역을 디스플레이 한다.
-			if(IsFail(eResult = layer.DrawFigureImage(&flqdRegion, LIME, 2)))
+			if(IsFail(res = layer.DrawFigureImage(&flqdRegion, LIME, 2)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure object on the image view.\n");
+				ErrorPrint(res, "Failed to draw figure object on the image view.\n");
 				continue;
 			}
 
@@ -103,16 +103,16 @@ int main()
 			CFLFigureArray flfaGridRegion;
 
 			// Data Matrix Decoder 결과들 중 Grid Region 을 얻어옴
-			if(IsFail(eResult = dataMatrixDecoder.GetResultGridRegion(i, flfaGridRegion)))
+			if(IsFail(res = dataMatrixDecoder.GetResultGridRegion(i, flfaGridRegion)))
 			{
-				ErrorPrint(eResult, "Failed to get grid region from the data matrix decoder object.");
+				ErrorPrint(res, "Failed to get grid region from the data matrix decoder object.");
 				continue;
 			}
 
 			// Data Matrix 의 Grid Region 을 디스플레이 한다.
-			if(IsFail(eResult = layer.DrawFigureImage(&flfaGridRegion, LIME, 2)))
+			if(IsFail(res = layer.DrawFigureImage(&flfaGridRegion, LIME, 2)))
 			{
-				ErrorPrint(eResult, "Failed to draw figure objects on the image view.\n");
+				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				continue;
 			}
 
@@ -120,9 +120,9 @@ int main()
 			CFLString<wchar_t> flstrDecoded;
 
 			// Data Matrix Decoder 결과들 중 Decoded String 을 얻어옴
-			if(IsFail(eResult = dataMatrixDecoder.GetResultDecodedString(i, flstrDecoded)))
+			if(IsFail(res = dataMatrixDecoder.GetResultDecodedString(i, flstrDecoded)))
 			{
-				ErrorPrint(eResult, "Failed to get decoded string from the data matrix decoder object.");
+				ErrorPrint(res, "Failed to get decoded string from the data matrix decoder object.");
 				continue;
 			}
 
@@ -139,9 +139,9 @@ int main()
 			//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 			// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 			//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-			if(IsFail(eResult = layer.DrawTextImage(&flplPos, flstrDecoded, CYAN, BLACK, 20, false, flqdRegion.flpPoints[3].GetAngle(flqdRegion.flpPoints[2]))))
+			if(IsFail(res = layer.DrawTextImage(&flplPos, flstrDecoded, CYAN, BLACK, 20, false, flqdRegion.flpPoints[3].GetAngle(flqdRegion.flpPoints[2]))))
 			{
-				ErrorPrint(eResult, "Failed to draw string object on the image view.\n");
+				ErrorPrint(res, "Failed to draw string object on the image view.\n");
 				continue;
 			}
 		}
