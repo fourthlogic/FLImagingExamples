@@ -40,19 +40,19 @@ int main()
 	do
 	{
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/Classifier/board_label 3.flif")))
+		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/Classifier/CircleLabel_Learn.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/Classifier/board_label 1.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/Classifier/CircleLabel_Validation.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(res = fliValidateImage.Load(L"../../ExampleImages/Classifier/board_label 1.flif")))
+		if(IsFail(res = fliValidateImage.Load(L"../../ExampleImages/Classifier/CircleLabel_Validation.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -133,7 +133,7 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"SOURCE", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"INFERENCE", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

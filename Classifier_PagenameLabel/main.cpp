@@ -112,7 +112,7 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"SOURCE", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"INFERENCE", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -123,7 +123,7 @@ int main()
 
 		// OptimizerSpec 객체 생성 // Create OptimizerSpec object
 		COptimizerSpecAdamGradientDescent optSpec;
-
+		
 		// 학습할 이미지 설정 // Set the image to learn
 		classifier.SetLearningImage(fliLearnImage);
 		// 검증할 이미지 설정 // Set the image to validate
@@ -182,7 +182,7 @@ int main()
 			CFLArray<int32_t> vctValidationEpoch;
 
 			classifier.GetLearningResultAllHistory(vctCosts, vctValidations, vctF1Score, vctValidationEpoch);
-
+			
 			// 미니 배치 반복이 완료되면 cost와 validation 값을 디스플레이 
 			// Display cost and validation value if iterations of the mini batch is completed 
 			if(vctCosts.GetCount() && i32Epoch != i32PrevEpoch && i32Iteration == i32MaxIteration && i32Epoch > 0)
