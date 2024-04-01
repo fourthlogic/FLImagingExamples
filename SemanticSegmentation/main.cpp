@@ -216,7 +216,7 @@ int main()
 		semanticSegmentation.SetInterpoloationMethod(EInterpolationMethod_Bilinear);
 
 		// Optimizer의 학습률 설정 // Set learning rate of Optimizer
-		optSpec.SetLearningRate(1e-4f);
+		optSpec.SetLearningRate(1e-3f);
 
 		// 설정한 Optimizer를 SemanticSegmentation에 적용 // Apply the Optimizer that we set up to SemanticSegmentation
 		semanticSegmentation.SetLearningOptimizerSpec(optSpec);
@@ -230,7 +230,7 @@ int main()
 		augSpec.SetRotationParam(180., false);
 		augSpec.EnableHorizontalFlip(true);
 		augSpec.EnableVerticalFlip(true);
-		augSpec.EnableGaussianNoise(true);
+
 		semanticSegmentation.SetLearningAugmentationSpec(&augSpec);
 
 		// Learn 동작을 하는 핸들 객체 선언 // Declare HANDLE object execute learn function
