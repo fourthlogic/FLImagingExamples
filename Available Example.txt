@@ -847,9 +847,6 @@
     - OperationComplexDivide
       - The algorithm that performs Complex Divide operation on the source image.
       - 이미지에 Complex Divide 연산을 수행하는 알고리즘
-    - OperationComplexMultiply
-      - The algorithm that performs Complex Multiply operation on the source image.
-      - 이미지에 Complex Multiply 연산을 수행하는 알고리즘
     - OperationCosecant
       - The algorithm that performs Cosecant operation on the source image.
       - 이미지에 Cosecant 연산을 수행하는 알고리즘
