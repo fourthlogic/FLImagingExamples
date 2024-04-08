@@ -248,7 +248,7 @@ int main()
 		}
 
 		// 추론 결과 정보에 대한 설정 // Set for the inference result information
-		classifier.SetInferenceResultItemSettings(CClassifierDL::EInferenceResultItemSettings_ClassNum_ClassName_Percentage);
+		classifier.SetInferenceResultItemSettings(CClassifierDL::EInferenceResultItemSettings_ClassNum_ClassName_ConfidenceScore);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if(IsFail(res = classifier.Execute()))
