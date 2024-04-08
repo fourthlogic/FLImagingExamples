@@ -84,7 +84,7 @@ int main()
 		}
 
 		// 연산 속도 설정 // Set the operation speed.
-		if(IsFail(eResult = Decolorization.SetOperationSpeed(EOperationSpeed_Normal)))
+		if(IsFail(eResult = Decolorization.SetOperationSpeed(CDecolorization::EOperationSpeed_Normal)))
 		{
 			ErrorPrint(eResult, "Failed to set Operation Speed.");
 			break;

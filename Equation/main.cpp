@@ -36,12 +36,12 @@ int main()
 
 			// 계수 값을 담기위해 CFLArray<std::complex<double>> 생성 // Create CFLArray<std::complex<double>> to hold coefficient values
 			CFLArray<std::complex<double>> flaCoef;
-			int32_t i32TokenIdx = 0;
+			int64_t i64TokenIdx = 0;
 
 			// 입력 받은 문자열을 ',' 으로 구분하여 double 값으로 변환한다. // Separate the input string with ',' and convert it to a double value.
 			while(true)
 			{
-				CFLString<char> flstrToken = flstrInput.Tokenize(",", i32TokenIdx);
+				CFLString<char> flstrToken = flstrInput.Tokenize(",", i64TokenIdx);
 				if(flstrToken.IsEmpty())
 					break;
 

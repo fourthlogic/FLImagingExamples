@@ -30,12 +30,12 @@ int main()
 
 			// 계수 값을 담기위해 CFLArray<int> 생성 // Create CFLArray<int> to hold coefficient values
 			CFLArray<int> flaNK;
-			int32_t i32TokenIdx = 0;
+			int64_t i64TokenIdx = 0;
 
 			// 입력 받은 문자열을 ',' 으로 구분하여 int 값으로 변환한다. // Separates the input string with ',' and converts it to an int value.
 			while(true)
 			{
-				CFLString<char> flstrToken = flstrInput.Tokenize(",", i32TokenIdx);
+				CFLString<char> flstrToken = flstrInput.Tokenize(",", i64TokenIdx);
 				if(flstrToken.IsEmpty())
 					break;
 
