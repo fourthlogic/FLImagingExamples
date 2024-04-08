@@ -793,6 +793,9 @@
     - ShadingCorrection
       - The example of an algorithm that processes a shading correction.
       - 불균일한 조명을 보정하는 알고리즘 예제.
+    - ColorBoosting
+      - The example of color contrast boosting.
+      - 색상 대비를 강화해 주는 알고리즘 예제.
 
   - [Image Operation]
   
