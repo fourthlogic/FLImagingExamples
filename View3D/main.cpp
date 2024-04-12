@@ -77,21 +77,14 @@ int main()
 		if(bError)
 			break;
 
-		// 3D 뷰에 모델을 로드하여 디스플레이
-		if(IsFail(res = view3D.SetHeightMap(&arrFliImage[EType_Model])))
-		{
-			ErrorPrint(res, "Failed to set image object on the 3D view.\n");
-			break;
-		}
-		
-		// 3D 뷰에 텍스처를 로드하여 디스플레이
-		if(IsFail(res = view3D.SetTexture(&arrFliImage[EType_Texture])))
+		// 3D 뷰에 모델과 텍스처를 로드하여 디스플레이
+		if(view3D.PushObject(&arrFliImage[EType_Model], &arrFliImage[EType_Texture]) < 0)
 		{
 			ErrorPrint(res, "Failed to set image object on the 3D view.\n");
 			break;
 		}
 
-		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
+		// 두 이미지 뷰의 시점을 동기화 합니다 // Synchronize the viewpoints of the two image views
 		if(IsFail(res = arrViewImage[EType_Model].SynchronizePointOfView(&arrViewImage[EType_Texture])))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");

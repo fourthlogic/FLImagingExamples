@@ -135,14 +135,7 @@ int main()
 		}
 
 		// 3D 이미지 뷰에 Height Map (Dst Image) 이미지를 디스플레이
-		if((res = view3DDst.SetHeightMap(&fliDstImage)).IsFail())
-		{
-			ErrorPrint(res, L"Failed to set image object on the image view.\n");
-			break;
-		}
-
-		// 3D 이미지 뷰에 Texture 이미지를 디스플레이
-		if((res = view3DDst.SetTexture(&fliTxtImage)).IsFail())
+		if(view3DDst.PushObject(&fliDstImage, &fliTxtImage) < 0)
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
@@ -153,8 +146,6 @@ int main()
 			ErrorPrint(res, L"Failed to draw text.\n");
 			break;
 		}
-
-		view3DDst.SetFillType(EFillType3D_WireFrame);
 
 		// 이미지 뷰를 갱신 합니다. // Update image view
 		viewImageSrc.Invalidate(true);

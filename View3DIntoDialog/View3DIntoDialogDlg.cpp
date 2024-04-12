@@ -67,7 +67,6 @@ BEGIN_MESSAGE_MAP(CView3DIntoDialogDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_WM_TIMER()
-	ON_BN_CLICKED(IDC_BUTTON_SET_MODEL_HEIGHT, &CView3DIntoDialogDlg::OnBnClickedButtonSetModelHeight)
 	ON_BN_CLICKED(IDC_BUTTON_GET_HEIGHT_PROFILE, &CView3DIntoDialogDlg::OnBnClickedButtonGetHeightProfile)
 END_MESSAGE_MAP()
 
@@ -129,28 +128,12 @@ BOOL CView3DIntoDialogDlg::OnInitDialog()
 		::MoveWindow(hWndView3D, 0, 0, crView3D.Width(), crView3D.Height(), true);
 	}
 
-	// 이미지 로드 // Load image
-	m_view3D.Load(L"../../ExampleImages/View3D/mountain.flif");
-
-	// 텍스처 로드
-	m_view3D.LoadTexture(L"../../ExampleImages/View3D/mountain_texture.flif");
+	// 높이 맵 이미지와 텍스쳐 이미지 로드 // Load height map image and texture
+	m_view3D.Load(L"../../ExampleImages/View3D/mountain.flif", L"../../ExampleImages/View3D/mountain_texture.flif");
 
 	UpdateControls();
 
-	float f32Height = m_view3D.GetHeightModel();
-
-	CEdit* pEdit = (CEdit*)GetDlgItem(IDC_EDIT_HEIGHT);
-
-	CString strValue;
-	pEdit->GetWindowText(strValue);
-
-	CString strViewHeight;
-	strViewHeight.Format(L"%.03f", f32Height);
-
-	if(strValue.Compare(strViewHeight))
-		pEdit->SetWindowTextW(strViewHeight);
-
-	pEdit = (CEdit*)GetDlgItem(IDC_EDIT_HP_SX);
+	CEdit* pEdit = (CEdit*)GetDlgItem(IDC_EDIT_HP_SX);
 	pEdit->SetWindowTextW(L"0");
 	
 	pEdit = (CEdit*)GetDlgItem(IDC_EDIT_HP_SY);
@@ -262,28 +245,6 @@ BOOL CView3DIntoDialogDlg::DestroyWindow()
 	m_view3D.Destroy();
 
 	return CDialogEx::DestroyWindow();
-}
-
-void CView3DIntoDialogDlg::OnBnClickedButtonSetModelHeight()
-{
-	do
-	{
-		// 3D 뷰 유효성 체크
-		if(!m_view3D.IsAvailable())
-			break;
-
-		CString strHeightValue;
-		GetDlgItem(IDC_EDIT_HEIGHT)->GetWindowText(strHeightValue);
-
-		// Edit Box에 있는 숫자값을 float으로 변환해서 3D 뷰에 설정
-		CResult gr = m_view3D.SetHeightModel((float)_wtof(strHeightValue));
-
-		if(gr.IsFail())
-			ErrorMessageBox(gr);
-
-		m_view3D.Invalidate();
-	}
-	while(false);
 }
 
 void CView3DIntoDialogDlg::OnBnClickedButtonGetHeightProfile()

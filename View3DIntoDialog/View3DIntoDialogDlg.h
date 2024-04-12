@@ -39,6 +39,5 @@ protected:
 public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	virtual BOOL DestroyWindow();
-	afx_msg void OnBnClickedButtonSetModelHeight();
 	afx_msg void OnBnClickedButtonGetHeightProfile();
 };
