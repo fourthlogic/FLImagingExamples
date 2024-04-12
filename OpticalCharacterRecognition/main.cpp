@@ -106,7 +106,7 @@ int main()
 		// 이미지에서 학습할 문자의 각도 범위를 조정
 		if(IsFail(ocr.SetLearningAngleTolerance(10.)))
 		{
-			printf("Failed to set learning angle tolerance.");
+			ErrorPrint(res, "Failed to set learning angle tolerance.");
 			break;
 		}
 
@@ -139,7 +139,7 @@ int main()
 		}
 
 		// 인식할 최소 점수를 설정
-		if(IsFail(res = ocr.SetMinimumScore(0.5)))
+		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.5)))
 		{
 			ErrorPrint(res, L"Failed to set minimum score.");
 			break;
