@@ -80,7 +80,7 @@ int main()
 			break;
 		}
 
-		// Demoire 按眉 积己 // Create Demoire object
+		// LowIntensityCorrection 按眉 积己 // Create LowIntensityCorrection object
 		CLowIntensityCorrection LowIntensityCorrection;
 		// Source 捞固瘤 汲沥 // Set source image
 		LowIntensityCorrection.SetSourceImage(arrFliImage[EType_Source]);
