@@ -86,13 +86,13 @@ int main()
 		LowIntensityCorrection.SetSourceImage(arrFliImage[EType_Source]);
 		// Destination 이미지 설정 // Set destination image 
 		LowIntensityCorrection.SetDestinationImage(arrFliImage[EType_Destination]);
-		// Smoothing 설정
-		LowIntensityCorrection.EnableSmoothing(true);
+		// Noise Reduction 설정
+		LowIntensityCorrection.EnableNoiseReduction(true);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = LowIntensityCorrection.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute operation add.");
+			ErrorPrint(res, "Failed to execute Low Intensity Correction.");
 			break;
 		}
 
