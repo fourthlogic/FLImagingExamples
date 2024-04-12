@@ -23,7 +23,7 @@ int main()
 			break;
 		}
 
-		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition.flif")).IsFail())
+		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognize.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
@@ -103,12 +103,12 @@ int main()
 			break;
 		}
 
-		// 이미지에서 학습할 문자의 색상 및 배경 색상을 설정
-		/*if(IsFail(ocr.SetCharacterColor(COCR::ECharacterColorType_BlackOnWhite)))
+		// 이미지에서 학습할 문자의 각도 범위를 조정
+		if(IsFail(ocr.SetLearningAngleTolerance(10.)))
 		{
-			printf("Failed to set character color type.");
+			printf("Failed to set learning angle tolerance.");
 			break;
-		}*/
+		}
 
 		// 학습할 이미지에 저장되어있는 Figure 학습
 		if(IsFail(res = ocr.Learn()))
@@ -124,24 +124,24 @@ int main()
 			break;
 		}
 
-		// 인식할 각도의 범위를 설정
-		if(IsFail(res = ocr.SetAngleTolerance(0.)))
+		// 인식할 문자의 각도 범위를 설정
+		if(IsFail(res = ocr.SetRecognizingAngleTolerance(10.)))
 		{
-			ErrorPrint(res, L"Failed to set noise filter size.");
+			ErrorPrint(res, L"Failed to set recognizing angle tolerance.");
 			break;
 		}
 
-		// 인식할 이미지에서 문자의 Threshold 값을 입력 받지 않고 자동으로 찾는 모드를 설정
-		if(IsFail(res = ocr.EnableAutoScale(true)))
+		// 인식할 문자의 색상을 설정
+		if(IsFail(res = ocr.SetRecognizingCharacterColorType(COCR::ECharacterColorType_WhiteOnBlack)))
 		{
-			ErrorPrint(res, L"Failed to set threshold auto.");
+			ErrorPrint(res, L"Failed to set recognizing character color.");
 			break;
 		}
 
 		// 인식할 최소 점수를 설정
-		if(IsFail(res = ocr.SetMinimumScore(0.7)))
+		if(IsFail(res = ocr.SetMinimumScore(0.5)))
 		{
-			ErrorPrint(res, L"Failed to set noise filter size.");
+			ErrorPrint(res, L"Failed to set minimum score.");
 			break;
 		}
 
