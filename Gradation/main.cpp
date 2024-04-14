@@ -108,8 +108,8 @@ int main()
 		CGUIViewImageLayerWrap layer2 = viewImage[1].GetLayer(0);
 
 		// Draw Figure °´Ã¼ // Gradation Vector Figure object
-		CFLLine<double> fllDrawVector;
-		fllDrawVector.Load(L"../../ExampleImages/Gradation/DrawVector.fig");
+		CFLFigureArray flfaDrawVector;
+		flfaDrawVector.Load(L"../../ExampleImages/Gradation/DrawVector.fig");
 
 		CFLRect<double> fllRect1(fllVector.flpPoints[0] - 15, fllVector.flpPoints[0] + 15);
 		CFLRect<double> fllRect2(fllVector.flpPoints[1] - 15, fllVector.flpPoints[1] + 15);
@@ -127,13 +127,13 @@ int main()
 		}
 
 		// Gradation Vector Ãâ·Â // Draw gradation vector
-		if(IsFail(res = layer1.DrawFigureImage(&fllDrawVector, BLACK, 5)))
+		if(IsFail(res = layer1.DrawFigureImage(&flfaDrawVector, BLACK, 5)))
 		{
 			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
 		}
 
-		if(IsFail(res = layer1.DrawFigureImage(&fllDrawVector, LIME, 3)))
+		if(IsFail(res = layer1.DrawFigureImage(&flfaDrawVector, LIME, 3)))
 		{
 			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
