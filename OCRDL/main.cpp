@@ -87,6 +87,13 @@ int main()
 			break;
 		}
 
+		// Graph 뷰 생성 // Create graph view
+		if(IsFail(res = viewGraph.Create(1100, 0, 1600, 500)))
+		{
+			ErrorPrint(res, " Failed to create the graph view. \n");
+			break;
+		}
+
 		viewGraph.SetDarkMode();
 
 		// 다섯 개의 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the four image view windows
@@ -223,7 +230,7 @@ int main()
 		// 학습할 OCR 모델의 버전 설정 // Set up OCR model version to learn
 		ocr.SetModelVersion(COCRDL::EModelVersion_FLSegNet_V1_512_B3);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
-		ocr.SetLearningEpoch(120);
+		ocr.SetLearningEpoch(10000);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
 		ocr.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 
@@ -248,7 +255,7 @@ int main()
 		augSpec.SetScaleCropParam(1., 1., true, .5, 2., .5, 2., true);
 
 		ocr.SetLearningAugmentationSpec(&augSpec);
-
+		
 		// Learn 동작을 하는 핸들 객체 선언 // Declare HANDLE object execute learn function
 		HANDLE hThread;
 
@@ -325,9 +332,9 @@ int main()
 					viewGraph.RedrawWindow();
 				}
 
-				// 검증 결과가 1.0일 경우 학습을 중단하고 분류 진행 
-				// If the validation result is 1.0, stop learning and classify images 
-				if(f32ValidationPa == 1.f)
+				// 검증 결과가 0.9 이상 일 경우 학습을 중단하고 분류 진행 
+				// If the validation result is greater than 0.9, stop learning and classify images 
+				if(f32ValidationMeanIoU >= .9f || GetAsyncKeyState(VK_ESCAPE))
 					ocr.Stop();
 
 				i32PrevEpoch = i32Epoch;
