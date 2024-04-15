@@ -114,13 +114,13 @@ int main()
 		layerConverted.Clear();
 
 		// View 정보를 디스플레이 합니다. // Display View information.
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image(3Ch U8)", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerConverted.DrawTextCanvas(&CFLPointD(0, 0), L"Converted Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerConverted.DrawTextCanvas(&CFLPointD(0, 0), L"Converted Image(1Ch U8)", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
