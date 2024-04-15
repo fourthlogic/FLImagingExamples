@@ -135,7 +135,7 @@ int main()
 		}
 
 		// 3D 이미지 뷰에 Height Map (Dst Image) 이미지를 디스플레이
-		if(view3DDst.PushObject(&fliDstImage, &fliTxtImage) < 0)
+		if((res = view3DDst.PushObject(CFL3DObjectHeightMap(&fliDstImage, &fliTxtImage))).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;

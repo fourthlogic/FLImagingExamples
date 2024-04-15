@@ -78,7 +78,7 @@ int main()
 			break;
 
 		// 3D 뷰에 모델과 텍스처를 로드하여 디스플레이
-		if(view3D.PushObject(&arrFliImage[EType_Model], &arrFliImage[EType_Texture]) < 0)
+		if((res = view3D.PushObject(CFL3DObjectHeightMap(&arrFliImage[EType_Model], &arrFliImage[EType_Texture]))).IsFail())
 		{
 			ErrorPrint(res, "Failed to set image object on the 3D view.\n");
 			break;
