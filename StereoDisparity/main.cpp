@@ -195,6 +195,8 @@ int main()
 			break;
 		}
 
+		view3DDst.ZoomFit();
+
 		// 이미지 뷰를 갱신 합니다. // Update image view
 		viewImageSrc.Invalidate(true);
 		viewImageSrc2.Invalidate(true);

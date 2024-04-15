@@ -84,6 +84,8 @@ int main()
 			break;
 		}
 
+		view3D.ZoomFit();
+
 		// 두 이미지 뷰의 시점을 동기화 합니다 // Synchronize the viewpoints of the two image views
 		if(IsFail(res = arrViewImage[EType_Model].SynchronizePointOfView(&arrViewImage[EType_Texture])))
 		{

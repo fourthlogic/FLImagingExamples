@@ -138,6 +138,8 @@ int main()
 			break;
 		}
 
+		view3DDst.ZoomFit();
+
 		if((res = layer3D.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text.\n");

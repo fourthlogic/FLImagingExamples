@@ -135,11 +135,13 @@ int main()
 		}
 
 		// 3D 이미지 뷰에 Height Map (Dst Image) 이미지를 디스플레이
-		if((res = view3DDst.PushObject(CFL3DObjectHeightMap(&fliDstImage, &fliTxtImage))).IsFail())
+		if((res = view3DDst.PushObject(CFL3DObjectHeightMap(&fliDstImage))).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
+
+		view3DDst.ZoomFit();
 
 		if((res = layer3D.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
 		{
