@@ -27,14 +27,12 @@ int main()
 	CFLImage fliValidationImage;
 	CFLImage fliResultLabelImage;
 	CFLImage fliResultLabelFigureImage;
-	CFLImage fliResultConfidenceMapImage;
 
 	/// 이미지 뷰 선언 // Declare the image view
 	CGUIViewImageWrap viewImageLearn;
 	CGUIViewImageWrap viewImageValidation;
 	CGUIViewImageWrap viewImagesLabel;
 	CGUIViewImageWrap viewImagesLabelFigure;
-	CGUIViewImageWrap viewImagesConfidenceMap;
 
 	// 그래프 뷰 선언 // Declare the graph view
 	CGUIViewGraphWrap viewGraph;
@@ -88,12 +86,6 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = viewImagesConfidenceMap.Create(1100, 500, 1600, 1000)))
-		{
-			ErrorPrint(res, "Failed to create the image view.\n");
-			break;
-		}
-
 		// Graph 뷰 생성 // Create graph view
 		if(IsFail(res = viewGraph.Create(1100, 0, 1600, 500)))
 		{
@@ -117,12 +109,6 @@ int main()
 		}
 
 		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImagesLabelFigure)))
-		{
-			ErrorPrint(res, "Failed to synchronize window.\n");
-			break;
-		}
-
-		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImagesConfidenceMap)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
@@ -158,26 +144,18 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = viewImagesConfidenceMap.SetImagePtr(&fliResultConfidenceMapImage)))
-		{
-			ErrorPrint(res, "Failed to set image object on the image view.\n");
-			break;
-		}
-
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerLearn = viewImageLearn.GetLayer(0);
 		CGUIViewImageLayerWrap layerValidation = viewImageValidation.GetLayer(0);
 		CGUIViewImageLayerWrap layerResultLabel = viewImagesLabel.GetLayer(0);
 		CGUIViewImageLayerWrap layerResultLabelFigure = viewImagesLabelFigure.GetLayer(0);
-		CGUIViewImageLayerWrap layerResultConfidenceMap = viewImagesConfidenceMap.GetLayer(0);
 
 		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 		layerLearn.Clear();
 		layerValidation.Clear();
 		layerResultLabel.Clear();
 		layerResultLabelFigure.Clear();
-		layerResultConfidenceMap.Clear();
 
 		// View 정보를 디스플레이 합니다. // Display View information.
 		// 아래 함수 DrawTextCanvas은 Screen좌표를 기준으로 하는 String을 Drawing 한다.// The function DrawTextCanvas below draws a String based on the screen coordinates.
@@ -209,18 +187,11 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = layerResultConfidenceMap.DrawTextCanvas(&CFLPointD(0, 0), L"RESULT CONFIDENCE MAP", GREEN, BLACK, 30)))
-		{
-			ErrorPrint(res, "Failed to draw text\n");
-			break;
-		}
-
 		// 이미지 뷰를 갱신 // Update the image view.
 		viewImageLearn.RedrawWindow();
 		viewImageValidation.RedrawWindow();
 		viewImagesLabel.RedrawWindow();
 		viewImagesLabelFigure.RedrawWindow();
-		viewImagesConfidenceMap.RedrawWindow();
 
 		// SemanticSegmentation 객체 생성 // Create SemanticSegmentation object
 		CSemanticSegmentationDL semanticSegmentation;
@@ -360,8 +331,6 @@ int main()
 		semanticSegmentation.SetInferenceImage(fliValidationImage);
 		// 추론 결과 이미지 설정 // Set the inference result Image
 		semanticSegmentation.SetInferenceResultImage(fliResultLabelImage);
-		// 추론 결과 Confidence Map 이미지 설정 // Set the confidence map image
-		semanticSegmentation.SetInferenceResultConfidenceMapImage(fliResultConfidenceMapImage);
 		// 추론 결과 옵션 설정 // Set the inference result options;
 		// Result 결과를 Label Image로 받을지 여부 설정 // Set whether to receive the result as a Label Image
 		semanticSegmentation.EnableInferenceResultLabelImage(true);
@@ -378,8 +347,6 @@ int main()
 		// Result Label Image에 피겨를 포함한 Execute
 		// 추론 결과 이미지 설정 // Set the inference result Image
 		semanticSegmentation.SetInferenceResultImage(fliResultLabelFigureImage);
-		// 추론 결과 Confidence Map 이미지 설정 // Set the confidence map image
-		semanticSegmentation.SetInferenceResultConfidenceMapImage(nullptr);
 		// 추론 결과 옵션 설정 // Set the inference result options;
 		// Result 결과를 Label Image로 받을지 여부 설정 // Set whether to receive the result as a Label Image
 		semanticSegmentation.EnableInferenceResultLabelImage(false);
@@ -413,13 +380,12 @@ int main()
 		viewImageValidation.RedrawWindow();
 		viewImagesLabel.RedrawWindow();
 		viewImagesLabelFigure.RedrawWindow();
-		viewImagesConfidenceMap.RedrawWindow();
 
 		// 그래프 뷰를 갱신 // Update the Graph view.
 		viewGraph.RedrawWindow();
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
-		while(viewImageLearn.IsAvailable() && viewImageValidation.IsAvailable() && viewImagesLabel.IsAvailable() && viewImagesLabelFigure.IsAvailable() && viewGraph.IsAvailable() && viewImagesConfidenceMap.IsAvailable())
+		while(viewImageLearn.IsAvailable() && viewImageValidation.IsAvailable() && viewImagesLabel.IsAvailable() && viewImagesLabelFigure.IsAvailable() && viewGraph.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
