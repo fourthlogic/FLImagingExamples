@@ -138,8 +138,12 @@ int main()
 			break;
 		}
 
+		CFL3DObjectHeightMap* pFl3DOHM = dynamic_cast<CFL3DObjectHeightMap*>(multifocus3d.GetDestinationObject());
+		pFl3DOHM->SetTextureImage(fliTxtImage);
+		pFl3DOHM->ActivateVertexColorTexture(true);
+
 		// 3D 이미지 뷰에 Height Map (Dst Image) 이미지를 디스플레이
-		if((res = view3DDst.PushObject(multifocus3d.GetDestinationObject())).IsFail())
+		if((res = view3DDst.PushObject(*pFl3DOHM)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
