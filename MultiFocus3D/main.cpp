@@ -74,12 +74,16 @@ int main()
 		// Multi Focus 객체 생성 // Create Multi Focus object
 		CMultiFocus3D multifocus3d;
 
+		CFL3DObjectHeightMap fl3DOHM;
+
 		// Source 이미지 설정 // Set the source image
 		multifocus3d.SetSourceImage(fliSrcImage);
 		// Destination 이미지 설정 // Set the destination image
 		multifocus3d.SetDestinationImage(fliDstImage);
 		// 결과 Texture 이미지 설정 // Set the res texture image
 		multifocus3d.SetResultTextureImage(&fliTxtImage);
+		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
+		multifocus3d.SetDestinationObject(fl3DOHM);
 		// Pixel Accuracy 설정 // Set the pixel accuracy
 		multifocus3d.SetPixelAccuracy(0.1);
 		// Depth Pitch 설정 // Set the depth pitch
@@ -135,7 +139,7 @@ int main()
 		}
 
 		// 3D 이미지 뷰에 Height Map (Dst Image) 이미지를 디스플레이
-		if((res = view3DDst.PushObject(CFL3DObjectHeightMap(&fliDstImage))).IsFail())
+		if((res = view3DDst.PushObject(multifocus3d.GetDestinationObject())).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;

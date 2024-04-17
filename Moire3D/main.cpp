@@ -201,12 +201,16 @@ int main()
 		// Moire 3D 객체 생성 // Create Moire 3D object
 		CMoire3D Moire3D;
 
+		CFL3DObjectHeightMap fl3DOHM;
+
 		// Learn 이미지 설정 // Set the learn image
 		Moire3D.SetLearnImage(flaFliLrnImage);
 		// Source 이미지 설정 // Set the source image
 		Moire3D.SetSourceImage(flaFliSrcImage);
 		// Destination 이미지 설정 // Set the destination image
 		Moire3D.SetDestinationImage(fliDstImage);
+		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
+		Moire3D.SetDestinationObject(fl3DOHM);
 		// 카메라의 working distance 설정 // Set working distance of the camera
 		Moire3D.SetWorkingDistance(330);
 		// 카메라의 field of view 설정 // Set field of view of the camera
@@ -289,6 +293,10 @@ int main()
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
+
+		// Height Map에 Texture Image 설정
+		CFL3DObjectHeightMap* pFl3DOHM = dynamic_cast<CFL3DObjectHeightMap *>(Moire3D.GetDestinationObject());
+		pFl3DOHM->SetTextureImage(fliTexture);
 
 		// 3D 이미지 뷰에 Height Map (Dst Image) 이미지를 디스플레이
 		if((res = view3DDst.PushObject(CFL3DObjectHeightMap(&fliDstImage, &fliTexture))).IsFail())

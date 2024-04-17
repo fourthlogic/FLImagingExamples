@@ -113,6 +113,8 @@ int main()
 		// StereoDisparity 객체 생성 // Create StereoDisparity object
 		CStereoDisparity disparity;
 
+		CFL3DObjectHeightMap fl3DOHM;
+
 		// Source 이미지 설정 // Set the source image
 		disparity.SetSourceImage(fliSrcImage);
 		// Source 이미지 2 설정
@@ -121,6 +123,8 @@ int main()
 		disparity.SetDestinationImage(fliDstImage);
 		// 결과 Texture 이미지 설정 // Set the res texture image
 		disparity.SetResultTextureImage(&fliTxtImage);
+		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
+		disparity.SetDestinationObject(fl3DOHM);
 		// 최소 허용 Disparity 값 설정 // Set the minimum allowed disparity value
 		disparity.SetMinimumDisparity(0);
 		// Disparity 범위 설정 // Set the range of disparity
@@ -187,6 +191,10 @@ int main()
 			ErrorPrint(res, L"Failed to draw text.\n");
 			break;
 		}
+
+		// Height Map에 Texture Image 설정
+		CFL3DObjectHeightMap* pFl3DOHM = dynamic_cast<CFL3DObjectHeightMap*>(disparity.GetDestinationObject());
+		pFl3DOHM->SetTextureImage(fliTxtImage);
 
 		// 3D 이미지 뷰에 Height Map (Destination Image) 이미지를 디스플레이 // Display the Height Map (Destination Image) on the 3D image view
 		if((res = view3DDst.PushObject(CFL3DObjectHeightMap(&fliDstImage, &fliTxtImage))).IsFail())

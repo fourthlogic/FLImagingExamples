@@ -73,10 +73,14 @@ int main()
 		// Multi Focus 객체 생성 // Create Multi Focus object
 		CLaserTriangulation LaserTriangulation;
 
+		CFL3DObjectHeightMap fl3DOHM;
+
 		// Source 이미지 설정 // Set the source image
 		LaserTriangulation.SetSourceImage(fliSrcImage);
 		// Destination 이미지 설정 // Set the destination image
 		LaserTriangulation.SetDestinationImage(fliDstImage);
+		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
+		LaserTriangulation.SetDestinationObject(fl3DOHM);
 		// Source 이미지 타입 설정 // Set the type of the source image
 		LaserTriangulation.SetSourceType(CLaserTriangulation::ESourceType_Profile);
 		// Pixel Accuracy 설정 // Set the pixel accuracy
@@ -132,7 +136,7 @@ int main()
 		}
 
 		// 3D 이미지 뷰에 Height Map (Dst Image) 이미지를 디스플레이
-		if((res = view3DDst.PushObject(CFL3DObjectHeightMap(&fliDstImage))).IsFail())
+		if((res = view3DDst.PushObject(LaserTriangulation.GetDestinationObject())).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
