@@ -195,9 +195,10 @@ int main()
 		// Height Map에 Texture Image 설정
 		CFL3DObjectHeightMap* pFl3DOHM = dynamic_cast<CFL3DObjectHeightMap*>(disparity.GetDestinationObject());
 		pFl3DOHM->SetTextureImage(fliTxtImage);
+		pFl3DOHM->ActivateVertexColorTexture(true);
 
 		// 3D 이미지 뷰에 Height Map (Destination Image) 이미지를 디스플레이 // Display the Height Map (Destination Image) on the 3D image view
-		if((res = view3DDst.PushObject(CFL3DObjectHeightMap(&fliDstImage, &fliTxtImage))).IsFail())
+		if((res = view3DDst.PushObject(*pFl3DOHM)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
