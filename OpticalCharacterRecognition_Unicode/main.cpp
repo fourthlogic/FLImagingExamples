@@ -17,13 +17,13 @@ int main()
 	do
 	{
 		// 이미지 로드 // Load image
-		if((res = fliImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Learn.flif")).IsFail())
+		if((res = fliImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Learn_Unicode.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition.flif")).IsFail())
+		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition_Unicode.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
@@ -111,7 +111,7 @@ int main()
 		}
 
 		// 이미지에서 학습할 문자의 각도 범위를 조정
-		if(IsFail(ocr.SetLearningAngleTolerance(10.)))
+		if(IsFail(ocr.SetLearningAngleTolerance(50.)))
 		{
 			ErrorPrint(res, "Failed to set learning angle tolerance.");
 			break;
@@ -166,21 +166,14 @@ int main()
 		}
 
 		// 인식할 문자의 각도 범위를 설정
-		if(IsFail(res = ocr.SetRecognizingAngleTolerance(10.)))
+		if(IsFail(res = ocr.SetRecognizingAngleTolerance(50.)))
 		{
 			ErrorPrint(res, L"Failed to set recognizing angle tolerance.");
 			break;
 		}
 
-		// 인식할 이미지의 전처리 여부를 설정
-		if(IsFail(res = ocr.EnableRecognizingPreprocessing(false)))
-		{
-			ErrorPrint(res, L"Failed to set recognizing Preprocessing.");
-			break;
-		}
-
 		// 인식할 문자의 색상을 설정
-		if(IsFail(res = ocr.SetRecognizingCharacterColorType(COCR::ECharacterColorType_All)))
+		if(IsFail(res = ocr.SetRecognizingCharacterColorType(COCR::ECharacterColorType_WhiteOnBlack)))
 		{
 			ErrorPrint(res, L"Failed to set recognizing character color.");
 			break;
@@ -190,6 +183,13 @@ int main()
 		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.6)))
 		{
 			ErrorPrint(res, L"Failed to set minimum score.");
+			break;
+		}
+
+		// 인식할 문자의 유니코드 여부를 설정
+		if(IsFail(res = ocr.EnableRecognizingUnicodeByteCharacter(true)))
+		{
+			ErrorPrint(res, L"Failed to Enable unicode byte character.");
 			break;
 		}
 
