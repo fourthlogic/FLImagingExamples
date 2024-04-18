@@ -64,7 +64,6 @@ int main()
 			break;
 		}
 
-
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
 		if((res = viewImage.SynchronizePointOfView(&viewImageRecognize)).IsFail())
 		{
@@ -211,10 +210,9 @@ int main()
 			ocr.GetResultRecognizedCharactersInfo(i, resultChar);
 
 			CFLString<wchar_t> flsResultString;
-			flsResultString.Format(L"[%s] Score : %d%%", resultChar.flfaCharacter.GetName(), (int32_t)(resultChar.f64Score * 100));
-
 			CFLRect<double> flrBoundary;
 
+			flsResultString.Format(L"[%s] Score : %d%%, Angle : %.1lf", resultChar.flfaCharacter.GetName(), (int32_t)(resultChar.f64Score * 100), resultChar.f64Rotation);
 			resultChar.flfaCharacter.GetBoundaryRect(flrBoundary);
 
 			if(IsFail(layerRecognize.DrawTextImage(CFLPoint<double>(flrBoundary.left, flrBoundary.top), flsResultString, YELLOW, BLACK, 15, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
