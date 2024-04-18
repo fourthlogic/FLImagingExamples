@@ -515,8 +515,12 @@
       - 메인프레임의 메뉴 바에 사용자가 정의한 정보를 표시하는 예제. Visual Studio 2015 (vc14.0) 이상의 버전에서 실행 가능합니다.
       
     - LogInExample
-      - The setting the availability and visibility of a property item based on login permissions. Available in Visual Studio 2015 (vc14.0) later versions.
+      - The example of setting the availability and visibility of a property item based on login permissions. Available in Visual Studio 2015 (vc14.0) later versions.
       - 로그인 권한에 따라 프로퍼티 아이템의 사용 가능 여부 및 가시성 여부를 설정하는 예제. Visual Studio 2015 (vc14.0) 이상의 버전에서 실행 가능합니다.
+      
+    - PropertyPaneTimerExample
+      - The example of setting up a timer handler in a properties window. Available in Visual Studio 2015 (vc14.0) later versions.
+      - 프로퍼티 창에 타이머 핸들러를 설정하는 예제. Visual Studio 2015 (vc14.0) 이상의 버전에서 실행 가능합니다.
 
 - [ImageProcessing]
 
