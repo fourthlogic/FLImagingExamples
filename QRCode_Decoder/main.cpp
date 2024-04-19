@@ -145,9 +145,9 @@ int main()
 			qrCodeDecoder.GetResultQRCodeSpec(i, codeSpec);
 
 			EQRCodeErrorCorrectionLevel eECLevel = codeSpec.GetQRCodeErrorCorrectionLevel();
-			EQRCodeSymbolVersion1 eSymbol1 = EQRCodeSymbolVersion1_None;
-			EQRCodeSymbolVersion2 eSymbol2 = EQRCodeSymbolVersion2_None;
-			codeSpec.GetQRCodeSymbolVersion(eSymbol1, eSymbol2);
+			EQRCodeSymbolType1 eSymbol1 = EQRCodeSymbolType1_None;
+			EQRCodeSymbolType2 eSymbol2 = EQRCodeSymbolType2_None;
+			codeSpec.GetSymbolType(eSymbol1, eSymbol2);
 
 			CFLString<wchar_t> flsAdditionalData;
 
@@ -171,7 +171,7 @@ int main()
 				break;
 			}
 
-			if(eSymbol1 != EQRCodeSymbolVersion1_None)
+			if(eSymbol1 != EQRCodeSymbolType1_None)
 			{
 				int32_t i32SymbolValue = (int32_t)eSymbol1;
 				int32_t i32Symbol = 0;
@@ -188,7 +188,7 @@ int main()
 				flsAdditionalData.AppendFormat(L"-%d]", i32Symbol);
 			}
 
-			if(eSymbol2 != EQRCodeSymbolVersion2_None)
+			if(eSymbol2 != EQRCodeSymbolType2_None)
 			{
 				int32_t i32SymbolValue = (int32_t)eSymbol2;
 				int32_t i32Symbol = 0;

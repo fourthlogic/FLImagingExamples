@@ -54,7 +54,7 @@ int main()
 		// 처리할 이미지 설정
 		barcodeEncoder.SetSourceImage(fliImage);
 		// Encoding Barcode 타입 설정
-		codeSpec.SetBarcodeSymbol(EBarcodeSymbol_EAN128);
+		codeSpec.SetSymbolType(EBarcodeSymbolType_EAN128);
 		// Encoding Message 설정
 		barcodeEncoder.SetEncodingMessage(CFLString<wchar_t>(arrWcEncoding));
 

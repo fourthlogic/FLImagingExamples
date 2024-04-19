@@ -142,7 +142,7 @@ int main()
 			qrCodeDecoder.GetResultMicroQRCodeSpec(i, codeSpec);
 
 			EMicroQRCodeErrorCorrectionLevel eECLevel = codeSpec.GetMicroQRCodeErrorCorrectionLevel();
-			EMicroQRCodeSymbolVersion eSymbol = codeSpec.GetMicroQRCodeSymbolVersion();
+			EMicroQRCodeSymbolType eSymbol = codeSpec.GetSymbolType();
 
 			CFLString<wchar_t> flsAdditionalData;
 
@@ -168,16 +168,16 @@ int main()
 
 			switch(eSymbol)
 			{
-			case FLImaging::AdvancedFunctions::EMicroQRCodeSymbolVersion_MicroQRVersion1:
+			case FLImaging::AdvancedFunctions::EMicroQRCodeSymbolType_MicroQRVersion1:
 				flsAdditionalData += L"-1]";
 				break;
-			case FLImaging::AdvancedFunctions::EMicroQRCodeSymbolVersion_MicroQRVersion2:
+			case FLImaging::AdvancedFunctions::EMicroQRCodeSymbolType_MicroQRVersion2:
 				flsAdditionalData += L"-2]";
 				break;
-			case FLImaging::AdvancedFunctions::EMicroQRCodeSymbolVersion_MicroQRVersion3:
+			case FLImaging::AdvancedFunctions::EMicroQRCodeSymbolType_MicroQRVersion3:
 				flsAdditionalData += L"-3]";
 				break;
-			case FLImaging::AdvancedFunctions::EMicroQRCodeSymbolVersion_MicroQRVersion4:
+			case FLImaging::AdvancedFunctions::EMicroQRCodeSymbolType_MicroQRVersion4:
 				flsAdditionalData += L"-4]";
 				break;
 			default:

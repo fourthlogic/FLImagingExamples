@@ -42,7 +42,7 @@ int main()
 		barcodeDecoder.SetSourceImage(fliImage);
 		// Barcode 타입 설정
 		// 미 설정시 EBarcodeDecodingType_Auto 로 모든 심볼을 탐색한다 동작한다.
-		barcodeDecoder.SetBarcodeSymbolToDetect(EBarcodeSymbol_EAN13);
+		barcodeDecoder.SetSymbolType(EBarcodeSymbolType_EAN13);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		
@@ -101,66 +101,66 @@ int main()
 			CBarcodeSpec bcs;
 			barcodeDecoder.GetResultBarcodeSpec(i, bcs);
 
-			EBarcodeSymbol eSymbol = bcs.GetBarcodeSymbol();
+			EBarcodeSymbolType eSymbol = bcs.GetSymbolType();
 			CFLString<wchar_t> flsSymbol;
 
 			switch(eSymbol)
 			{
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_CODE11:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_CODE11:
 				flsSymbol = L"[CODE-11]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_CODE39:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_CODE39:
 				flsSymbol = L"[CODE-39]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_Codabar:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_Codabar:
 				flsSymbol = L"[Codabar]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_Datalogic2Of5:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_Datalogic2Of5:
 				flsSymbol = L"[Datalogic 2/5]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_Interleaved2Of5:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_Interleaved2Of5:
 				flsSymbol = L"[Interleaved 2/5]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_Industrial2Of5:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_Industrial2Of5:
 				flsSymbol = L"[Industrial 2/5]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_MSI:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_MSI:
 				flsSymbol = L"[MSI]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_Plessey:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_Plessey:
 				flsSymbol = L"[Plessy UK]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_UPCA:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_UPCA:
 				flsSymbol = L"[UPC-A]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_UPCE:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_UPCE:
 				flsSymbol = L"[UPC-E]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_EAN8:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_EAN8:
 				flsSymbol = L"[EAN-8]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_EAN13:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_EAN13:
 				flsSymbol = L"[EAN-13]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_EAN128:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_EAN128:
 				flsSymbol = L"[EAN-128]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_CODE93:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_CODE93:
 				flsSymbol = L"[CODE-93]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_GS1DatabarOmniTrunc:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_GS1DatabarOmniTrunc:
 				flsSymbol = L"[GS1 DatabarOmniTrunc]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_GS1DatabarLimited:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_GS1DatabarLimited:
 				flsSymbol = L"[GS1 DatabarLimited]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_GS1DatabarExpanded:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_GS1DatabarExpanded:
 				flsSymbol = L"[GS1 DatabarExpanded]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_USPSIntelligent:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_USPSIntelligent:
 				flsSymbol = L"[USPS Intelligent]";
 				break;
-			case FLImaging::AdvancedFunctions::EBarcodeSymbol_JapanesePostalCustomer:
+			case FLImaging::AdvancedFunctions::EBarcodeSymbolType_JapanesePostalCustomer:
 				flsSymbol = L"[Japanese Postal Customer]";
 				break;
 			default:
