@@ -44,6 +44,12 @@
         - The example of an algorithm that performs getting disparity map from a pair of stereo calibrator output images.
         - 스테레오 캘리브레이터의 Rectification 결과 이미지 쌍으로부터 스테레오 Disparity Map을 구하는 알고리즘 예제.
 
+    - [Match]
+    
+      - Surface Based Match
+        - The example of an algorithm that estimate pose matrix for a given point clouds.
+        - 주어진 포인트 클라우드에 대해 포즈 행렬을 추정하는 알고리즘 예제.
+
 - [Advanced Functions]
 
   - [Calibration]
