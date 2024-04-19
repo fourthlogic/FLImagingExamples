@@ -31,7 +31,7 @@ int main()
 
 		fl3DObjectSrc.Load(L"../../ExampleImages/PerspectiveTransform3D/binary-vertex.ply");
 
-		// Distance Transform 3D 객체 생성 // Create Distance Transform 3D object
+		// Perspective Transform 3D 객체 생성 // Create Perspective Transform 3D object
 		CPerspectiveTransform3D PerspectiveTransform3D;
 
 		TPoint3<float> tpPosition = TPoint3<float>(0.000000, 0.000000, 0.000000);
@@ -68,12 +68,6 @@ int main()
 		layer3DDst.Clear();
 
 		// Destination 이미지가 새로 생성됨으로 Zoom fit 을 통해 디스플레이 되는 이미지 배율을 화면에 맞춰준다. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
-		if((res = view3DDst.ZoomFit()).IsFail())
-		{
-			ErrorPrint(res, L"Failed to zoom fit of the image view.\n");
-			break;
-		}
-
 		view3DSrc.PushObject(fl3DObjectSrc);
 		view3DSrc.ZoomFit();
 
