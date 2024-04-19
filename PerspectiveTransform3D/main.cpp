@@ -29,14 +29,14 @@ int main()
 			break;
 		}
 
-		fl3DObjectSrc.Load(L"../../ExampleImages/PerspectiveTransform3D/binary-vertex.ply");
+		fl3DObjectSrc.Load(L"../../ExampleImages/DistanceTransform3D/binary-vertex.ply");
 
 		// Perspective Transform 3D 按眉 积己 // Create Perspective Transform 3D object
 		CPerspectiveTransform3D PerspectiveTransform3D;
 
-		TPoint3<float> tpPosition = TPoint3<float>(0.000000, 0.000000, 0.000000);
-		TPoint3<float> tpDirection = TPoint3<float>(-0.100000, 0.000000, -1.000000);
-		TPoint3<float> tpUpVector = TPoint3<float>(0.000000, 1.000000, 0.000000);
+		TPoint3<float> tpPosition = TPoint3<float>(0.000000f, 0.000000f, 0.000000f);
+		TPoint3<float> tpDirection = TPoint3<float>(-0.100000f, 0.000000f, -1.000000f);
+		TPoint3<float> tpUpVector = TPoint3<float>(0.000000f, 1.000000f, 0.000000f);
 
 		// Source 按眉 汲沥 // Set the source object
 		PerspectiveTransform3D.SetSourceObject(&fl3DObjectSrc);

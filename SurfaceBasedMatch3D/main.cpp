@@ -20,30 +20,16 @@ int main()
 		// 알고리즘 동작 결과 // Algorithm execution result
 		CResult eResult = EResult_UnknownError;
 
-		// ply 파일 리더 // ply file reader
-		CPlyReader plyReader;
 
 		// Learn Object 로드 // Load the learn object
-		if((eResult = plyReader.Load(L"../../ExampleImages/SurfaceBasedMatch3D/ReferencePoints.ply")).IsFail())
-		{
-			ErrorPrint(eResult, L"Failed to load the object file.\n");
-			break;
-		}
-
-		if((eResult = plyReader.GetResult3DObject(fl3DOLearnObject)).IsFail())
+		if((eResult = fl3DOLearnObject.Load(L"../../ExampleImages/SurfaceBasedMatch3D/ReferencePoints.ply")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the object file.\n");
 			break;
 		}
 
 		// Source Object 로드 // Load the Source object
-		if((eResult = plyReader.Load(L"../../ExampleImages/SurfaceBasedMatch3D/MeasuredPoints.ply")).IsFail())
-		{
-			ErrorPrint(eResult, L"Failed to load the object file.\n");
-			break;
-		}
-
-		if((eResult = plyReader.GetResult3DObject(fl3DOSourceObject)).IsFail())
+		if((eResult = fl3DOSourceObject.Load(L"../../ExampleImages/SurfaceBasedMatch3D/MeasuredPoints.ply")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the object file.\n");
 			break;
@@ -66,7 +52,7 @@ int main()
 		// Dst 3D 뷰 생성
 		if(IsFail(eResult = view3DDst.Create(1124, 0, 1636, 512)))
 		{
-			ErrorPrint(res, "Failed to create the Dst 3D view.\n");
+			ErrorPrint(eResult, "Failed to create the Dst 3D view.\n");
 			break;
 		}
 
