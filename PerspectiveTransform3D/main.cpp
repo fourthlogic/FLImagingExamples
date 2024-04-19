@@ -29,9 +29,7 @@ int main()
 			break;
 		}
 
-		CPlyReader plyReader;
-		plyReader.Load(L"../../ExampleImages/PerspectiveTransform3D/binary-vertex.ply");
-		plyReader.GetResult3DObject(fl3DObjectSrc);
+		fl3DObjectSrc.Load(L"../../ExampleImages/PerspectiveTransform3D/binary-vertex.ply");
 
 		// Distance Transform 3D °´Ã¼ »ý¼º // Create Distance Transform 3D object
 		CPerspectiveTransform3D PerspectiveTransform3D;

@@ -126,9 +126,7 @@ int main()
 			break;
 		}
 
-		CPlyReader plyReader;
-		plyReader.Load(L"../../ExampleImages/DistanceTransform3D/binary-vertex.ply");
-		plyReader.GetResult3DObject(fl3DObject);
+		fl3DObject.Load(L"../../ExampleImages/DistanceTransform3D/binary-vertex.ply");
 
 		// Distance Transform 3D °´Ã¼ »ý¼º // Create Distance Transform 3D object
 		CDistanceTransform3D DistanceTransform3D;
