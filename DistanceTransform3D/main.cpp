@@ -25,7 +25,7 @@ const CResult DrawResult(GUI::CGUIView3DWrap* pView3D, const Base::CFLArray<Base
 				arr2F32DataRange[j][1] = std::max<float>(arr2F32DataRange[j][1], *(pF32Value + j));
 			}
 		}
-	
+
 		if(!pFlaPlyData)
 		{
 			er = EResult_NoData;
@@ -112,13 +112,14 @@ int main()
 		// 알고리즘 동작 결과 // Algorithm execution result
 		CResult res = EResult_UnknownError;
 
-		// Destination 3D 이미지 뷰 생성 // Create the destination 3D image view
+		// Source 3D 이미지 뷰 생성 // Create the Source 3D image view
 		if((res = view3DSrc.Create(400, 200, 1300, 800)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
+		// Destination 3D 이미지 뷰 생성 // Create the destination 3D image view
 		if((res = view3DDst.Create(400, 200, 1300, 800)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
@@ -129,17 +130,20 @@ int main()
 		plyReader.Load(L"../../ExampleImages/DistanceTransform3D/binary-vertex.ply");
 		plyReader.GetResult3DObject(fl3DObject);
 
-		// Multi Focus 객체 생성 // Create Multi Focus object
+		// Distance Transform 3D 객체 생성 // Create Distance Transform 3D object
 		CDistanceTransform3D DistanceTransform3D;
 
 		TPoint3<float> tpPosition = TPoint3<float>(0.000000, 0.000000, 0.000000);
 		TPoint3<float> tpDirection = TPoint3<float>(-0.100000, 0.000000, -1.000000);
 		TPoint3<float> tpUpVector = TPoint3<float>(0.000000, 1.000000, 0.000000);
 
+		// Source 객체 설정 // Set the source object
 		DistanceTransform3D.SetSourceObject(&fl3DObject);
+		// 카메라 위치 설정 // Set the camera position
 		DistanceTransform3D.SetPosition(tpPosition);
-		// Source 이미지 설정 // Set the source image
+		// 카메라 방향 설정 // Set the camera direction
 		DistanceTransform3D.SetDirection(tpDirection);
+		// 카메라 업 벡터 설정 // Set the camera up vector
 		DistanceTransform3D.SetUpVector(tpUpVector);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
@@ -150,6 +154,7 @@ int main()
 		}
 
 		CFLArray<TPoint3<float>> arrResult;
+		// 거리 결과 가져오기 // Get the distance
 		DistanceTransform3D.GetResultDistanceAxis(arrResult);
 
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
