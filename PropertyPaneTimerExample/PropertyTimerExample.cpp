@@ -140,6 +140,10 @@ void FLImaging::GUI::CPropertyTimerExample::OnReceiveBroadcast(const Base::CBroa
 					// Kill added timer m_u32TimerID
 					// 추가된 타이머 m_u32TimerID 를 종료 및 제거
 					GetPaneProperties()->KillTimerHandler(m_u32TimerID);
+
+					// Reset timer ID
+					// 타이머 아이디 초기화
+					m_u32TimerID = 0;
 				}
 			}
 			break;
