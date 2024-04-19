@@ -331,8 +331,6 @@ int main()
 		// 추론 결과 옵션 설정 // Set the inference result options;
 		// Result 결과를 Label Image로 받을지 여부 설정 // Set whether to receive the result as a Label Image
 		ocr.EnableInferenceResultLabelImage(true);
-		// Result 결과에 Region Figure를 포함 여부 설정 // Set whether to include region figure in result
-		ocr.EnableInferenceResultIncludingRegionFigures(false);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if(IsFail(res = ocr.Execute()))
@@ -347,8 +345,6 @@ int main()
 		// 추론 결과 옵션 설정 // Set the inference result options;
 		// Result 결과를 Label Image로 받을지 여부 설정 // Set whether to receive the result as a Label Image
 		ocr.EnableInferenceResultLabelImage(false);
-		// Result 결과에 Region Figure를 포함 여부 설정 // Set whether to include region figure in result
-		ocr.EnableInferenceResultIncludingRegionFigures(true);
 		// Result item settings enum 설정 // Set the result item settings
 		ocr.SetInferenceResultItemSettings(COCRDL::EInferenceResultItemSettings_ClassName_ConfidenceScore_RegionType_Contour);
 
