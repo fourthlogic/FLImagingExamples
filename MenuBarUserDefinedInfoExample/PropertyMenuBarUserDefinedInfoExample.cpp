@@ -73,7 +73,6 @@ const CResult FLImaging::GUI::CPropertyMenuBarUserDefinedInfoExample::ConfigureM
 				CGUIPropertyItemText * pPITextIndex = (CGUIPropertyItemText*)FindItemByFullPath(L"Add@Index");
 				pPITextIndex->SetVisible(strValue == L"InsertAt");
 				pPITextIndex->GetParentWndList()->AdjustLayout();
-				return true;
 			};
 			pPIDD->SetPropertyCallback(pCallback);
 			AddItem(pPIDD);
@@ -109,7 +108,6 @@ const CResult FLImaging::GUI::CPropertyMenuBarUserDefinedInfoExample::ConfigureM
 				CGUIPropertyItemText * pPITextIndex = (CGUIPropertyItemText*)FindItemByFullPath(L"Remove@Index");
 				pPITextIndex->SetVisible(strValue == L"RemoveAt");
 				pPITextIndex->GetParentWndList()->AdjustLayout();
-				return true;
 			};
 			pPIDD->SetPropertyCallback(pCallback);
 			AddItem(pPIDD);
@@ -139,7 +137,6 @@ const CResult FLImaging::GUI::CPropertyMenuBarUserDefinedInfoExample::ConfigureM
 			*pCallback = MakePropertyCallback
 			{
 				UpdateSetParameters(strValue.ToInt32());
-				return true;
 			};
 			pPITIndex->SetPropertyCallback(pCallback);
 		}

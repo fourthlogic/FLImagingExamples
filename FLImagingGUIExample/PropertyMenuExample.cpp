@@ -119,8 +119,6 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 				*pPropertyCallBack = MakePropertyCallback
 				{
 					OnPropertyPaneChanged(pItem, strValue);
-
-					return !strValue.IsEmpty();
 				};
 				pCheckBox->SetPropertyCallback(pPropertyCallBack);
 				pCheckBox->SetDefaultValue(L"Unchecked");
