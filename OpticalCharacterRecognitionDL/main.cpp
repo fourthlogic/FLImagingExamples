@@ -12,7 +12,7 @@ bool g_bTerminated = false;
 
 unsigned int __stdcall LearnThread(void* pParam)
 {
-	COCRDL* pOCR = (COCRDL*)pParam;
+	COpticalCharacterRecognitionDL* pOCR = (COpticalCharacterRecognitionDL*)pParam;
 
 	CResult er = pOCR->Learn();
 	g_bTerminated = true;
@@ -42,13 +42,13 @@ int main()
 	do 
 	{
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/OCRDL/OCR_Learn.flif")))
+		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/OpticalCharacterRecognitionDL/OCR_Learn.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(res = fliValidationImage.Load(L"../../ExampleImages/OCRDL/OCR_Inference.flif")))
+		if(IsFail(res = fliValidationImage.Load(L"../../ExampleImages/OpticalCharacterRecognitionDL/OCR_Inference.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -187,7 +187,7 @@ int main()
 		viewImagesLabelFigure.RedrawWindow();
 
 		// OCR 객체 생성 // Create OCR object
-		COCRDL ocr;
+		COpticalCharacterRecognitionDL ocr;
 
 		// OptimizerSpec 객체 생성 // Create OptimizerSpec object
 		COptimizerSpecAdamGradientDescent optSpec;
@@ -197,9 +197,9 @@ int main()
 		// 검증할 이미지 설정 // Set the image to validate
 		ocr.SetLearningValidationImage(fliValidationImage);
 		// 학습할 OCR 모델 설정 // Set up OCR model to learn
-		ocr.SetModel(COCRDL::EModel_FLSegNet);
+		ocr.SetModel(COpticalCharacterRecognitionDL::EModel_FLSegNet);
 		// 학습할 OCR 모델의 버전 설정 // Set up OCR model version to learn
-		ocr.SetModelVersion(COCRDL::EModelVersion_FLSegNet_V1_512_B3);
+		ocr.SetModelVersion(COpticalCharacterRecognitionDL::EModelVersion_FLSegNet_V1_1024_B3);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
 		ocr.SetLearningEpoch(10000);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
@@ -346,7 +346,7 @@ int main()
 		// Result 결과를 Label Image로 받을지 여부 설정 // Set whether to receive the result as a Label Image
 		ocr.EnableInferenceResultLabelImage(false);
 		// Result item settings enum 설정 // Set the result item settings
-		ocr.SetInferenceResultItemSettings(COCRDL::EInferenceResultItemSettings_ClassName_ConfidenceScore_RegionType_Contour);
+		ocr.SetInferenceResultItemSettings(COpticalCharacterRecognitionDL::EInferenceResultItemSettings_ClassName_ConfidenceScore_RegionType_Contour);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if(IsFail(res = ocr.Execute()))
