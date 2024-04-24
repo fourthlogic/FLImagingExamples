@@ -424,6 +424,13 @@
 	   - Example of connecting and operating Multicam.
        - Multicam 연결 및 구동하는 예제.
 
+  - [Motion]
+
+    - DeviceMotionEziMotionPlusRV6
+	   - Example of connecting and operating Ezi Motion Plus R V6. (Search Origin, Move Absolute Position, Move Incremental Position)
+       - Ezi Motion Plus R V6 연결 및 구동하는 예제. (Search Origin, Move Absolute Position, Move Incremental Position)
+
+
 - [GUI, Figures]
 
   - [View3D]
