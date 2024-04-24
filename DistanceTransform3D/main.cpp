@@ -131,9 +131,9 @@ int main()
 		// Distance Transform 3D 按眉 积己 // Create Distance Transform 3D object
 		CDistanceTransform3D DistanceTransform3D;
 
-		TPoint3<float> tpPosition = TPoint3<float>(0.000000, 0.000000, 0.000000);
-		TPoint3<float> tpDirection = TPoint3<float>(-0.100000, 0.000000, -1.000000);
-		TPoint3<float> tpUpVector = TPoint3<float>(0.000000, 1.000000, 0.000000);
+		TPoint3<float> tpPosition = TPoint3<float>(0.0f, 0.0f, 0.0f);
+		TPoint3<float> tpDirection = TPoint3<float>(-0.1f, 0.0f, -1.0f);
+		TPoint3<float> tpUpVector = TPoint3<float>(0.0f, 1.0f, 0.0f);
 
 		// Source 按眉 汲沥 // Set the source object
 		DistanceTransform3D.SetSourceObject(&fl3DObject);
