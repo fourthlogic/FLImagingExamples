@@ -73,7 +73,7 @@ const CResult CTreeCtrlExampleDlg::BuildTree()
 
 		// 다크 테마를 사용하려면 true,
 		// 다크 테마를 사용하지 않으려면 false 를 설정합니다.
-		bool bUseDarkMode = false;
+		bool bUseDarkMode = true;
 
 		// 다크 테마
 		if(bUseDarkMode)
