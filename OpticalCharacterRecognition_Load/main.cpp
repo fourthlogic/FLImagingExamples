@@ -16,7 +16,7 @@ int main()
 
 	do
 	{
-		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition_15Degree.flif")).IsFail())
+		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
@@ -101,13 +101,6 @@ int main()
 			break;
 		}
 
-		// 인식할 이미지의 전처리 여부를 설정
-		if(IsFail(res = ocr.EnableRecognizingNoiseReduction(false)))
-		{
-			ErrorPrint(res, L"Failed to set recognizing Noise Reduction.");
-			break;
-		}
-
 		// 인식할 문자의 색상을 설정
 		if(IsFail(res = ocr.SetRecognizingCharacterColorType(COCR::ECharacterColorType_All)))
 		{
@@ -172,7 +165,7 @@ int main()
 			break;
 		}
 
-		// 인식할 이미지의 전처리 여부를 설정
+		// 인식할 이미지의 잡음 제거 여부를 설정
 		if(IsFail(res = ocr.EnableRecognizingNoiseReduction(true)))
 		{
 			ErrorPrint(res, L"Failed to set recognizing Noise Reduction.");
@@ -187,7 +180,7 @@ int main()
 		}
 
 		// 인식할 최소 점수를 설정
-		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.5)))
+		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.6)))
 		{
 			ErrorPrint(res, L"Failed to set minimum score.");
 			break;
