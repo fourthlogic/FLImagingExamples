@@ -20,7 +20,7 @@ int main()
 		CResult eResult = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(eResult = fliSourceImage.Load(L"../../ExampleImages/Decolorization/Pattern.flif")))
+		if(IsFail(eResult = fliSourceImage.Load(L"../../ExampleImages/ColorBoosting/Sand.flif")))
 		{
 			ErrorPrint(eResult, "Failed to load the image file.\n");
 			break;
@@ -66,32 +66,32 @@ int main()
 			break;
 		}
 
-		// Decolorization 객체 생성 // Create Decolorization object
-		CDecolorization Decolorization;
+		// ColorBoosting 객체 생성 // Create ColorBoosting object
+		CColorBoosting ColorBoosting;
 
 		// Source 이미지 설정 // Set source image 
-		if(IsFail(eResult = Decolorization.SetSourceImage(fliSourceImage)))
+		if(IsFail(eResult = ColorBoosting.SetSourceImage(fliSourceImage)))
 		{
 			ErrorPrint(eResult, "Failed to set Source Image.");
 			break;
 		}
 
 		// Destination 이미지 설정 // Set destination image
-		if(IsFail(eResult = Decolorization.SetDestinationImage(fliConvertedImage)))
+		if(IsFail(eResult = ColorBoosting.SetDestinationImage(fliConvertedImage)))
 		{
 			ErrorPrint(eResult, "Failed to set Destination Image.");
 			break;
 		}
 
 		// 연산 속도 설정 // Set the operation speed.
-		if(IsFail(eResult = Decolorization.SetOperationSpeed(CDecolorization::EOperationSpeed_Normal)))
+		if(IsFail(eResult = ColorBoosting.SetOperationSpeed(CColorBoosting::EOperationSpeed_Fast)))
 		{
 			ErrorPrint(eResult, "Failed to set Operation Speed.");
 			break;
 		}
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((eResult = Decolorization.Execute()).IsFail())
+		if((eResult = ColorBoosting.Execute()).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to process.");
 			break;
