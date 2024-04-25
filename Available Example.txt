@@ -1273,6 +1273,9 @@
     - RegionExtractor
       - Example of an algorithm to extract the intersection of the set Figure and the region of interest from the source image.
       - 소스 이미지에서 설정된 Figure와 관심 영역의 교집합을 추출하는 알고리즘 예제.
+    - HoleFilling
+      - Example of an algorithm to extract the intersection of the set Figure and the region of interest from the source image.
+      - 소스 이미지에서 Hole Figure를 추출하고 보간하는 알고리즘 예제.
 
   - [Warping]
   
