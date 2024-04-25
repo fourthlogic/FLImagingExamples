@@ -330,7 +330,7 @@ void CGraphViewDlg::OnBnClickedButtonChartAdd()
 			break;
 
 		// 선택한 차트타입을 얻어온다.
-		EChartType eChartType = (EChartType)pComboBoxChartType->GetCurSel();
+		EChartType eChartType = (EChartType)(pComboBoxChartType->GetCurSel() + 1);
 
 		// 랜덤으로 10개의 데이터를 생성한다.
 		const size_t stDataCount = 10;
