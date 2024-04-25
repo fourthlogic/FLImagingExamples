@@ -103,9 +103,9 @@ int main()
 		}
 
 		// 학습할 이미지의 전처리 여부를 설정
-		if(IsFail(res = ocr.EnableLearningPreprocessing(false)))
+		if(IsFail(res = ocr.EnableLearningNoiseReduction(false)))
 		{
-			ErrorPrint(res, L"Failed to set learning Preprocessing.");
+			ErrorPrint(res, L"Failed to set learning Noise Reduction.");
 			break;
 		}
 

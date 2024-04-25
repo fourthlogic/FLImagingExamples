@@ -102,9 +102,9 @@ int main()
 		}
 
 		// 인식할 이미지의 전처리 여부를 설정
-		if(IsFail(res = ocr.EnableRecognizingPreprocessing(false)))
+		if(IsFail(res = ocr.EnableRecognizingNoiseReduction(false)))
 		{
-			ErrorPrint(res, L"Failed to set recognizing Preprocessing.");
+			ErrorPrint(res, L"Failed to set recognizing Noise Reduction.");
 			break;
 		}
 
@@ -173,9 +173,9 @@ int main()
 		}
 
 		// 인식할 이미지의 전처리 여부를 설정
-		if(IsFail(res = ocr.EnableRecognizingPreprocessing(true)))
+		if(IsFail(res = ocr.EnableRecognizingNoiseReduction(true)))
 		{
-			ErrorPrint(res, L"Failed to set recognizing Preprocessing.");
+			ErrorPrint(res, L"Failed to set recognizing Noise Reduction.");
 			break;
 		}
 
