@@ -7,7 +7,7 @@
 enum EType
 {
 	EType_Source = 0,
-	EType_Destination1,
+	EType_Destination,
 	ETypeCount,
 };
 
@@ -31,8 +31,8 @@ int main()
 			break;
 		}
 
-		// Destination1 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination1 image as same as source image
-		if((result = arrFliImage[EType_Destination1].Assign(arrFliImage[EType_Source])).IsFail())
+		// Destination 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination image as same as source image
+		if((result = arrFliImage[EType_Destination].Assign(arrFliImage[EType_Source])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to assign the image file.\n");
 			break;
@@ -45,8 +45,8 @@ int main()
 			break;
 		}
 
-		// Destination1 이미지 뷰 생성 // Create destination1 image view
-		if((result = arrViewImage[EType_Destination1].Create(548, 0, 996, 448)).IsFail())
+		// Destination 이미지 뷰 생성 // Create destination image view
+		if((result = arrViewImage[EType_Destination].Create(548, 0, 996, 448)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to create the image view.\n");
 			break;
@@ -69,14 +69,14 @@ int main()
 			break;
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if((result = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination1])).IsFail())
+		if((result = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if((result = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination1])).IsFail())
+		if((result = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize window.\n");
 			break;
@@ -87,7 +87,7 @@ int main()
 		// Source 이미지 설정 // Set the source image
 		squareRoot.SetSourceImage(arrFliImage[EType_Source]);
 		// Destination 이미지 설정 // Set the destination image
-		squareRoot.SetDestinationImage(arrFliImage[EType_Destination1]);
+		squareRoot.SetDestinationImage(arrFliImage[EType_Destination]);
 		// Overflow Method Clamping 옵션으로 설정 // Set Overflow Method to Clamping option
 		squareRoot.SetOverflowMethod(EOverflowMethod_Clamping);
 
@@ -118,13 +118,13 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if((result = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(5, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
+		if((result = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(5, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 
-		if((result = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(5, 0), L"Destination1 Image(Square Root)", YELLOW, BLACK, 20)).IsFail())
+		if((result = arrLayer[EType_Destination].DrawTextCanvas(&CFLPointD(5, 0), L"Destination Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
@@ -132,11 +132,11 @@ int main()
 		
 		// 이미지 뷰를 갱신 // Update image view
 		arrViewImage[EType_Source].Invalidate(true);
-		arrViewImage[EType_Destination1].Invalidate(true);
+		arrViewImage[EType_Destination].Invalidate(true);
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
 		while(arrViewImage[EType_Source].IsAvailable()
-			  && arrViewImage[EType_Destination1].IsAvailable())
+			  && arrViewImage[EType_Destination].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);

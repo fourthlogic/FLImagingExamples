@@ -166,25 +166,25 @@ int main()
 			break;
 		}
 
-		if((result = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(5, 0), L"Destination1 Image(Square)", YELLOW, BLACK, 20)).IsFail())
+		if((result = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(5, 0), L"Destination1 Image", YELLOW, BLACK, 25)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 		
-		if((result = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(5, 22), L"Unsigned Int / 8 / Clamping", YELLOW, BLACK, 15)).IsFail())
+		if((result = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(5, 27), L"Unsigned Int / 8 / Clamping", YELLOW, BLACK, 15)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 
-		if((result = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(5, 0), L"Destination2 Image(Square)", YELLOW, BLACK, 20)).IsFail())
+		if((result = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(5, 0), L"Destination2 Image", YELLOW, BLACK, 25)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 		
-		if((result = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(5, 22), L"Floating Point / 32", YELLOW, BLACK, 15)).IsFail())
+		if((result = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(5, 27), L"Floating Point / 32", YELLOW, BLACK, 15)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
