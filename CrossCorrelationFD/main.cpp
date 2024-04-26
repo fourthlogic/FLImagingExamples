@@ -32,7 +32,7 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = arrFliImage[EType_Operand].Load(L"../../ExampleImages/CrossCorrelation/Cross Correlation Operand.flif")))
+		if(IsFail(res = arrFliImage[EType_Operand].Load(L"../../ExampleImages/CrossCorrelationFD/Cross Correlation Operand.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
