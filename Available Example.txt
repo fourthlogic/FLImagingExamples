@@ -986,6 +986,9 @@
     - OperationSineH
       - The algorithm that performs SineH operation on the source image.
       - 이미지에 SineH 연산을 수행하는 알고리즘
+    - OperationSquare
+      - The algorithm that performs Square operation on the source image.
+      - 이미지에 제곱 연산을 수행하는 알고리즘.
     - OperationTangentH
       - The algorithm that performs TangentH operation on the source image.
       - 이미지에 TangentH 연산을 수행하는 알고리즘
