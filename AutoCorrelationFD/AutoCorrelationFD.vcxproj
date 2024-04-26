@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{61B6D917-B7D4-4A86-A49F-A7CE7F041913}</ProjectGuid>
+    <ProjectGuid>{4E5F67D1-0218-49E5-8671-DF4FAFA6272D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>OperationAdd_Image</RootNamespace>
     <ProjectName>AutoCorrelationFD</ProjectName>
