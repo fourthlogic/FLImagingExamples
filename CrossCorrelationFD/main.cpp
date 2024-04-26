@@ -26,7 +26,7 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/CrossCorrelation/Cross Correlation Source.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/CrossCorrelationFD/Cross Correlation Source.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -108,16 +108,16 @@ int main()
 			break;
 		}
 
-		// Cross Correlation 객체 생성 // Create Cross Correlation object
-		CCrossCorrelation CrossCorrelation;
+		// Cross Correlation FD 객체 생성 // Create Cross Correlation object
+		CCrossCorrelationFD CrossCorrelationFD;
 		// Source 이미지 설정 // Set source image
-		CrossCorrelation.SetSourceImage(arrFliImage[EType_Source]);
+		CrossCorrelationFD.SetSourceImage(arrFliImage[EType_Source]);
 		// Operand 이미지 설정 // Set Operand image
-		CrossCorrelation.SetOperandImage(arrFliImage[EType_Operand]);
+		CrossCorrelationFD.SetOperandImage(arrFliImage[EType_Operand]);
 		// Destination 이미지 설정 // Set destination image 
-		CrossCorrelation.SetDestinationImage(arrFliImage[EType_Destination]);
+		CrossCorrelationFD.SetDestinationImage(arrFliImage[EType_Destination]);
 		// 출력 방식 설정 // Set Output Method
-		CrossCorrelation.EnableNormalizedCrossCorrelation(true);
+		CrossCorrelationFD.EnableNormalizedCrossCorrelation(true);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = CrossCorrelation.Execute()).IsFail())

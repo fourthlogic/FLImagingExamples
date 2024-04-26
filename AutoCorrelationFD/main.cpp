@@ -25,7 +25,7 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/CrossCorrelation/Cross Correlation Source.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/CrossCorrelationFD/Cross Correlation Source.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -81,17 +81,17 @@ int main()
 			break;
 		}
 
-		// Auto Correlation 객체 생성 // Create Auto Correlation object
-		CAutoCorrelation AutoCorrelation;
+		// Auto Correlation FD 객체 생성 // Create Auto Correlation object
+		CAutoCorrelationFD AutoCorrelationFD;
 		// Source 이미지 설정 // Set source image
-		AutoCorrelation.SetSourceImage(arrFliImage[EType_Source]);
+		AutoCorrelationFD.SetSourceImage(arrFliImage[EType_Source]);
 		// Destination 이미지 설정 // Set destination image 
-		AutoCorrelation.SetDestinationImage(arrFliImage[EType_Destination]);
+		AutoCorrelationFD.SetDestinationImage(arrFliImage[EType_Destination]);
 		// 출력 방식 설정 // Set Output Method
-		AutoCorrelation.EnableNormalizedAutoCorrelation(true);
+		AutoCorrelationFD.EnableNormalizedAutoCorrelation(true);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = AutoCorrelation.Execute()).IsFail())
+		if((res = AutoCorrelationFD.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Auto Correlation.");
 			break;

@@ -791,10 +791,10 @@
 
     - [Correlation]
 
-      - AutoCorrelation  
+      - AutoCorrelationFD  
         - Example of an algorithm for correlation computation of the original image.
         - 원본 이미지를 Correlation 연산하는 알고리즘 예제.
-      - CrossCorrelation  
+      - CrossCorrelationFD
         - Example of an algorithm for cross-correlation computation of the original image and the image to be computed.
         - 원본 이미지와 연산할 이미지를 Cross Correlation 연산하는 알고리즘 예제.
 
