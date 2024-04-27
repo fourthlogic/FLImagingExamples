@@ -82,9 +82,7 @@ int main()
 		// 오브젝트 타입 설정 // Set the type of the object
 		SurfaceBasedMatch3D.SetObjectType(CSurfaceBasedMatch3D::EObjectType_Object3D);
 		// Min score 설정 // Set the min score
-		SurfaceBasedMatch3D.SetMinScore(0.2);
-		// 최대 point cloud 개수 설정 // Set the max count of point cloud
-		SurfaceBasedMatch3D.SetMaxFeatureCount(64);
+		SurfaceBasedMatch3D.SetMinScore(0.1);
 		// 최대 결과 개수 설정 // Set the max count of match result
 		SurfaceBasedMatch3D.SetMaxObject(1);
 
