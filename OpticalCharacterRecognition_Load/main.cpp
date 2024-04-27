@@ -109,7 +109,7 @@ int main()
 		}
 
 		// 인식할 최소 점수를 설정
-		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.5)))
+		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.45)))
 		{
 			ErrorPrint(res, L"Failed to set minimum score.");
 			break;
