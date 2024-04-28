@@ -120,7 +120,7 @@ int main()
 		CrossCorrelationFD.EnableNormalizedCrossCorrelation(true);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = CrossCorrelation.Execute()).IsFail())
+		if((res = CrossCorrelationFD.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Cross Correlation.");
 			break;
