@@ -112,22 +112,16 @@ int main()
 		// 학습한 문자의 개수를 받아오는 함수
 		int64_t i64LearntCount = ocr.GetLearntDataCount();
 		CFLFigureArray flfaLearnt;
-		CFLFigureArray flfaLearntOffset;
 
 		// 학습한 문자의 모양를 받아오는 함수
 		ocr.GetLearntCharacter(flfaLearnt);
-
-		// 학습한 문자의 위치를 받아오는 함수
-		ocr.GetLearntCharacterOffset(flfaLearntOffset);
 
 		for(int64_t i = 0; i < i64LearntCount; ++i)
 		{
 			CFLString<wchar_t> flsResultString;
 			CFLRect<double> flrBoundary;
-			CFLPoint<double> flpOffset(flfaLearntOffset.GetAt(i));
 
 			flsResultString.Format(L"%s", flfaLearnt.GetAt(i)->GetName());
-			flfaLearnt.GetAt(i)->Offset(flpOffset);
 			flfaLearnt.GetAt(i)->GetBoundaryRect(flrBoundary);
 
 			if(IsFail(layer.DrawTextImage(CFLPoint<double>(flrBoundary.left, flrBoundary.top), flsResultString, YELLOW, BLACK, 15, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))

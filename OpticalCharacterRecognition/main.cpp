@@ -17,13 +17,13 @@ int main()
 	do
 	{
 		// 이미지 로드 // Load image
-		if((res = fliImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Learn.flif")).IsFail())
+		if((res = fliImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/FLFourthLogic.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition.flif")).IsFail())
+		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition_15Degree.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
@@ -102,6 +102,13 @@ int main()
 			break;
 		}
 
+		// 학습할 문자의 색상을 설정
+		if(IsFail(res = ocr.SetLearningCharacterColorType(COCR::ECharacterColorType_WhiteOnBlack)))
+		{
+			ErrorPrint(res, L"Failed to set learning character color.");
+			break;
+		}
+
 		// 학습할 이미지에 저장되어있는 Figure 학습
 		if(IsFail(res = ocr.Learn()))
 		{
@@ -112,22 +119,16 @@ int main()
 		// 학습한 문자의 개수를 받아오는 함수
 		int64_t i64LearntCount = ocr.GetLearntDataCount();
 		CFLFigureArray flfaLearnt;
-		CFLFigureArray flfaLearntOffset;
 
 		// 학습한 문자의 모양를 받아오는 함수
 		ocr.GetLearntCharacter(flfaLearnt);
-
-		// 학습한 문자의 위치를 받아오는 함수
-		ocr.GetLearntCharacterOffset(flfaLearntOffset);
 
 		for(int64_t i = 0; i < i64LearntCount; ++i)
 		{
 			CFLString<wchar_t> flsResultString;
 			CFLRect<double> flrBoundary;
-			CFLPoint<double> flpOffset(flfaLearntOffset.GetAt(i));
 
 			flsResultString.Format(L"%s", flfaLearnt.GetAt(i)->GetName());
-			flfaLearnt.GetAt(i)->Offset(flpOffset);
 			flfaLearnt.GetAt(i)->GetBoundaryRect(flrBoundary);
 
 			if(IsFail(layer.DrawTextImage(CFLPoint<double>(flrBoundary.left, flrBoundary.top), flsResultString, YELLOW, BLACK, 15, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
@@ -150,6 +151,13 @@ int main()
 			break;
 		}
 
+		// 인식할 문자의 각도 범위를 설정
+		if(IsFail(res = ocr.SetRecognizingAngleTolerance(20.)))
+		{
+			ErrorPrint(res, L"Failed to set recognizing angle tolerance.");
+			break;
+		}
+
 		// 인식할 문자의 색상을 설정
 		if(IsFail(res = ocr.SetRecognizingCharacterColorType(COCR::ECharacterColorType_All)))
 		{
@@ -158,7 +166,7 @@ int main()
 		}
 
 		// 인식할 최소 점수를 설정
-		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.5)))
+		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.6)))
 		{
 			ErrorPrint(res, L"Failed to set minimum score.");
 			break;

@@ -95,7 +95,7 @@ int main()
 		}
 
 		// 인식할 문자의 각도 범위를 설정
-		if(IsFail(res = ocr.SetRecognizingAngleTolerance(20.)))
+		if(IsFail(res = ocr.SetRecognizingAngleTolerance(10.)))
 		{
 			ErrorPrint(res, L"Failed to set recognizing angle tolerance.");
 			break;
@@ -109,7 +109,7 @@ int main()
 		}
 
 		// 인식할 최소 점수를 설정
-		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.45)))
+		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.8)))
 		{
 			ErrorPrint(res, L"Failed to set minimum score.");
 			break;
@@ -165,13 +165,6 @@ int main()
 			break;
 		}
 
-		// 인식할 이미지의 잡음 제거 여부를 설정
-		if(IsFail(res = ocr.EnableRecognizingNoiseReduction(true)))
-		{
-			ErrorPrint(res, L"Failed to set recognizing Noise Reduction.");
-			break;
-		}
-
 		// 인식할 문자의 색상을 설정
 		if(IsFail(res = ocr.SetRecognizingCharacterColorType(COCR::ECharacterColorType_BlackOnWhite)))
 		{
@@ -180,7 +173,7 @@ int main()
 		}
 
 		// 인식할 최소 점수를 설정
-		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.45)))
+		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.6)))
 		{
 			ErrorPrint(res, L"Failed to set minimum score.");
 			break;
