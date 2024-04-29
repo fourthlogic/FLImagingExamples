@@ -72,7 +72,7 @@ int main()
 
 		// SurfaceBasedMatch3D 객체 생성 // Create SurfaceBasedMatch3D object
 		CSurfaceBasedMatch3D SurfaceBasedMatch3D;
-
+		
 		// Learn object 설정 // Set the learn object
 		SurfaceBasedMatch3D.CAlgorithmFeature_3D_LO_SO_DO::SetLearnObject(fl3DOLearnObject);
 		// Source object 설정 // Set the source object
@@ -150,33 +150,33 @@ int main()
 			break;
 		}
 
-		CFLArray<double> flaF64Score, flaF64PoseMatrix;
+		CSurfaceBasedMatch3D::SPoseMatrixParameters sResult;
+		int64_t i64ResultCount = SurfaceBasedMatch3D.GetResultCount();
 		TPoint3<double> tp3F64Rotation;
 		CFLString<wchar_t> strText;
 		CFLPoint3<double> flp3F64Translation;
 		double f64Score;
 
-		// 매치 결과 가져오기
-		if((eResult = SurfaceBasedMatch3D.GetResultScore(flaF64Score)).IsFail())
+		if(i64ResultCount == 0)
 		{
 			ErrorPrint(eResult, L"Failed to estimate pose matrix.\n");
 			break;
 		}
 
 		// 추정된 포즈 행렬 가져오기
-		if((eResult = SurfaceBasedMatch3D.GetResultPoseMatrix(flaF64PoseMatrix)).IsFail())
+		if((eResult = SurfaceBasedMatch3D.GetResultPoseMatrix(0, sResult)).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to estimate pose matrix.\n");
 			break;
 		}
 
-		f64Score = flaF64Score.GetAt(0);
-		tp3F64Rotation.x = flaF64PoseMatrix.GetAt(0);
-		tp3F64Rotation.y = flaF64PoseMatrix.GetAt(1);
-		tp3F64Rotation.z = flaF64PoseMatrix.GetAt(2);
-		flp3F64Translation.x = flaF64PoseMatrix.GetAt(3);
-		flp3F64Translation.y = flaF64PoseMatrix.GetAt(4);
-		flp3F64Translation.z = flaF64PoseMatrix.GetAt(5);
+		f64Score = sResult.f64Score;
+		tp3F64Rotation.x = sResult.f64Rx;
+		tp3F64Rotation.y = sResult.f64Ry;
+		tp3F64Rotation.z = sResult.f64Rz;
+		flp3F64Translation.x = sResult.f64Tx;
+		flp3F64Translation.y = sResult.f64Ty;
+		flp3F64Translation.z = sResult.f64Tz;
 
 		// 추정한 포즈 결과를 Console창에 출력한다 // Print the estimated pose matrix to the console window
 		printf(" ▷ Pose Matrix\n");
