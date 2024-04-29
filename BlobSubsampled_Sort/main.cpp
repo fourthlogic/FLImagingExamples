@@ -217,7 +217,7 @@ int main()
 			CFLRectL* pFlrRect = (CFLRectL*)flfaSortedBoundaryRects.GetAt(i);
 
 			if(pFlrRect)
-				printf("Sorted No. %d : (%d,%d,%d,%d)\n", i, pFlrRect->left, pFlrRect->top, pFlrRect->right, pFlrRect->bottom);
+				printf("Sorted No. %lld : (%d,%d,%d,%d)\n", i, pFlrRect->left, pFlrRect->top, pFlrRect->right, pFlrRect->bottom);
 
 			CFLString<wchar_t> strNumber;
 			strNumber.Format(L"%d", i);

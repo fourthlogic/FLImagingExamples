@@ -122,7 +122,7 @@ int main()
 		wprintf(L"\n[index] Source Ellipse Points -> Target Points with noise\n");
 
 		for(int64_t i = 0; i < flpaSource.GetCount(); ++i)
-			wprintf(L"[%d] (%.3lf,%.3lf) -> (%.3lf,%.3lf)\n", i, flpaSource.GetAt(i)->x, flpaSource.GetAt(i)->y, flpaTransformedWithNoise.GetAt(i)->x, flpaTransformedWithNoise.GetAt(i)->y);
+			wprintf(L"[%lld] (%.3lf,%.3lf) -> (%.3lf,%.3lf)\n", i, flpaSource.GetAt(i)->x, flpaSource.GetAt(i)->y, flpaTransformedWithNoise.GetAt(i)->x, flpaTransformedWithNoise.GetAt(i)->y);
 
 		wprintf(L"\n\nSimilarity Matrix\n");
 		wprintf(L"[%6.3lf, %6.3lf, %6.3lf]\n", *matResult.GetValue(0, 0), *matResult.GetValue(0, 1), *matResult.GetValue(0, 2));
