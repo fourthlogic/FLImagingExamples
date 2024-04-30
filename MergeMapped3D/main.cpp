@@ -88,18 +88,18 @@ int main()
 
 		CFLPoint<double> flp(0, 0);
 
-		if((res = layer3DSrc.DrawTextCanvas(flp, L"Source Object 1", YELLOW, BLACK, 20)).IsFail())
+		if((res = layer3DSrc.DrawTextCanvas(flp, L"Left Camera", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text.\n");
 			break;
 		}
 
-		if((res = layer3DSrc2.DrawTextCanvas(flp, L"Source Object 2", YELLOW, BLACK, 20)).IsFail())
+		if((res = layer3DSrc2.DrawTextCanvas(flp, L"Right Camera", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text.\n");
 			break;
 		}
-		if((res = layer3DDst.DrawTextCanvas(flp, L"Destination Object", YELLOW, BLACK, 20)).IsFail())
+		if((res = layer3DDst.DrawTextCanvas(flp, L"Merge Mapped Result", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text.\n");
 			break;
