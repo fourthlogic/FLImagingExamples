@@ -8,9 +8,11 @@ int main()
 	CGUIView3DWrap view3DSrc;
 	CGUIView3DWrap view3DSrc2;
 	CGUIView3DWrap view3DDst;
+	CGUIViewImageWrap viewTestDescription;
 	CFL3DObject fl3DObjectSrc;
 	CFL3DObject fl3DObjectSrc2;
 	CFL3DObject fl3DObjectDst;
+	CFLImage fliTestDescription;
 
 	CResult res = EResult_UnknownError;
 
@@ -32,6 +34,12 @@ int main()
 
 		// Destination 3D 이미지 뷰 생성 // Create the destination 3D image view
 		if((res = view3DDst.Create(1100, 0, 1600, 500)).IsFail())
+		{
+			ErrorPrint(res, "Failed to create the image view.\n");
+			break;
+		}
+
+		if((res = viewTestDescription.Create(100, 500, 600, 1000)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
@@ -97,13 +105,24 @@ int main()
 			break;
 		}
 
+		fliTestDescription.Load(L"../../ExampleImages/MergeMapped3D/Test Environment.flif");
+		viewTestDescription.SetImagePtr(&fliTestDescription);
+		CGUIViewImageLayerWrap layerTestDescription = viewTestDescription.GetLayer(0);
+
+		if((res = layerTestDescription.DrawTextCanvas(flp, L"Test Environment", YELLOW, BLACK, 20)).IsFail())
+		{
+			ErrorPrint(res, "Failed to draw text.\n");
+			break;
+		}
+
 		// 이미지 뷰를 갱신 합니다. // Update image view
 		view3DSrc.Invalidate(true);
 		view3DSrc2.Invalidate(true);
 		view3DDst.Invalidate(true);
+		viewTestDescription.Invalidate(true);
 
 		// 이미지 뷰, 3D 뷰가 종료될 때 까지 기다림 // Wait for the image and 3D view to close
-		while(view3DSrc.IsAvailable() || view3DSrc2.IsAvailable() || view3DDst.IsAvailable())
+		while(view3DSrc.IsAvailable() || view3DSrc2.IsAvailable() || view3DDst.IsAvailable() || viewTestDescription.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
