@@ -82,6 +82,12 @@ int main()
 		SurfaceBasedMatch3D.SetMinScore(0.1);
 		// 최대 결과 개수 설정 // Set the max count of match result
 		SurfaceBasedMatch3D.SetMaxObject(1);
+		// 학습 샘플링 거리 설정 // Set the learn sampling distance
+		SurfaceBasedMatch3D.SetLearnSamplingDistance(0.03);
+		// 장면 샘플링 거리 설정 // Set the scene sampling distance
+		SurfaceBasedMatch3D.SetSceneSamplingDistance(0.03);
+		// 키포인트 비율 설정 // Set the keypoint ratio.
+		SurfaceBasedMatch3D.SetKeypointRatio(0.5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((eResult = SurfaceBasedMatch3D.Learn()).IsFail())
