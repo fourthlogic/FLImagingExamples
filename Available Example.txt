@@ -768,8 +768,8 @@
       - The example of an algorithm that show symmetry distribution.
       - 이미지에 특정한 텍스쳐 변환 법칙을 적용하는 알고리즘 예제
     - WienerDeconvolutionFilter
-      - The example of an algorithm that restores an image applied motion blur
-      - 모션 블러가 적용된 이미지를 복원하는 알고리즘 예제
+      - The example of an algorithm that restores an image applied blur.
+      - 블러가 적용된 이미지를 복원하는 알고리즘 예제
 
   - [Frequency Domain]
   
@@ -839,7 +839,7 @@
       - The example of an algorithm that processes a shading correction.
       - 불균일한 조명을 보정하는 알고리즘 예제.
     - ColorBoosting
-      - The example of color contrast boosting.
+      - The example of the RGB color contrast boosting.
       - 색상 대비를 강화해 주는 알고리즘 예제.
 
   - [Image Operation]
@@ -1090,8 +1090,8 @@
 
   - [Restoration]
 
-    - Motion Deblurring
-      - The algorithm example that restores an image by minimizing Motion blur caused by camera shaking.
+    - Camera Motion Deblurring
+      - The algorithm example that restores an image by minimizing motion blur caused by camera shaking.
       - 카메라의 흔들림으로 인한 모션 블러를 최소화 하여 이미지를 복원하는 알고리즘 예제.
 
   - [Threshold]
