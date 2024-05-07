@@ -50,10 +50,10 @@ int main()
 
 		CMergeMapped3D algemObject;
 
-		TPoint3<float> tpPosition = TPoint3<float>(-0.152f, 0.125f, 0.0f);
-		TPoint3<float> tpRotateByEulerAngles = TPoint3<float>(-8.0f, 29.0f, -90.0f);
-		TPoint3<float> tpPosition2 = TPoint3<float>(0.152f, 0.125f, 0.0f);
-		TPoint3<float> tpRotateByEulerAngles2 = TPoint3<float>(-8.0f, -29.0f, -90.0f);
+		TPoint3<float> tpPosition = TPoint3<float>(-0.152f, 0.0f, 0.0f);
+		TPoint3<float> tpRotateByEulerAngles = TPoint3<float>(-8.0f, 29.0f, 90.0f);
+		TPoint3<float> tpPosition2 = TPoint3<float>(0.152f, 0.0f, 0.0f);
+		TPoint3<float> tpRotateByEulerAngles2 = TPoint3<float>(-8.0f, -29.0f, 90.0f);
 
 		// 카메라 위치 설정 // Set the camera position
 		algemObject.SetPosition(tpPosition, tpPosition2);
