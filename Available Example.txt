@@ -1099,6 +1099,9 @@
     - Camera Motion Deblurring
       - The algorithm example that restores an image by minimizing motion blur caused by camera shaking.
       - 카메라의 흔들림으로 인한 모션 블러를 최소화 하여 이미지를 복원하는 알고리즘 예제.
+   - Out Focus Deblurring
+      - The algorithm example that restores an image by minimizing blur caused by out-of-focus.
+      - 아웃 포커스로 인한 블러를 최소화 하여 이미지를 복원하는 알고리즘 예제.
 
   - [Threshold]
   
