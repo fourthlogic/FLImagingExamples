@@ -491,6 +491,9 @@
     - GetPointsOfMinimumDistance
       - The example of GetPointsOfMinimumDistance, a function that returns the point at which the distance between two figures is minimal.
       - 두 Figure 사이 거리가 최소가 되는 점을 반환하는 기능인 GetPointsOfMinimumDistance에 관한 예제.
+    - Reduce
+      - The example of Reduce, a function that smoothly reduces the number of vertices.
+      - 정점의 수를 부드럽게 축소하는 기능인 Reduce에 관한 예제.
     - RemoveFigure
       - The example of GetFigure, a function that removes figures that satisfies the conditions.
       - 조건에 맞는 Figure를 제거하는 기능인 RemoveFigure에 관한 예제.
