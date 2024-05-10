@@ -77,7 +77,7 @@ int main()
 		// Source object 설정 // Set the source object
 		SurfaceBasedMatch3D.CAlgorithmFeature_3D_LO_SO::SetSourceObject(fl3DOSourceObject);
 		// Min score 설정 // Set the min score
-		SurfaceBasedMatch3D.SetMinScore(0.1);
+		SurfaceBasedMatch3D.SetMinScore(0.5);
 		// 최대 결과 개수 설정 // Set the max count of match result
 		SurfaceBasedMatch3D.SetMaxObject(1);
 		// 학습 샘플링 거리 설정 // Set the learn sampling distance
@@ -85,7 +85,19 @@ int main()
 		// 장면 샘플링 거리 설정 // Set the scene sampling distance
 		SurfaceBasedMatch3D.SetSceneSamplingDistance(0.03);
 		// 키포인트 비율 설정 // Set the keypoint ratio.
-		SurfaceBasedMatch3D.SetKeypointRatio(0.5);
+		SurfaceBasedMatch3D.SetKeypointRatio(0.3);
+		// 엣지 학습 여부 설정 // Set the edge train
+		SurfaceBasedMatch3D.EnableTrainEdge(true);
+		// 엣지 장면 여부 설정 // Set the edge scene
+		SurfaceBasedMatch3D.EnableSceneEdge(true);
+		// 엣지 학습 임계값 설정 // Set the threshold of train edge
+		SurfaceBasedMatch3D.SetTrainEdgeThreshold(0.25);
+		// 엣지 장면 임계값 설정 // Set the threshold of scene edge
+		SurfaceBasedMatch3D.SetSceneEdgeThreshold(0.25);
+		// 클러스터링 범위 설정 // Set the clustering range
+		SurfaceBasedMatch3D.SetClusterRange(2);
+		// 포즈 조정 반복 횟수 설정 // Set the iteration value of pose refinement
+		SurfaceBasedMatch3D.SetIteration(5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((eResult = SurfaceBasedMatch3D.Learn()).IsFail())
@@ -150,7 +162,7 @@ int main()
 		TPoint3<double> tp3F64Rotation;
 		CFLString<wchar_t> strText;
 		CFLPoint3<double> flp3F64Translation;
-		double f64Score;
+		double f64Score, f64Residual;
 
 		if(i64ResultCount == 0)
 		{
@@ -177,6 +189,7 @@ int main()
 				break;
 			}
 
+			f64Residual = sResult.f64Residual;
 			f64Score = sResult.f64Score;
 			tp3F64Rotation.x = sResult.f64Rx;
 			tp3F64Rotation.y = sResult.f64Ry;
@@ -194,7 +207,8 @@ int main()
 			printf("    Tx   : %.3lf\n", flp3F64Translation.x);
 			printf("    Ty   : %.3lf\n", flp3F64Translation.y);
 			printf("    Tz   : %.3lf\n", flp3F64Translation.z);
-			printf("  2. Score : %.3lf\n", f64Score);
+			printf("    Score : %.3lf\n", f64Score);
+			printf("    Residual : %.3lf\n", f64Residual);
 			printf("\n");
 
 			if((eResult = view3DDst.PushObject(fl3DOLearnTransform)).IsFail())
@@ -203,8 +217,8 @@ int main()
 				break;
 			}
 
-			strText.Format(L"Rx : %lf, Ry : %lf, Rz : %lf, \nTx : %lf, Ty : %lf, Tz : %lf\nScore : %lf"
-						   , tp3F64Rotation.x, tp3F64Rotation.y, tp3F64Rotation.z, flp3F64Translation.x, flp3F64Translation.y, flp3F64Translation.z, f64Score);
+			strText.Format(L"Rx : %lf, Ry : %lf, Rz : %lf, \nTx : %lf, Ty : %lf, Tz : %lf\nScore : %lf\nResidual : %lf"
+						   , tp3F64Rotation.x, tp3F64Rotation.y, tp3F64Rotation.z, flp3F64Translation.x, flp3F64Translation.y, flp3F64Translation.z, f64Score, f64Residual);
 
 			// 추정된 포즈 행렬 및 score 출력
 			if((eResult = layer3DDst.DrawText3D(tp3Center, strText, YELLOW, 0, 9)).IsFail())
