@@ -158,10 +158,10 @@ int main()
 			break;
 		}
 
-		// 인식할 최소 점수를 설정
-		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.6)))
+		// 인식할 최대 개수를 설정
+		if(IsFail(res = ocr.SetRecognizingMaximumCharacterCount(12)))
 		{
-			ErrorPrint(res, L"Failed to set minimum score.");
+			ErrorPrint(res, L"Failed to set maximum character count.");
 			break;
 		}
 
