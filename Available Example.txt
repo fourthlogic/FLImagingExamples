@@ -473,6 +473,12 @@
     - FigureWarp
       - The example of Warp, a function that warps a figure with perspective or bilinear transformation.
       - Figure를 Perspective나 Bilinear 변환으로 휘게 만드는 기능인 Warp에 관한 예제.
+    - Fit_Circle
+      - The example of Fit, a function that set the closest circle to a set of points.
+      - 점들의 집합으로 가장 가까운 원을 설정하는 기능인 Fit에 관한 예제.
+    - Fit_Ellipse
+      - The example of Fit, a function that set the closest ellipse to a set of points.
+      - 점들의 집합으로 가장 가까운 타원을 설정하는 기능인 Fit에 관한 예제.
     - GetFigure
       - The example of GetFigure, a function that obtains figures that satisfies the conditions.
       - 조건에 맞는 Figure를 얻어오는 기능인 GetFigure에 관한 예제.
