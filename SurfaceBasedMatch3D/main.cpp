@@ -89,7 +89,7 @@ int main()
 		// 엣지 학습 여부 설정 // Set the edge train
 		SurfaceBasedMatch3D.EnableTrainEdge(true);
 		// 엣지 장면 여부 설정 // Set the edge scene
-		SurfaceBasedMatch3D.EnableSceneEdge(true);
+		SurfaceBasedMatch3D.EnableEdgeBasedMatch(true);
 		// 엣지 학습 임계값 설정 // Set the threshold of train edge
 		SurfaceBasedMatch3D.SetTrainEdgeThreshold(0.25);
 		// 엣지 장면 임계값 설정 // Set the threshold of scene edge
