@@ -152,6 +152,10 @@ int main()
 			break;
 		}
 
+		view3DLearn.SetShadingType(EView3DObjectShadingType_Flat);
+		view3DSource.SetShadingType(EView3DObjectShadingType_Flat);
+		view3DDst.SetShadingType(EView3DObjectShadingType_Flat);
+
 
 		CSurfaceBasedMatch3D::SPoseMatrixParameters sResult;
 		int64_t i64ResultCount = SurfaceBasedMatch3D.GetResultCount();
