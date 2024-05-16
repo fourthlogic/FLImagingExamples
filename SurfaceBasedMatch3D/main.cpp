@@ -109,6 +109,16 @@ int main()
 			break;
 		}
 
+		view3DLearn.SetShadingType(EView3DObjectShadingType_Flat);
+		view3DSource.SetShadingType(EView3DObjectShadingType_Flat);
+		view3DDst.SetShadingType(EView3DObjectShadingType_Flat);
+
+
+		view3DLearn.ZoomFit();
+		view3DSource.ZoomFit();
+		view3DDst.ZoomFit();
+
+
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately		
 		CGUIView3DLayerWrap layer3DDst = view3DDst.GetLayer(0);
@@ -151,11 +161,6 @@ int main()
 			ErrorPrint(eResult, L"Failed to set object on the 3d view.\n");
 			break;
 		}
-
-		view3DLearn.SetShadingType(EView3DObjectShadingType_Flat);
-		view3DSource.SetShadingType(EView3DObjectShadingType_Flat);
-		view3DDst.SetShadingType(EView3DObjectShadingType_Flat);
-
 
 		CSurfaceBasedMatch3D::SPoseMatrixParameters sResult;
 		int64_t i64ResultCount = SurfaceBasedMatch3D.GetResultCount();
