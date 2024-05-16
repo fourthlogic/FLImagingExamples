@@ -56,38 +56,40 @@ const CResult DrawResult(GUI::CGUIView3DWrap* pView3D, const Base::CFLArray<Base
 		else // dZ
 			i32SelectedAxis = 2;
 
-		auto lGetColor = [](float f32Intensity, float arrF32Color[3]) -> void
+		auto lGetColor = [](float f32Intensity, uint8_t arrF32Color[3]) -> void
 			{
 				float f32Temp;
 				float f32Segment = (1.f / 6.f);
 
 				for(int32_t i = 0; i < 3; ++i)
 				{
-					arrF32Color[i] = (f32Intensity - (i * 2 - 1) * f32Segment) / f32Segment;
-					arrF32Color[i] = arrF32Color[i] > 1 ? 1 : arrF32Color[i];
-					arrF32Color[i] = arrF32Color[i] < 0 ? 0 : arrF32Color[i];
+					float f32Value;
+					f32Value = (f32Intensity - (i * 2 - 1) * f32Segment) / f32Segment;
+					f32Value = f32Value > 1 ? 1 : f32Value;
+					f32Value = f32Value < 0 ? 0 : f32Value;
 					f32Temp = (f32Intensity - (i * 2 + 1) * f32Segment) / f32Segment;
 					f32Temp = f32Temp > 1 ? 1 : f32Temp;
 					f32Temp = f32Temp < 0 ? 0 : f32Temp;
-					arrF32Color[i] -= f32Temp;
+					f32Value -= f32Temp;
+					arrF32Color[i] = uint8_t(f32Value * 255);
 				}
 			};
 
 
-		CFLArray<TPoint3<float> > flaColors;
+		CFLArray<TPoint3<uint8_t> > flaColors;
 		flaColors.Reserve(arrResult.GetCount());
 
 		for(int64_t i = 0; i < arrResult.GetCount(); ++i)
 		{
 			float f32Intensity;
-			TPoint3<float> tpColor;
+			TPoint3<uint8_t> tpColor;
 
 			f32Intensity = (*((float*)&arrResult[i] + i32SelectedAxis) - arr2F32DataRange[i32SelectedAxis][0]) / (arr2F32DataRange[i32SelectedAxis][1] - arr2F32DataRange[i32SelectedAxis][0]);
 
 			if(f32Intensity < 0) f32Intensity = 0;
 			if(f32Intensity > 1) f32Intensity = 1;
 
-			lGetColor(f32Intensity, (float*)&tpColor);
+			lGetColor(f32Intensity, (uint8_t*)&tpColor);
 			flaColors.PushBack(tpColor);
 		}
 
