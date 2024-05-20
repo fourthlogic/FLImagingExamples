@@ -155,19 +155,15 @@ int main()
 		sIntrinc.f64FocalLengthX = arrF64Intrinc[0];
 		sIntrinc.f64Skew = arrF64Intrinc[1];
 		sIntrinc.f64PrincipalPointX = arrF64Intrinc[2];
-		sIntrinc.f64Padding1 = arrF64Intrinc[3];
 		sIntrinc.f64FocalLengthY = arrF64Intrinc[4];
 		sIntrinc.f64PrincipalPointY = arrF64Intrinc[5];
-		sIntrinc.f64Padding2 = arrF64Intrinc[6];
-		sIntrinc.f64Padding3 = arrF64Intrinc[7];
-		sIntrinc.f64Padding4 = arrF64Intrinc[8];
-
+		
 		CCameraCalibrator::SDistortionCoefficients sDist;
-		sDist.f64F1 = arrF64Dist[0];
-		sDist.f64F2 = arrF64Dist[1];
+		sDist.f64K1 = arrF64Dist[0];
+		sDist.f64K2 = arrF64Dist[1];
 		sDist.f64P1 = arrF64Dist[2];
 		sDist.f64P2 = arrF64Dist[3];
-		sDist.f64F3 = arrF64Dist[4];
+		sDist.f64K3 = arrF64Dist[4];
 
 		if(IsFail(res = sCC.SetIntrinsicParameters(sIntrinc)))
 		{

@@ -395,18 +395,18 @@ int main()
 		strMatrix.AppendFormat(L"%.2lf, ", sIntrinsicParam.f64FocalLengthX);
 		strMatrix.AppendFormat(L"%.2lf, ", sIntrinsicParam.f64Skew);
 		strMatrix.AppendFormat(L"%.2lf, ", sIntrinsicParam.f64PrincipalPointX);
-		strMatrix.AppendFormat(L"%.2lf, ", sIntrinsicParam.f64Padding1);
+		strMatrix.AppendFormat(L"%.2lf, ", 0);
 		strMatrix.AppendFormat(L"%.2lf, ", sIntrinsicParam.f64FocalLengthY);
 		strMatrix.AppendFormat(L"%.2lf, ", sIntrinsicParam.f64PrincipalPointY);
-		strMatrix.AppendFormat(L"%.2lf, ", sIntrinsicParam.f64Padding2);
-		strMatrix.AppendFormat(L"%.2lf, ", sIntrinsicParam.f64Padding3);
-		strMatrix.AppendFormat(L"%.2lf", sIntrinsicParam.f64Padding4);
+		strMatrix.AppendFormat(L"%.2lf, ", 0);
+		strMatrix.AppendFormat(L"%.2lf, ", 0);
+		strMatrix.AppendFormat(L"%.2lf", 1);
 
-		strDistVal.AppendFormat(L"%.2lf, ", sDistortCoeef.f64F1);
-		strDistVal.AppendFormat(L"%.2lf, ", sDistortCoeef.f64F2);
+		strDistVal.AppendFormat(L"%.2lf, ", sDistortCoeef.f64K1);
+		strDistVal.AppendFormat(L"%.2lf, ", sDistortCoeef.f64K2);
 		strDistVal.AppendFormat(L"%.2lf, ", sDistortCoeef.f64P1);
 		strDistVal.AppendFormat(L"%.2lf, ", sDistortCoeef.f64P2);
-		strDistVal.AppendFormat(L"%.2lf", sDistortCoeef.f64F3);
+		strDistVal.AppendFormat(L"%.2lf", sDistortCoeef.f64K3);
 
 		wprintf(L"Intrinsic parameters : %s\n", strMatrix.GetString());
 		wprintf(L"Distortion Coefficients : %s\n", strDistVal.GetString());

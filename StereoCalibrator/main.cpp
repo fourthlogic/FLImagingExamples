@@ -507,22 +507,22 @@ int main()
 		strMatrix.AppendFormat(L"%.13lf, ", sIntrinsicParam.f64FocalLengthX);
 		strMatrix.AppendFormat(L"%.13lf, ", sIntrinsicParam.f64Skew);
 		strMatrix.AppendFormat(L"%.13lf, ", sIntrinsicParam.f64PrincipalPointX);
-		strMatrix.AppendFormat(L"%.13lf, ", sIntrinsicParam.f64Padding1);
+		strMatrix.AppendFormat(L"%.13lf, ", 0);
 		strMatrix.AppendFormat(L"%.13lf, ", sIntrinsicParam.f64FocalLengthY);
 		strMatrix.AppendFormat(L"%.13lf, ", sIntrinsicParam.f64PrincipalPointY);
-		strMatrix.AppendFormat(L"%.13lf, ", sIntrinsicParam.f64Padding2);
-		strMatrix.AppendFormat(L"%.13lf, ", sIntrinsicParam.f64Padding3);
-		strMatrix.AppendFormat(L"%.13lf", sIntrinsicParam.f64Padding4);
+		strMatrix.AppendFormat(L"%.13lf, ", 0);
+		strMatrix.AppendFormat(L"%.13lf, ", 0);
+		strMatrix.AppendFormat(L"%.13lf", 1);
 
 		strMatrix2.AppendFormat(L"%.13lf, ", sIntrinsicParam2.f64FocalLengthX);
 		strMatrix2.AppendFormat(L"%.13lf, ", sIntrinsicParam2.f64Skew);
 		strMatrix2.AppendFormat(L"%.13lf, ", sIntrinsicParam2.f64PrincipalPointX);
-		strMatrix2.AppendFormat(L"%.13lf, ", sIntrinsicParam2.f64Padding1);
+		strMatrix2.AppendFormat(L"%.13lf, ", 0);
 		strMatrix2.AppendFormat(L"%.13lf, ", sIntrinsicParam2.f64FocalLengthY);
 		strMatrix2.AppendFormat(L"%.13lf, ", sIntrinsicParam2.f64PrincipalPointY);
-		strMatrix2.AppendFormat(L"%.13lf, ", sIntrinsicParam2.f64Padding2);
-		strMatrix2.AppendFormat(L"%.13lf, ", sIntrinsicParam2.f64Padding3);
-		strMatrix2.AppendFormat(L"%.13lf", sIntrinsicParam2.f64Padding4);
+		strMatrix2.AppendFormat(L"%.13lf, ", 0);
+		strMatrix2.AppendFormat(L"%.13lf, ", 0);
+		strMatrix2.AppendFormat(L"%.13lf", 1);
 
 		strDistVal.AppendFormat(L"%.13lf, ", sDistortCoeef.f64K1);
 		strDistVal.AppendFormat(L"%.13lf, ", sDistortCoeef.f64K2);
