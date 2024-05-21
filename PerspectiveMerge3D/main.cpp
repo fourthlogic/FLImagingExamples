@@ -51,14 +51,14 @@ int main()
 		CPerspectiveMerge3D algemObject;
 
 		TPoint3<float> tpPosition = TPoint3<float>(-0.152f, 0.0f, 0.0f);
-		TPoint3<float> tpRotateByEulerAngles = TPoint3<float>(-8.0f, 29.0f, 90.0f);
+		TPoint3<float> tpRotation = TPoint3<float>(-8.0f, 29.0f, 90.0f);
 		TPoint3<float> tpPosition2 = TPoint3<float>(0.152f, 0.0f, 0.0f);
-		TPoint3<float> tpRotateByEulerAngles2 = TPoint3<float>(-8.0f, -29.0f, 90.0f);
+		TPoint3<float> tpRotation2 = TPoint3<float>(-8.0f, -29.0f, 90.0f);
 
 		// 카메라 위치 설정 // Set the camera position
 		algemObject.SetPosition(tpPosition, tpPosition2);
 		// 카메라 회전정도 설정 // Set the camera degree
-		algemObject.SetRotateByEulerAngles(tpRotateByEulerAngles, tpRotateByEulerAngles2);
+		algemObject.SetRotation(tpRotation, tpRotation2);
 
 		// 카메라 1, 2의 Source 객체 설정 // Set the source object of camera 1, 2
 		algemObject.SetSourceObject(&fl3DObjectSrc);
