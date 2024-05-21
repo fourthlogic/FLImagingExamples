@@ -45,10 +45,10 @@ int main()
 			break;
 		}
 
-		res = fl3DObjectSrc.Load("../../ExampleImages/MergeMapped3D/Left Cam.ply");
-		res = fl3DObjectSrc2.Load("../../ExampleImages/MergeMapped3D/Right Cam.ply");
+		res = fl3DObjectSrc.Load("../../ExampleImages/PerspectiveMerge3D/Left Cam.ply");
+		res = fl3DObjectSrc2.Load("../../ExampleImages/PerspectiveMerge3D/Right Cam.ply");
 
-		CMergeMapped3D algemObject;
+		CPerspectiveMerge3D algemObject;
 
 		TPoint3<float> tpPosition = TPoint3<float>(-0.152f, 0.0f, 0.0f);
 		TPoint3<float> tpRotateByEulerAngles = TPoint3<float>(-8.0f, 29.0f, 90.0f);
@@ -99,13 +99,13 @@ int main()
 			ErrorPrint(res, "Failed to draw text.\n");
 			break;
 		}
-		if((res = layer3DDst.DrawTextCanvas(flp, L"Merge Mapped Result", YELLOW, BLACK, 20)).IsFail())
+		if((res = layer3DDst.DrawTextCanvas(flp, L"Result", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text.\n");
 			break;
 		}
 
-		fliTestDescription.Load(L"../../ExampleImages/MergeMapped3D/Test Environment.flif");
+		fliTestDescription.Load(L"../../ExampleImages/PerspectiveMerge3D/Test Environment.flif");
 		viewTestDescription.SetImagePtr(&fliTestDescription);
 		CGUIViewImageLayerWrap layerTestDescription = viewTestDescription.GetLayer(0);
 
