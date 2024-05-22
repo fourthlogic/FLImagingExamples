@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{58B64067-4EB3-4822-8988-E5BAC437C602}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ConnectedComponent_BoundaryRect</RootNamespace>
+    <RootNamespace>ColorConverter</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

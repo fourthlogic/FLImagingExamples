@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{95869C71-3186-4E78-B76A-9FD77D92F901}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Convolution_UserDefinedKernel</RootNamespace>
+    <RootNamespace>Integral_SquareSum</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

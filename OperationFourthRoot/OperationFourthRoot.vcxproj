@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4AA7EE04-E727-4FE6-9D17-CFE46E8DDA7F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationSquareRoot</RootNamespace>
+    <RootNamespace>OperationFourthRoot</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

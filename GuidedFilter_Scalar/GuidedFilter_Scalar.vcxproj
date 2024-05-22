@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{090FDE71-EF52-4FA7-A1C9-FC1958191DB0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ConnectedComponent_Contour</RootNamespace>
+    <RootNamespace>GuidedFilter_Scalar</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

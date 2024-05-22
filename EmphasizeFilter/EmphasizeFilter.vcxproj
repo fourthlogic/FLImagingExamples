@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8F4E909F-3D8F-499A-B9F8-369293293E20}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationShift_Scalar</RootNamespace>
+    <RootNamespace>EmphasizeFilter</RootNamespace>
     <ProjectName>EmphasizeFilter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

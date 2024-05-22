@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0127D8E9-4DBB-4C06-92D4-5E0E1DA0F7E4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ConnectedComponent_Contour</RootNamespace>
+    <RootNamespace>Statistics_MinMax</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

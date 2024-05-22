@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{EA3BD320-7ACE-482E-9AD0-541F648D789F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ConnectedComponent_Contour</RootNamespace>
+    <RootNamespace>Morphology_Erode_Region</RootNamespace>
     <ProjectName>MorphologyErode_Region</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

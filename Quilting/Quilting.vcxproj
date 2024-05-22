@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{577F4DE2-AFC9-44B4-8A39-3B1A69798C82}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Convolution_UserDefinedKernel</RootNamespace>
+    <RootNamespace>Quilting</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

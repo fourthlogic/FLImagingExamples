@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{317F5B33-B5B0-48CF-91FE-0AAA405A1738}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Convolution_UserDefinedKernel</RootNamespace>
+    <RootNamespace>Crop</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4DCA0034-330D-4198-9F53-5CCFFA75F241}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>MultiFocus</RootNamespace>
+    <RootNamespace>LaserTriangulation_Image</RootNamespace>
     <ProjectName>LaserTriangulation_Profile</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

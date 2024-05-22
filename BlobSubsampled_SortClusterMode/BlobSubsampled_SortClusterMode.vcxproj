@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1A2748A8-6A93-471E-B39F-C5304FC6FAF6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Blob_BoundaryRect</RootNamespace>
+    <RootNamespace>BlobSubsampled_SortClusterMode</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{21208965-9849-4361-93BB-EEB8641D07C8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Paste</RootNamespace>
+    <RootNamespace>Mask</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

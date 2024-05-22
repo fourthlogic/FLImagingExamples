@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{236B5CE8-5C00-42B6-819E-1525BB8B589F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationSubtract_Image</RootNamespace>
+    <RootNamespace>OperationBitwiseOr_Image</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9C4FF955-3D1D-49F2-9B5F-C9C10691DB0B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Paste</RootNamespace>
+    <RootNamespace>AlignmentTiling</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

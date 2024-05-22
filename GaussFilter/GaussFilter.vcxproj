@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A0A11FE6-719D-4639-8B39-E9B1F658B2BA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Convolution_Sobel</RootNamespace>
+    <RootNamespace>GaussFilter</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

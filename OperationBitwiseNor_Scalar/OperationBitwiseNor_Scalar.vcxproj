@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{752C4E43-4AD3-4356-996C-7DD31277B005}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationSubtract_Scalar</RootNamespace>
+    <RootNamespace>OperationBitwiseNor_Scalar</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

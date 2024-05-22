@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE6A845D-4833-4A0E-B729-0FB5A28BCE69}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>AdaptiveThreshold</RootNamespace>
+    <RootNamespace>CoherenceEnhancingDiffusion</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A8ADB223-29FF-4607-B12A-0DBCE9C58E6C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>MultiFocus</RootNamespace>
+    <RootNamespace>MultiFocus_WithAlignment</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

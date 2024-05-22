@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{409AF828-3587-43F5-859F-8DA92A83BCFF}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>MultiFocus</RootNamespace>
+    <RootNamespace>StereoDisparity</RootNamespace>
     <ProjectName>StereoDisparity</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

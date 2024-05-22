@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F4DAFE51-F0B5-4D3C-8FCB-45E3A300369F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationAdd_Image</RootNamespace>
+    <RootNamespace>GaborFilter</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

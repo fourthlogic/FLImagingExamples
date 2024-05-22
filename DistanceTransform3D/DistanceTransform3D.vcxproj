@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{05D1AD2D-CDCC-4E4D-ABCF-353706DE316C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>MultiFocus</RootNamespace>
+    <RootNamespace>DistanceTransform3D</RootNamespace>
     <ProjectName>DistanceTransform3D</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

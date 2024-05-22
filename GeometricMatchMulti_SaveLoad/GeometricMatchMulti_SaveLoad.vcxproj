@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9D71BCA3-6BB8-4F2A-9E34-476C692255FD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ConnectedComponent_Contour</RootNamespace>
+    <RootNamespace>GeometricMatchMulti_SaveLoad</RootNamespace>
     <ProjectName>GeometricMatchMulti_SaveLoad</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

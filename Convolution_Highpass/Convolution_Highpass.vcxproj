@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4299228C-36DE-4CB1-A8A6-CAB584D61475}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Convolution_Sobel</RootNamespace>
+    <RootNamespace>Convolution_Highpass</RootNamespace>
     <ProjectName>ConvolutionHighpass</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

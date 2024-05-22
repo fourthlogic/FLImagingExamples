@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{78ACB598-2A10-4373-9DF8-088F2039A583}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>MultiFocus</RootNamespace>
+    <RootNamespace>MultiFocus3D</RootNamespace>
     <ProjectName>MultiFocus3D</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

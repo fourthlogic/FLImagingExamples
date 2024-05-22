@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A0C4C99A-7260-43CA-A2E4-D1F2824293A4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationShift_Scalar</RootNamespace>
+    <RootNamespace>OperationShiftBitRollingLeft_Scalar</RootNamespace>
     <ProjectName>OperationBitRollingLeft_Scalar</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

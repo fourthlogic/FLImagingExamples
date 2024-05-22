@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{569BFDD4-73EB-4E78-A6B9-A430F53A8C3E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Paste</RootNamespace>
+    <RootNamespace>Mask_withBlob</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

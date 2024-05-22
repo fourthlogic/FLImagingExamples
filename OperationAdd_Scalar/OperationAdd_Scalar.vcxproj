@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4DAC514E-991E-4E6E-BF01-9C87D542D0C2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationMultiply_Scalar</RootNamespace>
+    <RootNamespace>OperationAdd_Scalar</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3CB852C7-927E-4DB7-8E85-E708E1166EC1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationShift_Image</RootNamespace>
+    <RootNamespace>OperationBitRollingRight_Image</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

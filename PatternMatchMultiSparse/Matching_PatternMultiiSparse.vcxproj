@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DA789FD3-6D52-4289-AFFE-DC5FBFCB2D95}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>PatternMatchMultiSparseSparse</RootNamespace>
+    <RootNamespace>PatternMatchMultiSparse</RootNamespace>
     <ProjectName>PatternMatchMultiSparse</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

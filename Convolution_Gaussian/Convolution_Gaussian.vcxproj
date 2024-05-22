@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1CC93B95-43B8-4AE9-BF52-DEB21A317AFE}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Convolution_Sobel</RootNamespace>
+    <RootNamespace>Convolution_Gaussian</RootNamespace>
     <ProjectName>ConvolutionGaussian</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

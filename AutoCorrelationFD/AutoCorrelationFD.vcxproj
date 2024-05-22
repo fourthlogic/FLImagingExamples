@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4E5F67D1-0218-49E5-8671-DF4FAFA6272D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationAdd_Image</RootNamespace>
+    <RootNamespace>AutoCorrelationFD</RootNamespace>
     <ProjectName>AutoCorrelationFD</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C778466B-D114-4BF3-9C37-BD0D0B8E510E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationShift_Scalar</RootNamespace>
+    <RootNamespace>SigmaFilter</RootNamespace>
     <ProjectName>SigmaFilter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

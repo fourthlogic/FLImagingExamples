@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FC602B2B-9C88-44FF-8439-73F24BD449CE}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationAdd_Image</RootNamespace>
+    <RootNamespace>OperationHypotenuse_Image</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2AAC0E02-D488-41D7-AE2A-88CFB86113BA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationShift_Image</RootNamespace>
+    <RootNamespace>OperationBitShift_Image</RootNamespace>
     <ProjectName>OperationBitShift_Image</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{54CB3A26-1BD6-4406-8C89-0D0DABE730C4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Distance</RootNamespace>
+    <RootNamespace>DistanceTransform</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

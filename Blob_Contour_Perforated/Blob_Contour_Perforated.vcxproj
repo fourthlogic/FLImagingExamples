@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DA7D4630-3D0C-41FB-8366-DCA4D6028BB3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Blob_Contour</RootNamespace>
+    <RootNamespace>Blob_Contour_Perforated</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
