@@ -16,7 +16,7 @@
   - [Match]
     
     - [Surface]
-      - Surface Based Match
+      - Surface Match
         - The example of an algorithm that estimate pose matrix for a given point clouds.
         - 주어진 포인트 클라우드에 대해 포즈 행렬을 추정하는 알고리즘 예제.
 
