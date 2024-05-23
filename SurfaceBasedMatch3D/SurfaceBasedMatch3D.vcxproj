@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A59597B2-7223-4423-869A-C98196787F50}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>SurfaceBasedMatch3D</RootNamespace>
-    <ProjectName>SurfaceBasedMatch3D</ProjectName>
+    <RootNamespace>SurfaceMatch3D</RootNamespace>
+    <ProjectName>SurfaceMatch3D</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
