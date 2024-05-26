@@ -91,8 +91,8 @@ int main()
 			break;
 		}
 
-		// ROI Draw를 위한 CFLRectL 객체 생성 // Create ROI Draw를 위한 CFLRectL object
-		CFLRectL flrROI(164, 234, 339, 390);
+		// ROI Draw를 위한 CFLRect<int32_t> 객체 생성 // Create ROI Draw를 위한 CFLRect<int32_t> object
+		CFLRect<int32_t> flrROI(164, 234, 339, 390);
 
 		CGUIViewImageLayerWrap arrLayer[ETypeCount];
 
@@ -120,13 +120,13 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(res = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Source].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = arrLayer[EType_Destination].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image (Bicubic)", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Destination].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image (Bicubic)", YELLOW, BLACK, 20)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

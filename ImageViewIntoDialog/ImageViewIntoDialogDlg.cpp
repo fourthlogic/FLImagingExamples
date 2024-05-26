@@ -249,20 +249,20 @@ void CImageViewIntoDialogDlg::OnBnClickedButtonFigureObjectCreate()
 			break;
 
 		// 이미지 뷰의 캔버스 영역을 얻어온다.
-		CFLRectL flrlCanvas = m_viewImage.GetClientRectCanvasRegion();
+		CFLRect<int32_t> flrlCanvas = m_viewImage.GetClientRectCanvasRegion();
 
 		// 캔버스 영역의 좌표계를 이미지 영역의 좌표계로 변환한다.
-		CFLRectD flrdImage = m_viewImage.ConvertCanvasCoordToImageCoord(flrlCanvas);
+		CFLRect<double> flrdImage = m_viewImage.ConvertCanvasCoordToImageCoord(flrlCanvas);
 
 		// 이미지 영역을 기준으로 생성될 Figure 의 크기와 모양을 사각형으로 설정한다.
 		double f64Width = flrdImage.GetWidth() / 10.;
 		double f64Height = flrdImage.GetHeight() / 10.;
 		double f64Size = __min(f64Width, f64Height);
 
-		CFLPointD flpdCenter(0, 0);
+		CFLPoint<double> flpdCenter(0, 0);
 		flrdImage.GetCenter(flpdCenter);
 
-		CFLRectD flrdFigure(flpdCenter.x - f64Size, flpdCenter.y - f64Size, flpdCenter.x + f64Size, flpdCenter.y + f64Size);
+		CFLRect<double> flrdFigure(flpdCenter.x - f64Size, flpdCenter.y - f64Size, flpdCenter.x + f64Size, flpdCenter.y + f64Size);
 
 		// 이미지 뷰에 Figure object 를 생성한다.
 		// 가장 마지막 파라미터는 활성화 되는 메뉴의 구성이며, EAvailableFigureContextMenu_All 가 기본 메뉴를 활성화 한다.

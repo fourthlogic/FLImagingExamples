@@ -179,8 +179,8 @@ int main()
 		int64_t i64GridCol = sArrGridDisplay.sGridData.i64Columns;
 		int64_t i64ColorPoolIdx = 0;
 
-		CFLPointD flpGridPoint1;
-		CFLPointD flpGridPoint2;
+		CFLPoint<double> flpGridPoint1;
+		CFLPoint<double> flpGridPoint2;
 
 		for(int64_t i64Row = 0; i64Row < i64GridRow; ++i64Row)
 		{
@@ -189,9 +189,9 @@ int main()
 				int64_t i64GridIdx = i64Row * i64GridCol + i64Col;
 				TPointD* pFlpGridPoint1 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][i64Col]);
 				TPointD* pFlpGridPoint2 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][i64Col + 1]);
-				CFLPointD flpGridPoint1(pFlpGridPoint1->x, pFlpGridPoint1->y);
-				CFLPointD flpGridPoint2(pFlpGridPoint2->x, pFlpGridPoint2->y);
-				CFLLineD fllDrawLine(flpGridPoint1, flpGridPoint2);
+				CFLPoint<double> flpGridPoint1(pFlpGridPoint1->x, pFlpGridPoint1->y);
+				CFLPoint<double> flpGridPoint2(pFlpGridPoint2->x, pFlpGridPoint2->y);
+				CFLLine<double> fllDrawLine(flpGridPoint1, flpGridPoint2);
 
 				if(IsFail(res = layerLearn.DrawFigureImage(fllDrawLine, BLACK, 5)))
 				{
@@ -210,9 +210,9 @@ int main()
 				{
 					TPointD* pFlpGridPoint1 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][i64GridCol - 1]);
 					TPointD* pFlpGridPoint2 = &(sArrGridDisplay.sGridData.arrGridData[(i64Row + 1)][0]);
-					CFLPointD flpGridPoint1(pFlpGridPoint1->x, pFlpGridPoint1->y);
-					CFLPointD flpGridPoint2(pFlpGridPoint2->x, pFlpGridPoint2->y);
-					CFLLineD fllDrawLine(flpGridPoint1, flpGridPoint2);
+					CFLPoint<double> flpGridPoint1(pFlpGridPoint1->x, pFlpGridPoint1->y);
+					CFLPoint<double> flpGridPoint2(pFlpGridPoint2->x, pFlpGridPoint2->y);
+					CFLLine<double> fllDrawLine(flpGridPoint1, flpGridPoint2);
 
 					if(IsFail(res = layerLearn.DrawFigureImage(fllDrawLine, BLACK, 5)))
 					{
@@ -239,8 +239,8 @@ int main()
 		{
 			TPointD* pFlpGridPoint1 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][0]);
 			TPointD* pFlpGridPoint2 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][1]);
-			CFLPointD flpGridPoint1(pFlpGridPoint1->x, pFlpGridPoint1->y);
-			CFLPointD flpGridPoint2(pFlpGridPoint2->x, pFlpGridPoint2->y);
+			CFLPoint<double> flpGridPoint1(pFlpGridPoint1->x, pFlpGridPoint1->y);
+			CFLPoint<double> flpGridPoint2(pFlpGridPoint2->x, pFlpGridPoint2->y);
 			double f64Angle = flpGridPoint1.GetAngle(flpGridPoint2);
 
 			for(int64_t i64Col = 0; i64Col < i64GridCol; ++i64Col)
@@ -291,7 +291,7 @@ int main()
 			}
 		}
 
-		CFLQuadD flqBoardRegion = sArrGridDisplay.sGridData.flqBoardRegion;
+		CFLQuad<double> flqBoardRegion = sArrGridDisplay.sGridData.flqBoardRegion;
 		double f64Angle = flqBoardRegion.flpPoints[0].GetAngle(flqBoardRegion.flpPoints[1]);
 		CFLString<wchar_t> wstringData = CFLString<wchar_t>().Format(L"[%d] (%d X %d)", (int32_t)sArrGridDisplay.i64ObjectIdx, (int32_t)i64GridCol, (int32_t)i64GridRow);
 
@@ -391,31 +391,31 @@ int main()
 		wprintf(L"Intrinsic parameters : %s\n", strMatrix.GetString());
 		wprintf(L"Distortion Coefficients : %s\n", strDistVal.GetString());
 
-		CFLPointD ptIntrTitle(80, 300);
-		CFLPointD ptIntr(100, 320);
-		CFLPointD ptDistTitle(80, 350);
-		CFLPointD ptDist(100, 370);
+		CFLPoint<double> ptIntrTitle(80, 300);
+		CFLPoint<double> ptIntr(100, 320);
+		CFLPoint<double> ptDistTitle(80, 350);
+		CFLPoint<double> ptDist(100, 370);
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Intrinsic Parameters: ", YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Intrinsic Parameters: ", YELLOW, BLACK, 13)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 20), strMatrix, YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 20), strMatrix, YELLOW, BLACK, 13)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 40), L"Distortion Coefficients: ", YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 40), L"Distortion Coefficients: ", YELLOW, BLACK, 13)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 60), strDistVal, YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 60), strDistVal, YELLOW, BLACK, 13)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -423,7 +423,7 @@ int main()
 
 		CGUIViewImageLayerWrap layerDestination = viewImageDestination.GetLayer(0);
 
-		CFLPointD ptTop(20, 20);
+		CFLPoint<double> ptTop(20, 20);
 
 		if(IsFail(res = layerDestination.DrawTextImage(&ptTop, L"Undistortion - Bilinear method", GREEN, BLACK, 20)))
 		{

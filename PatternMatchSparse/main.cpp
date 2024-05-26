@@ -69,13 +69,13 @@ int main()
 		layerLearn.Clear();
 		layerFind.Clear();
 
-		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"LEARN", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPoint<double>(0, 0), L"LEARN", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPointD(0, 0), L"FIND", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPoint<double>(0, 0), L"FIND", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -88,8 +88,8 @@ int main()
 		FLPatternMatchSparse.SetLearnImage(fliLearnImage);
 
 		// 학습할 영역을 설정합니다. // Set the area to learn.
-		CFLRectD learnRegion(150, 150, 760, 840);
-		CFLPointD flpLearnPivot = learnRegion.GetCenter();
+		CFLRect<double> learnRegion(150, 150, 760, 840);
+		CFLPoint<double> flpLearnPivot = learnRegion.GetCenter();
 		FLPatternMatchSparse.SetLearnROI(learnRegion);
 		FLPatternMatchSparse.SetLearnPivot(flpLearnPivot);
 
@@ -180,17 +180,17 @@ int main()
 			float f32Score = results.f32Score;
 			float f32Angle = results.f32Angle;
 			float f32Scale = results.f32Scale;
-			Foundation::CFLPointD flpPivot = results.flpPivot;
+			Foundation::CFLPoint<double> flpPivot = results.flpPivot;
 			Foundation::CFLFigure* pFlfRegion = results.pFlfRegion;
-			Foundation::CFLRectD* pFlrResultRegion = dynamic_cast<Foundation::CFLRectD*>(pFlfRegion);
+			Foundation::CFLRect<double>* pFlrResultRegion = dynamic_cast<Foundation::CFLRect<double>*>(pFlfRegion);
 
 			if(!pFlrResultRegion)
 				break;
 
-			Foundation::CFLRectD flrResultRegion = *pFlrResultRegion;
+			Foundation::CFLRect<double> flrResultRegion = *pFlrResultRegion;
 
 			CFLString<wchar_t> strData;
-			CFLPointD flpResultRegion = CFLPointD(flrResultRegion.left, flrResultRegion.top);
+			CFLPoint<double> flpResultRegion = CFLPoint<double>(flrResultRegion.left, flrResultRegion.top);
 
 			// 패턴 검출 결과를 Console창에 출력합니다. // Output the pattern detection result to the console window.
 			printf(" < Instance : %lld >\n", i);

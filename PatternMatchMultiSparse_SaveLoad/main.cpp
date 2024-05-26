@@ -25,7 +25,7 @@ int main()
 
 		CFLString<wchar_t> arrClassName[2] = {L"A", L"B"};
 		uint32_t arrColor[2] = {LIME, RED};
-		CFLRectD arrLearnRegion[2] = { CFLRectD(390.76, 174.77, 678.95, 457.39), CFLRectD(23.55,742.79,176.94,888.74) };
+		CFLRect<double> arrLearnRegion[2] = { CFLRect<double>(390.76, 174.77, 678.95, 457.39), CFLRect<double>(23.55,742.79,176.94,888.74) };
 
 		printf(" ▷ Learn Information\n");
 
@@ -60,7 +60,7 @@ int main()
 			FLPatternMatchMultiSparseSave.SetLearnImage(fliLearnImage[i64DataIdx]);
 
 			// 학습할 영역을 설정합니다. // Set the area to learn.
-			CFLPointD flpLearnPivot = arrLearnRegion[i64DataIdx].GetCenter();
+			CFLPoint<double> flpLearnPivot = arrLearnRegion[i64DataIdx].GetCenter();
 			FLPatternMatchMultiSparseSave.SetLearnROI(arrLearnRegion[i64DataIdx]);
 			FLPatternMatchMultiSparseSave.SetLearnPivot(flpLearnPivot);
 			FLPatternMatchMultiSparseSave.SetSampleCount(256);
@@ -104,7 +104,7 @@ int main()
 			CFLString<wchar_t> strStatus;
 			strStatus.Format(L"LEARN CLASS '%s'", arrClassName[i64DataIdx].GetBuffer());
 
-			if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), strStatus.GetBuffer(), YELLOW, BLACK, 30)))
+			if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPoint<double>(0, 0), strStatus.GetBuffer(), YELLOW, BLACK, 30)))
 			{
 				ErrorPrint(res, "Failed to draw text\n");
 				break;
@@ -168,7 +168,7 @@ int main()
 		CGUIViewImageLayerWrap layerFind = viewImageFind.GetLayer(1);
 		layerFind.Clear();
 
-		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPointD(0, 0), L"FIND", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPoint<double>(0, 0), L"FIND", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Fai led to draw text\n");
 			break;
@@ -228,14 +228,14 @@ int main()
 			float f32Score = results.f32Score;
 			float f32Angle = results.f32Angle;
 			float f32Scale = results.f32Scale;
-			Foundation::CFLPointD flpPivot = results.flpPivot;
+			Foundation::CFLPoint<double> flpPivot = results.flpPivot;
 			Foundation::CFLFigure* pFlfRegion = results.pFlfRegion;
-			Foundation::CFLRectD* pFlrResultRegion = dynamic_cast<Foundation::CFLRectD*>(pFlfRegion);
+			Foundation::CFLRect<double>* pFlrResultRegion = dynamic_cast<Foundation::CFLRect<double>*>(pFlfRegion);
 
 			if(!pFlrResultRegion)
 				break;
 
-			Foundation::CFLRectD flrResultRegion = *pFlrResultRegion;
+			Foundation::CFLRect<double> flrResultRegion = *pFlrResultRegion;
 
 			CFLString<wchar_t> strResult;
 			CFLString<wchar_t> wstrClassName = results.strClassName;

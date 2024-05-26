@@ -26,7 +26,7 @@ CResult DrawGridPoints(SGridDisplay& sGridDisplay, CGUIViewImageLayerWrap pLayer
 		int64_t i64GridRow = sGridDisplay.sGridData.i64Rows;
 		int64_t i64GridCol = sGridDisplay.sGridData.i64Columns;
 		double f64AvgDistance = sGridDisplay.sGridData.f64AvgDistance;
-		CFLQuadD flqBoardRegion = sGridDisplay.sGridData.flqBoardRegion;
+		CFLQuad<double> flqBoardRegion = sGridDisplay.sGridData.flqBoardRegion;
 		double f64Angle = flqBoardRegion.flpPoints[0].GetAngle(flqBoardRegion.flpPoints[1]);
 		double f64Width = flqBoardRegion.flpPoints[0].GetDistance(flqBoardRegion.flpPoints[1]);
 
@@ -36,18 +36,18 @@ CResult DrawGridPoints(SGridDisplay& sGridDisplay, CGUIViewImageLayerWrap pLayer
 			for(int64_t i64Col = 0; i64Col < i64GridCol - 1; ++i64Col)
 			{
 				int64_t i64GridIdx = i64Row * i64GridCol + i64Col;
-				CFLPointD flpGridPoint1 = (sGridDisplay.sGridData.arrGridData[i64Row][i64Col]);
-				CFLPointD flpGridPoint2 = (sGridDisplay.sGridData.arrGridData[i64Row][i64Col + 1]);
-				CFLLineD fllDrawLine(flpGridPoint1, flpGridPoint2);
+				CFLPoint<double> flpGridPoint1 = (sGridDisplay.sGridData.arrGridData[i64Row][i64Col]);
+				CFLPoint<double> flpGridPoint2 = (sGridDisplay.sGridData.arrGridData[i64Row][i64Col + 1]);
+				CFLLine<double> fllDrawLine(flpGridPoint1, flpGridPoint2);
 				pLayer.DrawFigureImage(fllDrawLine, BLACK, 5);
 				pLayer.DrawFigureImage(fllDrawLine, colorPool[i64GridIdx % 3], 3);
 			}
 
 			if(i64Row < i64GridRow - 1)
 			{
-				CFLPointD flpGridPoint1 = (sGridDisplay.sGridData.arrGridData[i64Row][i64GridCol - 1]);
-				CFLPointD flpGridPoint2 = (sGridDisplay.sGridData.arrGridData[i64Row + 1][0]);
-				CFLLineD fllDrawLine(flpGridPoint1, flpGridPoint2);
+				CFLPoint<double> flpGridPoint1 = (sGridDisplay.sGridData.arrGridData[i64Row][i64GridCol - 1]);
+				CFLPoint<double> flpGridPoint2 = (sGridDisplay.sGridData.arrGridData[i64Row + 1][0]);
+				CFLLine<double> fllDrawLine(flpGridPoint1, flpGridPoint2);
 				pLayer.DrawFigureImage(fllDrawLine, BLACK, 5);
 				pLayer.DrawFigureImage(fllDrawLine, YELLOW, 3);
 			}
@@ -61,8 +61,8 @@ CResult DrawGridPoints(SGridDisplay& sGridDisplay, CGUIViewImageLayerWrap pLayer
 		// Grid Point ¿Œµ¶ΩÃ // Index Grid Point
 		for(int64_t i64Row = 0; i64Row < i64GridRow; ++i64Row)
 		{
-			CFLPointD flpGridPoint1 = (sGridDisplay.sGridData.arrGridData[i64Row][0]);
-			CFLPointD flpGridPoint2 = (sGridDisplay.sGridData.arrGridData[i64Row][1]);
+			CFLPoint<double> flpGridPoint1 = (sGridDisplay.sGridData.arrGridData[i64Row][0]);
+			CFLPoint<double> flpGridPoint2 = (sGridDisplay.sGridData.arrGridData[i64Row][1]);
 			double f64Angle = flpGridPoint1.GetAngle(flpGridPoint2);
 
 			for(int64_t i64Col = 0; i64Col < i64GridCol; ++i64Col)
@@ -618,7 +618,7 @@ int main()
 		{
 			for(int32_t i32Index = 0; i32Index < 20; ++i32Index)
 			{
-				CFLLineD fllHorizonLine(CFLPointD(0, i64Height / 20 * i32Index), CFLPointD(i64Width, i64Height / 20 * i32Index));
+				CFLLine<double> fllHorizonLine(CFLPoint<double>(0, i64Height / 20 * i32Index), CFLPoint<double>(i64Width, i64Height / 20 * i32Index));
 
 				CGUIViewImageLayerWrap layerDst = i32Iter == 0 ? viewImageDestination.GetLayer(0) : viewImageDestination2.GetLayer(0);
 				layerDst.DrawFigureImage(fllHorizonLine, LIME, 1);

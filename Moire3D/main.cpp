@@ -261,25 +261,25 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if((res = layerLrn0.DrawTextCanvas(&CFLPointD(0, 0), L"Learn Image[0]", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerLrn0.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Learn Image[0]", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text.\n");
 			break;
 		}
 
-		if((res = layerLrn1.DrawTextCanvas(&CFLPointD(0, 0), L"Learn Image[1]", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerLrn1.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Learn Image[1]", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text.\n");
 			break;
 		}
 
-		if((res = layerSrc0.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image[0]", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerSrc0.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image[0]", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text.\n");
 			break;
 		}
 
-		if((res = layerSrc1.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image[1]", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerSrc1.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image[1]", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text.\n");
 			break;
@@ -313,7 +313,7 @@ int main()
 			break;
 		}
 
-		if((res = layer3D.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layer3D.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text.\n");
 			break;

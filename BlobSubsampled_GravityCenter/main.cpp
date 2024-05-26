@@ -122,7 +122,7 @@ int main()
 		{
 			for(int64_t i = 0; i < flfaContours.GetCount(); ++i)
 			{
-				CFLPointD* flpCenter = dynamic_cast<CFLPointD*>(flfGravityCenter.GetAt(i));
+				CFLPoint<double>* flpCenter = dynamic_cast<CFLPoint<double>*>(flfGravityCenter.GetAt(i));
 
 				if(!flpCenter)
 					continue;
@@ -131,8 +131,8 @@ int main()
 				flsTextResult.Format(L"\n\n\n\n\n\nGravity Center\nX : %.2lf Y : %.2lf", flpCenter->x, flpCenter->y);
 
 				// Image View 출력
-				layer.DrawTextImage(CFLPointD(flfaContours[i]), str, LIME, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
-				layer.DrawTextImage(CFLPointD(flfaContours[i]), flsTextResult, YELLOW, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
+				layer.DrawTextImage(CFLPoint<double>(flfaContours[i]), str, LIME, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
+				layer.DrawTextImage(CFLPoint<double>(flfaContours[i]), flsTextResult, YELLOW, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
 				layer.DrawFigureImage(flpCenter->MakeCrossHair(10, true), ORANGERED, 1, ORANGERED, EGUIViewImagePenStyle_Solid, 1, 0.25);
 
 				// 콘솔에 출력

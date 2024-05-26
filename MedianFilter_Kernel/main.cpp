@@ -88,7 +88,7 @@ int main()
 		// MedianFilter 객체 생성 // Create MedianFilter object
 		CMedianFilter medianFilter;
 
-		CFLRectL flrROI(100, 190, 360, 420);
+		CFLRect<int32_t> flrROI(100, 190, 360, 420);
 
 		// Source 이미지 설정 // Set the source image
 		medianFilter.SetSourceImage(fliSrcImage);
@@ -129,13 +129,13 @@ int main()
 		if(IsFail(layerDst.DrawFigureImage(&flrROI, LIME)))
 			printf("Failed to draw figure\n");
 
-		if(IsFail(layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if(IsFail(layerSrc.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
 			printf("Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
+		if(IsFail(layerDst.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
 		{
 			printf("Failed to draw text\n");
 			break;

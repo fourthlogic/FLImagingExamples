@@ -146,7 +146,7 @@ int main()
 		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 		layerSource.Clear();
 
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(), L"Source", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(), L"Source", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
@@ -166,12 +166,12 @@ int main()
 		// Rect 정보값을 각각 확인하는 코드
 		for(int64_t i = 0; i < flfaContour.GetCount(); ++i)
 		{
-			CFLRectL* pFlrRect = (CFLRectL*)flfaContour.GetAt(i);
+			CFLRect<int32_t>* pFlrRect = (CFLRect<int32_t>*)flfaContour.GetAt(i);
 
 			CFLString<wchar_t> strNumber;
 			strNumber.Format(L"%d", i);
 
-			layerSource.DrawTextImage(&CFLPointD(pFlrRect->GetCenter()), (wchar_t*)strNumber.GetString(), CYAN);
+			layerSource.DrawTextImage(&CFLPoint<double>(pFlrRect->GetCenter()), (wchar_t*)strNumber.GetString(), CYAN);
 		}
 
 		// 이미지 뷰를 갱신 합니다. // Update image view

@@ -117,7 +117,7 @@ int main()
 		layer3.Clear();
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(res = layer3.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layer3.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -137,7 +137,7 @@ int main()
 		// Rect 정보값을 각각 확인하는 코드
 		for(int64_t i = 0; i < flfaBoundaryRects.GetCount(); ++i)
 		{
-			CFLRectL* pFlrRect = (CFLRectL*)flfaBoundaryRects.GetAt(i);
+			CFLRect<int32_t>* pFlrRect = (CFLRect<int32_t>*)flfaBoundaryRects.GetAt(i);
 
 			if(pFlrRect)
 			{
@@ -158,10 +158,10 @@ int main()
 
 				// 아래 함수 DrawTextImage는 Image좌표를 기준으로 하는 Text를 Drawing 한다는 것을 의미한다.
 				// 파라미터 순서 : 레이어 -> 문자열 좌표 -> 문자열 지정 -> 문자열 색 -> 면 색 -> 폰트 크기 -> 실제 크기로 그릴지의 여부 -> 각도 -> 문자열의 위치 기준
-				layer2.DrawTextImage(&CFLPointD(pFlrRect->GetCenter()), strNumber, CYAN, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
-				layer2.DrawTextImage(&CFLPointD(pFlrRect->left, pFlrRect->top), strLeftTop, YELLOW, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_RIGHT_BOTTOM);
-				layer2.DrawTextImage(&CFLPointD(pFlrRect->right, pFlrRect->bottom), strRightBottom, YELLOW, BLACK);
-				layer2.DrawTextImage(&CFLPointD(pFlrRect->right, pFlrRect->top), strInfo, LIME, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_LEFT_BOTTOM);
+				layer2.DrawTextImage(&CFLPoint<double>(pFlrRect->GetCenter()), strNumber, CYAN, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
+				layer2.DrawTextImage(&CFLPoint<double>(pFlrRect->left, pFlrRect->top), strLeftTop, YELLOW, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_RIGHT_BOTTOM);
+				layer2.DrawTextImage(&CFLPoint<double>(pFlrRect->right, pFlrRect->bottom), strRightBottom, YELLOW, BLACK);
+				layer2.DrawTextImage(&CFLPoint<double>(pFlrRect->right, pFlrRect->top), strInfo, LIME, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_LEFT_BOTTOM);
 			}
 		}
 
@@ -185,7 +185,7 @@ int main()
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(res = layer.DrawTextImage(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layer.DrawTextImage(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

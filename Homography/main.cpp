@@ -76,19 +76,19 @@ int main()
 		// Source 이미지의 투영 영역 범위 설정 // Set the range of the projection area of ​​the Source image
 		CFLPointArray flpaSourceProjection;
 
-		flpaSourceProjection.PushBack(CFLPointD(564.137931, 316.551724));
-		flpaSourceProjection.PushBack(CFLPointD(363.448276, 438.620690));
-		flpaSourceProjection.PushBack(CFLPointD(220.689655, 283.448276));
-		flpaSourceProjection.PushBack(CFLPointD(363.448276, 192.413793));
-		flpaSourceProjection.PushBack(CFLPointD(121.379310, 163.448276));
-		flpaSourceProjection.PushBack(CFLPointD(504.137931, 122.068966));
-		flpaSourceProjection.PushBack(CFLPointD(80.000000, 120.000000));
-		flpaSourceProjection.PushBack(CFLPointD(268.275862, 113.793103));
-		flpaSourceProjection.PushBack(CFLPointD(32.413793, 380.689655));
-		flpaSourceProjection.PushBack(CFLPointD(53.103448, 74.482759));
-		flpaSourceProjection.PushBack(CFLPointD(214.482759, 68.275862));
-		flpaSourceProjection.PushBack(CFLPointD(373.793103, 64.137931));
-		flpaSourceProjection.PushBack(CFLPointD(160.689655, 28.965517));
+		flpaSourceProjection.PushBack(CFLPoint<double>(564.137931, 316.551724));
+		flpaSourceProjection.PushBack(CFLPoint<double>(363.448276, 438.620690));
+		flpaSourceProjection.PushBack(CFLPoint<double>(220.689655, 283.448276));
+		flpaSourceProjection.PushBack(CFLPoint<double>(363.448276, 192.413793));
+		flpaSourceProjection.PushBack(CFLPoint<double>(121.379310, 163.448276));
+		flpaSourceProjection.PushBack(CFLPoint<double>(504.137931, 122.068966));
+		flpaSourceProjection.PushBack(CFLPoint<double>(80.000000, 120.000000));
+		flpaSourceProjection.PushBack(CFLPoint<double>(268.275862, 113.793103));
+		flpaSourceProjection.PushBack(CFLPoint<double>(32.413793, 380.689655));
+		flpaSourceProjection.PushBack(CFLPoint<double>(53.103448, 74.482759));
+		flpaSourceProjection.PushBack(CFLPoint<double>(214.482759, 68.275862));
+		flpaSourceProjection.PushBack(CFLPoint<double>(373.793103, 64.137931));
+		flpaSourceProjection.PushBack(CFLPoint<double>(160.689655, 28.965517));
 
 		// Source 이미지의 투영 영역 지정 // Set the projection area of ​​the Source image
 		homography.SetSourceProjection(&flpaSourceProjection);
@@ -99,19 +99,19 @@ int main()
 		// Destination 이미지의 투영 영역 범위 설정 // Set the range of the projection area of ​​the destination image
 		CFLPointArray flpaDestinationProjection;
 
-		flpaDestinationProjection.PushBack(CFLPointD(529.223526, 181.280286));
-		flpaDestinationProjection.PushBack(CFLPointD(528.781754, 301.190422));
-		flpaDestinationProjection.PushBack(CFLPointD(403.991849, 315.695190));
-		flpaDestinationProjection.PushBack(CFLPointD(399.088041, 186.290795));
-		flpaDestinationProjection.PushBack(CFLPointD(262.810194, 316.159206));
-		flpaDestinationProjection.PushBack(CFLPointD(401.317045, 82.478995));
-		flpaDestinationProjection.PushBack(CFLPointD(122.572625, 317.202957));
-		flpaDestinationProjection.PushBack(CFLPointD(268.777064, 182.517166));
-		flpaDestinationProjection.PushBack(CFLPointD(408.998534, 438.577031));
-		flpaDestinationProjection.PushBack(CFLPointD(7.275742, 322.207494));
-		flpaDestinationProjection.PushBack(CFLPointD(131.900147, 180.456139));
-		flpaDestinationProjection.PushBack(CFLPointD(263.629186, 75.928433));
-		flpaDestinationProjection.PushBack(CFLPointD(1.266525, 182.189349));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(529.223526, 181.280286));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(528.781754, 301.190422));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(403.991849, 315.695190));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(399.088041, 186.290795));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(262.810194, 316.159206));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(401.317045, 82.478995));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(122.572625, 317.202957));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(268.777064, 182.517166));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(408.998534, 438.577031));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(7.275742, 322.207494));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(131.900147, 180.456139));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(263.629186, 75.928433));
+		flpaDestinationProjection.PushBack(CFLPoint<double>(1.266525, 182.189349));
 
 		// Destination 이미지의 투영 영역 지정 // Set the projection area of ​​the destination image
 		homography.SetDestinationProjection(&flpaDestinationProjection);
@@ -154,13 +154,13 @@ int main()
 			ErrorPrint(res, "Failed to draw figure\n");
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerDestination.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

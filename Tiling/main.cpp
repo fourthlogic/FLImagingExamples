@@ -118,31 +118,31 @@ int main() // Tiling
 		}
 		
 		// Source 이미지에 ROI 추가 // Add ROI to source image
-		CFLRectD flRect(30, 68, 200, 235);
+		CFLRect<double> flRect(30, 68, 200, 235);
 		
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(0);
 		fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 		fliSrcImages[0].PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 
-		flRect = CFLRectD(260, 135, 415, 440);
+		flRect = CFLRect<double>(260, 135, 415, 440);
 		flRect.SetName(L"1");
 		fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 		fliSrcImages[0].PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 
-		flRect = CFLRectD(280, 250, 480, 480);
+		flRect = CFLRect<double>(280, 250, 480, 480);
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(1);
 		fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 		fliSrcImages[1].PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 
-		flRect = CFLRectD(110, 150, 350, 440);
+		flRect = CFLRect<double>(110, 150, 350, 440);
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(2);
 		fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 		fliSrcImages[2].PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
 
-		flRect = CFLRectD(220, 230, 470, 450);
+		flRect = CFLRect<double>(220, 230, 470, 450);
 		flRect.SetName(L"0");
 		fliSrcImage.SelectPage(3);
 		fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flRect));
@@ -205,14 +205,14 @@ int main() // Tiling
 			CFLString<wchar_t> fls;
 			fls.Format(L"Source Image #%d", i);
 
-			if(IsFail(res = layerSrc[i].DrawTextCanvas(&CFLPointD(0, 0), fls, YELLOW, BLACK, 20)))
+			if(IsFail(res = layerSrc[i].DrawTextCanvas(&CFLPoint<double>(0, 0), fls, YELLOW, BLACK, 20)))
 			{
 				ErrorPrint(res, "Failed to draw text\n");
 				break;
 			}
 		}
 
-		if(IsFail(res = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerDst.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

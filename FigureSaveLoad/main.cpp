@@ -49,11 +49,11 @@ int main()
 
 		//////// Save
 		// Figure 생성 // Create figure
-		CFLRectD flr(50, 50, 100, 100);
+		CFLRect<double> flr(50, 50, 100, 100);
 
-		CFLCircleD flc(150., 100., 30., 0., 0., 80., EArcClosingMethod_Center);
+		CFLCircle<double> flc(150., 100., 30., 0., 0., 80., EArcClosingMethod_Center);
 
-		CFLEllipseD fle(300, 150, 100, 50,0,180,60, EArcClosingMethod_EachOther);
+		CFLEllipse<double> fle(300, 150, 100, 50,0,180,60, EArcClosingMethod_EachOther);
 
 		CFLFigureArray flfa;
 
@@ -82,7 +82,7 @@ int main()
 		//////// Load
 		// 다른 DeclType 인 파일을 Load할 경우 반환값이 EResult_OK 가 아닌 다른 반환값을 반환
 		// When loading a file with a different DeclType, return value other than EResult_OK is returned
-		CFLRectD flrLoad;
+		CFLRect<double> flrLoad;
 
 		// Rect 에 FigureArray 로드했으므로 실패 // Failed because we loaded FigureArray into Rect
 		res = flrLoad.Load(L"FigureArray");

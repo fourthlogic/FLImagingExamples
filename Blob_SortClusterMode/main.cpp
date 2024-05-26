@@ -134,7 +134,7 @@ int main()
 
 			CGUIViewImageLayerWrap layerSortClusterMode = arrViewImage[k].GetLayer(0);
 
-			if(IsFail(res = layerSortClusterMode.DrawTextCanvas(&CFLPointD(), L"(Y Asc, X Asc)", YELLOW, BLACK, 30)))
+			if(IsFail(res = layerSortClusterMode.DrawTextCanvas(&CFLPoint<double>(), L"(Y Asc, X Asc)", YELLOW, BLACK, 30)))
 			{
 				ErrorPrint(res, "Failed to draw text on the image view.\n");
 				break;
@@ -159,7 +159,7 @@ int main()
 
 				for(int64_t j = 0; j < i64ObjectCount; ++j)
 				{
-					CFLRectL* pFlrRect = (CFLRectL*)pFlfa->GetAt(j);
+					CFLRect<int32_t>* pFlrRect = (CFLRect<int32_t>*)pFlfa->GetAt(j);
 
 					CFLString<wchar_t> strNumber;
 					strNumber.Format(L"(%d,%d)", (int32_t)i, (int32_t)j);
@@ -167,7 +167,7 @@ int main()
 					if(pFlrRect)
 						printf("SortClusterMode [%lld] No. (%d,%d) : (%d,%d,%d,%d)\n", k, (int32_t)i, (int32_t)j, pFlrRect->left, pFlrRect->top, pFlrRect->right, pFlrRect->bottom);
 
-					layerSortClusterMode.DrawTextImage(&CFLPointD(pFlrRect->GetCenter()), (wchar_t*)strNumber.GetString(), CYAN, BLACK, 12, false, 0, EGUIViewImageTextAlignment_CENTER_CENTER);
+					layerSortClusterMode.DrawTextImage(&CFLPoint<double>(pFlrRect->GetCenter()), (wchar_t*)strNumber.GetString(), CYAN, BLACK, 12, false, 0, EGUIViewImageTextAlignment_CENTER_CENTER);
 				}
 			}
 

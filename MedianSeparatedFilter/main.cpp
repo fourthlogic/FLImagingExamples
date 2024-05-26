@@ -91,7 +91,7 @@ int main()
 		// MedianSeparatedFilter 객체 생성 // Create MedianSeparatedFilter object
 		CMedianSeparatedFilter medianSeparateFilter;
 
-		CFLRectL flrROI(100, 190, 360, 420);
+		CFLRect<int32_t> flrROI(100, 190, 360, 420);
 
 		// Source 이미지 설정 // Set the source image
 		medianSeparateFilter.SetSourceImage(fliSrcImage);
@@ -132,13 +132,13 @@ int main()
 		if(IsFail(res = layerDst.DrawFigureImage(&flrROI, LIME)))
 			ErrorPrint(res, "Failed to draw figure\n");
 
-		if(IsFail(res = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerSrc.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerDst.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

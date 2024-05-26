@@ -102,7 +102,7 @@ bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fl
 
 		layerDestination.Clear();
 		
-		CFLPointD ptTop(20,20);
+		CFLPoint<double> ptTop(20,20);
 
 		if(IsFail(res = layerDestination.DrawTextImage(&ptTop, L"Undistortion - Bilinear method", GREEN, BLACK, 20)))
 		{
@@ -115,7 +115,7 @@ bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fl
 
 		CFLString<wchar_t> strMS;
 		strMS.Format(L"elapsed time: %.2lf ms", f64ElapsedMS);
-		CFLPointD ptMS(20, 50);
+		CFLPoint<double> ptMS(20, 50);
 		
 		if(IsFail(res = layerDestination.DrawTextImage(&ptMS, strMS.GetBuffer(), GREEN, BLACK, 20)))
 		{
@@ -199,25 +199,25 @@ int main()
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Intrinsic Parameters: ", YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Intrinsic Parameters: ", YELLOW, BLACK, 13)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 20), strMatrix, YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 20), strMatrix, YELLOW, BLACK, 13)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 40), L"Distortion Coefficients: ", YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 40), L"Distortion Coefficients: ", YELLOW, BLACK, 13)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 60), strDistVal, YELLOW, BLACK, 13)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 60), strDistVal, YELLOW, BLACK, 13)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

@@ -49,7 +49,7 @@ int main()
 		COrientedFASTandRotatedBRIEF ORB;
 
 		// ROI 범위 설정
-		CFLRectL flrROI(100, 50, 450, 450);
+		CFLRect<int32_t> flrROI(100, 50, 450, 450);
 
 		// 처리할 이미지 설정
 		if(IsFail(res = ORB.SetSourceImage(fliImage)))

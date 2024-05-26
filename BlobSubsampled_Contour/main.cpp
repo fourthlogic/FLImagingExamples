@@ -40,7 +40,7 @@ int main()
 		CBlobSubsampled blob;
 
 		// ROI 범위 설정
-		CFLRectL flrROI(450, 425, 1024, 800);
+		CFLRect<int32_t> flrROI(450, 425, 1024, 800);
 
 		// 처리할 이미지 설정
 		blob.SetSourceImage(fliImage);
@@ -132,14 +132,14 @@ int main()
 				if(j)
 					printf(",");
 
-				CFLPointD* pFlpVertex = (CFLPointD*)pFlrg->GetAt(j);
+				CFLPoint<double>* pFlpVertex = (CFLPoint<double>*)pFlrg->GetAt(j);
 
 				printf("(%lf,%lf)", pFlpVertex->x, pFlpVertex->y);
 			}
 
 			printf("]\n\n");
 
-			CFLPointD flpCenter;
+			CFLPoint<double> flpCenter;
 			pFlrg->GetCenter(flpCenter);
 
 			CFLString<wchar_t> strNumber;

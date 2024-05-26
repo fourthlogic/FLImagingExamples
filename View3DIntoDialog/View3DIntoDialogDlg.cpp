@@ -269,8 +269,8 @@ void CView3DIntoDialogDlg::OnBnClickedButtonGetHeightProfile()
 		i64EndY = _wtoi(strHeightValue);
 
 		// 시작좌표와 끝좌표 설정
-		CFLPointLL flp1(i64StartX, i64StartY);
-		CFLPointLL flp2(i64EndX, i64EndY);
+		CFLPoint<int64_t> flp1(i64StartX, i64StartY);
+		CFLPoint<int64_t> flp2(i64EndX, i64EndY);
 		CFLArrayD flaD;
 		
 		// 시작좌표와 끝좌표를 잇는 선분에 대한 Height Profile 얻기

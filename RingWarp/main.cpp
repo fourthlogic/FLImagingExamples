@@ -45,7 +45,7 @@ int main()
 		RingWarping.SetSourceImage(fliSourceImage);
 
 		// Source 이미지 관심 영역 파라미터 설정
-		CFLDoughnutD fldSourceROI(257.071130, 257.071130, 216.368201, 118.521494, 0.000000, -17.159659, 213.494067, EArcClosingMethod_Center);
+		CFLDoughnut<double> fldSourceROI(257.071130, 257.071130, 216.368201, 118.521494, 0.000000, -17.159659, 213.494067, EArcClosingMethod_Center);
 		// Source 이미지 관심 영역 설정
 		RingWarping.SetSourceROI(fldSourceROI);
 
@@ -109,13 +109,13 @@ int main()
 			ErrorPrint(res, "Failed to draw figure\n");
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerDestination.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

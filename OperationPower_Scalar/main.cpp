@@ -311,67 +311,67 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if((result = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(5, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
+		if((result = arrLayer[EType_Source].DrawTextCanvas(&CFLPoint<double>(5, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 
-		if((result = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(5, 0), L"Destination1 Image(Power 1.1, 1.2, 1.5)", YELLOW, BLACK, 20)).IsFail())
+		if((result = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPoint<double>(5, 0), L"Destination1 Image(Power 1.1, 1.2, 1.5)", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 		
-		if((result = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(5, 22), L"Unsigned Int / 8 / Saturation", YELLOW, BLACK, 15)).IsFail())
+		if((result = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPoint<double>(5, 22), L"Unsigned Int / 8 / Saturation", YELLOW, BLACK, 15)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 
-		if((result = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(5, 0), L"Destination2 Image(Power 0.8, 0.8, 1.1)", YELLOW, BLACK, 20)).IsFail())
+		if((result = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPoint<double>(5, 0), L"Destination2 Image(Power 0.8, 0.8, 1.1)", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 		
-		if((result = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(5, 22), L"Unsigned Int / 8 / Saturation", YELLOW, BLACK, 15)).IsFail())
+		if((result = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPoint<double>(5, 22), L"Unsigned Int / 8 / Saturation", YELLOW, BLACK, 15)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 
-		if((result = arrLayer[EType_Destination3].DrawTextCanvas(&CFLPointD(5, 0), L"Destination3 Image(Power 2.5, 2.5, 2.5)", YELLOW, BLACK, 20)).IsFail())
+		if((result = arrLayer[EType_Destination3].DrawTextCanvas(&CFLPoint<double>(5, 0), L"Destination3 Image(Power 2.5, 2.5, 2.5)", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 
-		if((result = arrLayer[EType_Destination3].DrawTextCanvas(&CFLPointD(5, 22), L"Unsigned Int / 16 / Overflow", YELLOW, BLACK, 15)).IsFail())
+		if((result = arrLayer[EType_Destination3].DrawTextCanvas(&CFLPoint<double>(5, 22), L"Unsigned Int / 16 / Overflow", YELLOW, BLACK, 15)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 
-		if((result = arrLayer[EType_Destination4].DrawTextCanvas(&CFLPointD(5, 0), L"Destination4 Image(Power 2.5, 2.5, 2.5)", YELLOW, BLACK, 20)).IsFail())
+		if((result = arrLayer[EType_Destination4].DrawTextCanvas(&CFLPoint<double>(5, 0), L"Destination4 Image(Power 2.5, 2.5, 2.5)", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 
-		if((result = arrLayer[EType_Destination4].DrawTextCanvas(&CFLPointD(5, 22), L"Unsigned Int / 16 / Saturation", YELLOW, BLACK, 15)).IsFail())
+		if((result = arrLayer[EType_Destination4].DrawTextCanvas(&CFLPoint<double>(5, 22), L"Unsigned Int / 16 / Saturation", YELLOW, BLACK, 15)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 
-		if((result = arrLayer[EType_Destination5].DrawTextCanvas(&CFLPointD(5, 0), L"Destination5 Image(Power 10, 10, 10)", YELLOW, BLACK, 20)).IsFail())
+		if((result = arrLayer[EType_Destination5].DrawTextCanvas(&CFLPoint<double>(5, 0), L"Destination5 Image(Power 10, 10, 10)", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;
 		}
 
-		if((result = arrLayer[EType_Destination5].DrawTextCanvas(&CFLPointD(5, 22), L"Unsigned Int / 64 / Overflow", YELLOW, BLACK, 15)).IsFail())
+		if((result = arrLayer[EType_Destination5].DrawTextCanvas(&CFLPoint<double>(5, 22), L"Unsigned Int / 64 / Overflow", YELLOW, BLACK, 15)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to draw text\n");
 			break;

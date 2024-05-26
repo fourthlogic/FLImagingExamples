@@ -117,8 +117,8 @@ int main()
 			flsTextResult.Format(L"\nCircularity %.2lf", flaCircularity[i]);
 
 			// Image View 출력
-			layer.DrawTextImage(CFLPointD(flfaContours[i]), str, LIME, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
-			layer.DrawTextImage(CFLPointD(flfaContours[i]), flsTextResult, YELLOW, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
+			layer.DrawTextImage(CFLPoint<double>(flfaContours[i]), str, LIME, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
+			layer.DrawTextImage(CFLPoint<double>(flfaContours[i]), flsTextResult, YELLOW, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
 
 			// 콘솔에 출력
 			printf("[%lld] Circularity %.2lf\n", i, flaCircularity[i]);

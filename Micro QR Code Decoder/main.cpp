@@ -40,7 +40,7 @@ int main()
 		CMicroQRCodeDecoder qrCodeDecoder;
 
 		// ROI 범위 설정
-		CFLRectL flrROI(112, 349, 217, 454);
+		CFLRect<int32_t> flrROI(112, 349, 217, 454);
 
 		// 처리할 이미지 설정
 		qrCodeDecoder.SetSourceImage(fliImage);
@@ -82,7 +82,7 @@ int main()
 		{
 
 			// MicroQR Code Decoder 결과를 얻어오기 위해 FLQuadD 선언
-			CFLQuadD flqdRegion;
+			CFLQuad<double> flqdRegion;
 
 			// MicroQR Code Decoder 결과들 중 Data Region 을 얻어옴
 			if(IsFail(res = qrCodeDecoder.GetResultDataRegion(i, flqdRegion)))

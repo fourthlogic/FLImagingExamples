@@ -72,7 +72,7 @@ int main()
 		CBlob blob;
 
 		// ROI 범위 설정
-		CFLRectL flrROI(450, 425, 1024, 800);
+		CFLRect<int32_t> flrROI(450, 425, 1024, 800);
 
 		// 처리할 이미지 설정
 		blob.SetSourceImage(fliImage);
@@ -167,13 +167,13 @@ int main()
 		layerSorted.Clear();
 		layerRecover.Clear();
 
-		if(IsFail(res = layerSorted.DrawTextCanvas(&CFLPointD(), L"Sort", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSorted.DrawTextCanvas(&CFLPoint<double>(), L"Sort", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
 		}
 
-		if(IsFail(res = layerRecover.DrawTextCanvas(&CFLPointD(), L"No Sort", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerRecover.DrawTextCanvas(&CFLPoint<double>(), L"No Sort", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
@@ -213,7 +213,7 @@ int main()
 		// Rect 정보값을 각각 확인하는 코드
 		for(int64_t i = 0; i < flfaSortedBoundaryRects.GetCount(); ++i)
 		{
-			CFLRectL* pFlrRect = (CFLRectL*)flfaSortedBoundaryRects.GetAt(i);
+			CFLRect<int32_t>* pFlrRect = (CFLRect<int32_t>*)flfaSortedBoundaryRects.GetAt(i);
 
 			if(pFlrRect)
 				printf("Sorted No. %lld : (%d,%d,%d,%d)\n", i, pFlrRect->left, pFlrRect->top, pFlrRect->right, pFlrRect->bottom);
@@ -221,14 +221,14 @@ int main()
 			CFLString<wchar_t> strNumber;
 			strNumber.Format(L"%d", i);
 
-			layerSorted.DrawTextImage(&CFLPointD(pFlrRect->GetCenter()), (wchar_t*)strNumber.GetString(), CYAN);
+			layerSorted.DrawTextImage(&CFLPoint<double>(pFlrRect->GetCenter()), (wchar_t*)strNumber.GetString(), CYAN);
 
-			pFlrRect = (CFLRectL*)flfaRecoverBoundaryRects.GetAt(i);
+			pFlrRect = (CFLRect<int32_t>*)flfaRecoverBoundaryRects.GetAt(i);
 
 			if(pFlrRect)
 				printf("Recover No. %lld : (%d,%d,%d,%d)\n", i, pFlrRect->left, pFlrRect->top, pFlrRect->right, pFlrRect->bottom);
 
-			layerRecover.DrawTextImage(&CFLPointD(pFlrRect->GetCenter()), (wchar_t*)strNumber.GetString(), CYAN);
+			layerRecover.DrawTextImage(&CFLPoint<double>(pFlrRect->GetCenter()), (wchar_t*)strNumber.GetString(), CYAN);
 		}
 
 		// 이미지 뷰를 갱신 합니다. // Update image view

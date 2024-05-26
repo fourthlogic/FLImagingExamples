@@ -79,9 +79,9 @@ int main()
 		ThinPlateSplineWarping.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 
 		// 그리드를 (5,5)로 초기화 // Initialize grid to (5, 5)
-		CFLPointL flpGridSize(5, 5);
+		CFLPoint<int32_t> flpGridSize(5, 5);
 
-		CFLPointL flpGridIndex;
+		CFLPoint<int32_t> flpGridIndex;
 		CFLPointArray flpaSourcePoints;
 		CFLPointArray flpaTargetPoints;
 
@@ -97,9 +97,9 @@ int main()
 				flpGridIndex.x = x;
 
 				// Grid Index와 같은 좌표로 Source 좌표를 설정 // Set source vertex same as the grid index
-				CFLPointD flpSource(flpGridIndex.x * f64ScaleX, flpGridIndex.y * f64ScaleY);
+				CFLPoint<double> flpSource(flpGridIndex.x * f64ScaleX, flpGridIndex.y * f64ScaleY);
 				// Grid Index와 같은 좌표에서 미세한 랜덤 값을 부여해서 왜곡된 Target 좌표 설정 // Set distorted target coordinates by giving fine random values in coordinates such as Grid Index
-				CFLPointD flpDistortion((flpGridIndex.x + CRandomGenerator::Double(-.2, .2)) * f64ScaleX, (flpGridIndex.y + CRandomGenerator::Double(-.2, .2)) * f64ScaleY);
+				CFLPoint<double> flpDistortion((flpGridIndex.x + CRandomGenerator::Double(-.2, .2)) * f64ScaleX, (flpGridIndex.y + CRandomGenerator::Double(-.2, .2)) * f64ScaleY);
 
 				// 위에서 설정한 좌표들을 바탕으로 Calibration Point Array에 Point 추가 // Add points to the calibration point array based on the coordinates set above
 				flpaSourcePoints.PushBack(flpSource);
@@ -117,8 +117,8 @@ int main()
 
 		for(int64_t i = 0; i < flpaSourcePoints.GetCount(); ++i)
 		{
-			CFLPointD flpSource = flpaSourcePoints.GetAt(i);
-			CFLPointD flpTarget = flpaTargetPoints.GetAt(i);
+			CFLPoint<double> flpSource = flpaSourcePoints.GetAt(i);
+			CFLPoint<double> flpTarget = flpaTargetPoints.GetAt(i);
 
 			// Source Vertex를 Source 이미지 뷰 Layer에 그리기 // Draw the source vertex on the source image view layer
 			CFLLine<double> fllDrawLine(flpSource, flpTarget);
@@ -181,13 +181,13 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if((res = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerSrc.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if((res = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerDst.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text\n");
 			break;

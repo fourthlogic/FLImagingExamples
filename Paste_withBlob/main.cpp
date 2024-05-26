@@ -208,19 +208,19 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(res = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Source].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(0, 0), L"Result Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Result Image", YELLOW, BLACK, 20)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -238,19 +238,19 @@ int main()
 				if(j)
 					printf(",");
 
-				CFLPointL* pFlpVertex = (CFLPointL*)pFlrg->GetAt(j);
+				CFLPoint<int32_t>* pFlpVertex = (CFLPoint<int32_t>*)pFlrg->GetAt(j);
 
 				printf("(%d,%d)", pFlpVertex->x, pFlpVertex->y);
 			}
 
 			printf("]\n\n");
 
-			CFLRectD flr = pFlrg->GetBoundaryRect();
+			CFLRect<double> flr = pFlrg->GetBoundaryRect();
 
 			CFLString<wchar_t> strNumber;
 			strNumber.Format(L"%d", i);
 
-			arrLayer[EType_Source].DrawTextImage(&CFLPointD(flr.left, (flr.top + flr.bottom) * .5), (wchar_t*)strNumber.GetString(), BLACK, YELLOW, 12, false, 0, EGUIViewImageTextAlignment_CENTER, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false);
+			arrLayer[EType_Source].DrawTextImage(&CFLPoint<double>(flr.left, (flr.top + flr.bottom) * .5), (wchar_t*)strNumber.GetString(), BLACK, YELLOW, 12, false, 0, EGUIViewImageTextAlignment_CENTER, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false);
 		}
 
 		// 이미지 뷰를 갱신 합니다. // Update image view

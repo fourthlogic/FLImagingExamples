@@ -102,7 +102,7 @@ int main()
 
 		for(int64_t i = 0; i < i64ResultCount; i++)
 		{
-			CFLCircleD flcResult;
+			CFLCircle<double> flcResult;
 
 			HoughTransform.GetResultCircle(i, flcResult);
 

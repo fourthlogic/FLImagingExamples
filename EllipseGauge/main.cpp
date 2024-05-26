@@ -44,7 +44,7 @@ int main()
 		ellipseGauge.SetSourceImage(fliImage);
 
 		// 측정할 영역을 설정합니다. // Set the area to measure.
-		CFLEllipseD measureRegion(180.071947,102.600690, 10.505232,36.645048, -70.682726);
+		CFLEllipse<double> measureRegion(180.071947,102.600690, 10.505232,36.645048, -70.682726);
 		double tolerance = 25.;
 		ellipseGauge.SetMeasurementRegion(measureRegion, tolerance);
 
@@ -74,7 +74,7 @@ int main()
 		}
 
 		// 실행 결과를 가져옵니다. // Get the execution result.
-		CFLEllipseD resultRegion;
+		CFLEllipse<double> resultRegion;
 		CFLFigureArray flfaResultsValid, flfaResultsInvalid; 
 		// 추정된 타원을 가져옵니다. // Get the estimated ellipse.
 		ellipseGauge.GetMeasuredObject(resultRegion);
@@ -88,14 +88,14 @@ int main()
 		layer.Clear();
 
 		// 측정 영역이 어디인지 알기 위해 디스플레이 한다 // Display to know where the measurement area is
-		CFLEllipseD flres;
+		CFLEllipse<double> flres;
 		double f64Tolerance;
 
 		res = ellipseGauge.GetMeasuredObject(flres);
 
-		CFLEllipseD fleRegion = ellipseGauge.GetMeasurementRegion();
+		CFLEllipse<double> fleRegion = ellipseGauge.GetMeasurementRegion();
 
-		CFLEllipseD  fleInner = fleRegion, fleOuter = fleRegion;
+		CFLEllipse<double>  fleInner = fleRegion, fleOuter = fleRegion;
 
 		double f64Radius1, f64Radius2;
 
@@ -151,7 +151,7 @@ int main()
 			flres.GetRadius1(&f64RadiusResult1);
 			flres.GetRadius2(&f64RadiusResult2);
 			f64Anglres = flres.GetAngle();
-			CFLPointD flpLineCenter = flres.GetCenter();
+			CFLPoint<double> flpLineCenter = flres.GetCenter();
 			printf("Ellipse Center : (%.2lf, %.2lf)\nRadius X : %.2lf pixels\nRadius Y : %.2lf pixels\nAngle : %.2lf˚\n", 
 				flpLineCenter.x, flpLineCenter.y, f64RadiusResult1, f64RadiusResult2, f64Anglres);
 		}
@@ -162,9 +162,9 @@ int main()
 			if(flfaResultsValid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 				break;
 
-			CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultsValid.GetAt(i32Index));
+			CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultsValid.GetAt(i32Index));
 
-			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
+			CFLFigureArray flfaPoint = CFLPoint<double>(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
 			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, LIME)))
 			{
@@ -179,9 +179,9 @@ int main()
 			if(flfaResultsInvalid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 				break;
 
-			CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultsInvalid.GetAt(i32Index));
+			CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultsInvalid.GetAt(i32Index));
 
-			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
+			CFLFigureArray flfaPoint = CFLPoint<double>(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
 			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, RED)))
 			{

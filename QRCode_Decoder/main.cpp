@@ -40,7 +40,7 @@ int main()
 		CQRCodeDecoder qrCodeDecoder;
 
 		// ROI 범위 설정
-		CFLRectL flrROI(210, 60, 400, 250);
+		CFLRect<int32_t> flrROI(210, 60, 400, 250);
 
 		// 처리할 이미지 설정
 		qrCodeDecoder.SetSourceImage(fliImage);
@@ -85,7 +85,7 @@ int main()
 		{
 
 			// QR Code Decoder 결과를 얻어오기 위해 FLQuadD 선언
-			CFLQuadD flqdRegion;
+			CFLQuad<double> flqdRegion;
 
 			// QR Code Decoder 결과들 중 Data Region 을 얻어옴
 			if(IsFail(res = qrCodeDecoder.GetResultDataRegion(i, flqdRegion)))

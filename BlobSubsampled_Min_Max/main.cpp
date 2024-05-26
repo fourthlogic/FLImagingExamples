@@ -137,7 +137,7 @@ int main()
 		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 		layerSource.Clear();
 
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(), L"Source", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(), L"Source", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
@@ -162,7 +162,7 @@ int main()
 			CFLString<wchar_t> strNumber;
 			strNumber.Format(L"%d", i);
 
-			CFLPointD flpCenter;
+			CFLPoint<double> flpCenter;
 			pFlrg->GetCenter(flpCenter);
 
 			layerSource.DrawTextImage(&flpCenter, (wchar_t*)strNumber.GetString(), CYAN);

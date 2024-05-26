@@ -44,7 +44,7 @@ int main()
 		rectangleGauge.SetSourceImage(fliImage);
 
 		// 측정할 영역을 설정합니다. // Set the area to measure.
-		CFLRectD measureRegion(213.577428,262.324155,295.020437,348.179290);
+		CFLRect<double> measureRegion(213.577428,262.324155,295.020437,348.179290);
 		double tolerance = 25.;
 		rectangleGauge.SetMeasurementRegion(measureRegion, tolerance);
 
@@ -80,7 +80,7 @@ int main()
 		}
 
 		// 실행 결과를 가져옵니다. // Get the execution result.
-		CFLRectD resultRegion;
+		CFLRect<double> resultRegion;
 		CFLFigureArray flfaResultsValid, flfaResultsInvalid;
 		// 추정된 사각형을 가져옵니다. // Get the estimated rectangle.
 		rectangleGauge.GetMeasuredObject(resultRegion);
@@ -94,11 +94,11 @@ int main()
 		layer.Clear();
 
 		// 측정 영역이 어디인지 알기 위해 디스플레이 한다 // Display to know where the measurement area is
-		CFLRectD flrResult;
+		CFLRect<double> flrResult;
 
 		res = rectangleGauge.GetMeasuredObject(flrResult);
 
-		CFLRectD flrRegion = rectangleGauge.GetMeasurementRegion();
+		CFLRect<double> flrRegion = rectangleGauge.GetMeasurementRegion();
 		CFLArray<double> arrTolerance = rectangleGauge.GetTolerance();
 		double f64Tolerance = arrTolerance[0];
 
@@ -142,12 +142,12 @@ int main()
 			arrF64Tolerance[2 * i + 1] = f64HeightTolerance;
 		}
 
-		CFLPointD flpCent = flrRegion.GetCenter();
-		CFLRectD  flrInner = flrRegion, flrOuter = flrRegion;
+		CFLPoint<double> flpCent = flrRegion.GetCenter();
+		CFLRect<double>  flrInner = flrRegion, flrOuter = flrRegion;
 
 		if(flrInner.GetWidth() / 2. <= arrF64Tolerance[0] || flrInner.GetHeight() / 2. <= arrF64Tolerance[1])
 		{
-			if(IsFail(res = layer.DrawFigureImage(&CFLPointD(flrInner.GetCenter()), RED)))
+			if(IsFail(res = layer.DrawFigureImage(&CFLPoint<double>(flrInner.GetCenter()), RED)))
 			{
 				ErrorPrint(res, "Failed to draw figure\n");
 				break;
@@ -196,7 +196,7 @@ int main()
 			f64ResultWidth = flrResult.GetWidth();
 			f64ResultHeight = flrResult.GetHeight();
 			f64ResultAngle = flrResult.GetAngle();
-			CFLPointD flpLineCenter = flrResult.GetCenter();
+			CFLPoint<double> flpLineCenter = flrResult.GetCenter();
 			printf("Rectangle Center : (%.2lf, %.2lf)\nWidth : %.2lf pixels\nHeight : %.2lf pixels\nAngle : %.2lf˚\n", flpLineCenter.x, flpLineCenter.y, f64ResultWidth, f64ResultHeight, f64ResultAngle);
 		}
 
@@ -206,9 +206,9 @@ int main()
 			if(flfaResultsValid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 				break;
 
-			CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultsValid.GetAt(i32Index));
+			CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultsValid.GetAt(i32Index));
 
-			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
+			CFLFigureArray flfaPoint = CFLPoint<double>(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
 			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, LIME)))
 			{
@@ -223,9 +223,9 @@ int main()
 			if(flfaResultsInvalid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 				break;
 
-			CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultsInvalid.GetAt(i32Index));
+			CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultsInvalid.GetAt(i32Index));
 
-			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
+			CFLFigureArray flfaPoint = CFLPoint<double>(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
 			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, RED)))
 			{

@@ -78,13 +78,13 @@ int main()
 
 		// 화면상 좌표(고정 좌표)에 Source 좌표 View 임을 표시
 		// Indicate that the source coordinates are View at the coordinates (fixed coordinates) on the screen
-		layer[0].DrawTextCanvas(&CFLPointL(0, 0), L"Source Coordinate", YELLOW, BLACK, 30);
+		layer[0].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Source Coordinate", YELLOW, BLACK, 30);
 		// 화면상 좌표(고정 좌표)에 Target 좌표 View 임을 표시
 		// Indicate that it is the target coordinate view on the screen coordinates (fixed coordinates)
-		layer[1].DrawTextCanvas(&CFLPointL(0, 0), L"Target Coordinate", YELLOW, BLACK, 30);
+		layer[1].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Target Coordinate", YELLOW, BLACK, 30);
 		// 화면상 좌표(고정 좌표)에 Restore 좌표 View 임을 표시
 		// Indicate Restore Coordinates View on the screen coordinates (fixed coordinates)
-		layer[2].DrawTextCanvas(&CFLPointL(0, 0), L"Restore Coordinate (from Target)", YELLOW, BLACK, 30);
+		layer[2].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Restore Coordinate (from Target)", YELLOW, BLACK, 30);
 
 		// 좌표 매핑용 클래스 선언 // Class declaration for coordinate mapping
 		CBicubicSplineMapping bcsm;
@@ -109,10 +109,10 @@ int main()
 			// If you try to convert the value outside the extended range, the value does not come out,
 			// so you need to expand it to an appropriate size, and if possible, it is recommended to map a large range for accurate mapping.
 			const int32_t i32Extension = 3;
-			CFLPointL flpGridSize(5, 5);
+			CFLPoint<int32_t> flpGridSize(5, 5);
 			bcsm.Initialize(flpGridSize, i32Extension);
 
-			CFLPointL flpGridIndex;
+			CFLPoint<int32_t> flpGridIndex;
 			for(int y = 0; y < flpGridSize.y; ++y)
 			{
 				flpGridIndex.y = y;
@@ -122,9 +122,9 @@ int main()
 					flpGridIndex.x = x;
 
 					// Grid Index와 같은 좌표로 Source 좌표를 설정 // Set the source coordinates to the same coordinates as the Grid Index
-					CFLPointD flpSource(flpGridIndex.x, flpGridIndex.y);
+					CFLPoint<double> flpSource(flpGridIndex.x, flpGridIndex.y);
 					// Grid Index와 같은 좌표에서 미세한 랜덤 값을 부여해서 좌표를 왜곡 // Distort the coordinates by giving fine random values ​​at the same coordinates as the Grid Index
-					CFLPointD flpDistortion((flpGridIndex.x + CRandomGenerator::Double(-.1, .1)), (flpGridIndex.y + CRandomGenerator::Double(-.1, .1)));
+					CFLPoint<double> flpDistortion((flpGridIndex.x + CRandomGenerator::Double(-.1, .1)), (flpGridIndex.y + CRandomGenerator::Double(-.1, .1)));
 
 					// 위에서 설정한 좌표들을 바탕으로 BicubicSplineMapping 클래스에 하나의 Vertex를 설정
 					// Set one vertex in the BicubicSplineMapping class based on the coordinates set above
@@ -162,13 +162,13 @@ int main()
 		{
 			for(int32_t x = 0; x < bcsm.GetColumn(); ++x)
 			{
-				const CBicubicSplineMapping::CBicubicSplineMappingVertexInfo* pVertex = bcsm.GetControlPoint(CFLPointL(x, y));
+				const CBicubicSplineMapping::CBicubicSplineMappingVertexInfo* pVertex = bcsm.GetControlPoint(CFLPoint<int32_t>(x, y));
 
 				// 유효한 좌표가 아닌 경우 nullptr이 리턴된다. // If not valid coordinates, nullptr is returned.
 				if(pVertex)
 				{
-					CFLPointD flpSource(pVertex->tpSource.x, pVertex->tpSource.y);
-					CFLPointD flpTarget(pVertex->tpTarget.x, pVertex->tpTarget.y);
+					CFLPoint<double> flpSource(pVertex->tpSource.x, pVertex->tpSource.y);
+					CFLPoint<double> flpTarget(pVertex->tpTarget.x, pVertex->tpTarget.y);
 
 					for(int32_t i = 0; i < 3; ++i)
 					{
@@ -198,9 +198,9 @@ int main()
 		// Divide the vertices into approximately 10 equal parts, that is, test 100 interpolation areas in one area
 		double f64Slice = 10;
 
-		CFLPointD flpSource; // Source 좌표 // Source coordinates
-		CFLPointD flpTarget; // Target 좌표 // Target coordinates
-		CFLPointD flpConvertedSource; // Target 좌표를 다시 Source로 변환, 검증 용도의 좌표 // Convert target coordinates back to source, coordinates for verification purposes
+		CFLPoint<double> flpSource; // Source 좌표 // Source coordinates
+		CFLPoint<double> flpTarget; // Target 좌표 // Target coordinates
+		CFLPoint<double> flpConvertedSource; // Target 좌표를 다시 Source로 변환, 검증 용도의 좌표 // Convert target coordinates back to source, coordinates for verification purposes
 
 		for(int y = 0; y <= (bcsm.GetRow() - 1) * f64Slice; ++y)
 		{

@@ -62,10 +62,10 @@ int main()
 			ViewLayer[i] = viewImage[i].GetLayer(0);
 
 		// Figure »ý¼º // Create Figure
-		CFLRectD flr(50, 50, 100, 100, 15);
-		CFLQuadD flq(200, 50, 360, 50, 400, 160, 150, 110);
-		CFLCircleD flc(100., 150., 30., 0, 30, 90, EArcClosingMethod_Center);
-		CFLEllipseD fle(300, 250, 100, 50, 0, 30, 200, EArcClosingMethod_Center);
+		CFLRect<double> flr(50, 50, 100, 100, 15);
+		CFLQuad<double> flq(200, 50, 360, 50, 400, 160, 150, 110);
+		CFLCircle<double> flc(100., 150., 30., 0, 30, 90, EArcClosingMethod_Center);
+		CFLEllipse<double> fle(300, 250, 100, 50, 0, 30, 200, EArcClosingMethod_Center);
 
 		CFLFigureArray flfa;
 

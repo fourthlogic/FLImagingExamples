@@ -82,7 +82,7 @@ int main()
 		bitnor.SetSourceImage(fliSourceDestinationImage);
 
 		// Source 이미지의 ROI 범위 설정 // Set the Source ROI value
-		CFLCircleL flcSourceROI(128, 128, 80, 0, 0, 360, EArcClosingMethod_EachOther);
+		CFLCircle<int32_t> flcSourceROI(128, 128, 80, 0, 0, 360, EArcClosingMethod_EachOther);
 
 		// Source 이미지의 ROI 지정 // Set the Source ROI
 		bitnor.SetSourceROI(flcSourceROI);
@@ -118,13 +118,13 @@ int main()
 			ErrorPrint(res, "Failed to draw figure\n");
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
+		if((res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if((res = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Source & Destination Image", YELLOW, BLACK, 30)).IsFail())
+		if((res = layerDestination.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source & Destination Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

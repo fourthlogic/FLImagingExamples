@@ -69,13 +69,13 @@ int main()
 		layerLearn.Clear();
 		layerFind.Clear();
 
-		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"Measurement Array", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Measurement Array", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPointD(0, 0), L"FIND", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPoint<double>(0, 0), L"FIND", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -86,17 +86,17 @@ int main()
 
 		// 학습할 영역을 설정합니다. // Set the area to learn.
 		CFLFigureArray flfaMeasurement;
-		CFLRectD flrRect00(587.479194, 364.452004, 929.550836, 616.575019);
-		CFLRectD flrRect01(583.464651, 1215.493013, 924.560595, 1467.566788);
-		CFLRectD flrRect02(1531.503352, 655.504324, 1872.516362, 908.626989);
-		CFLRectD flrRect03(1623.471070, 1222.460787, 1965.517129, 1474.488487);
+		CFLRect<double> flrRect00(587.479194, 364.452004, 929.550836, 616.575019);
+		CFLRect<double> flrRect01(583.464651, 1215.493013, 924.560595, 1467.566788);
+		CFLRect<double> flrRect02(1531.503352, 655.504324, 1872.516362, 908.626989);
+		CFLRect<double> flrRect03(1623.471070, 1222.460787, 1965.517129, 1474.488487);
 
 		flfaMeasurement.PushBack(flrRect00);
 		flfaMeasurement.PushBack(flrRect01);
 		flfaMeasurement.PushBack(flrRect02);
 		flfaMeasurement.PushBack(flrRect03);
 
-		CFLPointD flpCameraPivot(0., 0.);
+		CFLPoint<double> flpCameraPivot(0., 0.);
 
 		// 검출 시 사용될 파라미터를 설정합니다. // Set the parameters to be used for detection.
 		// 탐색할 이미지를 설정합니다. // Set the image to browse.
@@ -149,7 +149,7 @@ int main()
 
 			// 검출 결과 중 배열 하나를 가져옵니다. // Get an array of detection results.
 			arrayMatch.GetResult(i, sResult);
-			CFLPointD flpRegionCenter = sResult.flrMeasuredRegion.GetCenter();
+			CFLPoint<double> flpRegionCenter = sResult.flrMeasuredRegion.GetCenter();
 			CFLString<wchar_t> strDisplayResult;
 			strDisplayResult.Format(L"Array Element ID : %lld\n Score : %.3lf\n Angle : %.3lf", sResult.i64Index, sResult.f64Score, sResult.f64Angle);
 
@@ -183,7 +183,7 @@ int main()
 
 				strDisplayResult.Format(L"Array Score : % .3lf\n Array Angle : % .3lf", f64Score, f64Angle);
 
-				CFLQuadD flqRegion(sResult.flrMeasuredRegion);
+				CFLQuad<double> flqRegion(sResult.flrMeasuredRegion);
 
 				double f64MaxY = INT_MAX, f64MaxX = INT_MAX;
 
@@ -202,7 +202,7 @@ int main()
 					}
 				}
 
-				CFLPointD flpArrayResult(f64MaxX, f64MaxY - 10);
+				CFLPoint<double> flpArrayResult(f64MaxX, f64MaxY - 10);
 
 			    // 검출 결과 중 배열 하나의 결과의 정보를 디스플레이 합니다. // Display the information of the result of one of the detection results.
 				if((res = layerFind.DrawTextImage(flpArrayResult, strDisplayResult, GOLD, BLACK, 14)).IsFail())

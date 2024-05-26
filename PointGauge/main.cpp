@@ -44,7 +44,7 @@ int main()
 		pointGauge.SetSourceImage(fliImage);
 
 		// 측정할 영역을 설정합니다. // Set the area to measure.
-		CFLPointD measureCenter(267.481728,240.846156);
+		CFLPoint<double> measureCenter(267.481728,240.846156);
 		double tolerance = 400.;
 		double angle = 25.;
 		pointGauge.SetMeasurementRegion(measureCenter, tolerance, angle);
@@ -71,7 +71,7 @@ int main()
 		// 실행 결과를 가져옵니다. // Get the execution result.
 		int64_t i64Count = pointGauge.GetMeasuredObjectCount();
 		// 추정과정에 사용된 선을 가져옵니다. // Get the line used in the estimation process.
-		CFLLineD fllLine = pointGauge.GetMeasurementRegion();
+		CFLLine<double> fllLine = pointGauge.GetMeasurementRegion();
 
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 
@@ -80,7 +80,7 @@ int main()
 		// 추출된 점이 어디인지 알기 위해 디스플레이 한다 // Display to know where the extracted point is
 		for(int32_t i32Index = 0; i32Index < (int32_t)i64Count; ++i32Index)
 		{
-			CFLPointD flp;
+			CFLPoint<double> flp;
 			pointGauge.GetMeasuredObject(flp, i32Index);
 
 			if(IsFail(res = layer.DrawFigureImage(flp.MakeCrossHair(7, true), BLACK, 3)))

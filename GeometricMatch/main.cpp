@@ -69,13 +69,13 @@ int main()
 		layerLearn.Clear();
 		layerFind.Clear();
 
-		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"LEARN", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPoint<double>(0, 0), L"LEARN", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPointD(0, 0), L"FIND", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPoint<double>(0, 0), L"FIND", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -88,8 +88,8 @@ int main()
 		FLGeometricMatch.SetLearnImage(fliLearnImage);
 
 		// 학습할 영역을 설정합니다. // Set the area to learn.
-		CFLRectD learnRegion(40.079914, 227.326134, 212.894168, 408.259179);
-		CFLPointD flpLearnPivot = learnRegion.GetCenter();
+		CFLRect<double> learnRegion(40.079914, 227.326134, 212.894168, 408.259179);
+		CFLPoint<double> flpLearnPivot = learnRegion.GetCenter();
 		FLGeometricMatch.SetLearnROI(learnRegion);
 		FLGeometricMatch.SetLearnPivot(flpLearnPivot);
 
@@ -154,7 +154,7 @@ int main()
 			if(flfaFeaturePoints.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 				break;
 
-			CFLPointD* pFlp = static_cast<CFLPointD*>(flfaFeaturePoints.GetAt(i32Index));
+			CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaFeaturePoints.GetAt(i32Index));
 
 			if(pFlp)
 			{
@@ -238,13 +238,13 @@ int main()
 			float f32Angle = results.f32Angle;
 			float f32Scale = results.f32Scale;
 			Foundation::CFLFigure* pFlfRegion = results.pFlfRegion;
-			Foundation::CFLPointD flpLocation = results.flpLocation;
-			Foundation::CFLPointD flpPivot = results.flpPivot;
+			Foundation::CFLPoint<double> flpLocation = results.flpLocation;
+			Foundation::CFLPoint<double> flpPivot = results.flpPivot;
 
 			CFLString<wchar_t> strResult;
 			CFLString<wchar_t> strInverse = bInverse ? L"Inverse Type" : L"Normal Type";
 			
-			CFLRectD* pFlrResultRegion = dynamic_cast<CFLRectD*>(pFlfRegion);
+			CFLRect<double>* pFlrResultRegion = dynamic_cast<CFLRect<double>*>(pFlfRegion);
 
 			if(!pFlrResultRegion)
 				break;
@@ -289,7 +289,7 @@ int main()
 				if(flfaResultPoints.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 					break;
 
-				CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultPoints.GetAt(i32Index));
+				CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultPoints.GetAt(i32Index));
 
 				if(pFlp)
 				{

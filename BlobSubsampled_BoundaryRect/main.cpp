@@ -40,7 +40,7 @@ int main()
 		CBlobSubsampled blob;
 
 		// ROI 범위 설정
-		CFLRectL flrROI(450, 425, 1024, 800);
+		CFLRect<int32_t> flrROI(450, 425, 1024, 800);
 
 		// 처리할 이미지 설정
 		blob.SetSourceImage(fliImage);
@@ -126,7 +126,7 @@ int main()
 		// Rect 정보값을 각각 확인하는 코드
 		for(int64_t i = 0; i < flfaBoundaryRects.GetCount(); ++i)
 		{
-			CFLRectD* pFlrRect = (CFLRectD*)flfaBoundaryRects.GetAt(i);
+			CFLRect<double>* pFlrRect = (CFLRect<double>*)flfaBoundaryRects.GetAt(i);
 
 			if(pFlrRect)
 				printf("No. %lld : (%lf,%lf,%lf,%lf)\n", i, pFlrRect->left, pFlrRect->top, pFlrRect->right, pFlrRect->bottom);
@@ -134,7 +134,7 @@ int main()
 			CFLString<wchar_t> strNumber;
 			strNumber.Format(L"%d", i);
 
-			layer.DrawTextImage(&CFLPointD(pFlrRect->GetCenter()), (wchar_t*)strNumber.GetString(), CYAN);
+			layer.DrawTextImage(&CFLPoint<double>(pFlrRect->GetCenter()), (wchar_t*)strNumber.GetString(), CYAN);
 		}
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close

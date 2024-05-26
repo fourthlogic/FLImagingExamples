@@ -42,7 +42,7 @@ int main()
 		lineGauge.SetSourceImage(fliImage);
 
 		// 측정할 영역을 설정합니다. // Set the area to measure.
-		CFLLineD measureRegion(119.284786,267.519218, 158.658237,267.665332);
+		CFLLine<double> measureRegion(119.284786,267.519218, 158.658237,267.665332);
 		double tolerance = 10.;
 		lineGauge.SetMeasurementRegion(measureRegion, tolerance);
 
@@ -74,7 +74,7 @@ int main()
 		}
 
 		// 실행 결과를 가져옵니다. // Get the execution result.
-		CFLLineD resultRegion;
+		CFLLine<double> resultRegion;
 		CFLFigureArray flfaResultsValid, flfaResultsInvalid;
 		// 추정된 선을 가져옵니다. // Get the estimated line.
 		lineGauge.GetMeasuredObject(resultRegion);
@@ -87,7 +87,7 @@ int main()
 
 		layer.Clear();
 
-		CFLLineD fllResult;
+		CFLLine<double> fllResult;
 
 		if(IsOK(res))
 			lineGauge.GetMeasuredObject(fllResult);
@@ -98,9 +98,9 @@ int main()
 			if(flfaResultsValid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 				break;
 
-			CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultsValid.GetAt(i32Index));
+			CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultsValid.GetAt(i32Index));
 
-			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
+			CFLFigureArray flfaPoint = CFLPoint<double>(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
 			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, LIME)))
 			{
@@ -115,9 +115,9 @@ int main()
 			if(flfaResultsInvalid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 				break;
 
-			CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultsInvalid.GetAt(i32Index));
+			CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultsInvalid.GetAt(i32Index));
 
-			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
+			CFLFigureArray flfaPoint = CFLPoint<double>(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
 			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, RED)))
 			{
@@ -134,9 +134,9 @@ int main()
 		}
 
 		// 선의 방향을 디스플레이 합니다. // Display the direction of the line.
-		CFLPointD flpCenter;
+		CFLPoint<double> flpCenter;
 		double f64Angle;
-		CFLLineD fllCenter;
+		CFLLine<double> fllCenter;
 
 		flpCenter = measureRegion.GetCenter();
 		f64Angle = measureRegion.GetAngle();
@@ -147,9 +147,9 @@ int main()
 		fllCenter.flpPoints[1].y = flpCenter.y;
 		fllCenter.Rotate(f64Angle, flpCenter);
 
-		CFLPointD flpCenter1(flpCenter.x - 1.5, flpCenter.y - sqrt(1.5) * .5 * 1.5);
-		CFLPointD flpCenter2(flpCenter.x + 1.5, flpCenter.y - sqrt(1.5) * .5 * 1.5);
-		CFLPointD flpCenter3(flpCenter.x, flpCenter.y + sqrt(1.5) * .5 * 1.5);
+		CFLPoint<double> flpCenter1(flpCenter.x - 1.5, flpCenter.y - sqrt(1.5) * .5 * 1.5);
+		CFLPoint<double> flpCenter2(flpCenter.x + 1.5, flpCenter.y - sqrt(1.5) * .5 * 1.5);
+		CFLPoint<double> flpCenter3(flpCenter.x, flpCenter.y + sqrt(1.5) * .5 * 1.5);
 
 		CFLComplexRegion flTriangle;
 		flTriangle.PushBack(&flpCenter1);
@@ -170,11 +170,11 @@ int main()
 		}
 
 		// 설정된 ROI에 대해 측정영역을 디스플레이 합니다. // Display the measurement area for the set ROI.
-		CFLQuadD flqDraw;
+		CFLQuad<double> flqDraw;
 		double f64ToleranceLeft, f64ToleranceRight;
 		lineGauge.GetTolerance(f64ToleranceLeft, f64ToleranceRight);
 
-		CFLPointD fllNorm = measureRegion.GetNormalVector();
+		CFLPoint<double> fllNorm = measureRegion.GetNormalVector();
 		flqDraw.flpPoints[0] = measureRegion.flpPoints[0] + fllNorm * f64ToleranceLeft;
 		flqDraw.flpPoints[1] = measureRegion.flpPoints[1] + fllNorm * f64ToleranceLeft;
 		flqDraw.flpPoints[2] = measureRegion.flpPoints[1] - fllNorm * f64ToleranceRight;
@@ -209,7 +209,7 @@ int main()
 			}
 
 			// 선의 정보를 Console창에 출력합니다. // Output the original information to the console window.
-			CFLPointD flpLineCenter = fllResult.GetCenter();
+			CFLPoint<double> flpLineCenter = fllResult.GetCenter();
 			double f64LineAngle = fllResult.GetAngle();
 			printf("Line Center : (%.2lf, %.2lf)\nAngle : %.2lf˚\n", flpLineCenter.x, flpLineCenter.y, f64LineAngle);
 		}

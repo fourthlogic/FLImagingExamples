@@ -82,7 +82,7 @@ int main()
 
 		for(int64_t i = 0; i < i64ResultCount; i++) // 출력
 		{
-			CFLLineD fllLine;
+			CFLLine<double> fllLine;
 
 			// line 결과 가져오기 // get result line
 			HoughTransform.GetResultLine(i, fllLine);

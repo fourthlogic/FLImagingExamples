@@ -42,7 +42,7 @@ int main()
 		CImageStatistics statistics;
 
 		// ROI 범위 설정 // Set the ROI value
-		CFLRectD flrROI(264, 189, 432, 364);
+		CFLRect<double> flrROI(264, 189, 432, 364);
 		// Source 이미지 설정 // Set the Source Image
 		statistics.SetSourceImage(fliImage);
 		// Source ROI 설정 // Set the Source ROI
@@ -116,35 +116,35 @@ int main()
 		wprintf_s(L"%s\n", strTrimmingSumOfSquaresValue.GetString());
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 0), strSumValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 0), strSumValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text.");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 30), strSumOfSquaresValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 30), strSumOfSquaresValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text.");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 60), strTrimming.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 60), strTrimming.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text.");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 90), strTrimmingSumValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 90), strTrimmingSumValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text.");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 120), strTrimmingSumOfSquaresValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 120), strTrimmingSumOfSquaresValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text.");
 			break;

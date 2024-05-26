@@ -129,14 +129,14 @@ int main()
 				if(j)
 					printf(",");
 
-				CFLPointD* pFlpVertex = (CFLPointD*)pFlrg->GetAt(j);
+				CFLPoint<double>* pFlpVertex = (CFLPoint<double>*)pFlrg->GetAt(j);
 
 				printf("(%lf,%lf)", pFlpVertex->x, pFlpVertex->y);
 			}
 
 			printf("]\n\n");
 
-			CFLPointD flpCenter;
+			CFLPoint<double> flpCenter;
 			pFlrg->GetCenter(flpCenter);
 
 			CFLString<wchar_t> strNumber;

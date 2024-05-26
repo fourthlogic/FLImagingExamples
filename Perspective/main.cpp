@@ -74,7 +74,7 @@ int main()
 		perspective.SetSourceImage(fliSourceImage);
 
 		// Source 이미지의 투영 영역 범위 설정 // Set the range of the projection area of ​​the Source image
-		CFLQuadD flqSourceProjection(290.87, 65.73, 531.69, 192.5, 169.68, 406.66, 34.59, 170.22);
+		CFLQuad<double> flqSourceProjection(290.87, 65.73, 531.69, 192.5, 169.68, 406.66, 34.59, 170.22);
 
 		// Source 이미지의 투영 영역 지정 // Set the projection area of ​​the Source image
 		perspective.SetSourceProjection(flqSourceProjection);
@@ -83,13 +83,13 @@ int main()
 		perspective.SetDestinationImage(fliDestinationImage);
 
 		// Destination 이미지의 출력 대상 영역 범위 설정 // Set the output destination area range of Destination image
-		CFLCircleL flcDestinationROI(243, 261, 188, 0, 0, 360, EArcClosingMethod_EachOther);
+		CFLCircle<int32_t> flcDestinationROI(243, 261, 188, 0, 0, 360, EArcClosingMethod_EachOther);
 
 		// Destination 이미지의 출력 대상 영역 지정 // Destination Specify the output target area of ​​the image
 		perspective.SetDestinationROI(flcDestinationROI);
 
 		// Destination 이미지의 투영 영역 범위 설정 // Set the range of the projection area of ​​the destination image
-		CFLRectL flrDestinationProjection(192, 208, 332, 346);
+		CFLRect<int32_t> flrDestinationProjection(192, 208, 332, 346);
 
 		// Destination 이미지의 투영 영역 지정 // Set the projection area of ​​the destination image
 		perspective.SetDestinationProjection(flrDestinationProjection);
@@ -136,13 +136,13 @@ int main()
 			ErrorPrint(res, "Failed to draw figure\n");
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerDestination.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

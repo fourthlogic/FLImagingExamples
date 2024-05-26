@@ -44,7 +44,7 @@ int main()
 		CornerGauge.SetSourceImage(fliImage);
 
 		// 측정할 영역을 설정합니다. // Set the area to measure.
-		CFLRectD measureRegion(383.484046, 403.048099, 648.883614, 648.542699);
+		CFLRect<double> measureRegion(383.484046, 403.048099, 648.883614, 648.542699);
 		double tolerance = 100.;
 		CornerGauge.SetMeasurementRegion(measureRegion, tolerance);
 
@@ -129,9 +129,9 @@ int main()
 			if(flfaResultsValid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 				break;
 
-			CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultsValid.GetAt(i32Index));
+			CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultsValid.GetAt(i32Index));
 
-			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
+			CFLFigureArray flfaPoint = CFLPoint<double>(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
 			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, LIME)))
 			{
@@ -146,9 +146,9 @@ int main()
 			if(flfaResultsInvalid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 				break;
 
-			CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultsInvalid.GetAt(i32Index));
+			CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultsInvalid.GetAt(i32Index));
 
-			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
+			CFLFigureArray flfaPoint = CFLPoint<double>(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
 			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, RED)))
 			{

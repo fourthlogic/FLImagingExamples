@@ -42,7 +42,7 @@ int main()
 		CMask mask;
 
 		// ROI 설정 하기 위해 FLCircleL 생성 // Create FLCircleL to set ROI
-		CFLCircleL flclROI(280, 169, 25);
+		CFLCircle<int32_t> flclROI(280, 169, 25);
 
 		// Source 이미지 설정 // Set the source image
 		mask.SetSourceImage(fliSrcImage);
@@ -81,7 +81,7 @@ int main()
 		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(res = layerSrc.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerSrc.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

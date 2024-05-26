@@ -41,7 +41,7 @@ int main()
 		CMoment moment;
 
 		// ROI 범위 설정 // Set ROI range
-		CFLRectL flrROI(15, 150, 420, 280);
+		CFLRect<int32_t> flrROI(15, 150, 420, 280);
 
 		// 처리할 이미지 설정 // Set the image to process
 		moment.SetSourceImage(fliImage);

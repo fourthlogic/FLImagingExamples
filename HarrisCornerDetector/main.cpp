@@ -49,7 +49,7 @@ int main()
 		CHarrisCornerDetector harris;
 
 		// ROI 범위 설정
-		CFLRectL flrROI(100, 50, 450, 450);
+		CFLRect<int32_t> flrROI(100, 50, 450, 450);
 
 		// 처리할 이미지 설정
 		if(IsFail(res = harris.SetSourceImage(fliImage)))
@@ -116,7 +116,7 @@ int main()
 		for(int64_t i = 0; i < i64Count; i++)
 		{
 			// 검출된 점을 출력
-			CFLPointD* pFlpTemp = dynamic_cast<CFLPointD*>(flfaResultPoints.GetAt(i));
+			CFLPoint<double>* pFlpTemp = dynamic_cast<CFLPoint<double>*>(flfaResultPoints.GetAt(i));
 			layer.DrawFigureImage(pFlpTemp, RED, 1);
 		}
 

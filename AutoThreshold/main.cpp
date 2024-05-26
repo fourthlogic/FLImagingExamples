@@ -95,7 +95,7 @@ int main()
 			break;
 
 		// ROI 汲沥阑 困茄 CFLRect 按眉 积己 // Create a CFLRect object for setting ROI
-		CFLRectL flrROI(300, 200, 700, 600);
+		CFLRect<int32_t> flrROI(300, 200, 700, 600);
 
 		// auto threshold 按眉 积己 // Create auto threshold object
 		CAutoThreshold AutoThreshold;
@@ -242,15 +242,15 @@ int main()
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 
-		CFLPointD flpThreshold(20, 320);
+		CFLPoint<double> flpThreshold(20, 320);
 
-		if((res = arrLayer[EType_Source].DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[EType_Source].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text\n");
 			break;
 		}
 
-		if((res = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPointD(0, 0), L"Destination1 Image (Sigma 2)", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination1 Image (Sigma 2)", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text\n");
 			break;
@@ -262,7 +262,7 @@ int main()
 			break;
 		}
 
-		if((res = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPointD(0, 0), L"Destination2 Image (Sigma 4)", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination2 Image (Sigma 4)", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text\n");
 			break;

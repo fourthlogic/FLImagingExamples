@@ -108,42 +108,42 @@ int main()
 		wprintf_s(L"%s\n", strCorrelationCoeffValue2.GetString());
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 0), strCorrChannel.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 0), strCorrChannel.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 30), strCovarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 30), strCovarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 60), strCorrelationCoeffValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 60), strCorrelationCoeffValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 90), strCorrChannel2.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 90), strCorrChannel2.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 120), strCovarianceValue2.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 120), strCovarianceValue2.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 150), strCorrelationCoeffValue2.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 150), strCorrelationCoeffValue2.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

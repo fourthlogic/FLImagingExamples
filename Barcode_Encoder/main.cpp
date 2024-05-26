@@ -101,7 +101,7 @@ int main()
 		for(int64_t i = 0; i < i64Results; ++i)
 		{
 			// Barcode Decoder 결과를 얻어오기 위해 FLQuadD 선언
-			CFLQuadD flqdRegion;
+			CFLQuad<double> flqdRegion;
 
 			// Barcode Decoder 결과들 중 Data Region 을 얻어옴
 			if(IsFail(res = barcodeDecoder.GetResultDataRegion(i, flqdRegion)))
@@ -132,7 +132,7 @@ int main()
 			}
 
 			// String 을 디스플레이 하기 위한 기준 좌표 FLPointL 선언
-			CFLPointL flplPos(flqdRegion.flpPoints[3]);
+			CFLPoint<int32_t> flplPos(flqdRegion.flpPoints[3]);
 
 			// Decoded String 을 디스플레이 한다.
 			// 아래 함수 DrawTextCanvas은 Screen좌표를 기준으로 하는 String을 Drawing 한다. // The function DrawTextCanvas below draws a String based on the screen coordinates.

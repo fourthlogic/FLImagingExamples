@@ -40,7 +40,7 @@ int main()
 		CBlob blob;
 
 		// ROI 범위 설정
-		CFLRectL flrROI(300, 250, 750, 650);
+		CFLRect<int32_t> flrROI(300, 250, 750, 650);
 
 		// 처리할 이미지 설정
 		blob.SetSourceImage(fliImage);
@@ -117,7 +117,7 @@ int main()
 				if(j)
 					printf(",");
 
-				CFLPointD* pFlpVertex = (CFLPointD*)pFlrg->GetAt(j);
+				CFLPoint<double>* pFlpVertex = (CFLPoint<double>*)pFlrg->GetAt(j);
 
 				printf("(%lf,%lf)", pFlpVertex->x, pFlpVertex->y);
 			}
@@ -139,7 +139,7 @@ int main()
 						if(k)
 							printf(",");
 
-						CFLPointD* pFlpVertex = (CFLPointD*)pFlrg->GetAt(k);
+						CFLPoint<double>* pFlpVertex = (CFLPoint<double>*)pFlrg->GetAt(k);
 
 						printf("(%lf,%lf)", pFlpVertex->x, pFlpVertex->y);
 					}
@@ -152,12 +152,12 @@ int main()
 
 			printf("]\n\n");
 
-			CFLRectD flr = pFlrg->GetBoundaryRect();
+			CFLRect<double> flr = pFlrg->GetBoundaryRect();
 
 			CFLString<wchar_t> strNumber;
 			strNumber.Format(L"%d", i);
 
-			layer.DrawTextImage(&CFLPointD(flr.left, (flr.top + flr.bottom) * .5), (wchar_t*)strNumber.GetString(), BLACK, YELLOW, 12, false, 0, EGUIViewImageTextAlignment_CENTER, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false);
+			layer.DrawTextImage(&CFLPoint<double>(flr.left, (flr.top + flr.bottom) * .5), (wchar_t*)strNumber.GetString(), BLACK, YELLOW, 12, false, 0, EGUIViewImageTextAlignment_CENTER, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false);
 		}
 
 

@@ -113,8 +113,8 @@ int main()
 			flsTextResult.Format(L"\nContour Length %.2lf", flfaContours[i]->GetPerimeter());
 
 			// Image View 출력
-			layer.DrawTextImage(CFLPointD(flfaContours[i]), str, LIME, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
-			layer.DrawTextImage(CFLPointD(flfaContours[i]), flsTextResult, YELLOW, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
+			layer.DrawTextImage(CFLPoint<double>(flfaContours[i]), str, LIME, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
+			layer.DrawTextImage(CFLPoint<double>(flfaContours[i]), flsTextResult, YELLOW, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
 
 			// 콘솔에 출력
 			printf("[%lld] Contour Length %.2lf \n", i, flfaContours[i]->GetPerimeter());

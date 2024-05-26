@@ -78,26 +78,26 @@ int main()
 
 		// 화면상 좌표(고정 좌표)에 Source 좌표 View 임을 표시
 		// Indicate that the source coordinates are View at the coordinates (fixed coordinates) on the screen
-		layer[0].DrawTextCanvas(&CFLPointL(0, 0), L"Source Coordinate", YELLOW, BLACK, 30);
+		layer[0].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Source Coordinate", YELLOW, BLACK, 30);
 		// 화면상 좌표(고정 좌표)에 Target 좌표 View 임을 표시
 		// Indicate that it is the target coordinate view on the screen coordinates (fixed coordinates)
-		layer[1].DrawTextCanvas(&CFLPointL(0, 0), L"Target Coordinate", YELLOW, BLACK, 30);
+		layer[1].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Target Coordinate", YELLOW, BLACK, 30);
 		// 화면상 좌표(고정 좌표)에 Restore 좌표 View 임을 표시
 		// Indicate Restore Coordinates View on the screen coordinates (fixed coordinates)
-		layer[2].DrawTextCanvas(&CFLPointL(0, 0), L"Restore Coordinate (from Target)", YELLOW, BLACK, 30);
+		layer[2].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Restore Coordinate (from Target)", YELLOW, BLACK, 30);
 
 		// 좌표 매핑용 클래스 선언 // Class declaration for coordinate mapping
 		CThinPlateSplineMapping tps;
 
 		// 그리드를 (5,5)로 초기화 // initialize the grid to (5,5)
-		CFLPointL flpGridSize(5, 5);
+		CFLPoint<int32_t> flpGridSize(5, 5);
 
 		// 만약 기존 저장된 매핑 데이터가 있다면 해당 데이터를 로드합니다. // If there is previously saved mapping data, load the data.
 		// 두번째 실행부터는 파일이 생성될 것이기 때문에 아래 세팅과정을 수행하지 않고 지나가게 됩니다. // Since the file will be created from the second execution, the setting process below will be skipped.
 		// 계속 새로 데이터를 생성하는것을 테스트 하려 한다면 아래 Load함수와 관련된 if문 1줄을 삭제하면 됩니다. // If you want to test continuously creating new data, you can delete one line of the if statement related to the Load function below.
 		if(IsFail(res = tps.Load(L"MappingData.fltps")))
 		{
-			CFLPointL flpGridIndex;
+			CFLPoint<int32_t> flpGridIndex;
 			for(int y = 0; y < flpGridSize.y; ++y)
 			{
 				flpGridIndex.y = y;
@@ -107,9 +107,9 @@ int main()
 					flpGridIndex.x = x;
 
 					// Grid Index와 같은 좌표로 Source 좌표를 설정 // Set the source coordinates to the same coordinates as the Grid Index
-					CFLPointD flpSource(flpGridIndex.x, flpGridIndex.y);
+					CFLPoint<double> flpSource(flpGridIndex.x, flpGridIndex.y);
 					// Grid Index와 같은 좌표에서 미세한 랜덤 값을 부여해서 좌표를 왜곡 // Distort the coordinates by giving fine random values ​​at the same coordinates as the Grid Index
-					CFLPointD flpDistortion(flpGridIndex.x + CRandomGenerator::Double(-.15, .15), flpGridIndex.y + CRandomGenerator::Double(-.15, .15));
+					CFLPoint<double> flpDistortion(flpGridIndex.x + CRandomGenerator::Double(-.15, .15), flpGridIndex.y + CRandomGenerator::Double(-.15, .15));
 
 					// 위에서 설정한 좌표들을 바탕으로 ThinPlateSplineMapping 클래스에 하나의 Control Point를 설정
 					// Set one Control Point in the ThinPlateSplineMapping class based on the coordinates set above
@@ -145,8 +145,8 @@ int main()
 		// Display the vertex information set in the ThinPlateSplineMapping class on the screen
 		for(int64_t i = 0; i < tps.GetControlPointCount(); ++i)
 		{
-			CFLPointD flpSource;
-			CFLPointD flpTarget;
+			CFLPoint<double> flpSource;
+			CFLPoint<double> flpTarget;
 
 			tps.GetControlPoint(i, &flpSource, &flpTarget);
 
@@ -176,9 +176,9 @@ int main()
 		// Divide the vertices into approximately 10 equal parts, that is, test 100 interpolation areas in one area
 		double f64Slice = 10;
 
-		CFLPointD flpSource; // Source 좌표 // Source coordinates
-		CFLPointD flpTarget; // Target 좌표 // Target coordinates
-		CFLPointD flpConvertedSource; // Target 좌표를 다시 Source로 변환, 검증 용도의 좌표 // Convert target coordinates back to source, coordinates for verification purposes
+		CFLPoint<double> flpSource; // Source 좌표 // Source coordinates
+		CFLPoint<double> flpTarget; // Target 좌표 // Target coordinates
+		CFLPoint<double> flpConvertedSource; // Target 좌표를 다시 Source로 변환, 검증 용도의 좌표 // Convert target coordinates back to source, coordinates for verification purposes
 
 		for(int y = 0; y <= (flpGridSize.y - 1) * f64Slice; ++y)
 		{

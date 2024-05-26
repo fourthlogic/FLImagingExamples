@@ -44,7 +44,7 @@ int main()
 		circleGauge.SetSourceImage(fliImage);
 
 		// 측정할 영역을 설정합니다. // Set the area to measure.
-		CFLCircleD measureRegion(235.398801,346.729907, 39.947270);
+		CFLCircle<double> measureRegion(235.398801,346.729907, 39.947270);
 		double tolerance = 25.;
 		circleGauge.SetMeasurementRegion(measureRegion, tolerance);
 
@@ -74,7 +74,7 @@ int main()
 		}
 
 		// 실행 결과를 가져옵니다. // Get the execution result.
-		CFLCircleD resultRegion;
+		CFLCircle<double> resultRegion;
 		CFLFigureArray flfaResultsValid, flfaResultsInvalid;
 		// 추정된 원을 가져옵니다. // Get the estimated circle.
 		circleGauge.GetMeasuredObject(resultRegion);
@@ -88,13 +88,13 @@ int main()
 		layer.Clear();
 
 		// 측정 영역이 어디인지 알기 위해 디스플레이 한다 // Display to know where the measurement area is
-		CFLCircleD flcResult;
+		CFLCircle<double> flcResult;
 
 		res = circleGauge.GetMeasuredObject(flcResult);
 
-		CFLCircleD flcRegion = circleGauge.GetMeasurementRegion();
+		CFLCircle<double> flcRegion = circleGauge.GetMeasurementRegion();
 
-		CFLCircleD flcInner, flcOuter;
+		CFLCircle<double> flcInner, flcOuter;
 		double f64Tolerance;
 		f64Tolerance = circleGauge.GetTolerance();
 
@@ -136,7 +136,7 @@ int main()
 			// 원의 정보를 Console창에 출력합니다. // Output the original information to the console window.
 			double f64Radius;
 			flcResult.GetRadius(&f64Radius);
-			CFLPointD flpLineCenter = flcResult.GetCenter();
+			CFLPoint<double> flpLineCenter = flcResult.GetCenter();
 		    printf("Circle Center : (%.2lf, %.2lf)\nRadius : %.2lf pixels", flpLineCenter.x, flpLineCenter.y, f64Radius);
 		}
 
@@ -146,9 +146,9 @@ int main()
 			if(flfaResultsValid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 				break;
 
-			CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultsValid.GetAt(i32Index));
+			CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultsValid.GetAt(i32Index));
 
-			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
+			CFLFigureArray flfaPoint = CFLPoint<double>(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
 			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, LIME)))
 			{
@@ -163,9 +163,9 @@ int main()
 			if(flfaResultsInvalid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 				break;
 
-			CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultsInvalid.GetAt(i32Index));
+			CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultsInvalid.GetAt(i32Index));
 
-			CFLFigureArray flfaPoint = CFLPointD(pFlp->x, pFlp->y).MakeCrossHair(1, true);
+			CFLFigureArray flfaPoint = CFLPoint<double>(pFlp->x, pFlp->y).MakeCrossHair(1, true);
 
 			if(IsFail(res = layer.DrawFigureImage(&flfaPoint, RED)))
 			{

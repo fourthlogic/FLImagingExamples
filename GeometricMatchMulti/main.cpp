@@ -60,7 +60,7 @@ int main()
 			FLGeometricMatchMulti.SetLearnImage(fliLearnImage[i64DataIdx]);
 
 			// 학습할 영역을 설정합니다. // Set the area to learn.
-			CFLRectD learnRegion;
+			CFLRect<double> learnRegion;
 
 			if(i64DataIdx == 0)
 				learnRegion.Set(33.700864, 230.805616, 213.474082, 407.099352);
@@ -69,7 +69,7 @@ int main()
 			else if(i64DataIdx == 2)
 				learnRegion.Set(363.564795, 344.259179, 486.333693, 430.323974);
 
-			CFLPointD flpLearnPivot = learnRegion.GetCenter();
+			CFLPoint<double> flpLearnPivot = learnRegion.GetCenter();
 			FLGeometricMatchMulti.SetLearnROI(learnRegion);
 			FLGeometricMatchMulti.SetLearnPivot(flpLearnPivot);
 
@@ -131,7 +131,7 @@ int main()
 				if(flfaFeaturePoints.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 					break;
 
-				CFLPointD* pFlp = static_cast<CFLPointD*>(flfaFeaturePoints.GetAt(i32Index));
+				CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaFeaturePoints.GetAt(i32Index));
 
 				if(pFlp)
 				{
@@ -146,7 +146,7 @@ int main()
 			CFLString<wchar_t> strStatus;
 			strStatus.Format(L"LEARN CLASS '%s'", arrClassName[i64DataIdx].GetBuffer());
 
-			if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), strStatus.GetBuffer(), YELLOW, BLACK, 30)))
+			if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPoint<double>(0, 0), strStatus.GetBuffer(), YELLOW, BLACK, 30)))
 			{
 				ErrorPrint(res, "Failed to draw text\n");
 				break;
@@ -202,7 +202,7 @@ int main()
 		CGUIViewImageLayerWrap layerFind = viewImageFind.GetLayer(1);
 		layerFind.Clear();
 
-		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPointD(0, 0), L"FIND", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPoint<double>(0, 0), L"FIND", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -269,8 +269,8 @@ int main()
 			float f32Angle = results.f32Angle;
 			float f32Scale = results.f32Scale;
 			Foundation::CFLFigure* pFlfRegion = results.pFlfRegion;
-			Foundation::CFLPointD flpLocation = results.flpLocation;
-			Foundation::CFLPointD flpPivot = results.flpPivot;
+			Foundation::CFLPoint<double> flpLocation = results.flpLocation;
+			Foundation::CFLPoint<double> flpPivot = results.flpPivot;
 
 			CFLString<wchar_t> strResult;
 			CFLString<wchar_t> strInverse = bInverse ? L"Inverse Type" : L"Normal Type";
@@ -287,7 +287,7 @@ int main()
 				}
 			}
 			
-			CFLRectD* pFlrResultRegion = dynamic_cast<CFLRectD*>(pFlfRegion);
+			CFLRect<double>* pFlrResultRegion = dynamic_cast<CFLRect<double>*>(pFlfRegion);
 
 			if(!pFlrResultRegion)
 				break;
@@ -333,7 +333,7 @@ int main()
 				if(flfaResultPoints.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
 					break;
 
-				CFLPointD* pFlp = static_cast<CFLPointD*>(flfaResultPoints.GetAt(i32Index));
+				CFLPoint<double>* pFlp = static_cast<CFLPoint<double>*>(flfaResultPoints.GetAt(i32Index));
 
 				if(pFlp)
 				{

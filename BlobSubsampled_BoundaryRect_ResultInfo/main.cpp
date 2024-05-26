@@ -96,7 +96,7 @@ int main()
 		// Rect 정보값을 각각 확인하는 코드
 		for(int64_t i = 0; i < flfaBoundaryRects.GetCount(); ++i)
 		{
-			CFLRectD* pFlrRect = (CFLRectD*)flfaBoundaryRects.GetAt(i);
+			CFLRect<double>* pFlrRect = (CFLRect<double>*)flfaBoundaryRects.GetAt(i);
 
 			if(pFlrRect)
 			{
@@ -117,10 +117,10 @@ int main()
 
 		        // 아래 함수 DrawTextImage는 Image좌표를 기준으로 하는 Text를 Drawing 한다는 것을 의미한다.
 				// 파라미터 순서 : 레이어 -> 문자열 좌표 -> 문자열 지정 -> 문자열 색 -> 면 색 -> 폰트 크기 -> 실제 크기로 그릴지의 여부 -> 각도 -> 문자열의 위치 기준
-				layer.DrawTextImage(&CFLPointD(pFlrRect->GetCenter()), strNumber, CYAN, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
-				layer.DrawTextImage(&CFLPointD(pFlrRect->left, pFlrRect->top), strLeftTop, YELLOW, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_RIGHT_BOTTOM);
-				layer.DrawTextImage(&CFLPointD(pFlrRect->right, pFlrRect->bottom), strRightBottom, YELLOW, BLACK);
-				layer.DrawTextImage(&CFLPointD(pFlrRect->right, pFlrRect->top), strInfo, LIME, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_LEFT_BOTTOM);
+				layer.DrawTextImage(&CFLPoint<double>(pFlrRect->GetCenter()), strNumber, CYAN, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
+				layer.DrawTextImage(&CFLPoint<double>(pFlrRect->left, pFlrRect->top), strLeftTop, YELLOW, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_RIGHT_BOTTOM);
+				layer.DrawTextImage(&CFLPoint<double>(pFlrRect->right, pFlrRect->bottom), strRightBottom, YELLOW, BLACK);
+				layer.DrawTextImage(&CFLPoint<double>(pFlrRect->right, pFlrRect->top), strInfo, LIME, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_LEFT_BOTTOM);
 			}
 		}
 

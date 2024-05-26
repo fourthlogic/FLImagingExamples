@@ -59,7 +59,7 @@ int main()
 
 		for(int64_t i = 0; i < chessBoard.GetResultBoardCount(); ++i)
 		{
-			CFLQuadD flq;
+			CFLQuad<double> flq;
 			chessBoard.GetResultBoardRegion(i, flq);
 
 			double f64Width = flq.flpPoints[0].GetDistance(flq.flpPoints[1]);
@@ -99,7 +99,7 @@ int main()
 			CFLArray<CFLArray<TPoint<double> > > flaPoints;
 			chessBoard.GetResultCornerPoints(i, flaPoints);
 
-			CFLPointD flpLastPoint;
+			CFLPoint<double> flpLastPoint;
 
 			for(int64_t j = 0; j < flaPoints.GetCount(); ++j)
 			{
@@ -107,7 +107,7 @@ int main()
 
 				if(j)
 				{
-					CFLLineD fll(flpLastPoint, CFLPointD(fla2[0]));
+					CFLLine<double> fll(flpLastPoint, CFLPoint<double>(fla2[0]));
 
 					if(IsFail(res = layer.DrawFigureImage(fll, BLACK, 5)))
 					{
@@ -126,7 +126,7 @@ int main()
 				{
 					if(k)
 					{
-						CFLLineD fll(flpLastPoint, CFLPointD(fla2[k]));
+						CFLLine<double> fll(flpLastPoint, CFLPoint<double>(fla2[k]));
 
 						if(IsFail(res = layer.DrawFigureImage(fll, BLACK, 5)))
 						{
@@ -151,7 +151,7 @@ int main()
 			{
 				CFLArray<TPoint<double> >& fla2 = flaPoints.GetAt(j);
 
-				double f64Angle = CFLPointD(fla2[0]).GetAngle(CFLPointD(fla2[1]));
+				double f64Angle = CFLPoint<double>(fla2[0]).GetAngle(CFLPoint<double>(fla2[1]));
 
 				for(int64_t k = 0; k < fla2.GetCount(); ++k)
 				{
@@ -182,14 +182,14 @@ int main()
 						f64Pitch = std::min<double>(f64Pitch, sqrt(f64Dx * f64Dx + f64Dy * f64Dy));
 					}
 
-					if(IsFail(res = layer.DrawTextImage(CFLPointD(fla2[k]), CFLString<wchar_t>().Format(L"%d", i32VertexNumber++), crTextColor, BLACK, (int32_t)(f64Pitch / 2), true, f64Angle)))
+					if(IsFail(res = layer.DrawTextImage(CFLPoint<double>(fla2[k]), CFLString<wchar_t>().Format(L"%d", i32VertexNumber++), crTextColor, BLACK, (int32_t)(f64Pitch / 2), true, f64Angle)))
 					{
 						ErrorPrint(res, L"Failed to draw text\n");
 						break;
 					}
 
 					if(k)
-						f64Angle = CFLPointD(fla2[k - 1]).GetAngle(CFLPointD(fla2[k]));
+						f64Angle = CFLPoint<double>(fla2[k - 1]).GetAngle(CFLPoint<double>(fla2[k]));
 				}
 
 				--i32LineTransition;

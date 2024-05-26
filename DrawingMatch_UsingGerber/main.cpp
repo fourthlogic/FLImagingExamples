@@ -48,13 +48,13 @@ int main()
 		layerLearn.Clear();
 		layerFind.Clear();
 
-		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPointD(0, 0), L"LEARN", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPoint<double>(0, 0), L"LEARN", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPointD(0, 0), L"FIND", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerFind.DrawTextCanvas(&CFLPoint<double>(0, 0), L"FIND", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -157,13 +157,13 @@ int main()
 			float f32Angle = results.f32Angle;
 			float f32Scale = results.f32Scale;
 			Foundation::CFLFigure* pFlfRegion = results.pFlfRegion;
-			Foundation::CFLPointD flpLocation = results.flpLocation;
-			Foundation::CFLPointD flpPivot = results.flpPivot;
+			Foundation::CFLPoint<double> flpLocation = results.flpLocation;
+			Foundation::CFLPoint<double> flpPivot = results.flpPivot;
 
 			CFLString<wchar_t> strResult;
 			CFLString<wchar_t> strInverse = bInverse ? L"Inverse Type" : L"Normal Type";
 
-			CFLRectD flrResultRegion = pFlfRegion->GetBoundaryRect();
+			CFLRect<double> flrResultRegion = pFlfRegion->GetBoundaryRect();
 
 			// 기하학적 패턴 검출 결과를 Console창에 출력합니다. // Output the geometric pattern detection result to the console window.
 			printf(" < Instance : %lld >\n", i);

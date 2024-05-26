@@ -82,13 +82,13 @@ int main()
 		compare.SetSourceImage(fliSourceImage);
 
 		// Source 이미지의 ROI 범위 설정
-		CFLCircleL flcSourceROI(284, 278, 206, 0, 0, 360, EArcClosingMethod_EachOther);
+		CFLCircle<int32_t> flcSourceROI(284, 278, 206, 0, 0, 360, EArcClosingMethod_EachOther);
 
 		// Source 이미지의 ROI 지정
 		compare.SetSourceROI(flcSourceROI);
 
 		// Source 이미지의 Pivot 범위 설정
-		CFLPointL flpSourcePivot(258, 254);
+		CFLPoint<int32_t> flpSourcePivot(258, 254);
 		
 		// Source 이미지의 Pivot 지정
 		compare.SetSourcePivot(flpSourcePivot);
@@ -97,13 +97,13 @@ int main()
 		compare.SetDestinationImage(fliDestinationImage);
 
 		// Destination 이미지의 ROI 범위 설정
-		CFLCircleL flrDestinationROI(284, 278, 206, 0, 0, 360, EArcClosingMethod_EachOther);
+		CFLCircle<int32_t> flrDestinationROI(284, 278, 206, 0, 0, 360, EArcClosingMethod_EachOther);
 
 		// Destination 이미지의 ROI 지정
 		compare.SetDestinationROI(flrDestinationROI);
 
 		// Destination 이미지의 Pivot 범위 설정
-		CFLPointL flpDestinationPivot(258, 254);
+		CFLPoint<int32_t> flpDestinationPivot(258, 254);
 
 		// Destination 이미지의 Pivot 지정
 		compare.SetDestinationPivot(flpDestinationPivot);
@@ -164,13 +164,13 @@ int main()
 			ErrorPrint(res, "Failed to draw figure\n");
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(res= layerSource.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
+		if(IsFail(res= layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res= layerDestination.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
+		if(IsFail(res= layerDestination.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

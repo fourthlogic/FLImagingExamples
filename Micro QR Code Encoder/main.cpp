@@ -109,7 +109,7 @@ int main()
 		for(int64_t i = 0; i < i64Results; ++i)
 		{
 			// MicroQR Code Decoder 결과를 얻어오기 위해 FLQuadD 선언
-			CFLQuadD flqdRegion;
+			CFLQuad<double> flqdRegion;
 
 			// MicroQR Code Decoder 결과들 중 Data Region 을 얻어옴
 			if(IsFail(res = qrCodeDecoder.GetResultDataRegion(i, flqdRegion)))

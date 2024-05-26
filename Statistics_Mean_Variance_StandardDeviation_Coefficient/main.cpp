@@ -41,7 +41,7 @@ int main()
 		CImageStatistics statistics;
 
 		// ROI 범위 설정 // Set the ROI value
-		CFLRectD flrROI(264, 189, 432, 364);
+		CFLRect<double> flrROI(264, 189, 432, 364);
 		// Source 이미지 설정 // Set the Source Image
 		statistics.SetSourceImage(fliImage);
 		// Source ROI 설정 // Set the Source ROI
@@ -152,63 +152,63 @@ int main()
 		wprintf_s(L"%s\n", strTrimmingCoefficientOfVariance.GetString());
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 0), strMeanValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 0), strMeanValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 30), strStandardDeviationValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 30), strStandardDeviationValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 60), strVarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 60), strVarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 90), strCoefficientOfVariance.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 90), strCoefficientOfVariance.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 120), strTrimming.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 120), strTrimming.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 150), strTrimmingMeanValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 150), strTrimmingMeanValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 180), strTrimmingStandardDeviationValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 180), strTrimmingStandardDeviationValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 210), strTrimmingVarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 210), strTrimmingVarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if((res = layer.DrawTextCanvas(&CFLPointD(0, 240), strTrimmingCoefficientOfVariance.GetString(), YELLOW, BLACK, 30)).IsFail())
+		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 240), strTrimmingCoefficientOfVariance.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

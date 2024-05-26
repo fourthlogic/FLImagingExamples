@@ -122,7 +122,7 @@ int main() // Alignment Tiling
 		// 보정에 사용할 Accuracy 설정 // Set the Accuracy to be used for calibration
 		alignmentTiling.SetAccuracy(EFloatingPointAccuracy_Bit32);
 		// 결과 이미지의 중심이 될 위치를 설정 // Set the location to be the center of the resulting image
-		alignmentTiling.SetSourcePivot(Foundation::CFLPointL(192, 778));
+		alignmentTiling.SetSourcePivot(Foundation::CFLPoint<int32_t>(192, 778));
 		// Pivot이 지정된 Page Index를 설정 // Set the Page Index with Pivot specified
 		alignmentTiling.SetPivotPageIndex(1);
 
@@ -188,14 +188,14 @@ int main() // Alignment Tiling
 			CFLString<wchar_t> fls;
 			fls.Format(L"Source Image #%d", i);
 
-			if(IsFail(res = layerSrc[i].DrawTextCanvas(&CFLPointD(0, 0), fls, YELLOW, BLACK, 20)))
+			if(IsFail(res = layerSrc[i].DrawTextCanvas(&CFLPoint<double>(0, 0), fls, YELLOW, BLACK, 20)))
 			{
 				ErrorPrint(res, "Failed to draw text\n");
 				break;
 			}
 		}
 
-		if(IsFail(res = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
+		if(IsFail(res = layerDst.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 20)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

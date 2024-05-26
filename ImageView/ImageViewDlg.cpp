@@ -408,20 +408,20 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 		int32_t i32TemplateType = pComboBoxTemplateType->GetCurSel() + 1;
 
 		// 이미지 뷰의 캔버스 영역을 얻어온다.
-		CFLRectL flrlCanvas = m_viewImage.GetClientRectCanvasRegion();
+		CFLRect<int32_t> flrlCanvas = m_viewImage.GetClientRectCanvasRegion();
 
 		// 캔버스 영역의 좌표계를 이미지 영역의 좌표계로 변환한다.
-		CFLRectD flrdImage = m_viewImage.ConvertCanvasCoordToImageCoord(flrlCanvas);
+		CFLRect<double> flrdImage = m_viewImage.ConvertCanvasCoordToImageCoord(flrlCanvas);
 
 		// 이미지 영역을 기준으로 생성될 Figure 의 크기와 모양을 사각형으로 설정한다.
 		double f64Width = flrdImage.GetWidth() / 10.;
 		double f64Height = flrdImage.GetHeight() / 10.;
 		double f64Size = __min(f64Width, f64Height);
 
-		CFLPointD flpdCenter(0, 0);
+		CFLPoint<double> flpdCenter(0, 0);
 		flrdImage.GetCenter(flpdCenter);
 
-		CFLRectD flrdFigureShape(flpdCenter.x - f64Size, flpdCenter.y - f64Size, flpdCenter.x + f64Size, flpdCenter.y + f64Size);
+		CFLRect<double> flrdFigureShape(flpdCenter.x - f64Size, flpdCenter.y - f64Size, flpdCenter.x + f64Size, flpdCenter.y + f64Size);
 
 		// 선택한 Decl Type, Template Type 으로 Figure 를 생성한다.
 		// CubicSpline, ComplexRegion 같은 경우에는 Template Type 이 double 형으로 고정이다.
@@ -432,19 +432,19 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 				switch(i32TemplateType)
 				{
 				case EFigureTemplateType_Int32:
-					pFlFigure = new CFLPointL();
+					pFlFigure = new CFLPoint<int32_t>();
 					break;
 
 				case EFigureTemplateType_Int64:
-					pFlFigure = new CFLPointLL();
+					pFlFigure = new CFLPoint<int64_t>();
 					break;
 
 				case EFigureTemplateType_Float:
-					pFlFigure = new CFLPointF();
+					pFlFigure = new CFLPoint<float>();
 					break;
 
 				case EFigureTemplateType_Double:
-					pFlFigure = new CFLPointD();
+					pFlFigure = new CFLPoint<double>();
 					break;
 
 				default:
@@ -458,19 +458,19 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 				switch(i32TemplateType)
 				{
 				case EFigureTemplateType_Int32:
-					pFlFigure = new CFLLineL();
+					pFlFigure = new CFLLine<int32_t>();
 					break;
 
 				case EFigureTemplateType_Int64:
-					pFlFigure = new CFLLineLL();
+					pFlFigure = new CFLLine<int64_t>();
 					break;
 
 				case EFigureTemplateType_Float:
-					pFlFigure = new CFLLineF();
+					pFlFigure = new CFLLine<float>();
 					break;
 
 				case EFigureTemplateType_Double:
-					pFlFigure = new CFLLineD();
+					pFlFigure = new CFLLine<double>();
 					break;
 
 				default:
@@ -484,19 +484,19 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 				switch(i32TemplateType)
 				{
 				case EFigureTemplateType_Int32:
-					pFlFigure = new CFLRectL();
+					pFlFigure = new CFLRect<int32_t>();
 					break;
 
 				case EFigureTemplateType_Int64:
-					pFlFigure = new CFLRectLL();
+					pFlFigure = new CFLRect<int64_t>();
 					break;
 
 				case EFigureTemplateType_Float:
-					pFlFigure = new CFLRectF();
+					pFlFigure = new CFLRect<float>();
 					break;
 
 				case EFigureTemplateType_Double:
-					pFlFigure = new CFLRectD();
+					pFlFigure = new CFLRect<double>();
 					break;
 
 				default:
@@ -510,19 +510,19 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 				switch(i32TemplateType)
 				{
 				case EFigureTemplateType_Int32:
-					pFlFigure = new CFLQuadL();
+					pFlFigure = new CFLQuad<int32_t>();
 					break;
 
 				case EFigureTemplateType_Int64:
-					pFlFigure = new CFLQuadLL();
+					pFlFigure = new CFLQuad<int64_t>();
 					break;
 
 				case EFigureTemplateType_Float:
-					pFlFigure = new CFLQuadF();
+					pFlFigure = new CFLQuad<float>();
 					break;
 
 				case EFigureTemplateType_Double:
-					pFlFigure = new CFLQuadD();
+					pFlFigure = new CFLQuad<double>();
 					break;
 
 				default:
@@ -536,19 +536,19 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 				switch(i32TemplateType)
 				{
 				case EFigureTemplateType_Int32:
-					pFlFigure = new CFLCircleL();
+					pFlFigure = new CFLCircle<int32_t>();
 					break;
 
 				case EFigureTemplateType_Int64:
-					pFlFigure = new CFLCircleLL();
+					pFlFigure = new CFLCircle<int64_t>();
 					break;
 
 				case EFigureTemplateType_Float:
-					pFlFigure = new CFLCircleF();
+					pFlFigure = new CFLCircle<float>();
 					break;
 
 				case EFigureTemplateType_Double:
-					pFlFigure = new CFLCircleD();
+					pFlFigure = new CFLCircle<double>();
 					break;
 
 				default:
@@ -562,19 +562,19 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 				switch(i32TemplateType)
 				{
 				case EFigureTemplateType_Int32:
-					pFlFigure = new CFLEllipseL();
+					pFlFigure = new CFLEllipse<int32_t>();
 					break;
 
 				case EFigureTemplateType_Int64:
-					pFlFigure = new CFLEllipseLL();
+					pFlFigure = new CFLEllipse<int64_t>();
 					break;
 
 				case EFigureTemplateType_Float:
-					pFlFigure = new CFLEllipseF();
+					pFlFigure = new CFLEllipse<float>();
 					break;
 
 				case EFigureTemplateType_Double:
-					pFlFigure = new CFLEllipseD();
+					pFlFigure = new CFLEllipse<double>();
 					break;
 
 				default:
@@ -606,19 +606,19 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 				switch(i32TemplateType)
 				{
 				case EFigureTemplateType_Int32:
-					pFlFigure = new CFLDoughnutL();
+					pFlFigure = new CFLDoughnut<int32_t>();
 					break;
 
 				case EFigureTemplateType_Int64:
-					pFlFigure = new CFLDoughnutLL();
+					pFlFigure = new CFLDoughnut<int64_t>();
 					break;
 
 				case EFigureTemplateType_Float:
-					pFlFigure = new CFLDoughnutF();
+					pFlFigure = new CFLDoughnut<float>();
 					break;
 
 				case EFigureTemplateType_Double:
-					pFlFigure = new CFLDoughnutD();
+					pFlFigure = new CFLDoughnut<double>();
 					break;
 
 				default:

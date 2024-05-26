@@ -74,7 +74,7 @@ int main()
 		CNoiseGenerator noiseGenerator;
 
 		// ROI 범위 설정 // Set ROI range
-		CFLRectL flrROI(61, 63, 583, 376);
+		CFLRect<int32_t> flrROI(61, 63, 583, 376);
 
 		// 처리할 이미지 설정 // Set the image to process
 		noiseGenerator.SetSourceImage(fliImage);
@@ -115,13 +115,13 @@ int main()
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
-		if(IsFail(res = layer.DrawTextCanvas(&CFLPointD(0, 0), L"Source Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layer.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerDst.DrawTextCanvas(&CFLPointD(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerDst.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
