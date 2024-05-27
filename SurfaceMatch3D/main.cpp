@@ -88,8 +88,8 @@ int main()
 		SurfaceMatch3D.SetKeypointRatio(0.5);
 		// 엣지 학습 여부 설정 // Set the edge train
 		SurfaceMatch3D.EnableTrainEdge(false);
-		// 엣지 장면 여부 설정 // Set the edge scene
-		SurfaceMatch3D.EnableEdgeBasedMatch(false);
+		// 배경 제거 여부 설정 // Set the background removal
+		SurfaceMatch3D.EnableBackgroundRemoval(false);
 		// 클러스터링 범위 설정 // Set the clustering range
 		SurfaceMatch3D.SetClusterRange(2);
 		// 포즈 조정 반복 횟수 설정 // Set the iteration value of pose refinement
