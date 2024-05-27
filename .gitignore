@@ -9,6 +9,7 @@
 *.suo
 *.userosscache
 *.sln.docstates
+*.vcxproj.user
 
 # Figure files
 *.fig
