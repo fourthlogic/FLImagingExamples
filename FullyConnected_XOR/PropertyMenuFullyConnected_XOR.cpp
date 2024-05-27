@@ -191,45 +191,45 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuFullyConnectedXOR::T
 			CTensor<float> tsrW1;
 			tsrW1.Create({ 2, 10 });
 			tsrW1.FillHe();
-			tsrW1.SetReference(false);
+			tsrW1.EnableReference(false);
 			tsrW1.SetValueAttribute(EValueAttribute_Variable);
 			CTensor<float> tsrB1;
 			tsrB1.Create({ 10 });
 			tsrB1.FillZero();
-			tsrB1.SetReference(false);
+			tsrB1.EnableReference(false);
 			tsrB1.SetValueAttribute(EValueAttribute_Variable);
 
 			CTensor<float> tsrWH1;
 			tsrWH1.Create({ 10, 10 });
 			tsrWH1.FillHe();
-			tsrWH1.SetReference(false);
+			tsrWH1.EnableReference(false);
 			tsrWH1.SetValueAttribute(EValueAttribute_Variable);
 			CTensor<float> tsrBH1;
 			tsrBH1.Create({ 10 });
 			tsrBH1.FillZero();
-			tsrBH1.SetReference(false);
+			tsrBH1.EnableReference(false);
 			tsrBH1.SetValueAttribute(EValueAttribute_Variable);
 
 			CTensor<float> tsrWH2;
 			tsrWH2.Create({ 10, 10 });
 			tsrWH2.FillHe();
-			tsrWH2.SetReference(false);
+			tsrWH2.EnableReference(false);
 			tsrWH2.SetValueAttribute(EValueAttribute_Variable);
 			CTensor<float> tsrBH2;
 			tsrBH2.Create({ 10 });
 			tsrBH2.FillZero();
-			tsrBH2.SetReference(false);
+			tsrBH2.EnableReference(false);
 			tsrBH2.SetValueAttribute(EValueAttribute_Variable);
 
 			CTensor<float> tsrW2;
 			tsrW2.Create({ 10, 1 });
 			tsrW2.FillHe();
-			tsrW2.SetReference(false);
+			tsrW2.EnableReference(false);
 			tsrW2.SetValueAttribute(EValueAttribute_Variable);
 			CTensor<float> tsrB2;
 			tsrB2.Create({ 1 });
 			tsrB2.FillZero();
-			tsrB2.SetReference(false);
+			tsrB2.EnableReference(false);
 			tsrB2.SetValueAttribute(EValueAttribute_Variable);
 
 			// XOR Graph Layer »ý¼º
