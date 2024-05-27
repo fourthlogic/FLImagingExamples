@@ -66,32 +66,46 @@ int main()
 			break;
 		}
 
-		// Decolorization 객체 생성 // Create Decolorization object
-		CDecolorization Decolorization;
+		// TotalVariationDenoising 객체 생성 // Create TotalVariationDenoising object
+		CTotalVariationDenoising TotalVariationDenoising;
 
 		// Source 이미지 설정 // Set source image 
-		if(IsFail(res = Decolorization.SetSourceImage(fliSourceImage)))
+		if(IsFail(res = TotalVariationDenoising.SetSourceImage(fliSourceImage)))
 		{
 			ErrorPrint(res, "Failed to set Source Image.");
 			break;
 		}
 
 		// Destination 이미지 설정 // Set destination image
-		if(IsFail(res = Decolorization.SetDestinationImage(fliConvertedImage)))
+		if(IsFail(res = TotalVariationDenoising.SetDestinationImage(fliConvertedImage)))
 		{
 			ErrorPrint(res, "Failed to set Destination Image.");
 			break;
 		}
 
-		// 연산 속도 설정 // Set the operation speed.
-		if(IsFail(res = Decolorization.SetOperationSpeed(CDecolorization::EOperationSpeed_Normal)))
+		// 모델 설정 // Set the Model Tpye.
+		if(IsFail(res = TotalVariationDenoising.SetModelType(CTotalVariationDenoising::EModelType_Anisotropic)))
 		{
-			ErrorPrint(res, "Failed to set Operation Speed.");
+			ErrorPrint(res, "Failed to set Model Type.");
+			break;
+		}
+
+		// Lambda 설정 // Set the Lambda.
+		if(IsFail(res = TotalVariationDenoising.SetLambda(0.1)))
+		{
+			ErrorPrint(res, "Failed to set Lambda.");
+			break;
+		}
+
+		// 연산 반복 횟수 설정 // Set the Iteration.
+		if(IsFail(res = TotalVariationDenoising.SetIteration(3)))
+		{
+			ErrorPrint(res, "Failed to set Iteration.");
 			break;
 		}
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = Decolorization.Execute()).IsFail())
+		if((res = TotalVariationDenoising.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to process.");
 			break;
