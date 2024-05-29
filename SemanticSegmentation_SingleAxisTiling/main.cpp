@@ -214,18 +214,6 @@ int main()
 		// 설정한 Optimizer를 SemanticSegmentation에 적용 // Apply the Optimizer that we set up to SemanticSegmentation
 		semanticSegmentation.SetLearningOptimizerSpec(optSpec);
 
-		// AugmentationSpec 설정 // Set the AugmentationSpec
-		CAugmentationSpec augSpec;
-
-		augSpec.SetCommonActivationRatio(0.5);
-		augSpec.SetCommonInterpolationMethod(FLImaging::ImageProcessing::EInterpolationMethod_Bilinear);
-		augSpec.EnableRotation(true);
-		augSpec.SetRotationParam(180., false);
-		augSpec.EnableHorizontalFlip(true);
-		augSpec.EnableVerticalFlip(true);
-
-		semanticSegmentation.SetLearningAugmentationSpec(&augSpec);
-
 		// 학습 종료 조건 설정.
 		// Metric 조건은 mIoU 값으로, 실제 클래스 개수와 각 클래스의 점수에 대한 가중치 연산을 하여 정확도를 설정
 		// Setting the End-of-Learning Condition
