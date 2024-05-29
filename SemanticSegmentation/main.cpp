@@ -54,13 +54,6 @@ int main()
 			break;
 		}
 
-
-		if(IsFail(res = fliValidationImage.Load(L"../../ExampleImages/SemanticSegmentation/Validation.flif")))
-		{
-			ErrorPrint(res, "Failed to load the image file.\n");
-			break;
-		}
-
 		// 이미지 뷰 생성 // Creates image view
 		if(IsFail(res = viewImageLearn.Create(100, 0, 600, 500)))
 		{
@@ -308,7 +301,7 @@ int main()
 
 				// 검증 결과가 1.0일 경우 학습을 중단하고 분류 진행 
 				// If the validation result is 1.0, stop learning and classify images 
-				if(f32ValidationPa == 1.f)
+				if(f32ValidationPa == 1.f || GetAsyncKeyState(VK_ESCAPE))
 					semanticSegmentation.Stop();
 
 				i32PrevEpoch = i32Epoch;

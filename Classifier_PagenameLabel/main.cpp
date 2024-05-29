@@ -222,7 +222,7 @@ int main()
 
 				// 검증 결과가 1.0일 경우 학습을 중단하고 분류 진행 
 				// If the validation result is 1.0, stop learning and classify images 
-				if(f32Validation == 1.f)
+				if(f32Validation == 1.f || GetAsyncKeyState(VK_ESCAPE))
 					classifier.Stop();
 
 				i32PrevEpoch = i32Epoch;
