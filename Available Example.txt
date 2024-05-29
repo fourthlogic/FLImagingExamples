@@ -378,6 +378,8 @@
     - SemanticSegmentation
        - Example of an algorithm for SemanticSegmentation validation images with figures using models learned through SemanticSegmentation for training images with figures.
        - Figure가 있는 학습 이미지들에 대해 SemanticSegmentation을 통하여 학습한 모델을 사용하여 Figure가 있는 검증 이미지를 분류하는 알고리즘 예제.
+       - Examples of algorithms that operate and classify learning/reasoning images by Tiling
+       - 학습/추론 이미지를 Tiling 처리하여 동작하여 분류하는 알고리즘 예제.
        
     - OCR
        - Examples of optical character recognition algorithms based on deep learning.
