@@ -71,7 +71,7 @@ int main()
 			gridofCross.GetResultBoardRegion(i64PageIndex, i64BoardIndex, flqRegion);
 			i64ResultRow = gridofCross.GetResultBoardRows(i64PageIndex, i64BoardIndex);
 			i64ResultCol = gridofCross.GetResultBoardColumns(i64PageIndex, i64BoardIndex);
-			f64AverageCellPitch = gridofCross.GetResultBoardAverageCellPitch(0, i64BoardIndex);
+			f64AverageCellPitch = gridofCross.GetResultBoardAverageCellPitch(i64PageIndex, i64BoardIndex, 0);
 
 			double f64Width = flqRegion.flpPoints[0].GetDistance(flqRegion.flpPoints[1]);
 			double f64Angle = flqRegion.flpPoints[0].GetAngle(flqRegion.flpPoints[1]);
