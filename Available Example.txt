@@ -785,6 +785,12 @@
     - TextureFilter	   
       - The example of an algorithm that show symmetry distribution.
       - 이미지에 특정한 텍스쳐 변환 법칙을 적용하는 알고리즘 예제
+    - Total Variation Denoising
+      - An example of an algorithm that removes noise by reducing total variation in an image.
+      - 이미지 전체 변동을 감소하여 노이즈를 제거하는 알고리즘 예제.
+    - FL Denoising Type 1
+      - An example of the denoising algorithm type 1 proposed by 'FLImaging'.
+      - FLImaging 노이즈 제거 알고리즘 타입 1 예제.
     - WienerDeconvolutionFilter
       - The example of an algorithm that restores an image applied blur.
       - 블러가 적용된 이미지를 복원하는 알고리즘 예제
