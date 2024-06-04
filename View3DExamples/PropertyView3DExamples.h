@@ -16,9 +16,10 @@ namespace FLImaging
 
 			// PushObject 버튼 클릭 프로시저
 			CPropertyItemButtonClickProcedure* PushObject();
-			CPropertyItemButtonClickProcedure* FrustumCollisionTest();
 			CPropertyItemButtonClickProcedure* ROIUtilities3DTest();
+			CPropertyItemButtonClickProcedure* FrustumCollisionTest();
 			CPropertyItemButtonClickProcedure* SetCameraParameters();
+			CPropertyItemButtonClickProcedure* FL3DObjectUtilitiesTest();
 
 			const CResult PushObjectPLY(CGUIView3D* pView3D);
 			const CResult PushObjectSphere(CGUIView3D* pView3D);
@@ -26,6 +27,11 @@ namespace FLImaging
 			const CResult PushObjectHeightMapAndTexture(CGUIView3D* pView3D);
 			const CResult PushObjectLine(CGUIView3D* pView3D);
 			const CResult PushObjectUnselectableAxis(CGUIView3D* pView3D);
+
+			const CResult RotateObject(CGUIView3D* pView3D);
+			const CResult RotateObjectWithPivot(CGUIView3D* pView3D);
+			const CResult TranslateObject(CGUIView3D* pView3D);
+			const CResult ScaleObject(CGUIView3D* pView3D);
 
 			// Sphere 만드는 예제 // Example of creating a sphere
 			const CResult GetSphereObject(CGUIView3DObject& meshSphere, float f32Radius, uint32_t sliceCount, uint32_t stackCount);

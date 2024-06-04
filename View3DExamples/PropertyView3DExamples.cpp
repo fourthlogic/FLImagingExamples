@@ -38,6 +38,8 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIDD = new CGUIPropertyItemDropdownList;
 			pPIDD->SetPath(L"PushObject");
 			pPIDD->SetName(L"Object Type");
+			pPIDD->SetDescription(L"Select the type of object to be displayed in the 3D view.\n\
+								  3D 뷰에 디스플레이 할 객체 타입을 선택합니다.");
 
 			pPIDD->AddListItem(L"PLY File");
 			pPIDD->AddListItem(L"Image(Height Map)");
@@ -54,6 +56,8 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIButton->SetName(L"PushObject");
 			pPIButton->SetButtonName(L"PushObject");
 			pPIButton->SetPropertyButtonClickProcedure(PushObject());
+			pPIButton->SetDescription(L"An example of adding an object to be displayed in a 3D view.\n\
+									  3D 뷰에 디스플레이 할 객체를 추가하는 예제입니다.");
 			AddItem(pPIButton);
 		}
 
@@ -74,6 +78,8 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIButton->SetButtonName(L"Execute");
 			pPIButton->SetDescription(L"Example of CROIUtilities3D");
 			pPIButton->SetPropertyButtonClickProcedure(ROIUtilities3DTest());
+			pPIButton->SetDescription(L"An example of using CROIUtilities3D.\n\
+									  CROIUtilities3D 사용에 관한 예제입니다.");
 			AddItem(pPIButton);
 
 			pPIButton = new CGUIPropertyItemButton;
@@ -81,6 +87,47 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIButton->SetName(L"Frustum Collision Test");
 			pPIButton->SetButtonName(L"Execute");
 			pPIButton->SetPropertyButtonClickProcedure(FrustumCollisionTest());
+			pPIButton->SetDescription(L"An example of testing for collisions between a frustum and 3D objects.\n\
+									  절두체와 3D 객체 간의 충돌 여부 테스트 예제입니다.");
+			AddItem(pPIButton);
+		}
+
+		pCat = new CGUIPropertyItemCategory;
+		pCat->SetName(L"Transform");
+		AddItem(pCat);
+		{
+			CGUIPropertyItemView3DList* pIVL = new CGUIPropertyItemView3DList;
+			pIVL->SetPath(L"Transform");
+			pIVL->SetName(L"Source View");
+			AddItem(pIVL);
+
+			pIVL = new CGUIPropertyItemView3DList;
+			pIVL->SetPath(L"Transform");
+			pIVL->SetName(L"Target View");
+			AddItem(pIVL);
+
+			CGUIPropertyItemDropdownList* pPIDD = new CGUIPropertyItemDropdownList;
+			pPIDD->SetPath(L"Transform");
+			pPIDD->SetName(L"Transform Type");
+
+			pPIDD->AddListItem(L"Rotate");
+			pPIDD->AddListItem(L"Rotate with Pivot");
+			pPIDD->AddListItem(L"Translate");
+			pPIDD->AddListItem(L"Scale");
+
+			pPIDD->SetDefaultValue(L"Rotate");
+			AddItem(pPIDD);
+
+			CGUIPropertyItemButton* pPIButton = nullptr;
+
+			pPIButton = new CGUIPropertyItemButton;
+			pPIButton->SetPath(L"Transform");
+			pPIButton->SetName(L"FL3DObjectUtilities");
+			pPIButton->SetButtonName(L"Execute");
+			pPIButton->SetDescription(L"Example of CFL3DObjectUtilities");
+			pPIButton->SetPropertyButtonClickProcedure(FL3DObjectUtilitiesTest());
+			pPIButton->SetDescription(L"An example of using CFL3DObjectUtilities, which supports transformation functions such as object rotation, scaling, and translation.\n\
+									  객체 회전, 스케일, 이동 등 변환 기능을 지원하는 CFL3DObjectUtilities 사용에 관한 예제입니다.");
 			AddItem(pPIButton);
 		}
 
@@ -224,6 +271,8 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIButton->SetName(L"Set Parameters");
 			pPIButton->SetButtonName(L"Apply");
 			pPIButton->SetPropertyButtonClickProcedure(SetCameraParameters());
+			pPIButton->SetDescription(L"An example of using the camera object (CGUIView3DCamera).\n\
+									  카메라 객체(CGUIView3DCamera) 사용에 관한 예제입니다.");
 			AddItem(pPIButton);
 		}
 
@@ -654,6 +703,107 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::SetC
 	};
 
 	return pProcedure;
+}
+CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::FL3DObjectUtilitiesTest()
+{
+	CPropertyItemButtonClickProcedure* pProcedure = new CPropertyItemButtonClickProcedure;
+
+	*pProcedure = MakePropertyItemButtonClickProcedure
+	{
+		do
+		{
+			CGUIPropertyItemView3DList* pViewListSource = dynamic_cast<CGUIPropertyItemView3DList*>(FindItemByFullPath(L"Transform@Source View"));
+			CGUIPropertyItemView3DList* pViewListTarget = dynamic_cast<CGUIPropertyItemView3DList*>(FindItemByFullPath(L"Transform@Target View"));
+
+			if(!pViewListSource || !pViewListTarget)
+				break;
+
+			CGUIView3D* pView3DSource = pViewListSource->GetSelectedView3D();
+			CGUIView3D* pView3DTarget = pViewListTarget->GetSelectedView3D();
+
+			if(!pView3DSource)
+			{
+				SetStatusMessage(L"[Error] Select source view.");
+				break;
+			}
+
+			if(!pView3DTarget)
+			{
+				SetStatusMessage(L"[Error] Select target view.");
+				break;
+			}
+
+			CGUIPropertyItemDropdownList* pPIDD = (CGUIPropertyItemDropdownList*)FindItemByFullPath(L"Transform@Transform Type");
+
+			if(!pPIDD)
+				break;
+
+			// 화살표의 길이 // Height of the arrow.
+			float f32Height = 30.f;
+			// 화살표에서 뾰족한 부분(원뿔)이 차지하는 비율
+			// Ratio of the arrowhead (cone) to the total arrow length.
+			float f32ArrowRatio = 0.15f;
+			// 화살표의 파이프 반지름 // Radius of the arrow's pipe.
+			float f32PipeRadius = f32Height / 40.f;
+			// 화살표의 뾰족한 부분(원뿔)의 반지름 // Radius of the arrowhead (cone).
+			float f32ArrowBottomRadius = f32Height / 20.f;
+
+			// CGUIView3DObject 객체 선언(임시 변수)
+			// Declare CGUIView3DObject (temporary variable)
+			CGUIView3DObject mesh1, mesh2;
+
+			// CGUIView3DObject 객체의 토폴로지 타입을 솔리드로 설정
+			// Set the topology type of the CGUIView3DObject to solid
+			mesh1.SetTopologyType(ETopologyType3D_Solid);
+			mesh2.SetTopologyType(ETopologyType3D_Solid);
+
+			// 화살표 객체를 생성(파란색)
+			// Create the arrow object(Blue color).
+			GetArrowObject(mesh1, mesh2, TPoint3<float>(0, 0, 0), f32Height, f32ArrowRatio, f32PipeRadius, f32ArrowBottomRadius, BLUE);
+
+			// CGUIView3DObject 객체를 뷰에 디스플레이
+			// Display the CGUIView3DObject in the view
+			pView3DSource->Clear();
+			pView3DTarget->Clear();
+			pView3DSource->PushObject(mesh1);
+			pView3DSource->PushObject(mesh2);
+			pView3DTarget->PushObject(mesh1);
+			pView3DTarget->PushObject(mesh2);
+			pView3DSource->ZoomFit();
+			pView3DTarget->ZoomFit();
+
+			pView3DSource->GetLayer(0)->DrawTextCanvas(&CFLPoint<double>(0, 0), L"Original Object", YELLOW, BLACK, 30);
+
+			CFLString<wchar_t> str = pPIDD->GetValue();
+			CResult res;
+
+			if(str == L"Rotate")
+			{
+				res = RotateObject(pView3DTarget);
+				pView3DTarget->GetLayer(0)->DrawTextCanvas(&CFLPoint<double>(0, 0), L"Rotated Object", YELLOW, BLACK, 30);
+			}
+			else if(str == L"Rotate with Pivot")
+			{
+				res = RotateObjectWithPivot(pView3DTarget);
+				pView3DTarget->GetLayer(0)->DrawTextCanvas(&CFLPoint<double>(0, 0), L"Rotated Object", YELLOW, BLACK, 30);
+			}
+			else if(str == L"Translate")
+			{
+				res = TranslateObject(pView3DTarget);
+				pView3DTarget->GetLayer(0)->DrawTextCanvas(&CFLPoint<double>(0, 0), L"Translated Object", YELLOW, BLACK, 30);
+			}
+			else if(str == L"Scale")
+			{
+				res = ScaleObject(pView3DTarget);
+				pView3DTarget->GetLayer(0)->DrawTextCanvas(&CFLPoint<double>(0, 0), L"Scaled Object", YELLOW, BLACK, 30);
+			}
+			}
+		while(false);
+	};
+
+	return pProcedure;
+
+	return nullptr;
 }
 
 const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectPLY(CGUIView3D* pView3D)
@@ -1142,6 +1292,205 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectUnselectableAxi
 		}
 
 		pView3D->ZoomFit();
+
+		res = EResult_OK;
+		SetStatusMessage(GetResultString(res));
+	}
+	while(false);
+
+	return res;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::RotateObject(CGUIView3D* pView3D)
+{
+	CResult res;
+
+	do
+	{
+		if(!pView3D)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		int32_t i32ObjectCount = pView3D->GetObjectCount();
+
+		if(!i32ObjectCount)
+		{
+			SetStatusMessage(L"[Error] " + pView3D->GetTitle() + L" doesn't have any 3D objects.");
+			break;
+		}
+
+		for(int32_t i = 0; i < i32ObjectCount; ++i)
+		{
+			CGUIView3DObject* pObj = (CGUIView3DObject*)pView3D->GetView3DObject(i);
+
+			if(!pObj || !pObj->IsSelectionEnabled())
+				continue;
+
+			CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+
+			if(!pObjData)
+				continue;
+
+			// CFL3DObjectUtilities 를 사용하여 간편하게 회전
+			// 파라미터 순서 : 시작 지점 벡터 -> 종료 지점 벡터 -> 회전할 객체
+			// 시작 벡터에서 종료 벡터사이의 각도만큼 회전됩니다.
+			// Rotate the object using CFL3DObjectUtilities.
+			// Parameter order: start point vector -> end point vector -> object to rotate
+			// Rotates by the angle between the start and end vectors.
+			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(1, 0, 0), *pObjData);
+
+			pObj->UpdateVertex();
+			pView3D->UpdateObject(i);
+		}
+
+		res = EResult_OK;
+		SetStatusMessage(GetResultString(res));
+	}
+	while(false);
+
+	return res;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::RotateObjectWithPivot(CGUIView3D* pView3D)
+{
+	CResult res;
+
+	do
+	{
+		if(!pView3D)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		int32_t i32ObjectCount = pView3D->GetObjectCount();
+
+		if(!i32ObjectCount)
+		{
+			SetStatusMessage(L"[Error] " + pView3D->GetTitle() + L" doesn't have any 3D objects.");
+			break;
+		}
+
+		for(int32_t i = 0; i < i32ObjectCount; ++i)
+		{
+			CGUIView3DObject* pObj = (CGUIView3DObject*)pView3D->GetView3DObject(i);
+
+			if(!pObj || !pObj->IsSelectionEnabled())
+				continue;
+
+			CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+
+			if(!pObjData)
+				continue;
+
+			// 피봇을 중심으로 회전
+			// An example of rotating around a pivot 
+			CFL3DObjectUtilities::Rotate(CFLPoint3<float>(0, 0, 30), // Pivot
+										 CFLGeometry3DQuaternion<float>(CFLGeometry3DVector<float>(0.f, 1.f, 0.f), 
+																		CFLGeometry3DVector<float>(0.f, 0.5f, 0.5f)), 
+										 *pObjData);
+
+			pObj->UpdateVertex();
+			pView3D->UpdateObject(i);
+		}
+
+		res = EResult_OK;
+		SetStatusMessage(GetResultString(res));
+	}
+	while(false);
+
+	return res;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::TranslateObject(CGUIView3D* pView3D)
+{
+	CResult res;
+
+	do
+	{
+		if(!pView3D)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		int32_t i32ObjectCount = pView3D->GetObjectCount();
+
+		if(!i32ObjectCount)
+		{
+			SetStatusMessage(L"[Error] " + pView3D->GetTitle() + L" doesn't have any 3D objects.");
+			break;
+		}
+
+		for(int32_t i = 0; i < i32ObjectCount; ++i)
+		{
+			CGUIView3DObject* pObj = (CGUIView3DObject*)pView3D->GetView3DObject(i);
+
+			if(!pObj || !pObj->IsSelectionEnabled())
+				continue;
+
+			CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+
+			if(!pObjData)
+				continue;
+
+			// CFL3DObjectUtilities 를 사용하여 간편하게 이동
+			// Translate the object using CFL3DObjectUtilities.
+			CFL3DObjectUtilities::Translate(CFLGeometry3DVector<float>(4, 0, 0), *pObjData);
+
+			pObj->UpdateVertex();
+			pView3D->UpdateObject(i);
+		}
+
+		res = EResult_OK;
+		SetStatusMessage(GetResultString(res));
+	}
+	while(false);
+
+	return res;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::ScaleObject(CGUIView3D* pView3D)
+{
+	CResult res;
+
+	do
+	{
+		if(!pView3D)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		int32_t i32ObjectCount = pView3D->GetObjectCount();
+
+		if(!i32ObjectCount)
+		{
+			SetStatusMessage(L"[Error] " + pView3D->GetTitle() + L" doesn't have any 3D objects.");
+			break;
+		}
+
+		for(int32_t i = 0; i < i32ObjectCount; ++i)
+		{
+			CGUIView3DObject* pObj = (CGUIView3DObject*)pView3D->GetView3DObject(i);
+
+			if(!pObj || !pObj->IsSelectionEnabled())
+				continue;
+
+			CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+
+			if(!pObjData)
+				continue;
+
+			// CFL3DObjectUtilities 를 사용하여 간편하게 스케일
+			// Scales the object using CFL3DObjectUtilities.
+			CFL3DObjectUtilities::Scale(CFLGeometry3DVector<float>(0, 0, 0), 2.f, *pObjData);
+
+			pObj->UpdateVertex();
+			pView3D->UpdateObject(i);
+		}
 
 		res = EResult_OK;
 		SetStatusMessage(GetResultString(res));
