@@ -1,0 +1,1067 @@
+#include "stdafx.h"
+#include "PropertyView3DExamples.h"
+
+using namespace FLImaging;
+using namespace FLImaging::Base;
+using namespace FLImaging::GUI;
+using namespace FLImaging::Foundation;
+
+CPropertyView3DExamples::CPropertyView3DExamples()
+{
+}
+
+CPropertyView3DExamples::~CPropertyView3DExamples()
+{
+}
+
+const CResult CPropertyView3DExamples::ConfigureMenu()
+{
+	CResult cReturn = EResult_UnknownError;
+
+	do
+	{
+		EnableStatusMessageBox(true);
+		SetMessageDisplayMode(EMessageDisplayMode_AutoScroll);
+
+		CGUIPropertyItemCategory* pCatPushObject = new CGUIPropertyItemCategory;
+		pCatPushObject->SetName(L"PushObject");
+		AddItem(pCatPushObject);
+		{
+			CGUIPropertyItemView3DList* pIVL = new CGUIPropertyItemView3DList;
+			pIVL->SetPath(L"PushObject");
+			pIVL->SetName(L"3D View");
+			AddItem(pIVL);
+
+			CGUIPropertyItemButton* pPIButton = nullptr;
+			CGUIPropertyItemDropdownList* pPIDD = nullptr;
+
+			pPIDD = new CGUIPropertyItemDropdownList;
+			pPIDD->SetPath(L"PushObject");
+			pPIDD->SetName(L"Object Type");
+
+			pPIDD->AddListItem(L"PLY File");
+			pPIDD->AddListItem(L"Image(Height Map)");
+			pPIDD->AddListItem(L"Image(Height Map & Texture)");
+			pPIDD->AddListItem(L"3D Line");
+			pPIDD->AddListItem(L"Sphere");
+			pPIDD->AddListItem(L"Unselectable Axis", L"3D Axis(x,y,z) which is unselectable");
+
+			pPIDD->SetDefaultValue(L"PLY File");
+			AddItem(pPIDD);
+
+			pPIButton = new CGUIPropertyItemButton;
+			pPIButton->SetPath(L"PushObject");
+			pPIButton->SetName(L"PushObject");
+			pPIButton->SetButtonName(L"PushObject");
+			pPIButton->SetPropertyButtonClickProcedure(PushObject());
+			AddItem(pPIButton);
+		}
+
+		CGUIPropertyItemCategory* pCatROI = new CGUIPropertyItemCategory;
+		pCatROI->SetName(L"ROI");
+		AddItem(pCatROI);
+		{
+			CGUIPropertyItemView3DList* pIVL = new CGUIPropertyItemView3DList;
+			pIVL->SetPath(L"ROI");
+			pIVL->SetName(L"3D View");
+			AddItem(pIVL);
+
+			CGUIPropertyItemButton* pPIButton = nullptr;
+
+			pPIButton = new CGUIPropertyItemButton;
+			pPIButton->SetPath(L"ROI");
+			pPIButton->SetName(L"ROIUtilities3D");
+			pPIButton->SetButtonName(L"Execute");
+			pPIButton->SetDescription(L"Example of CROIUtilities3D");
+			pPIButton->SetPropertyButtonClickProcedure(ROIUtilities3DTest());
+			AddItem(pPIButton);
+
+			pPIButton = new CGUIPropertyItemButton;
+			pPIButton->SetPath(L"ROI");
+			pPIButton->SetName(L"Frustum Collision Test");
+			pPIButton->SetButtonName(L"Execute");
+			pPIButton->SetPropertyButtonClickProcedure(FrustumCollisionTest());
+			AddItem(pPIButton);
+		}
+
+		cReturn = EResult_OK;
+	}
+	while(false);
+
+	return cReturn;
+}
+
+CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::PushObject()
+{
+	CPropertyItemButtonClickProcedure* pProcedure = new CPropertyItemButtonClickProcedure;
+
+	*pProcedure = MakePropertyItemButtonClickProcedure
+	{
+		do
+		{
+			CGUIPropertyItemView3DList* pViewList = dynamic_cast<CGUIPropertyItemView3DList*>(FindItemByFullPath(L"PushObject@3D View"));
+
+			if(!pViewList)
+				break;
+
+			CGUIView3D* pView3D = pViewList->GetSelectedView3D();
+
+			if(!pView3D)
+			{
+				SetStatusMessage(L"[Error] Select 3D view.");
+				break;
+			}
+
+			CGUIPropertyItemDropdownList* pPIDD = (CGUIPropertyItemDropdownList*)FindItemByFullPath(L"PushObject@Object Type");
+
+			if(!pPIDD)
+				break;
+
+			CFLString<wchar_t> str = pPIDD->GetValue();
+
+			CResult res;
+
+			if(str == L"PLY File")
+				res = PushObjectPLY(pView3D);
+			else if(str == L"Image(Height Map)")
+				res = PushObjectHeightMap(pView3D);
+			else if(str == L"Image(Height Map & Texture)")
+				res = PushObjectHeightMapAndTexture(pView3D);
+			else if(str == L"3D Line")
+				res = PushObjectLine(pView3D);
+			else if(str == L"Sphere")
+				res = PushObjectSphere(pView3D);
+			else if(str == L"Unselectable Axis")
+				res = PushObjectUnselectableAxis(pView3D);
+		}
+		while(false);
+	};
+
+	return pProcedure;
+}
+
+CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::ROIUtilities3DTest()
+{
+	CPropertyItemButtonClickProcedure* pProcedure = new CPropertyItemButtonClickProcedure;
+
+	*pProcedure = MakePropertyItemButtonClickProcedure
+	{
+		CResult res;
+
+		do
+		{
+			CGUIPropertyItemView3DList* pViewList = dynamic_cast<CGUIPropertyItemView3DList*>(FindItemByFullPath(L"ROI@3D View"));
+
+			if(!pViewList)
+				break;
+
+			CGUIView3D* pView3D = pViewList->GetSelectedView3D();
+
+			if(!pView3D)
+			{
+				SetStatusMessage(L"[Error] Select 3D view.");
+				break;
+			}
+
+			int32_t i32ObjectCount = pView3D->GetObjectCount();
+
+			if(!i32ObjectCount)
+			{
+				SetStatusMessage(L"[Error] " + pView3D->GetTitle() + L" doesn't have any 3D objects.");
+				break;
+			}
+
+			std::vector<CFLFrustum<float>> vctFrustum;
+			pView3D->GetAllROI(vctFrustum);
+
+			if(vctFrustum.empty())
+			{
+				SetStatusMessage(L"[Error] There is no ROI in " + pView3D->GetTitle() + L". Press Ctrl+3 to teach ROI.");
+				break;
+			}
+
+			CROIUtilities3D roiUtil3D;
+
+			for(auto& frustum : vctFrustum)
+				roiUtil3D.PushBackROI(frustum);
+
+			for(int32_t i = 0; i < i32ObjectCount; ++i)
+			{
+				CGUIView3DObject* pObj = (CGUIView3DObject*)pView3D->GetView3DObject(i);
+
+				if(!pObj || !pObj->IsSelectionEnabled())
+					continue;
+
+				CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+
+				if(!pObjData)
+					continue;
+
+				roiUtil3D.PushBack3DObject(pObjData);
+			}
+
+			CFLArray<CFLArray<int32_t>> flfaResultROIIndexInclude, flfaResultROIIndexExclude;
+
+			roiUtil3D.SetSelectionType(CROIUtilities3D::EResultSelectionType_Include);
+
+			if((res = roiUtil3D.Execute()).IsFail())
+				break;
+
+			if((res = roiUtil3D.GetResult(flfaResultROIIndexInclude)).IsFail())
+				break;
+
+			Foundation::CFL3DObject resultObject3D;
+
+			if((res = roiUtil3D.GetResult(resultObject3D)).IsFail())
+				break;
+
+			roiUtil3D.SetSelectionType(CROIUtilities3D::EResultSelectionType_Exclude);
+
+			if((res = roiUtil3D.Execute()).IsFail())
+				break;
+
+			if((res = roiUtil3D.GetResult(flfaResultROIIndexExclude)).IsFail())
+				break;
+
+			if(flfaResultROIIndexInclude.GetCount())
+			{
+				int32_t i32IndexRes = 0;
+
+				for(int32_t i = 0; i < i32ObjectCount; ++i)
+				{
+					CGUIView3DObject* pObj = (CGUIView3DObject*)pView3D->GetView3DObject(i);
+
+					if(!pObj || !pObj->IsSelectionEnabled())
+						continue;
+
+					CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+
+					if(!pObjData)
+						continue;
+
+					CFLArray<int32_t>& flaCollisionIndex = flfaResultROIIndexInclude.GetAt(i32IndexRes);
+					i32IndexRes++;
+
+					if(flaCollisionIndex.IsEmpty())
+						continue;
+
+					int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
+					CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)pObjData->GetVertexColors();
+
+					for(int32_t j = 0; j < i32CollisionIndexCount; ++j)
+						pFlaVertexColor->SetAt(flaCollisionIndex.GetAt(j), TPoint3<uint8_t>(255, 0, 0)); // RED
+
+					pObj->UpdateAll();
+					pView3D->UpdateObject(i);
+				}
+			}
+
+			if(flfaResultROIIndexExclude.GetCount())
+			{
+				int32_t i32IndexRes = 0;
+
+				for(int32_t i = 0; i < i32ObjectCount; ++i)
+				{
+					CGUIView3DObject* pObj = (CGUIView3DObject*)pView3D->GetView3DObject(i);
+
+					if(!pObj || !pObj->IsSelectionEnabled())
+						continue;
+
+					CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+
+					if(!pObjData)
+						continue;
+
+					CFLArray<int32_t>& flaCollisionIndex = flfaResultROIIndexExclude.GetAt(i32IndexRes);
+					i32IndexRes++;
+
+					if(flaCollisionIndex.IsEmpty())
+						continue;
+
+					int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
+					CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)pObjData->GetVertexColors();
+
+					for(int32_t j = 0; j < i32CollisionIndexCount; ++j)
+						pFlaVertexColor->SetAt(flaCollisionIndex.GetAt(j), TPoint3<uint8_t>(0, 0, 255)); // BLUE
+
+					pObj->UpdateAll();
+					pView3D->UpdateObject(i);
+				}
+			}
+
+			pView3D->UpdateScreen();
+
+			SetStatusMessage(GetResultString(EResult_OK));
+		}
+		while(false);
+	};
+
+	return pProcedure;
+}
+
+CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::FrustumCollisionTest()
+{
+	CPropertyItemButtonClickProcedure* pProcedure = new CPropertyItemButtonClickProcedure;
+
+	*pProcedure = MakePropertyItemButtonClickProcedure
+	{
+		do
+		{
+			CGUIPropertyItemView3DList* pViewList = dynamic_cast<CGUIPropertyItemView3DList*>(FindItemByFullPath(L"ROI@3D View"));
+
+			if(!pViewList)
+				break;
+
+			CGUIView3D* pView3D = pViewList->GetSelectedView3D();
+
+			if(!pView3D)
+			{
+				SetStatusMessage(L"[Error] Select 3D view.");
+				break;
+			}
+
+			int32_t i32ObjectCount = pView3D->GetObjectCount();
+
+			if(!i32ObjectCount)
+			{
+				SetStatusMessage(L"[Error] " + pView3D->GetTitle() + L" doesn't have any 3D objects.");
+				break;
+			}
+
+			std::vector<CFLFrustum<float>> vctFrustum;
+			pView3D->GetAllROI(vctFrustum);
+
+			if(vctFrustum.empty())
+			{
+				SetStatusMessage(L"[Error] There is no ROI in " + pView3D->GetTitle() + L". Press Ctrl+3 to teach ROI.");
+				break;
+			}
+
+			for(int32_t i = 0; i < i32ObjectCount; ++i)
+			{
+				CGUIView3DObject* pObj = (CGUIView3DObject*)pView3D->GetView3DObject(i);
+
+				if(!pObj)
+					continue;
+
+				CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+
+				if(!pObjData)
+					continue;
+
+				bool bUpdate = false;
+
+				for(auto& frustumROI : vctFrustum)
+				{
+					CFLArray<int32_t> flaCollisionIndex;
+
+					if(frustumROI.Contains(pObjData->GetVertices(), flaCollisionIndex).IsFail())
+						continue;
+
+					int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
+					bUpdate |= i32CollisionIndexCount > 0 ? true : false;
+
+					CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)pObjData->GetVertexColors();
+
+					for(int32_t j = 0; j < i32CollisionIndexCount; ++j)
+						pFlaVertexColor->SetAt(flaCollisionIndex.GetAt(j), TPoint3<uint8_t>(0, 255, 0)); // GREEN
+				}
+
+				if(bUpdate)
+				{
+					pObj->UpdateAll();
+					pView3D->UpdateObject(i);
+				}
+			}
+
+			pView3D->UpdateScreen();
+
+			SetStatusMessage(GetResultString(EResult_OK));
+		}
+		while(false);
+	};
+
+	return pProcedure;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectPLY(CGUIView3D* pView3D)
+{
+	CResult res;
+
+	do
+	{
+		if(!pView3D)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		// CGUIView3DObject 객체 선언(임시 변수)
+		// Declare CGUIView3DObject (temporary variable)
+		CGUIView3DObject objTemp;
+
+		// CGUIView3DObject 객체의 토폴로지 타입을 솔리드로 설정
+		// Set the topology type of the CGUIView3DObject to solid
+		objTemp.SetTopologyType(ETopologyType3D_Solid);
+
+		// CGUIView3DObject 객체를 뷰에 디스플레이 했을 때, 객체의 인덱스를 얻어 오기 위한 변수 선언
+		// Declare a variable to obtain the index of the object when the CGUIView3DObject is displayed in the view
+		int32_t i32Index = -1;
+
+		// CGUIView3DObject 객체를 뷰에 디스플레이
+		// Display the CGUIView3DObject in the view
+		if((res = pView3D->PushObject(objTemp, &i32Index)).IsFail())
+			break;
+
+		// 뷰에 디스플레이된 CGUIView3DObject 객체를 인덱스를 통해 얻어 오기
+		// Retrieve the displayed CGUIView3DObject using the index
+		CGUIView3DObject* pView3DObject = (CGUIView3DObject*)pView3D->GetView3DObject(i32Index);
+
+		if(!pView3DObject)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		// 뷰에 디스플레이된 CGUIView3DObject 객체의 내부 데이터 포인터 얻어 오기
+		// 버텍스, 컬러 등의 정보는 내부 데이터 객체인 CFL3DObject 안에 있음
+		// Retrieve the internal data pointer of the displayed CGUIView3DObject
+		// Information such as vertices, colors, etc., are inside the internal data object CFL3DObject
+		CFL3DObject* pObjData = (CFL3DObject*)pView3DObject->GetData();
+
+		// CFL3DObject 객체의 Load() 함수 호출을 통해 PLY 파일을 로드하여 
+		// 객체에 버텍스, 컬러, 노멀, 페이스 등의 정보를 저장
+		// Load the PLY file through the Load() function of the CFL3DObject object
+		// and store information such as vertices, colors, normals, faces, etc., in the object
+		if((res = pObjData->Load(L"../../ExampleImages/View3DExamples/Car wheel example.ply")).IsFail())
+			break;
+
+		// CGUIView3DObject 객체의 내부 데이터 객체인 CFL3DObject 가 변경되었으므로 
+		// 뷰에서도 변경 사항을 반영해서 디스플레이 하기 위해 업데이트 플래그 설정
+		// Since the internal data object of CGUIView3DObject, CFL3DObject, has changed
+		// set the update flag to reflect the changes in the view and display
+		pView3DObject->UpdateAll();
+
+		// 뷰에서 해당 객체를 업데이트
+		// Update the object in the view
+		pView3D->UpdateObject(i32Index);
+
+		// 업데이트된 객체의 크기를 반영하여 뷰를 ZoomFit
+		// ZoomFit the view to reflect the size of the updated object
+		pView3D->ZoomFit();
+
+		res = EResult_OK;
+		SetStatusMessage(GetResultString(res));
+	}
+	while(false);
+
+	return res;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectSphere(CGUIView3D* pView3D)
+{
+	CResult res;
+
+	do
+	{
+		if(!pView3D)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		// CGUIView3DObject 객체 선언(임시 변수)
+		// Declare CGUIView3DObject (temporary variable)
+		CGUIView3DObject objTemp;
+
+		// CGUIView3DObject 객체의 토폴로지 타입을 솔리드로 설정
+		// Set the topology type of the CGUIView3DObject to solid
+		objTemp.SetTopologyType(ETopologyType3D_Solid);
+
+		// CGUIView3DObject 객체를 뷰에 디스플레이 했을 때, 객체의 인덱스를 얻어 오기 위한 변수 선언
+		// Declare a variable to obtain the index of the object when the CGUIView3DObject is displayed in the view
+		int32_t i32Index = -1;
+
+		// CGUIView3DObject 객체를 뷰에 디스플레이
+		// Display the CGUIView3DObject in the view
+		if((res = pView3D->PushObject(objTemp, &i32Index)).IsFail())
+			break;
+
+		// 뷰에 디스플레이된 CGUIView3DObject 객체를 인덱스를 통해 얻어 오기
+		// Retrieve the displayed CGUIView3DObject using the index
+		CGUIView3DObject* pView3DObject = (CGUIView3DObject*)pView3D->GetView3DObject(i32Index);
+
+		if(!pView3DObject)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		// 구의 반지름 
+		// Sets the radius of the sphere.
+		float f32Radius = 30.f;
+
+		// 구의 슬라이스 개수. 값이 클수록 부드러운 구가 만들어집니다.
+		// Sets the number of slices for the sphere. Higher values create a smoother sphere.
+		uint32_t u32SliceCount = 30;
+
+		// 구의 스택 개수. 값이 클수록 부드러운 구가 만들어집니다.
+		// Sets the number of stacks for the sphere. Higher values create a smoother sphere.
+		uint32_t u32StackCount = 30;
+
+		// CGUIView3DObject 객체에 버텍스, 컬러, 노말, 페이스 정보를 설정
+		// Sets the vertex, color, normal, and face information to the CGUIView3DObject object.
+		if((res = GetSphereObject(*pView3DObject, f32Radius, u32SliceCount, u32StackCount)).IsFail())
+			break;
+
+		// CGUIView3DObject 객체에 쉐이딩 타입을 Phong shading 으로 설정
+		// Sets the shading type of the CGUIView3DObject object to Phong shading.
+		pView3DObject->SetShadingType(EView3DObjectShadingType_Phong);
+
+		// CGUIView3DObject 객체의 내부 데이터 객체인 CFL3DObject 가 변경되었으므로 
+		// 뷰에서도 변경 사항을 반영해서 디스플레이 하기 위해 업데이트 플래그 설정
+		// Since the internal data object of CGUIView3DObject, CFL3DObject, has changed
+		// set the update flag to reflect the changes in the view and display
+		pView3DObject->UpdateVertex();
+		pView3DObject->UpdateNormal();
+		pView3DObject->UpdateColor();
+
+		// 뷰에서 해당 객체를 업데이트
+		// Update the object in the view
+		pView3D->UpdateObject(i32Index);
+		pView3D->UpdateScreen();
+
+		res = EResult_OK;
+		SetStatusMessage(GetResultString(res));
+	}
+	while(false);
+
+	return res;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectHeightMap(CGUIView3D* pView3D)
+{
+	CResult res;
+
+	do
+	{
+		if(!pView3D)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		// CGUIView3DObjectHeightMap 객체 선언(임시 변수)
+		// Declare CGUIView3DObjectHeightMap (temporary variable)
+		CGUIView3DObjectHeightMap objTemp;
+
+		// CGUIView3DObjectHeightMap 객체의 토폴로지 타입을 솔리드로 설정
+		// Set the topology type of the CGUIView3DObjectHeightMap to solid
+		objTemp.SetTopologyType(ETopologyType3D_Solid);
+
+		// CGUIView3DObjectHeightMap 객체를 뷰에 디스플레이 했을 때, 객체의 인덱스를 얻어 오기 위한 변수 선언
+		// Declare a variable to obtain the index of the object when the CGUIView3DObjectHeightMap is displayed in the view
+		int32_t i32Index = -1;
+
+		// CGUIView3DObjectHeightMap 객체를 뷰에 디스플레이
+		// Display the CGUIView3DObjectHeightMap in the view
+		if((res = pView3D->PushObject(objTemp, &i32Index)).IsFail())
+			break;
+
+		// 뷰에 디스플레이된 CGUIView3DObjectHeightMap 객체를 인덱스를 통해 얻어 오기
+		// Retrieve the displayed CGUIView3DObjectHeightMap using the index
+		CGUIView3DObjectHeightMap* pObjHeightMap = (CGUIView3DObjectHeightMap*)pView3D->GetView3DObject(i32Index);
+
+		if(!pObjHeightMap)
+			break;
+
+		// 뷰에 디스플레이된 CGUIView3DObjectHeightMap 객체의 내부 데이터 포인터 얻어 오기
+		// 버텍스, 컬러 등의 정보는 내부 데이터 객체인 CFL3DObjectHeightMap 안에 있음
+		// Retrieve the internal data pointer of the displayed CGUIView3DObjectHeightMap
+		// Information such as vertices, colors, etc., are inside the internal data object CFL3DObjectHeightMap
+		CFL3DObjectHeightMap* pObjData = (CFL3DObjectHeightMap*)pObjHeightMap->GetData();
+
+		// 높이 맵으로 사용할 이미지 객체 선언
+		// Declares an image object to be used as a height map.
+		CFLImage fliHeightMap;
+
+		// 높이 맵 파일 로드
+		// Loads the height map file.
+		fliHeightMap.Load(L"../../ExampleImages/View3DExamples/mountain.flif");
+
+		// 이미지 객체를 CFL3DObjectHeightMap 객체에 Assign
+		// Assigns the image object to a CFL3DObjectHeightMap object.
+		pObjData->Assign(fliHeightMap);
+
+		// CGUIView3DObjectHeightMap 객체의 내부 데이터 객체인 CFL3DObjectHeightMap 이 변경되었으므로 
+		// 뷰에서도 변경 사항을 반영해서 디스플레이 하기 위해 업데이트 플래그 설정
+		// Since the internal data object of CGUIView3DObjectHeightMap, CFL3DObjectHeightMap, has changed
+		// set the update flag to reflect the changes in the view and display
+		pObjHeightMap->UpdateVertex();
+		pObjHeightMap->UpdateColor();
+
+		// 뷰에서 해당 객체를 업데이트
+		// Update the object in the view
+		pView3D->UpdateObject(i32Index);
+
+		// 업데이트된 객체의 크기를 반영하여 뷰를 ZoomFit
+		// ZoomFit the view to reflect the size of the updated object
+		pView3D->ZoomFit();
+
+		res = EResult_OK;
+		SetStatusMessage(GetResultString(res));
+	}
+	while(false);
+
+	return res;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectHeightMapAndTexture(CGUIView3D* pView3D)
+{
+	CResult res;
+
+	do
+	{
+		if(!pView3D)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		// CGUIView3DObjectHeightMap 객체 선언(임시 변수)
+		// Declare CGUIView3DObjectHeightMap (temporary variable)
+		CGUIView3DObjectHeightMap objTemp;
+
+		// CGUIView3DObjectHeightMap 객체의 토폴로지 타입을 솔리드로 설정
+		// Set the topology type of the CGUIView3DObjectHeightMap to solid
+		objTemp.SetTopologyType(ETopologyType3D_Solid);
+
+		// CGUIView3DObjectHeightMap 객체를 뷰에 디스플레이 했을 때, 객체의 인덱스를 얻어 오기 위한 변수 선언
+		// Declare a variable to obtain the index of the object when the CGUIView3DObjectHeightMap is displayed in the view
+		int32_t i32Index = -1;
+
+		// CGUIView3DObjectHeightMap 객체를 뷰에 디스플레이
+		// Display the CGUIView3DObjectHeightMap in the view
+		if((res = pView3D->PushObject(objTemp, &i32Index)).IsFail())
+			break;
+
+		// 뷰에 디스플레이된 CGUIView3DObjectHeightMap 객체를 인덱스를 통해 얻어 오기
+		// Retrieve the displayed CGUIView3DObjectHeightMap using the index
+		CGUIView3DObjectHeightMap* pObjHeightMap = (CGUIView3DObjectHeightMap*)pView3D->GetView3DObject(i32Index);
+
+		if(!pObjHeightMap)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		// 뷰에 디스플레이된 CGUIView3DObjectHeightMap 객체의 내부 데이터 포인터 얻어 오기
+		// 버텍스, 컬러 등의 정보는 내부 데이터 객체인 CFL3DObjectHeightMap 안에 있음
+		// Retrieve the internal data pointer of the displayed CGUIView3DObjectHeightMap
+		// Information such as vertices, colors, etc., are inside the internal data object CFL3DObjectHeightMap
+		CFL3DObjectHeightMap* pObjData = (CFL3DObjectHeightMap*)pObjHeightMap->GetData();
+
+		// 높이 맵으로 사용할 이미지 객체 선언
+		// Declares an image object to be used as a height map.
+		CFLImage fliHeightMap;
+
+		// 높이 맵 파일 로드
+		// Loads the height map file.
+		fliHeightMap.Load(L"../../ExampleImages/View3DExamples/mountain.flif");
+
+		// 텍스쳐로 사용할 이미지 객체 선언
+		// Declares an image object to be used as a texture
+		CFLImage fliTexture;
+
+		// 텍스쳐 파일 로드
+		// Loads the texture file.
+		fliTexture.Load(L"../../ExampleImages/View3DExamples/mountain_texture.flif");
+
+		// 높이 맵 이미지 객체를 CFL3DObjectHeightMap 객체에 Assign
+		// Assigns the height map image object to a CFL3DObjectHeightMap object.
+		pObjData->Assign(fliHeightMap);
+
+		// 텍스쳐 이미지 객체를 CFL3DObjectHeightMap 객체에 Assign
+		// Assigns the texture image object to a CFL3DObjectHeightMap object.
+		pObjData->SetTextureImage(fliTexture);
+		pObjData->ActivateVertexColorTexture(true);
+
+		// CGUIView3DObjectHeightMap 객체의 내부 데이터 객체인 CFL3DObjectHeightMap 이 변경되었으므로 
+		// 뷰에서도 변경 사항을 반영해서 디스플레이 하기 위해 업데이트 플래그 설정
+		// Since the internal data object of CGUIView3DObjectHeightMap, CFL3DObjectHeightMap, has changed
+		// set the update flag to reflect the changes in the view and display
+		pObjHeightMap->UpdateVertex();
+		pObjHeightMap->UpdateColor();
+
+		// 뷰에서 해당 객체를 업데이트
+		// Update the object in the view
+		pView3D->UpdateObject(i32Index);
+
+		// 업데이트된 객체의 크기를 반영하여 뷰를 ZoomFit
+		// ZoomFit the view to reflect the size of the updated object
+		pView3D->ZoomFit();
+
+		res = EResult_OK;
+		SetStatusMessage(GetResultString(res));
+	}
+	while(false);
+
+	return res;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectLine(CGUIView3D* pView3D)
+{
+	CResult res;
+
+	do
+	{
+		if(!pView3D)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		// 파라미터 순서 : 라인의 시작점 -> 라인의 끝점 -> 라인 색상 -> 라인 두께 -> 펜 스타일
+		// Parameter Order: Start Point of Line -> End Point of Line -> Line Color -> Line Thickness -> Pen Style
+		pView3D->PushObject(CGUIView3DObjectLine(TPoint3<float>(0, 10, 0), TPoint3<float>(40, 10, 0), WHITE, 6.f, EGUIViewImagePenStyle_Solid));
+		pView3D->PushObject(CGUIView3DObjectLine(TPoint3<float>(0, 20, 0), TPoint3<float>(40, 20, 0), YELLOW, 2.f, EGUIViewImagePenStyle_Dash));
+		pView3D->PushObject(CGUIView3DObjectLine(TPoint3<float>(0, 30, 0), TPoint3<float>(40, 30, 0), VIOLET, 3.f, EGUIViewImagePenStyle_Dot));
+
+		// 업데이트된 객체의 크기를 반영하여 뷰를 ZoomFit
+		// ZoomFit the view to reflect the size of the updated object
+		pView3D->ZoomFit();
+
+		// 3D View 에서 카메라 객체 얻어 오기
+		// Gets the camera object from the 3D View.
+		CGUIView3DCamera* pCamera = (CGUIView3DCamera*)pView3D->GetCamera();
+
+		if(pCamera)
+		{
+			// 추가한 라인을 잘 볼 수 있는 시점으로 이동
+			// Moves the viewpoint to a good position to see the added line.
+			
+			//카메라가 바라보는 방향을 설정
+			// Sets the direction that the camera is looking.
+			pCamera->SetDirection(CFLPoint3<float>(0, 0, -1));
+			
+			//카메라의 위쪽 방향 벡터를 설정
+			// Sets the up direction vector of the camera.
+			pCamera->SetDirectionUp(CFLPoint3<float>(0, 1, 0));
+
+			//카메라의 포지션을 설정
+			// Sets the position of the camera.
+			pCamera->SetPosition(CFLPoint3<float>(20, 20, 100));
+
+			//카메라가 바라보는 물체의 좌표를 설정
+			// Sets the coordinates of the object that the camera is looking at.
+			pCamera->SetTarget(CFLPoint3<float>(20, 20, 0));
+		}
+
+		res = EResult_OK;
+		SetStatusMessage(GetResultString(res));
+	}
+	while(false);
+
+	return res;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectUnselectableAxis(CGUIView3D* pView3D)
+{
+	CResult res;
+
+	do
+	{
+		if(!pView3D)
+		{
+			res = EResult_NullPointer;
+			break;
+		}
+
+		// 직접 추가한 3D Axis 를 띄우기 위해 기존의 디폴트 Axis 는 숨기기 처리
+		// Hides the default axis to display the custom 3D axis.
+		pView3D->ShowAxis(false);
+
+		// 화살표의 길이 // Height of the arrow.
+		float f32Height = 30.f;
+		// 화살표에서 뾰족한 부분(원뿔)이 차지하는 비율
+		// Ratio of the arrowhead (cone) to the total arrow length.
+		float f32ArrowRatio = 0.15f;
+		// 화살표의 파이프 반지름 // Radius of the arrow's pipe.
+		float f32PipeRadius = f32Height / 40.f;
+		// 화살표의 뾰족한 부분(원뿔)의 반지름 // Radius of the arrowhead (cone).
+		float f32ArrowBottomRadius = f32Height / 20.f;
+
+		// CGUIView3DObject 객체 선언(임시 변수)
+		// Declare CGUIView3DObject (temporary variable)
+		CGUIView3DObject mesh1, mesh2;
+
+		// CGUIView3DObject 객체의 토폴로지 타입을 솔리드로 설정
+		// Set the topology type of the CGUIView3DObject to solid
+		mesh1.SetTopologyType(ETopologyType3D_Solid);
+		mesh2.SetTopologyType(ETopologyType3D_Solid);
+
+		// 이 CGUIView3DObject 객체가 ROI 또는 Crop Object 연산 시 무시되도록 선택이 불가하게 처리
+		// Make these CGUIView3DObjects unselectable for ROI or Crop Object operations.
+		mesh1.EnableSelection(false);
+		mesh2.EnableSelection(false);
+
+		// X 축 // Axis x
+		{
+			// 화살표 객체를 생성(빨간색)
+			// Create the arrow object(Red color).
+			GetArrowObject(mesh1, mesh2, TPoint3<float>(0, 0, 0), f32Height, f32ArrowRatio, f32PipeRadius, f32ArrowBottomRadius, RED);
+
+			// CFL3DObjectUtilities 를 사용하여 간편하게 회전
+			// 파라미터 순서 : 시작 지점 벡터 -> 종료 지점 벡터 -> 회전할 객체
+			// 시작 벡터에서 종료 벡터사이의 각도만큼 회전됩니다.
+			// Rotate the arrow using CFL3DObjectUtilities.
+			// Parameter order: start point vector -> end point vector -> object to rotate
+			// Rotates by the angle between the start and end vectors.
+			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(1, 0, 0), *(Foundation::CFL3DObject*)mesh1.GetData());
+			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(1, 0, 0), *(Foundation::CFL3DObject*)mesh2.GetData());
+
+			// CGUIView3DObject 객체를 뷰에 디스플레이
+			// Display the CGUIView3DObject in the view
+			pView3D->PushObject(mesh1);
+			pView3D->PushObject(mesh2);
+
+			// 다음 축(Y축)을 그리기 위해 클리어
+			// Clear the objects to prepare for drawing the next axis (Y axis).
+			((Foundation::CFL3DObject*)mesh1.GetData())->Clear();
+			((Foundation::CFL3DObject*)mesh2.GetData())->Clear();
+		}
+
+		// Y 축 // Axis y
+		{
+			// 화살표 객체를 생성(초록색)
+			// Create the arrow object(Green color).
+			GetArrowObject(mesh1, mesh2, TPoint3<float>(0, 0, 0), f32Height, f32ArrowRatio, f32PipeRadius, f32ArrowBottomRadius, GREEN);
+
+			// CFL3DObjectUtilities 를 사용하여 간편하게 회전
+			// 파라미터 순서 : 시작 지점 벡터 -> 종료 지점 벡터 -> 회전할 객체
+			// 시작 벡터에서 종료 벡터사이의 각도만큼 회전됩니다.
+			// Rotate the arrow using CFL3DObjectUtilities.
+			// Parameter order: start point vector -> end point vector -> object to rotate
+			// Rotates by the angle between the start and end vectors.
+			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(0, 1, 0), *(Foundation::CFL3DObject*)mesh1.GetData());
+			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(0, 1, 0), *(Foundation::CFL3DObject*)mesh2.GetData());
+
+			// CGUIView3DObject 객체를 뷰에 디스플레이
+			// Display the CGUIView3DObject in the view
+			pView3D->PushObject(mesh1);
+			pView3D->PushObject(mesh2);
+
+			// 다음 축(Z축)을 그리기 위해 클리어
+			// Clear the objects to prepare for drawing the next axis (Z axis).
+			((Foundation::CFL3DObject*)mesh1.GetData())->Clear();
+			((Foundation::CFL3DObject*)mesh2.GetData())->Clear();
+		}
+
+		// Z 축 // Axis z
+		{
+			// 화살표 객체를 생성(파란색)
+			// Create the arrow object(Blue color).
+			GetArrowObject(mesh1, mesh2, TPoint3<float>(0, 0, 0), f32Height, f32ArrowRatio, f32PipeRadius, f32ArrowBottomRadius, BLUE);
+
+			// CGUIView3DObject 객체를 뷰에 디스플레이
+			// Display the CGUIView3DObject in the view
+			pView3D->PushObject(mesh1);
+			pView3D->PushObject(mesh2);
+		}
+
+		pView3D->ZoomFit();
+
+		res = EResult_OK;
+		SetStatusMessage(GetResultString(res));
+	}
+	while(false);
+
+	return res;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::GetSphereObject(CGUIView3DObject& meshSphere, float f32Radius, uint32_t u32SliceCount, uint32_t u32StackCount)
+{
+	CResult cReturn;
+
+	do
+	{
+		SFaceDataTangent sFaceData;
+
+		if((cReturn = CGUIView3DUtils::CreateSphere(f32Radius, u32SliceCount, u32StackCount, sFaceData)).IsFail())
+			break;
+
+		CFL3DObject* pObjectData = (CFL3DObject*)meshSphere.GetData();
+		int32_t i32VertexCount = (int32_t)sFaceData.m_vctVertex.size();
+		int32_t i32IndexCount = (int32_t)sFaceData.m_vctIndices32.size();
+
+		CFLArray<TPoint3<float>>* pFlaVertices = (CFLArray<TPoint3<float>>*)pObjectData->GetVertices();
+
+		if(!pFlaVertices->Resize(i32VertexCount))
+		{
+			cReturn = EResult_NotEnoughMemory;
+			break;
+		}
+
+		CFLArray<TPoint3<uint8_t>>* pFlaVertexColors = (CFLArray<TPoint3<uint8_t>>*)pObjectData->GetVertexColors();
+
+		if(!pFlaVertexColors->Resize(i32VertexCount))
+		{
+			cReturn = EResult_NotEnoughMemory;
+			break;
+		}
+
+		CFLArray<TPoint3<float>>* pFlaVertexNormal = (CFLArray<TPoint3<float>>*)pObjectData->GetNormalVectors();
+
+		if(!pFlaVertexNormal->Resize(i32VertexCount))
+		{
+			cReturn = EResult_NotEnoughMemory;
+			break;
+		}
+
+		CFLArray<int32_t>* pFlaFaces = (CFLArray<int32_t>*)pObjectData->GetFaces();
+		pFlaFaces->Reserve(i32IndexCount);
+
+		for(int32_t i = 0; i < (int32_t)sFaceData.m_vctVertex.size(); ++i)
+		{
+			auto& pt3 = sFaceData.m_vctVertex[i];
+			TPoint3<float>& tpVertex = pFlaVertices->GetAt(i);
+			TPoint3<uint8_t>& tpColor = pFlaVertexColors->GetAt(i);
+			TPoint3<float>& tpNormal = pFlaVertexNormal->GetAt(i);
+			tpVertex = pt3.position;
+			tpNormal = pt3.normal;
+			tpColor.x = 155;
+			tpColor.y = 230;
+			tpColor.z = 255;
+		}
+
+		for(int32_t i = 0; i < (int32_t)sFaceData.m_vctIndices32.size(); ++i)
+			pFlaFaces->PushBack((int32_t)sFaceData.m_vctIndices32[i]);
+
+		cReturn = EResult_OK;
+	}
+	while(false);
+
+	return cReturn;
+}
+
+const CResult FLImaging::GUI::CPropertyView3DExamples::GetArrowObject(CGUIView3DObject& mesh1, CGUIView3DObject& mesh2, const TPoint3<float>& tp3Origin, float f32Length, float f32ArrowRatio, float f32PipeRadius, float f32ArrowBottomRadius, COLORREF clr)
+{
+	CResult cReturn;
+
+	do
+	{
+		// color
+		uint8_t r = GetRValue(clr);
+		uint8_t g = GetGValue(clr);
+		uint8_t b = GetBValue(clr);
+
+		SFaceDataTangent sFaceData1;
+		float ArrowHeight = f32Length * f32ArrowRatio;
+		float PipeHeight = f32Length * (1.f - f32ArrowRatio);
+
+		// origin
+		float x = tp3Origin.x;
+		float y = tp3Origin.y;
+		float z = tp3Origin.z + (PipeHeight + ArrowHeight * 0.5f);
+
+		uint32_t sliceCount = 20;
+		uint32_t stackCount = 10;
+
+		cReturn = CGUIView3DUtils::CreateCylinder(f32ArrowBottomRadius, 0.f, ArrowHeight, x, y, z, sliceCount, stackCount, sFaceData1);
+
+		if(cReturn.IsFail())
+			break;
+
+		SFaceDataTangent sFaceData2;
+
+		// origin
+		x = tp3Origin.x;
+		y = tp3Origin.y;
+		z = tp3Origin.z + PipeHeight * 0.5f;
+
+		cReturn = CGUIView3DUtils::CreateCylinder(f32PipeRadius, f32PipeRadius, PipeHeight, x, y, z, sliceCount, stackCount, sFaceData2);
+
+		if(cReturn.IsFail())
+			break;
+
+		CFL3DObject* pObjectData1 = (CFL3DObject*)mesh1.GetData();
+		CFL3DObject* pObjectData2 = (CFL3DObject*)mesh2.GetData();
+
+		int32_t i32VertexCount1 = (int32_t)sFaceData1.m_vctVertex.size();
+		int32_t i32VertexCount2 = (int32_t)sFaceData2.m_vctVertex.size();
+		int32_t i32IndexCount1 = (int32_t)sFaceData1.m_vctIndices32.size() / 3;
+		int32_t i32IndexCount2 = (int32_t)sFaceData2.m_vctIndices32.size() / 3;
+
+		CFLArray<TPoint3<float>>* pFlaVertices1 = (CFLArray<TPoint3<float>>*)pObjectData1->GetVertices();
+
+		if(!pFlaVertices1->Resize(i32VertexCount1))
+		{
+			cReturn = EResult_NotEnoughMemory;
+			break;
+		}
+
+		CFLArray<TPoint3<uint8_t>>* pFlaVertexColors1 = (CFLArray<TPoint3<uint8_t>>*)pObjectData1->GetVertexColors();
+
+		if(!pFlaVertexColors1->Resize(i32VertexCount1))
+		{
+			cReturn = EResult_NotEnoughMemory;
+			break;
+		}
+
+		CFLArray<int32_t>* pFlaFaces1 = (CFLArray<int32_t>*)pObjectData1->GetFaces();
+
+		pFlaFaces1->Reserve(i32IndexCount1);
+
+		for(int32_t i = 0; i < (int32_t)sFaceData1.m_vctVertex.size(); ++i)
+		{
+			auto& pt3 = sFaceData1.m_vctVertex[i];
+			TPoint3<float>& tpVertex = pFlaVertices1->GetAt(i);
+			tpVertex = TPoint3<float>(pt3.position.x, pt3.position.y, pt3.position.z);
+
+			TPoint3<uint8_t>& tpColor = pFlaVertexColors1->GetAt(i);
+			tpColor = TPoint3<uint8_t>(r, g, b);
+		}
+
+		for(int32_t i = 0; i < (int32_t)sFaceData1.m_vctIndices32.size(); ++i)
+			pFlaFaces1->PushBack((int32_t)sFaceData1.m_vctIndices32[i]);
+
+
+		CFLArray<TPoint3<float>>* pFlaVertices2 = (CFLArray<TPoint3<float>>*)pObjectData2->GetVertices();
+
+		if(!pFlaVertices2->Resize(i32VertexCount2))
+		{
+			cReturn = EResult_NotEnoughMemory;
+			break;
+		}
+
+		CFLArray<TPoint3<uint8_t>>* pFlaVertexColors2 = (CFLArray<TPoint3<uint8_t>>*)pObjectData2->GetVertexColors();
+
+		if(!pFlaVertexColors2->Resize(i32VertexCount2))
+		{
+			cReturn = EResult_NotEnoughMemory;
+			break;
+		}
+
+		CFLArray<int32_t>* pFlaFaces2 = (CFLArray<int32_t>*)pObjectData2->GetFaces();
+
+		pFlaFaces2->Reserve(i32IndexCount2);
+
+		for(int32_t i = 0; i < (int32_t)sFaceData2.m_vctVertex.size(); ++i)
+		{
+			auto& pt3 = sFaceData2.m_vctVertex[i];
+			TPoint3<float>& tpVertex = pFlaVertices2->GetAt(i);
+			tpVertex = TPoint3<float>(pt3.position.x, pt3.position.y, pt3.position.z);
+
+			TPoint3<uint8_t>& tpColor = pFlaVertexColors2->GetAt(i);
+			tpColor = TPoint3<uint8_t>(r, g, b);
+		}
+
+		for(int32_t i = 0; i < (int32_t)sFaceData2.m_vctIndices32.size(); ++i)
+			pFlaFaces2->PushBack((int32_t)sFaceData2.m_vctIndices32[i]);
+
+		cReturn = EResult_OK;
+	}
+	while(false);
+
+	return cReturn;
+}
