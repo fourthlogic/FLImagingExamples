@@ -23,9 +23,9 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 		EnableStatusMessageBox(true);
 		SetMessageDisplayMode(EMessageDisplayMode_AutoScroll);
 
-		CGUIPropertyItemCategory* pCatPushObject = new CGUIPropertyItemCategory;
-		pCatPushObject->SetName(L"PushObject");
-		AddItem(pCatPushObject);
+		CGUIPropertyItemCategory* pCat = new CGUIPropertyItemCategory;
+		pCat->SetName(L"PushObject");
+		AddItem(pCat);
 		{
 			CGUIPropertyItemView3DList* pIVL = new CGUIPropertyItemView3DList;
 			pIVL->SetPath(L"PushObject");
@@ -57,9 +57,9 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			AddItem(pPIButton);
 		}
 
-		CGUIPropertyItemCategory* pCatROI = new CGUIPropertyItemCategory;
-		pCatROI->SetName(L"ROI");
-		AddItem(pCatROI);
+		pCat = new CGUIPropertyItemCategory;
+		pCat->SetName(L"ROI");
+		AddItem(pCat);
 		{
 			CGUIPropertyItemView3DList* pIVL = new CGUIPropertyItemView3DList;
 			pIVL->SetPath(L"ROI");
@@ -81,6 +81,149 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIButton->SetName(L"Frustum Collision Test");
 			pPIButton->SetButtonName(L"Execute");
 			pPIButton->SetPropertyButtonClickProcedure(FrustumCollisionTest());
+			AddItem(pPIButton);
+		}
+
+		pCat = new CGUIPropertyItemCategory;
+		pCat->SetName(L"Camera");
+		AddItem(pCat);
+		{
+			CGUIPropertyItemView3DList* pIVL = new CGUIPropertyItemView3DList;
+			pIVL->SetPath(L"Camera");
+			pIVL->SetName(L"3D View");
+			AddItem(pIVL);
+
+			CGUIPropertyItemButton* pPIButton = nullptr;
+
+			CGUIPropertyItemCategory* pCatValue = new CGUIPropertyItemCategory;
+			pCatValue->SetName(L"Position");
+			pCatValue->SetPath(L"Camera");
+			pCatValue->SetValueList(true);
+			pCatValue->SetExpand(false);
+			AddItem(pCatValue);
+			{
+				CGUIPropertyItemText* pText = new CGUIPropertyItemText;
+				pText->SetName(L"x");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Position");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+
+				pText = new CGUIPropertyItemText;
+				pText->SetName(L"y");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Position");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+
+				pText = new CGUIPropertyItemText;
+				pText->SetName(L"z");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Position");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+			}
+
+			pCatValue = new CGUIPropertyItemCategory;
+			pCatValue->SetName(L"Direction");
+			pCatValue->SetPath(L"Camera");
+			pCatValue->SetValueList(true);
+			pCatValue->SetExpand(false);
+			AddItem(pCatValue);
+			{
+				CGUIPropertyItemText* pText = new CGUIPropertyItemText;
+				pText->SetName(L"x");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Direction");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+
+				pText = new CGUIPropertyItemText;
+				pText->SetName(L"y");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Direction");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+
+				pText = new CGUIPropertyItemText;
+				pText->SetName(L"z");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Direction");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+			}
+
+			pCatValue = new CGUIPropertyItemCategory;
+			pCatValue->SetName(L"Up Direction");
+			pCatValue->SetPath(L"Camera");
+			pCatValue->SetValueList(true);
+			pCatValue->SetExpand(false);
+			AddItem(pCatValue);
+			{
+				CGUIPropertyItemText* pText = new CGUIPropertyItemText;
+				pText->SetName(L"x");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Up Direction");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+
+				pText = new CGUIPropertyItemText;
+				pText->SetName(L"y");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Up Direction");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+
+				pText = new CGUIPropertyItemText;
+				pText->SetName(L"z");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Up Direction");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+			}
+
+			pCatValue = new CGUIPropertyItemCategory;
+			pCatValue->SetName(L"Target");
+			pCatValue->SetPath(L"Camera");
+			pCatValue->SetValueList(true);
+			pCatValue->SetExpand(false);
+			AddItem(pCatValue);
+			{
+				CGUIPropertyItemText* pText = new CGUIPropertyItemText;
+				pText->SetName(L"x");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Target");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+
+				pText = new CGUIPropertyItemText;
+				pText->SetName(L"y");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Target");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+
+				pText = new CGUIPropertyItemText;
+				pText->SetName(L"z");
+				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetPath(L"Camera@Target");
+				pText->SetDefaultValue(L"0");
+				AddItem(pText);
+			}
+
+			CGUIPropertyItemText* pText = new CGUIPropertyItemText;
+			pText->SetName(L"Angle of View(Degree)");
+			pText->SetDescription(L"Input the angle of view in degree(not radian)");
+			pText->SetInputType(CGUIEditBase::EInputType_Double);
+			pText->SetPath(L"Camera");
+			pText->SetDefaultValue(L"45");
+			AddItem(pText);
+
+			pPIButton = new CGUIPropertyItemButton;
+			pPIButton->SetPath(L"Camera");
+			pPIButton->SetName(L"Set Parameters");
+			pPIButton->SetButtonName(L"Apply");
+			pPIButton->SetPropertyButtonClickProcedure(SetCameraParameters());
 			AddItem(pPIButton);
 		}
 
@@ -375,6 +518,135 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::Frus
 			}
 
 			pView3D->UpdateScreen();
+
+			SetStatusMessage(GetResultString(EResult_OK));
+		}
+		while(false);
+	};
+
+	return pProcedure;
+}
+
+CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::SetCameraParameters()
+{
+	CPropertyItemButtonClickProcedure* pProcedure = new CPropertyItemButtonClickProcedure;
+
+	*pProcedure = MakePropertyItemButtonClickProcedure
+	{
+		do
+		{
+			CGUIPropertyItemView3DList* pViewList = dynamic_cast<CGUIPropertyItemView3DList*>(FindItemByFullPath(L"Camera@3D View"));
+
+			if(!pViewList)
+				break;
+
+			CGUIView3D* pView3D = pViewList->GetSelectedView3D();
+
+			if(!pView3D)
+			{
+				SetStatusMessage(L"[Error] Select 3D view.");
+				break;
+			}
+
+			CGUIPropertyItemText* pTextPX = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Position@x"));
+			CGUIPropertyItemText* pTextPY = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Position@y"));
+			CGUIPropertyItemText* pTextPZ = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Position@z"));
+
+			CGUIPropertyItemText* pTextDX = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Direction@x"));
+			CGUIPropertyItemText* pTextDY = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Direction@y"));
+			CGUIPropertyItemText* pTextDZ = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Direction@z"));
+
+			CGUIPropertyItemText* pTextUDX = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Up Direction@x"));
+			CGUIPropertyItemText* pTextUDY = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Up Direction@y"));
+			CGUIPropertyItemText* pTextUDZ = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Up Direction@z"));
+
+			CGUIPropertyItemText* pTextTX = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Target@x"));
+			CGUIPropertyItemText* pTextTY = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Target@y"));
+			CGUIPropertyItemText* pTextTZ = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Target@z"));
+
+			CGUIPropertyItemText* pTextAoV = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Angle of View(Degree)"));
+
+			// 3D View 에서 카메라 객체 얻어 오기
+			// Gets the camera object from the 3D View.
+			CGUIView3DCamera* pCamera = (CGUIView3DCamera*)pView3D->GetCamera();
+
+			if(pCamera)
+			{
+				{
+					float f32DX = (float)_wtof(pTextDX->GetValue());
+					float f32DY = (float)_wtof(pTextDY->GetValue());
+					float f32DZ = (float)_wtof(pTextDZ->GetValue());
+
+					// 카메라가 바라보는 방향을 설정
+					// Sets the direction that the camera is looking.
+					pCamera->SetDirection(CFLPoint3<float>(f32DX, f32DY, f32DZ));
+				}
+
+				{
+					float f32UDX = (float)_wtof(pTextUDX->GetValue());
+					float f32UDY = (float)_wtof(pTextUDY->GetValue());
+					float f32UDZ = (float)_wtof(pTextUDZ->GetValue());
+
+					// 카메라의 위쪽 방향 벡터를 설정
+					// Sets the up direction vector of the camera.
+					pCamera->SetDirectionUp(CFLPoint3<float>(f32UDX, f32UDY, f32UDZ));
+				}
+
+				{
+					float f32PX = (float)_wtof(pTextPX->GetValue());
+					float f32PY = (float)_wtof(pTextPY->GetValue());
+					float f32PZ = (float)_wtof(pTextPZ->GetValue());
+
+					// 카메라의 포지션을 설정
+					// Sets the position of the camera.
+					pCamera->SetPosition(CFLPoint3<float>(f32PX, f32PY, f32PZ));
+				}
+
+				{
+					float f32TX = (float)_wtof(pTextTX->GetValue());
+					float f32TY = (float)_wtof(pTextTY->GetValue());
+					float f32TZ = (float)_wtof(pTextTZ->GetValue());
+
+					// 카메라가 바라보는 물체의 좌표를 설정
+					// Sets the coordinates of the object that the camera is looking at.
+					pCamera->SetTarget(CFLPoint3<float>(f32TX, f32TY, f32TZ));
+				}
+
+				{
+					float f32AoV = (float)_wtof(pTextAoV->GetValue());
+
+					// 카메라의 화각 설정
+					// Sets the angle of view
+					pCamera->SetAngleOfViewY(f32AoV, false);
+				}
+
+				// 뷰 업데이트 // Update the view	
+				pView3D->UpdateScreen();
+
+				CFLPoint3<float> flp3D = pCamera->GetDirection();
+				CFLPoint3<float> flp3UD = pCamera->GetDirectionUp();
+				CFLPoint3<float> flp3P = pCamera->GetPosition();
+				CFLPoint3<float> flp3T = pCamera->GetTargetPosition();
+				float f32Aov = pCamera->GetAngleOfViewY();
+
+				pTextPX->SetValue(CFLString<wchar_t>().Format(L"%f", flp3P.x));
+				pTextPY->SetValue(CFLString<wchar_t>().Format(L"%f", flp3P.y));
+				pTextPZ->SetValue(CFLString<wchar_t>().Format(L"%f", flp3P.z));
+
+				pTextDX->SetValue(CFLString<wchar_t>().Format(L"%f", flp3D.x));
+				pTextDY->SetValue(CFLString<wchar_t>().Format(L"%f", flp3D.y));
+				pTextDZ->SetValue(CFLString<wchar_t>().Format(L"%f", flp3D.z));
+
+				pTextUDX->SetValue(CFLString<wchar_t>().Format(L"%f", flp3UD.x));
+				pTextUDY->SetValue(CFLString<wchar_t>().Format(L"%f", flp3UD.y));
+				pTextUDZ->SetValue(CFLString<wchar_t>().Format(L"%f", flp3UD.z));
+
+				pTextTX->SetValue(CFLString<wchar_t>().Format(L"%f", flp3T.x));
+				pTextTY->SetValue(CFLString<wchar_t>().Format(L"%f", flp3T.y));
+				pTextTZ->SetValue(CFLString<wchar_t>().Format(L"%f", flp3T.z));
+
+				pTextAoV->SetValue(CFLString<wchar_t>().Format(L"%f", f32Aov));
+			}
 
 			SetStatusMessage(GetResultString(EResult_OK));
 		}
@@ -739,20 +1011,20 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectLine(CGUIView3D
 		{
 			// 추가한 라인을 잘 볼 수 있는 시점으로 이동
 			// Moves the viewpoint to a good position to see the added line.
-			
-			//카메라가 바라보는 방향을 설정
+
+			// 카메라가 바라보는 방향을 설정
 			// Sets the direction that the camera is looking.
 			pCamera->SetDirection(CFLPoint3<float>(0, 0, -1));
-			
-			//카메라의 위쪽 방향 벡터를 설정
+
+			// 카메라의 위쪽 방향 벡터를 설정
 			// Sets the up direction vector of the camera.
 			pCamera->SetDirectionUp(CFLPoint3<float>(0, 1, 0));
 
-			//카메라의 포지션을 설정
+			// 카메라의 포지션을 설정
 			// Sets the position of the camera.
 			pCamera->SetPosition(CFLPoint3<float>(20, 20, 100));
 
-			//카메라가 바라보는 물체의 좌표를 설정
+			// 카메라가 바라보는 물체의 좌표를 설정
 			// Sets the coordinates of the object that the camera is looking at.
 			pCamera->SetTarget(CFLPoint3<float>(20, 20, 0));
 		}
