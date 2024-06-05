@@ -451,6 +451,9 @@
     - View3DIntoDialog 
       - The example of inserting an 3D view into a dialog and using it.
       - 3D 뷰를 다이얼로그에 삽입해서 사용하는 예제.
+    - ROIUtilities3D
+      - Example of using ROIUtilities3D. This example demonstrates setting the ROI area for a 3D object and obtaining the parts included in the ROI.
+      - ROIUtilities3D 사용에 관한 예제. 3D 객체에 대해 ROI 영역을 설정하고, ROI 에 포함되는 부분을 얻어 오는 예제입니다.
       
   - [Controls]
 
