@@ -363,10 +363,11 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::ROIU
 				break;
 			}
 
-			std::vector<CFLFrustum<float>> vctFrustum;
-			pView3D->GetAllROI(vctFrustum);
+			CFLFigureArray flfaFrustum;
+			pView3D->GetAllROI(&flfaFrustum);
+			int64_t i64ROICount = flfaFrustum.GetCount();
 
-			if(vctFrustum.empty())
+			if(i64ROICount == 0)
 			{
 				SetStatusMessage(L"[Error] There is no ROI in " + pView3D->GetTitle() + L". Press Ctrl+3 to teach ROI.");
 				break;
@@ -374,8 +375,8 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::ROIU
 
 			CROIUtilities3D roiUtil3D;
 
-			for(auto& frustum : vctFrustum)
-				roiUtil3D.PushBackROI(frustum);
+			for(int64_t i = 0; i < i64ROICount; ++i)
+				roiUtil3D.PushBackROI(flfaFrustum.GetAt(i));
 
 			for(int32_t i = 0; i < i32ObjectCount; ++i)
 			{
@@ -520,10 +521,11 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::Frus
 				break;
 			}
 
-			std::vector<CFLFrustum<float>> vctFrustum;
-			pView3D->GetAllROI(vctFrustum);
+			CFLFigureArray flfaFrustum;
+			pView3D->GetAllROI(&flfaFrustum);
+			int64_t i64ROICount = flfaFrustum.GetCount();
 
-			if(vctFrustum.empty())
+			if(i64ROICount == 0)
 			{
 				SetStatusMessage(L"[Error] There is no ROI in " + pView3D->GetTitle() + L". Press Ctrl+3 to teach ROI.");
 				break;
@@ -543,8 +545,9 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::Frus
 
 				bool bUpdate = false;
 
-				for(auto& frustumROI : vctFrustum)
+				for(int64_t i = 0; i < i64ROICount; ++i)
 				{
+					CFLFrustum<float>& frustumROI = flfaFrustum.GetAt(i);
 					CFLArray<int32_t> flaCollisionIndex;
 
 					if(frustumROI.Contains(pObjData->GetVertices(), flaCollisionIndex).IsFail())
