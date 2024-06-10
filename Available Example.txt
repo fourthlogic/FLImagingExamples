@@ -20,6 +20,13 @@
         - The example of an algorithm that estimate pose matrix for a given point clouds.
         - 주어진 포인트 클라우드에 대해 포즈 행렬을 추정하는 알고리즘 예제.
 
+  - [Feature Extraction]
+    
+    - [Edge Detector 3D]
+      - EdgeDetector3D
+        - The example of an algorithm that detect the edge of a given point clouds.
+        - 주어진 포인트 클라우드의 엣지를 검출하는 알고리즘 예제.
+
   - [Reconstruction]
 
     - [Laser Triangulation]
