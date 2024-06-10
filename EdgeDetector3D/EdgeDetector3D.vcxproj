@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A59597B2-7223-4423-869A-C98196787F50}</ProjectGuid>
+    <ProjectGuid>{E2C775B3-3890-470D-9CE9-8FB39B39F993}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>EdgeDetector3D</RootNamespace>
     <ProjectName>EdgeDetector3D</ProjectName>
