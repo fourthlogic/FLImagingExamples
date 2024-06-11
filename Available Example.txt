@@ -162,29 +162,40 @@
       - The example of extracting information from a grid of rectangle image.
       - 사각형 격자 이미지로 정보를 추출하는 예제.
 
-  - [Gauge]
+  - [Measurement]
 
-    - CircleGauge 
-      - The algorithm example for estimating a circle within a measurement area of an image.
-      - 이미지의 측정영역 내에서 원을 측정하는 알고리즘 예제.
-    - EllipseGauge
-      - The algorithm example for estimating a ellipse within a measurement area of an image.
-      - 이미지의 측정영역 내에서 타원을 측정하는 알고리즘 예제.
-    - LineGauge 
-      - The algorithm example for estimating a line within a measurement area of an image.
-      - 이미지의 측정영역 내에서 선을 측정하는 알고리즘 예제.
-    - PointGauge 
-      - The algorithm example for estimating boundary points within a measurement area of an image.
-      - 이미지의 측정영역 내에서 경계점을 측정하는 알고리즘 예제.
-    - RectangleGauge 
-      - The algorithm example for estimating a rectangle within a measurement area of an image.
-      - 이미지의 측정영역 내에서 직사각형을 측정하는 알고리즘 예제.
-    - CrossGauge 
-      - The algorithm example for estimating a cross within a measurement area of an image.
-      - 이미지의 측정영역 내에서 십자형을 측정하는 알고리즘 예제.
-    - CornerGauge 
-      - The algorithm example for estimating a corner within a measurement area of an image.
-      - 이미지의 측정영역 내에서 코너를 측정하는 알고리즘 예제.
+    - [Gauge]
+
+      - CircleGauge 
+        - The algorithm example for estimating a circle within a measurement area of an image.
+        - 이미지의 측정영역 내에서 원을 측정하는 알고리즘 예제.
+      - EllipseGauge
+        - The algorithm example for estimating a ellipse within a measurement area of an image.
+        - 이미지의 측정영역 내에서 타원을 측정하는 알고리즘 예제.
+      - LineGauge 
+        - The algorithm example for estimating a line within a measurement area of an image.
+        - 이미지의 측정영역 내에서 선을 측정하는 알고리즘 예제.
+      - PointGauge 
+        - The algorithm example for estimating boundary points within a measurement area of an image.
+        - 이미지의 측정영역 내에서 경계점을 측정하는 알고리즘 예제.
+      - RectangleGauge 
+        - The algorithm example for estimating a rectangle within a measurement area of an image.
+        - 이미지의 측정영역 내에서 직사각형을 측정하는 알고리즘 예제.
+      - CrossGauge 
+        - The algorithm example for estimating a cross within a measurement area of an image.
+        - 이미지의 측정영역 내에서 십자형을 측정하는 알고리즘 예제.
+      - CornerGauge 
+        - The algorithm example for estimating a corner within a measurement area of an image.
+        - 이미지의 측정영역 내에서 코너를 측정하는 알고리즘 예제.
+
+    - ModulationTransferFunction 
+        - The algorithm example to calculate the Modulation Transfer Function(MTF) of an image.
+        - 이미지의 Modulation Transfer Function(MTF)를 구하는 알고리즘 예제.
+
+    - PeripheralLuminance 
+        - The algorithm example to calculate the luminance difference between the measurement area and the surrounding area as a ratio of an image.
+        - 이미지의 측정 영역과 주변 영역의 휘도의 차이에 대한 비율 구하는 알고리즘 예제.
+
 
   - [Match]
 
@@ -254,19 +265,7 @@
 
     - RectangleArrayMatch
       - The algorithm example that searchs for matching pattern array in detection image through pattern information on ROI array
-      - 관심영역 배열에 대한 패턴 정보를 통해, 검출 이미지에서 일치하는 패턴 배열을 탐색하는 알고리즘 예제.
-      
- - [Mura]
-
-    - Mura_Line
-      - The algorithm example that detects line mura defects.
-      - 선 Mura를 검출하는 Mura 알고리즘의 예제.
-    - Mura_Region
-      - The algorithm example that detects region mura defects.
-      - 영역 Mura를 검출하는 Mura 알고리즘의 예제.
-    - Mura_Spot
-      - The algorithm example that detects spot mura defects.
-      - 점 Mura를 검출하는 Mura 알고리즘의 예제.
+      - 관심영역 배열에 대한 패턴 정보를 통해, 검출 이미지에서 일치하는 패턴 배열을 탐색하는 알고리즘 예제.     
 
   - [Object]
 
@@ -353,6 +352,18 @@
       - BlobSubsampled_SortClusterMode
         - The example of outputting the result of the connection element detection algorithm as an alignment state based on human judgment in a twodimensional plane.
         - 연결 요소 검출 알고리즘의 결과를 2차원 평면에서 인간의 판단기준에서의 정렬 상태로 출력하는 예제.
+
+    - [Mura]
+
+      - Mura_Line
+        - The algorithm example that detects line mura defects.
+        - 선 Mura를 검출하는 Mura 알고리즘의 예제.
+      - Mura_Region
+        - The algorithm example that detects region mura defects.
+        - 영역 Mura를 검출하는 Mura 알고리즘의 예제.
+      - Mura_Spot
+        - The algorithm example that detects spot mura defects.
+        - 점 Mura를 검출하는 Mura 알고리즘의 예제.
 
   - [Optical Character]
 
@@ -621,10 +632,6 @@
     - Histogram
       - The example of an algorithm for calculating a histogram from an image.
       - 이미지에서 Histogram을 계산하는 알고리즘 예제.
-
-    -  ModulationTransferFunction 
-      - The algorithm example to calculate the Modulation Transfer Function(MTF) of an image.
-      - 이미지의 Modulation Transfer Function(MTF)를 구하는 알고리즘 예제.
 
     - Projection 
       - The algorithm example to get the cumulative sum of rows or columns of an image.
