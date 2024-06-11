@@ -29,13 +29,16 @@ int main()
 
 	/// 이미지 뷰 선언 // Declare the image view
 	CGUIViewImageWrap viewImageSource;
-	CGUIViewImageWrap viewImagresLearn;
-	CGUIViewImageWrap viewImagresValidation;
+	CGUIViewImageWrap viewImagesLearn;
+	CGUIViewImageWrap viewImagesValidation;
 
 	CResult res = EResult_UnknownError;
 
 	do
 	{
+		// 라이브러리가 완전히 로드 될 때까지 기다림 // Wait for the library to fully load
+		CThreadUtilities::Sleep(1000);
+
 		// 이미지 로드 // Loads image
 		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/SemanticSegmentation/Train.flif")))
 		{
@@ -50,26 +53,26 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = viewImagresLearn.Create(600, 0, 1100, 500)))
+		if(IsFail(res = viewImagesLearn.Create(600, 0, 1100, 500)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(res = viewImagresValidation.Create(1100, 0, 1700, 500)))
+		if(IsFail(res = viewImagesValidation.Create(1100, 0, 1700, 500)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 세 개의 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the three image view windows
-		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagresLearn)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagesLearn)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagresValidation)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagesValidation)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
@@ -82,13 +85,13 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = viewImagresLearn.SetImagePtr(&fliResultLearnImage)))
+		if(IsFail(res = viewImagesLearn.SetImagePtr(&fliResultLearnImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(res = viewImagresValidation.SetImagePtr(&fliResultValidationImage)))
+		if(IsFail(res = viewImagesValidation.SetImagePtr(&fliResultValidationImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
@@ -97,8 +100,8 @@ int main()
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerLearn = viewImageSource.GetLayer(0);
-		CGUIViewImageLayerWrap layerValidation = viewImagresLearn.GetLayer(0);
-		CGUIViewImageLayerWrap layerResultLabel = viewImagresValidation.GetLayer(0);
+		CGUIViewImageLayerWrap layerValidation = viewImagesLearn.GetLayer(0);
+		CGUIViewImageLayerWrap layerResultLabel = viewImagesValidation.GetLayer(0);
 
 		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 		layerLearn.Clear();
@@ -131,8 +134,8 @@ int main()
 
 		// 이미지 뷰를 갱신 // Update the image view.
 		viewImageSource.RedrawWindow();
-		viewImagresLearn.RedrawWindow();
-		viewImagresValidation.RedrawWindow();
+		viewImagesLearn.RedrawWindow();
+		viewImagesValidation.RedrawWindow();
 		
 		// Validation Image 비율 설정 // Set ratio of validation image
 		float f32Ratio = 0.4f;
@@ -149,27 +152,27 @@ int main()
 		}
 
 		// 세 개의 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the three image view windows
-		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagresLearn)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagesLearn)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagresValidation)))
+		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImagesValidation)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
 		// 이미지 뷰를 갱신 // Update the image view.
-		viewImagresLearn.ZoomFit();
-		viewImagresValidation.ZoomFit();
+		viewImagesLearn.ZoomFit();
+		viewImagesValidation.ZoomFit();
 		viewImageSource.RedrawWindow();
-		viewImagresLearn.RedrawWindow();
-		viewImagresValidation.RedrawWindow();
+		viewImagesLearn.RedrawWindow();
+		viewImagesValidation.RedrawWindow();
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
-		while(viewImageSource.IsAvailable() && viewImagresLearn.IsAvailable() && viewImagresValidation.IsAvailable())
+		while(viewImageSource.IsAvailable() && viewImagesLearn.IsAvailable() && viewImagesValidation.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);

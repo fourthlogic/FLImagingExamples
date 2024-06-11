@@ -39,6 +39,9 @@ int main()
 
 	do
 	{
+		// 라이브러리가 완전히 로드 될 때까지 기다림 // Wait for the library to fully load
+		CThreadUtilities::Sleep(1000);
+
 		// 이미지 로드 // Loads image
 		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/SemanticSegmentation/Train.flif")))
 		{
