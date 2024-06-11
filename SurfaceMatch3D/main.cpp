@@ -91,7 +91,7 @@ int main()
 		// 배경 제거 여부 설정 // Set the background removal
 		SurfaceMatch3D.EnableBackgroundRemoval(true);
 		// 장면 엣지 임계값 설정 // Set the scene edge threshold
-		SurfaceMatch3D.SetSceneEdgeThreshold(0.26);
+		SurfaceMatch3D.SetSceneEdgeThreshold(0.01);
 		// 클러스터링 범위 설정 // Set the clustering range
 		SurfaceMatch3D.SetClusterRange(2);
 		// 포즈 조정 반복 횟수 설정 // Set the iteration value of pose refinement
