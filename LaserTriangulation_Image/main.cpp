@@ -136,7 +136,7 @@ int main()
 		}
 
 		// 3D 이미지 뷰에 Height Map (Dst Image) 이미지를 디스플레이
-		if((res = view3DDst.PushObject(LaserTriangulation.GetDestinationObject())).IsFail())
+		if((res = view3DDst.PushObject(*LaserTriangulation.GetDestinationObject())).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
