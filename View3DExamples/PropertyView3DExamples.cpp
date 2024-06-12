@@ -547,10 +547,14 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::Frus
 
 				for(int64_t i = 0; i < i64ROICount; ++i)
 				{
-					CFLFrustum<float>& frustumROI = flfaFrustum.GetAt(i);
+					CFLFrustum<float>* pFrustumROI = (CFLFrustum<float>*)flfaFrustum.GetAt(i);
+					
+					if(!pFrustumROI)
+						continue;
+
 					CFLArray<int32_t> flaCollisionIndex;
 
-					if(frustumROI.Contains(pObjData->GetVertices(), flaCollisionIndex).IsFail())
+					if(pFrustumROI->Contains(pObjData->GetVertices(), flaCollisionIndex).IsFail())
 						continue;
 
 					int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
@@ -820,6 +824,8 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectPLY(CGUIView3D*
 			res = EResult_NullPointer;
 			break;
 		}
+
+		pView3D->Clear();
 
 		// CGUIView3DObject 객체 선언(임시 변수)
 		// Declare CGUIView3DObject (temporary variable)
