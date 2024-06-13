@@ -1250,6 +1250,10 @@
         - The example of an algorithm that extract image using one condition to compare image and scalar value.
         - 한 개의 조건을 이용해 이미지와 스칼라 값을 비교하여 조건에 맞는 이미지를 추출하는 알고리즘 예제
 
+    - [Conditional Replacer]
+      - The example of an algorithm that replace image using condition.
+      - 조건을 이용해 조건에 맞는 이미지를 변경하는 알고리즘 예제
+
     - [Generator]
 
       - [NoiseGenerator]
