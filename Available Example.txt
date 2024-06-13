@@ -577,14 +577,18 @@
       - 이미지 뷰 위의 마우스가 위치한 영역을 얻는 예제.
 
   - [MainFrame]
-
-    - FLImagingGUIExample
-      - The example of using main frame. Available in Visual Studio 2015 (vc14.0) later versions.
-      - 메인 프레임 사용에 관한 예제. Visual Studio 2015 (vc14.0) 이상의 버전에서 실행 가능합니다.
-      
+  
     - DialogProgressExampleApp
       - The example of progress dialog. Available in Visual Studio 2015 (vc14.0) later versions.
       - 진행률 창 다이얼로그 사용에 관한 예제. Visual Studio 2015 (vc14.0) 이상의 버전에서 실행 가능합니다.
+      
+    - FLImagingGUIExample
+      - The example of using main frame. Available in Visual Studio 2015 (vc14.0) later versions.
+      - 메인 프레임 사용에 관한 예제. Visual Studio 2015 (vc14.0) 이상의 버전에서 실행 가능합니다.
+ 
+    - GUIDialogExample
+      - The example of dialog(CGUIDialog class). Available in Visual Studio 2015 (vc14.0) later versions.
+      - 다이얼로그(CGUIDialog 클래스) 사용에 관한 예제. Visual Studio 2015 (vc14.0) 이상의 버전에서 실행 가능합니다.
       
     - MenuBarUserDefinedInfoExample
       - The example of progress displaying user-defined information in the menu bar of the mainframe. Available in Visual Studio 2015 (vc14.0) later versions.
