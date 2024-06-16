@@ -1540,7 +1540,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::GetSphereObject(CGUIView3
 			break;
 		}
 
-		CFLArray<TPoint3<float>>* pFlaVertexNormal = (CFLArray<TPoint3<float>>*)pObjectData->GetNormalVectors();
+		CFLArray<TPoint3<float>>* pFlaVertexNormal = (CFLArray<TPoint3<float>>*)pObjectData->GetVertexNormals();
 
 		if(!pFlaVertexNormal->Resize(i32VertexCount))
 		{
@@ -1548,7 +1548,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::GetSphereObject(CGUIView3
 			break;
 		}
 
-		CFLArray<int32_t>* pFlaFaces = (CFLArray<int32_t>*)pObjectData->GetFaces();
+		CFLArray<int32_t>* pFlaFaces = (CFLArray<int32_t>*)pObjectData->GetFaceIndices();
 		pFlaFaces->Reserve(i32IndexCount);
 
 		for(int32_t i = 0; i < (int32_t)sFaceData.m_vctVertex.size(); ++i)
@@ -1638,7 +1638,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::GetArrowObject(CGUIView3D
 			break;
 		}
 
-		CFLArray<int32_t>* pFlaFaces1 = (CFLArray<int32_t>*)pObjectData1->GetFaces();
+		CFLArray<int32_t>* pFlaFaces1 = (CFLArray<int32_t>*)pObjectData1->GetFaceIndices();
 
 		pFlaFaces1->Reserve(i32IndexCount1);
 
@@ -1672,7 +1672,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::GetArrowObject(CGUIView3D
 			break;
 		}
 
-		CFLArray<int32_t>* pFlaFaces2 = (CFLArray<int32_t>*)pObjectData2->GetFaces();
+		CFLArray<int32_t>* pFlaFaces2 = (CFLArray<int32_t>*)pObjectData2->GetFaceIndices();
 
 		pFlaFaces2->Reserve(i32IndexCount2);
 
