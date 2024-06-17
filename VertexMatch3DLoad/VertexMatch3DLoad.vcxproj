@@ -22,7 +22,7 @@
     <ProjectGuid>{DF08077E-BFC8-4844-AAD4-1528CE581734}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>VertexMatch3DLoad</RootNamespace>
-    <ProjectName>VertexMatch3DLoad</ProjectName>
+    <ProjectName>VertexMatch3DSaveLoad</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

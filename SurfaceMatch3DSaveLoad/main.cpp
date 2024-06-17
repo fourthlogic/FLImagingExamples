@@ -7,6 +7,7 @@ int main()
 	// 3D 객체 선언 // Declare 3D object
 	CFL3DObject fl3DOLearnObject;
 	CFL3DObject fl3DOSourceObject;
+	CFL3DObject fl3DOSampleObject;
 
 	// 3D 뷰 선언 // Declare 3D view	
 	CGUIView3DWrap view3DDst;
@@ -20,8 +21,15 @@ int main()
 		CResult eResult = EResult_UnknownError;
 
 
+		// Learn Object 로드 // Load the Learn object
+		if((eResult = fl3DOLearnObject.Load(L"../../ExampleImages/SurfaceMatch3D/Car wheel example.ply")).IsFail())
+		{
+			ErrorPrint(eResult, L"Failed to load the object file.\n");
+			break;
+		}
+
 		// Source Object 로드 // Load the Source object
-		if((eResult = fl3DOSourceObject.Load(L"../../ExampleImages/VertexMatch3D/ReferencePoints.ply")).IsFail())
+		if((eResult = fl3DOSourceObject.Load(L"../../ExampleImages/SurfaceMatch3D/Car example.ply")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the object file.\n");
 			break;
@@ -55,20 +63,43 @@ int main()
 			break;
 		}
 
-		// VertexMatch3D 객체 생성 // Create VertexMatch3D object
-		CVertexMatch3D VertexMatch3D;
+		// SurfaceMatch3D 객체 생성 // Create SurfaceMatch3D object
+		CSurfaceMatch3D SurfaceMatch3D;
 
-		// Display를 위한 Learn Object 설정 // Set the learn object for display
-				// SetLearnObject API를 호출하지 않아도 동작합니다. // It works without calling the SetLearnObject API.
-		VertexMatch3D.SetLearnObject(fl3DOLearnObject);
+		// Learn Object 설정 // Set the learn object
+		SurfaceMatch3D.SetLearnObject(fl3DOLearnObject);
 
-		if((eResult = VertexMatch3D.Load(L"../../ExampleImages/VertexMatch3D/Example FLVM Data.flvm")).IsFail())
+		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
+		if((eResult = SurfaceMatch3D.Learn()).IsFail())
+		{
+			ErrorPrint(eResult, L"Failed to execute Surface Match 3D.");
+			break;
+		}
+
+		// 학습 데이터 저장 // Save the learnt data
+		if((eResult = SurfaceMatch3D.Save(L"../../ExampleImages/SurfaceMatch3D/Example FLSM Data.flsm")).IsFail())
 		{
 			ErrorPrint(eResult, "Failed to load the object file.\n");
 			break;
 		}
 
-		// Learn Object 3D 뷰 생성 // Create the learn object 3D view
+		// 학습 데이터 불러오기 // Load the learnt data
+		if((eResult = SurfaceMatch3D.Load(L"../../ExampleImages/SurfaceMatch3D/Example FLSM Data.flsm")).IsFail())
+		{
+			ErrorPrint(eResult, "Failed to load the object file.\n");
+			break;
+		}
+
+		SurfaceMatch3D.GetSampledLearn3DObject(fl3DOSampleObject);
+
+		// Sampled data 출력 // Display the sampled data
+		if((eResult = view3DLearn.PushObject(fl3DOSampleObject)).IsFail())
+		{
+			ErrorPrint(eResult, L"Failed to display the 3D object.\n");
+			break;
+		}
+
+		// Learn Object 출력 // Display the learn object
 		if((eResult = view3DLearn.PushObject(fl3DOLearnObject)).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to display the 3D object.\n");
@@ -77,30 +108,32 @@ int main()
 
 
 		// Learn object 설정 // Set the learn object
-		VertexMatch3D.SetLearnObject(fl3DOLearnObject);
+		SurfaceMatch3D.SetLearnObject(fl3DOLearnObject);
 		// Source object 설정 // Set the source object
-		VertexMatch3D.SetSourceObject(fl3DOSourceObject);
+		SurfaceMatch3D.SetSourceObject(fl3DOSourceObject);
 		// Min score 설정 // Set the min score
-		VertexMatch3D.SetMinScore(0.3);
+		SurfaceMatch3D.SetMinScore(0.3);
 		// 최대 결과 개수 설정 // Set the max count of match result
-		VertexMatch3D.SetMaxObject(4);
+		SurfaceMatch3D.SetMaxObject(4);
 		// 학습 샘플링 거리 설정 // Set the learn sampling distance
-		VertexMatch3D.SetLearnSamplingDistance(0.03);
+		SurfaceMatch3D.SetLearnSamplingDistance(0.03);
 		// 장면 샘플링 거리 설정 // Set the scene sampling distance
-		VertexMatch3D.SetSceneSamplingDistance(0.03);
+		SurfaceMatch3D.SetSceneSamplingDistance(0.03);
 		// 키포인트 비율 설정 // Set the keypoint ratio.
-		VertexMatch3D.SetKeypointRatio(0.5);
+		SurfaceMatch3D.SetKeypointRatio(0.5);
+		// 엣지 학습 여부 설정 // Set the edge train
+		SurfaceMatch3D.EnableTrainEdge(false);
 		// 배경 제거 여부 설정 // Set the background removal
-		VertexMatch3D.EnableBackgroundRemoval(false);
+		SurfaceMatch3D.EnableBackgroundRemoval(false);
 		// 클러스터링 범위 설정 // Set the clustering range
-		VertexMatch3D.SetClusterRange(2);
+		SurfaceMatch3D.SetClusterRange(2);
 		// 포즈 조정 반복 횟수 설정 // Set the iteration value of pose refinement
-		VertexMatch3D.SetIteration(5);
+		SurfaceMatch3D.SetIteration(5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = VertexMatch3D.Execute()).IsFail())
+		if((eResult = SurfaceMatch3D.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute Vertex Match 3D.");
+			ErrorPrint(eResult, L"Failed to execute Surface Match 3D.");
 			break;
 		}
 
@@ -151,15 +184,15 @@ int main()
 		}
 
 		// 3D 오브젝트 뷰에 결과 Object와 비교를 위한 Source 오브젝트 디스플레이
-		if((eResult = view3DDst.PushObject((CFL3DObject)VertexMatch3D.GetSourceObject())).IsFail())
+		if((eResult = view3DDst.PushObject((CFL3DObject)SurfaceMatch3D.GetSourceObject())).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to set object on the 3d view.\n");
 			break;
 		}
 
 
-		CVertexMatch3D::SPoseMatrixParameters sResult;
-		int64_t i64ResultCount = VertexMatch3D.GetResultCount();
+		CSurfaceMatch3D::SPoseMatrixParameters sResult;
+		int64_t i64ResultCount = SurfaceMatch3D.GetResultCount();
 		TPoint3<double> tp3F64Rotation;
 		CFLString<wchar_t> strText;
 		CFLPoint3<double> flp3F64Translation;
@@ -177,14 +210,14 @@ int main()
 			Base::TPoint3<double> tp3Center;
 
 			// 추정된 포즈 행렬 가져오기
-			if((eResult = VertexMatch3D.GetResultPoseMatrix(i, sResult)).IsFail())
+			if((eResult = SurfaceMatch3D.GetResultPoseMatrix(i, sResult)).IsFail())
 			{
 				ErrorPrint(eResult, L"Failed to estimate pose matrix.\n");
 				break;
 			}
 
 			// 추정된 포즈 행렬이 적용된 결과 오브젝트 가져오기
-			if((eResult = VertexMatch3D.GetResultObject(i, fl3DOLearnTransform, tp3Center)).IsFail())
+			if((eResult = SurfaceMatch3D.GetResultObject(i, fl3DOLearnTransform, tp3Center)).IsFail())
 			{
 				ErrorPrint(eResult, L"Failed to estimate pose matrix.\n");
 				break;
