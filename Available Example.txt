@@ -741,6 +741,9 @@
     - BilateralFilter
       - The example of an algorithm that processes a bilateral filter to an image.
       - 이미지에서 bilateral 필터를 처리하는 알고리즘 예제
+    - BilateralFilterGrid
+      - The example of an algorithm that processes a bilateral filter to an image using Bilateral Grid data structure.
+      - Bilateral Grid 자료구조를 사용하여 이미지에서 bilateral 필터를 처리하는 알고리즘 예제
     - BilateralFilterSubSampled
       - The example of an algorithm that processes a bilateral filter And Applies the sampling method to an image.
       - 샘플링을 적용하여 이미지에서 bilateral 필터를 처리하는 알고리즘 예제	 
