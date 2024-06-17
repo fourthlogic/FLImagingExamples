@@ -19,7 +19,7 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliISrcImage.Load(L"../../ExampleImages/ShenCastanEdgeDetector_Img/Gear.flif")))
+		if(IsFail(res = fliISrcImage.Load(L"../../ExampleImages/ShenCastanEdgeDetector/Gear.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
