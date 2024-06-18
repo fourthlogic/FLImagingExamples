@@ -221,8 +221,7 @@ int main()
 		// Metric 조건은 mIoU 값으로, 실제 클래스 개수와 각 클래스의 점수에 대한 가중치 연산을 하여 정확도를 설정
 		// Setting the End-of-Learning Condition
 		// Metric condition is the mIoU value, and the accuracy is set by performing a weight operation on the actual number of classes and the score of each class
-		semanticSegmentation.SetLearningStopConditionAccuracy(0.99f);
-		semanticSegmentation.SetLearningStopConditionMetrics(0.75f);
+		semanticSegmentation.SetLearningStopCondition(L"accuracy >= 0.99 | mIoU >= 0.75");
 
 		// 학습 이미지 분할 모드 설정.
 		// 정사각형 비율을 유지하여 모델 크기로 이미지를 나누어 처리한다.
