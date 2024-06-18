@@ -176,7 +176,7 @@ int main()
 	    // 검증을 진행 할 최소 평균 Cost값 설정 // Set the minimum average cost value at which verification will be triggered
 		objectDetection.SetLearningRequiredCostForValidation(5.f);
 		// 학습 중단 Metrics 값 설정 // Set Learning Stop Metrics Values
-		objectDetection.SetLearningStopConditionMetrics(.9f);
+		objectDetection.SetLearningStopCondition(L"mAP >= 0.9");
 		// Optimizer의 학습률 설정 // Set learning rate of Optimizer
 		optSpec.SetLearningRate(5e-4f);
 		optSpec.SetWeightDecay(0.f);
