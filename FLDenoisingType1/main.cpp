@@ -98,7 +98,7 @@ int main()
 		}
 
 		// Amplitude ¼³Á¤ // Set the Amplitude.
-		if(IsFail(res = FLDenoisingType1.SetAmplitude(0.1)))
+		if(IsFail(res = FLDenoisingType1.SetAmplitude(30)))
 		{
 			ErrorPrint(res, "Failed to set Amplitude.");
 			break;
