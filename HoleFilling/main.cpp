@@ -83,31 +83,32 @@ int main()
 		}
 
 		// 알고리즘 객체 생성 // Create Algorithm object
-		CHoleFilling alg;
-		alg.SetSourceImage(arrFliImage[EType_Source]);
-		alg.SetDestinationImage(arrFliImage[EType_Destination]);
+		//CHoleFilling alg;
+		//alg.SetSourceImage(arrFliImage[EType_Source]);
+		//alg.SetDestinationImage(arrFliImage[EType_Destination]);
 
 		// 파라미터 설정 // Set Parameters
-		alg.SetIgnoreBoundaryHoles(L"Checked");
-		alg.SetLogicalConditionOfChannels(L"And");
-		alg.SetMaximumHoleArea(99999999999);
-		alg.SetShowHoleFigure(L"Checked");
-		alg.SetThresholdMode("Dual And");
+		//alg.SetIgnoreBoundaryHoles(L"Checked");
+		//alg.SetLogicalConditionOfChannels(L"And");
+		//alg.SetMinimumHoleArea(10);
+		//alg.SetMaximumHoleArea(99999999999);
+		//alg.SetShowHoleFigure(L"Checked");
+		//alg.SetThresholdMode("Dual And");
 
-		CMultiVar<uint64_t> mvThresholdCondition1(1, 1, 1);
-		alg.SetThresholdCondition(1, mvThresholdCondition1);
-		alg.SetThresholdValue(1, L"175, 230, 240");
+		//CMultiVar<uint64_t> mvThresholdCondition1(1, 1, 1);
+		//alg.SetThresholdCondition(1, mvThresholdCondition1);
+		//alg.SetThresholdValue(1, L"175, 230, 240");
 
-		CMultiVar<uint64_t> mvThresholdCondition2(5, 5, 5);
-		alg.SetThresholdCondition(2, mvThresholdCondition2);
-		alg.SetThresholdValue(2, L"200, 240, 255");
+		//CMultiVar<uint64_t> mvThresholdCondition2(5, 5, 5);
+		//alg.SetThresholdCondition(2, mvThresholdCondition2);
+		//alg.SetThresholdValue(2, L"200, 240, 255");
 
 		// 알고리즘 실행 // Execute Algorithm
-		if(IsFail(res = alg.Execute()))
+		/*if(IsFail(res = alg.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute HoleFilling.");
 			break;
-		}
+		}*/
 
 		CGUIViewImageLayerWrap arrLayer[ETypeCount];
 
