@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <iostream>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -171,7 +172,7 @@ int main()
 			CFLRect<double> flrBoundary = resultChar.flrBoundary;
 			CFLLine<double> fllBlankSpaceWidth = resultChar.fllBlankSpaceWidthLine;
 
-			flsResultString.Format(L"[%s] Score: %d%%\nScale: %.2lf\nAngle: %.1lf\nLighting: %.2lf\nContrast: %.2lf", resultChar.flfaCharacter.GetName(), (int32_t)(resultChar.f64Score * 100), resultChar.f64ScaleWidth * resultChar.f64ScaleHeight, resultChar.f64Lighting, resultChar.f64Contrast, resultChar.f64Rotation);
+			flsResultString.Format(L"[%s] Score: %d%%\nScale: %.2lf\nAngle: %.1lf\nLighting: %.2lf\nContrast: %.2lf", resultChar.flfaCharacter.GetName(), (int32_t)(resultChar.f64Score * 100), resultChar.f64ScaleWidth * resultChar.f64ScaleHeight, resultChar.f64Rotation, resultChar.f64Lighting, resultChar.f64Contrast);
 
 			if(IsFail(layer1.DrawTextImage(CFLPoint<double>(flrBoundary.left, flrBoundary.top), flsResultString, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
 			{
@@ -241,8 +242,8 @@ int main()
 			CFLRect<double> flrBoundary = resultChar.flrBoundary;
 			CFLLine<double> fllBlankSpaceWidth = resultChar.fllBlankSpaceWidthLine;
 
-			flsResultString.Format(L"[%s] Score: %d%%\nScale: %.2lf\nAngle: %.1lf\nLighting: %.2lf\nContrast: %.2lf", resultChar.flfaCharacter.GetName(), (int32_t)(resultChar.f64Score * 100), resultChar.f64ScaleWidth * resultChar.f64ScaleHeight, resultChar.f64Lighting, resultChar.f64Contrast, resultChar.f64Rotation);
-
+			flsResultString.Format(L"[%s] Score: %d%%\nScale: %.2lf\nAngle: %.1lf\nLighting: %.2lf\nContrast: %.2lf", resultChar.flfaCharacter.GetName(), (int32_t)(resultChar.f64Score * 100), resultChar.f64ScaleWidth * resultChar.f64ScaleHeight, resultChar.f64Rotation, resultChar.f64Lighting, resultChar.f64Contrast);
+			
 			if(IsFail(layer2.DrawTextImage(CFLPoint<double>(flrBoundary.left, flrBoundary.top), flsResultString, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
 			{
 				printf("Failed to draw recognized character : %lld", i);
@@ -311,7 +312,7 @@ int main()
 			CFLRect<double> flrBoundary = resultChar.flrBoundary;
 			CFLLine<double> fllBlankSpaceWidth = resultChar.fllBlankSpaceWidthLine;
 
-			flsResultString.Format(L"[%s] Score: %d%%\nScale: %.2lf\nAngle: %.1lf\nLighting: %.2lf\nContrast: %.2lf", resultChar.flfaCharacter.GetName(), (int32_t)(resultChar.f64Score * 100), resultChar.f64ScaleWidth * resultChar.f64ScaleHeight, resultChar.f64Lighting, resultChar.f64Contrast, resultChar.f64Rotation);
+			flsResultString.Format(L"[%s] Score: %d%%\nScale: %.2lf\nAngle: %.1lf\nLighting: %.2lf\nContrast: %.2lf", resultChar.flfaCharacter.GetName(), (int32_t)(resultChar.f64Score * 100), resultChar.f64ScaleWidth * resultChar.f64ScaleHeight, resultChar.f64Rotation, resultChar.f64Lighting, resultChar.f64Contrast);
 
 			if(IsFail(layer3.DrawTextImage(CFLPoint<double>(flrBoundary.left, flrBoundary.top), flsResultString, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
 			{
