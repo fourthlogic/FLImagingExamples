@@ -83,32 +83,37 @@ int main()
 		}
 
 		// 알고리즘 객체 생성 // Create Algorithm object
-		//CHoleFilling alg;
-		//alg.SetSourceImage(arrFliImage[EType_Source]);
-		//alg.SetDestinationImage(arrFliImage[EType_Destination]);
+		CHoleFilling alg;
+		alg.SetSourceImage(arrFliImage[EType_Source]);
+		alg.SetDestinationImage(arrFliImage[EType_Destination]);
 
 		// 파라미터 설정 // Set Parameters
-		//alg.SetIgnoreBoundaryHoles(L"Checked");
-		//alg.SetLogicalConditionOfChannels(L"And");
-		//alg.SetMinimumHoleArea(10);
-		//alg.SetMaximumHoleArea(99999999999);
-		//alg.SetShowHoleFigure(L"Checked");
-		//alg.SetThresholdMode("Dual And");
+		alg.EnableIgnoreBoundaryHole(true);
+		alg.SetMinimumHoleArea(10);
+		alg.SetMaximumHoleArea(99999999999);
+		alg.SetLogicalConditionOfChannels(ELogicalConditionOfChannels_And);
+		alg.SetThresholdMode(EThresholdMode_Dual_And);
 
-		//CMultiVar<uint64_t> mvThresholdCondition1(1, 1, 1);
-		//alg.SetThresholdCondition(1, mvThresholdCondition1);
-		//alg.SetThresholdValue(1, L"175, 230, 240");
+		CMultiVar<uint64_t> mvThresholdCondition1((uint64_t)ELogicalCondition_GreaterEqual
+												  , (uint64_t)ELogicalCondition_GreaterEqual
+												  , (uint64_t)ELogicalCondition_GreaterEqual);
+		alg.SetThresholdCondition(EThresholdIndex_First, mvThresholdCondition1);
+		CMultiVar<uint64_t> mvThresholdValue1(175, 230, 240);
+		alg.SetThresholdValue(EThresholdIndex_First, mvThresholdValue1);
 
-		//CMultiVar<uint64_t> mvThresholdCondition2(5, 5, 5);
-		//alg.SetThresholdCondition(2, mvThresholdCondition2);
-		//alg.SetThresholdValue(2, L"200, 240, 255");
+		CMultiVar<uint64_t> mvThresholdCondition2((uint64_t)ELogicalCondition_LessEqual
+												  , (uint64_t)ELogicalCondition_LessEqual
+												  , (uint64_t)ELogicalCondition_LessEqual);
+		alg.SetThresholdCondition(EThresholdIndex_Second, mvThresholdCondition2);
+		CMultiVar<uint64_t> mvThresholdValue2(200, 240, 255);
+		alg.SetThresholdValue(EThresholdIndex_Second, mvThresholdValue2);
 
 		// 알고리즘 실행 // Execute Algorithm
-		/*if(IsFail(res = alg.Execute()))
+		if(IsFail(res = alg.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute HoleFilling.");
 			break;
-		}*/
+		}
 
 		CGUIViewImageLayerWrap arrLayer[ETypeCount];
 
@@ -120,6 +125,14 @@ int main()
 
 			// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 			arrLayer[i].Clear();
+		}
+
+		CFLFigure* pFlfHoleContours = alg.GetFigureObject();
+
+		if(IsFail(res = arrLayer[EType_Source].DrawFigureImage(pFlfHoleContours, CYAN)))
+		{
+			ErrorPrint(res, "Failed to draw figure\n");
+			break;
 		}
 
 		// 이미지 뷰 정보 표시 // Display image view information
