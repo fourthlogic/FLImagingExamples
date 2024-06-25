@@ -502,6 +502,9 @@
     - ArrayOperation
       - The example of figure array operation.
       - Figure array Operation 에 관한 예제.
+    - ConvertImageFiguresToFigureArrayWithExpression
+      - The example of the function to get figures in an image into FigureArray using a conditional expression.
+      - Image에 있는 Figure들을 조건식으로 FigureArray에 받아오는 기능에 관한 예제.
     - FigureOperation
       - The example of figure operation.
       - Figure Operation 에 관한 예제.

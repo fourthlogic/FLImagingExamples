@@ -137,16 +137,20 @@ int main()
 		//	최소 둘레 직사각형의 중심의 x 좌표  : MinimumEnclosingRectangleCenter.x 혹은 MerCenter.x
 		//	최소 둘레 직사각형의 중심의 y 좌표  : MinimumEnclosingRectangleCenter.y 혹은 MerCenter.y
 		//	내부의 모든 정점의 개수             : VertexCount
+		//  도형 타입                           : Type
+		//  이름                                : Name
+		//  인덱스                              : Index
 		//
 		// 지원되는 함수
-		//  최대값                              : Max
-		//	최소값                              : Min
+		//  최대값                              : Max 혹은 Maximum
+		//	최소값                              : Min 혹은 Minimum
 		//	평균값                              : Mean 혹은 Average 혹은 Avg
-		//	중간값                              : Median
+		//	중간값                              : Median 혹은 Med
 		//	합                                  : Sum
-		//	제곱합                              : SqrSum
+		//	제곱합                              : Sqrsum 혹은 Sumsqr
+		//	제곱근합                            : Sqrtsum 혹은 Sumsqrt
 		//	분산                                : Variance 혹은 Var
-		//	표준편차                            : StDev
+		//	표준편차                            : Stdev 혹은 Stddev
 
 		// Supported Operators : [, ] , { , }, (, ), +, -, *, / , ^, <, >, <= , =<, >= , =>, != , =!, =, == , &, &&, and, | , || , or
 		// 
@@ -194,16 +198,20 @@ int main()
 		//	x-coordinate of center of ​​minimum enclosing rectangle : MinimumEnclosingRectangleCenter.x or MerCenter.x
 		//	y-coordinate of center of ​​minimum enclosing rectangle : MinimumEnclosingRectangleCenter.y or MerCenter.y
 		//	the number of all vertices in the interior            : VertexCount
+		//  type of figure                                        : Type
+		//  name                                                  : Name
+		//  index                                                 : Index
 		//
 		//  Supported functions
-		//  maximum value                                         : Max
-		//	minimum value                                         : Min
+		//  maximum value                                         : Max or Maximum
+		//	minimum value                                         : Min or Minimum
 		//	mean value                                            : Mean or Average or Avg
-		//	median value                                          : Median
+		//	median value                                          : Median or Med
 		//	sum                                                   : Sum
-		//	sum of squares                                        : SqrSum
+		//	sum of squares                                        : Sqrsum or Sumsqr
+		//	sum of square roots                                   : Sqrtsum or Sumsqrt
 		//	variance                                              : Variance or Var
-		//	standard deviation                                    : StDev
+		//	standard deviation                                    : Stdev or Stddev
 
 
 		// 조건식 문자열 // Condition string
