@@ -1334,6 +1334,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Trailing Ones", "Trailing O
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationTrailingOnes", "OperationTrailingOnes\OperationTrailingOnes.vcxproj", "{2BB435D5-617C-4812-B555-351F14E6AE3C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpticalCharacterVerification_Quality", "OpticalCharacterVerification_Quality\OpticalCharacterVerification_Quality.vcxproj", "{6BC72619-FD8A-4898-81D6-4DC547784E1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -4901,6 +4903,14 @@ Global
 		{2BB435D5-617C-4812-B555-351F14E6AE3C}.Release|Win32.Build.0 = Release|Win32
 		{2BB435D5-617C-4812-B555-351F14E6AE3C}.Release|x64.ActiveCfg = Release|x64
 		{2BB435D5-617C-4812-B555-351F14E6AE3C}.Release|x64.Build.0 = Release|x64
+		{6BC72619-FD8A-4898-81D6-4DC547784E1B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6BC72619-FD8A-4898-81D6-4DC547784E1B}.Debug|Win32.Build.0 = Debug|Win32
+		{6BC72619-FD8A-4898-81D6-4DC547784E1B}.Debug|x64.ActiveCfg = Debug|x64
+		{6BC72619-FD8A-4898-81D6-4DC547784E1B}.Debug|x64.Build.0 = Debug|x64
+		{6BC72619-FD8A-4898-81D6-4DC547784E1B}.Release|Win32.ActiveCfg = Release|Win32
+		{6BC72619-FD8A-4898-81D6-4DC547784E1B}.Release|Win32.Build.0 = Release|Win32
+		{6BC72619-FD8A-4898-81D6-4DC547784E1B}.Release|x64.ActiveCfg = Release|x64
+		{6BC72619-FD8A-4898-81D6-4DC547784E1B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -5559,10 +5569,11 @@ Global
 		{5F238616-86F9-4EBD-AF95-E505C94810B6} = {3433FC56-DD4C-4FFE-844F-539D2CD8B3CF}
 		{D98247E2-40C2-4894-8338-DA2AE8717F4F} = {37C97529-CF57-48C0-BCC5-50F1F7C78F70}
 		{99792BF5-617E-43A4-9F2E-9378270DCD8A} = {37C97529-CF57-48C0-BCC5-50F1F7C78F70}
+		{6BC72619-FD8A-4898-81D6-4DC547784E1B} = {37C97529-CF57-48C0-BCC5-50F1F7C78F70}
 		{2BB435D5-617C-4812-B555-351F14E6AE3C} = {A5571882-8A71-4DDB-83A4-6386B174A2EA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
+		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 	EndGlobalSection
 EndGlobal
