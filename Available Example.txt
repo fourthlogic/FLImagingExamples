@@ -382,8 +382,11 @@
   - [Optical Character]
 
     - OpticalCharacterRecognition
-      - The example of an algorithm that recognizes alphanumeric in an image.
-      - 이미지 내의 영숫자를 인식하는 알고리즘 예제.	 
+      - The example of an algorithm that recognizes character in an image.
+      - 이미지 내의 문자를 인식하는 알고리즘 예제.
+    - OpticalCharacterVerification
+      - The example of an algorithm that verifies character in an image.
+      - 이미지 내의 문자를 검증하는 알고리즘 예제.
       
   - [Optical Flow]
     
