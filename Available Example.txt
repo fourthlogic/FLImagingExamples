@@ -1134,7 +1134,7 @@
     - MorphologyGradient
       - The example of an algorithm that processes a gradient filter to an image.
       - 이미지에서 기울기 필터를 처리하는 알고리즘 예제.
-    - MorpholgyHitOrMiss
+    - MorphologyHitOrMiss
       - The example of an algorithm that processes a Hit or Miss transform to an image.
       - 이미지에서 적중과 비적중 변환을 처리하는 알고리즘 예제.
     - MorphologyOpen
