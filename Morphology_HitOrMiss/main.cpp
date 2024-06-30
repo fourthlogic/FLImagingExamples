@@ -27,7 +27,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = arrFliImage[EType_Src].Load(L"../../ExampleImages/Morphology/Chip_Noise.flif")))
+		if(IsFail(res = arrFliImage[EType_Src].Load(L"../../ExampleImages/Morphology/Monkey.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -91,13 +91,11 @@ int main()
 		// Morphology HitOrMiss 객체 생성 // Create Morphology HitOrMiss object
 		CMorphologyHitOrMiss morphologyHitOrMiss;
 		// ROI 범위 설정
-		CFLRect<int32_t> flrROI(100, 190, 360, 420);
+		CFLRect<int32_t> flrROI(90, 20, 430, 320);
 		// 처리할 이미지 설정
 		morphologyHitOrMiss.SetSourceImage(arrFliImage[EType_Src]);
 		// 처리할 ROI 설정
 		morphologyHitOrMiss.SetSourceROI(flrROI);
-
-
 
 		// Destination 이미지 설정 // Set the destination image
 		morphologyHitOrMiss.SetDestinationImage(arrFliImage[EType_Dst]);
