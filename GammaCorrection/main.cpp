@@ -18,7 +18,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((res = fliSrcImage.Load(L"../../ExampleImages/CameraMotionDeblurring/CircuitBlur.flif")).IsFail())
+		if((res = fliSrcImage.Load(L"../../ExampleImages/GammaCorrection/church.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
@@ -66,21 +66,21 @@ int main()
 			break;
 		}
 
-		// CameraMotionDeblurring 객체 생성 // Create CameraMotionDeblurring object
-		CCameraMotionDeblurring CameraMotionDeblurring;
+		// GammaCorrection 객체 생성 // Create GammaCorrection object
+		CGammaCorrection GammaCorrection;
 
 		// Source 이미지 설정 // Set the source image
-		CameraMotionDeblurring.SetSourceImage(fliSrcImage);
+		GammaCorrection.SetSourceImage(fliSrcImage);
 		// Destination 이미지 설정 // Set the destination image
-		CameraMotionDeblurring.SetDestinationImage(fliDstImage);
+		GammaCorrection.SetDestinationImage(fliDstImage);
 
 		// Mode 설정 // Set Mode
-		CameraMotionDeblurring.EnableWithEstimation(true);
+		GammaCorrection.EnableWithEstimation(true);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((res = CameraMotionDeblurring.Execute()).IsFail())
+		if((res = GammaCorrection.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute CameraMotionDeblurring.");
+			ErrorPrint(res, "Failed to execute GammaCorrection.");
 			break;
 		}
 
