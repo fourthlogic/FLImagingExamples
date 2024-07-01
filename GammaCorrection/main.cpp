@@ -18,7 +18,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((res = fliSrcImage.Load(L"../../ExampleImages/CGammaCorrection/chruch.flif")).IsFail())
+		if((res = fliSrcImage.Load(L"../../ExampleImages/CameraMotionDeblurring/CircuitBlur.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
@@ -66,21 +66,21 @@ int main()
 			break;
 		}
 
-		// CGammaCorrection 객체 생성 // Create CGammaCorrection object
-		CCGammaCorrection CGammaCorrection;
+		// CameraMotionDeblurring 객체 생성 // Create CameraMotionDeblurring object
+		CCameraMotionDeblurring CameraMotionDeblurring;
 
 		// Source 이미지 설정 // Set the source image
-		CGammaCorrection.SetSourceImage(fliSrcImage);
+		CameraMotionDeblurring.SetSourceImage(fliSrcImage);
 		// Destination 이미지 설정 // Set the destination image
-		CGammaCorrection.SetDestinationImage(fliDstImage);
+		CameraMotionDeblurring.SetDestinationImage(fliDstImage);
 
 		// Mode 설정 // Set Mode
-		CGammaCorrection.EnableWithEstimation(true);
+		CameraMotionDeblurring.EnableWithEstimation(true);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((res = CGammaCorrection.Execute()).IsFail())
+		if((res = CameraMotionDeblurring.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute CGammaCorrection.");
+			ErrorPrint(res, "Failed to execute CameraMotionDeblurring.");
 			break;
 		}
 
