@@ -12,7 +12,7 @@ int main()
 
 	// 이미지 뷰 선언 // Declare image view
 	CGUIViewImageWrap viewImageSrc;
-	CGUIViewImageWrap viewIamgeDst;
+	CGUIViewImageWrap viewImageDst;
 
 	 // 수행 결과 객체 선언 // Declare the execution result object
 	CResult res = EResult_UnknownError;
@@ -41,14 +41,14 @@ int main()
 		}
 
 		// Destination 이미지 뷰 생성 // Create the Destination image view
-		if((res = viewIamgeDst.Create(612, 0,1124, 512)).IsFail())
+		if((res = viewImageDst.Create(612, 0,1124, 512)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
-		if((res = viewImageSrc.SynchronizePointOfView(&viewIamgeDst)).IsFail())
+		if((res = viewImageSrc.SynchronizePointOfView(&viewImageDst)).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
@@ -62,14 +62,14 @@ int main()
 		}
 
 		// Destination 이미지 뷰에 이미지를 디스플레이 // Display the image in the destination image view
-		if((res = viewIamgeDst.SetImagePtr(&fliSourceDestinationImage)).IsFail())
+		if((res = viewImageDst.SetImagePtr(&fliSourceDestinationImage)).IsFail())
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 맞춤 // Synchronize the positions of the two image view windows
-		if((res = viewImageSrc.SynchronizeWindow(&viewIamgeDst)).IsFail())
+		if((res = viewImageSrc.SynchronizeWindow(&viewImageDst)).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
@@ -103,7 +103,7 @@ int main()
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSource = viewImageSrc.GetLayer(0);
-		CGUIViewImageLayerWrap layerDestination = viewIamgeDst.GetLayer(0);
+		CGUIViewImageLayerWrap layerDestination = viewImageDst.GetLayer(0);
 
 		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 		layerSource.Clear();
@@ -132,10 +132,10 @@ int main()
 
 		// 이미지 뷰를 갱신 // Update image view
 		viewImageSrc.Invalidate(true);
-		viewIamgeDst.Invalidate(true);
+		viewImageDst.Invalidate(true);
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
-		while(viewImageSrc.IsAvailable() && viewIamgeDst.IsAvailable())
+		while(viewImageSrc.IsAvailable() && viewImageDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
