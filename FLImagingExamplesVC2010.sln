@@ -1342,7 +1342,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GammaCorrection", "GammaCor
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LowLuminanceCorrectionType1", "LowLuminanceCorrectionType1\LowLuminanceCorrectionType1.vcxproj", "{52A09707-42B2-40CC-B98C-1B4657A01907}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TrailingZeros", "TrailingZeros", "{22E72ABC-CF80-401B-B4F6-EE824C5ACB9A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Trailing Zeros", "Trailing Zeros", "{22E72ABC-CF80-401B-B4F6-EE824C5ACB9A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationTrailingZeros", "OperationTrailingZeros\OperationTrailingZeros.vcxproj", "{F726B1CD-E4A2-4240-9D35-109717398E51}"
 EndProject
@@ -5612,7 +5612,7 @@ Global
 		{F726B1CD-E4A2-4240-9D35-109717398E51} = {22E72ABC-CF80-401B-B4F6-EE824C5ACB9A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
 		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
+		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
 	EndGlobalSection
 EndGlobal
