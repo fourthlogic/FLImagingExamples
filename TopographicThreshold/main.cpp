@@ -207,13 +207,13 @@ int main()
 			break;
 		}
 
-		if((res = arrLayer[2].DrawTextCanvas(&CFLPointD(0, 0), L"Destination1 Image\nRadius: 3", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[2].DrawTextCanvas(&CFLPointD(0, 0), L"Destination2 Image\nRadius: 3", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if((res = arrLayer[3].DrawTextCanvas(&CFLPointD(0, 0), L"Destination1 Image\nRadius: 4", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[3].DrawTextCanvas(&CFLPointD(0, 0), L"Destination3 Image\nRadius: 4", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
