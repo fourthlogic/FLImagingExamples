@@ -1096,6 +1096,9 @@
     - OperationTrailingOnes
       - The algorithm that performs the calculation of trailing ones from the source image.
       - 이미지에 Trailing Ones 연산을 수행하는 알고리즘
+    - OperationTrailingZeros
+      - The algorithm that performs the calculation of trailing zeros from the source image.
+      - 이미지에 Trailing Zeros 연산을 수행하는 알고리즘
 
 
   - [Inpainting]
