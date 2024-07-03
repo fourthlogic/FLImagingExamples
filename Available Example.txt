@@ -1219,6 +1219,9 @@
     - OtsuThreshold
       - Algorithm to calculate global image thresholds using the Otsu method.
       - Otsu 방법을 사용하여 전역 이미지 임계값을 계산하는 알고리즘.
+    - TopographicThreshold
+      - Algorithm that calculates first and second directional derivatives from image estimated by the bicubic facet model to classify 11 categories by pixel.
+      - Bicubic facet model을 통해 추정된 이미지에서 일차, 이차 방향도함수를 계산하여 픽셀별 11가지 카테고리 분류를 하는 알고리즘.
     - VarianceThreshold
       - Algorithm that binarizes images through regional thresholds.
       - 지역 임계값을 통해 이미지를 이진화하는 알고리즘.
