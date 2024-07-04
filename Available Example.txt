@@ -1007,6 +1007,9 @@
     - OperationInvert
       - The algorithm that performs Invert operation on the source image.
       - 이미지에 Invert 연산을 수행하는 알고리즘
+    - OperationLeadingOnes
+      - The algorithm that performs the calculation of leading ones from the source image.
+      - 이미지에 Leading Ones 연산을 수행하는 알고리즘
     - OperationLeadingZeros
       - The algorithm that performs calculation of leading zeros from the source image.
     - OperationLeastCommonMultiple
