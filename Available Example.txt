@@ -1012,6 +1012,7 @@
       - 이미지에 Leading Ones 연산을 수행하는 알고리즘
     - OperationLeadingZeros
       - The algorithm that performs calculation of leading zeros from the source image.
+      - 이미지에 Leading Zeros 연산을 수행하는 알고리즘
     - OperationLeastCommonMultiple
       - The algorithm that performs LCM operations on an image scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 LCM 연산을 수행하는 알고리즘.
