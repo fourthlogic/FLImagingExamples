@@ -127,7 +127,7 @@ int main()
 			arrLayer[i].Clear();
 		}
 
-		CFLFigure* pFlfHoleContours = alg.GetFigureObject();
+		const CFLFigure* pFlfHoleContours = alg.GetFigureObject();
 
 		if(IsFail(res = arrLayer[EType_Source].DrawFigureImage(pFlfHoleContours, CYAN)))
 		{
