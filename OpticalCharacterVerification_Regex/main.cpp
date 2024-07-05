@@ -88,17 +88,24 @@ int main()
 			break;
 		}
 
-		// 인식할 최소 퀄리티를 설정
-		if(IsFail(res = ocv.SetMinimumQuality(0.4)))
-		{
-			ErrorPrint(res, L"Failed to set minimum quality.");
-			break;
-		}
-
 		// 정규표현식 사용 여부 설정
 		if(IsFail(res = ocv.EnableRegularExpression(true)))
 		{
 			ErrorPrint(res, L"Failed to set regular expression.");
+			break;
+		}
+
+		// 인트루전 검증 여부를 설정 (해당 예제에서는 퀄리티 검증을 배제함)
+		if(IsFail(res = ocv.EnableIntrusionInspection(false)))
+		{
+			ErrorPrint(res, L"Failed to set intrusion inspection.");
+			break;
+		}
+
+		// 인트루전 검증 여부를 설정 (해당 예제에서는 퀄리티 검증을 배제함)
+		if(IsFail(res = ocv.EnableExtrusionInspection(false)))
+		{
+			ErrorPrint(res, L"Failed to set extrusion inspection.");
 			break;
 		}
 
