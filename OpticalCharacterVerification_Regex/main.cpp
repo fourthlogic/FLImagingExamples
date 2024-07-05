@@ -102,7 +102,7 @@ int main()
 			break;
 		}
 
-		// 인트루전 검증 여부를 설정 (해당 예제에서는 퀄리티 검증을 배제함)
+		// 익스트루전 검증 여부를 설정 (해당 예제에서는 퀄리티 검증을 배제함)
 		if(IsFail(res = ocv.EnableExtrusionInspection(false)))
 		{
 			ErrorPrint(res, L"Failed to set extrusion inspection.");
