@@ -113,42 +113,42 @@ int main()
 		}
 
 		// Operation Compare 객체 생성 // Create Operation Compare object
-		COperationCompare compare;
+		//COperationCompare compare;
 
-		// Source 이미지 설정 // Set the source image
-		compare.SetSourceImage(fliSourceImage);
+		//// Source 이미지 설정 // Set the source image
+		//compare.SetSourceImage(fliSourceImage);
 
-		// Source 이미지의 ROI 범위 설정
+		//// Source 이미지의 ROI 범위 설정
 		CFLCircle<int32_t> flcSourceROI(258, 258, 174, 0, 0, 360, EArcClosingMethod_EachOther);
 
-		// Source 이미지의 ROI 지정
-		compare.SetSourceROI(flcSourceROI);
+		//// Source 이미지의 ROI 지정
+		//compare.SetSourceROI(flcSourceROI);
 
-		// Operand 이미지 설정 // Set the operand image
-		compare.SetOperandImage(fliOperandImage);
+		//// Operand 이미지 설정 // Set the operand image
+		//compare.SetOperandImage(fliOperandImage);
 
-		// Destination 이미지 설정 // Set the destination image
-		compare.SetDestinationImage(fliDestinationImage);
+		//// Destination 이미지 설정 // Set the destination image
+		//compare.SetDestinationImage(fliDestinationImage);
 
-		// Destination 이미지 Pivot 좌표 설정
+		//// Destination 이미지 Pivot 좌표 설정
 		CFLPoint<int32_t> flpDestinationPivot(174, 169);
 
-		// Destination 이미지 Pivot 지정
-		compare.SetDestinationPivot(flpDestinationPivot);
+		//// Destination 이미지 Pivot 지정
+		//compare.SetDestinationPivot(flpDestinationPivot);
 
-		// Image Operation 모드로 설정 // Set operation mode to image
-		compare.SetOperationSource(EOperationSource_Image);
+		//// Image Operation 모드로 설정 // Set operation mode to image
+		//compare.SetOperationSource(EOperationSource_Image);
 
-		// 공백 색상 칠하기 모드 해제
-		// 결과 이미지가 이미 존재할 경우 연산되지 않은 영역을 공백 색상으로 칠하지 않고 원본 그대로 둔다.
-		compare.EnableFillBlankColorMode(false);
+		//// 공백 색상 칠하기 모드 해제
+		//// 결과 이미지가 이미 존재할 경우 연산되지 않은 영역을 공백 색상으로 칠하지 않고 원본 그대로 둔다.
+		//compare.EnableFillBlankColorMode(false);
 
-		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(res =res = compare.Execute()))
-		{
-			ErrorPrint(res, "Failed to execute operation compare.\n");
-			break;
-		}
+		//// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
+		//if(IsFail(res =res = compare.Execute()))
+		//{
+		//	ErrorPrint(res, "Failed to execute operation compare.\n");
+		//	break;
+		//}
 
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately

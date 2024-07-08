@@ -75,57 +75,57 @@ int main()
 			break;
 		}
 
-		// Operation Compare 객체 생성 // Create Operation Compare object
-		COperationCompare compare;
+		//// Operation Compare 객체 생성 // Create Operation Compare object
+		//COperationCompare compare;
 
-		// Source 이미지 설정 // Set the source image
-		compare.SetSourceImage(fliSourceImage);
+		//// Source 이미지 설정 // Set the source image
+		//compare.SetSourceImage(fliSourceImage);
 
-		// Source 이미지의 ROI 범위 설정
+		//// Source 이미지의 ROI 범위 설정
 		CFLCircle<int32_t> flcSourceROI(284, 278, 206, 0, 0, 360, EArcClosingMethod_EachOther);
 
-		// Source 이미지의 ROI 지정
-		compare.SetSourceROI(flcSourceROI);
+		//// Source 이미지의 ROI 지정
+		//compare.SetSourceROI(flcSourceROI);
 
-		// Source 이미지의 Pivot 범위 설정
+		//// Source 이미지의 Pivot 범위 설정
 		CFLPoint<int32_t> flpSourcePivot(258, 254);
-		
-		// Source 이미지의 Pivot 지정
-		compare.SetSourcePivot(flpSourcePivot);
+		//
+		//// Source 이미지의 Pivot 지정
+		//compare.SetSourcePivot(flpSourcePivot);
 
-		// Destination 이미지 설정 // Set the destination image
-		compare.SetDestinationImage(fliDestinationImage);
+		//// Destination 이미지 설정 // Set the destination image
+		//compare.SetDestinationImage(fliDestinationImage);
 
-		// Destination 이미지의 ROI 범위 설정
+		//// Destination 이미지의 ROI 범위 설정
 		CFLCircle<int32_t> flrDestinationROI(284, 278, 206, 0, 0, 360, EArcClosingMethod_EachOther);
 
-		// Destination 이미지의 ROI 지정
-		compare.SetDestinationROI(flrDestinationROI);
+		//// Destination 이미지의 ROI 지정
+		//compare.SetDestinationROI(flrDestinationROI);
 
-		// Destination 이미지의 Pivot 범위 설정
+		//// Destination 이미지의 Pivot 범위 설정
 		CFLPoint<int32_t> flpDestinationPivot(258, 254);
 
-		// Destination 이미지의 Pivot 지정
-		compare.SetDestinationPivot(flpDestinationPivot);
+		//// Destination 이미지의 Pivot 지정
+		//compare.SetDestinationPivot(flpDestinationPivot);
 
-		// Scalar Operation 모드로 설정 // Set operation mode to scalar
-		compare.SetOperationSource(EOperationSource_Scalar);
+		//// Scalar Operation 모드로 설정 // Set operation mode to scalar
+		//compare.SetOperationSource(EOperationSource_Scalar);
 
-		// 스칼라 색상 지정
-		compare.SetScalarValue(CMultiVar<double>(100, 150, 200));
+		//// 스칼라 색상 지정
+		//compare.SetScalarValue(CMultiVar<double>(100, 150, 200));
 
-		// 항상 공백 영역을 지정한 색으로 채우도록 설정
-		compare.EnableFillBlankColorMode(true);
+		//// 항상 공백 영역을 지정한 색으로 채우도록 설정
+		//compare.EnableFillBlankColorMode(true);
 
-		// 공백 색상 지정
-		compare.SetBlankColor(CMultiVar<double>(110, 50, 210));
+		//// 공백 색상 지정
+		//compare.SetBlankColor(CMultiVar<double>(110, 50, 210));
 
-		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(res= res = compare.Execute()))
-		{
-			ErrorPrint(res, "Failed to execute operation compare.\n");
-			break;
-		}
+		//// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
+		//if(IsFail(res= res = compare.Execute()))
+		//{
+		//	ErrorPrint(res, "Failed to execute operation compare.\n");
+		//	break;
+		//}
 
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
