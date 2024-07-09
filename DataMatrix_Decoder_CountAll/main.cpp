@@ -49,7 +49,7 @@ int main()
 		dataMatrixDecoder.SetColorMode(EDataCodeColor_Auto);
 		// 전처리 Blur 설정
 		// EDataCodeDecoderImageProcessingMethod_Normal 입력 시 전처리를 하지 않는다.
-		dataMatrixDecoder.SetImageProcessingMethod(EDataCodeDecoderImageProcessingMethod_Normal);
+		dataMatrixDecoder.SetDenoisingMethod(EDataCodeDecoderDenoisingMethod_Gaussian);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = dataMatrixDecoder.Execute()))
