@@ -159,7 +159,7 @@ int main()
 		}
 
 		// 인식할 문자의 색상을 설정
-		if(IsFail(res = ocr.SetRecognizingCharacterColorType(COCR::ECharacterColorType_WhiteOnBlack)))
+		if(IsFail(res = ocr.SetRecognizingCharacterColorType(ECharacterColorType_WhiteOnBlack)))
 		{
 			ErrorPrint(res, L"Failed to set recognizing character color.");
 			break;

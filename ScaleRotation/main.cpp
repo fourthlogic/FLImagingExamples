@@ -123,8 +123,6 @@ int main()
 		scaleRotation.SetResizeMethod(EResizeMethod_Resize);
 		// Source Image 설정 // Set Source Image
 		scaleRotation.SetSourceImage(arrFliImage[EType_Dst3]);
-		// Rotation First 설정 // Set Rotation First
-		scaleRotation.EnableRotationFirst(true);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = scaleRotation.Execute()))
