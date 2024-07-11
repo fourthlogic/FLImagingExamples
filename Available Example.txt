@@ -672,6 +672,9 @@
     - ChannelIntegrator
       - The example of an algorithm that combines channels selected from multiple images.
       - 여러 이미지에서 선택된 채널들을 결합하는 알고리즘 예제.
+    - ChannelSwapper
+      - The example of an algorithm that Swaps two channels selected from a multichannel image.
+      - 다채널 이미지에서 두개의 채널을 교환하여 이미지화하는 알고리즘 예제.
 
   - [Convolution]
   
