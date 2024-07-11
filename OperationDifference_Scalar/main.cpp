@@ -114,11 +114,8 @@ int main()
 		// 스칼라 색상 지정
 		difference.SetScalarValue(CMultiVar<double>(100, 150, 200));
 
-		// 항상 공백 영역을 지정한 색으로 채우도록 설정
-		difference.EnableFillBlankColorMode(true);
-
-		// 공백 색상 지정
-		difference.SetBlankColor(CMultiVar<double>(110, 50, 210));
+		// 공백 영역을 지정한 색으로 채우지 않도록 설정
+		difference.EnableFillBlankColorMode(false);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res= res = difference.Execute()))
