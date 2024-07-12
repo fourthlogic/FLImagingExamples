@@ -20,7 +20,7 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/ChannelExtractor/deer.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/ChannelExtraction/deer.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -66,22 +66,22 @@ int main()
 			break;
 		}
 
-		// Channel Extractor 객체 생성 // Create Channel Extractor object
-		CChannelExtractor channelExtractor;
+		// Channel Extraction 객체 생성 // Create Channel Extraction object
+		CChannelExtraction channelExtraction;
 
 		// Source 이미지 설정 // Set source image 
-		channelExtractor.SetSourceImage(fliSourceImage);
+		channelExtraction.SetSourceImage(fliSourceImage);
 
 		// Destination 이미지 설정 // Set destination image
-		channelExtractor.SetDestinationImage(fliDestinationImage);
+		channelExtraction.SetDestinationImage(fliDestinationImage);
 
 		// 추출할 채널 인덱스 설정 // Set channel index to extract
-		channelExtractor.SetExtractionChannel(EChannelSelection_Channel_0);
+		channelExtraction.SetExtractionChannel(EChannelSelection_Channel_0);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = channelExtractor.Execute()).IsFail())
+		if((res = channelExtraction.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute Channel Extractor.\n");
+			ErrorPrint(res, "Failed to execute Channel Extraction.\n");
 
 			ErrorPrint(res, "\n");
 			break;

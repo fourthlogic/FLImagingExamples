@@ -19,9 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{823A8D30-8B38-45D9-98D0-DE21AB32575C}</ProjectGuid>
+    <ProjectGuid>{1D9B29B7-1CBE-4FE2-BF5B-54BFFAD4A912}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ChannelExtractor</RootNamespace>
+    <RootNamespace>ChannelCombination</RootNamespace>
+    <ProjectName>ChannelCombination</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

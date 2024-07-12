@@ -20,19 +20,19 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliSourceImage[0].Load(L"../../ExampleImages/ChannelIntegrator/Valley1.flif")))
+		if(IsFail(res = fliSourceImage[0].Load(L"../../ExampleImages/ChannelCombination/Valley1.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(res = fliSourceImage[1].Load(L"../../ExampleImages/ChannelIntegrator/Valley2.flif")))
+		if(IsFail(res = fliSourceImage[1].Load(L"../../ExampleImages/ChannelCombination/Valley2.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(res = fliSourceImage[2].Load(L"../../ExampleImages/ChannelIntegrator/Valley3.flif")))
+		if(IsFail(res = fliSourceImage[2].Load(L"../../ExampleImages/ChannelCombination/Valley3.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -126,8 +126,8 @@ int main()
 			break;
 		}
 
-		// Channel Integrator 객체 생성 // Create Channel Integrator object
-		CChannelIntegrator ChannelIntegrator;
+		// Channel Combination 객체 생성 // Create Channel Combination object
+		CChannelCombination channelCombination;
 
 		// Source 이미지를 저장할 Array 선언 // Declare an Array to store the source image
 		Base::CFLArray<CFLImage*> vctSrcImages;
@@ -146,15 +146,15 @@ int main()
 		vctSrcChannels.PushBack(EChannelSelection_Channel_0);
 
 		// 결합할 이미지 및 채널입력 // Set images, channels
-		ChannelIntegrator.SetSourceImage(vctSrcImages, vctSrcChannels);
+		channelCombination.SetSourceImage(vctSrcImages, vctSrcChannels);
 
 		// 결합 결과를 저장할 이미지 설정 // Set destination image
-		ChannelIntegrator.SetDestinationImage(fliDestinationImage);
+		channelCombination.SetDestinationImage(fliDestinationImage);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = ChannelIntegrator.Execute()).IsFail())
+		if((res = channelCombination.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute Channel Integrator.");
+			ErrorPrint(res, "Failed to execute Channel Combination.");
 			break;
 		}
 
