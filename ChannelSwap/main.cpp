@@ -20,7 +20,7 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/channelSwapper/deer.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/channelSwap/deer.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -66,23 +66,23 @@ int main()
 			break;
 		}
 
-		// Channel Swapper 객체 생성 // Create Channel Swapper object
-		CChannelSwapper channelSwapper;
+		// Channel Swap 객체 생성 // Create Channel Swap object
+		CChannelSwap channelSwap;
 
 		// Source 이미지 설정 // Set source image 
-		channelSwapper.SetSourceImage(fliSourceImage);
+		channelSwap.SetSourceImage(fliSourceImage);
 
 		// Destination 이미지 설정 // Set destination image
-		channelSwapper.SetDestinationImage(fliDestinationImage);
+		channelSwap.SetDestinationImage(fliDestinationImage);
 
 		// 교환할 채널 인덱스 설정 // Set channel indexes to swap
-		channelSwapper.SetSwapChannelFrom(EChannelSelection_Channel_0);
-		channelSwapper.SetSwapChannelTo(EChannelSelection_Channel_1);
+		channelSwap.SetSwapChannelFrom(EChannelSelection_Channel_0);
+		channelSwap.SetSwapChannelTo(EChannelSelection_Channel_1);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = channelSwapper.Execute()).IsFail())
+		if((res = channelSwap.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute Channel Swapper.\n");
+			ErrorPrint(res, "Failed to execute Channel Swap.\n");
 
 			ErrorPrint(res, "\n");
 			break;
