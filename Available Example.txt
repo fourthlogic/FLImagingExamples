@@ -508,6 +508,18 @@
     - ConvertImageFiguresToFigureArrayWithExpression
       - The example of the function to get figures in an image into FigureArray using a conditional expression.
       - Image에 있는 Figure들을 조건식으로 FigureArray에 받아오는 기능에 관한 예제.
+    - Figure_Close
+      - The example of Close operation in Figure Morphology.
+      - Figure Morphology 중 Close 동작에 관한 예제.
+    - Figure_Dilate
+      - The example of Dilate operation in Figure Morphology.
+      - Figure Morphology 중 Dilate 동작에 관한 예제.
+    - Figure_Erode
+      - The example of Erode operation in Figure Morphology.
+      - Figure Morphology 중 Erode 동작에 관한 예제.
+    - Figure_Open
+      - The example of Open operation in Figure Morphology.
+      - Figure Morphology 중 Open 동작에 관한 예제.
     - FigureOperation
       - The example of figure operation.
       - Figure Operation 에 관한 예제.
