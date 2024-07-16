@@ -62,14 +62,14 @@ int main()
 		}
 
 		// Operation Leading Ones 객체 생성 // Create Operation Leading Ones object
-		COperationLeadingOnes to;
+		COperationLeadingOnes clo;
 
 		// 이미지 설정 // Set the images
-		to.SetSourceImage(fliSrcImage);
-		to.SetDestinationImage(fliDstImage);
+		clo.SetSourceImage(fliSrcImage);
+		clo.SetDestinationImage(fliDstImage);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((res = to.Execute()).IsFail())
+		if((res = clo.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute operation leading ones.");
 			break;
