@@ -278,7 +278,7 @@ int main()
 				if(i64Col == i64GridCol - 1)
 					colorText = YELLOW;
 
-				if(IsFail(res = layerLearn.DrawTextImage(pFlpGridPoint1, wstrGridIdx, colorText, BLACK, (int32_t)(f64PointDist / 2), true, f64Angle)))
+				if(IsFail(res = layerLearn.DrawTextImage(pFlpGridPoint1, wstrGridIdx, colorText, BLACK, (float)(f64PointDist / 2), true, f64Angle)))
 				{
 					ErrorPrint(res, L"Failed to draw figure\n");
 					break;

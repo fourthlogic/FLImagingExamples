@@ -294,7 +294,7 @@ int main()
 						f64Pitch = std::min<double>(f64Pitch, sqrt(f64Dx * f64Dx + f64Dy * f64Dy));
 					}
 
-					if(IsFail(res = layerLearn.DrawTextImage(sArrGridDisplay[i].sGridData.arrGridData[i64Row][i64Col], CFLString<wchar_t>().Format(L"%d", i32VertexNumber++), crTextColor, BLACK, (int32_t)(f64Pitch / 3), true, f64Angle)))
+					if(IsFail(res = layerLearn.DrawTextImage(sArrGridDisplay[i].sGridData.arrGridData[i64Row][i64Col], CFLString<wchar_t>().Format(L"%d", i32VertexNumber++), crTextColor, BLACK, (float)(f64Pitch / 3), true, f64Angle)))
 					{
 						ErrorPrint(res, L"Failed to draw figure\n");
 						break;

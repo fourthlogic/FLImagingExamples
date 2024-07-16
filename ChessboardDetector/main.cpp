@@ -78,7 +78,7 @@ int main()
 				break;
 			}
 
-			if(IsFail(res = layer.DrawTextImage(flq.flpPoints[0], CFLString<wchar_t>().Format(L"[%d] (%d X %d) Pitch [%.01lf]", i, chessBoard.GetResultBoardColumns(i), chessBoard.GetResultBoardRows(i), chessBoard.GetResultBoardAverageCellPitch(i)), YELLOW, BLACK, (int32_t)(f64Width / 16), true, f64Angle, EGUIViewImageTextAlignment_LEFT_BOTTOM, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_EXTRABOLD)))
+			if(IsFail(res = layer.DrawTextImage(flq.flpPoints[0], CFLString<wchar_t>().Format(L"[%d] (%d X %d) Pitch [%.01lf]", i, chessBoard.GetResultBoardColumns(i), chessBoard.GetResultBoardRows(i), chessBoard.GetResultBoardAverageCellPitch(i)), YELLOW, BLACK, (float)(f64Width / 16), true, f64Angle, EGUIViewImageTextAlignment_LEFT_BOTTOM, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_EXTRABOLD)))
 			{
 				ErrorPrint(res, L"Failed to draw text\n");
 				break;
@@ -182,7 +182,7 @@ int main()
 						f64Pitch = std::min<double>(f64Pitch, sqrt(f64Dx * f64Dx + f64Dy * f64Dy));
 					}
 
-					if(IsFail(res = layer.DrawTextImage(CFLPoint<double>(fla2[k]), CFLString<wchar_t>().Format(L"%d", i32VertexNumber++), crTextColor, BLACK, (int32_t)(f64Pitch / 2), true, f64Angle)))
+					if(IsFail(res = layer.DrawTextImage(CFLPoint<double>(fla2[k]), CFLString<wchar_t>().Format(L"%d", i32VertexNumber++), crTextColor, BLACK, (float)(f64Pitch / 2), true, f64Angle)))
 					{
 						ErrorPrint(res, L"Failed to draw text\n");
 						break;
