@@ -177,6 +177,18 @@ int main()
 			break;
 		}
 
+		if(IsFail(res = sCC.EnableAutoCalibration(false)))
+		{
+			ErrorPrint(res, L"Failed to auto calibration\n");
+			break;
+		}
+
+		if(IsFail(res = sCC.Calibrate()))
+		{
+			ErrorPrint(res, L"Failed to calibration\n");
+			break;
+		}
+
 		if(!Undistortion(sCC, fliSourceImage, fliDestinationImage, viewImageSource, viewImageDestination))
 			break;
 		
