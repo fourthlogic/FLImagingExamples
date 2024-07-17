@@ -173,6 +173,7 @@ int main()
 			CFLLine<double> fllBlankSpaceWidth = resultChar.fllBlankSpaceWidthLine;
 
 			flsResultString.Format(L"[%s] Quality: %d%%\nScale: %.2lf\nAngle: %.1lf\nLighting: %.2lf\nContrast: %.2lf", resultChar.flfaCharacter.GetName(), (int32_t)(resultChar.f64Quality * 100), resultChar.f64ScaleWidth * resultChar.f64ScaleHeight, resultChar.f64Rotation, resultChar.f64Lighting, resultChar.f64Contrast);
+			flsResultString2.Format(L"Space Width: %.2lf", resultChar.f64BlankSpaceWidth);
 
 			if(IsFail(layer1.DrawTextImage(CFLPoint<double>(flrBoundary.left, flrBoundary.top), flsResultString, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
 			{
@@ -195,21 +196,16 @@ int main()
 			layer1.DrawFigureImage(resultChar.flfaIntrusion, YELLOW, 1, YELLOW, EGUIViewImagePenStyle_Solid, 1.f, 0.3f);
 			layer1.DrawFigureImage(resultChar.flfaExtrusion, BLUE, 1, BLUE, EGUIViewImagePenStyle_Solid, 1.f, 0.3f);
 
-			if(resultChar.f64BlankSpaceWidth != 0.)
+			if(IsFail(layer1.DrawFigureImage(fllBlankSpaceWidth, BLACK, 3, BLACK, EGUIViewImagePenStyle_Solid, 1.f, 0.35f)))
 			{
-				flsResultString2.Format(L"Space Width: %.2lf", resultChar.f64BlankSpaceWidth);
+				printf("Failed to draw recognized character : %lld", i);
+				break;
+			}
 
-				if(IsFail(layer1.DrawFigureImage(fllBlankSpaceWidth, BLACK, 3, BLACK, EGUIViewImagePenStyle_Solid, 1.f, 0.35f)))
-				{
-					printf("Failed to draw recognized character : %lld", i);
-					break;
-				}
-
-				if(IsFail(layer1.DrawTextImage(CFLPointArray(fllBlankSpaceWidth)[0], flsResultString2, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
-				{
-					printf("Failed to draw recognized character : %lld", i);
-					break;
-				}
+			if(IsFail(layer1.DrawTextImage(CFLPointArray(fllBlankSpaceWidth)[0], flsResultString2, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
+			{
+				printf("Failed to draw recognized character : %lld", i);
+				break;
 			}
 		}
 
@@ -246,7 +242,8 @@ int main()
 			CFLLine<double> fllBlankSpaceWidth = resultChar.fllBlankSpaceWidthLine;
 
 			flsResultString.Format(L"[%s] Quality: %d%%\nScale: %.2lf\nAngle: %.1lf\nLighting: %.2lf\nContrast: %.2lf", resultChar.flfaCharacter.GetName(), (int32_t)(resultChar.f64Quality * 100), resultChar.f64ScaleWidth * resultChar.f64ScaleHeight, resultChar.f64Rotation, resultChar.f64Lighting, resultChar.f64Contrast);
-			
+			flsResultString2.Format(L"Space Width: %.2lf", resultChar.f64BlankSpaceWidth);
+
 			if(IsFail(layer2.DrawTextImage(CFLPoint<double>(flrBoundary.left, flrBoundary.top), flsResultString, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
 			{
 				printf("Failed to draw recognized character : %lld", i);
@@ -268,21 +265,16 @@ int main()
 			layer2.DrawFigureImage(resultChar.flfaIntrusion, YELLOW, 1, YELLOW, EGUIViewImagePenStyle_Solid, 1.f, 0.3f);
 			layer2.DrawFigureImage(resultChar.flfaExtrusion, BLUE, 1, BLUE, EGUIViewImagePenStyle_Solid, 1.f, 0.3f);
 
-			if(resultChar.f64BlankSpaceWidth != 0.)
+			if(IsFail(layer2.DrawFigureImage(fllBlankSpaceWidth, BLACK, 3, BLACK, EGUIViewImagePenStyle_Solid, 1.f, 0.35f)))
 			{
-				flsResultString2.Format(L"Space Width: %.2lf", resultChar.f64BlankSpaceWidth);
+				printf("Failed to draw recognized character : %lld", i);
+				break;
+			}
 
-				if(IsFail(layer2.DrawFigureImage(fllBlankSpaceWidth, BLACK, 3, BLACK, EGUIViewImagePenStyle_Solid, 1.f, 0.35f)))
-				{
-					printf("Failed to draw recognized character : %lld", i);
-					break;
-				}
-
-				if(IsFail(layer2.DrawTextImage(CFLPointArray(fllBlankSpaceWidth)[0], flsResultString2, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
-				{
-					printf("Failed to draw recognized character : %lld", i);
-					break;
-				}
+			if(IsFail(layer2.DrawTextImage(CFLPointArray(fllBlankSpaceWidth)[0], flsResultString2, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
+			{
+				printf("Failed to draw recognized character : %lld", i);
+				break;
 			}
 		}
 
@@ -319,6 +311,7 @@ int main()
 			CFLLine<double> fllBlankSpaceWidth = resultChar.fllBlankSpaceWidthLine;
 
 			flsResultString.Format(L"[%s] Quality: %d%%\nScale: %.2lf\nAngle: %.1lf\nLighting: %.2lf\nContrast: %.2lf", resultChar.flfaCharacter.GetName(), (int32_t)(resultChar.f64Quality * 100), resultChar.f64ScaleWidth * resultChar.f64ScaleHeight, resultChar.f64Rotation, resultChar.f64Lighting, resultChar.f64Contrast);
+			flsResultString2.Format(L"Space Width: %.2lf", resultChar.f64BlankSpaceWidth);
 
 			if(IsFail(layer3.DrawTextImage(CFLPoint<double>(flrBoundary.left, flrBoundary.top), flsResultString, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
 			{
@@ -340,22 +333,17 @@ int main()
 
 			layer3.DrawFigureImage(resultChar.flfaIntrusion, YELLOW, 1, YELLOW, EGUIViewImagePenStyle_Solid, 1.f, 0.3f);
 			layer3.DrawFigureImage(resultChar.flfaExtrusion, BLUE, 1, BLUE, EGUIViewImagePenStyle_Solid, 1.f, 0.3f);
-
-			if(resultChar.f64BlankSpaceWidth != 0.)
+			
+			if(IsFail(layer3.DrawFigureImage(fllBlankSpaceWidth, BLACK, 3, BLACK, EGUIViewImagePenStyle_Solid, 1.f, 0.35f)))
 			{
-				flsResultString2.Format(L"Space Width: %.2lf", resultChar.f64BlankSpaceWidth);
+				printf("Failed to draw recognized character : %lld", i);
+				break;
+			}
 
-				if(IsFail(layer3.DrawFigureImage(fllBlankSpaceWidth, BLACK, 3, BLACK, EGUIViewImagePenStyle_Solid, 1.f, 0.35f)))
-				{
-					printf("Failed to draw recognized character : %lld", i);
-					break;
-				}
-
-				if(IsFail(layer3.DrawTextImage(CFLPointArray(fllBlankSpaceWidth)[0], flsResultString2, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
-				{
-					printf("Failed to draw recognized character : %lld", i);
-					break;
-				}
+			if(IsFail(layer3.DrawTextImage(CFLPointArray(fllBlankSpaceWidth)[0], flsResultString2, YELLOW, BLACK, 10, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
+			{
+				printf("Failed to draw recognized character : %lld", i);
+				break;
 			}
 		}
 
