@@ -1377,6 +1377,9 @@
       - The algorithm example for merging multiple images into one image.
       - 여러장의 이미지를 하나의 이미지로 병합하는 알고리즘 예제.
     - ColorConverter 
+      - The example of an algorithm that converts color space of an color image.
+      - 컬러 이미지의 색공간을 바꾸는 알고리즘 예제.
+    - ColorSequenceConverter 
       - The example of an algorithm that converts color sequence of an image.
       - 이미지의 컬러 시퀀스를 바꾸는 알고리즘 예제.
     - Crop 
