@@ -89,7 +89,7 @@ int main()
 		// 엣지 학습 여부 설정 // Set the edge train
 		SurfaceMatch3D.EnableTrainEdge(false);
 		// 클러스터링 범위 설정 // Set the clustering range
-		SurfaceMatch3D.SetClusterRange(2);
+		SurfaceMatch3D.SetClusterRange(0.02);
 		// 포즈 조정 반복 횟수 설정 // Set the iteration value of pose refinement
 		SurfaceMatch3D.SetIteration(5);
 

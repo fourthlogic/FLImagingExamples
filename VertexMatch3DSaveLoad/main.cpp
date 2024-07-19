@@ -126,7 +126,7 @@ int main()
 		// 배경 제거 여부 설정 // Set the background removal
 		VertexMatch3D.EnableBackgroundRemoval(false);
 		// 클러스터링 범위 설정 // Set the clustering range
-		VertexMatch3D.SetClusterRange(2);
+		VertexMatch3D.SetClusterRange(0.02);
 		// 포즈 조정 반복 횟수 설정 // Set the iteration value of pose refinement
 		VertexMatch3D.SetIteration(5);
 

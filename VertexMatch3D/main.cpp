@@ -87,7 +87,7 @@ int main()
 		// 키포인트 비율 설정 // Set the keypoint ratio.
 		VertexMatch3D.SetKeypointRatio(0.5);
 		// 클러스터링 범위 설정 // Set the clustering range
-		VertexMatch3D.SetClusterRange(2);
+		VertexMatch3D.SetClusterRange(0.02);
 		// 포즈 조정 반복 횟수 설정 // Set the iteration value of pose refinement
 		VertexMatch3D.SetIteration(5);
 
