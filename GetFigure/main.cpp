@@ -133,6 +133,9 @@ int main()
 		//	최소 둘레 직사각형의 둘레           : MinimumEnclosingRectanglePerimeter 혹은 MerPerimeter
 		//	최소 둘레 직사각형의 폭             : MinimumEnclosingRectangleWidth 혹은 MerWidth
 		//	최소 둘레 직사각형의 높이           : MinimumEnclosingRectangleHeight 혹은 MerHeight
+		//	최소 둘레 직사각형의 장변           : MinimumEnclosingRectangleLongSideLength 혹은 MerLongSideLength
+		//	최소 둘레 직사각형의 단변           : MinimumEnclosingRectangleShortSideLength 혹은 MerShortSideLength
+		//	최소 둘레 직사각형의 단변/장변 비율 : MinimumEnclosingRectangleShortLongRatio 혹은 MerShortLongRatio
 		//	최소 둘레 직사각형의 각도           : MinimumEnclosingRectangleAngle 혹은 MerAngle
 		//	최소 둘레 직사각형의 중심의 x 좌표  : MinimumEnclosingRectangleCenter.x 혹은 MerCenter.x
 		//	최소 둘레 직사각형의 중심의 y 좌표  : MinimumEnclosingRectangleCenter.y 혹은 MerCenter.y
@@ -194,6 +197,9 @@ int main()
 		//	perimeter of ​​minimum enclosing rectangle              : MinimumEnclosingRectanglePerimeter or MerPerimeter
 		//	width of ​​minimum enclosing rectangle                  : MinimumEnclosingRectangleWidth or MerWidth
 		//	height of ​​minimum enclosing rectangle                 : MinimumEnclosingRectangleHeight or MerHeight
+		//	long side length of ​​minimum enclosing rectangle       : MinimumEnclosingRectangleLongSideLength or MerLongSideLength
+		//	short side length of ​​minimum enclosing rectangle      : MinimumEnclosingRectangleShortSideLength or MerShortSideLength
+		//	short/long ratio of ​​minimum enclosing rectangle       : MinimumEnclosingRectangleShortLongRatio or MerShortLongRatio
 		//	angle of ​​minimum enclosing rectangle                  : MinimumEnclosingRectangleAngle or MerAngle
 		//	x-coordinate of center of ​​minimum enclosing rectangle : MinimumEnclosingRectangleCenter.x or MerCenter.x
 		//	y-coordinate of center of ​​minimum enclosing rectangle : MinimumEnclosingRectangleCenter.y or MerCenter.y
