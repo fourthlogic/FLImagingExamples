@@ -88,8 +88,6 @@ int main()
 		LowLuminanceCorrectionType2.SetDestinationImage(arrFliImage[EType_Destination]);
 		// Noise Reduction 설정
 		LowLuminanceCorrectionType2.EnableNoiseReduction(true);
-		// Sharpening 설정
-		LowLuminanceCorrectionType2.EnableSharpening(false);
 		// Kernel Size 설정
 		LowLuminanceCorrectionType2.SetKernelSize(5);
 
