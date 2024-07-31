@@ -28,7 +28,7 @@ int main()
 		int32_t i32PortNumber = 0;
 		int32_t i32AxisNumber = 0;
 		double f64Resolution = 0;
-		double f64Jeck = 0;
+		double f64Jerk = 0;
 		double f64MoveSpeed = 0;
 		double f64AccDecSpeed = 0;
 		double f64Position = 0;
@@ -116,12 +116,12 @@ int main()
 		f64Resolution = flsInput.ToDouble();
 		pDMAxis->SetResolution(f64Resolution);
 
-		// Axis Jeck을 입력합니다. // Set axis Jeck value.
-		printf("Enter axis Jeck(mm/s3) : ");
+		// Axis Jerk을 입력합니다. // Set axis Jerk value.
+		printf("Enter axis Jerk(mm/s3) : ");
 		fgetws(arrInput, 4096, stdin);
 		flsInput = arrInput;
-		f64Jeck = flsInput.ToDouble();
-		pDMAxis->SetJeck(f64Jeck);
+		f64Jerk = flsInput.ToDouble();
+		pDMAxis->SetJerk(f64Jerk);
 
 		while(true)
 		{
