@@ -89,7 +89,7 @@ int main()
 		CFLRect<double> flrRect00(587.479194, 364.452004, 929.550836, 616.575019);
 		CFLRect<double> flrRect01(583.464651, 1215.493013, 924.560595, 1467.566788);
 		CFLRect<double> flrRect02(1531.503352, 655.504324, 1872.516362, 908.626989);
-		CFLRect<double> flrRect03(1623.471070, 1222.460787, 1965.517129, 1474.488487);
+		CFLRect<double> flrRect03(1241.471070, 1222.460787, 1580.517129, 1474.488487);
 
 		flfaMeasurement.PushBack(flrRect00);
 		flfaMeasurement.PushBack(flrRect01);
