@@ -13,6 +13,13 @@
         - The example of an algorithm that processes multiple images that are different and unaligned, each with a different focus, making them a single aligned image with all the focus.
         - 각각 초점이 다르고 정렬되지 않은 여러 장의 이미지를 처리해 모든 초점을 가지고 정렬된 한장의 이미지로 만드는 알고리즘 예제.
 
+  - [Calibration]
+
+    - [Camera Pose 3D]
+      - CameraPose3D
+        - The example that estimating a camera external parameter using a given camera internal parameter.
+        - 주어진 카메라 내부 파라미터를 사용하여 카메라 외부 파라미터를 추정하는 알고리즘 예제.
+
   - [Match]
     
     - [Surface]
