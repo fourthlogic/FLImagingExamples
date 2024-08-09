@@ -493,7 +493,19 @@
 
 - [GUI, Figures]
 
-  - [View3D]
+  - [3D Utilities]
+
+    - ROIUtilities3D
+      - Example of using ROIUtilities3D. This example demonstrates setting the ROI area for a 3D object and obtaining the parts included in the ROI.
+      - ROIUtilities3D 사용에 관한 예제. 3D 객체에 대해 ROI 영역을 설정하고, ROI 에 포함되는 부분을 얻어 오는 예제입니다.
+    - ProjectionUtilities3D
+      - ProjectionUtilities3D usage example. This example demonstrates rendering and projecting 3D objects to obtain result images without using a 3DView (GUI Framework).
+      - ProjectionUtilities3D 사용에 관한 예제. 3DView (GUI Framework) 없이 3D 객체를 렌더링 및 투영한 결과를 이미지로 얻어 오는 예제입니다.
+    - StepReaderConvertTo3DObject
+      - Example of loading and tessellating a STEP file to convert it into a CFL3DObject.
+      - Step 파일을 로드 및 테셀레이션하여 CFL3DOjbect 로 변환하는 예제
+    
+  - [3DView]
 
     - View3D
       - The example of using 3D view.
@@ -1504,6 +1516,3 @@
   - Stencil
     - The example of a stencil class that converts a string to a figure shaped by the selected font.
     - 입력된 문자열을 설정한 폰트 모양의 도형으로 변환하는 스텐실 클래스 예제.
-  - StepReaderConvertTo3DObject
-    - Example of loading and tessellating a STEP file to convert it into a CFL3DObject.
-    - Step 파일을 로드 및 테셀레이션하여 CFL3DOjbect 로 변환하는 예제

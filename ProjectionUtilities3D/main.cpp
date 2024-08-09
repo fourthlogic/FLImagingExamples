@@ -6,13 +6,8 @@
 
 int main()
 {
-	// 3D 뷰 선언 // Declare 3D view
-	CGUIView3DWrap view3D;
-
 	// 이미지 뷰 선언 // Declare image view
 	CGUIViewImageWrap viewImage;
-
-	// 메세지를 전달 받을 CMessageReceiver 객체 생성 // Create 메세지를 전달 받을 CMessageReceiver object
 
 	CResult res = EResult_UnknownError;
 
@@ -25,67 +20,137 @@ int main()
 			break;
 		}
 
-		// CProjectionUtilities3D 객체 생성
+		// 3D Object 파일 로드 // Load 3D Object file
+		CFL3DObject* pObj3D = new CFL3DObject();
+		pObj3D->Load(L"../../ExampleImages/ProjectionUtilities3D/Cylinder.step");
+
+		CFLImage fliFinal;
+		CFLImage fliRes;
+		CFLFigureText<int32_t> figureText;
+
+		// CProjectionUtilities3D 객체 생성 // Create CProjectionUtilities3D object
 		CProjectionUtilities3D pu;
 
-		// 카메라 시점 설정
-		CFL3DCamera cam;
-		cam.SetProjectionType(E3DCameraProjectionType_Perspective);
-		cam.SetPosition(CFLPoint3F(0.86f, -0.54f, 4.67f));
-		cam.SetDirection(CFLPoint3F(-0.09f, 0.16f, -0.98f));
-		cam.SetDirectionUp(CFLPoint3F(-0.99f, -0.09f, 0.08f));
-		cam.SetAngleOfViewY(45.f);
-		cam.SetTarget(CFLPoint3F(0.37f, 0.34f, -0.63f));
-		cam.SetFarZ(9.70f);
-		cam.SetNearZ(0.00f);
-		pu.SetCamera(cam);
-
-		// 결과 이미지 크기 설정
-		pu.SetResultImageSize(400,400);
-
-		// 결과 이미지 배경 색상 설정
-		//pu.SetBackgroundc(400,400);
-
-		// 3D Object 파일 로드
-		CFL3DObject* pObj3D = new CFL3DObject();
-		pObj3D->Load(L"../../ExampleImages/ROIUtilities3D/Right Cam.ply");
-
-		// CProjectionUtilities3D 객체에 3D Object 를 추가
+		// CProjectionUtilities3D 객체에 3D Object 를 추가 // Add 3D Object to CProjectionUtilities3D object
 		pu.PushBack3DObject(pObj3D);
 
-		// 프로젝션 수행
+		if(pObj3D)
+		{
+			delete pObj3D;
+			pObj3D = nullptr;
+		}
+
+		// 결과 이미지 크기 설정 // Set result image size
+		pu.SetResultImageSize(400, 400);
+
+		// 결과 이미지 배경 색상 설정 // Set background color of result image
+		pu.SetBackgroundColorOfResultImage(21, 21, 21);
+
+		// 1-1. 특정 시점의 투영 이미지 얻기 // 1-1. Get projection image from specific viewpoint
+		// 카메라 시점 설정 // Set camera viewpoint
+		CFL3DCamera camSet1;
+		camSet1.SetProjectionType(E3DCameraProjectionType_Perspective);
+		camSet1.SetPosition(CFLPoint3F(-1.41f, -317.67f, 280.92f));
+		camSet1.SetDirection(CFLPoint3F(0.01f, 0.87f, -0.50f));
+		camSet1.SetDirectionUp(CFLPoint3F(-0.01f, 0.50f, 0.87f));
+		camSet1.SetAngleOfViewY(45.f);
+		camSet1.SetTarget(CFLPoint3F(2.13f, -59.49f, 132.75f));
+		camSet1.SetNearZ(271.84f);
+		camSet1.SetFarZ(459.30f);
+
+		// 카메라 설정 // Set camera
+		pu.SetCamera(camSet1);
+
+		// 프로젝션 수행 // Perform projection
 		res = pu.Execute();
 
-		// 결과 이미지 얻기
-		CFLImage fliCr;
-		res = pu.GetResult(fliCr);
+		// 결과 이미지 얻기 // Get result image
+		res = pu.GetResult(fliRes);
 
-		// 결과 이미지 로드
-		viewImage.GetIntrinsicImage()->Assign(fliCr);
+		// 결과 이미지에 정보 텍스트 추가 // Add information text to result image
+		figureText.Set(CFLPoint<int32_t>(10, 10), L"1. Projection(Camera Set 1)", YELLOW, BLACK, 20, false, 0., EFigureTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EFigureTextFontWeight_BOLD, false);
+		fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
+
+		// 최종 이미지에 투영 결과 이미지 복사 // Copy projection result image to final image
+		fliFinal.Assign(fliRes);
+
+		// 1-2. 특정 시점의 투영 이미지 얻기 // 1-2. Get projection image from another specific viewpoint
+		// 카메라 시점 설정 // Set camera viewpoint
+		CFL3DCamera camSet2;
+		camSet2.SetProjectionType(E3DCameraProjectionType_Perspective);
+		camSet2.SetPosition(CFLPoint3F(-80.38f, 97.35f, 341.92f));
+		camSet2.SetDirection(CFLPoint3F(0.42f, -0.27f, -0.86f));
+		camSet2.SetDirectionUp(CFLPoint3F(0.77f, 0.61f, 0.19f));
+		camSet2.SetAngleOfViewY(45.f);
+		camSet2.SetTarget(CFLPoint3F(-5.45f, 49.05f, 189.72f));
+		camSet2.SetNearZ(148.33f);
+		camSet2.SetFarZ(390.77f);
+
+		// 카메라 설정 // Set camera
+		pu.SetCamera(camSet2);
+
+		// 프로젝션 수행 // Perform projection
+		res = pu.Execute();
+
+		// 결과 이미지 얻기 // Get result image
+		res = pu.GetResult(fliRes);
+
+		// 결과 이미지에 정보 텍스트 추가 // Add information text to result image
+		figureText.Set(CFLPoint<int32_t>(10, 10), L"1. Projection(Camera Set 2)", YELLOW, BLACK, 20, false, 0., EFigureTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EFigureTextFontWeight_BOLD, false);
+		fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
+
+		// 최종 이미지에 투영 결과 이미지 추가 // Add projection result image to final image
+		fliFinal.PushBackPage(fliRes);
+
+		// 2. 카메라 1과 카메라 2 사이의 시점에 대한 프로젝션 // 2. Projection for viewpoints between Camera 1 and Camera 2		
+		for(int32_t i = 0; i < 10; ++i)
+		{
+			// 카메라 시점 설정 // Set camera viewpoint
+			CFL3DCamera camInterpolation;
+			float f32T = (float)i * 0.1f;
+			CFL3DCamera::Interpolate(camSet1, camSet2, f32T, camInterpolation);
+
+			// 카메라 설정 // Set camera
+			pu.SetCamera(camInterpolation);
+
+			// 프로젝션 수행 // Perform projection
+			res = pu.Execute();
+
+			// 결과 이미지 얻기 // Get result image
+			res = pu.GetResult(fliRes);
+
+			// 결과 이미지에 정보 텍스트 추가 // Add information text to result image
+			CFLString<wchar_t> str;
+			str.Format(L"2. Projection(Camera Interpolation T=%.1f)", f32T);
+			figureText.Set(CFLPoint<int32_t>(10, 10), str, YELLOW, BLACK, 15, false, 0., EFigureTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EFigureTextFontWeight_SEMIBOLD, false);
+			fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
+
+			// 최종 이미지에 투영 결과 이미지 추가 // Add projection result image to final image
+			fliFinal.PushBackPage(fliRes);
+		}
+
+		// 3. Zoom Fit 시점의 이미지 얻기 // 3. Get image at Zoom Fit viewpoint
+		pu.ZoomFitCamera();
+
+		// 프로젝션 수행 // Perform projection
+		res = pu.Execute();
+
+		// 결과 이미지 얻기 // Get result image
+		res = pu.GetResult(fliRes);
+
+		// 결과 이미지에 정보 텍스트 추가 // Add information text to result image
+		figureText.Set(CFLPoint<int32_t>(10, 10), L"3. Projection(ZoomFit)", YELLOW, BLACK, 20, false, 0., EFigureTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EFigureTextFontWeight_BOLD, false);
+		fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
+
+		// 최종 이미지에 투영 결과 이미지 추가 // Add projection result image to final image
+		fliFinal.PushBackPage(fliRes);
+
+		// 결과 이미지를 이미지 뷰에 로드 // Load result image into image view		
+		viewImage.GetIntrinsicImage()->Assign(fliFinal);
 		viewImage.SetImagePtr(viewImage.GetIntrinsicImage());
+		viewImage.SetFixThumbnailView(true);
 
-		// 3D 뷰 생성
-		// Create 3D views.
-		if(IsFail(res = view3D.Create(0, 0, 400, 440)))
-		{
-			ErrorPrint(res, "Failed to create the 3D view.\n");
-			break;
-		}
-
-		if((res = view3D.PushObject(*pObj3D)).IsFail())
-		{
-			ErrorPrint(res, "Failed to display 3D object.\n");
-			break;
-		}
-
-		// 3D 뷰를 갱신 // Update 3D view
-		view3D.ZoomFit();
-		view3D.UpdateScreen();
-
-		if(pObj3D)
-			delete pObj3D;
-
-		while(view3D.IsAvailable() && viewImage.IsAvailable())
+		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
