@@ -137,9 +137,9 @@ int main()
 			break;
 		}
 
-		view3DLearn.SetShadingType(EView3DObjectShadingType_Flat);
-		view3DSource.SetShadingType(EView3DObjectShadingType_Flat);
-		view3DDst.SetShadingType(EView3DObjectShadingType_Flat);
+		view3DLearn.SetShadingType(EShadingType3D_Flat);
+		view3DSource.SetShadingType(EShadingType3D_Flat);
+		view3DDst.SetShadingType(EShadingType3D_Flat);
 
 
 		view3DLearn.ZoomFit();

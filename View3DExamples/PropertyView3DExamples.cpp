@@ -947,7 +947,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectSphere(CGUIView
 
 		// CGUIView3DObject 객체에 쉐이딩 타입을 Phong shading 으로 설정
 		// Sets the shading type of the CGUIView3DObject object to Phong shading.
-		pView3DObject->SetShadingType(EView3DObjectShadingType_Phong);
+		pView3DObject->SetShadingType(EShadingType3D_Phong);
 
 		// CGUIView3DObject 객체의 내부 데이터 객체인 CFL3DObject 가 변경되었으므로 
 		// 뷰에서도 변경 사항을 반영해서 디스플레이 하기 위해 업데이트 플래그 설정

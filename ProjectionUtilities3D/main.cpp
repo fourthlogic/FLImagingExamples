@@ -120,6 +120,9 @@ int main()
 
 
 		// 2. 카메라 1과 카메라 2 사이의 시점에 대한 프로젝션 // 2. Projection for viewpoints between Camera 1 and Camera 2		
+		// Set topology type
+		pu.SetTopologyType(ETopologyType3D_Wireframe);
+
 		for(int32_t i = 0; i <= 10; ++i)
 		{
 			// 카메라 시점 설정 // Set camera viewpoint
@@ -154,9 +157,12 @@ int main()
 		viewImage[1].SetImagePtr(viewImage[1].GetIntrinsicImage());
 		viewImage[1].SetFixThumbnailView(true);
 
-
 		// 3. Zoom Fit 시점의 이미지 얻기 // 3. Get image at Zoom Fit viewpoint
 		pu.ZoomFitCamera();
+
+		// Set topology type
+		pu.SetTopologyType(ETopologyType3D_PointCloud);
+		pu.SetPointSize(5.f);
 
 		// 프로젝션 수행 // Perform projection
 		res = pu.Execute();
