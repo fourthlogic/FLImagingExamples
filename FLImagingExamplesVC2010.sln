@@ -1,8 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.9.34723.18
-MinimumVisualStudioVersion = 10.0.40219.1
+
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageView", "ImageView\ImageView.vcxproj", "{6AF611B0-0FB7-4DCC-8DEA-98B5F3649CB8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GUI, Figures", "GUI, Figures", "{B0A9B6DB-D986-4C00-8D9D-8D04E8F5764C}"
