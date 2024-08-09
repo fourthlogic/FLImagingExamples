@@ -7,14 +7,26 @@
 int main()
 {
 	// 이미지 뷰 선언 // Declare image view
-	CGUIViewImageWrap viewImage;
+	CGUIViewImageWrap viewImage[3];
 
 	CResult res = EResult_UnknownError;
 
 	do
 	{
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(res = viewImage.Create(400, 0, 800, 440)))
+		if(IsFail(res = viewImage[0].Create(0, 0, 400, 440)))
+		{
+			ErrorPrint(res, "Failed to create the image view.\n");
+			break;
+		}
+
+		if(IsFail(res = viewImage[1].Create(400, 0, 800, 440)))
+		{
+			ErrorPrint(res, "Failed to create the image view.\n");
+			break;
+		}
+
+		if(IsFail(res = viewImage[2].Create(800, 0, 1200, 440)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
@@ -24,7 +36,7 @@ int main()
 		CFL3DObject* pObj3D = new CFL3DObject();
 		pObj3D->Load(L"../../ExampleImages/ProjectionUtilities3D/Cylinder.step");
 
-		CFLImage fliFinal;
+		CFLImage fliFinal0, fliFinal1, fliFinal2;
 		CFLImage fliRes;
 		CFLFigureText<int32_t> figureText;
 
@@ -33,12 +45,12 @@ int main()
 
 		// CProjectionUtilities3D 객체에 3D Object 를 추가 // Add 3D Object to CProjectionUtilities3D object
 		pu.PushBack3DObject(pObj3D);
-
-		if(pObj3D)
-		{
-			delete pObj3D;
-			pObj3D = nullptr;
-		}
+ 
+ 		if(pObj3D)
+ 		{
+ 			delete pObj3D;
+ 			pObj3D = nullptr;
+ 		}
 
 		// 결과 이미지 크기 설정 // Set result image size
 		pu.SetResultImageSize(400, 400);
@@ -72,7 +84,7 @@ int main()
 		fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
 
 		// 최종 이미지에 투영 결과 이미지 복사 // Copy projection result image to final image
-		fliFinal.Assign(fliRes);
+		fliFinal0.Assign(fliRes);
 
 		// 1-2. 특정 시점의 투영 이미지 얻기 // 1-2. Get projection image from another specific viewpoint
 		// 카메라 시점 설정 // Set camera viewpoint
@@ -100,10 +112,15 @@ int main()
 		fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
 
 		// 최종 이미지에 투영 결과 이미지 추가 // Add projection result image to final image
-		fliFinal.PushBackPage(fliRes);
+		fliFinal0.PushBackPage(fliRes);
+		// 결과 이미지를 이미지 뷰에 로드 // Load result image into image view		
+		viewImage[0].GetIntrinsicImage()->Assign(fliFinal0);
+		viewImage[0].SetImagePtr(viewImage[0].GetIntrinsicImage());
+		viewImage[0].SetFixThumbnailView(true);
+
 
 		// 2. 카메라 1과 카메라 2 사이의 시점에 대한 프로젝션 // 2. Projection for viewpoints between Camera 1 and Camera 2		
-		for(int32_t i = 0; i < 10; ++i)
+		for(int32_t i = 0; i <= 10; ++i)
 		{
 			// 카메라 시점 설정 // Set camera viewpoint
 			CFL3DCamera camInterpolation;
@@ -126,8 +143,17 @@ int main()
 			fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
 
 			// 최종 이미지에 투영 결과 이미지 추가 // Add projection result image to final image
-			fliFinal.PushBackPage(fliRes);
+			if(i == 0)
+				fliFinal1.Assign(fliRes);
+			else
+				fliFinal1.PushBackPage(fliRes);
 		}
+
+		// 결과 이미지를 이미지 뷰에 로드 // Load result image into image view		
+		viewImage[1].GetIntrinsicImage()->Assign(fliFinal1);
+		viewImage[1].SetImagePtr(viewImage[1].GetIntrinsicImage());
+		viewImage[1].SetFixThumbnailView(true);
+
 
 		// 3. Zoom Fit 시점의 이미지 얻기 // 3. Get image at Zoom Fit viewpoint
 		pu.ZoomFitCamera();
@@ -136,21 +162,18 @@ int main()
 		res = pu.Execute();
 
 		// 결과 이미지 얻기 // Get result image
-		res = pu.GetResult(fliRes);
+		res = pu.GetResult(fliFinal2);
 
 		// 결과 이미지에 정보 텍스트 추가 // Add information text to result image
 		figureText.Set(CFLPoint<int32_t>(10, 10), L"3. Projection(ZoomFit)", YELLOW, BLACK, 20, false, 0., EFigureTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EFigureTextFontWeight_BOLD, false);
-		fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
-
-		// 최종 이미지에 투영 결과 이미지 추가 // Add projection result image to final image
-		fliFinal.PushBackPage(fliRes);
+		fliFinal2.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
 
 		// 결과 이미지를 이미지 뷰에 로드 // Load result image into image view		
-		viewImage.GetIntrinsicImage()->Assign(fliFinal);
-		viewImage.SetImagePtr(viewImage.GetIntrinsicImage());
-		viewImage.SetFixThumbnailView(true);
+		viewImage[2].GetIntrinsicImage()->Assign(fliFinal2);
+		viewImage[2].SetImagePtr(viewImage[2].GetIntrinsicImage());
+		viewImage[2].SetFixThumbnailView(true);
 
-		while(viewImage.IsAvailable())
+		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable() && viewImage[2].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
