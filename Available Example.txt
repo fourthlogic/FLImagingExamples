@@ -70,6 +70,9 @@
       - StereoDisparity
         - The example of an algorithm that performs getting disparity map from a pair of stereo calibrator output images.
         - 스테레오 캘리브레이터의 Rectification 결과 이미지 쌍으로부터 스테레오 Disparity Map을 구하는 알고리즘 예제.
+      - StereoPhotometric
+        - The example of an algorithm that performs getting the height map from a images with different light source positions.
+        - 광원의 위치만 다른 여러 이미지들로부터 Height Map을 구하는 알고리즘 예제.
 
   - [Transform]
     
