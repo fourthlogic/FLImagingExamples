@@ -711,6 +711,9 @@
     - ChannelMax
       - The example of an algorithm that extracts maximum value of each pixel from a multichannel image.
       - 다채널 이미지에서 각 픽셀의 최대값을 추출하여 이미지화 하는 알고리즘 예제.
+    - ChannelMean
+      - The example of an algorithm that extracts mean value of each pixel from a multichannel image.
+      - 다채널 이미지에서 각 픽셀의 평균값을 추출하여 이미지화 하는 알고리즘 예제.
     - ChannelMedian
       - The example of an algorithm that extracts median value of each pixel from a multichannel image.
       - 다채널 이미지에서 각 픽셀의 중앙값을 추출하여 이미지화 하는 알고리즘 예제.
