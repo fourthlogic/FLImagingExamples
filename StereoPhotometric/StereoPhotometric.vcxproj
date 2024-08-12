@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{35BB10C9-2156-497E-951A-8EFD76976EBF}</ProjectGuid>
+    <ProjectGuid>{7F436DF3-1961-4315-8106-8FBEA9FD6DD6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>StereoPhotometric</RootNamespace>
     <ProjectName>StereoPhotometric</ProjectName>
