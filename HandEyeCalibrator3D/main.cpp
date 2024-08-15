@@ -42,6 +42,7 @@ int main()
 		// 처리할 이미지 설정
 		HandEyeCalibrator3D.SetSourceImage(fliSource);
 
+		// 엔드 이펙터 포즈 로드 // Load the end effector pose
 		if((eResult = HandEyeCalibrator3D.LoadEndEffectorPose(L"../../ExampleImages/HandEyeCalibrator3D/EndEffectorPose.csv")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the file.\n");
