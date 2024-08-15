@@ -31,7 +31,7 @@ int main()
 		// 이미지 로드 // Load the image
 		if((eResult = fliSource.Load(L"../../ExampleImages/CameraPose3D/ChessBoard(9).flif")).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to load the object file.\n");
+			ErrorPrint(eResult, L"Failed to load the image.\n");
 			break;
 		}
 		
