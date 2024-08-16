@@ -241,6 +241,9 @@ int main()
 			printf("    Rx   : %.3lf\n", tp3F64Rotation.x);
 			printf("    Ry   : %.3lf\n", tp3F64Rotation.y);
 			printf("    Rz   : %.3lf\n", tp3F64Rotation.z);
+			printf("    Rotation Vector X   : %.3lf\n", tp3F64RotVec.x);
+			printf("    Rotation Vector Y   : %.3lf\n", tp3F64RotVec.y);
+			printf("    Rotation Vector Z   : %.3lf\n", tp3F64RotVec.z);
 			printf("    Tx   : %.3lf\n", flp3F64Translation.x);
 			printf("    Ty   : %.3lf\n", flp3F64Translation.y);
 			printf("    Tz   : %.3lf\n", flp3F64Translation.z);
