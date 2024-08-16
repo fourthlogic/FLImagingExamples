@@ -163,7 +163,7 @@ int main()
 
 		CSurfaceMatch3D::SPoseMatrixParameters sResult;
 		int64_t i64ResultCount = SurfaceMatch3D.GetResultCount();
-		TPoint3<double> tp3F64Rotation;
+		TPoint3<double> tp3F64Rotation, tp3F64RotVec;
 		CFLString<wchar_t> strText;
 		CFLPoint3<double> flp3F64Translation;
 		double f64Score, f64Residual;
@@ -198,6 +198,9 @@ int main()
 			tp3F64Rotation.x = sResult.f64Rx;
 			tp3F64Rotation.y = sResult.f64Ry;
 			tp3F64Rotation.z = sResult.f64Rz;
+			tp3F64RotVec.x = sResult.f64RotationVectorX;
+			tp3F64RotVec.y = sResult.f64RotationVectorY;
+			tp3F64RotVec.z = sResult.f64RotationVectorZ;
 			flp3F64Translation.x = sResult.f64Tx;
 			flp3F64Translation.y = sResult.f64Ty;
 			flp3F64Translation.z = sResult.f64Tz;
@@ -208,6 +211,9 @@ int main()
 			printf("    Rx   : %.3lf\n", tp3F64Rotation.x);
 			printf("    Ry   : %.3lf\n", tp3F64Rotation.y);
 			printf("    Rz   : %.3lf\n", tp3F64Rotation.z);
+			printf("    Rotation Vector X   : %.3lf\n", tp3F64RotVec.x);
+			printf("    Rotation Vector Y   : %.3lf\n", tp3F64RotVec.y);
+			printf("    Rotation Vector Z   : %.3lf\n", tp3F64RotVec.z);
 			printf("    Tx   : %.3lf\n", flp3F64Translation.x);
 			printf("    Ty   : %.3lf\n", flp3F64Translation.y);
 			printf("    Tz   : %.3lf\n", flp3F64Translation.z);

@@ -195,7 +195,7 @@ int main()
 		int64_t i64ResultCount = VertexMatch3D.GetResultCount();
 		TPoint3<double> tp3F64Rotation;
 		CFLString<wchar_t> strText;
-		CFLPoint3<double> flp3F64Translation;
+		CFLPoint3<double> flp3F64Translation, tp3F64RotVec;
 		double f64Score, f64Residual;
 
 		if(i64ResultCount == 0)
@@ -228,6 +228,9 @@ int main()
 			tp3F64Rotation.x = sResult.f64Rx;
 			tp3F64Rotation.y = sResult.f64Ry;
 			tp3F64Rotation.z = sResult.f64Rz;
+			tp3F64RotVec.x = sResult.f64RotationVectorX;
+			tp3F64RotVec.y = sResult.f64RotationVectorY;
+			tp3F64RotVec.z = sResult.f64RotationVectorZ;
 			flp3F64Translation.x = sResult.f64Tx;
 			flp3F64Translation.y = sResult.f64Ty;
 			flp3F64Translation.z = sResult.f64Tz;
