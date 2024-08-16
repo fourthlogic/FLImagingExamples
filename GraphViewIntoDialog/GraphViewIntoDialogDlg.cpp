@@ -104,28 +104,12 @@ BOOL CGraphViewIntoDialogDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
-	CRect crGraphView;
-
-	// IDC_STATIC_GRAPH_VIEW 의 클라이언트 사각형은 얻어온다.
-	GetDlgItem(IDC_STATIC_GRAPH_VIEW)->GetClientRect(crGraphView);
 
 	// 그래프 뷰 생성
-	CResult res = m_viewGraph.Create(0, 0, 1024, 1024);
+	CResult res = m_viewGraph.CreateAndFitParent((size_t)GetDlgItem(IDC_STATIC_GRAPH_VIEW)->GetSafeHwnd());
 
 	if(res.IsFail())
 		ErrorMessageBox(res);
-
-	// 그래프 뷰의 윈도우을 얻어온다.
-	HWND hWndGraphView = (HWND)m_viewGraph.GetWindowHandle();
-
-	if(hWndGraphView)
-	{
-		// 그래프 뷰의 부모를 IDC_STATIC_GRAPH_VIEW 로 지정한다.
-		::SetParent(hWndGraphView, GetDlgItem(IDC_STATIC_GRAPH_VIEW)->GetSafeHwnd());
-
-		// 그래프 뷰의 윈도우 위치와 크기를 IDC_STATIC_GRAPH_VIEW 크기에 맞게 설정한다.
-		::MoveWindow(hWndGraphView, 0, 0, crGraphView.Width(), crGraphView.Height(), true);
-	}
 
 	SetDlgItemText(IDC_EDIT_GRAPH_EQUATION_A, L"0.003");
 	SetDlgItemText(IDC_EDIT_GRAPH_EQUATION_B, L"-0.003");

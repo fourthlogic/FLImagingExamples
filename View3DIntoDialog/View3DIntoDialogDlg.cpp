@@ -103,30 +103,12 @@ BOOL CView3DIntoDialogDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
-	// 3D 뷰 생성
-
-	CRect crView3D;
-
-	// IDC_STATIC_VIEW3D 의 클라이언트 사각형을 얻어온다.
-	GetDlgItem(IDC_STATIC_VIEW3D)->GetClientRect(crView3D);
 
 	// 3D 뷰 생성
-	CResult res = m_view3D.Create(0, 0, 1024, 1024);
+	CResult res = m_view3D.CreateAndFitParent((size_t)GetDlgItem(IDC_STATIC_VIEW3D)->GetSafeHwnd());
 
 	if(res.IsFail())
 		ErrorMessageBox(res);
-
-	// 3D 뷰의 윈도우를 얻어온다.
-	HWND hWndView3D = (HWND)m_view3D.GetWindowHandle();
-
-	if(hWndView3D)
-	{
-		// 3D 뷰의 부모를 IDC_STATIC_VIEW3D 로 지정한다.
-		::SetParent(hWndView3D, GetDlgItem(IDC_STATIC_VIEW3D)->GetSafeHwnd());
-
-		// 3D 뷰의 윈도우 위치와 크기를 IDC_STATIC_VIEW3D 크기에 맞게 설정한다.
-		::MoveWindow(hWndView3D, 0, 0, crView3D.Width(), crView3D.Height(), true);
-	}
 
 	// 높이 맵 이미지와 텍스쳐 이미지 로드 // Load height map image and texture
 	m_view3D.Load(L"../../ExampleImages/View3D/mountain.flif", L"../../ExampleImages/View3D/mountain_texture.flif");

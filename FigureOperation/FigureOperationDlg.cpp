@@ -107,30 +107,12 @@ BOOL CFigureOperationDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
-	// 이미지 뷰 생성 // Create image view
-
-	CRect crImageView;
-
-	// IDC_STATIC_IMAGE_VIEW 의 클라이언트 사각형을 얻어온다.
-	GetDlgItem(IDC_STATIC_IMAGE_VIEW)->GetClientRect(crImageView);
-
-	// 이미지 뷰 생성 // Create image view
-	CResult res = m_viewImage.Create(0, 0, 1024, 1024);
-
-	if(res.IsFail())
-		ErrorMessageBox(res);
-
-	// 이미지 뷰의 윈도우를 얻어온다.
-	HWND hWndImageView = (HWND)m_viewImage.GetWindowHandle();
 	
-	if(hWndImageView)
-	{
-		// 이미지 뷰의 부모를 IDC_STATIC_IMAGE_VIEW 로 지정한다.
-		::SetParent(hWndImageView, GetDlgItem(IDC_STATIC_IMAGE_VIEW)->GetSafeHwnd());
-
-		// 이미지 뷰의 윈도우 위치와 크기를 IDC_STATIC_IMAGE_VIEW 크기에 맞게 설정한다.
-		::MoveWindow(hWndImageView, 0, 0, crImageView.Width(), crImageView.Height(), true);
-	}
+	// 이미지 뷰 생성 // Create image view
+ 	CResult res = m_viewImage.CreateAndFitParent((size_t)GetDlgItem(IDC_STATIC_IMAGE_VIEW)->GetSafeHwnd());
+ 
+ 	if(res.IsFail())
+ 		ErrorMessageBox(res);
 
 	// 콤보 박스에 선택 항목을 설정한다.
 	CComboBox* pComboBoxDeclType = (CComboBox*)GetDlgItem(IDC_COMBO_FIGURE_OBJECT_DECL_TYPE);
