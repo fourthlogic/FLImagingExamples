@@ -91,8 +91,6 @@ int main()
 		photometric.SetResultTextureImage(&fliTxtImage);
 		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
 		photometric.SetDestinationObject(fl3DOHM);
-		// 광원의 위치 입력 방식 설정 // Set light source location input method
-		photometric.SetCalibrationMode(CStereoPhotometric::ECalibrationMode_Angle_Degrees);
 
 		// 각 이미지의 광원 Slant 값 입력
 		CMultiVar<double> mvdSlant;
@@ -118,8 +116,6 @@ int main()
 		mvdSlant.PushBack(26.067657);
 		mvdSlant.PushBack(26.126303);
 
-		photometric.SetAngleSlant(mvdSlant);
-
 		// 각 이미지의 광원 Tilt 값 입력
 		CMultiVar<double> mvdTilt;
 
@@ -144,8 +140,7 @@ int main()
 		mvdTilt.PushBack(13.056294);
 		mvdTilt.PushBack(-5.976723);
 
-		photometric.SetAngleTilt(mvdTilt);
-
+		photometric.SetLightAngleDegrees(mvdSlant, mvdTilt);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = photometric.Execute()).IsFail())
