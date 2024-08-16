@@ -227,8 +227,8 @@ int main()
 				break;
 			}
 
-			strText.Format(L"R(%.04lf,%.04lf,%.04lf)\nT(%.04lf,%.04lf,%.04lf)\nScore : %lf\nResidual : %lf"
-						   , tp3F64Rotation.x, tp3F64Rotation.y, tp3F64Rotation.z, flp3F64Translation.x, flp3F64Translation.y, flp3F64Translation.z, f64Score, f64Residual);
+			strText.Format(L"R(%.04lf,%.04lf,%.04lf)\nRVec(%.04lf,%.04lf,%.04lf)\nT(%.04lf,%.04lf,%.04lf)\nScore : %lf\nResidual : %lf"
+						   , tp3F64Rotation.x, tp3F64Rotation.y, tp3F64Rotation.z, tp3F64RotVec.x, tp3F64RotVec.y, tp3F64RotVec.z, flp3F64Translation.x, flp3F64Translation.y, flp3F64Translation.z, f64Score, f64Residual);
 
 			// 추정된 포즈 행렬 및 score 출력
 			if((eResult = layer3DDst.DrawText3D(tp3Center, strText, YELLOW, 0, 9)).IsFail())
