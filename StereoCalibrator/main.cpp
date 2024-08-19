@@ -105,7 +105,7 @@ CResult DrawGridPoints(SGridDisplay& sGridDisplay, CGUIViewImageLayerWrap pLayer
 				if(i64Col == i64GridCol - 1)
 					colorText = YELLOW;
 
-				pLayer.DrawTextImage(flpGridPoint1, wstrGridIdx, colorText, BLACK, (int32_t)(f64PointDist / 2), true, f64Angle);
+				pLayer.DrawTextImage(flpGridPoint1, wstrGridIdx, colorText, BLACK, (float)(int32_t)(f64PointDist / 2), true, f64Angle);
 			}
 		}
 
@@ -113,7 +113,7 @@ CResult DrawGridPoints(SGridDisplay& sGridDisplay, CGUIViewImageLayerWrap pLayer
 		CFLString<wchar_t> wstringData = CFLString<wchar_t>().Format(L"(%d X %d)", (int32_t)i64GridCol, (int32_t)i64GridRow);
 		pLayer.DrawFigureImage(flqBoardRegion, BLACK, 3);
 		pLayer.DrawFigureImage(flqBoardRegion, YELLOW, 1);
-		pLayer.DrawTextImage(flqBoardRegion.flpPoints[0], wstringData, YELLOW, BLACK, (int32_t)(f64Width / 16), true, f64Angle, EGUIViewImageTextAlignment_LEFT_BOTTOM, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_EXTRABOLD);
+		pLayer.DrawTextImage(flqBoardRegion.flpPoints[0], wstringData, YELLOW, BLACK, (float)(int32_t)(f64Width / 16), true, f64Angle, EGUIViewImageTextAlignment_LEFT_BOTTOM, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_EXTRABOLD);
 
 		res = EResult_OK;
 	}
