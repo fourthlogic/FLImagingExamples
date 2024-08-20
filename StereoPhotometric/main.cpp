@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <FLImaging.h>
-#include "../CommomHeader/
+#include "../CommomHeader/ErrorPrint.h"
+
 int main()
 {
 	CFLImage fliSrcImage;
