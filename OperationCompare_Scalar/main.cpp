@@ -83,7 +83,7 @@ int main()
 		compare.SetDestinationImage(arrFliImage[1]);
 		// Scalar Operation 모드로 설정 // Set operation mode to scalar
 		compare.SetOperationSource(EOperationSource_Scalar);
-		// Compare Scalar 값 설정 // Set comparsion value of Compare operation
+		// Compare Scalar 값 설정 // Set comparison value of Compare operation
 		compare.SetScalarValue(CMultiVar<double>(110,110,110));
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
