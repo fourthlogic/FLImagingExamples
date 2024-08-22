@@ -1,4 +1,6 @@
-===Latest Version===
+======= 
+5.8.6.8
+======= 
 
 - [3D]
 
@@ -12,18 +14,6 @@
       - MultiFocus_WithAlignment
         - The example of an algorithm that processes multiple images that are different and unaligned, each with a different focus, making them a single aligned image with all the focus.
         - 각각 초점이 다르고 정렬되지 않은 여러 장의 이미지를 처리해 모든 초점을 가지고 정렬된 한장의 이미지로 만드는 알고리즘 예제.
-
-  - [Calibration]
-
-    - [Camera Pose 3D]
-      - CameraPose3D
-        - The example that estimating a camera external parameter using a given camera internal parameter.
-        - 주어진 카메라 내부 파라미터를 사용하여 카메라 외부 파라미터를 추정하는 알고리즘 예제.
-
-    - [Hand Eye Calibrator 3D]
-      - HandEyeCalibrator3D
-        - The example that estimating the matrix between the camera and the end effector.
-        - 카메라와 엔드 이펙터의 관계 행렬을 추정하는 알고리즘 예제.
 
   - [Match]
     
@@ -75,9 +65,6 @@
       - StereoDisparity
         - The example of an algorithm that performs getting disparity map from a pair of stereo calibrator output images.
         - 스테레오 캘리브레이터의 Rectification 결과 이미지 쌍으로부터 스테레오 Disparity Map을 구하는 알고리즘 예제.
-      - StereoPhotometric
-        - The example of an algorithm that performs getting the height map from a images with different light source positions.
-        - 광원의 위치만 다른 여러 이미지들로부터 Height Map을 구하는 알고리즘 예제.
 
   - [Transform]
     
@@ -501,19 +488,7 @@
 
 - [GUI, Figures]
 
-  - [3D Utilities]
-
-    - ROIUtilities3D
-      - Example of using ROIUtilities3D. This example demonstrates setting the ROI area for a 3D object and obtaining the parts included in the ROI.
-      - ROIUtilities3D 사용에 관한 예제. 3D 객체에 대해 ROI 영역을 설정하고, ROI 에 포함되는 부분을 얻어 오는 예제입니다.
-    - ProjectionUtilities3D
-      - ProjectionUtilities3D usage example. This example demonstrates rendering and projecting 3D objects to obtain result images without using a 3DView (GUI Framework).
-      - ProjectionUtilities3D 사용에 관한 예제. 3DView (GUI Framework) 없이 3D 객체를 렌더링 및 투영한 결과를 이미지로 얻어 오는 예제입니다.
-    - StepReaderConvertTo3DObject
-      - Example of loading and tessellating a STEP file to convert it into a CFL3DObject.
-      - Step 파일을 로드 및 테셀레이션하여 CFL3DOjbect 로 변환하는 예제
-    
-  - [3DView]
+  - [View3D]
 
     - View3D
       - The example of using 3D view.
@@ -1023,9 +998,9 @@
     - OperationBlend 
       - The algorithm that performs blend operations on an image scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 블렌드 연산을 수행하는 알고리즘.
-    - OperationCompare
-      - The algorithm that performs compare operations on an image scalar or other image.
-      - 이미지를 스칼라 또는 다른 이미지와 비교 연산을 수행하는 알고리즘.
+    - OperationDifference 
+      - The algorithm that compares an image with scalar or another image and outputs the absolute value of the difference.
+      - 이미지를 스칼라 또는 다른 이미지와 비교하여 차이의 절대 값을 출력하는 알고리즘.
     - OperationComplexDivide
       - The algorithm that performs Complex Divide operation on the source image.
       - 이미지에 Complex Divide 연산을 수행하는 알고리즘
@@ -1044,9 +1019,6 @@
     - OperationCubeRoot
       - The algorithm that performs Cube Root operation on the source image.
       - 이미지에 세제곱근 연산을 수행하는 알고리즘.
-    - OperationDifference 
-      - The algorithm that compares an image with scalar or another image and outputs the absolute value of the difference.
-      - 이미지를 스칼라 또는 다른 이미지와 비교하여 차이의 절대 값을 출력하는 알고리즘.
     - OperationDivide 
       - The algorithm that performs divide operations on an image scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 나눗셈 연산을 수행하는 알고리즘.
@@ -1425,6 +1397,9 @@
     - ColorConverter 
       - The example of an algorithm that converts color space of an color image.
       - 컬러 이미지의 색공간을 바꾸는 알고리즘 예제.
+    - ColorFilterArrayConverter
+      - The algorithm example for interpolating the colors of CCD Bayer Pattern images.
+      - CCD Bayer Pattern 이미지의 색을 보간하는 알고리즘 예제.
     - ColorSequenceConverter 
       - The example of an algorithm that converts color sequence of an image.
       - 이미지의 컬러 시퀀스를 바꾸는 알고리즘 예제.
@@ -1527,3 +1502,6 @@
   - Stencil
     - The example of a stencil class that converts a string to a figure shaped by the selected font.
     - 입력된 문자열을 설정한 폰트 모양의 도형으로 변환하는 스텐실 클래스 예제.
+  - StepReaderConvertTo3DObject
+    - Example of loading and tessellating a STEP file to convert it into a CFL3DObject.
+    - Step 파일을 로드 및 테셀레이션하여 CFL3DOjbect 로 변환하는 예제
