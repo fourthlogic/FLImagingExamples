@@ -62,7 +62,7 @@ int main()
 		HandEyeCalibrator3D.SetCalibrationObjectType(ECalibrationObjectType_ChessBoard);
 
 		// 캘리브레이션 방법 설정 // Set the calibration method
-		HandEyeCalibrator3D.SetCalibrationMethod(CHandEyeCalibrator3D::ECalibrationMethod_Nonlinear);
+		HandEyeCalibrator3D.SetCalibrationMethod(CHandEyeCalibrator3D::ERefinementMethod_Nonlinear);
 
 		// 회전 타입 설정 // Set the rotation type
 		HandEyeCalibrator3D.SetRotationType(CHandEyeCalibrator3D::ERotationType_Rodrigues);
