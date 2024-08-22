@@ -75,7 +75,7 @@ int main()
 		// Destination 이미지 설정 // Set destination image
 		contrastEnhancement.SetDestinationImage(fliDestinationImage);
 
-		// Intensity value 설정 // Set the Intensity value
+		// Intensity 설정 // Set the Intensity
 		contrastEnhancement.SetIntensity(10.0);
 
 		// Iteration 설정 // Set the Iteration
