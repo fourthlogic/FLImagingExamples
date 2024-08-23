@@ -177,30 +177,37 @@ int main()
 
 			view3DLayer.DrawTextCanvas(CFLPoint<double>(0, flpImageSize.y), strDisplay, YELLOW, BLACK, 12, false, 0, EGUIViewImageTextAlignment_LEFT_BOTTOM);
 
+			CFL3DObject fl3DOCalibrationBoard;
+			Base::TPoint3<double> tp3BoardCenter;
+
+			HandEyeCalibrator3D.GetResultCalibration3DObject(fl3DOCalibrationBoard, tp3BoardCenter);
+			CFLString<wchar_t> strIdx;
+
+			strIdx.Format(L"Calibration Board");
+			view3DLayer.DrawText3D(tp3BoardCenter, strIdx, RED, 0, 9);
+			view3D.PushObject(fl3DOCalibrationBoard);
+
 			for(int32_t i = 0; i < i32PageCount; i++)
 			{
-				Base::TPoint3<double> tp3RobotCenter, tp3CamCenter, tp3BoardCenter;
-				CFL3DObject fl3DORobot, fl3DCam, fl3DBoard;
+				Base::TPoint3<double> tp3RobotCenter, tp3CamCenter;
+				CFL3DObject fl3DORobot, fl3DCam;
 				CFLString<wchar_t> strIdx;
+
+				Base::TPoint3<float> tp3Cam, tp3Board;
 
 				// 결과 3D 객체 얻어오기 // Get the result 3D object
 				HandEyeCalibrator3D.GetEndEffector3DObject(i, &fl3DORobot, &tp3RobotCenter);
 				HandEyeCalibrator3D.GetResultCamera3DObject(i, &fl3DCam, &tp3CamCenter);
 
 				// 카메라 포즈 추정에 실패할 경우 NOK 출력 // NOK output if camera pose estimation fails
-				if((HandEyeCalibrator3D.GetResultCalibration3DObject(i, &fl3DBoard, &tp3BoardCenter)).IsFail())
+				if((HandEyeCalibrator3D.GetResultReprojectionPoint(i, tp3Cam, tp3Board)).IsFail())
 				{
-					strIdx.Format(L"Calib Board(NOK) %d", i);
-					view3DLayer.DrawText3D(tp3BoardCenter, strIdx, CYAN, 0, 9);
+					strIdx.Format(L"Reprojection(NOK) %d", i);
+					view3DLayer.DrawText3D(tp3CamCenter, strIdx, CYAN, 0, 9);
 				}
 				else
-				{
-					strIdx.Format(L"Calib Board %d", i);
-					view3DLayer.DrawText3D(tp3BoardCenter, strIdx, RED, 0, 9);
-				}
-
-				view3D.PushObject(fl3DBoard);
-
+					view3D.PushObject(CGUIView3DObjectLine(tp3Cam, tp3Board, CYAN));
+				
 				strIdx.Format(L"End Effector %d", i);
 				view3DLayer.DrawText3D(tp3RobotCenter, strIdx, BLUE, 0, 9);
 				view3D.PushObject(fl3DORobot);
