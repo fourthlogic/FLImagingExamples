@@ -882,6 +882,9 @@
     - FL Denoising Type 1
       - An example of the denoising algorithm type 1 proposed by 'FLImaging'.
       - FLImaging 노이즈 제거 알고리즘 타입 1 예제.
+    - WeightedGuidedFilter
+      - The example of an algorithm that processes a weighted guided filter to an image.
+      - 이미지에서 weighted guided 필터를 처리하는 알고리즘 예제.
     - WienerDeconvolutionFilter
       - The example of an algorithm that restores an image applied blur.
       - 블러가 적용된 이미지를 복원하는 알고리즘 예제
