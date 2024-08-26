@@ -57,6 +57,12 @@
         - The example of an algorithm that converts multiple images with different focus into a 3D image with integrated focus.
         - 각각 초점이 다른 여러장의 이미지를 처리해 모든 초점을 가지는 한장의 3D 이미지로 만드는 알고리즘 예제.
   
+    - [Photometric Stereo]
+
+      - PhotometricStereo
+        - The example of an algorithm that performs getting the height map from a images with different light source positions.
+        - 광원의 위치만 다른 여러 이미지들로부터 Height Map을 구하는 알고리즘 예제.
+
     - [Stereo]
     
       - StereoCalibrator
