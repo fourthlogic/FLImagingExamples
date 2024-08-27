@@ -227,7 +227,7 @@ int main()
 		// 정사각형 비율을 유지하여 원본 이미지를 나누어 처리한다.
 		// Set the training image segmentation mode.
 		// The original image is divided and processed by maintaining the square ratio.
-		semanticSegmentation.SetImageTilingMode(CSemanticSegmentationDL::ETilingMode_SingleAxisTiling_Fit);
+		semanticSegmentation.SetImageTilingMode(ETilingMode_SingleAxisTiling_Fit);
 
 		// Learn 동작을 하는 핸들 객체 선언 // Declare HANDLE object execute learn function
 		HANDLE hThread;
