@@ -91,6 +91,8 @@ int main()
 		photometric.SetResultTextureImage(&fliTxtImage);
 		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
 		photometric.SetDestinationObject(fl3DOHM);
+		// 동작 방식 설정 // Set Operation Mode
+		photometric.SetReconstructionMode(CPhotometricStereo::EReconstructionMode_RFT_FP32);
 
 		// 각 이미지의 광원 Slant 값 입력
 		CMultiVar<double> mvdSlant;
