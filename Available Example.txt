@@ -696,6 +696,9 @@
     - ChannelCombination
       - The example of an algorithm that combines channels selected from multiple images.
       - 여러 이미지에서 선택된 채널들을 결합하는 알고리즘 예제.
+    - ChannelL1Norm
+      - The example of an algorithm that extracts L1 norm value of each pixel from a multichannel image.
+      - 다채널 이미지에서 각 픽셀의 L1 Norm 을 추출하여 이미지화 하는 알고리즘 예제.
     - ChannelMax
       - The example of an algorithm that extracts maximum value of each pixel from a multichannel image.
       - 다채널 이미지에서 각 픽셀의 최대값을 추출하여 이미지화 하는 알고리즘 예제.
