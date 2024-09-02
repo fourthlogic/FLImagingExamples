@@ -711,6 +711,9 @@
     - ChannelSwap
       - The example of an algorithm that Swaps two channels selected from a multichannel image.
       - 다채널 이미지에서 두개의 채널을 교환하여 이미지화하는 알고리즘 예제.
+    - ChannelVariance
+      - The example of an algorithm that extracts variance value of each pixel from a multichannel image.
+      - 다채널 이미지에서 각 픽셀의 분산값을 추출하여 이미지화 하는 알고리즘 예제.
 
   - [Convolution]
   
