@@ -138,12 +138,15 @@ int main()
 			Base::TPoint3<double> tp3ResultTranslationVector;
 			CFLArray<double> flaResultEulerAngle;
 			CFLString<wchar_t> strDisplay;
+			double f64RotationError, f64TranslationError;
 
 			// 캘리브레이션 결과 얻어오기 // Get the calibration result
 			HandEyeCalibrator3D.GetResultRotationVector(matResultRotationVector, false);
 			HandEyeCalibrator3D.GetResultTranslationVector(tp3ResultTranslationVector, false);
 			HandEyeCalibrator3D.GetResultEulerAngle(flaResultEulerAngle, false);
-
+			HandEyeCalibrator3D.GetResultRotationError(f64RotationError);
+			HandEyeCalibrator3D.GetResultTranslationError(f64TranslationError);
+			
 			// 3D View의 canvas rect 영역 얻어오기 // Get the canvas rect region
 			CFLRectL flrCanvasRegion = view3D.GetClientRectCanvasRegion();
 
@@ -166,6 +169,15 @@ int main()
 				, tp3ResultTranslationVector.x, tp3ResultTranslationVector.y, tp3ResultTranslationVector.z);
 
 			view3DLayer.DrawTextCanvas(CFLPoint<double>(flpImageSize.x, flpImageSize.y), strDisplay, YELLOW, BLACK, 12, false, 0, EGUIViewImageTextAlignment_RIGHT_BOTTOM);
+
+			strDisplay.Format(
+				L"Rotation Error\n"
+				L"     [%11.6lf]\n"
+				L"Translation Error\n"
+				L"     [%11.6lf]"
+				, f64RotationError, f64TranslationError);
+
+			view3DLayer.DrawTextCanvas(CFLPoint<double>(flpImageSize.x, 0), strDisplay, YELLOW, BLACK, 12, false, 0, EGUIViewImageTextAlignment_RIGHT_TOP);
 
 			strDisplay.Format(
 				L"Euler Angle (%s)\n"
