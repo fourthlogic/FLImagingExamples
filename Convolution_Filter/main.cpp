@@ -27,7 +27,7 @@ int main()
 	{
 		CResult res = EResult_UnknownError;
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = arrFliImage[EType_Src].Load(L"../../ExampleImages/Convolution/Sun.flif")))
+		if(IsFail(res = arrFliImage[EType_Src].Load(L"../../ExampleImages/Filter/Sun.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -89,7 +89,7 @@ int main()
 			break;
 
 		// Convolution UserDefinedKernel 객체 생성 // Create Convolution UserDefinedKernel object
-		CConvolutionUserDefinedKernel convolution;
+		CConvolutionFilter convolution;
 
 		// Source 이미지 설정 // Set the source image
 		convolution.SetSourceImage(arrFliImage[EType_Src]);

@@ -18,7 +18,7 @@ int main()
 	{
 		CResult res = EResult_UnknownError;
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/Convolution/Building.flif")))
+		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/Filter/Building.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -74,7 +74,7 @@ int main()
 		}
 
 		// Convolution Gradient 객체 생성 // Create Convolution Gradient object
-		CConvolutionGradient convolutionGradient;
+		CGradientFilter convolutionGradient;
 
 		CFLRect<int32_t> flrROI(200, 200, 500, 500);
 
@@ -91,7 +91,7 @@ int main()
 		convolutionGradient.SetDestinationROI(flrROI);
 
 		// Convolution Gradient 커널 연산 방법 설정
-		convolutionGradient.SetKernelMethod(CConvolutionGradient::EKernel_Gradient);
+		convolutionGradient.SetKernelMethod(CGradientFilter::EKernel_Gradient);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = convolutionGradient.Execute()))

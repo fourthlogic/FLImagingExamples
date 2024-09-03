@@ -720,10 +720,10 @@
     - ConvolutionGaussian
       - The example of an algorithm that processes a gaussian differential filter to an image.
       - 이미지에서 gaussian 미분 필터를 처리하는 알고리즘 예제.
-    - ConvolutionGradient
+    - GradientFilter
       - The example of an algorithm that processes a gradient differential filter to an image.
       - 이미지에서 경사 미분 필터를 처리하는 알고리즘 예제.
-    - ConvolutionGradient_Prewitt_Sobel
+    - GradientFilter_Prewitt_Sobel
       - The example of an algorithm that processes a gradient, prewitt and sobel differential filter to an image.
       - 이미지에서 경사, 프리윗, 소벨 미분 필터를 처리하는 알고리즘 예제.
     - ConvolutionHighpass
@@ -735,19 +735,19 @@
     - ConvolutionLowpass
       - The example of an algorithm that processes a lowpass differential filter to an image.
       - 이미지에서 lowpass 미분 필터를 처리하는 알고리즘 예제.
-    - ConvolutionPrewitt
+    - PrewittFilter
       - The example of an algorithm that processes a prewitt differential filter to an image.
       - 이미지에서 프리윗 미분 필터를 처리하는 알고리즘 예제.
     - ConvolutionRoberts
       - The example of an algorithm that processes a roberts differential filter to an image.
       - 이미지에서 roberts 미분 필터를 처리하는 알고리즘 예제.
-    - ConvolutionSobel
+    - SobelFilter
       - The example of an algorithm that processes a sobel differential filter to an image.
       - 이미지에서 소벨 미분 필터를 처리하는 알고리즘 예제.
     - ConvolutionUniform
       - The example of an algorithm that processes a uniform differential filter to an image.
       - 이미지에서 uniform 미분 필터를 처리하는 알고리즘 예제.
-    - ConvolutionUserDefinedKernel
+    - ConvolutionFilter
       - The example of an algorithm that processes a user-defined filter to an image.
       - 이미지에서 사용자 지정 필터를 처리하는 알고리즘 예제.
 

@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FB738A00-5316-4E97-A53C-08EAA68D021E}</ProjectGuid>
+    <ProjectGuid>{A56F5063-3681-48C4-8EE1-E7577FC120B0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Convolution_Sobel</RootNamespace>
-    <ProjectName>ConvolutionSobel</ProjectName>
+    <RootNamespace>Convolution_Filter</RootNamespace>
+    <ProjectName>ConvolutionFilter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

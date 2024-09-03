@@ -28,7 +28,7 @@ int main()
 	{
 		CResult res = EResult_UnknownError;
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/Convolution/Building.flif")))
+		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/Filter/Building.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -101,7 +101,7 @@ int main()
 		CFLRect<int32_t> flrROI(200, 200, 500, 500);
 
 		// Convolution Gradient 객체 생성 // Create Convolution Gradient object
-		CConvolutionGradient convolutionGradient;
+		CGradientFilter convolutionGradient;
 
 		// Source 이미지 설정 // Set the source image
 		convolutionGradient.SetSourceImage(fliSrcImage);
@@ -112,7 +112,7 @@ int main()
 		// Destination ROI 설정
 		convolutionGradient.SetDestinationROI(flrROI);
 		// Convolution Gradient 커널 연산 방법 설정
-		convolutionGradient.SetKernelMethod(CConvolutionGradient::EKernel_Gradient);
+		convolutionGradient.SetKernelMethod(CGradientFilter::EKernel_Gradient);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = convolutionGradient.Execute()))
@@ -123,7 +123,7 @@ int main()
 
 
 		// Convolution Prewitt 객체 생성 // Create Convolution Prewitt object
-		CConvolutionPrewitt convolutionPrewitt;
+		CPrewittFilter convolutionPrewitt;
 
 		// Source 이미지 설정 // Set the source image
 		convolutionPrewitt.SetSourceImage(fliSrcImage);
@@ -134,7 +134,7 @@ int main()
 		// Destination ROI 설정
 		convolutionPrewitt.SetDestinationROI(flrROI);
 		// Convolution Prewitt 커널 연산 방법 설정
-		convolutionPrewitt.SetKernelMethod(CConvolutionPrewitt::EKernel_Prewitt);
+		convolutionPrewitt.SetKernelMethod(CPrewittFilter::EKernel_Prewitt);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = convolutionPrewitt.Execute()))
@@ -145,7 +145,7 @@ int main()
 
 
 		// Convolution Sobel 객체 생성 // Create Convolution Sobel object
-		CConvolutionSobel convolutionSobel;
+		CSobelFilter convolutionSobel;
 
 		// Source 이미지 설정 // Set the source image
 		convolutionSobel.SetSourceImage(fliSrcImage);
@@ -156,7 +156,7 @@ int main()
 		// Destination ROI 설정
 		convolutionSobel.SetDestinationROI(flrROI);
 		// Convolution Sobel 커널 연산 방법 설정
-		convolutionSobel.SetKernelMethod(CConvolutionSobel::EKernel_Sobel);
+		convolutionSobel.SetKernelMethod(CSobelFilter::EKernel_Sobel);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = convolutionSobel.Execute()))
