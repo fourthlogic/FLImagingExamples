@@ -28,7 +28,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Convolution/SilverGrass.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Filter/SilverGrass.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -97,70 +97,70 @@ int main()
 		// ROI 설정을 위한 CFLRect 객체 생성 // Create a CFLRect object for setting ROI
 		CFLRect<int32_t> flrROI(200, 200, 500, 500);
 
- 		// Convolution Uniform 객체 생성 // Create Convolution Uniform object
- 		CConvolutionUniform convolutionUniform;
+ 		// Uniform Filter 객체 생성 // Create Uniform Filter object
+ 		CUniformFilter filterUniform;
  		// Source 이미지 설정 // Set the source image
- 		convolutionUniform.SetSourceImage(arrFliImage[EType_Source]); 
+ 		filterUniform.SetSourceImage(arrFliImage[EType_Source]); 
  		// Source ROI 설정 // Set the source ROI
- 		convolutionUniform.SetSourceROI(flrROI);
+ 		filterUniform.SetSourceROI(flrROI);
 
  		// Destination1 이미지 설정 // Set the destination1 image
- 		convolutionUniform.SetDestinationImage(arrFliImage[EType_Destination1]);
+ 		filterUniform.SetDestinationImage(arrFliImage[EType_Destination1]);
  		// Destination1 ROI 설정 // Set the destination1 ROI
- 		convolutionUniform.SetDestinationROI(flrROI);
+ 		filterUniform.SetDestinationROI(flrROI);
 
 		// 커널 크기 설정 // Set kernel size
-		convolutionUniform.SetKernel(3);
+		filterUniform.SetKernel(3);
  
  		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
- 		if(IsFail(res = convolutionUniform.Execute()))
+ 		if(IsFail(res = filterUniform.Execute()))
  		{
- 			ErrorPrint(res, "Failed to execute convolution uniform.");
+ 			ErrorPrint(res, "Failed to execute Uniform filter.");
  			break;
  		}
 
 		// Destination2 이미지 설정 // Set the destination2 image
-		convolutionUniform.SetDestinationImage(arrFliImage[EType_Destination2]);
+		filterUniform.SetDestinationImage(arrFliImage[EType_Destination2]);
 		// Destination2 ROI 설정 // Set the destination2 ROI
-		convolutionUniform.SetDestinationROI(flrROI);
+		filterUniform.SetDestinationROI(flrROI);
 
 		// 커널 크기 설정 // Set kernel size
-		convolutionUniform.SetKernel(5);
+		filterUniform.SetKernel(5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(res = convolutionUniform.Execute()))
+		if(IsFail(res = filterUniform.Execute()))
 		{
-			ErrorPrint(res, "Failed to execute convolution uniform.");
+			ErrorPrint(res, "Failed to execute Uniform filter.");
 			break;
 		}
 
 		// Destination3 이미지 설정 // Set the destination3 image
-		convolutionUniform.SetDestinationImage(arrFliImage[EType_Destination3]);
+		filterUniform.SetDestinationImage(arrFliImage[EType_Destination3]);
 		// Destination3 ROI 설정 // Set Destination3 ROI
-		convolutionUniform.SetDestinationROI(flrROI);
+		filterUniform.SetDestinationROI(flrROI);
 
 		// 커널 크기 설정 // Set kernel size
-		convolutionUniform.SetKernel(7);
+		filterUniform.SetKernel(7);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(res = convolutionUniform.Execute()))
+		if(IsFail(res = filterUniform.Execute()))
 		{
-			ErrorPrint(res, "Failed to execute convolution uniform.");
+			ErrorPrint(res, "Failed to execute Uniform filter.");
 			break;
 		}
 
 		// Destination4 이미지 설정 // Set the destination4 image
-		convolutionUniform.SetDestinationImage(arrFliImage[EType_Destination4]);
+		filterUniform.SetDestinationImage(arrFliImage[EType_Destination4]);
 		// Destination4 ROI 설정 // Set Destination4 ROI
-		convolutionUniform.SetDestinationROI(flrROI);
+		filterUniform.SetDestinationROI(flrROI);
 
 		// 커널 크기 설정 // Set kernel size
-		convolutionUniform.SetKernel(15);
+		filterUniform.SetKernel(15);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(res = convolutionUniform.Execute()))
+		if(IsFail(res = filterUniform.Execute()))
 		{
-			ErrorPrint(res, "Failed to execute convolution uniform.");
+			ErrorPrint(res, "Failed to execute Uniform filter.");
 			break;
 		}
 

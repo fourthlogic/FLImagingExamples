@@ -30,7 +30,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Convolution/Flower.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Filter/Flower.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -99,70 +99,70 @@ int main()
 		// ROI 설정을 위한 CFLRect 객체 생성 // Create a CFLRect object for setting ROI
 		CFLRect<int32_t> flrROI(200, 200, 500, 500);
 
- 		// Convolution Gaussian 객체 생성 // Create Convolution Gaussian object
- 		CConvolutionGaussian convolutionGaussian;
+ 		// Gaussian Filter 객체 생성 // Create Gaussian Filter object
+ 		CGaussianFilter filterGaussian;
  		// Source 이미지 설정 // Set the source image
- 		convolutionGaussian.SetSourceImage(arrFliImage[EType_Source]); 
+ 		filterGaussian.SetSourceImage(arrFliImage[EType_Source]); 
  		// Source ROI 설정 // Set the source ROI
- 		convolutionGaussian.SetSourceROI(flrROI);
+ 		filterGaussian.SetSourceROI(flrROI);
 
  		// Destination1 이미지 설정 // Set the destination1 image
- 		convolutionGaussian.SetDestinationImage(arrFliImage[EType_Destination1]);
+ 		filterGaussian.SetDestinationImage(arrFliImage[EType_Destination1]);
  		// Destination1 ROI 설정 // Set the destination1 ROI
- 		convolutionGaussian.SetDestinationROI(flrROI);
+ 		filterGaussian.SetDestinationROI(flrROI);
 
 		// 커널 크기 설정 // Set kernel size
-		convolutionGaussian.SetKernel(3);
+		filterGaussian.SetKernel(3);
  
  		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
- 		if(IsFail(res = convolutionGaussian.Execute()))
+ 		if(IsFail(res = filterGaussian.Execute()))
  		{
- 			ErrorPrint(res, "Failed to execute convolution gaussian.");
+ 			ErrorPrint(res, "Failed to execute Gaussian filter.");
  			break;
  		}
 
 		// Destination2 이미지 설정 // Set the destination2 image
-		convolutionGaussian.SetDestinationImage(arrFliImage[EType_Destination2]);
+		filterGaussian.SetDestinationImage(arrFliImage[EType_Destination2]);
 		// Destination2 ROI 설정 // Set the destination2 ROI
-		convolutionGaussian.SetDestinationROI(flrROI);
+		filterGaussian.SetDestinationROI(flrROI);
 
 		// 커널 크기 설정 // Set kernel size
-		convolutionGaussian.SetKernel(5);
+		filterGaussian.SetKernel(5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(res = convolutionGaussian.Execute()))
+		if(IsFail(res = filterGaussian.Execute()))
 		{
-			ErrorPrint(res, "Failed to execute convolution gaussian.");
+			ErrorPrint(res, "Failed to execute Gaussian filter.");
 			break;
 		}
 
 		// Destination3 이미지 설정 // Set the destination3 image
-		convolutionGaussian.SetDestinationImage(arrFliImage[EType_Destination3]);
+		filterGaussian.SetDestinationImage(arrFliImage[EType_Destination3]);
 		// Destination3 ROI 설정 // Set Destination3 ROI
-		convolutionGaussian.SetDestinationROI(flrROI);
+		filterGaussian.SetDestinationROI(flrROI);
 
 		// 커널 크기 설정 // Set kernel size
-		convolutionGaussian.SetKernel(7);
+		filterGaussian.SetKernel(7);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(res = convolutionGaussian.Execute()))
+		if(IsFail(res = filterGaussian.Execute()))
 		{
-			ErrorPrint(res, "Failed to execute convolution gaussian.");
+			ErrorPrint(res, "Failed to execute Gaussian filter.");
 			break;
 		}
 
 		// Destination4 이미지 설정 // Set the destination4 image
-		convolutionGaussian.SetDestinationImage(arrFliImage[EType_Destination4]);
+		filterGaussian.SetDestinationImage(arrFliImage[EType_Destination4]);
 		// Destination4 ROI 설정 // Set Destination4 ROI
-		convolutionGaussian.SetDestinationROI(flrROI);
+		filterGaussian.SetDestinationROI(flrROI);
 
 		// 커널 크기 설정 // Set kernel size
-		convolutionGaussian.SetKernel(15);
+		filterGaussian.SetKernel(15);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(res = convolutionGaussian.Execute()))
+		if(IsFail(res = filterGaussian.Execute()))
 		{
-			ErrorPrint(res, "Failed to execute convolution gaussian.");
+			ErrorPrint(res, "Failed to execute Gaussian filter.");
 			break;
 		}
 

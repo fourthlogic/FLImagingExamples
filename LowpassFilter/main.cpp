@@ -26,7 +26,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Convolution/Bridge.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Filter/Bridge.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -92,40 +92,40 @@ int main()
 		// ROI 설정을 위한 CFLRect 객체 생성 // Create a CFLRect object for setting ROI
 		CFLRect<int32_t> flrROI(20, 100, 420, 500);
 
- 		// Convolution Lowpass 객체 생성 // Create Convolution Lowpass object
- 		CConvolutionLowpass convolutionLowpass;
+ 		// Lowpass Filter 객체 생성 // Create Lowpass Filter object
+ 		CLowpassFilter filterLowpass;
  		// Source 이미지 설정 // Set the source image
- 		convolutionLowpass.SetSourceImage(arrFliImage[EType_Source]); 
+ 		filterLowpass.SetSourceImage(arrFliImage[EType_Source]); 
  		// Source ROI 설정 // Set the source ROI
- 		convolutionLowpass.SetSourceROI(flrROI);
+ 		filterLowpass.SetSourceROI(flrROI);
 
  		// Destination1 이미지 설정 // Set the destination1 image
- 		convolutionLowpass.SetDestinationImage(arrFliImage[EType_Destination1]);
+ 		filterLowpass.SetDestinationImage(arrFliImage[EType_Destination1]);
  		// Destination1 ROI 설정 // Set the destination1 ROI
- 		convolutionLowpass.SetDestinationROI(flrROI);
+ 		filterLowpass.SetDestinationROI(flrROI);
 
 		// 커널 연산 방법 설정 // Set kernel operation method
-		convolutionLowpass.SetKernelMethod(CConvolutionLowpass::EKernel_Lowpass1);
+		filterLowpass.SetKernelMethod(CLowpassFilter::EKernel_Lowpass1);
  
  		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
- 		if(IsFail(res = convolutionLowpass.Execute()))
+ 		if(IsFail(res = filterLowpass.Execute()))
  		{
- 			ErrorPrint(res, "Failed to execute convolution Lowpass.");
+ 			ErrorPrint(res, "Failed to execute Lowpass filter.");
  			break;
  		}
 
 		// Destination2 이미지 설정 // Set the destination2 image
-		convolutionLowpass.SetDestinationImage(arrFliImage[EType_Destination2]);
+		filterLowpass.SetDestinationImage(arrFliImage[EType_Destination2]);
 		// Destination2 ROI 설정 // Set the destination2 ROI
-		convolutionLowpass.SetDestinationROI(flrROI);
+		filterLowpass.SetDestinationROI(flrROI);
 
 		// 커널 연산 방법 설정 // Set kernel operation method
-		convolutionLowpass.SetKernelMethod(CConvolutionLowpass::EKernel_Lowpass2);
+		filterLowpass.SetKernelMethod(CLowpassFilter::EKernel_Lowpass2);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if(IsFail(res = convolutionLowpass.Execute()))
+		if(IsFail(res = filterLowpass.Execute()))
 		{
-			ErrorPrint(res, "Failed to execute convolution Lowpass.");
+			ErrorPrint(res, "Failed to execute Lowpass filter.");
 			break;
 		}
 

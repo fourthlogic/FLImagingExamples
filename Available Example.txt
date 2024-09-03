@@ -717,36 +717,18 @@
 
   - [Convolution]
   
-    - ConvolutionGaussian
-      - The example of an algorithm that processes a gaussian differential filter to an image.
-      - 이미지에서 gaussian 미분 필터를 처리하는 알고리즘 예제.
     - GradientFilter
       - The example of an algorithm that processes a gradient differential filter to an image.
       - 이미지에서 경사 미분 필터를 처리하는 알고리즘 예제.
     - GradientFilter_Prewitt_Sobel
       - The example of an algorithm that processes a gradient, prewitt and sobel differential filter to an image.
       - 이미지에서 경사, 프리윗, 소벨 미분 필터를 처리하는 알고리즘 예제.
-    - ConvolutionHighpass
-      - The example of an algorithm that processes a highpass differential filter to an image.
-      - 이미지에서 highpass 미분 필터를 처리하는 알고리즘 예제.
-    - ConvolutionLaplacian
-      - The example of an algorithm that processes a laplacian differential filter to an image.
-      - 이미지에서 laplacian 미분 필터를 처리하는 알고리즘 예제.
-    - ConvolutionLowpass
-      - The example of an algorithm that processes a lowpass differential filter to an image.
-      - 이미지에서 lowpass 미분 필터를 처리하는 알고리즘 예제.
     - PrewittFilter
       - The example of an algorithm that processes a prewitt differential filter to an image.
       - 이미지에서 프리윗 미분 필터를 처리하는 알고리즘 예제.
-    - ConvolutionRoberts
-      - The example of an algorithm that processes a roberts differential filter to an image.
-      - 이미지에서 roberts 미분 필터를 처리하는 알고리즘 예제.
     - SobelFilter
       - The example of an algorithm that processes a sobel differential filter to an image.
       - 이미지에서 소벨 미분 필터를 처리하는 알고리즘 예제.
-    - ConvolutionUniform
-      - The example of an algorithm that processes a uniform differential filter to an image.
-      - 이미지에서 uniform 미분 필터를 처리하는 알고리즘 예제.
     - ConvolutionFilter
       - The example of an algorithm that processes a user-defined filter to an image.
       - 이미지에서 사용자 지정 필터를 처리하는 알고리즘 예제.
@@ -816,6 +798,9 @@
     - EmphasizeFilter	   
       - The example of an algorithm that enhances contrast of the image.
       - 이미지에 명암비를 향상시키는 알고리즘 예제
+    - HighpassFilter
+      - The example of an algorithm that processes a highpass differential filter to an image.
+      - 이미지에서 highpass 미분 필터를 처리하는 알고리즘 예제.
     - EntropyFilter	   
       - The example of an algorithm that show entropy distribution.
       - 이미지의 Entropy 분포를 나타내는 알고리즘 예제
@@ -831,6 +816,9 @@
     - GaussFilter
       - The example of an algorithm that performs image smoothing usign gaussian functions
       - Gauss Functions을 이용하여 이미지 스무딩을 수행하는 알고리즘 예제
+    - GaussianFilter
+      - The example of an algorithm that processes a gaussian differential filter to an image.
+      - 이미지에서 gaussian 미분 필터를 처리하는 알고리즘 예제.
     - GuidedFilter
       - The example of an algorithm that processes a guided filter to an image.
       - 이미지에서 guided 필터를 처리하는 알고리즘 예제.
@@ -840,9 +828,18 @@
     - InfiniteSymmetricExponentialFilter
       - The example of an algorithm that performs image smoothing usign Infinite Symmetric Exponential function
       - Infinite Symmetric Exponential Function을 이용하여 이미지 스무딩을 수행하는 알고리즘 예제
+    - LowpassFilter
+      - The example of an algorithm that processes a lowpass differential filter to an image.
+      - 이미지에서 lowpass 미분 필터를 처리하는 알고리즘 예제.
     - KirschFilter
       - The example of an algorithm that detects image edges
       - Kirsch Operator를 사용하여 이미지 경계를 검출하는 알고리즘 예제
+    - LaplacianFilter
+      - The example of an algorithm that processes a laplacian differential filter to an image.
+      - 이미지에서 laplacian 미분 필터를 처리하는 알고리즘 예제.
+    - RobertsFilter
+      - The example of an algorithm that processes a roberts differential filter to an image.
+      - 이미지에서 roberts 미분 필터를 처리하는 알고리즘 예제.
     - KuwaharaFilter
       - The example of an algorithm that processes a Kuwahara filter to an image.
       - 이미지에서 Kuwahara 필터를 처리하는 알고리즘 예제	
@@ -873,6 +870,9 @@
     - SigmaFilter
       - The example of an algorithm that executes non-linear image smoothing.
       - 비선형 이미지를 스무딩해주는 알고리즘 예제.  
+    - UniformFilter
+      - The example of an algorithm that processes a uniform differential filter to an image.
+      - 이미지에서 uniform 미분 필터를 처리하는 알고리즘 예제.
     - SymmetricNearestNeighborFilter
       - The example of an algorithm that processes a Symmetric Nearest Neighbor filter to an image.
       - 이미지에서 Symmetric Nearest Neighbor 필터를 처리하는 알고리즘 예제	

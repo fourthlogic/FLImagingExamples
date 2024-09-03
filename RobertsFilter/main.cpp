@@ -25,7 +25,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Convolution/Sunset.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Filter/Sunset.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -91,22 +91,22 @@ int main()
 		// ROI 설정을 위한 CFLRect 객체 생성 // Create a CFLRect object for setting ROI
 		CFLRect<int32_t> flrROI(20, 100, 420, 500);
 
- 		// Convolution Roberts 객체 생성 // Create Convolution Roberts object
- 		CConvolutionRoberts convolutionRoberts;
+ 		// Roberts Filter 객체 생성 // Create Roberts Filter object
+ 		CRobertsFilter filterRoberts;
  		// Source 이미지 설정 // Set the source image
- 		convolutionRoberts.SetSourceImage(arrFliImage[EType_Source]); 
+ 		filterRoberts.SetSourceImage(arrFliImage[EType_Source]); 
  		// Source ROI 설정 // Set the source ROI
- 		convolutionRoberts.SetSourceROI(flrROI);
+ 		filterRoberts.SetSourceROI(flrROI);
 
  		// Destination1 이미지 설정 // Set the destination1 image
- 		convolutionRoberts.SetDestinationImage(arrFliImage[EType_Destination1]);
+ 		filterRoberts.SetDestinationImage(arrFliImage[EType_Destination1]);
  		// Destination1 ROI 설정 // Set the destination1 ROI
- 		convolutionRoberts.SetDestinationROI(flrROI);
+ 		filterRoberts.SetDestinationROI(flrROI);
  
  		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
- 		if(IsFail(res = convolutionRoberts.Execute()))
+ 		if(IsFail(res = filterRoberts.Execute()))
  		{
- 			ErrorPrint(res, "Failed to execute convolution Roberts.");
+ 			ErrorPrint(res, "Failed to execute Roberts filter.");
  			break;
  		}
 
