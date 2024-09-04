@@ -715,26 +715,8 @@
       - The example of an algorithm that extracts variance value of each pixel from a multichannel image.
       - 다채널 이미지에서 각 픽셀의 분산값을 추출하여 이미지화 하는 알고리즘 예제.
 
-  - [Convolution]
-  
-    - GradientFilter
-      - The example of an algorithm that processes a gradient differential filter to an image.
-      - 이미지에서 경사 미분 필터를 처리하는 알고리즘 예제.
-    - GradientFilter_Prewitt_Sobel
-      - The example of an algorithm that processes a gradient, prewitt and sobel differential filter to an image.
-      - 이미지에서 경사, 프리윗, 소벨 미분 필터를 처리하는 알고리즘 예제.
-    - PrewittFilter
-      - The example of an algorithm that processes a prewitt differential filter to an image.
-      - 이미지에서 프리윗 미분 필터를 처리하는 알고리즘 예제.
-    - SobelFilter
-      - The example of an algorithm that processes a sobel differential filter to an image.
-      - 이미지에서 소벨 미분 필터를 처리하는 알고리즘 예제.
-    - ConvolutionFilter
-      - The example of an algorithm that processes a user-defined filter to an image.
-      - 이미지에서 사용자 지정 필터를 처리하는 알고리즘 예제.
 
   - [Feature Extraction]
-
     - CannyEdgeDetector
       - The example of Canny Edge Detection Algorithm.
       - 캐니 엣지 검출 알고리즘 예제
@@ -764,136 +746,161 @@
       - 이미지의 특징점을 추출하는 알고리즘 예제
    
   - [Filter]
-  
-	- AnisotropicDiffusion
-      - The example of an algorithm that diffuse the pixel value nonlinearly along the boundary of an image.
-      - 이미지의 경계를 따라 비선형적으로 값을 확산시키는 알고리즘 예제
-    - BilateralFilter
-      - The example of an algorithm that processes a bilateral filter to an image.
-      - 이미지에서 bilateral 필터를 처리하는 알고리즘 예제
-    - BilateralFilterGrid
-      - The example of an algorithm that processes a bilateral filter to an image using Bilateral Grid data structure.
-      - Bilateral Grid 자료구조를 사용하여 이미지에서 bilateral 필터를 처리하는 알고리즘 예제
-    - BilateralFilterSubSampled
-      - The example of an algorithm that processes a bilateral filter And Applies the sampling method to an image.
-      - 샘플링을 적용하여 이미지에서 bilateral 필터를 처리하는 알고리즘 예제	 
-    - BinomialFilter
-      - The example of an algorithm that performs smoothing by applying filter filtering to image
-      - 이미지에 Binomial 필터링을 적용하여 스무딩하는 알고리즘 예제
-    - Coherence Enhancing Diffusion
-      - The example of an algorithm that performs diffusion in a consistent direction of an image.
-      - 이미지의 일관된 방향으로 확산을 수행하는 알고리즘 예제.
-    - Coherence Enhancing Diffusion NonNeg
-      - The example of an algorithm that performs diffusion in a consistent direction of an image.
-      - 이미지의 일관된 방향으로 확산을 수행하는 알고리즘 예제.
-    - Deviation Filter
-      - The example of an algorithm that detects image edges.
-      - 이미지 경계를 검출하는 알고리즘 예제.
-    - DifferenceOfGaussianFilter
-      - The example of an algorithm that detects image edges usigng Difference Of Gaussian functions.
-      - Difference Of Gaussian functions를 사용하여 이미지 경계를 검출하는 알고리즘 예제
-    - EdgeEnhancement
-      - The example of an algorithm that minimizes noise and enhances the edge of an image.
-      - 노이즈를 최소화하면서 이미지의 경계를 강조시켜주는 알고리즘 예제.
-    - EmphasizeFilter	   
-      - The example of an algorithm that enhances contrast of the image.
-      - 이미지에 명암비를 향상시키는 알고리즘 예제
-    - HighpassFilter
-      - The example of an algorithm that processes a highpass differential filter to an image.
-      - 이미지에서 highpass 미분 필터를 처리하는 알고리즘 예제.
-    - EntropyFilter	   
-      - The example of an algorithm that show entropy distribution.
-      - 이미지의 Entropy 분포를 나타내는 알고리즘 예제
-    - FastGuidedFilter
-      - The example of an algorithm that processes a fast guided filter to an image.
-      - 이미지에서 fast guided 필터를 처리하는 알고리즘 예제.
-    - FreiFilter
-      - The example of an algorithm that detects image edges.
-      - 이미지 경계를 검출하는 알고리즘 예제.
-    - GaborFilter
-      - The example of an algorithm that processes a gabor filter to an image.
-      - 이미지에서 Gabor 필터를 처리하는 알고리즘 예제.
-    - GaussFilter
-      - The example of an algorithm that performs image smoothing usign gaussian functions
-      - Gauss Functions을 이용하여 이미지 스무딩을 수행하는 알고리즘 예제
-    - GaussianFilter
-      - The example of an algorithm that processes a gaussian differential filter to an image.
-      - 이미지에서 gaussian 미분 필터를 처리하는 알고리즘 예제.
-    - GuidedFilter
-      - The example of an algorithm that processes a guided filter to an image.
-      - 이미지에서 guided 필터를 처리하는 알고리즘 예제.
-    - IlluminateFilter
-      - The example of an algorithm that enhance contrast by applying Illuminate filtering to image
-      - 이미지에 Illuminate 필터링을 적용하여 이미지의 명암 대비를 강화하는 알고리즘 예제	 
-    - InfiniteSymmetricExponentialFilter
-      - The example of an algorithm that performs image smoothing usign Infinite Symmetric Exponential function
-      - Infinite Symmetric Exponential Function을 이용하여 이미지 스무딩을 수행하는 알고리즘 예제
-    - LowpassFilter
-      - The example of an algorithm that processes a lowpass differential filter to an image.
-      - 이미지에서 lowpass 미분 필터를 처리하는 알고리즘 예제.
-    - KirschFilter
-      - The example of an algorithm that detects image edges
-      - Kirsch Operator를 사용하여 이미지 경계를 검출하는 알고리즘 예제
-    - LaplacianFilter
-      - The example of an algorithm that processes a laplacian differential filter to an image.
-      - 이미지에서 laplacian 미분 필터를 처리하는 알고리즘 예제.
-    - RobertsFilter
-      - The example of an algorithm that processes a roberts differential filter to an image.
-      - 이미지에서 roberts 미분 필터를 처리하는 알고리즘 예제.
-    - KuwaharaFilter
-      - The example of an algorithm that processes a Kuwahara filter to an image.
-      - 이미지에서 Kuwahara 필터를 처리하는 알고리즘 예제	
-    - LaplacianOfGaussianFilter
-      - The example of an algorithm that detects image edges.
-      - Laplacian Of Gaussian Operator를 사용하여 이미지 경계를 검출하는 알고리즘 예제
-    - MeanCurvatureFlow
-      - The example of an algorithm that applies mean curvature flow to an image.
-      - 이미지에 Mean Curvature Flow(평균 곡률 흐름)를 적용하는 알고리즘 예제.
-    - MeanCurvatureFlowWeighted
-      - The example of an algorithm that applies mean curvature flow to an image. (Edge preservation method of mean curvature flow algorithm)
-      - 이미지에 Mean Curvature Flow Weighted(평균 곡률 흐름)를 적용하는 알고리즘 예제. (Mean Curvature Flow의 엣지 보존 방식)
-    - MedianFilter
-      - The example of an algorithm that processes a median filter to an image.
-      - 이미지에서 중앙값 필터를 처리하는 알고리즘 예제.
-    - MedianSeparatedFilter
-      - The example of an algorithm that processes a median separate filter to an image.
-      - 이미지에서 분리된 중앙값 필터를 처리하는 알고리즘 예제.
-    - MedianWeightedFilter
-      - The example of an algorithm that processes a median weighted filter to an image.
-      - 이미지에서 가중을 이용한 중앙값 필터를 처리하는 알고리즘 예제.
-    - RobinsonFilter
-      - The example of an algorithm that detects image edges
-      - Robinson Operator를 사용하여 이미지 경계를 검출하는 알고리즘 예제
-    - ShockFilter
-      - The example of an algorithm that reconstructs a blurred edge into a sharp edge.
-      - 흐릿한 이미지의 경계를 뚜렷하게 복원해주는 알고리즘 예제.
-    - SigmaFilter
-      - The example of an algorithm that executes non-linear image smoothing.
-      - 비선형 이미지를 스무딩해주는 알고리즘 예제.  
-    - UniformFilter
-      - The example of an algorithm that processes a uniform differential filter to an image.
-      - 이미지에서 uniform 미분 필터를 처리하는 알고리즘 예제.
-    - SymmetricNearestNeighborFilter
-      - The example of an algorithm that processes a Symmetric Nearest Neighbor filter to an image.
-      - 이미지에서 Symmetric Nearest Neighbor 필터를 처리하는 알고리즘 예제	
-    - SymmetryFilter	   
-      - The example of an algorithm that show symmetry distribution.
-      - 이미지의 대칭성 분포를 나타내는 알고리즘 예제
-    - TextureFilter	   
-      - The example of an algorithm that show symmetry distribution.
-      - 이미지에 특정한 텍스쳐 변환 법칙을 적용하는 알고리즘 예제
-    - Total Variation Denoising
-      - An example of an algorithm that removes noise by reducing total variation in an image.
-      - 이미지 전체 변동을 감소하여 노이즈를 제거하는 알고리즘 예제.
-    - FL Denoising Type 1
-      - An example of the denoising algorithm type 1 proposed by 'FLImaging'.
-      - FLImaging 노이즈 제거 알고리즘 타입 1 예제.
-    - WeightedGuidedFilter
-      - The example of an algorithm that processes a weighted guided filter to an image.
-      - 이미지에서 weighted guided 필터를 처리하는 알고리즘 예제.
-    - WienerDeconvolutionFilter
-      - The example of an algorithm that restores an image applied blur.
-      - 블러가 적용된 이미지를 복원하는 알고리즘 예제
+
+    - [Analysis]
+      - EntropyFilter	   
+        - The example of an algorithm that show entropy distribution.
+        - 이미지의 Entropy 분포를 나타내는 알고리즘 예제
+      - GaborFilter
+        - The example of an algorithm that processes a gabor filter to an image.
+        - 이미지에서 Gabor 필터를 처리하는 알고리즘 예제.
+      - SymmetryFilter	   
+        - The example of an algorithm that show symmetry distribution.
+        - 이미지의 대칭성 분포를 나타내는 알고리즘 예제
+      - TextureFilter	   
+        - The example of an algorithm that show symmetry distribution.
+        - 이미지에 특정한 텍스쳐 변환 법칙을 적용하는 알고리즘 예제
+
+    - [Convolution]
+     - ConvolutionFilter
+        - The example of an algorithm that processes a user-defined filter to an image.
+        - 이미지에서 사용자 지정 필터를 처리하는 알고리즘 예제.
+
+    - [Deconvolution]
+      - WienerDeconvolutionFilter
+        - The example of an algorithm that restores an image applied blur.
+        - 블러가 적용된 이미지를 복원하는 알고리즘 예제
+
+    - [Denoising]
+      - AnisotropicDiffusion
+        - The example of an algorithm that diffuse the pixel value nonlinearly along the boundary of an image.
+        - 이미지의 경계를 따라 비선형적으로 값을 확산시키는 알고리즘 예제
+      - BilateralFilter
+        - The example of an algorithm that processes a bilateral filter to an image.
+        - 이미지에서 bilateral 필터를 처리하는 알고리즘 예제
+      - BilateralFilterGrid
+        - The example of an algorithm that processes a bilateral filter to an image using Bilateral Grid data structure.
+        - Bilateral Grid 자료구조를 사용하여 이미지에서 bilateral 필터를 처리하는 알고리즘 예제
+      - BilateralFilterSubSampled
+        - The example of an algorithm that processes a bilateral filter And Applies the sampling method to an image.
+        - 샘플링을 적용하여 이미지에서 bilateral 필터를 처리하는 알고리즘 예제	
+      - FL Denoising Type 1
+        - An example of the denoising algorithm type 1 proposed by 'FLImaging'.
+        - FLImaging 노이즈 제거 알고리즘 타입 1 예제.
+      - FastGuidedFilter
+        - The example of an algorithm that processes a fast guided filter to an image.
+        - 이미지에서 fast guided 필터를 처리하는 알고리즘 예제.
+      - GuidedFilter
+        - The example of an algorithm that processes a guided filter to an image.
+        - 이미지에서 guided 필터를 처리하는 알고리즘 예제.
+      - KuwaharaFilter
+        - The example of an algorithm that processes a Kuwahara filter to an image.
+        - 이미지에서 Kuwahara 필터를 처리하는 알고리즘 예제	
+      - MeanCurvatureFlow
+        - The example of an algorithm that applies mean curvature flow to an image.
+        - 이미지에 Mean Curvature Flow(평균 곡률 흐름)를 적용하는 알고리즘 예제.
+      - MeanCurvatureFlowWeighted
+        - The example of an algorithm that applies mean curvature flow to an image. (Edge preservation method of mean curvature flow algorithm)
+        - 이미지에 Mean Curvature Flow Weighted(평균 곡률 흐름)를 적용하는 알고리즘 예제. (Mean Curvature Flow의 엣지 보존 방식)
+      - MedianFilter
+        - The example of an algorithm that processes a median filter to an image.
+        - 이미지에서 중앙값 필터를 처리하는 알고리즘 예제.
+      - MedianSeparatedFilter
+        - The example of an algorithm that processes a median separate filter to an image.
+        - 이미지에서 분리된 중앙값 필터를 처리하는 알고리즘 예제.
+      - MedianWeightedFilter
+        - The example of an algorithm that processes a median weighted filter to an image.
+        - 이미지에서 가중을 이용한 중앙값 필터를 처리하는 알고리즘 예제.
+      - SymmetricNearestNeighborFilter
+        - The example of an algorithm that processes a Symmetric Nearest Neighbor filter to an image.
+        - 이미지에서 Symmetric Nearest Neighbor 필터를 처리하는 알고리즘 예제	
+      - Total Variation Denoising
+        - An example of an algorithm that removes noise by reducing total variation in an image.
+        - 이미지 전체 변동을 감소하여 노이즈를 제거하는 알고리즘 예제.
+      - WeightedGuidedFilter
+        - The example of an algorithm that processes a weighted guided filter to an image.
+        - 이미지에서 weighted guided 필터를 처리하는 알고리즘 예제.
+
+    - [Edge Detection]
+      - Deviation Filter
+        - The example of an algorithm that detects image edges.
+        - 이미지 경계를 검출하는 알고리즘 예제.
+      - DifferenceOfGaussianFilter
+        - The example of an algorithm that detects image edges usigng Difference Of Gaussian functions.
+        - Difference Of Gaussian functions를 사용하여 이미지 경계를 검출하는 알고리즘 예제
+      - FreiFilter
+        - The example of an algorithm that detects image edges.
+        - 이미지 경계를 검출하는 알고리즘 예제.
+      - GradientFilter
+        - The example of an algorithm that processes a gradient differential filter to an image.
+        - 이미지에서 경사 미분 필터를 처리하는 알고리즘 예제.
+      - KirschFilter
+        - The example of an algorithm that detects image edges
+        - Kirsch Operator를 사용하여 이미지 경계를 검출하는 알고리즘 예제
+      - LaplacianFilter
+        - The example of an algorithm that processes a laplacian differential filter to an image.
+        - 이미지에서 laplacian 미분 필터를 처리하는 알고리즘 예제.
+      - LaplacianOfGaussianFilter
+        - The example of an algorithm that detects image edges.
+        - Laplacian Of Gaussian Operator를 사용하여 이미지 경계를 검출하는 알고리즘 예제
+      - PrewittFilter
+        - The example of an algorithm that processes a prewitt differential filter to an image.
+        - 이미지에서 프리윗 미분 필터를 처리하는 알고리즘 예제.
+      - RobertsFilter
+        - The example of an algorithm that processes a roberts differential filter to an image.
+        - 이미지에서 roberts 미분 필터를 처리하는 알고리즘 예제.
+      - RobinsonFilter
+        - The example of an algorithm that detects image edges
+        - Robinson Operator를 사용하여 이미지 경계를 검출하는 알고리즘 예제
+      - SobelFilter
+        - The example of an algorithm that processes a sobel differential filter to an image.
+        - 이미지에서 소벨 미분 필터를 처리하는 알고리즘 예제.
+
+    - [Enhancement]
+      - Coherence Enhancing Diffusion
+        - The example of an algorithm that performs diffusion in a consistent direction of an image.
+        - 이미지의 일관된 방향으로 확산을 수행하는 알고리즘 예제.
+      - Coherence Enhancing Diffusion NonNeg
+        - The example of an algorithm that performs diffusion in a consistent direction of an image.
+        - 이미지의 일관된 방향으로 확산을 수행하는 알고리즘 예제.
+      - EdgeEnhancement
+        - The example of an algorithm that minimizes noise and enhances the edge of an image.
+        - 노이즈를 최소화하면서 이미지의 경계를 강조시켜주는 알고리즘 예제.
+      - EmphasizeFilter	   
+        - The example of an algorithm that enhances contrast of the image.
+        - 이미지에 명암비를 향상시키는 알고리즘 예제
+      - HighpassFilter
+        - The example of an algorithm that processes a highpass differential filter to an image.
+        - 이미지에서 highpass 미분 필터를 처리하는 알고리즘 예제.
+      - IlluminateFilter
+        - The example of an algorithm that enhance contrast by applying Illuminate filtering to image
+        - 이미지에 Illuminate 필터링을 적용하여 이미지의 명암 대비를 강화하는 알고리즘 예제	 
+      - ShockFilter
+        - The example of an algorithm that reconstructs a blurred edge into a sharp edge.
+        - 흐릿한 이미지의 경계를 뚜렷하게 복원해주는 알고리즘 예제.
+
+    - [Smoothing]
+      - BinomialFilter
+        - The example of an algorithm that performs smoothing by applying filter filtering to image
+        - 이미지에 Binomial 필터링을 적용하여 스무딩하는 알고리즘 예제
+      - GaussFilter
+        - The example of an algorithm that performs image smoothing usign gaussian functions
+        - Gauss Functions을 이용하여 이미지 스무딩을 수행하는 알고리즘 예제
+      - GaussianFilter
+        - The example of an algorithm that processes a gaussian differential filter to an image.
+        - 이미지에서 gaussian 미분 필터를 처리하는 알고리즘 예제.
+      - InfiniteSymmetricExponentialFilter
+        - The example of an algorithm that performs image smoothing usign Infinite Symmetric Exponential function
+        - Infinite Symmetric Exponential Function을 이용하여 이미지 스무딩을 수행하는 알고리즘 예제
+      - LowpassFilter
+        - The example of an algorithm that processes a lowpass differential filter to an image.
+        - 이미지에서 lowpass 미분 필터를 처리하는 알고리즘 예제.
+      - SigmaFilter
+        - The example of an algorithm that executes non-linear image smoothing.
+        - 비선형 이미지를 스무딩해주는 알고리즘 예제.  
+      - UniformFilter
+        - The example of an algorithm that processes a uniform differential filter to an image.
+        - 이미지에서 uniform 미분 필터를 처리하는 알고리즘 예제.
 
   - [Frequency Domain]
   
