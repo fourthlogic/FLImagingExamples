@@ -834,6 +834,9 @@
       - GradientFilter
         - The example of an algorithm that processes a gradient differential filter to an image.
         - 이미지에서 경사 미분 필터를 처리하는 알고리즘 예제.
+      - GradientFilter_Prewitt_Sobel
+        - The example of an algorithm that processes a gradient, prewitt and sobel differential filter to an image.
+        - 이미지에서 경사, 프리윗, 소벨 미분 필터를 처리하는 알고리즘 예제.
       - KirschFilter
         - The example of an algorithm that detects image edges
         - Kirsch Operator를 사용하여 이미지 경계를 검출하는 알고리즘 예제
