@@ -62,6 +62,9 @@
       - PhotometricStereo
         - The example of an algorithm that performs getting the height map from a images with different light source positions.
         - 광원의 위치만 다른 여러 이미지들로부터 Height Map을 구하는 알고리즘 예제.
+	  - PhotometricStereo_Calibration
+        - The example of an algorithm that performs getting the height map from a images with different light source positions using sphere calibration.
+        - Sphere Calibration을 사용하여 광원의 위치만 다른 여러 이미지들로부터 Height Map을 구하는 알고리즘 예제.
 
     - [Stereo]
     
