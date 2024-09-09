@@ -208,25 +208,31 @@ int main()
 				Base::TPoint3<float> tp3Cam, tp3Board;
 
 				// 결과 3D 객체 얻어오기 // Get the result 3D object
-				HandEyeCalibrator3D.GetEndEffector3DObject(i, &fl3DORobot, &tp3RobotCenter);
-				HandEyeCalibrator3D.GetResultCamera3DObject(i, &fl3DCam, &tp3CamCenter);
-
-				// 카메라 포즈 추정에 실패할 경우 NOK 출력 // NOK output if camera pose estimation fails
-				if((HandEyeCalibrator3D.GetResultReprojectionPoint(i, tp3Cam, tp3Board)).IsFail())
-				{
-					strIdx.Format(L"Reprojection(NOK) %d", i);
-					view3DLayer.DrawText3D(tp3CamCenter, strIdx, CYAN, 0, 9);
-				}
-				else
-					view3D.PushObject(CGUIView3DObjectLine(tp3Cam, tp3Board, CYAN));
 				
-				strIdx.Format(L"End Effector %d", i);
-				view3DLayer.DrawText3D(tp3RobotCenter, strIdx, BLUE, 0, 9);
-				view3D.PushObject(fl3DORobot);
+				if(HandEyeCalibrator3D.GetResultCamera3DObject(i, &fl3DCam, &tp3CamCenter).IsOK())
+				{
+					// 카메라 포즈 추정에 실패할 경우 NOK 출력 // NOK output if camera pose estimation fails
+					if((HandEyeCalibrator3D.GetResultReprojectionPoint(i, tp3Cam, tp3Board)).IsFail())
+					{
+						strIdx.Format(L"Cam %d (NOK)", i);
+						view3DLayer.DrawText3D(tp3CamCenter, strIdx, CYAN, 0, 9);
+					}
+					else
+					{
+						view3D.PushObject(CGUIView3DObjectLine(tp3Cam, tp3Board, CYAN));
+						strIdx.Format(L"Cam %d", i);
+						view3DLayer.DrawText3D(tp3CamCenter, strIdx, YELLOW, 0, 9);
+					}
 
-				strIdx.Format(L"Cam %d", i);
-				view3DLayer.DrawText3D(tp3CamCenter, strIdx, YELLOW, 0, 9);
-				view3D.PushObject(fl3DCam);
+					view3D.PushObject(fl3DCam);
+				}
+
+				if(HandEyeCalibrator3D.GetEndEffector3DObject(i, &fl3DORobot, &tp3RobotCenter).IsOK())
+				{
+					strIdx.Format(L"End Effector %d", i);
+					view3DLayer.DrawText3D(tp3RobotCenter, strIdx, BLUE, 0, 9);
+					view3D.PushObject(fl3DORobot);
+				}
 			}
 
 			view3D.Invalidate();
