@@ -720,6 +720,9 @@
     - ChannelStdev
       - The example of an algorithm that extracts standard deviation value of each pixel from a multichannel image.
       - 다채널 이미지에서 각 픽셀의 표준편차값을 추출하여 이미지화 하는 알고리즘 예제.
+    - ChannelSum
+      - The example of an algorithm that extracts sum value of each pixel from a multichannel image.
+      - 다채널 이미지에서 각 픽셀의 총합을 추출하여 이미지화 하는 알고리즘 예제.
     - ChannelSwap
       - The example of an algorithm that Swaps two channels selected from a multichannel image.
       - 다채널 이미지에서 두개의 채널을 교환하여 이미지화하는 알고리즘 예제.
