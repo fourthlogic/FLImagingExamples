@@ -51,9 +51,9 @@
         - The example of an algorithm that creates a height map of an object by analyzing the Fringe Pattern projected onto the object.
         - 물체에 투영된 프린지 패턴(Fringe Pattern)을 분석하여 물체의 Height Map 을 만드는 알고리즘 예제.
 
-    - [Multi Focus 3D]
+    - [Multi Focus Derivative Based 3D]
 
-      - MultiFocus3D
+      - MultiFocusDerivativeBased3D
         - The example of an algorithm that converts multiple images with different focus into a 3D image with integrated focus.
         - 각각 초점이 다른 여러장의 이미지를 처리해 모든 초점을 가지는 한장의 3D 이미지로 만드는 알고리즘 예제.
   
