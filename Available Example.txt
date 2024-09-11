@@ -435,6 +435,11 @@
        - Example of finding a desired object using a Bounding Box based on deep learning
        - 딥러닝 기반의 원하는 객체를 Bounding Box로 찾는 알고리즘 예제
 
+    - SemanticSegmentation
+       - Example of an algorithm for InstanceSegmentation validation images with figures using models learned through InstanceSegmentation for training images with figures.
+       - Figure가 있는 학습 이미지들에 대해 InstanceSegmentation을 통하여 학습한 모델을 사용하여 Figure가 있는 검증 이미지를 분류하는 알고리즘 예제.
+       - Examples of algorithms that operate and classify learning/reasoning images by Tiling
+
   - [Utilites]
     
     - AutoLabeler
