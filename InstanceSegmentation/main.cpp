@@ -12,9 +12,9 @@ bool g_bTerminated = false;
 
 unsigned int __stdcall LearnThread(void* pParam)
 {
-	CSemanticSegmentationDL* pSemanticSegmentation = (CSemanticSegmentationDL*)pParam;
+	CInstanceSegmentationDL* pInstanceSegmentation = (CInstanceSegmentationDL*)pParam;
 
-	CResult er = pSemanticSegmentation->Learn();
+	CResult er = pInstanceSegmentation->Learn();
 	g_bTerminated = true;
 
 	return unsigned int(er);
@@ -25,14 +25,14 @@ int main()
 				// 이미지 객체 선언 // Declare the image object
 	CFLImage fliLearnImage;
 	CFLImage fliValidationImage;
-	CFLImage fliResultLabelImage;
-	CFLImage fliResultLabelFigureImage;
+	CFLImage fliResultBoxContourImage;
+	CFLImage fliResultContourImage;
 
 	/// 이미지 뷰 선언 // Declare the image view
 	CGUIViewImageWrap viewImageLearn;
 	CGUIViewImageWrap viewImageValidation;
-	CGUIViewImageWrap viewImagesLabel;
-	CGUIViewImageWrap viewImagesLabelFigure;
+	CGUIViewImageWrap viewImagesBoxContour;
+	CGUIViewImageWrap viewImagesContour;
 
 	// 그래프 뷰 선언 // Declare the graph view
 	CGUIViewGraphWrap viewGraph;
@@ -45,13 +45,13 @@ int main()
 		CThreadUtilities::Sleep(1000);
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/SemanticSegmentation/Train.flif")))
+		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/InstanceSegmentation/Bolt.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(res = fliValidationImage.Load(L"../../ExampleImages/SemanticSegmentation/Validation.flif")))
+		if(IsFail(res = fliValidationImage.Load(L"../../ExampleImages/InstanceSegmentation/Bolt.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -70,13 +70,13 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = viewImagesLabel.Create(100, 500, 600, 1000)))
+		if(IsFail(res = viewImagesBoxContour.Create(100, 500, 600, 1000)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(res = viewImagesLabelFigure.Create(600, 500, 1100, 1000)))
+		if(IsFail(res = viewImagesContour.Create(600, 500, 1100, 1000)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
@@ -98,13 +98,13 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImagesLabel)))
+		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImagesBoxContour)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImagesLabelFigure)))
+		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImagesContour)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
@@ -123,18 +123,15 @@ int main()
 			break;
 		}
 
-		viewImagesLabel.EnablePixelSegmentationMode(true);
+		viewImagesBoxContour.EnablePixelSegmentationMode(true);
 
-		if(IsFail(res = viewImagesLabel.SetImagePtr(&fliResultLabelImage)))
+		if(IsFail(res = viewImagesBoxContour.SetImagePtr(&fliResultBoxContourImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		fliResultLabelFigureImage.Assign(fliValidationImage);
-		fliResultLabelFigureImage.ClearFigures();
-
-		if(IsFail(res = viewImagesLabelFigure.SetImagePtr(&fliResultLabelFigureImage)))
+		if(IsFail(res = viewImagesContour.SetImagePtr(&fliResultContourImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
@@ -144,8 +141,8 @@ int main()
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerLearn = viewImageLearn.GetLayer(0);
 		CGUIViewImageLayerWrap layerValidation = viewImageValidation.GetLayer(0);
-		CGUIViewImageLayerWrap layerResultLabel = viewImagesLabel.GetLayer(0);
-		CGUIViewImageLayerWrap layerResultLabelFigure = viewImagesLabelFigure.GetLayer(0);
+		CGUIViewImageLayerWrap layerResultLabel = viewImagesBoxContour.GetLayer(0);
+		CGUIViewImageLayerWrap layerResultLabelFigure = viewImagesContour.GetLayer(0);
 
 		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 		layerLearn.Clear();
@@ -186,57 +183,68 @@ int main()
 		// 이미지 뷰를 갱신 // Update the image view.
 		viewImageLearn.RedrawWindow();
 		viewImageValidation.RedrawWindow();
-		viewImagesLabel.RedrawWindow();
-		viewImagesLabelFigure.RedrawWindow();
+		viewImagesBoxContour.RedrawWindow();
+		viewImagesContour.RedrawWindow();
 
-		// SemanticSegmentation 객체 생성 // Create SemanticSegmentation object
-		CSemanticSegmentationDL semanticSegmentation;
+		// InstanceSegmentation 객체 생성 // Create InstanceSegmentation object
+		CInstanceSegmentationDL InstanceSegmentation;
+
+		// ImagePreprocessingSpec 객체 생성 // Create ImagePreprocessingSpec object
+		CImagePreprocessingSpec imagePreprocessingSpec;
+		// Image Preprocessing 활성화 // Enable Image Preproecssing
+		imagePreprocessingSpec.EnableImagePreprocessing(true);
+		// Image Preprocessing LowLuminanceCorrectionType2 활성화 // Enable Image Preproecssing LowLuminanceCorrectionType2
+		imagePreprocessingSpec.EnableLowLuminanceCorrectionType2(true);
+		// 설정한 ImagePreprocessingSpec을 InstanceSegmentation에 적용 // Apply the ImagePreprocessingSpec that we set up to InstanceSegmentation
+		InstanceSegmentation.SetImagePreprocessingSpec(&imagePreprocessingSpec);
 
 		// OptimizerSpec 객체 생성 // Create OptimizerSpec object
 		COptimizerSpecAdamGradientDescent optSpec;
 
 		// 학습할 이미지 설정 // Set the image to learn
-		semanticSegmentation.SetLearningImage(fliLearnImage);
+		InstanceSegmentation.SetLearningImage(fliLearnImage);
 		// 검증할 이미지 설정 // Set the image to validate
-		semanticSegmentation.SetLearningValidationImage(fliValidationImage);
-		// 학습할 SemanticSegmentation 모델 설정 // Set up SemanticSegmentation model to learn
-		semanticSegmentation.SetModel(CSemanticSegmentationDL::EModel_FLSegNet);
-		// 학습할 SemanticSegmentation 모델의 버전 설정 // Set up SemanticSegmentation model version to learn
-		semanticSegmentation.SetModelVersion(CSemanticSegmentationDL::EModelVersion_FLSegNet_V1_512_B3);
+		InstanceSegmentation.SetLearningValidationImage(fliValidationImage);
+		// 학습할 InstanceSegmentation 모델 설정 // Set up InstanceSegmentation model to learn
+		InstanceSegmentation.SetModel(CInstanceSegmentationDL::EModel_MaskRCNN);
+		// 학습할 InstanceSegmentation 모델의 버전 설정 // Set up InstanceSegmentation model version to learn
+		InstanceSegmentation.SetModelVersion(CInstanceSegmentationDL::EModelVersion_MaskRCNN_V1_256);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
-		semanticSegmentation.SetLearningEpoch(120);
+		InstanceSegmentation.SetLearningEpoch(500);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
-		semanticSegmentation.SetInterpolationMethod(EInterpolationMethod_Bilinear);
+		InstanceSegmentation.SetInterpolationMethod(EInterpolationMethod_Bilinear);
+		// 학습 중단 조건 설정 // Set the condtiion of stopping learning
+		InstanceSegmentation.SetLearningStopCondition(L"cost <= 0 | validation >= 0.8");
 
 		// Optimizer의 학습률 설정 // Set learning rate of Optimizer
-		optSpec.SetLearningRate(1e-3f);
+		optSpec.SetLearningRate(1e-4f);
 
-		// 설정한 Optimizer를 SemanticSegmentation에 적용 // Apply the Optimizer that we set up to SemanticSegmentation
-		semanticSegmentation.SetLearningOptimizerSpec(optSpec);
+		// 설정한 Optimizer를 InstanceSegmentation에 적용 // Apply the Optimizer that we set up to InstanceSegmentation
+		InstanceSegmentation.SetLearningOptimizerSpec(optSpec);
 
 		// AugmentationSpec 설정 // Set the AugmentationSpec
 		CAugmentationSpec augSpec;
 
 		augSpec.EnableAugmentation(true);
-		augSpec.SetCommonActivationRatio(0.5);
-		augSpec.SetCommonInterpolationMethod(FLImaging::ImageProcessing::EInterpolationMethod_Bilinear);
-		augSpec.EnableRotation(true);
-		augSpec.SetRotationParam(180., false);
+		augSpec.SetCommonActivationRatio(0.700000);
+		augSpec.SetCommonIoUThreshold(0.800000);
+		augSpec.SetCommonInterpolationMethod(EInterpolationMethod_Bilinear);
 		augSpec.EnableHorizontalFlip(true);
 		augSpec.EnableVerticalFlip(true);
+		augSpec.EnableScaleCrop(true);
+		augSpec.SetScaleCropParam(0.900000, 1.000000, true, 1.000000, 1.000000, 1.000000, 1.000000, true);
 
-		semanticSegmentation.SetLearningAugmentationSpec(&augSpec);
-
+		InstanceSegmentation.SetLearningAugmentationSpec(&augSpec);
+		
 		// Learn 동작을 하는 핸들 객체 선언 // Declare HANDLE object execute learn function
 		HANDLE hThread;
+		// InstanceSegmentation learn function을 진행하는 스레드 생성 // Create the InstanceSegmentation Learn function thread
+		hThread = (HANDLE)_beginthreadex(NULL, 0, LearnThread, (void*)&InstanceSegmentation, 0, nullptr);
 
-		// SemanticSegmentation learn function을 진행하는 스레드 생성 // Create the SemanticSegmentation Learn function thread
-		hThread = (HANDLE)_beginthreadex(NULL, 0, LearnThread, (void*)&semanticSegmentation, 0, nullptr);
-
-		while(!semanticSegmentation.IsRunning() && !g_bTerminated)
+		while(!InstanceSegmentation.IsRunning() && !g_bTerminated)
 			CThreadUtilities::Sleep(1);
 
-		int32_t i32MaxEpoch = semanticSegmentation.GetLearningEpoch();
+		int32_t i32MaxEpoch = InstanceSegmentation.GetLearningEpoch();
 		int32_t i32PrevEpoch = 0;
 		int32_t i32PrevCostCount = 0;
 		int32_t i32PrevValidationCount = 0;
@@ -246,43 +254,39 @@ int main()
 			CThreadUtilities::Sleep(1);
 
 			// 마지막 미니 배치 최대 반복 횟수 받기 // Get the last maximum number of iterations of the last mini batch 
-			int32_t i32MaxIteration = semanticSegmentation.GetActualMiniBatchCount();
+			int32_t i32MaxIteration = InstanceSegmentation.GetActualMiniBatchCount();
 			// 마지막 미니 배치 반복 횟수 받기 // Get the last number of mini batch iterations
-			int32_t i32Iteration = semanticSegmentation.GetLearningResultCurrentIteration();
+			int32_t i32Iteration = InstanceSegmentation.GetLearningResultCurrentIteration();
 			// 마지막 학습 횟수 받기 // Get the last epoch learning
-			int32_t i32Epoch = semanticSegmentation.GetLastEpoch();
+			int32_t i32Epoch = InstanceSegmentation.GetLastEpoch();
 
 			// 미니 배치 반복이 완료되면 cost와 validation 값을 디스플레이 
 			// Display cost and validation value if iterations of the mini batch is completed 
 			if(i32Epoch != i32PrevEpoch && i32Iteration == i32MaxIteration && i32Epoch > 0)
 			{
 				// 마지막 학습 결과 비용 받기 // Get the last cost of the learning result
-				float f32CurrCost = semanticSegmentation.GetLearningResultLastCost();
+				float f32CurrCost = InstanceSegmentation.GetLearningResultLastCost();
 				// 마지막 검증 결과 받기 // Get the last validation result
-				float f32ValidationPa = semanticSegmentation.GetLearningResultLastAccuracy();
-				float f32ValidationMeanIoU = semanticSegmentation.GetLearningResultLastMeanIoU();
+				float f32MeanAP = InstanceSegmentation.GetLearningResultLastMeanAP();
 
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
-				printf("Cost : %.6f Validation : %.6f mIoU : %.6f Epoch %d / %d\n", f32CurrCost, f32ValidationPa, f32ValidationMeanIoU, i32Epoch, i32MaxEpoch);
+				printf("Cost : %.6f mAP : %.6f mIoU : %.6f Epoch %d / %d\n", f32CurrCost, f32MeanAP, i32Epoch, i32MaxEpoch);
 
 				// 학습 결과 비용과 검증 결과 기록을 받아 그래프 뷰에 출력  
 				// Get the history of cost and validation and print it at graph view
 				CFLArray<float> vctCosts;
-				CFLArray<float> vctVadliationPixelAccuracy;
-				CFLArray<float> vctMeanIoU;
-				CFLArray<float> vctVadliationPixelAccuracyZE;
-				CFLArray<float> vctMeanIoUZE;
+				CFLArray<float> vctMeanAP;
 				CFLArray<int32_t> vctValidationEpoch;
 
-				semanticSegmentation.GetLearningResultAllHistory(&vctCosts, &vctVadliationPixelAccuracy, &vctMeanIoU, &vctVadliationPixelAccuracyZE, &vctMeanIoUZE, &vctValidationEpoch);
+				InstanceSegmentation.GetLearningResultAllHistory(&vctCosts, &vctMeanAP, &vctValidationEpoch);
 
 				// 비용 기록이나 검증 결과 기록이 있다면 출력 // Print results if cost or validation history exists
-				if((vctCosts.GetCount() && i32PrevCostCount != (int32_t)vctCosts.GetCount()) || (vctVadliationPixelAccuracy.GetCount() && i32PrevValidationCount != (int32_t)vctVadliationPixelAccuracy.GetCount()))
+				if((vctCosts.GetCount() && i32PrevCostCount != (int32_t)vctCosts.GetCount()) || (vctMeanAP.GetCount() && i32PrevValidationCount != (int32_t)vctMeanAP.GetCount()))
 				{
-					int32_t i32Step = semanticSegmentation.GetLearningValidationStep();
+					int32_t i32Step = InstanceSegmentation.GetLearningValidationStep();
 					CFLArray<float> flaX;
 
-					for(int64_t i = 0; i < vctVadliationPixelAccuracy.GetCount() - 1; ++i)
+					for(int64_t i = 0; i < vctMeanAP.GetCount() - 1; ++i)
 						flaX.PushBack((float)(i * i32Step));
 
 					flaX.PushBack((float)(vctCosts.GetCount() - 1));
@@ -294,8 +298,7 @@ int main()
 					viewGraph.Plot(vctCosts, EChartType_Line, RED, L"Cost");
 
 					// Graph View 데이터 입력 // Input Graph View Data
-					viewGraph.Plot(flaX, vctVadliationPixelAccuracy, EChartType_Line, BLUE, L"PixelAccuracy(Zero Exception)");
-					viewGraph.Plot(flaX, vctMeanIoU, EChartType_Line, PINK, L"mIoU");
+					viewGraph.Plot(flaX, vctMeanAP, EChartType_Line, BLUE, L"mAP");
 					viewGraph.UnlockUpdate();
 
 					viewGraph.UpdateWindow();
@@ -305,15 +308,15 @@ int main()
 
 				// 검증 결과가 1.0일 경우 학습을 중단하고 분류 진행 
 				// If the validation result is 1.0, stop learning and classify images 
-				if(f32ValidationPa == 1.f || GetAsyncKeyState(VK_ESCAPE))
-					semanticSegmentation.Stop();
+				if(f32MeanAP == 1.f || GetAsyncKeyState(VK_ESCAPE))
+					InstanceSegmentation.Stop();
 
 				i32PrevEpoch = i32Epoch;
 				i32PrevCostCount = (int32_t)vctCosts.GetCount();
-				i32PrevValidationCount = (int32_t)vctVadliationPixelAccuracy.GetCount();
+				i32PrevValidationCount = (int32_t)vctMeanAP.GetCount();
 			}
 			// epoch만큼 학습이 완료되면 종료 // End when learning progresses as much as epoch
-			if(!semanticSegmentation.IsRunning() && g_bTerminated)
+			if(!InstanceSegmentation.IsRunning() && g_bTerminated)
 			{
 				// learn 동작 스레드가 완전히 종료될 까지 대기 // Wait until learning is completely terminated
 				WaitForSingleObject(hThread, INFINITE);
@@ -323,66 +326,59 @@ int main()
 			}
 		}
 
-		// Result Label Image에 피겨를 포함하지 않는 Execute
+		// Result Image에 Box & Contour 모두 출력하는 Execute // Execute to print both Box& Contour in Result Image
 		// 분류할 이미지 설정 // Set the image to classify
-		semanticSegmentation.SetInferenceImage(fliValidationImage);
+		InstanceSegmentation.SetInferenceImage(fliValidationImage);
 		// 추론 결과 이미지 설정 // Set the inference result Image
-		semanticSegmentation.SetInferenceResultImage(fliResultLabelImage);
-		// 추론 결과 옵션 설정 // Set the inference result options;
-		// Result 결과를 Label Image로 받을지 여부 설정 // Set whether to receive the result as a Label Image
-		semanticSegmentation.EnableInferenceResultLabelImage(true);
-		// Result 결과에 Region Figure를 포함 여부 설정 // Set whether to include region figure in result
-		semanticSegmentation.EnableInferenceResultIncludingRegionFigures(false);
+		InstanceSegmentation.SetInferenceResultImage(fliResultBoxContourImage);
+		// 추론 결과 옵션 설정 // Set the inference result options
+		// Figure 옵션 설정 // Set the option of figures
+		CInstanceSegmentationDL::EInferenceResultItemSettings eFigureOption = (CInstanceSegmentationDL::EInferenceResultItemSettings)(CInstanceSegmentationDL::EInferenceResultItemSettings_ClassNum | CInstanceSegmentationDL::EInferenceResultItemSettings_ClassName | CInstanceSegmentationDL::EInferenceResultItemSettings_Objectness | CInstanceSegmentationDL::EInferenceResultItemSettings_BoundaryRect | CInstanceSegmentationDL::EInferenceResultItemSettings_Contour);
+		InstanceSegmentation.SetInferenceResultItemSettings(eFigureOption);
+		// Objectness Threshold 설정 // Set the obectness threshold
+		InstanceSegmentation.SetInferenceResultObjectnessThreshold(0.5f);
+		// Mask Threshold 설정 // Set The mask threshold
+		InstanceSegmentation.SetInferenceResultMaskThreshold(0.5f);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if(IsFail(res = semanticSegmentation.Execute()))
+		if(IsFail(res = InstanceSegmentation.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute.\n");
 			break;
 		}
 
-		// Result Label Image에 피겨를 포함한 Execute
+		// Result Image에 Contour 만 출력하는 Execute // Execute to print both Box& Contour in Result Image
+		// 분류할 이미지 설정 // Set the image to classify
+		InstanceSegmentation.SetInferenceImage(fliValidationImage);
 		// 추론 결과 이미지 설정 // Set the inference result Image
-		semanticSegmentation.SetInferenceResultImage(fliResultLabelFigureImage);
-		// 추론 결과 옵션 설정 // Set the inference result options;
-		// Result 결과를 Label Image로 받을지 여부 설정 // Set whether to receive the result as a Label Image
-		semanticSegmentation.EnableInferenceResultLabelImage(false);
-		// Result 결과에 Region Figure를 포함 여부 설정 // Set whether to include region figure in result
-		semanticSegmentation.EnableInferenceResultIncludingRegionFigures(true);
-		// Result item settings enum 설정 // Set the result item settings
-		semanticSegmentation.SetInferenceResultItemSettings(CSemanticSegmentationDL::EInferenceResultItemSettings_ClassNum_ClassName_ConfidenceScore_RegionType_Contour);
+		InstanceSegmentation.SetInferenceResultImage(fliResultContourImage);
+		// 추론 결과 옵션 설정 // Set the inference result options
+		// Figure 옵션 설정 // Set the option of figures
+		eFigureOption = CInstanceSegmentationDL::EInferenceResultItemSettings_Contour;
+		InstanceSegmentation.SetInferenceResultItemSettings(eFigureOption);
+		// Objectness Threshold 설정 // Set the obectness threshold
+		InstanceSegmentation.SetInferenceResultObjectnessThreshold(0.5f);
+		// Mask Threshold 설정 // Set The mask threshold
+		InstanceSegmentation.SetInferenceResultMaskThreshold(0.5f);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if(IsFail(res = semanticSegmentation.Execute()))
+		if(IsFail(res = InstanceSegmentation.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute.\n");
 			break;
 		}
-
-		int64_t i64LearningClassCount = semanticSegmentation.GetLearningResultClassCount();
-		// ResultContours 인덱스와 매칭 되는 라벨 번호배열을 가져오기 // ResultContours Get an array of label numbers matching the index.
-		for(int64_t classNum = 1; classNum < i64LearningClassCount; ++classNum)
-		{
-			Base::CFLArray<Base::CFLStringW> flaNames;
-	
-			semanticSegmentation.GetLearningResultClassNames(classNum, &flaNames);
-			viewImagesLabel.SetSegmentationLabelText(0, (double)classNum, flaNames[0].GetString());
-		}
-
-		// ResultLabel 뷰에 Floating Value Range를 설정 // Set Floating Value Range in ResultLabel view
-		viewImagesLabel.SetFloatingImageValueRange(0.f, (float)semanticSegmentation.GetLearningResultClassCount());
 
 		// 이미지 뷰를 갱신 // Update the image view.
 		viewImageLearn.RedrawWindow();
 		viewImageValidation.RedrawWindow();
-		viewImagesLabel.RedrawWindow();
-		viewImagesLabelFigure.RedrawWindow();
+		viewImagesBoxContour.RedrawWindow();
+		viewImagesContour.RedrawWindow();
 
 		// 그래프 뷰를 갱신 // Update the Graph view.
 		viewGraph.RedrawWindow();
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
-		while(viewImageLearn.IsAvailable() && viewImageValidation.IsAvailable() && viewImagesLabel.IsAvailable() && viewImagesLabelFigure.IsAvailable() && viewGraph.IsAvailable())
+		while(viewImageLearn.IsAvailable() && viewImageValidation.IsAvailable() && viewImagesBoxContour.IsAvailable() && viewImagesContour.IsAvailable() && viewGraph.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
