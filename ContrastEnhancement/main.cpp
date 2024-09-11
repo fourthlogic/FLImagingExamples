@@ -81,6 +81,9 @@ int main()
 		// Iteration 설정 // Set the Iteration
 		contrastEnhancement.SetIteration(10);
 
+		// Channel Method 설정 // Set the Channel Method
+		contrastEnhancement.SetChannelMethod(EChannelMethod_Combined);
+
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = contrastEnhancement.Execute()).IsFail())
 		{
