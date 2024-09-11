@@ -123,8 +123,6 @@ int main()
 			break;
 		}
 
-		viewImagesBoxContour.EnablePixelSegmentationMode(true);
-
 		if(IsFail(res = viewImagesBoxContour.SetImagePtr(&fliResultBoxContourImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -168,13 +166,13 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = layerResultLabel.DrawTextCanvas(&CFLPoint<double>(0, 0), L"RESULT LABEL", GREEN, BLACK, 30)))
+		if(IsFail(res = layerResultLabel.DrawTextCanvas(&CFLPoint<double>(0, 0), L"RESULT BOX CONTOUR", GREEN, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerResultLabelFigure.DrawTextCanvas(&CFLPoint<double>(0, 0), L"RESULT LABEL FIGURE", GREEN, BLACK, 30)))
+		if(IsFail(res = layerResultLabelFigure.DrawTextCanvas(&CFLPoint<double>(0, 0), L"RESULT CONTOUR", GREEN, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -191,9 +189,9 @@ int main()
 
 		// ImagePreprocessingSpec 객체 생성 // Create ImagePreprocessingSpec object
 		CImagePreprocessingSpec imagePreprocessingSpec;
-		// Image Preprocessing 활성화 // Enable Image Preproecssing
+		// Image Preprocessing 활성화 // Enable Image Preprocessing
 		imagePreprocessingSpec.EnableImagePreprocessing(true);
-		// Image Preprocessing LowLuminanceCorrectionType2 활성화 // Enable Image Preproecssing LowLuminanceCorrectionType2
+		// Image Preprocessing LowLuminanceCorrectionType2 활성화 // Enable Image Preprocessing LowLuminanceCorrectionType2
 		imagePreprocessingSpec.EnableLowLuminanceCorrectionType2(true);
 		// 설정한 ImagePreprocessingSpec을 InstanceSegmentation에 적용 // Apply the ImagePreprocessingSpec that we set up to InstanceSegmentation
 		InstanceSegmentation.SetImagePreprocessingSpec(&imagePreprocessingSpec);
@@ -270,7 +268,7 @@ int main()
 				float f32MeanAP = InstanceSegmentation.GetLearningResultLastMeanAP();
 
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
-				printf("Cost : %.6f mAP : %.6f mIoU : %.6f Epoch %d / %d\n", f32CurrCost, f32MeanAP, i32Epoch, i32MaxEpoch);
+				printf("Cost : %.6f mAP : %.6f Epoch %d / %d\n", f32CurrCost, f32MeanAP, i32Epoch, i32MaxEpoch);
 
 				// 학습 결과 비용과 검증 결과 기록을 받아 그래프 뷰에 출력  
 				// Get the history of cost and validation and print it at graph view
