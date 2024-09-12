@@ -68,9 +68,9 @@ int main()
 			fgetws(arrInput, 4096, stdin);
 			flsInput = arrInput;
 
-			bool bSelected = true;
-
 			int32_t i32Select = flsInput.ToInt32();
+
+			bool bSelected = true;
 
 			switch(i32Select)
 			{
@@ -119,9 +119,9 @@ int main()
 			fgetws(arrInput, 4096, stdin);
 			flsInput = arrInput;
 
-			bool bSelected = true;
-
 			int32_t i32Select = flsInput.ToInt32();
+
+			bool bSelected = true;
 
 			switch(i32Select)
 			{
@@ -234,8 +234,14 @@ int main()
 			}
 
 			printf("\n");
-			printf("Please enter a character to reset the trigger position.");
+			printf("0. Reset the trigger position\n");
+			printf("Other. Exit\n");
+			printf("Enter: ");
 			fgetws(arrInput, 4096, stdin);
+			flsInput = arrInput;
+
+			if(flsInput != L"0\n")
+				break;
 		}
 	}
 	while(false);
