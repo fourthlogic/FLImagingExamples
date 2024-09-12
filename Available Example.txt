@@ -508,6 +508,11 @@
 	  - Example of connecting and operating XMC. (Search Origin, Move Absolute Position, Move Incremental Position)
       - XMC 연결 및 구동하는 예제. (Search Origin, Move Absolute Position, Move Incremental Position)
 
+  - [Trigger]
+
+    - DeviceTriggerAxl
+      - Example of connecting and operating Axl Trigger.
+      - Axl Trigger 연결 및 구동하는 예제. 
 
 - [GUI, Figures]
 
