@@ -493,17 +493,18 @@
     - DeviceCameraEGrabber
 	  - Example of connecting and operating eGrabber.
       - eGrabber 연결 및 구동하는 예제.
-
 	- DeviceCameraMulticam
 	  - Example of connecting and operating Multicam.
       - Multicam 연결 및 구동하는 예제.
 
   - [Motion]
 
+    - DeviceMotionAxl
+      - Example of connecting and operating Axl Motion. (Search Origin, Move Absolute Position, Move Incremental Position)
+      - Axl Motion 연결 및 구동하는 예제. (Search Origin, Move Absolute Position, Move Incremental Position)
     - DeviceMotionEziMotionPlusRV6
 	  - Example of connecting and operating Ezi Motion Plus R V6. (Search Origin, Move Absolute Position, Move Incremental Position)
       - Ezi Motion Plus R V6 연결 및 구동하는 예제. (Search Origin, Move Absolute Position, Move Incremental Position)
-
     - DeviceMotionXMC
 	  - Example of connecting and operating XMC. (Search Origin, Move Absolute Position, Move Incremental Position)
       - XMC 연결 및 구동하는 예제. (Search Origin, Move Absolute Position, Move Incremental Position)
