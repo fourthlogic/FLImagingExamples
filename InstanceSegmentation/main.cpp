@@ -187,15 +187,6 @@ int main()
 		// InstanceSegmentation 按眉 积己 // Create InstanceSegmentation object
 		CInstanceSegmentationDL InstanceSegmentation;
 
-		// ImagePreprocessingSpec 按眉 积己 // Create ImagePreprocessingSpec object
-		CImagePreprocessingSpec imagePreprocessingSpec;
-		// Image Preprocessing 劝己拳 // Enable Image Preprocessing
-		imagePreprocessingSpec.EnableImagePreprocessing(true);
-		// Image Preprocessing LowLuminanceCorrectionType2 劝己拳 // Enable Image Preprocessing LowLuminanceCorrectionType2
-		imagePreprocessingSpec.EnableLowLuminanceCorrectionType2(true);
-		// 汲沥茄 ImagePreprocessingSpec阑 InstanceSegmentation俊 利侩 // Apply the ImagePreprocessingSpec that we set up to InstanceSegmentation
-		InstanceSegmentation.SetImagePreprocessingSpec(&imagePreprocessingSpec);
-
 		// OptimizerSpec 按眉 积己 // Create OptimizerSpec object
 		COptimizerSpecAdamGradientDescent optSpec;
 
