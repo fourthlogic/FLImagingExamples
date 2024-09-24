@@ -435,7 +435,7 @@
        - Example of finding a desired object using a Bounding Box based on deep learning
        - 딥러닝 기반의 원하는 객체를 Bounding Box로 찾는 알고리즘 예제
 
-    - SemanticSegmentation
+    - InstanceSegmentation
        - Example algorithm for classifying normal/abnormal images using models learned through Animal Detection.
        - Figure가 있는 학습 이미지들에 대해 InstanceSegmentation을 통하여 학습한 모델을 사용하여 Figure가 있는 검증 이미지를 분류하는 알고리즘 예제.
 

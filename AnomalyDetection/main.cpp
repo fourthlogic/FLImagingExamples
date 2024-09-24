@@ -120,12 +120,12 @@ int main()
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerLearn = viewImageLearn.GetLayer(0);
-		CGUIViewImageLayerWrap layerValidation = viewImageValidation.GetLayer(0);
+		CGUIViewImageLayerWrap layerInference = viewImageValidation.GetLayer(0);
 		CGUIViewImageLayerWrap layerResultLabelFigure = viewImagesLabelFigure.GetLayer(0);
 
 		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 		layerLearn.Clear();
-		layerValidation.Clear();
+		layerInference.Clear();
 		layerResultLabelFigure.Clear();
 
 		// View 정보를 디스플레이 합니다. // Display View information.
@@ -140,7 +140,7 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = layerValidation.DrawTextCanvas(&CFLPoint<double>(0, 0), L"VALIDATION", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerInference.DrawTextCanvas(&CFLPoint<double>(0, 0), L"INFERENCE", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -231,7 +231,7 @@ int main()
 				float f32ValidationPa = AnomalyDetection.GetLearningResultLastAccuracy();
 
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
-				printf("Cost : %.6f Validation : %.6f Epoch %d / %d\n", f32CurrCost, f32ValidationPa, i32Epoch, i32MaxEpoch);
+				printf("Cost : %.6f Accuracy : %.6f Epoch %d / %d\n", f32CurrCost, f32ValidationPa, i32Epoch, i32MaxEpoch);
 
 				// 학습 결과 비용과 검증 결과 기록을 받아 그래프 뷰에 출력  
 				// Get the history of cost and validation and print it at graph view
@@ -259,7 +259,7 @@ int main()
 					viewGraph.Plot(flaCostHistory, EChartType_Line, RED, L"Cost");
 
 					// Graph View 데이터 입력 // Input Graph View Data
-					viewGraph.Plot(flaX, flaValidationHistory, EChartType_Line, BLUE, L"PixelAccuracy");
+					viewGraph.Plot(flaX, flaValidationHistory, EChartType_Line, BLUE, L"Accuracy");
 					viewGraph.UnlockUpdate();
 
 					viewGraph.UpdateWindow();
@@ -292,8 +292,9 @@ int main()
 		AnomalyDetection.SetInferenceImage(fliValidationImage);
 		// 추론 결과 이미지 설정 // Set the inference result Image
 		AnomalyDetection.SetInferenceResultImage(fliResultLabelFigureImage);
+		// 추론 결과 옵션 설정 // Set the inference result options;
 		// 비정상 결과 비교 Threshold 설정 // Set Anomaly Threshold
-		AnomalyDetection.SetInferenceAnomalyThreshold(0.5);
+		AnomalyDetection.SetInferenceAnomalyThreshold(0.5f);
 		// 비정상 최소 크기 설정 // Set Minimum Anomaly Area
 		AnomalyDetection.SetInferenceMinimumAnomalyArea(4);
 		// 알고리즘 수행 // Execute the algorithm
