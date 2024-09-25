@@ -125,7 +125,7 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 				AddItem(pCheckBox);
 
 				// 슬라이더 아이템을 추가합니다.
-				CGUIPropertyItemSlider* pSlider = new CGUIPropertyItemSlider;
+				CGUIPropertyItemSlider* pSlider = new CGUIPropertyItemSlider(CGUIPropertyItemSlider::ETemplateType_Int32);
 				pSlider->SetName(L"Slider");
 				pSlider->SetPath(L"Example@Parameters");
 				pSlider->SetEditCtrlWidth(100);
