@@ -170,7 +170,7 @@ int main()
 		// 학습할 AnomalyDetection 모델의 버전 설정 // Set up AnomalyDetection model version to learn
 		AnomalyDetection.SetModelVersion(CAnomalyDetectionDL::EModelVersion_FLDefNet_V1_64);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
-		AnomalyDetection.SetLearningEpoch(5000);
+		AnomalyDetection.SetLearningEpoch(1000);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
 		AnomalyDetection.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 
