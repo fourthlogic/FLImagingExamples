@@ -195,9 +195,9 @@ int main()
 		// 검증할 이미지 설정 // Set the image to validate
 		InstanceSegmentation.SetLearningValidationImage(fliValidationImage);
 		// 학습할 InstanceSegmentation 모델 설정 // Set up InstanceSegmentation model to learn
-		InstanceSegmentation.SetModel(CInstanceSegmentationDL::EModel_MaskRCNN);
+		InstanceSegmentation.SetModel(CInstanceSegmentationDL::EModel_R_FLSegNet);
 		// 학습할 InstanceSegmentation 모델의 버전 설정 // Set up InstanceSegmentation model version to learn
-		InstanceSegmentation.SetModelVersion(CInstanceSegmentationDL::EModelVersion_MaskRCNN_V1_256);
+		InstanceSegmentation.SetModelVersion(CInstanceSegmentationDL::EModelVersion_R_FLSegNet_V1_256);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
 		InstanceSegmentation.SetLearningEpoch(500);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
