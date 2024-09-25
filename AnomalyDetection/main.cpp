@@ -184,7 +184,7 @@ int main()
 		CAugmentationSpec augSpec;
 
 		augSpec.EnableAugmentation(true);
-		augSpec.SetCommonActivationRatio(0.500000);
+		augSpec.SetCommonActivationRatio(0.700000);
 		augSpec.SetCommonIoUThreshold(0.000000);
 		augSpec.SetCommonInterpolationMethod(EInterpolationMethod_Bilinear);
 
@@ -193,6 +193,9 @@ int main()
 
 		augSpec.EnableScaleCrop(true);
 		augSpec.SetScaleCropParam(1.000000, 1.000000, false, 0.900000, 1.100000, 0.900000, 1.100000, true);
+		
+		augSpec.EnablePerspective(true);
+		augSpec.SetPerspectiveParam(0.050000);
 
 		AnomalyDetection.SetLearningAugmentationSpec(&augSpec);
 
@@ -294,7 +297,7 @@ int main()
 		AnomalyDetection.SetInferenceResultImage(fliResultLabelFigureImage);
 		// 추론 결과 옵션 설정 // Set the inference result options;
 		// 비정상 결과 비교 Threshold 설정 // Set Anomaly Threshold
-		AnomalyDetection.SetInferenceAnomalyThreshold(0.5f);
+		AnomalyDetection.SetInferenceAnomalyThreshold(0.6f);
 		// 비정상 최소 크기 설정 // Set Minimum Anomaly Area
 		AnomalyDetection.SetInferenceMinimumAnomalyArea(4);
 		// 알고리즘 수행 // Execute the algorithm
