@@ -123,45 +123,53 @@ int main()
 		// 	3 - 7. | , || , or
 		// 
 		// 지원되는 Figure 조건식
-		//  넓이                                : Area
-		//	둘레                                : Perimeter
-		//	길이                                : Length
-		//	폭                                  : Width
-		//	높이                                : Height
-		//	각도                                : Angle
-		//	중심의 x 좌표                       : Center.x
-		//	중심의 y 좌표                       : Center.y
-		//	무게중심의 x 좌표                   : CenterOfGravity.x
-		//	무게중심의 y 좌표                   : CenterOfGravity.y
-		//	BoundaryRect의 left                 : BoundaryRect.left 혹은 left
-		//	BoundaryRect의 top                  : BoundaryRect.top 혹은 top
-		//	BoundaryRect의 right                : BoundaryRect.right 혹은 right
-		//	BoundaryRect의 bottom               : BoundaryRect.bottom 혹은 bottom
-		//	최소 둘레 직사각형의 넓이           : MinimumEnclosingRectangleArea 혹은 MerArea
-		//	최소 둘레 직사각형의 둘레           : MinimumEnclosingRectanglePerimeter 혹은 MerPerimeter
-		//	최소 둘레 직사각형의 폭             : MinimumEnclosingRectangleWidth 혹은 MerWidth
-		//	최소 둘레 직사각형의 높이           : MinimumEnclosingRectangleHeight 혹은 MerHeight
-		//	최소 둘레 직사각형의 장변           : MinimumEnclosingRectangleLongSideLength 혹은 MerLongSideLength
-		//	최소 둘레 직사각형의 단변           : MinimumEnclosingRectangleShortSideLength 혹은 MerShortSideLength
-		//	최소 둘레 직사각형의 단변/장변 비율 : MinimumEnclosingRectangleShortLongRatio 혹은 MerShortLongRatio
-		//	최소 둘레 직사각형의 각도           : MinimumEnclosingRectangleAngle 혹은 MerAngle
-		//	최소 둘레 직사각형의 중심의 x 좌표  : MinimumEnclosingRectangleCenter.x 혹은 MerCenter.x
-		//	최소 둘레 직사각형의 중심의 y 좌표  : MinimumEnclosingRectangleCenter.y 혹은 MerCenter.y
-		//	내부의 모든 정점의 개수             : VertexCount
-		//  도형 타입                           : Type
-		//  이름                                : Name
-		//  인덱스                              : Index
-		//
-		// 지원되는 함수
-		//  최대값                              : Max 혹은 Maximum
-		//	최소값                              : Min 혹은 Minimum
-		//	평균값                              : Mean 혹은 Average 혹은 Avg
-		//	중간값                              : Median 혹은 Med
-		//	합                                  : Sum
-		//	제곱합                              : Sqrsum 혹은 Sumsqr
-		//	제곱근합                            : Sqrtsum 혹은 Sumsqrt
-		//	분산                                : Variance 혹은 Var
-		//	표준편차                            : Stdev 혹은 Stddev
+		//  넓이                                  : Area
+		//	둘레                                  : Perimeter
+		//	길이                                  : Length
+		//	폭                                    : Width
+		//	높이                                  : Height
+		//	각도                                  : Angle
+		//	중심의 x 좌표                         : Center.x
+		//	중심의 y 좌표                         : Center.y
+		//	무게중심의 x 좌표                     : CenterOfGravity.x
+		//	무게중심의 y 좌표                     : CenterOfGravity.y
+		//	BoundaryRect의 left                   : BoundaryRect.left 혹은 left
+		//	BoundaryRect의 top                    : BoundaryRect.top 혹은 top
+		//	BoundaryRect의 right                  : BoundaryRect.right 혹은 right
+		//	BoundaryRect의 bottom                 : BoundaryRect.bottom 혹은 bottom
+		//	최소 둘레 직사각형의 넓이             : MinimumEnclosingRectangleArea 혹은 MerArea
+		//	최소 둘레 직사각형의 둘레             : MinimumEnclosingRectanglePerimeter 혹은 MerPerimeter
+		//	최소 둘레 직사각형의 폭               : MinimumEnclosingRectangleWidth 혹은 MerWidth
+		//	최소 둘레 직사각형의 높이             : MinimumEnclosingRectangleHeight 혹은 MerHeight
+		//	최소 둘레 직사각형의 장변             : MinimumEnclosingRectangleLongSideLength 혹은 MerLongSideLength
+		//	최소 둘레 직사각형의 단변             : MinimumEnclosingRectangleShortSideLength 혹은 MerShortSideLength
+		//	최소 둘레 직사각형의 단변/장변 비율   : MinimumEnclosingRectangleShortLongRatio 혹은 MerShortLongRatio
+		//	최소 둘레 직사각형의 각도             : MinimumEnclosingRectangleAngle 혹은 MerAngle
+		//	최소 둘레 직사각형의 중심의 x 좌표    : MinimumEnclosingRectangleCenter.x 혹은 MerCenter.x
+		//	최소 둘레 직사각형의 중심의 y 좌표    : MinimumEnclosingRectangleCenter.y 혹은 MerCenter.y
+		//	최소 둘레 직사각형의 point0의 x 좌표  : MinimumEnclosingRectangle.point0.x 혹은 MER.point0.x
+		//	최소 둘레 직사각형의 point0의 y 좌표  : MinimumEnclosingRectangle.point0.y 혹은 MER.point0.y
+		//	최소 둘레 직사각형의 point1의 x 좌표  : MinimumEnclosingRectangle.point1.x 혹은 MER.point1.x
+		//	최소 둘레 직사각형의 point1의 y 좌표  : MinimumEnclosingRectangle.point1.y 혹은 MER.point1.y
+		//	최소 둘레 직사각형의 point2의 x 좌표  : MinimumEnclosingRectangle.point2.x 혹은 MER.point2.x
+		//	최소 둘레 직사각형의 point2의 y 좌표  : MinimumEnclosingRectangle.point2.y 혹은 MER.point2.y
+		//	최소 둘레 직사각형의 point3의 x 좌표  : MinimumEnclosingRectangle.point3.x 혹은 MER.point3.x
+		//	최소 둘레 직사각형의 point3의 y 좌표  : MinimumEnclosingRectangle.point3.y 혹은 MER.point3.y
+		//	내부의 모든 정점의 개수               : VertexCount
+		//  도형 타입                             : Type
+		//  이름                                  : Name
+		//  인덱스                                : Index
+		//										  
+		// 지원되는 함수						    
+		//  최대값                                : Max 혹은 Maximum
+		//	최소값                                : Min 혹은 Minimum
+		//	평균값                                : Mean 혹은 Average 혹은 Avg
+		//	중간값                                : Median 혹은 Med
+		//	합                                    : Sum
+		//	제곱합                                : Sqrsum 혹은 Sumsqr
+		//	제곱근합                              : Sqrtsum 혹은 Sumsqrt
+		//	분산                                  : Variance 혹은 Var
+		//	표준편차                              : Stdev 혹은 Stddev
 
 		// Supported Operators : [, ] , { , }, (, ), +, -, *, / , ^, <, >, <= , =<, >= , =>, != , =!, =, == , &, &&, and, | , || , or
 		// 
@@ -187,45 +195,53 @@ int main()
 		// 	3 - 7. | , || , or
 		// 
 		//  Supported figure conditional expressions
-		//  area                                                  : Area
-		//	perimeter                                             : Perimeter
-		//	length                                                : Length
-		//	width                                                 : Width
-		//	height                                                : Height
-		//	angle                                                 : Angle
-		//	x-coordinate of center                                : Center.x
-		//	y-coordinate of center                                : Center.y
-		//	x-coordinate of the center of gravity                 : CenterOfGravity.x
-		//	y-coordinate of the center of gravity                 : CenterOfGravity.y
-		//	left of BoundaryRect                                  : BoundaryRect.left or left
-		//	top of BoundaryRect                                   : BoundaryRect.top or top
-		//	right of BoundaryRect                                 : BoundaryRect.right or right
-		//	bottom of BoundaryRect                                : BoundaryRect.bottom or bottom
-		//	Area of ​​minimum enclosing rectangle                   : MinimumEnclosingRectangleArea or MerArea
-		//	perimeter of ​​minimum enclosing rectangle              : MinimumEnclosingRectanglePerimeter or MerPerimeter
-		//	width of ​​minimum enclosing rectangle                  : MinimumEnclosingRectangleWidth or MerWidth
-		//	height of ​​minimum enclosing rectangle                 : MinimumEnclosingRectangleHeight or MerHeight
-		//	long side length of ​​minimum enclosing rectangle       : MinimumEnclosingRectangleLongSideLength or MerLongSideLength
-		//	short side length of ​​minimum enclosing rectangle      : MinimumEnclosingRectangleShortSideLength or MerShortSideLength
-		//	short/long ratio of ​​minimum enclosing rectangle       : MinimumEnclosingRectangleShortLongRatio or MerShortLongRatio
-		//	angle of ​​minimum enclosing rectangle                  : MinimumEnclosingRectangleAngle or MerAngle
-		//	x-coordinate of center of ​​minimum enclosing rectangle : MinimumEnclosingRectangleCenter.x or MerCenter.x
-		//	y-coordinate of center of ​​minimum enclosing rectangle : MinimumEnclosingRectangleCenter.y or MerCenter.y
-		//	the number of all vertices in the interior            : VertexCount
-		//  type of figure                                        : Type
-		//  name                                                  : Name
-		//  index                                                 : Index
-		//
-		//  Supported functions
-		//  maximum value                                         : Max or Maximum
-		//	minimum value                                         : Min or Minimum
-		//	mean value                                            : Mean or Average or Avg
-		//	median value                                          : Median or Med
-		//	sum                                                   : Sum
-		//	sum of squares                                        : Sqrsum or Sumsqr
-		//	sum of square roots                                   : Sqrtsum or Sumsqrt
-		//	variance                                              : Variance or Var
-		//	standard deviation                                    : Stdev or Stddev
+		//  area                                                   : Area
+		//	perimeter                                              : Perimeter
+		//	length                                                 : Length
+		//	width                                                  : Width
+		//	height                                                 : Height
+		//	angle                                                  : Angle
+		//	x-coordinate of center                                 : Center.x
+		//	y-coordinate of center                                 : Center.y
+		//	x-coordinate of the center of gravity                  : CenterOfGravity.x
+		//	y-coordinate of the center of gravity                  : CenterOfGravity.y
+		//	left of BoundaryRect                                   : BoundaryRect.left or left
+		//	top of BoundaryRect                                    : BoundaryRect.top or top
+		//	right of BoundaryRect                                  : BoundaryRect.right or right
+		//	bottom of BoundaryRect                                 : BoundaryRect.bottom or bottom
+		//	Area of ​​minimum enclosing rectangle                    : MinimumEnclosingRectangleArea or MerArea
+		//	perimeter of ​​minimum enclosing rectangle               : MinimumEnclosingRectanglePerimeter or MerPerimeter
+		//	width of ​​minimum enclosing rectangle                   : MinimumEnclosingRectangleWidth or MerWidth
+		//	height of ​​minimum enclosing rectangle                  : MinimumEnclosingRectangleHeight or MerHeight
+		//	long side length of ​​minimum enclosing rectangle        : MinimumEnclosingRectangleLongSideLength or MerLongSideLength
+		//	short side length of ​​minimum enclosing rectangle       : MinimumEnclosingRectangleShortSideLength or MerShortSideLength
+		//	short/long ratio of ​​minimum enclosing rectangle        : MinimumEnclosingRectangleShortLongRatio or MerShortLongRatio
+		//	angle of ​​minimum enclosing rectangle                   : MinimumEnclosingRectangleAngle or MerAngle
+		//	x-coordinate of center of ​​minimum enclosing rectangle  : MinimumEnclosingRectangleCenter.x or MerCenter.x
+		//	y-coordinate of center of ​​minimum enclosing rectangle  : MinimumEnclosingRectangleCenter.y or MerCenter.y
+		//	x-coordinate of point0 of minimum enclosing rectangle  : MinimumEnclosingRectangle.point0.x or MER.point0.x
+		//	y-coordinate of point0 of minimum enclosing rectangle  : MinimumEnclosingRectangle.point0.y or MER.point0.y
+		//	x-coordinate of point1 of minimum enclosing rectangle  : MinimumEnclosingRectangle.point1.x or MER.point1.x
+		//	y-coordinate of point1 of minimum enclosing rectangle  : MinimumEnclosingRectangle.point1.y or MER.point1.y
+		//	x-coordinate of point2 of minimum enclosing rectangle  : MinimumEnclosingRectangle.point2.x or MER.point2.x
+		//	y-coordinate of point2 of minimum enclosing rectangle  : MinimumEnclosingRectangle.point2.y or MER.point2.y
+		//	x-coordinate of point3 of minimum enclosing rectangle  : MinimumEnclosingRectangle.point3.x or MER.point3.x
+		//	y-coordinate of point3 of minimum enclosing rectangle  : MinimumEnclosingRectangle.point3.y or MER.point3.y
+		//	the number of all vertices in the interior             : VertexCount
+		//  type of figure                                         : Type
+		//  name                                                   : Name
+		//  index                                                  : Index
+		//														   
+		//  Supported functions									   
+		//  maximum value                                          : Max or Maximum
+		//	minimum value                                          : Min or Minimum
+		//	mean value                                             : Mean or Average or Avg
+		//	median value                                           : Median or Med
+		//	sum                                                    : Sum
+		//	sum of squares                                         : Sqrsum or Sumsqr
+		//	sum of square roots                                    : Sqrtsum or Sumsqrt
+		//	variance                                               : Variance or Var
+		//	standard deviation                                     : Stdev or Stddev
 
 		// 조건식 문자열 // Condition string
 		CFLString<wchar_t> strExpression1;
