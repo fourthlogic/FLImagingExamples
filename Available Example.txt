@@ -1572,6 +1572,9 @@
   - ImageDrawing2
     - The example of a class that draws blob results on an image.
     - 이미지에 blob 결과를 그리는 클래스 예제.
+  - ImageFigureAttribute
+    - The example of a class that changes image figure attribute.
+    - 이미지 figure 속성을 변경하는 클래스 예제.
   - SNAP
     - The example of loading and running a snap file.
     - 스냅 파일 로드 및 실행 예제.
