@@ -126,7 +126,7 @@ int main()
 		// Destionation 3D Object 설정 // Set the destionation 3D object 
 		photometric.SetDestinationObject(fl3DOHM);
 		// Calibration 데이터 설정 // Set Calibration Settings
-		photometric.SetCalibrationData(386.439657, 346.491239, 259.998140);
+		photometric.SetCalibrationCircleROI(CFLCircle<double>(386.439657, 346.491239, 259.998140, 0.000000, 0.000000, 360.000000, EArcClosingMethod_EachOther));
 		// 동작 방식 설정 // Set operation mode
 		photometric.SetReconstructionMode(CPhotometricStereo3D::EReconstructionMode_RFT_FP32);
 
