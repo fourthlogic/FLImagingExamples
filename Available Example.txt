@@ -835,6 +835,9 @@
       - GuidedFilter
         - The example of an algorithm that processes a guided filter to an image.
         - 이미지에서 guided 필터를 처리하는 알고리즘 예제.
+      - HybridMedianFilter
+        - The example of an algorithm that processes a hybrid median filter to an image.
+        - 이미지에서 하이브리드 중앙값 필터를 처리하는 알고리즘 예제.
       - KuwaharaFilter
         - The example of an algorithm that processes a Kuwahara filter to an image.
         - 이미지에서 Kuwahara 필터를 처리하는 알고리즘 예제	
