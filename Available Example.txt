@@ -519,6 +519,12 @@
 	  - Example of connecting and operating XMC. (Search Origin, Move Absolute Position, Move Incremental Position)
       - XMC 연결 및 구동하는 예제. (Search Origin, Move Absolute Position, Move Incremental Position)
 
+  - [Sensor]
+
+    - DeviceLaserDisplacementSensorKeyence
+      - Example of connecting and operating Keyence Laser Displacement Sensor.
+      - Keyence 레이저 변위 센서 연결 및 구동하는 예제. 
+
   - [Trigger]
 
     - DeviceTriggerAxl
