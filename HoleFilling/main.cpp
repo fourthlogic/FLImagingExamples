@@ -84,29 +84,53 @@ int main()
 
 		// 알고리즘 객체 생성 // Create Algorithm object
 		CHoleFilling alg;
-		alg.SetSourceImage(arrFliImage[EType_Source]);
-		alg.SetDestinationImage(arrFliImage[EType_Destination]);
-
-		// 파라미터 설정 // Set Parameters
-		alg.EnableIgnoreBoundaryHole(true);
-		alg.SetMinimumHoleArea(10);
-		alg.SetMaximumHoleArea(99999999999);
-		alg.SetLogicalConditionOfChannels(ELogicalConditionOfChannels_And);
-		alg.SetThresholdMode(EThresholdMode_Dual_And);
-
-		CMultiVar<uint64_t> mvThresholdCondition1((uint64_t)ELogicalCondition_GreaterEqual
-												  , (uint64_t)ELogicalCondition_GreaterEqual
-												  , (uint64_t)ELogicalCondition_GreaterEqual);
-		alg.SetThresholdCondition(EThresholdIndex_First, mvThresholdCondition1);
-		CMultiVar<uint64_t> mvThresholdValue1(175, 230, 240);
-		alg.SetThresholdValue(EThresholdIndex_First, mvThresholdValue1);
-
-		CMultiVar<uint64_t> mvThresholdCondition2((uint64_t)ELogicalCondition_LessEqual
-												  , (uint64_t)ELogicalCondition_LessEqual
-												  , (uint64_t)ELogicalCondition_LessEqual);
-		alg.SetThresholdCondition(EThresholdIndex_Second, mvThresholdCondition2);
-		CMultiVar<uint64_t> mvThresholdValue2(200, 240, 255);
-		alg.SetThresholdValue(EThresholdIndex_Second, mvThresholdValue2);
+		// Source 이미지 설정 // Set the source image
+		if((res = alg.SetSourceImage(arrFliImage[EType_Source])).IsFail())
+			break;
+		// Destination 이미지 설정 // Set the destination image
+		if((res = alg.SetDestinationImage(arrFliImage[EType_Destination])).IsFail())
+			break;
+		// 처리할 Hole Area 넓이 범위 설정 // Set hole area range to process
+		if((res = alg.SetMinimumHoleArea(10)).IsFail())
+			break;
+		// 처리할 Hole Area 넓이 범위 설정 // Set hole area range to process
+		if((res = alg.SetMaximumHoleArea(99999999999)).IsFail())
+			break;
+		// 이미지 경계와 맞닿은 hole 의 처리 여부 설정 // Set whether to process holes that touch the image boundary
+		if((res = alg.EnableIgnoreBoundaryHole(true)).IsFail())
+			break;
+		// Threshold 를 통과한 픽셀이 hole 인지 object 인지 설정 // Set whether the pixel that passed the threshold is a hole or an object
+		if((res = alg.SetThresholdPassTarget(CHoleFilling::EThresholdPassTarget_Object)).IsFail())
+			break;
+		// Threshold 수와 결합 방식을 의미하는 Threshold 모드 설정 // Threshold mode setting, which refers to the number of threshold and combination method
+		if((res = alg.SetThresholdMode(EThresholdMode_Dual_And)).IsFail())
+			break;
+		// 각 Threshold 내에서 채널 별 논리 결과 간의 결합 방식을 의미하는 Logical Condition Of Channels 설정 // Set the Logical Condition Of Channels, which refers to the combination method between logical results for each channel within each Threshold
+		if((res = alg.SetLogicalConditionOfChannels(ELogicalConditionOfChannels_And)).IsFail())
+			break;
+		// Hole 영역을 채우는 방식을 설정 // Set the method of filling the hole area
+		if((res = alg.SetFillingMethod(CHoleFilling::EFillingMethod_Harmonic_Interpolation)).IsFail())
+			break;
+		// Harmonic Interpolation 의 Precision 값 설정 // Set precision value for Harmonic Interpolation
+		if((res = alg.SetPrecision(0.1)).IsFail())
+			break;
+		// Harmonic Interpolation 의 Max Iteration 값 설정 // Set max iteration value for Harmonic Interpolation
+		if((res = alg.SetMaxIteration(100)).IsFail())
+			break;
+		// 첫 번째 Threshold 의 채널 별 논리 연산자와 값 설정 // Set the logical operator and value for each channel of the first Threshold
+		CMultiVar<uint64_t> mvThresholdCondition1 = CMultiVar<uint64_t>((uint64_t)ELogicalCondition_GreaterEqual, (uint64_t)ELogicalCondition_GreaterEqual, (uint64_t)ELogicalCondition_GreaterEqual);
+		if((res = alg.SetThresholdCondition(EThresholdIndex_First, mvThresholdCondition1)).IsFail())
+			break;
+		CMultiVar<uint64_t> mvThresholdValue1U64 = CMultiVar<uint64_t>(175, 230, 240);
+		if((res = alg.SetThresholdValue(EThresholdIndex_First, mvThresholdValue1U64)).IsFail())
+			break;
+		// 두 번째 Threshold 의 채널 별 논리 연산자와 값 설정 // Set the logical operator and value for each channel of the second Threshold
+		CMultiVar<uint64_t> mvThresholdCondition2 = CMultiVar<uint64_t>((uint64_t)ELogicalCondition_Less, (uint64_t)ELogicalCondition_Less, (uint64_t)ELogicalCondition_Less);
+		if((res = alg.SetThresholdCondition(EThresholdIndex_Second, mvThresholdCondition2)).IsFail())
+			break;
+		CMultiVar<uint64_t> mvThresholdValue2U64 = CMultiVar<uint64_t>(200, 240, 255);
+		if((res = alg.SetThresholdValue(EThresholdIndex_Second, mvThresholdValue2U64)).IsFail())
+			break;
 
 		// 알고리즘 실행 // Execute Algorithm
 		if(IsFail(res = alg.Execute()))
