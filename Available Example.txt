@@ -947,6 +947,9 @@
       - GaussianFilter
         - The example of an algorithm that processes a gaussian differential filter to an image.
         - 이미지에서 gaussian 미분 필터를 처리하는 알고리즘 예제.
+      - GeometricMeanFilter
+        - The example of an algorithm that processes a geometric mean filter to an image.
+        - 이미지에서 기하 평균 필터를 처리하는 알고리즘 예제.
       - InfiniteSymmetricExponentialFilter
         - The example of an algorithm that performs image smoothing usign Infinite Symmetric Exponential function
         - Infinite Symmetric Exponential Function을 이용하여 이미지 스무딩을 수행하는 알고리즘 예제
