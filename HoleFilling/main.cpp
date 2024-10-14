@@ -111,6 +111,12 @@ int main()
 		// Hole 영역을 채우는 방식을 설정 // Set the method of filling the hole area
 		if((res = alg.SetFillingMethod(CHoleFilling::EFillingMethod_Harmonic_Interpolation)).IsFail())
 			break;
+		// Harmonic Interpolation 의 Precision 값 설정 // Set precision value for Harmonic Interpolation
+		if((res = alg.SetPrecision(0.1)).IsFail())
+			break;
+		// Harmonic Interpolation 의 Max Iteration 값 설정 // Set max iteration value for Harmonic Interpolation
+		if((res = alg.SetMaxIteration(100)).IsFail())
+			break;
 		// 첫 번째 Threshold 의 채널 별 논리 연산자와 값 설정 // Set the logical operator and value for each channel of the first Threshold
 		CMultiVar<uint64_t> mvThresholdCondition1 = CMultiVar<uint64_t>((uint64_t)ELogicalCondition_GreaterEqual, (uint64_t)ELogicalCondition_GreaterEqual, (uint64_t)ELogicalCondition_GreaterEqual);
 		if((res = alg.SetThresholdCondition(EThresholdIndex_First, mvThresholdCondition1)).IsFail())
