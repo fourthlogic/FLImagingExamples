@@ -141,6 +141,7 @@ int main()
 
 			default:
 				printf("Incorrect input. Please select again.\n\n");
+				break;
 			}
 
 			if(!flaMeasured.GetCount())
