@@ -1077,9 +1077,9 @@
     - OperationBlend 
       - The algorithm that performs blend operations on an image scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 블렌드 연산을 수행하는 알고리즘.
-    - OperationDifference 
-      - The algorithm that compares an image with scalar or another image and outputs the absolute value of the difference.
-      - 이미지를 스칼라 또는 다른 이미지와 비교하여 차이의 절대 값을 출력하는 알고리즘.
+    - OperationCompare
+      - The algorithm that performs compare operations on an image scalar or other image.
+      - 이미지를 스칼라 또는 다른 이미지와 비교 연산을 수행하는 알고리즘.
     - OperationComplexDivide
       - The algorithm that performs Complex Divide operation on the source image.
       - 이미지에 Complex Divide 연산을 수행하는 알고리즘
@@ -1098,6 +1098,9 @@
     - OperationCubeRoot
       - The algorithm that performs Cube Root operation on the source image.
       - 이미지에 세제곱근 연산을 수행하는 알고리즘.
+    - OperationDifference 
+      - The algorithm that compares an image with scalar or another image and outputs the absolute value of the difference.
+      - 이미지를 스칼라 또는 다른 이미지와 비교하여 차이의 절대 값을 출력하는 알고리즘.
     - OperationDivide 
       - The algorithm that performs divide operations on an image scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 나눗셈 연산을 수행하는 알고리즘.
