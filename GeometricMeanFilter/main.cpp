@@ -25,7 +25,7 @@ int main()
 			break;
 		}
 		
-		// Destination 이미지를 Src 이미지와 동일한 이미지로 생성
+		// Destination 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination image as same as source image
 		if(IsFail(res = fliDstImage.Assign(fliSrcImage)))
 		{
 			ErrorPrint(res, "Failed to assign the image file.\n");
@@ -60,7 +60,7 @@ int main()
 			break;
 		}
 
-		// Source이미지 뷰와 Dst 이미지 뷰의 초점을 맞춤
+		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views
 		if(IsFail(res = viewImageSrc.SynchronizePointOfView(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -74,14 +74,14 @@ int main()
 			break;
 		}
 
-		// Source Image 크기에 맞게 view의 크기를 조정
+		// Source Image 크기에 맞게 view의 크기를 조정 // Zoom the view to fit the image size
 		if(IsFail(res = viewImageSrc.ZoomFit()))
 		{
 			ErrorPrint(res, "Failed to zoom fit\n");
 			break;
 		}
 
-		// Destination Image 크기에 맞게 view의 크기를 조정
+		// Destination Image 크기에 맞게 view의 크기를 조정 // Zoom the view to fit the image size
 		if(IsFail(res = viewImageDst.ZoomFit()))
 		{
 			ErrorPrint(res, "Failed to zoom fit\n");
@@ -103,7 +103,7 @@ int main()
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = geometricMeanFilter.Execute()))
 		{
-			ErrorPrint(res, "Failed to execute GeometricMeanFilter.");
+			ErrorPrint(res, "Failed to execute Geometric Mean Filter.");
 			break;
 		}
 
