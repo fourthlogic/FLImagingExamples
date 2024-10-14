@@ -25,7 +25,7 @@ int main()
 			break;
 		}
 		
-		// Destination이미지를 Src 이미지와 동일한 이미지로 생성
+		// Destination이미지를 Source 이미지와 동일한 이미지로 생성 // Create the destination image as the same image as the source image
 		if(IsFail(res = fliDstImage.Assign(fliSrcImage)))
 		{
 			ErrorPrint(res, "Failed to assign the image file.\n");
@@ -60,7 +60,7 @@ int main()
 			break;
 		}
 
-		// Source이미지 뷰와 Dst 이미지 뷰의 초점을 맞춤
+		// Source 이미지 뷰와 Destination 이미지 뷰의 초점을 맞춤 // Synchronize the focus of the source image view and destination image view
 		if(IsFail(res = viewImageSrc.SynchronizePointOfView(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
