@@ -111,7 +111,7 @@ int main()
 		hog.SetVisualResultType(CHistogramsOfOrientedGradients::EVisualResultType_PredictionImage);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = hogCopy.Execute()).IsFail())
+		if((res = hog.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Histograms Of Oriented Gradients.");
 			break;
