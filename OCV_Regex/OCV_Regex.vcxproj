@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{99792BF5-617E-43A4-9F2E-9378270DCD8A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OpticalCharacterVerification_Regex</RootNamespace>
+    <RootNamespace>OCV_Regex</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

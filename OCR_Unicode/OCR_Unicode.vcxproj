@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D98247E2-40C2-4894-8338-DA2AE8717F4F}</ProjectGuid>
+    <ProjectGuid>{F70414D0-0466-4292-BC45-A48597D1FA8B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OpticalCharacterVerification</RootNamespace>
+    <RootNamespace>OCR_Unicode</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -16,13 +16,13 @@ int main()
 
 	do
 	{
-		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition.flif")).IsFail())
+		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OCR/OCR_Recognition.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		if((res = fliRecognizeImageUnicode.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition_Unicode2.flif")).IsFail())
+		if((res = fliRecognizeImageUnicode.Load(L"../../ExampleImages/OCR/OCR_Recognition_Unicode2.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
@@ -81,7 +81,7 @@ int main()
 		COCR ocr;
 
 		// 학습 정보 파일을 로드
-		if(IsFail(res = ocr.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_FourthLogic.flocr")))
+		if(IsFail(res = ocr.Load(L"../../ExampleImages/OCR/OCR_FourthLogic.flocr")))
 		{
 			ErrorPrint(res, L"Failed to load learnt file.");
 			break;

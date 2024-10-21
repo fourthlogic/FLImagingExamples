@@ -20,19 +20,19 @@ int main()
 	do
 	{
 		// 이미지 로드 // Load image
-		if((res = fliImage1.Load(L"../../ExampleImages/OpticalCharacterVerification/Print_Example1.flif")).IsFail())
+		if((res = fliImage1.Load(L"../../ExampleImages/OCV/Print_Example1.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		if((res = fliImage2.Load(L"../../ExampleImages/OpticalCharacterVerification/Print_Example2.flif")).IsFail())
+		if((res = fliImage2.Load(L"../../ExampleImages/OCV/Print_Example2.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 		
-		if((res = fliImage3.Load(L"../../ExampleImages/OpticalCharacterVerification/Print_Example3.flif")).IsFail())
+		if((res = fliImage3.Load(L"../../ExampleImages/OCV/Print_Example3.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
@@ -117,7 +117,7 @@ int main()
 		COCV ocv;
 
 		// OCR Font 파일을 로드
-		if(IsFail(res = ocv.LoadFontData(L"../../ExampleImages/OpticalCharacterVerification/Font_A-Z_0-9.flocr")))
+		if(IsFail(res = ocv.LoadFontData(L"../../ExampleImages/OCV/Font_A-Z_0-9.flocr")))
 		{
 			ErrorPrint(res, L"Failed to load Font file.");
 			break;

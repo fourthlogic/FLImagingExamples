@@ -17,13 +17,13 @@ int main()
 	do
 	{
 		// 이미지 로드 // Load image
-		if((res = fliImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Learn_Unicode.flif")).IsFail())
+		if((res = fliImage.Load(L"../../ExampleImages/OCR/OCR_Learn.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OpticalCharacterRecognition/OCR_Recognition_Unicode.flif")).IsFail())
+		if((res = fliRecognizeImage.Load(L"../../ExampleImages/OCR/OCR_Recognition.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
@@ -145,21 +145,14 @@ int main()
 		}
 
 		// 인식할 문자의 각도 범위를 설정
-		if(IsFail(res = ocr.SetRecognizingAngleTolerance(50.)))
+		if(IsFail(res = ocr.SetRecognizingAngleTolerance(10.)))
 		{
 			ErrorPrint(res, L"Failed to set recognizing angle tolerance.");
 			break;
 		}
 
-		// 인식할 이미지의 잡음 제거 여부를 설정
-		if(IsFail(res = ocr.EnableRecognizingNoiseReduction(true)))
-		{
-			ErrorPrint(res, L"Failed to set recognizing Noise Reduction.");
-			break;
-		}
-
 		// 인식할 문자의 색상을 설정
-		if(IsFail(res = ocr.SetRecognizingCharacterColorType(ECharacterColorType_WhiteOnBlack)))
+		if(IsFail(res = ocr.SetRecognizingCharacterColorType(ECharacterColorType_All)))
 		{
 			ErrorPrint(res, L"Failed to set recognizing character color.");
 			break;
@@ -173,16 +166,9 @@ int main()
 		}
 
 		// 인식할 최대 개수를 설정
-		if(IsFail(res = ocr.SetRecognizingMaximumCharacterCount(14)))
+		if(IsFail(res = ocr.SetRecognizingMaximumCharacterCount(12)))
 		{
 			ErrorPrint(res, L"Failed to set maximum character count.");
-			break;
-		}
-
-		// 인식할 문자의 유니코드 여부를 설정
-		if(IsFail(res = ocr.EnableRecognizingUnicodeByteCharacter(true)))
-		{
-			ErrorPrint(res, L"Failed to Enable unicode byte character.");
 			break;
 		}
 

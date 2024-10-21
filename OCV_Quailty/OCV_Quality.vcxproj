@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F2D0EB12-1EE9-4B30-BF4D-8E50B59F03DC}</ProjectGuid>
+    <ProjectGuid>{A8D715A4-6830-4594-A359-6D3E7C8CB683}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OpticalCharacterRecognition_Dot</RootNamespace>
+    <RootNamespace>OCV_Quality</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
