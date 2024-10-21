@@ -98,7 +98,7 @@ int main()
 		viewImageSource.RedrawWindow();
 		viewImagesResult.RedrawWindow();
 
-		// Validation Extractor 실행 // Validation Extractor Execute 
+		// UnnamedLabelRemover 실행 // UnnamedLabelRemover Execute 
 		if(IsFail(res = CUnnamedLabelRemoverDL::Execute(&fliSourceImage, &fliResultImage)))
 		{
 			ErrorPrint(res, "Failed to Process\n");
