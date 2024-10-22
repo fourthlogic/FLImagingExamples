@@ -731,6 +731,12 @@
       - The algorithm example to get the cumulative sum of rows or columns of an image.
       - 이미지의 행 또는 열의 누적합을 구하는 알고리즘 예제.
 
+  - [Calibration]
+
+    - ShadingCalibrator
+      - The example of an algorithm that perform light state calibration and correction of an image.
+      - 조명 상태 캘리브레이션 및 보정을 수행하는 알고리즘 예제.
+
   - [Channel]
 
     - ChannelExtraction
