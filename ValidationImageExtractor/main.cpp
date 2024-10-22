@@ -108,13 +108,13 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = layerValidation.DrawTextCanvas(&CFLPoint<double>(0, 0), L"TRAIN(EXTRACTED (4/6))", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerValidation.DrawTextCanvas(&CFLPoint<double>(0, 0), L"TRAIN(EXTRACTED (3/4))", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerResultLabel.DrawTextCanvas(&CFLPoint<double>(0, 0), L"VALIDATION(EXTRACTED (2/6))", GREEN, BLACK, 30)))
+		if(IsFail(res = layerResultLabel.DrawTextCanvas(&CFLPoint<double>(0, 0), L"VALIDATION(EXTRACTED (1/4)", GREEN, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
