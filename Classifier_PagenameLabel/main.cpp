@@ -149,6 +149,7 @@ int main()
 
 		// 설정한 Optimizer를 Classifier에 적용 // Apply the Optimizer that we set up to Classifier
 		classifier.SetLearningOptimizerSpec(optSpec);
+		classifier.EnableOptimalLearningStatePreservation(false);
 
 		// Learn 동작을 하는 핸들 객체 선언 // Declare HANDLE object execute learn function
 		HANDLE hThread;
