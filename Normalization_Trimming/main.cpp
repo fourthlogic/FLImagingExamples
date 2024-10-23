@@ -99,10 +99,8 @@ int main()
 		normalize.SetNormalizationMethod(CNormalization::ENormalizationMethod_MinMax);
 
 		// Trimming 비율 설정 // Setting the Trimming Ratio
-		// Left Trimming 10% 설정 // Set left trimming 10%
-		normalize.SetTrimming(0.1, CNormalization::ENormalizationIndex_FromLeft);
-		// Right Trimming 30% 설정 // Set right trimming 30%
-		normalize.SetTrimming(0.3, CNormalization::ENormalizationIndex_FromRight);
+		// 하한 10%, 상한 30% 설정 // Set trimming Lower 10%, Upper30%
+		normalize.SetTrimming(CNormalization::ETrimmingMethod_Ratio, 0.1, 0.3);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = normalize.Execute()).IsFail())
