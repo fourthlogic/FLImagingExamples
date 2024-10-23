@@ -112,7 +112,7 @@ int main()
 		ShadingCalibrator.SetLearnImageForShadingCalibration(fliLearnImage);
 
 		// 앞서 설정된 이미지로 Calibration을 수행 // Perform Calibration with the previously set image
-		if((res = ShadingCalibrator.Calibrate()))
+		if((res = ShadingCalibrator.Calibrate()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to calibrate.\n");
 			break;
