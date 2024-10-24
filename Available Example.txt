@@ -962,6 +962,9 @@
       - LowpassFilter
         - The example of an algorithm that processes a lowpass differential filter to an image.
         - 이미지에서 lowpass 미분 필터를 처리하는 알고리즘 예제.
+      - MidpointFilter
+        - The example of an algorithm that processes midpoint filtering to an image.
+        - 이미지에서 midpoint 필터링을 처리하는 알고리즘 예제
       - SigmaFilter
         - The example of an algorithm that executes non-linear image smoothing.
         - 비선형 이미지를 스무딩해주는 알고리즘 예제.  
