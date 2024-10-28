@@ -229,7 +229,25 @@ int main()
 		augSpec.SetScaleCropParam(1., 1., true, .5, 2., .5, 2., true);
 
 		ocr.SetLearningAugmentationSpec(&augSpec);
-		
+
+		// 학습을 종료할 조건식 설정. map값이 0.9 이상인 경우 학습 종료한다. metric와 동일한 값입니다.
+		// Set Conditional Expression to End Learning. If the map value is 0.9 or higher, end the learning. Same value as metric.
+		ocr.SetLearningStopCondition(L"map >= 0.9");
+
+		// 자동 저장 옵션 설정 // Set Auto-Save Options
+		CAutoSaveSpec autoSaveSpec;
+
+		// 자동 저장 활성화 // Enable Auto-Save
+		autoSaveSpec.EnableAutoSave(true);
+		// 저장할 모델 경로 설정 // Set Model path to save
+		autoSaveSpec.SetAutoSavePath(L"model.flocrdl");
+		// 자동 저장 조건식 설정. 현재 map값이 최대 값인 경우 저장 활성화
+		// Set auto-save conditional expressions. Enable save if the current map value is the maximum value
+		autoSaveSpec.SetAutoSaveCondition(L"map > max('map')");
+
+		// 자동 저장 옵션 설정 // Set Auto-Save Options
+		ocr.SetLearningAutoSaveSpec(autoSaveSpec);
+
 		// Learn 동작을 하는 핸들 객체 선언 // Declare HANDLE object execute learn function
 		HANDLE hThread;
 

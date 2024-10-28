@@ -199,6 +199,24 @@ int main()
 
 		AnomalyDetection.SetLearningAugmentationSpec(&augSpec);
 
+		// 학습을 종료할 조건식 설정. cost가 0.1 이하이고 accuracy값이 0.9 이상인 경우 학습 종료한다.
+		// Set Conditional Expression to End Learning. If cost is 0.1 or less and the accumulation value is 0.9 or more, end learning.
+		AnomalyDetection.SetLearningStopCondition(L"cost <= 0.1 & accuracy >= 0.98");
+
+		// 자동 저장 옵션 설정 // Set Auto-Save Options
+		CAutoSaveSpec autoSaveSpec;
+
+		// 자동 저장 활성화 // Enable Auto-Save
+		autoSaveSpec.EnableAutoSave(true);
+		// 저장할 모델 경로 설정 // Set Model path to save
+		autoSaveSpec.SetAutoSavePath(L"model.flad");
+		// 자동 저장 조건식 설정. 현재 cost값이 최소이고 accuracy값이 최대 값인 경우 저장 활성화
+		// Set auto-save conditional expressions. Enable save if the current cost value is minimum and the accumulation value is maximum
+		autoSaveSpec.SetAutoSaveCondition(L"cost < min('cost') & accuracy > max('accuracy')");
+
+		// 자동 저장 옵션 설정 // Set Auto-Save Options
+		AnomalyDetection.SetLearningAutoSaveSpec(autoSaveSpec);
+
 		// Learn 동작을 하는 핸들 객체 선언 // Declare HANDLE object execute learn function
 		HANDLE hThread;
 
