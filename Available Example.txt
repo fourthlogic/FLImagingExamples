@@ -967,7 +967,10 @@
         - 이미지에서 midpoint 필터링을 처리하는 알고리즘 예제
       - SigmaFilter
         - The example of an algorithm that executes non-linear image smoothing.
-        - 비선형 이미지를 스무딩해주는 알고리즘 예제.  
+        - 비선형 이미지를 스무딩해주는 알고리즘 예제. 
+      - StackBlurFilter
+        - The example of an algorithm that processes a stack blur filter to an image.
+        - 이미지에서 stack blur 필터를 처리하는 알고리즘 예제.
       - UniformFilter
         - The example of an algorithm that processes a uniform differential filter to an image.
         - 이미지에서 uniform 미분 필터를 처리하는 알고리즘 예제.
