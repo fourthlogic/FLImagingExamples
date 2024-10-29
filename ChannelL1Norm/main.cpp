@@ -20,7 +20,7 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/ChannelL1Norm/Color.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/ChannelL1Norm/Coord.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
