@@ -81,8 +81,6 @@ int main()
 			FLGeometricMatchMultiSave.SetFeatureFiltering();
 			// 추출할 특징점 처리과정에서의 허용 임계값을 설정합니다. // Set the allowable threshold in the feature point processing process to be extracted.
 			FLGeometricMatchMultiSave.SetLearnThresholdCoeff();
-			// 추출할 특징점 처리과정에서의 이미지 전처리 유무를 설정합니다. // Set whether or not to pre-process the image in the process of processing the feature points to be extracted.
-			FLGeometricMatchMultiSave.EnablePreprocessing();
 
 
 			// 알고리즘 수행 // Execute the algorithm
@@ -254,8 +252,6 @@ int main()
 		// 검출 시 겹쳐짐 허용 정도를 설정합니다. // Set the allowable degree of overlap during detection.
 		FLGeometricMatchMultiLoad.SetObjectOverlap();
 		// 검출 시 이미지 전처리 유무를 설정합니다. // Set whether or not to pre-process the image during detection.
-		// 학습과정에서 전처리 유무를 설정과 동일하게 설정하는 것을 추천합니다. // In the learning process, it is recommended to set the pre-processing status the same as the setting.
-		FLGeometricMatchMultiLoad.EnablePreprocessing();
 
 		// 알고리즘 수행 // Execute the algorithm
 		res = FLGeometricMatchMultiLoad.Execute();
