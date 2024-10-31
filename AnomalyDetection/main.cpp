@@ -191,8 +191,8 @@ int main()
 		augSpec.EnableRotation(true);
 		augSpec.SetRotationParam(1.000000, false, false);
 
-		augSpec.EnableScaleCrop(true);
-		augSpec.SetScaleCropParam(1.000000, 1.000000, false, 0.900000, 1.100000, 0.900000, 1.100000, true);
+		augSpec.EnableScale(true);
+		augSpec.SetScaleParam(0.900000, 1.100000, 0.900000, 1.100000, true);
 		
 		augSpec.EnablePerspective(true);
 		augSpec.SetPerspectiveParam(0.050000);

@@ -221,8 +221,8 @@ int main()
 		augSpec.SetCommonInterpolationMethod(EInterpolationMethod_Bilinear);
 		augSpec.EnableHorizontalFlip(true);
 		augSpec.EnableVerticalFlip(true);
-		augSpec.EnableScaleCrop(true);
-		augSpec.SetScaleCropParam(0.900000, 1.000000, true, 1.000000, 1.000000, 1.000000, 1.000000, true);
+		augSpec.EnableScale(true);
+		augSpec.SetScaleParam(1.000000, 1.000000, 1.000000, 1.000000, true);
 
 		intanceSegmentation.SetLearningAugmentationSpec(&augSpec);
 

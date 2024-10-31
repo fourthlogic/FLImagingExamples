@@ -200,9 +200,9 @@ int main()
 		// 검증할 이미지 설정 // Set the image to validate
 		ocr.SetLearningValidationImage(fliValidationImage);
 		// 학습할 OCR 모델 설정 // Set up OCR model to learn
-		ocr.SetModel(CCharacterBasedOCRDL::EModel_FLSegNet);
+		ocr.SetModel(CCharacterBasedOCRDL::EModel_R_FLSegNet);
 		// 학습할 OCR 모델의 버전 설정 // Set up OCR model version to learn
-		ocr.SetModelVersion(CCharacterBasedOCRDL::EModelVersion_FLSegNet_V1_1024_B3);
+		ocr.SetModelVersion(CCharacterBasedOCRDL::EModelVersion_Mask_R_CNN_V1_512);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
 		ocr.SetLearningEpoch(10000);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
@@ -225,8 +225,8 @@ int main()
 		augSpec.EnableGaussianNoise(true);
 		augSpec.SetGaussianNoiseParam(0, 0.02);
 
-		augSpec.EnableScaleCrop(true);
-		augSpec.SetScaleCropParam(1., 1., true, .5, 2., .5, 2., true);
+		augSpec.EnableScale(true);
+		augSpec.SetScaleParam(.5, 2., .5, 2., true);
 
 		ocr.SetLearningAugmentationSpec(&augSpec);
 
@@ -280,30 +280,26 @@ int main()
 				// 마지막 학습 결과 비용 받기 // Get the last cost of the learning result
 				float f32CurrCost = ocr.GetLearningResultLastCost();
 				// 마지막 검증 결과 받기 // Get the last validation result
-				float f32ValidationPa = ocr.GetLearningResultLastAccuracy();
-				float f32ValidationMeanIoU = ocr.GetLearningResultLastMeanIoU();
+				float f32ValidationMeanAP = ocr.GetLearningResultLastMeanAP();
 
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
-				printf("Cost : %.6f Validation : %.6f mIoU : %.6f Epoch %d / %d\n", f32CurrCost, f32ValidationPa, f32ValidationMeanIoU, i32Epoch, i32MaxEpoch);
+				printf("Cost : %.6f mAP : %.6f Epoch %d / %d\n", f32CurrCost, f32ValidationMeanAP, i32Epoch, i32MaxEpoch);
 
 				// 학습 결과 비용과 검증 결과 기록을 받아 그래프 뷰에 출력  
 				// Get the history of cost and validation and print it at graph view
 				CFLArray<float> vctCosts;
-				CFLArray<float> vctVadliationPixelAccuracy;
-				CFLArray<float> vctMeanIoU;
-				CFLArray<float> vctVadliationPixelAccuracyZE;
-				CFLArray<float> vctMeanIoUZE;
+				CFLArray<float> vctMeanAP;
 				CFLArray<int32_t> vctValidationEpoch;
 
-				ocr.GetLearningResultAllHistory(&vctCosts, &vctVadliationPixelAccuracy, &vctMeanIoU, &vctVadliationPixelAccuracyZE, &vctMeanIoUZE, &vctValidationEpoch);
+				ocr.GetLearningResultAllHistory(&vctCosts, &vctMeanAP, &vctValidationEpoch);
 
 				// 비용 기록이나 검증 결과 기록이 있다면 출력 // Print results if cost or validation history exists
-				if((vctCosts.GetCount() && i32PrevCostCount != (int32_t)vctCosts.GetCount()) || (vctVadliationPixelAccuracy.GetCount() && i32PrevValidationCount != (int32_t)vctVadliationPixelAccuracy.GetCount()))
+				if((vctCosts.GetCount() && i32PrevCostCount != (int32_t)vctCosts.GetCount()) || (vctMeanAP.GetCount() && i32PrevValidationCount != (int32_t)vctMeanAP.GetCount()))
 				{
 					int32_t i32Step = ocr.GetLearningValidationStep();
 					CFLArray<float> flaX;
 
-					for(int64_t i = 0; i < vctVadliationPixelAccuracy.GetCount() - 1; ++i)
+					for(int64_t i = 0; i < vctMeanAP.GetCount() - 1; ++i)
 						flaX.PushBack((float)(i * i32Step));
 
 					flaX.PushBack((float)(vctCosts.GetCount() - 1));
@@ -315,8 +311,7 @@ int main()
 					viewGraph.Plot(vctCosts, EChartType_Line, RED, L"Cost");
 
 					// Graph View 데이터 입력 // Input Graph View Data
-					viewGraph.Plot(flaX, vctVadliationPixelAccuracy, EChartType_Line, BLUE, L"PixelAccuracy(Zero Exception)");
-					viewGraph.Plot(flaX, vctMeanIoU, EChartType_Line, PINK, L"mIoU");
+					viewGraph.Plot(flaX, vctMeanAP, EChartType_Line, BLUE, L"mAP");
 					viewGraph.UnlockUpdate();
 
 					viewGraph.UpdateWindow();
@@ -326,12 +321,12 @@ int main()
 
 				// 검증 결과가 0.9 이상 일 경우 학습을 중단하고 분류 진행 
 				// If the validation result is greater than 0.9, stop learning and classify images 
-				if(f32ValidationMeanIoU >= .9f || GetAsyncKeyState(VK_ESCAPE))
+				if(f32ValidationMeanAP >= .9f || GetAsyncKeyState(VK_ESCAPE))
 					ocr.Stop();
 
 				i32PrevEpoch = i32Epoch;
 				i32PrevCostCount = (int32_t)vctCosts.GetCount();
-				i32PrevValidationCount = (int32_t)vctVadliationPixelAccuracy.GetCount();
+				i32PrevValidationCount = (int32_t)vctMeanAP.GetCount();
 			}
 			// epoch만큼 학습이 완료되면 종료 // End when learning progresses as much as epoch
 			if(!ocr.IsRunning() && g_bTerminated)
@@ -344,28 +339,10 @@ int main()
 			}
 		}
 
-		// Result Label Image에 피겨를 포함하지 않는 Execute
-		// 분류할 이미지 설정 // Set the image to classify
-		ocr.SetInferenceImage(fliValidationImage);
-		// 추론 결과 이미지 설정 // Set the inference result Image
-		ocr.SetInferenceResultImage(fliResultLabelImage);
-		// 추론 결과 옵션 설정 // Set the inference result options;
-		// Result 결과를 Label Image로 받을지 여부 설정 // Set whether to receive the result as a Label Image
-		ocr.EnableInferenceResultLabelImage(true);
-
-		// 알고리즘 수행 // Execute the algorithm
-		if(IsFail(res = ocr.Execute()))
-		{
-			ErrorPrint(res, "Failed to execute.\n");
-			break;
-		}
-
 		// Result Label Image에 피겨를 포함한 Execute
 		// 추론 결과 이미지 설정 // Set the inference result Image
 		ocr.SetInferenceResultImage(fliResultLabelFigureImage);
 		// 추론 결과 옵션 설정 // Set the inference result options;
-		// Result 결과를 Label Image로 받을지 여부 설정 // Set whether to receive the result as a Label Image
-		ocr.EnableInferenceResultLabelImage(false);
 		// Result item settings enum 설정 // Set the result item settings
 		ocr.SetInferenceResultItemSettings(CCharacterBasedOCRDL::EInferenceResultItemSettings_ClassName_ConfidenceScore_RegionType_Contour);
 

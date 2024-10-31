@@ -191,8 +191,8 @@ int main()
 		augSpec.SetCommonInterpolationMethod(FLImaging::ImageProcessing::EInterpolationMethod_Bilinear);
 		augSpec.EnableRotation(true);
 		augSpec.SetRotationParam(30., true, false);
-		augSpec.EnableScaleCrop(true);
-		augSpec.SetScaleCropParam(.8, 1.0, true, 1., 1., 1., 1., true);
+		augSpec.EnableScale(true);
+		augSpec.SetScaleParam(1., 1., 1., 1., true);
 		augSpec.EnableHorizontalFlip(true);
 		augSpec.EnableVerticalFlip(true);
 
