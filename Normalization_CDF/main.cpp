@@ -89,23 +89,23 @@ int main()
 			break;
 
 		// Normalization 객체 생성 // Create Normalization object
-		CNormalization normalize;
+		CNormalization Normalization;
 
 		// Source 이미지 설정 // Set source image
-		normalize.SetSourceImage(arrFliImage[EType_Src]);
+		Normalization.SetSourceImage(arrFliImage[EType_Src]);
 		// Destination 이미지 설정 // Set destination image 
-		normalize.SetDestinationImage(arrFliImage[EType_Dst]);
+		Normalization.SetDestinationImage(arrFliImage[EType_Dst]);
 		// 정규화 방식 설정(CDF) // Set Normalization Method(CDF)
-		normalize.SetNormalizationMethod(CNormalization::ENormalizationMethod_CDF);
+		Normalization.SetNormalizationMethod(CNormalization::ENormalizationMethod_CDF);
 
 		// 정규화 범위 설정 // Set normalization range
 		// Min 범위 설정 // Set Min Range
-		normalize.SetMinRange(10);
+		Normalization.SetMinRange(10);
 		// Max 범위 설정 // Set Max Range
-		normalize.SetMaxRange(240);
+		Normalization.SetMaxRange(240);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = normalize.Execute()).IsFail())
+		if((res = Normalization.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute normalize.");
 			break;
