@@ -26,13 +26,11 @@ int main()
 	CFLImage fliLearnImage;
 	CFLImage fliValidationImage;
 	CFLImage fliResultLabelImage;
-	CFLImage fliResultLabelFigureImage;
 
 	/// 이미지 뷰 선언 // Declare the image view
 	CGUIViewImageWrap viewImageLearn;
 	CGUIViewImageWrap viewImageValidation;
 	CGUIViewImageWrap viewImagesLabel;
-	CGUIViewImageWrap viewImagesLabelFigure;
 
 	// 그래프 뷰 선언 // Declare the graph view
 	CGUIViewGraphWrap viewGraph;
@@ -76,14 +74,8 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = viewImagesLabelFigure.Create(600, 500, 1100, 1000)))
-		{
-			ErrorPrint(res, "Failed to create the image view.\n");
-			break;
-		}
-
 		// Graph 뷰 생성 // Create graph view
-		if(IsFail(res = viewGraph.Create(1100, 0, 1600, 500)))
+		if(IsFail(res = viewGraph.Create(600, 500, 1100, 1000)))
 		{
 			ErrorPrint(res, " Failed to create the graph view. \n");
 			break;
@@ -99,12 +91,6 @@ int main()
 		}
 
 		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImagesLabel)))
-		{
-			ErrorPrint(res, "Failed to synchronize window.\n");
-			break;
-		}
-
-		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImagesLabelFigure)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
@@ -131,27 +117,16 @@ int main()
 			break;
 		}
 
-		fliResultLabelFigureImage.Assign(fliValidationImage);
-		fliResultLabelFigureImage.ClearFigures();
-
-		if(IsFail(res = viewImagesLabelFigure.SetImagePtr(&fliResultLabelFigureImage)))
-		{
-			ErrorPrint(res, "Failed to set image object on the image view.\n");
-			break;
-		}
-
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerLearn = viewImageLearn.GetLayer(0);
 		CGUIViewImageLayerWrap layerValidation = viewImageValidation.GetLayer(0);
 		CGUIViewImageLayerWrap layerResultLabel = viewImagesLabel.GetLayer(0);
-		CGUIViewImageLayerWrap layerResultLabelFigure = viewImagesLabelFigure.GetLayer(0);
 
 		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 		layerLearn.Clear();
 		layerValidation.Clear();
 		layerResultLabel.Clear();
-		layerResultLabelFigure.Clear();
 
 		// View 정보를 디스플레이 합니다. // Display View information.
 		// 아래 함수 DrawTextCanvas 는 Screen좌표를 기준으로 하는 String을 Drawing 한다.// The function DrawTextCanvas below draws a String based on the screen coordinates.
@@ -177,17 +152,10 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = layerResultLabelFigure.DrawTextCanvas(&CFLPoint<double>(0, 0), L"RESULT LABEL FIGURE", GREEN, BLACK, 30)))
-		{
-			ErrorPrint(res, "Failed to draw text\n");
-			break;
-		}
-
 		// 이미지 뷰를 갱신 // Update the image view.
 		viewImageLearn.RedrawWindow();
 		viewImageValidation.RedrawWindow();
 		viewImagesLabel.RedrawWindow();
-		viewImagesLabelFigure.RedrawWindow();
 
 		// OCR 객체 생성 // Create OCR object
 		CCharacterBasedOCRDL ocr;
@@ -209,7 +177,7 @@ int main()
 		ocr.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 
 		// Optimizer의 학습률 설정 // Set learning rate of Optimizer
-		optSpec.SetLearningRate(1e-3f);
+		optSpec.SetLearningRate(5e-4f);
 
 		// 설정한 Optimizer를 OCR에 적용 // Apply the Optimizer that we set up to OCR
 		ocr.SetLearningOptimizerSpec(optSpec);
@@ -339,12 +307,14 @@ int main()
 			}
 		}
 
+		// 분류할 이미지 설정 // Set the image to classify
+		ocr.SetInferenceImage(fliValidationImage);
 		// Result Label Image에 피겨를 포함한 Execute
 		// 추론 결과 이미지 설정 // Set the inference result Image
-		ocr.SetInferenceResultImage(fliResultLabelFigureImage);
+		ocr.SetInferenceResultImage(fliResultLabelImage);
 		// 추론 결과 옵션 설정 // Set the inference result options;
 		// Result item settings enum 설정 // Set the result item settings
-		ocr.SetInferenceResultItemSettings(CCharacterBasedOCRDL::EInferenceResultItemSettings_ClassName_ConfidenceScore_RegionType_Contour);
+		ocr.SetInferenceResultItemSettings(CCharacterBasedOCRDL::EInferenceResultItemSettings_ClassName_Contour);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if(IsFail(res = ocr.Execute()))
@@ -365,18 +335,18 @@ int main()
 
 		// ResultLabel 뷰에 Floating Value Range를 설정 // Set Floating Value Range in ResultLabel view
 		viewImagesLabel.SetFloatingImageValueRange(0.f, (float)ocr.GetLearningResultClassCount());
+		viewImagesLabel.ZoomFit();
 
 		// 이미지 뷰를 갱신 // Update the image view.
 		viewImageLearn.RedrawWindow();
 		viewImageValidation.RedrawWindow();
 		viewImagesLabel.RedrawWindow();
-		viewImagesLabelFigure.RedrawWindow();
 
 		// 그래프 뷰를 갱신 // Update the Graph view.
 		viewGraph.RedrawWindow();
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
-		while(viewImageLearn.IsAvailable() && viewImageValidation.IsAvailable() && viewImagesLabel.IsAvailable() && viewImagesLabelFigure.IsAvailable() && viewGraph.IsAvailable())
+		while(viewImageLearn.IsAvailable() && viewImageValidation.IsAvailable() && viewImagesLabel.IsAvailable() && viewGraph.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
