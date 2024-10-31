@@ -116,14 +116,6 @@ int main()
 		layerSrc.Clear();
 		layerDst.Clear();
 
-		// ROI영역이 어디인지 알기 위해 디스플레이 한다 // Display to find out where ROI is
-		// FLImaging의 Figure객체들은 어떤 도형모양이든 상관없이 하나의 함수로 디스플레이가 가능
-		if(IsFail(layerSrc.DrawFigureImage(&flrROI, LIME)))
-			printf("Failed to draw figure\n");
-
-		if(IsFail(layerDst.DrawFigureImage(&flrROI, LIME)))
-			printf("Failed to draw figure\n");
-
 		if(IsFail(layerSrc.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)))
 		{
 			printf("Failed to draw text\n");
