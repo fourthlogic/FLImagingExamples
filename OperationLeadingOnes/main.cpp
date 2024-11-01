@@ -1,8 +1,5 @@
-#include <cstdio>
-
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
-
 
 int main()
 {
