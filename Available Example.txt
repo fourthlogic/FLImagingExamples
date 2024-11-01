@@ -1,5 +1,5 @@
 ======= 
-5.8.6.8
+5.10.29.2
 ======= 
 
 - [3D]
@@ -104,6 +104,10 @@
       - Residual Evaluator3D
         - The example of an algorithm that measures the residuals of two given objects.
         - 주어진 두 오브젝트의 잔차를 측정하는 알고리즘 예제.
+    - [Projection]
+      - Projection 3D
+        - An example of an algorithm that projects a 3D object into an image.
+        - 3D 객체를 이미지로 투영하는 알고리즘 예제.
 
 
 - [Advanced Functions]
