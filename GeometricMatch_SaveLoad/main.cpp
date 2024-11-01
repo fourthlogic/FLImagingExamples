@@ -211,7 +211,7 @@ int main()
 		// 검출 시 최적화 정도에 대해 설정합니다. // Set the degree of optimization for detection.
 		FLGeometricMatchLoad.SetOptimizationOption();
 		// 검출 시 대비정도에 대해 설정합니다. // Set the contrast level for detection.
-		FLGeometricMatchLoad.SetConstrastOption();
+		FLGeometricMatchLoad.SetContrastOption();
 		// 검출 시 이미지 영역밖의 탐색 정도를 설정합니다. // Set the degree of search outside the image area when detecting.
 		FLGeometricMatchLoad.SetInvisibleRegionEstimation();
 		// 검출 시 처리과정에서의 허용 임계값을 설정합니다. // Set the allowable threshold in the process of detection.
