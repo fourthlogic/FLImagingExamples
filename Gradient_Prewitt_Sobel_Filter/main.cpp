@@ -28,7 +28,7 @@ int main()
 	{
 		CResult res = EResult_UnknownError;
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/Filter/Building.flif")))
+		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/EdgeDetection/Alphabat.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;

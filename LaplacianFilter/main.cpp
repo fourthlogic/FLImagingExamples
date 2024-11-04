@@ -28,7 +28,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Filter/Moss.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/EdgeDetection/Alphabat.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
