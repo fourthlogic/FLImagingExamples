@@ -16,7 +16,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(fliSrcImage.Load(L"../../ExampleImages/MedianFilter/Chip_Noise.flif")))
+		if(IsFail(fliSrcImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")))
 		{
 			printf("Failed to load the image file.\n");
 			break;

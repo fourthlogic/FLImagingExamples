@@ -19,7 +19,7 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/GeometricMeanFilter/Speckle_Noise.flif")))
+		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;

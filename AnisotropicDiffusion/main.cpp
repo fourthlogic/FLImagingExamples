@@ -26,7 +26,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((res = arrFliImage[EType_Source].Load(L"../../ExampleImages/AnisotropicDiffusion/Source.flif")).IsFail())
+		if((res = arrFliImage[EType_Source].Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;

@@ -21,21 +21,21 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((res = fliSourceImage.Load(L"../../ExampleImages/BilateralFilterSubSampled/cat_450x480.flif")).IsFail())
+		if((res = fliSourceImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Operand 이미지 로드 // Loads the operand image
-		if((res = fliOperandImage.Load(L"../../ExampleImages/BilateralFilterSubSampled/cat_450x480.flif")).IsFail())
+		if((res = fliOperandImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination 이미지 로드 // Load the destination image
-		if((res = fliDestinationImage.Load(L"../../ExampleImages/BilateralFilterSubSampled/cat_450x480.flif")).IsFail())
+		if((res = fliDestinationImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;

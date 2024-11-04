@@ -19,14 +19,14 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((res = fliSourceImage.Load(L"../../ExampleImages/BilateralFilterGrid/Gear.flif")).IsFail())
+		if((res = fliSourceImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Destination 이미지 로드 // Load the destination image
-		if((res = fliDestinationImage.Load(L"../../ExampleImages/BilateralFilterGrid/Gear.flif")).IsFail())
+		if((res = fliDestinationImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -84,10 +84,10 @@ int main()
 		bilateralFilterGrid.SetDestinationImage(fliDestinationImage);
 
 		// Sampling Rate Spatial 설정 // Set the Sampling Rate Spatial
-		bilateralFilterGrid.SetSamplingRateSpatial(8);
+		bilateralFilterGrid.SetSamplingRateSpatial(3);
 
 		// Sampling Rate Range 설정 // Set the Sampling Rate Range
-		bilateralFilterGrid.SetSamplingRateRange(0.1);
+		bilateralFilterGrid.SetSamplingRateRange(0.2);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = bilateralFilterGrid.Execute()).IsFail())

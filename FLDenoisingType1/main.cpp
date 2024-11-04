@@ -20,7 +20,7 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/FLDenoisingType1/CircuitNoise.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -84,7 +84,7 @@ int main()
 		}
 
 		// Kernel 크기 설정 // Set the Kernel Size.
-		if(IsFail(res = FLDenoisingType1.SetKernelSize(3)))
+		if(IsFail(res = FLDenoisingType1.SetKernelSize(5)))
 		{
 			ErrorPrint(res, "Failed to set Kernel Size.");
 			break;

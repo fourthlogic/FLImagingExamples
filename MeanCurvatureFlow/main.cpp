@@ -20,7 +20,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((res = fliSrcImage.Load(L"../../ExampleImages/MeanCurvatureFlow/Sea3Ch.flif")).IsFail())
+		if((res = fliSrcImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;

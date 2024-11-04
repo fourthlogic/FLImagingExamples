@@ -26,7 +26,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((result = arrFliImage[EType_Source].Load(L"../../ExampleImages/Gradation/pika.flif")).IsFail())
+		if((result = arrFliImage[EType_Source].Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")).IsFail())
 		{
 			ErrorPrint(result, L"Failed to load the image file.\n");
 			break;
