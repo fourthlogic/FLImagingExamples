@@ -109,7 +109,7 @@ int main()
 		if((res = alg.SetLogicalConditionOfChannels(ELogicalConditionOfChannels_And)).IsFail())
 			break;
 		// Hole 영역을 채우는 방식을 설정 // Set the method of filling the hole area
-		if((res = alg.SetFillingMethod(CHoleFilling::EFillingMethod_Harmonic_Interpolation)).IsFail())
+		if((res = alg.SetFillingMethod((CHoleFilling::EFillingMethod)0)).IsFail())
 			break;
 		// Harmonic Interpolation 의 Precision 값 설정 // Set precision value for Harmonic Interpolation
 		if((res = alg.SetPrecision(0.1)).IsFail())
@@ -151,7 +151,7 @@ int main()
 			arrLayer[i].Clear();
 		}
 
-		const CFLFigure* pFlfHoleContours = alg.GetFigureObject();
+		const CFLFigure* pFlfHoleContours = alg.GetSelectedPageFigureObject();
 
 		if(IsFail(res = arrLayer[EType_Source].DrawFigureImage(pFlfHoleContours, CYAN)))
 		{
