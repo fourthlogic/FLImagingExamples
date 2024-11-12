@@ -69,7 +69,7 @@ int main()
 		// 도면에 대한 분해능 단위를 설정합니다. // Set unit of pixel accuracy.
 		FLDrawingMatch.SetDistanceUnit(CDrawingMatch::EDistanceUnit_Millimeter);
 		// 도면에 대한 분해능을 설정합니다. // Set  pixel accuracy.
-		FLDrawingMatch.SetPixelAccuracy(0.07, 0.07);
+		FLDrawingMatch.SetPixelAccuracy(0.05, 0.05);
 
 		// 학습 파라미터를 설정합니다. // Set the learning parameters.
 		// 추출할 특징점 개수를 설정합니다. // Set the number of feature points to be extracted.
@@ -107,11 +107,11 @@ int main()
 		// 각도는 기본 각도를 기준으로 (기본 각도 - AngleTolerance, 기본 각도 + AngleTolerance)가 최종 탐색범위 // The angle is based on the basic angle (default angle - AngleTolerance, basic angle + AngleTolerance) is the final search range
 		FLDrawingMatch.SetAngleTolerance(5.);
 		// 검출 시 사용될 스케일 탐색범위를 설정합니다. // Set the scale search range to be used for detection.
-		FLDrawingMatch.SetScaleRange(0.5, 1.2);
+		FLDrawingMatch.SetScaleRange(0.9, 1.1);
 		// 검출 시 사용될 최소 탐색점수를 설정합니다. // Set the minimum search score to be used for detection.
 		FLDrawingMatch.SetMinimumDetectionScore(0.5);
 		// 검출 시 사용될 최대 탐색객체 수를 설정합니다. // Set the maximum number of search objects to be used for detection.
-		FLDrawingMatch.SetMaxObject(10);
+		FLDrawingMatch.SetMaxObject(1);
 
 		// 검출 시 보간법 사용 유무에 대해 설정합니다. // Set whether to use interpolation when detecting.
 		FLDrawingMatch.EnableInterpolation();
@@ -120,7 +120,7 @@ int main()
 		// 검출 시 대비정도에 대해 설정합니다. // Set the contrast level for detection.
 		FLDrawingMatch.SetContrastOption();
 		// 검출 시 이미지 영역밖의 탐색 정도를 설정합니다. // Set the degree of search outside the image area when detecting.
-		FLDrawingMatch.SetInvisibleRegionEstimation();
+		FLDrawingMatch.SetContrastOption(EMatchContrastOption_Any);
 		// 검출 시 처리과정에서의 허용 임계값을 설정합니다. // Set the allowable threshold in the process of detection.
 		FLDrawingMatch.SetFindThresholdCoeff();
 		// 검출 시 겹쳐짐 허용 정도를 설정합니다. // Set the allowable degree of overlap during detection.
