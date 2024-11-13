@@ -76,16 +76,16 @@ int main()
 		MeanShiftFilter.SetDestinationImage(fliDestinationImage);
 
 		// Max iteration 설정 // Set max iteration
-		MeanShiftFilter.SetMaxIteration(1);
+		MeanShiftFilter.SetMaxIteration(2);
 
 		// Tolerance 설정 // Set tolerance
 		MeanShiftFilter.SetTolerance(0);
 
 		// Spatial bandwidth 설정 // Set spatial bandwidth
-		MeanShiftFilter.SetSpatialBandwidth(5);
+		MeanShiftFilter.SetSpatialBandwidth(2);
 
 		// Range bandwidth 설정 // Set range bandwidth
-		MeanShiftFilter.SetRangeBandwidth(50);
+		MeanShiftFilter.SetRangeBandwidth(128);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = MeanShiftFilter.Execute()).IsFail())
