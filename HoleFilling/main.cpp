@@ -46,7 +46,7 @@ int main()
 		}
 
 		// Destination 이미지 뷰 생성 // Create destination image view
-		if(IsFail(res = arrViewImage[EType_Destination].Create(1124, 0, 1636, 512)))
+		if(IsFail(res = arrViewImage[EType_Destination].Create(612, 0, 1124, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
