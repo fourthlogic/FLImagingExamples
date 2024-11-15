@@ -867,6 +867,9 @@
       - MeanCurvatureFlowWeighted
         - The example of an algorithm that applies mean curvature flow to an image. (Edge preservation method of mean curvature flow algorithm)
         - 이미지에 Mean Curvature Flow Weighted(평균 곡률 흐름)를 적용하는 알고리즘 예제. (Mean Curvature Flow의 엣지 보존 방식)
+      - MeanShiftFilter
+        - The example of an algorithm that processes a mean shift filter to an image.
+        - 이미지에 Mean Shift 필터를 처리하는 알고리즘 예제.
       - MedianFilter
         - The example of an algorithm that processes a median filter to an image.
         - 이미지에서 중앙값 필터를 처리하는 알고리즘 예제.
@@ -1139,6 +1142,9 @@
     - OperationGreatestCommonDivisor
       - The algorithm that performs GCD operations on an image scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 GCD 연산을 수행하는 알고리즘.
+    - OperationHardShrinkage
+      - Algorithm that outputs the function value or differential value of the hard shrinkage function to the image.
+      - 이미지에 Hard Shrinkage 함수의 함숫값 또는 미분값을 출력하는 알고리즘
     - OperationHypotenuse
       - The algorithm that performs Hypotenuse operations on an image scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 Hypotenuse 연산을 수행하는 알고리즘.
@@ -1199,15 +1205,18 @@
     - OperationMultiply 
       - The algorithm that performs multiply operations on an image scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 곱셈 연산을 수행하는 알고리즘.
+    - OperationOverlay 
+      - The algorithm that performs overlay operations on an image with other image.
+      - 이미지를 다른 이미지와 겹침 연산을 수행하는 알고리즘.
     - OperationPopcount
       - The algorithm that performs the calculation of popcount from the source image.
       - 이미지에 Popcount 연산을 수행하는 알고리즘
     - OperationPower
       - The algorithm that performs power operations on an image with scalar or other image as exponent.
       - 이미지를 스칼라 또는 다른 이미지를 지수로 하여 거듭제곱 연산을 수행하는 알고리즘.
-    - OperationOverlay 
-      - The algorithm that performs overlay operations on an image with other image.
-      - 이미지를 다른 이미지와 겹침 연산을 수행하는 알고리즘.
+    - OperationReLU
+      - Algorithm that outputs the function value or differential value of the ReLU function to the image.
+      - 이미지에 ReLU 함수의 함숫값 또는 미분값을 출력하는 알고리즘
     - OperationScaledDivide
       - The algorithm that performs a Scaled Divide operation with an image or scalar value.
       - 이미지를 스칼라 또는 다른 이미지와 스케일 나눗셈 연산을 수행하는 알고리즘.
