@@ -1232,6 +1232,9 @@
     - OperationSineH
       - The algorithm that performs SineH operation on the source image.
       - 이미지에 SineH 연산을 수행하는 알고리즘
+    - OperationSoftShrinkage
+      - Algorithm that outputs the function value or differential value of the soft shrinkage function to the image.
+      - 이미지에 Soft Shrinkage 함수의 함숫값 또는 미분값을 출력하는 알고리즘
     - OperationSquare
       - The algorithm that performs Square operation on the source image.
       - 이미지에 제곱 연산을 수행하는 알고리즘.
