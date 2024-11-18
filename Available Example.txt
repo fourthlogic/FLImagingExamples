@@ -1,5 +1,5 @@
 ======= 
-5.10.29.2
+5.11.16.1
 ======= 
 
 - [3D]
@@ -108,6 +108,10 @@
       - Projection 3D
         - An example of an algorithm that projects a 3D object into an image.
         - 3D 객체를 이미지로 투영하는 알고리즘 예제.
+    - [Convex Hull]
+      - Convex Hull 3D
+        - An example of an algorithm that calucalates the convex hull of a point cloud.
+        - 3D 포인트 클라우드의 볼록껍질을 구하는 알고리즘 예제.
 
 
 - [Advanced Functions]

@@ -11,7 +11,6 @@ int main()
 	CGUIView3DWrap view3DSrc;
 	CGUIViewImageWrap viewImgDst;
 
-
 	do
 	{
 		// 알고리즘 동작 결과 // Algorithm execution result
