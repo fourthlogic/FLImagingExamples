@@ -67,11 +67,17 @@ int main()
 				break;
 			}
 
-			if(view3DSrc.IsAvailable())
-				view3DSrc.Invalidate();
+			// 입력 뷰의 시점을 이동
+			view3DSrc.ZoomFit();
 
-			if(view3DDst.IsAvailable())
-				view3DDst.Invalidate();
+			// 입력, 출력 뷰의 시점을 맞춤
+			view3DSrc.SynchronizePointOfView(&view3DDst);
+
+			// 입력, 출력 뷰를 하나의 창으로 취급
+			view3DSrc.SynchronizeWindow(&view3DDst);
+
+			view3DSrc.Invalidate();
+			view3DDst.Invalidate();
 
 			// 3D 뷰가 종료될 때까지 기다림
 			while(view3DSrc.IsAvailable() && view3DDst.IsAvailable())
