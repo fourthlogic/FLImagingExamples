@@ -94,10 +94,6 @@ int main()
 		CGUIView3DLayerWrap layer3DSrc = view3DSrc.GetLayer(0);
 		CGUIViewImageLayerWrap layer3DDst = viewImgDst.GetLayer(0);
 
-		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
-		layer3DSrc.Clear();
-		layer3DDst.Clear();
-
 		// View 정보를 디스플레이한다. // Display view information
 		// 함수 DrawTextCanvas는 Screen 좌표를 기준으로 하는 문자열을 드로잉한다. // The function DrawTextCanvas below draws a String based on the screen coordinates.
 		CFLPoint<double> flpTopLeft(0, 0);
@@ -108,7 +104,7 @@ int main()
 			break;
 		}
 
-		// 3D 오브젝트 뷰에 결과 Object와 비교를 위한 Source 오브젝트 디스플레이
+		// 결과 이미지를 뷰에 연결 // Map the result image to the destination view
 		if((res = viewImgDst.SetImagePtr(&fliDst)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set object on the 3d view.\n");

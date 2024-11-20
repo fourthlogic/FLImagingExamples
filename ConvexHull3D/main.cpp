@@ -35,12 +35,17 @@ int main()
 				break;
 			}
 
-			// 처리할 3D 객체 설정
+			// 처리할 3D 객체 설정 // Set 3D object to process
 			convexhull3D.SetSourceObject(floSrc);
 			convexhull3D.SetDestinationObject(floDst);
+			
+			// 생성될 볼록껍질 객체의 컬러를 설정 // Set color of new 3D object
+			convexhull3D.EnableVertexRecoloring(true);
+			convexhull3D.SetTargetVertexColor(TPoint3<uint8_t>(255, 125, 0));
 
-			// 뷰에 표시할 3D 객체 추가
+			// 3D 뷰에 표시할 3D 객체 추가 // Add 3D object to the 3D view
 			view3DSrc.PushObject(floSrc);
+			view3DSrc.SetPointSize(3);
 
 			// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 			if((res = convexhull3D.Execute()).IsFail())
@@ -49,19 +54,18 @@ int main()
 				break;
 			}
 
+			// 3D 뷰에 표시할 3D 객체 추가 // Add 3D object to the 3D view
 			view3DDst.PushObject(floDst);
 
-			// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
-			// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately		
+			// 화면에 출력하기 위해 View에서 레이어 0번을 얻어옴 // Obtain layer number 0 from view for display
+			// 이 객체는 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to a view and does not need to be released separately		
 			CGUIView3DLayerWrap layerViewSrc = view3DSrc.GetLayer(0);
 			CGUIView3DLayerWrap layerViewDst = view3DDst.GetLayer(0);
 
-			// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
-			layerViewSrc.Clear();
-
 			// View 정보를 디스플레이 한다. // Display view information
-			if((res = layerViewSrc.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Object", YELLOW, BLACK, 20)).IsFail() ||
-			   (res = layerViewDst.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Object", YELLOW, BLACK, 20)).IsFail())
+			CFLPoint<double> flpTopLeft(0, 0);
+			if((res = layerViewSrc.DrawTextCanvas(&flpTopLeft, L"Source Object(Point Cloud)", YELLOW, BLACK, 20)).IsFail() ||
+			   (res = layerViewDst.DrawTextCanvas(&flpTopLeft, L"Destination Object(Convex Hull)", YELLOW, BLACK, 20)).IsFail())
 			{
 				ErrorPrint(res, L"Failed to draw text.\n");
 				break;
