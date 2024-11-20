@@ -69,7 +69,7 @@ int main()
 		algObject.SetSourceImage(fliSourceImage);
 		algObject.SetDestinationImage(fliDestinationImage0);
 		algObject.SetOperationMode(COperationHardShrinkage::EOperationMode_Forward);
-		algObject.SetLambda(20);
+		algObject.SetLambda(0.2);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = algObject.Execute()).IsFail())
@@ -110,7 +110,15 @@ int main()
 			break;
 		}
 
+		// 이미지 뷰의 값 표현 방식 설정 // Set how values ??are expressed in image view
 		viewImageSrc.SetPixelNumberMode(EPixelNumberMode_Decimal);
+		viewImageDst0.SetPixelNumberMode(EPixelNumberMode_Decimal);
+		viewImageDst1.SetPixelNumberMode(EPixelNumberMode_Decimal);
+
+		// floating 이미지의 색상 표현 범위 설정 // Set the color expression range of floating images
+		viewImageSrc.SetFloatingImageValueRange(-1.0, 1.0);
+		viewImageDst0.SetFloatingImageValueRange(-1.0, 1.0);
+		viewImageDst1.SetFloatingImageValueRange(-1.0, 1.0);
 
 		// 이미지 뷰를 갱신 // Update image view
 		viewImageSrc.Invalidate(true);
