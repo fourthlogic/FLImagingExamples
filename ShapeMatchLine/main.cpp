@@ -49,7 +49,7 @@ int main()
 		// Shape Match 객체 생성 // Create Shape Match object
 		CShapeMatchLine shapeMatch;
 
-		// 학습할 선의 반지름 설정 // Set the radius of the line to learn
+		// 학습할 선의 길이 설정 // Set the length of the line to learn
 		shapeMatch.SetLength(380);
 
 		// 도형 학습 // Learn shape
