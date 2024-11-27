@@ -104,6 +104,13 @@ int main()
 			break;
 		}
 
+		// Operation Mode 설정 // Set the Operation Mode.
+		if(IsFail(res = FLDenoisingType1.SetOperationMode(CFLDenoisingType1::EOperationMode_Normal)))
+		{
+			ErrorPrint(res, "Failed to set Operation Mode.");
+			break;
+		}
+
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = FLDenoisingType1.Execute()).IsFail())
 		{
