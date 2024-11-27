@@ -128,7 +128,7 @@ int main()
 		// Calibration 데이터 설정 // Set Calibration Settings
 		photometric.SetCalibrationCircleROI(CFLCircle<double>(386.439657, 346.491239, 259.998140, 0.000000, 0.000000, 360.000000, EArcClosingMethod_EachOther));
 		// 동작 방식 설정 // Set operation mode
-		photometric.SetReconstructionMode(CPhotometricStereo3D::EReconstructionMode_RFT_FP32);
+		photometric.SetReconstructionMode(CPhotometricStereo3D::EReconstructionMode_Poisson_FP32);
 
 		CMatrix<double> cmatdTemp(3, 3);
 
@@ -259,7 +259,7 @@ int main()
 		// Height Map에 Texture Image 설정
 		CFL3DObjectHeightMap* pFl3DOHM = dynamic_cast<CFL3DObjectHeightMap*>(photometric.GetDestinationObject());
 		pFl3DOHM->SetTextureImage(fliTxtImage);
-		pFl3DOHM->ActivateVertexColorTexture(true);
+		pFl3DOHM->ActivateVertexColorTexture(false);
 
 		// 3D 이미지 뷰에 Height Map (Destination Image) 이미지를 디스플레이 // Display the Height Map (Destination Image) on the 3D image view
 		if((res = view3DDst.PushObject(*pFl3DOHM)).IsFail())

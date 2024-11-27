@@ -92,8 +92,8 @@ int main()
 		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
 		photometric.SetDestinationObject(fl3DOHM);
 		// 동작 방식 설정 // Set Operation Mode
-		photometric.SetReconstructionMode(CPhotometricStereo3D::EReconstructionMode_RFT_FP32);
-
+		photometric.SetReconstructionMode(CPhotometricStereo3D::EReconstructionMode_Poisson_FP32);
+		
 		// 각 이미지의 광원 Slant 값 입력
 		CMultiVar<double> mvdSlant;
 
@@ -189,7 +189,7 @@ int main()
 		// Height Map에 Texture Image 설정
 		CFL3DObjectHeightMap* pFl3DOHM = dynamic_cast<CFL3DObjectHeightMap*>(photometric.GetDestinationObject());
 		pFl3DOHM->SetTextureImage(fliTxtImage);
-		pFl3DOHM->ActivateVertexColorTexture(true);
+		pFl3DOHM->ActivateVertexColorTexture(false);
 
 		// 3D 이미지 뷰에 Height Map (Destination Image) 이미지를 디스플레이 // Display the Height Map (Destination Image) on the 3D image view
 		if((res = view3DDst.PushObject(*pFl3DOHM)).IsFail())
