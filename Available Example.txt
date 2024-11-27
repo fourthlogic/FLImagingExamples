@@ -490,6 +490,9 @@
 	- DeviceCameraiRAYPLE 
       - Example of connecting and operating iRAYPLE Camera.
       - iRAYPLE Camera 연결 및 구동하는 예제.
+	- DeviceCameraJai 
+      - Example of connecting and operating Jai Camera.
+      - Jai Camera 연결 및 구동하는 예제.
     - DeviceCameraMatrox 
       - Example of connecting and operating Matrox Camera.
       - Matrox Camera 연결 및 구동하는 예제.
