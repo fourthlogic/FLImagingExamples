@@ -90,8 +90,8 @@ int main()
 			// 도형 검출 결과를 Console창에 출력합니다. // Output the shape detection result to the console window.
 			printf(" < Instance : %lld >\n", i);
 			printf("  1. Shape Type : Ellipse\n");
-			printf("    Center X: %.3lf\n", matchResult.fleResultObject.flpCenter.x);
-			printf("    Center Y: %.3lf\n", matchResult.fleResultObject.flpCenter.y);
+			printf("    Pivot X: %.3lf\n", matchResult.flpPivot.x);
+			printf("    Pivot Y: %.3lf\n", matchResult.flpPivot.y);
 			printf("    Radius 1    : %.3lf\n", matchResult.fleResultObject.radius1);
 			printf("    Radius 2    : %.3lf\n", matchResult.fleResultObject.radius2);
 			printf("    Angle    : %.3lf\n", matchResult.fleResultObject.angle);
@@ -103,7 +103,7 @@ int main()
 				break;
 			}
 
-			if(IsFail(res = layer.DrawTextImage(matchResult.fleResultObject.GetCenter(), CFLString<wchar_t>().Format(L"Score : %.3lf\nAngle : %.3lf\nScale : %.3lf", matchResult.f32Score, matchResult.f32Angle, matchResult.f32Scale), YELLOW, BLACK, 15)))
+			if(IsFail(res = layer.DrawTextImage(matchResult.flpPivot, CFLString<wchar_t>().Format(L"Score : %.3lf\nAngle : %.3lf\nScale : %.3lf\nPivot : (%.2lf, %.2lf)", matchResult.f32Score, matchResult.f32Angle, matchResult.f32Scale, matchResult.flpPivot.x, matchResult.flpPivot.y), YELLOW, BLACK, 15)))
 			{
 				ErrorPrint(res, "Failed to draw text\n");
 				break;
