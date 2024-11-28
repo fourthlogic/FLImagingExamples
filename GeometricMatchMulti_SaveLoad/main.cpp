@@ -275,7 +275,6 @@ int main()
 			FLGeometricMatchMultiLoad.GetResult(i, results);
 			FLGeometricMatchMultiLoad.GetResultForDetectedFeature(i, flfaResultPoints);
 
-			bool bInverse = results.bInverse;
 			float f32Score = results.f32Score;
 			float f32Angle = results.f32Angle;
 			float f32Scale = results.f32Scale;
@@ -284,7 +283,6 @@ int main()
 			Foundation::CFLPoint<double> flpPivot = results.flpPivot;
 
 			CFLString<wchar_t> strResult;
-			CFLString<wchar_t> strInverse = bInverse ? L"Inverse Type" : L"Normal Type";
 			CFLString<wchar_t> wstrClassName = results.strClassName;
 
 			int64_t i64Idx = 0;
@@ -314,11 +312,6 @@ int main()
 			printf("    angle  : %.3lf\n", pFlrResultRegion->angle);
 			printf("  2. Interest Pivot : (%.3lf, %.3lf)\n", flpPivot.x, flpPivot.y);
 			printf("  3. Score : %0.3lf\n  4. Angle : %0.3lf\n  5. Scale : %0.3lf\n", f32Score, f32Angle, f32Scale);
-
-			if(bInverse)
-				printf(" Inverse Type\n");
-			else
-				printf(" Normal Type\n");
 
 			printf("\n");
 
