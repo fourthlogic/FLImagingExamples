@@ -124,7 +124,7 @@ int main()
 			break;
 		}
 
-		if((res = layerDestination.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source & Destination Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerDestination.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
