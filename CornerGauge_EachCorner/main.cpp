@@ -15,7 +15,7 @@ int main()
 	do
 	{
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Gauge/CornerImage.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Gauge/Rect.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -44,8 +44,8 @@ int main()
 		CornerGauge.SetSourceImage(fliImage);
 
 		// 측정할 영역을 설정합니다. // Set the area to measure.
-		CFLRect<double> measureRegion(383.484046, 403.048099, 648.883614, 648.542699);
-		double tolerance = 100.;
+		CFLRect<double> measureRegion(213.577428, 262.324155, 295.020437, 348.179290);
+		double tolerance = 50.;
 		CornerGauge.SetMeasurementRegion(measureRegion, tolerance);
 
 		// 추출하기위한 파라미터를 설정합니다. // Set parameters for extraction.
