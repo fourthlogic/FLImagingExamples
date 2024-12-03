@@ -102,6 +102,16 @@ int main()
 				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				break;
 			}
+
+			// 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the all image views. 
+			if(i)
+			{
+				if(IsFail(res = viewImage[i].SynchronizePointOfView(&viewImage[0])))
+				{
+					ErrorPrint(res, "Failed to set image object on the image view.\n");
+					break;
+				}
+			}
 		}
 
 		CResult res = EResult_UnknownError;
