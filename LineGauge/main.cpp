@@ -78,7 +78,7 @@ int main()
 	do
 	{
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Gauge/stripe.flif")))
+		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Gauge/Stripe.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
