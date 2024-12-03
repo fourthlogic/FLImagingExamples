@@ -109,6 +109,8 @@ int main()
 		// Line Gauge 객체 생성 // Create Line Gauge object
 		CLineGauge lineGauge;
 
+		// 처리할 이미지 설정 // Set the image to process
+		lineGauge.SetSourceImage(fliImage);
 		// 선을 추정하기위해 추출할 경계점의 변화 임계값에 대해 설정합니다. // Set the threshold change of the boundary point to be extracted to estimate the line.
 		lineGauge.SetThreshold(20);
 		// 선을 추정하기위해 추출할 경계점의 변화 임계값에 보정값을 설정합니다. // Set the correction value to the threshold change of the boundary point to be extracted to estimate the line.
@@ -128,9 +130,6 @@ int main()
 
 		for(int32_t i = 0; i < i32ExampleCount; ++i)
 		{
-			// 처리할 이미지 설정 // Set the image to process
-			lineGauge.SetSourceImage(fliImage);
-
 			// 측정할 영역을 설정합니다. // Set the area to measure.
 			lineGauge.SetMeasurementRegion(measureRegion, arrTolerance[i]);
 			// 추출하기위한 파라미터를 설정합니다. // Set parameters for extraction.
