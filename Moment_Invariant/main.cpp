@@ -51,22 +51,22 @@ int main()
 		// 이진화이미지로 판단할 경우 0이 아닌 모든 화소값은 1로 처리함 // When judging as a binarized image, all non-zero pixel values ??are treated as 1.
 		moment.EnableBinaryImage(true);
 
-		bool bIsCalcGeometricMoment = true;
-		bool bIsCalcCentroidMoment = true;
-		bool bIsCalcCentralMoment = true;
-		bool bIsCalcNormalizedCentralMoment= true;
-		bool bIsCalcHuMoment= true;
+		bool bCalcGeometricMoment = true;
+		bool bCalcCentroidMoment = true;
+		bool bCalcCentralMoment = true;
+		bool bCalcNormalizedCentralMoment= true;
+		bool bCalcHuMoment= true;
 
 		// 계산 대상에 기하학적 모멘트를 포함합니다. // Include the geometric moment in the computed object.
-		moment.EnableGeometricMoment(bIsCalcGeometricMoment);
+		moment.EnableGeometricMoment(bCalcGeometricMoment);
 		// 계산 대상에 도심 모멘트를 포함합니다. // Include the centroid moment in the calculation target.
-		moment.EnableCentroidMoment(bIsCalcCentroidMoment);
+		moment.EnableCentroidMoment(bCalcCentroidMoment);
 		// 계산 대상에 중심 모멘트를 포함합니다. // Include the central moment in the calculation target.
-		moment.EnableCentralMoment(bIsCalcCentralMoment);
+		moment.EnableCentralMoment(bCalcCentralMoment);
 		// 계산 대상에 정규화된 중심 모멘트를 포함합니다. // Include the normalized central moment in the computed target.
-		moment.EnableNormalizedCentralMoment(bIsCalcNormalizedCentralMoment);
+		moment.EnableNormalizedCentralMoment(bCalcNormalizedCentralMoment);
 		// 계산 대상에 휴(불변) 모멘트를 포함합니다. // Include the idle (invariant) moment in the calculation target.
-		moment.EnableHuMoment(bIsCalcHuMoment);
+		moment.EnableHuMoment(bCalcHuMoment);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if(IsFail(res = moment.Execute()))
@@ -80,7 +80,7 @@ int main()
 		moment.GetMoment(results);
 
 		// 모멘트 결과를 Console창에 출력 // Output the moment result to the console window
-		if(bIsCalcGeometricMoment)
+		if(bCalcGeometricMoment)
 		{
 			printf("< Geometric Moment > \n");
 			printf(" Moment 00 : %lf\n", results.sGeometricMoments.f64GeometricM00);
@@ -96,7 +96,7 @@ int main()
 			printf("\n");
 		}
 
-		if(bIsCalcCentroidMoment)
+		if(bCalcCentroidMoment)
 		{
 			printf("< Centroid Moment > \n");
 			printf(" Moment Centroid X : %lf\n", results.sCentroidMoment.f64CentroidX);
@@ -104,7 +104,7 @@ int main()
 			printf("\n");
 		}
 
-		if(bIsCalcCentralMoment)
+		if(bCalcCentralMoment)
 		{
 			printf("< Central Moment > \n");
 			printf(" Moment 00 : %lf\n", results.sCentralMoments.f64CentralM00);
@@ -120,7 +120,7 @@ int main()
 			printf("\n");
 		}
 
-		if(bIsCalcNormalizedCentralMoment)
+		if(bCalcNormalizedCentralMoment)
 		{
 			printf("< Normalized Central Moment > \n");
 			printf(" Moment 00 : %lf\n", results.sNormalizedCentralMoments.f64NormalizedCentralM00);
@@ -136,7 +136,7 @@ int main()
 			printf("\n");
 		}
 
-		if(bIsCalcHuMoment)
+		if(bCalcHuMoment)
 		{
 			printf("< Hu Moment > \n");
 			printf(" Hu 0 : %lf\n", results.sHuMoments.f64Hu0);

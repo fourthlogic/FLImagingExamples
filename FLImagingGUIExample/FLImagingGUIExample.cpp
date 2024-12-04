@@ -202,7 +202,7 @@ BOOL CFLImagingGUIExampleApp::InitInstance()
 	{
 	public:
 		void SetDockState(bool bState) {
-			m_bIsPosSet = bState;
+			m_bPosSet = bState;
 		}
 	};
 
