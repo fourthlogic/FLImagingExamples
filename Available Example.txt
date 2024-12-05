@@ -1155,6 +1155,9 @@
     - OperationHypotenuse
       - The algorithm that performs Hypotenuse operations on an image scalar or other image.
       - 이미지를 스칼라 또는 다른 이미지와 Hypotenuse 연산을 수행하는 알고리즘.
+    - OperationImageGainOffset
+      - The algorithm that performs multiply, add operation using Gain, Offset values.
+      - 이미지에 Gain, Offset 값을 이용하여 곱셈, 덧셈 연산을 수행하는 알고리즘
     - OperationInvertIntensity
       - The algorithm that performs Invert Intensity operation on the source image.
       - 이미지에 Invert Intensity 연산을 수행하는 알고리즘
