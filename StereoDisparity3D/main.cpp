@@ -126,21 +126,21 @@ int main()
 		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
 		disparity.SetDestinationObject(fl3DOHM);
 		// 최소 허용 Disparity 값 설정 // Set the minimum allowed disparity value
-		disparity.SetMinimumDisparity(0);
+		disparity.SetMinimumDisparity(-20);
 		// Disparity 범위 설정 // Set the range of disparity
-		disparity.SetNumberOfDisparities(15);
+		disparity.SetMaximumDisparity(0);
 		// Matched Block 크기 설정 // Set the matched block size
-		disparity.SetMatchBlockSize(7);
+		disparity.SetMatchBlockSize(5);
 		// 좌우 간 최대 허용 차이 값 설정 // Set maximum allowed difference value between left and right
-		disparity.SetMaximumDifference(10);
+		disparity.SetMaximumDifference(30);
 		// 고유비 값 설정 // Set the uniqueness ratio value
-		disparity.SetUniquenessRatio(1);
+		disparity.SetUniquenessRatio(0);
 		// P1 값 설정 // Set P1 Value
-		disparity.SetP1(1000);
+		disparity.SetP1(300);
 		// P2 값 설정 // Set P2 Value
-		disparity.SetP2(4000);
+		disparity.SetP2(2000);
 		// Median Morphology 커널 사이즈 설정 // Set the median morphology kernel size
-		disparity.SetMedianKernelSize(3);
+		disparity.SetMedianKernelSize(5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = disparity.Execute()).IsFail())
