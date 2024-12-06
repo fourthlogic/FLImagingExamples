@@ -79,7 +79,7 @@ int main()
 			// 추출할 특징점 처리과정에서의 노이즈 필터링 정도를 설정합니다. // Set the noise filtering degree in the process of processing the feature points to be extracted.
 			FLGeometricMatchMulti.SetFeatureFiltering();
 			// 추출할 특징점 처리과정에서의 허용 임계값을 설정합니다. // Set the allowable threshold in the feature point processing process to be extracted.
-			FLGeometricMatchMulti.SetLearnThresholdCoeff();
+			FLGeometricMatchMulti.SetLearnThresholdCoefficient();
 
 
 			// 알고리즘 수행 // Execute the algorithm
@@ -233,7 +233,7 @@ int main()
 		// 검출 시 이미지 영역밖의 탐색 정도를 설정합니다. // Set the degree of search outside the image area when detecting.
 		FLGeometricMatchMulti.SetInvisibleRegionEstimation();
 		// 검출 시 처리과정에서의 허용 임계값을 설정합니다. // Set the allowable threshold in the process of detection.
-		FLGeometricMatchMulti.SetFindThresholdCoeff();
+		FLGeometricMatchMulti.SetFindThresholdCoefficient();
 		// 검출 시 겹쳐짐 허용 정도를 설정합니다. // Set the allowable degree of overlap during detection.
 		FLGeometricMatchMulti.SetObjectOverlap();
 		// 검출 시 이미지 전처리 유무를 설정합니다. // Set whether or not to pre-process the image during detection.

@@ -62,7 +62,7 @@ int main()
 		// 검출할 이미지 설정 // Set image to detect
 		shapeMatch.SetSourceImage(fliImage);
 		// 검출 시 사용될 유효 변경 크기범위를 설정합니다. // Set the effective change size range to be used for detection.
-		shapeMatch.SetScaleRatio(0.95, 1.05);
+		shapeMatch.SetScaleRange(0.95, 1.05);
 		// 검출할 객체의 색상을 설정합니다. // Sets the color of the object to be detected.
 		shapeMatch.SetTransitionType(CShapeMatchLine::ETransitionType_DarkToBright);
 		// 검출할 각도를 설정합니다. // Sets the angle to detect.
