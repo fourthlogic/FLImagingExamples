@@ -101,7 +101,7 @@ int main()
 		contraharmonicMeanFilter.SetRadius(2);
 
 		// 차수 설정 // Set the order
-		contraharmonicMeanFilter.SetRadius(1);
+		contraharmonicMeanFilter.SetOrder(1);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = contraharmonicMeanFilter.Execute()))
