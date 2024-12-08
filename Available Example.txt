@@ -852,7 +852,10 @@
         - Bilateral Grid 자료구조를 사용하여 이미지에서 bilateral 필터를 처리하는 알고리즘 예제
       - BilateralFilterSubSampled
         - The example of an algorithm that processes a bilateral filter And Applies the sampling method to an image.
-        - 샘플링을 적용하여 이미지에서 bilateral 필터를 처리하는 알고리즘 예제	
+        - 샘플링을 적용하여 이미지에서 bilateral 필터를 처리하는 알고리즘 예제
+      - ContraharmonicMeanFilter
+        - The example of an algorithm that processes a contraharmonic mean filter to an image.
+        - 이미지에서 contraharmonic mean 필터를 처리하는 알고리즘 예제
       - FL Denoising Type 1
         - An example of the denoising algorithm type 1 proposed by 'FLImaging'.
         - FLImaging 노이즈 제거 알고리즘 타입 1 예제.
