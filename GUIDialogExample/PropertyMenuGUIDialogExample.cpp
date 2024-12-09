@@ -1614,28 +1614,23 @@ const CResult FLImaging::GUI::CPropertyMenuGUIDialogExample::CreateListCtrlDialo
 			pListCtrl->InsertItem(0, strTextName);
 
 			CFLString<wchar_t> strClassName = L"Hi";
-			//m_algemObject.GetLearntDataForClassName(strClassName, i32Index);
 			pListCtrl->SetItem(0, 1, LVIF_TEXT, strClassName, 0, 0, 0, NULL);
 
 
 			CFLString<wchar_t> strTextValue;
 			int32_t i32FeatureCount = 1;
-			//m_algemObject.GetLearntDataForFeatureCount(i32FeatureCount, i32Index);
 			strTextValue.Format(L"%lld", i32FeatureCount);
 			pListCtrl->SetItem(0, 2, LVIF_TEXT, strTextValue, 0, 0, 0, NULL);
 
 			double f64FeatureFilter = 2;
-			//m_algemObject.GetLearntDataForFeatureFilter(f64FeatureFilter, i32Index);
 			strTextValue.Format(L"%d", int32_t(f64FeatureFilter * 100));
 			pListCtrl->SetItem(0, 3, LVIF_TEXT, strTextValue, 0, 0, 0, NULL);
 
 			double f64LearnThreshold = 3;
-			//m_algemObject.GetLearntDataForFeatureFilter(f64LearnThreshold, i32Index);
 			strTextValue.Format(L"%d", int32_t(f64LearnThreshold * 100));
 			pListCtrl->SetItem(0, 4, LVIF_TEXT, strTextValue, 0, 0, 0, NULL);
 
 			CFLPoint<double> flpPivot(5, 5);
-			//m_algemObject.GetLearntDataForPivot(flpPivot, i32Index);
 			strTextValue.Format(L"(%.3lf, %.3lf)", flpPivot.x, flpPivot.y);
 			pListCtrl->SetItem(0, 5, LVIF_TEXT, strTextValue, 0, 0, 0, NULL);
 
