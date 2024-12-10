@@ -165,6 +165,8 @@ int main()
 
 		// 학습할 이미지 설정 // Set the image to learn
 		AnomalyDetection.SetLearningImage(fliLearnImage);
+		// 검증할 이미지 설정 // Set the image to Validation
+		AnomalyDetection.SetLearningValidationImage(fliValidationImage);
 		// 학습할 AnomalyDetection 모델 설정 // Set up AnomalyDetection model to learn
 		AnomalyDetection.SetModel(CAnomalyDetectionDL::EModel_FLDefNet);
 		// 학습할 AnomalyDetection 모델의 버전 설정 // Set up AnomalyDetection model version to learn
@@ -188,12 +190,12 @@ int main()
 		augSpec.SetCommonIoUThreshold(0.000000);
 		augSpec.SetCommonInterpolationMethod(EInterpolationMethod_Bilinear);
 
-		augSpec.EnableRotation(true);
-		augSpec.SetRotationParam(1.000000, false, false);
+		augSpec.EnablePerspective(true);
+		augSpec.SetPerspectiveParam(0.1);
 
 		augSpec.EnableScale(true);
 		augSpec.SetScaleParam(0.900000, 1.100000, 0.900000, 1.100000, true);
-		
+
 		augSpec.EnablePerspective(true);
 		augSpec.SetPerspectiveParam(0.050000);
 
@@ -260,7 +262,7 @@ int main()
 				CFLArray<float> flaValidationHistory;
 				CFLArray<int32_t> vctValidationEpoch;
 
-				AnomalyDetection.GetLearningResultAllHistory(&flaCostHistory, &flaValidationHistory,  &vctValidationEpoch);
+				AnomalyDetection.GetLearningResultAllHistory(&flaCostHistory, &flaValidationHistory, &vctValidationEpoch);
 
 				// 비용 기록이나 검증 결과 기록이 있다면 출력 // Print results if cost or validation history exists
 				if((flaCostHistory.GetCount() && i32PrevCostCount != (int32_t)flaCostHistory.GetCount()) || (flaValidationHistory.GetCount() && i32PrevValidationCount != (int32_t)flaValidationHistory.GetCount()))
