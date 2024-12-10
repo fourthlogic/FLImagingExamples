@@ -4,17 +4,6 @@
 
 - [3D]
 
-  - [Image Processing]
-
-    - [Multi Focus]
-
-      - MultiFocus
-        - The example of an algorithm that processes multiple images with different focus points and creates a single image with all focus points.
-        - 각각 초점이 다른 여러 장의 이미지를 처리해 모든 초점을 가지는 한장의 이미지로 만드는 알고리즘 예제.
-      - MultiFocus_WithAlignment
-        - The example of an algorithm that processes multiple images that are different and unaligned, each with a different focus, making them a single aligned image with all the focus.
-        - 각각 초점이 다르고 정렬되지 않은 여러 장의 이미지를 처리해 모든 초점을 가지고 정렬된 한장의 이미지로 만드는 알고리즘 예제.
-
   - [Match]
     
     - [Surface]
@@ -978,6 +967,12 @@
       - IlluminateFilter
         - The example of an algorithm that enhance contrast by applying Illuminate filtering to image
         - 이미지에 Illuminate 필터링을 적용하여 이미지의 명암 대비를 강화하는 알고리즘 예제	 
+      - MultiFocus
+        - The example of an algorithm that processes multiple images with different focus points and creates a single image with all focus points.
+        - 각각 초점이 다른 여러 장의 이미지를 처리해 모든 초점을 가지는 한장의 이미지로 만드는 알고리즘 예제.
+      - MultiFocus_WithAlignment
+        - The example of an algorithm that processes multiple images that are different and unaligned, each with a different focus, making them a single aligned image with all the focus.
+        - 각각 초점이 다르고 정렬되지 않은 여러 장의 이미지를 처리해 모든 초점을 가지고 정렬된 한장의 이미지로 만드는 알고리즘 예제.
       - ShockFilter
         - The example of an algorithm that reconstructs a blurred edge into a sharp edge.
         - 흐릿한 이미지의 경계를 뚜렷하게 복원해주는 알고리즘 예제.
