@@ -274,7 +274,7 @@ int main()
 		// 학습할 SuperResolution 모델의 버전 설정 // Set up SuperResolution model version to learn
 		SuperResolution.SetModelVersion(CSuperResolutionDL::EModelVersion_SRCNN_V1_128);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
-		SuperResolution.SetLearningEpoch(500);
+		SuperResolution.SetLearningEpoch(1000);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
 		SuperResolution.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 		// 이미지 배율 설정 // Set Scale Ratio
@@ -293,6 +293,8 @@ int main()
 		augSpec.SetCommonActivationRatio(0.700000);
 		augSpec.SetCommonIoUThreshold(0.000000);
 		augSpec.SetCommonInterpolationMethod(EInterpolationMethod_Bilinear);
+		augSpec.EnableTranslation(true);
+		augSpec.SetTranslationParam(0.1,0.1);
 		augSpec.EnableHorizontalFlip(true);
 		augSpec.EnableVerticalFlip(true);
 
