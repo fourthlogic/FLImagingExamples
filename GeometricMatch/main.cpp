@@ -88,7 +88,7 @@ int main()
 		FLGeometricMatch.SetLearnImage(fliLearnImage);
 
 		// 학습할 영역을 설정합니다. // Set the area to learn.
-		CFLRect<double> learnRegion(40.079914, 227.326134, 212.894168, 408.259179);
+		CFLRect<double> learnRegion(110.77276, 97.42619, 747.46519, 752.33384);
 		CFLPoint<double> flpLearnPivot = learnRegion.GetCenter();
 		FLGeometricMatch.SetLearnROI(learnRegion);
 		FLGeometricMatch.SetLearnPivot(flpLearnPivot);

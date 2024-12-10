@@ -20,12 +20,12 @@ int main()
 
 	do
 	{
-		CFLString<wchar_t> arrPath[2] = {L"../../ExampleImages/Matching/Pattern Multi Learn.flif",
-			L"../../ExampleImages/Matching/Pattern Multi Learn.flif"};
+		CFLString<wchar_t> arrPath[2] = {L"../../ExampleImages/Matching/Pattern2 Single Learn.flif",
+			L"../../ExampleImages/Matching/Pattern2 Single Learn.flif"};
 
 		CFLString<wchar_t> arrClassName[2] = {L"A", L"B"};
 		uint32_t arrColor[2] = {LIME, RED};
-		CFLRect<double> arrLearnRegion[2] = { CFLRect<double>(390.76, 174.77, 678.95, 457.39), CFLRect<double>(23.55,742.79,176.94,888.74) };
+		CFLRect<double> arrLearnRegion[2] = { CFLRect<double>(326.6913,372.2960,477.5354,521.5354), CFLRect<double>(586.7185,566.3427,763.2982,672.1134) };
 
 		printf(" ▷ Learn Information\n");
 
@@ -127,12 +127,11 @@ int main()
 		}
 		
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliFindImage.Load(L"../../ExampleImages/Matching/Pattern Multi Find.flif")))
+		if(IsFail(res = fliFindImage.Load(L"../../ExampleImages/Matching/Pattern2 Single Find2.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
-
 
 		// 이미지 뷰 생성 // Creates imageview
 		if(IsFail(res = viewImageFind.Create(400, 384, 1168, 960)))
@@ -175,7 +174,7 @@ int main()
 		FLPatternMatchMulti.SetAngleBias(0.);
 		// 검출 시 사용될 각도의 탐색범위를 설정합니다. // Set the search range of the angle to be used for detection.
 		// 각도는 기본 각도를 기준으로 (기본 각도 - AngleTolerance, 기본 각도 + AngleTolerance)가 최종 탐색범위 // The angle is based on the basic angle (default angle - AngleTolerance, basic angle + AngleTolerance) is the final search range
-		FLPatternMatchMulti.SetAngleTolerance(10.);
+		FLPatternMatchMulti.SetAngleTolerance(15.);
 		// 검출 시 사용될 최소 탐색점수를 설정합니다. // Set the minimum search score to be used for detection.
 		FLPatternMatchMulti.SetMinimumDetectionScore(0.7);
 		// 검출 시 사용될 탐색 방식을 설정합니다. // Set the search method to be used for detection.
