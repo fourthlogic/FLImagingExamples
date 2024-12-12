@@ -249,8 +249,6 @@ int main()
 				float f32AvgCost = objectDetection.GetLearningResultLastAverageCost();
 				// 마지막 검증 결과 받기 // Get the last validation result
 				float f32Validation = objectDetection.GetLearningResultLastMeanAP();
-				// 마지막 WrittenBox 값 받기 // Get last WrittenBox value
-				float f32WrittenBox = objectDetection.GetLearningResultLastRewrittenBox();
 
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
 				if(f32AvgCost < objectDetection.GetLearningRequiredCostForValidation())
