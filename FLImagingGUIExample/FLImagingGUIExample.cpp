@@ -198,20 +198,12 @@ BOOL CFLImagingGUIExampleApp::InitInstance()
 	if(AfxGetApp() && AfxGetApp()->m_pMainWnd)
 		AfxGetApp()->m_pMainWnd->GetClientRect(rtMainWnd);
 
-	class CGUIMenuItemPaneDialogCustomEmbeddedDummy : public CGUIMenuItemPaneDialogCustomEmbedded
-	{
-	public:
-		void SetDockState(bool bState) {
-			m_bPosSet = bState;
-		}
-	};
-
 	pItemCustomPane->InitializePane();
 	pItemCustomPane->GetPane()->SetControlBarStyle(pItemCustomPane->GetPane()->GetControlBarStyle() & ~(AFX_CBRS_FLOAT | AFX_CBRS_AUTOHIDE | AFX_CBRS_CLOSE));
 	pItemCustomPane->GetPane()->SetWindowPos(nullptr, 0, 0, rtMainWnd.Width(), 300, SWP_NOMOVE | SWP_NOZORDER);
 	pItemCustomPane->GetPane()->DockToFrameWindow(CBRS_ALIGN_BOTTOM, nullptr, DT_DOCK_LAST, nullptr, -1, true);
 	pItemCustomPane->GetPane()->EnableDocking(CBRS_ALIGN_ANY);
-	((CGUIMenuItemPaneDialogCustomEmbeddedDummy*)pItemCustomPane)->SetDockState(true);
+	pItemCustomPane->SetDockDone(true);
 
 	return TRUE;
 }
