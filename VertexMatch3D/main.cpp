@@ -79,7 +79,7 @@ int main()
 		// Min score 설정 // Set the min score
 		VertexMatch3D.SetMinScore(0.3);
 		// 최대 결과 개수 설정 // Set the max count of match result
-		VertexMatch3D.SetMaxObject(4);
+		VertexMatch3D.SetMaxObject(1);
 		// 학습 샘플링 거리 설정 // Set the learn sampling distance
 		VertexMatch3D.SetLearnSamplingDistance(0.03);
 		// 장면 샘플링 거리 설정 // Set the scene sampling distance
