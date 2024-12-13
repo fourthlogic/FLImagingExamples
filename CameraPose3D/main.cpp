@@ -21,7 +21,6 @@ int main()
 	mapEulerString[Foundation::EEulerSequence_Extrinsic_ZXZ] = L"ZXZ";
 	
 	CFLImage fliSource;
-	CGUIViewImageWrap viewImage;
 
 	do
 	{
@@ -54,23 +53,37 @@ int main()
 		
 		const int32_t i32PageCount = fliSource.GetPageCount();
 
-		for(int32_t i = 0; i < i32PageCount; i++)
-		{
-			// 이미지 뷰 생성 // Create image view
-			if(IsFail(eResult = viewImage.Create(100, 0, 612, 512)))
-			{
-				ErrorPrint(eResult, "Failed to create the Source 3D view.\n");
-				break;
-			}
+		CGUIViewImageWrap arrViewWrap[9];
+		int32_t i32WindowWidth = 300;
+		int32_t i32WindowHeight = 300;
 
+		for(int32_t i = 0; i < i32PageCount / 3; ++i)
+		{
+			int32_t i32Height = i32WindowHeight * i;
+
+			for(int32_t j = 0 ; j < i32PageCount / 3; ++j)
+			{
+				int32_t i32Width = i32WindowWidth * j;
+
+				arrViewWrap[i * 3 + j].Create(10 + i32Height, i32Width, 10 + i32Height + i32WindowHeight, i32Width + i32WindowWidth);
+			}
+		}
+
+		for(int32_t i = 1; i < i32PageCount; ++i)
+			arrViewWrap[0].SynchronizeWindow(&arrViewWrap[i]);
+
+		CFLImage fliPage[9];
+
+		for(int32_t i = 0; i < i32PageCount; i++)
+		{			
 			// 페이지 선택
-			fliSource.SelectPage(i);
+			fliPage[i] = fliSource.GetPage(i);
 
 			// 처리할 이미지 설정
-			CameraPose3D.SetSourceImage(fliSource);
+			CameraPose3D.SetSourceImage(fliPage[i]);
 
 			// 이미지 포인터 설정 // Set image pointer
-			viewImage.SetImagePtr(&fliSource);
+			arrViewWrap[i].SetImagePtr(&fliPage[i]);
 
 			// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 			if((eResult = CameraPose3D.Execute()).IsFail())
@@ -81,7 +94,7 @@ int main()
 
 			// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 			// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately		
-			CGUIViewImageLayerWrap layerViewSource = viewImage.GetLayer(0);
+			CGUIViewImageLayerWrap layerViewSource = arrViewWrap[i].GetLayer(0);
 
 			// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 			layerViewSource.Clear();
@@ -93,7 +106,7 @@ int main()
 			//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
 			// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 			//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-			if((eResult = layerViewSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
+			if((eResult = layerViewSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 15)).IsFail())
 			{
 				ErrorPrint(eResult, L"Failed to draw text.\n");
 				break;
@@ -139,7 +152,7 @@ int main()
 				L"[%11.6lf]\n"
 				L"[%11.6lf]"
 				, flaResultRotationVector[0], flaResultRotationVector[1], flaResultRotationVector[2]);
-			layerViewSource.DrawTextImage(CFLPoint<double>(), strDisplay, YELLOW, BLACK, 12, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"Courier New");
+			layerViewSource.DrawTextImage(CFLPoint<double>(), strDisplay, YELLOW, BLACK, 11, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"Courier New");
 
 			strDisplay.Format(
 				L"Translation Vector\n"
@@ -148,7 +161,7 @@ int main()
 				L"     [%11.6lf]"
 				, flaResultTranslationVector[0], flaResultTranslationVector[1], flaResultTranslationVector[2]);
 
-			layerViewSource.DrawTextImage(CFLPoint<double>(flpImageSize.x, 0), strDisplay, YELLOW, BLACK, 12, false, 0, EGUIViewImageTextAlignment_RIGHT_TOP, L"Courier New");
+			layerViewSource.DrawTextImage(CFLPoint<double>(flpImageSize.x, 0), strDisplay, YELLOW, BLACK, 11, false, 0, EGUIViewImageTextAlignment_RIGHT_TOP, L"Courier New");
 
 			strDisplay.Format(
 				L"                  Rotation Matrix\n"
@@ -159,7 +172,7 @@ int main()
 				, matResultRotationMatrix[1][0], matResultRotationMatrix[1][1], matResultRotationMatrix[1][2]
 				, matResultRotationMatrix[2][0], matResultRotationMatrix[2][1], matResultRotationMatrix[2][2]);
 
-			layerViewSource.DrawTextImage(CFLPoint<double>(flpImageSize.x, flpImageSize.y), strDisplay, YELLOW, BLACK, 12, false, 0, EGUIViewImageTextAlignment_RIGHT_BOTTOM, L"Courier New");
+			layerViewSource.DrawTextImage(CFLPoint<double>(flpImageSize.x, flpImageSize.y), strDisplay, YELLOW, BLACK, 11, false, 0, EGUIViewImageTextAlignment_RIGHT_BOTTOM, L"Courier New");
 
 			strDisplay.Format(
 				L"Euler Angle (%s)\n"
@@ -169,15 +182,15 @@ int main()
 				, mapEulerString[eEulerSequence]
 				, flaResultEulerAngle[0], flaResultEulerAngle[1], flaResultEulerAngle[2]);
 
-			layerViewSource.DrawTextImage(CFLPoint<double>(0, flpImageSize.y), strDisplay, YELLOW, BLACK, 12, false, 0, EGUIViewImageTextAlignment_LEFT_BOTTOM, L"Courier New");
-
-			if(viewImage.IsAvailable())
-				viewImage.Invalidate();
-
-			// 이미지 뷰가 종료될 때 까지 기다림
-			while(viewImage.IsAvailable())
-				CThreadUtilities::Sleep(1);
+			layerViewSource.DrawTextImage(CFLPoint<double>(0, flpImageSize.y), strDisplay, YELLOW, BLACK, 11, false, 0, EGUIViewImageTextAlignment_LEFT_BOTTOM, L"Courier New");
 		}
+
+		if(arrViewWrap[0].IsAvailable())
+			arrViewWrap[0].Invalidate();
+
+		// 이미지 뷰가 종료될 때 까지 기다림
+		while(arrViewWrap[0].IsAvailable())
+			CThreadUtilities::Sleep(1);
 	}
 	while(false);
 
