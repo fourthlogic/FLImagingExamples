@@ -11,7 +11,7 @@ int main()
 
 	do 
 	{
-		// ½º³À ºôµå °´Ã¼ ¼±¾ð // Declare SNAP Build
+		// ½º³À ºä °´Ã¼ ¼±¾ð // Declare SNAP View
 		CGUIViewSNAPWrap viewSNAP;
 
 		// ½º³À ºä »ý¼º // Create SNAP view
