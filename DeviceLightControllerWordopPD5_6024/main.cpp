@@ -276,9 +276,9 @@ int main()
 
 					// 채널별 On/Off 상태를 설정합니다. // Set the On/Off state for the channel.
 					if(i32OnOff == 0)
-						lightController.SetChannelState(i32Channel, false);
-					else if(i32OnOff == 1)
 						lightController.SetChannelState(i32Channel, true);
+					else if(i32OnOff == 1)
+						lightController.SetChannelState(i32Channel, false);
 				}
 				else if(i32SelectMode == 2)
 				{
