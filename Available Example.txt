@@ -1247,6 +1247,9 @@
     - OperationPower
       - The algorithm that performs power operations on an image with scalar or other image as exponent.
       - 이미지를 스칼라 또는 다른 이미지를 지수로 하여 거듭제곱 연산을 수행하는 알고리즘.
+    - OperationPReLU
+      - Algorithm that outputs the function value or differential value of the PReLU function to the image.
+      - 이미지에 PReLU 함수의 함숫값 또는 미분값을 출력하는 알고리즘
     - OperationReLU
       - Algorithm that outputs the function value or differential value of the ReLU function to the image.
       - 이미지에 ReLU 함수의 함숫값 또는 미분값을 출력하는 알고리즘
@@ -1265,6 +1268,12 @@
     - OperationSineH
       - The algorithm that performs SineH operation on the source image.
       - 이미지에 SineH 연산을 수행하는 알고리즘
+    - OperationSigmoid
+      - Algorithm that outputs the function value or differential value of the sigmoid function to the image.
+      - 이미지에 Sigmoid 함수의 함숫값 또는 미분값을 출력하는 알고리즘
+    - OperationSoftplus
+      - Algorithm that outputs the function value or differential value of the softplus function to the image.
+      - 이미지에 Softplus 함수의 함숫값 또는 미분값을 출력하는 알고리즘
     - OperationSoftShrinkage
       - Algorithm that outputs the function value or differential value of the soft shrinkage function to the image.
       - 이미지에 Soft Shrinkage 함수의 함숫값 또는 미분값을 출력하는 알고리즘
@@ -1274,6 +1283,9 @@
     - OperationSquareRoot
       - The algorithm that performs Square Root operation on the source image.
       - 이미지에 제곱근 연산을 수행하는 알고리즘.
+    - OperationSwish
+      - Algorithm that outputs the function value or differential value of the swish function to the image.
+      - 이미지에 Swish 함수의 함숫값 또는 미분값을 출력하는 알고리즘
     - OperationTangentH
       - The algorithm that performs TangentH operation on the source image.
       - 이미지에 TangentH 연산을 수행하는 알고리즘
