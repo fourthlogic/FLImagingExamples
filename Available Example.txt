@@ -665,6 +665,9 @@
     - GraphViewDisplayMinMax
       - The example of displaying minimum and maximum value of the graph view.
       - 그래프 뷰의 최대/최솟값 표시에 관한 예제.
+    - GraphViewContextMenu
+      - The example of customizing the context menu of the graph view.
+      - 그래프 뷰의 컨텍스트 메뉴를 커스터마이징하는 예제.
 
   - [ImageView]
 
