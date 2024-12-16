@@ -68,6 +68,12 @@ int main()
 	// ProntoCam 카메라 선언
 	CDeviceCameraProntoCam camProntoCam;
 
+	// 이벤트를 받을 객체 선언
+	CDeviceEventImageEx eventImage;
+
+	// 카메라에 이벤트 객체 설정
+	camProntoCam.RegisterDeviceEvent(&eventImage);
+
 	do
 	{
 		wchar_t arrInput[4096] = { 0, };
@@ -158,6 +164,7 @@ int main()
 		}
 		else
 		{
+			// 시리얼 번호를 입력 받습니다.
 			printf("Input Serial Number: ");
 
 			fgetws(arrInput, 4096, stdin);
@@ -165,12 +172,6 @@ int main()
 			flsConnection = arrInput;
 			flsConnection.Replace(L"\n", L"");
 		}
-
-		// 이벤트를 받을 객체 선언
-		CDeviceEventImageEx eventImage;
-
-		// 카메라에 이벤트 객체 설정
-		camProntoCam.RegisterDeviceEvent(&eventImage);
 
 		if(bAutoDetect)
 		{
@@ -205,6 +206,7 @@ int main()
 
 		// 카메라를 Live 합니다.
 		drReturn = camProntoCam.Live();
+
 		if(drReturn.IsFail())
 		{
 			printf("Failed to live the camera.\n");
@@ -219,6 +221,7 @@ int main()
 
 	// 카메라의 초기화를 해제합니다.
 	camProntoCam.Terminate();
+	camProntoCam.ClearDeviceEvents();
 
 	if(drReturn.IsFail())
 		getchar();
