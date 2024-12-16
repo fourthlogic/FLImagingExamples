@@ -27,10 +27,11 @@ int main()
 			printf("3. TCP Client\n");
 			printf("4. UDP\n");
 			printf("0. Exit\n");
+			printf("\n");
 			printf("Connection Type: ");
 			fgetws(arrInput, 4096, stdin);
 			printf("\n");
-
+			system("cls");
 			flsInput = arrInput;
 
 			int32_t i32Select = flsInput.ToInt32();
@@ -70,7 +71,7 @@ int main()
 			fgetws(arrInput, 4096, stdin);
 			flsInput = arrInput;
 			i32ComPortNumber = flsInput.ToInt32();
-
+			system("cls");
 			// 컴포트 번호 설정 // Set the COM port number.
 			lightController.SetConnectionComPortNumber(i32ComPortNumber);
 		}
@@ -88,7 +89,7 @@ int main()
 			// Port 번호를 입력합니다. // Enter the port number.
 			printf("Port Number: ");
 			fgetws(arrInput, 4096, stdin);
-
+			system("cls");
 			flsInput = arrInput;
 			u16Port = flsInput.ToInt32();
 
@@ -108,14 +109,14 @@ int main()
 		do
 		{
 			// 채널 갯수를 선택합니다. // Select the number of channels.
-			printf("\n");
 			printf("1. Channel 4\n");
 			printf("2. Channel 8\n");
 			printf("0. Exit\n");
+			printf("\n");
 			printf("Input Channel Count: ");
 			fgetws(arrInput, 4096, stdin);
 			printf("\n");
-
+			system("cls");
 			flsInput = arrInput;
 
 			int32_t i32Select = flsInput.ToInt32();
@@ -148,14 +149,14 @@ int main()
 		do
 		{
 			// 통신 방식을 선택합니다. // Select the communication method.
-			printf("\n");
 			printf("1. ASCII Code\n");
 			printf("2. Hexadecimal\n");
 			printf("0. Exit\n");
+			printf("\n");
 			printf("Input Communication Type: ");
 			fgetws(arrInput, 4096, stdin);
 			printf("\n");
-
+			system("cls");
 			flsInput = arrInput;
 
 			int32_t i32Select = flsInput.ToInt32();
@@ -190,16 +191,16 @@ int main()
 			int32_t i32SelectMode = 0;
 
 			// 작업 모드를 선택합니다. // Select the operation mode.
-			printf("\n");
 			printf("1. Light On/Off\n");
 			printf("2. Light Value\n");
 			printf("3. Strobe Time\n");
 			printf("4. Trigger Method\n");
 			printf("0. Exit\n");
+			printf("\n");
 			printf("Select Number: ");
 			fgetws(arrInput, 4096, stdin);
 			printf("\n");
-
+			system("cls");
 			flsInput = arrInput;
 			i32SelectMode = flsInput.ToInt32();
 
@@ -214,16 +215,16 @@ int main()
 				do
 				{
 					// 트리거 방식을 선택합니다. // Select the trigger method.
-					printf("\n");
 					printf("1. Low Level\n");
 					printf("2. High Level\n");
 					printf("3. Falling Edge\n");
 					printf("4. Rising Edge\n");
 					printf("0. Exit\n");
+					printf("\n");
 					printf("Input Trigger Method: ");
 					fgetws(arrInput, 4096, stdin);
 					printf("\n");
-
+					system("cls");
 					flsInput = arrInput;
 
 					int32_t i32Select = flsInput.ToInt32();
@@ -263,13 +264,13 @@ int main()
 
 				if(i32SelectMode == 1)
 				{
-					printf("\n");
 					printf("0. On\n");
 					printf("1. Off\n");
+					printf("\n");
 					printf("Enter On/Off: ");
 					fgetws(arrInput, 4096, stdin);
 					printf("\n");
-
+					system("cls");
 					flsInput = arrInput;
 
 					int32_t i32OnOff = flsInput.ToInt32();
@@ -286,7 +287,7 @@ int main()
 					printf("Input Light Value (0 ~ 255): ");
 					fgetws(arrInput, 4096, stdin);
 					flsInput = arrInput;
-
+					system("cls");
 					uint8_t u8Value = (uint8_t)flsInput.ToInt32();
 
 					lightController.SetLightValue(i32Channel, u8Value);
@@ -297,7 +298,7 @@ int main()
 					printf("Input Strobe Time (1 ~ 999 ms): ");
 					fgetws(arrInput, 4096, stdin);
 					flsInput = arrInput;
-
+					system("cls");
 					uint16_t u16StrobeTime = (uint16_t)flsInput.ToInt32();
 
 					lightController.SetStrobeTime(i32Channel, u16StrobeTime);
