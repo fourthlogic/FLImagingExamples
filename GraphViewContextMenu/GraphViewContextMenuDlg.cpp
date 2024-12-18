@@ -232,7 +232,8 @@ void CGraphViewContextMenuDlg::CreateContextMenuCheckbox()
 		m_flaAvailableContextMenu.PushBack(EAvailableViewGraphContextMenu_Copy);
 		m_flaCheckBoxId.PushBack(IDC_CHECK_COPY);
 		flaCheckBoxString.PushBack(L"Copy");
-				// 클립보드 데이터를 붙여넣기 메뉴 // Paste clipboard data menu
+
+		// 클립보드 데이터를 붙여넣기 메뉴 // Paste clipboard data menu
 		m_flaAvailableContextMenu.PushBack(EAvailableViewGraphContextMenu_ClearThenPaste);
 		m_flaCheckBoxId.PushBack(IDC_CHECK_CLEAR_THEN_PASTE);
 		flaCheckBoxString.PushBack(L"Clear Then Paste");
@@ -241,6 +242,11 @@ void CGraphViewContextMenuDlg::CreateContextMenuCheckbox()
 		m_flaAvailableContextMenu.PushBack(EAvailableViewGraphContextMenu_Paste);
 		m_flaCheckBoxId.PushBack(IDC_CHECK_PASTE);
 		flaCheckBoxString.PushBack(L"Paste");
+		
+		// 더블 클릭으로 띄운 값 지우기 메뉴 // Clear double-clicked values menu
+		m_flaAvailableContextMenu.PushBack(EAvailableViewGraphContextMenu_ClearDisplayedValue);
+		m_flaCheckBoxId.PushBack(IDC_CHECK_CLEAR_DISPLAYED_VALUE);
+		flaCheckBoxString.PushBack(L"Clear Displayed Value");
 
 		// 차트 모양 변경 메뉴 // Change chart type menu
 		m_flaAvailableContextMenu.PushBack(EAvailableViewGraphContextMenu_ChangeChartType);
