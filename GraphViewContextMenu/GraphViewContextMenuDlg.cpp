@@ -324,7 +324,7 @@ void CGraphViewContextMenuDlg::CreateContextMenuCheckbox()
 		flaCheckBoxString.PushBack(L"Change Graph Order");
 
 		// 추세선 그리기 메뉴 // Draw trend line menu
-		m_flaAvailableContextMenu.PushBack(EAvailableViewGraphContextMenu_GetTrendLine);
+		m_flaAvailableContextMenu.PushBack(EAvailableViewGraphContextMenu_GetTrendline);
 		m_flaCheckBoxId.PushBack(IDC_CHECK_GET_TREND_LINE);
 		flaCheckBoxString.PushBack(L"Get Trendline");
 		
