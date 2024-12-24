@@ -11,6 +11,10 @@ int main()
 	CFLImage fliImage2;
 	CFLImage fliImage3;
 
+	CFLFigure* pFlfROI1 = CFigureUtilities::ConvertFigureStringToObject(L"D{(132.03883080595011,-3.45695669993938),(1174.12971955658054,396.56425672952025),(1045.11138292280202,732.66851463916055),(3.02049417217151,332.64730120970091),INFO[NAME(1 2 3 4 5 6 7 8 9 0 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)]}");
+	CFLFigure* pFlfROI2 = CFigureUtilities::ConvertFigureStringToObject(L"D{(132.03883080595011,-3.45695669993938),(1174.12971955658054,396.56425672952025),(1045.11138292280202,732.66851463916055),(3.02049417217151,332.64730120970091),INFO[NAME(1 2 3 4 5 6 7 8 9 0 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)]}");
+	CFLFigure* pFlfROI3 = CFigureUtilities::ConvertFigureStringToObject(L"D(2.57650300000000,-4.01366100000000,932.76853500000004,296.00000000000000,INFO[NAME(1 2 3 4 5 6 7 8 9 0 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)])");
+
 	// 이미지 뷰 선언 // Declare image view
 	CGUIViewImageWrap viewImage1;
 	CGUIViewImageWrap viewImage2;
@@ -144,6 +148,13 @@ int main()
 			break;
 		}
 
+		// ROI 설정
+		if(IsFail(res = ocv.SetSourceROI(pFlfROI1)))
+		{
+			ErrorPrint(res, L"Failed to set Source ROI.");
+			break;
+		}
+
 		// 이미지에서 문자를 검증하는 기능을 수행
 		if(IsFail(res = ocv.Execute()))
 		{
@@ -216,6 +227,13 @@ int main()
 			break;
 		}
 
+		// ROI 설정
+		if(IsFail(res = ocv.SetSourceROI(pFlfROI2)))
+		{
+			ErrorPrint(res, L"Failed to set Source ROI.");
+			break;
+		}
+
 		// 이미지에서 문자를 검증하는 기능을 수행
 		if(IsFail(res = ocv.Execute()))
 		{
@@ -282,6 +300,13 @@ int main()
 		if(IsFail(res = ocv.SetSourceImage(fliImage3)))
 		{
 			ErrorPrint(res, L"Failed to set Source Image.");
+			break;
+		}
+
+		// ROI 설정
+		if(IsFail(res = ocv.SetSourceROI(pFlfROI3)))
+		{
+			ErrorPrint(res, L"Failed to set Source ROI.");
 			break;
 		}
 
@@ -357,6 +382,10 @@ int main()
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
+
+	delete pFlfROI1;
+	delete pFlfROI2;
+	delete pFlfROI3;
 
 	return 0;
 }
