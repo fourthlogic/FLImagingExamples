@@ -20,7 +20,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((res = fliSourceImage.Load(L"../../ExampleImages/OperationImageGainOffset/Color.flif")).IsFail())
+		if((res = fliSourceImage.Load(L"../../ExampleImages/OperationGainOffset/Color.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -75,25 +75,25 @@ int main()
 			break;
 		}
 
-		// Operation Image Gain Offset 객체 생성 // Create Operation Image Gain Offset object
-		COperationImageGainOffset imageGainOffset;
+		// Operation Gain Offset 객체 생성 // Create Operation Gain Offset object
+		COperationGainOffset gainOffset;
 
 		// Source 이미지 설정 // Set the source image
-		imageGainOffset.SetSourceImage(fliSourceImage);
+		gainOffset.SetSourceImage(fliSourceImage);
 
 		// Destination 이미지 설정 // Set the destination image
-		imageGainOffset.SetDestinationImage(fliDestinationImage);
+		gainOffset.SetDestinationImage(fliDestinationImage);
 
 		// Gain 값 지정 // Set the Gain value
-		imageGainOffset.SetGain(CMultiVar<double>(2., 2., 2.));
+		gainOffset.SetGain(CMultiVar<double>(2., 2., 2.));
 
 		// Offset 값 지정 // Set the Offset value
-		imageGainOffset.SetOffset(CMultiVar<double>(50., 50., 50.));
+		gainOffset.SetOffset(CMultiVar<double>(50., 50., 50.));
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((res = imageGainOffset.Execute()).IsFail())
+		if((res = gainOffset.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute operation ImageGainOffset.");
+			ErrorPrint(res, "Failed to execute operation GainOffset.");
 			break;
 		}
 
