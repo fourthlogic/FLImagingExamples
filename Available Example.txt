@@ -997,7 +997,7 @@
         - The example of an algorithm that processes a geometric mean filter to an image.
         - 이미지에서 기하 평균 필터를 처리하는 알고리즘 예제.
       - HarmonicMeanFilter
-        - The example of an algorithm that processes a harmoic mean filter to an image.
+        - The example of an algorithm that processes a harmonic mean filter to an image.
         - 이미지에서 조화 평균 필터를 처리하는 알고리즘 예제.
       - InfiniteSymmetricExponentialFilter
         - The example of an algorithm that performs image smoothing usign Infinite Symmetric Exponential function
