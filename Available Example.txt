@@ -719,6 +719,12 @@
       
 - [ImageProcessing]
 
+  - [Adjustment]
+
+    - GainOffset
+      - The algorithm that transforms image by applying gain and offset.
+      - Gain, Offset을 적용하여 이미지 변환을 수행하는 알고리즘.
+
   - [Analysis]
 
   	 - [Statistics]

@@ -20,7 +20,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((res = fliSourceImage.Load(L"../../ExampleImages/OperationGainOffset/Color.flif")).IsFail())
+		if((res = fliSourceImage.Load(L"../../ExampleImages/GainOffset/Color.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -75,8 +75,8 @@ int main()
 			break;
 		}
 
-		// Operation Gain Offset 객체 생성 // Create Operation Gain Offset object
-		COperationGainOffset gainOffset;
+		// Gain Offset 객체 생성 // Create Gain Offset object
+		CGainOffset gainOffset;
 
 		// Source 이미지 설정 // Set the source image
 		gainOffset.SetSourceImage(fliSourceImage);
@@ -93,7 +93,7 @@ int main()
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = gainOffset.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute operation GainOffset.");
+			ErrorPrint(res, "Failed to execute Gain Offset.");
 			break;
 		}
 

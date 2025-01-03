@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6E84C8C3-F900-4FFB-BBD8-9544796CEDB1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationGainOffset</RootNamespace>
+    <RootNamespace>GainOffset</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
