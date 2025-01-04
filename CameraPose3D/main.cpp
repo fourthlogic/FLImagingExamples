@@ -77,7 +77,7 @@ int main()
 		for(int32_t i = 0; i < i32PageCount; i++)
 		{			
 			// 페이지 선택
-			fliPage[i] = fliSource.GetPage(i);
+			fliPage[i].Assign(fliSource.GetPage(i));
 
 			// 처리할 이미지 설정
 			CameraPose3D.SetSourceImage(fliPage[i]);
