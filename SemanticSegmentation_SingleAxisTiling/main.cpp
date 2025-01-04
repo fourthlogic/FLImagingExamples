@@ -227,7 +227,7 @@ int main()
 		// 정사각형 비율을 유지하여 원본 이미지를 나누어 처리한다.
 		// Set the training image segmentation mode.
 		// The original image is divided and processed by maintaining the square ratio.
-		semanticSegmentation.SetImageTilingMode(ETilingMode_SingleAxisTiling_Fit);
+		semanticSegmentation.SetImageTilingMode(ETilingMode_SingleAxisTiling_ProportionalFit);
 
 		// 학습을 종료할 조건식 설정. miou.ze값이 0.9 이상인 경우 학습 종료한다. metric.ze와 동일한 값입니다.
 		// Set Conditional Expression to End Learning. If the miou.ze value is 0.9 or higher, end the learning. Same value as metric.ze.
