@@ -1485,6 +1485,9 @@
     - Discrete Cosine Transform
       - The example of an algorithm that transforms images into discrete cosine transforms.
       - 이미지를 이산 코사인 변환을 하는 알고리즘 예제.
+    - Discrete Wavelet Transform
+      - The example of an algorithm that transforms images into discrete wavelet transforms.
+      - 이미지를 이산 웨이블릿 변환을 하는 알고리즘 예제.
     - Distance Transform
       - The example of an algorithm that measure distance with pixel which value if 0.
       - 값이 0인 픽셀로 부터 거리를 나타내는 알고리즘 예제.
