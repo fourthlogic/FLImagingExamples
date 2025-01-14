@@ -45,13 +45,13 @@ int main()
 		CThreadUtilities::Sleep(1000);
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/intanceSegmentation/Bolt.flif")))
+		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/InstanceSegmentation/Bolt.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(res = fliValidationImage.Load(L"../../ExampleImages/intanceSegmentation/Bolt.flif")))
+		if(IsFail(res = fliValidationImage.Load(L"../../ExampleImages/InstanceSegmentation/Bolt.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
