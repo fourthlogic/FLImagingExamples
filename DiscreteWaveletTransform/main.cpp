@@ -66,13 +66,6 @@ int main()
 		if(bError)
 			break;
 
-		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views.
-		if(IsFail(res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination])))
-		{
-			ErrorPrint(res, "Failed to synchronize view\n");
-			break;
-		}
-
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
 		if(IsFail(res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination])))
 		{
@@ -125,6 +118,12 @@ int main()
 		if(IsFail(res = arrLayer[EType_Destination].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
+			break;
+		}
+
+		if(IsFail(res = arrViewImage[EType_Destination].ZoomFit()))
+		{
+			ErrorPrint(res, "Fail to zoom fit\n");
 			break;
 		}
 
