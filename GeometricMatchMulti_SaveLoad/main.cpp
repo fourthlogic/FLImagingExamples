@@ -123,7 +123,7 @@ int main()
 			// 학습한 특징점을 디스플레이 한다 // Display the learned feature point
 			// 학습한 특징점이 찾고자하는 객체를 나타내기에 충분하게 잘 뽑혔는지 확인하고, 그렇지 않다면 학습 파라미터를 재조정함으로써 재확인하면 검출 시 더 효과적입니다. // Check whether the learned feature points are selected well enough to represent the object to be found.
 			CFLFigureArray flfaFeaturePoints;
-			FLGeometricMatchMultiSave.GetLearntFeature(flfaFeaturePoints);
+			FLGeometricMatchMultiSave.GetLearnedFeature(flfaFeaturePoints);
 
 			for(int32_t i32Index = 0; i32Index < (int32_t)flfaFeaturePoints.GetCount(); ++i32Index)
 			{
