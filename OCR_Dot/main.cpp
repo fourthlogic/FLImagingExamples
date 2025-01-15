@@ -66,19 +66,19 @@ int main()
 		}
 
 		// 학습한 문자의 개수를 받아오는 함수
-		int64_t i64LearntCount = ocr.GetLearntDataCount();
-		CFLFigureArray flfaLearnt;
+		int64_t i64LearnedCount = ocr.GetLearnedDataCount();
+		CFLFigureArray flfaLearned;
 
 		// 학습한 문자의 모양를 받아오는 함수
-		ocr.GetLearntCharacter(flfaLearnt);
+		ocr.GetLearnedCharacter(flfaLearned);
 
-		for(int64_t i = 0; i < i64LearntCount; ++i)
+		for(int64_t i = 0; i < i64LearnedCount; ++i)
 		{
 			CFLString<wchar_t> flsResultString;
 			CFLRect<double> flrBoundary;
 
-			flsResultString.Format(L"%s", flfaLearnt.GetAt(i)->GetName());
-			flfaLearnt.GetAt(i)->GetBoundaryRect(flrBoundary);
+			flsResultString.Format(L"%s", flfaLearned.GetAt(i)->GetName());
+			flfaLearned.GetAt(i)->GetBoundaryRect(flrBoundary);
 
 			if(IsFail(layer.DrawTextImage(CFLPoint<double>(flrBoundary.left, flrBoundary.top), flsResultString, YELLOW, BLACK, 15, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
 			{
@@ -86,7 +86,7 @@ int main()
 				break;
 			}
 
-			if(IsFail(layer.DrawFigureImage(flfaLearnt.GetAt(i), LIME, 1, LIME, EGUIViewImagePenStyle_Solid, 1.f, 0.35f)))
+			if(IsFail(layer.DrawFigureImage(flfaLearned.GetAt(i), LIME, 1, LIME, EGUIViewImagePenStyle_Solid, 1.f, 0.35f)))
 			{
 				printf("Failed to draw learnt character : %lld", i);
 				break;
