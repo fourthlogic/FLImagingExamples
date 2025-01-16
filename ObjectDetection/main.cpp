@@ -189,6 +189,7 @@ int main()
 		// AugmentationSpec ¼³Á¤ // Set the AugmentationSpec
 		CAugmentationSpec augSpec;
 
+		augSpec.EnableAugmentation(true);
 		augSpec.SetCommonActivationRatio(0.8);
 		augSpec.SetCommonInterpolationMethod(FLImaging::ImageProcessing::EInterpolationMethod_Bilinear);
 		augSpec.EnableRotation(true);

@@ -178,13 +178,14 @@ int main()
 
 		// Optimizer의 학습률 설정 // Set learning rate of Optimizer
 		optSpec.SetLearningRate(5e-4f);
-
+		
 		// 설정한 Optimizer를 OCR에 적용 // Apply the Optimizer that we set up to OCR
 		ocr.SetLearningOptimizerSpec(optSpec);
 
 		// AugmentationSpec 설정 // Set the AugmentationSpec
 		CAugmentationSpec augSpec;
 
+		augSpec.EnableAugmentation(true);
 		augSpec.SetCommonActivationRatio(0.5);
 		augSpec.SetCommonInterpolationMethod(FLImaging::ImageProcessing::EInterpolationMethod_Bilinear);
 		augSpec.EnableRotation(true);
