@@ -121,6 +121,9 @@ int main()
 			break;
 		}
 
+		viewImageLearn.Invalidate(true);
+		viewImageSource.Invalidate(true);
+
 		// Classifier °´Ã¼ »ý¼º // Create Classifier object
 		CClassifierDL classifier;
 

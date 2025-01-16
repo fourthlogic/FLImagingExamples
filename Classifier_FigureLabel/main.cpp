@@ -68,13 +68,13 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = viewImageSource.Create(612, 0, 1124, 512)))
+		if(IsFail(res = viewImageValidate.Create(612, 0, 1124, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		if(IsFail(res = viewImageValidate.Create(1124, 0, 1636, 512)))
+		if(IsFail(res = viewImageSource.Create(1124, 0, 1636, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
@@ -94,13 +94,13 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
+		if(IsFail(res = viewImageValidate.SetImagePtr(&fliValidateImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(res = viewImageValidate.SetImagePtr(&fliValidateImage)))
+		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
@@ -147,6 +147,10 @@ int main()
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
+
+		viewImageLearn.Invalidate(true);
+		viewImageSource.Invalidate(true);
+		viewImageValidate.Invalidate(true);
 
 		// Classifier °´Ã¼ »ý¼º // Create Classifier object
 		CClassifierDL classifier;
