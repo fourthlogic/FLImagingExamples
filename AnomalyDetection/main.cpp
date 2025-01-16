@@ -146,7 +146,7 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = layerResultLabelFigure.DrawTextCanvas(&CFLPoint<double>(0, 0), L"RESULT LABEL FIGURE", GREEN, BLACK, 30)))
+		if(IsFail(res = layerResultLabelFigure.DrawTextCanvas(&CFLPoint<double>(0, 0), L"RESULT", GREEN, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
