@@ -177,7 +177,7 @@ int main()
 		ocr.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 
 		// Optimizer의 학습률 설정 // Set learning rate of Optimizer
-		optSpec.SetLearningRate(5e-4f);
+		optSpec.SetLearningRate(1e-4f);
 		
 		// 설정한 Optimizer를 OCR에 적용 // Apply the Optimizer that we set up to OCR
 		ocr.SetLearningOptimizerSpec(optSpec);
