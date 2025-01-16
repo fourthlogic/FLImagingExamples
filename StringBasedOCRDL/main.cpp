@@ -26,10 +26,12 @@ int main()
 	// 이미지 객체 선언 // Declare the image object
 	CFLImage fliLearnImage;
 	CFLImage fliSourceImage;
+	CFLImage fliResultImage;
 
 	/// 이미지 뷰 선언 // Declare the image view
 	CGUIViewImageWrap viewImageLearn;
 	CGUIViewImageWrap viewImageSource;
+	CGUIViewImageWrap viewImageResult;
 
 	// 그래프 뷰 선언 // Declare the graph view
 	CGUIViewGraphWrap viewGraph;
@@ -67,6 +69,12 @@ int main()
 			break;
 		}
 
+		if(IsFail(res = viewImageResult.Create(100, 500, 600, 1000)))
+		{
+			ErrorPrint(res, "Failed to create the image view.\n");
+			break;
+		}
+
 		// Graph 뷰 생성 // Create graph view
 		if(IsFail(res = viewGraph.Create(1100, 0, 1600, 500)))
 		{
@@ -87,8 +95,21 @@ int main()
 			break;
 		}
 
+		if(IsFail(res = viewImageResult.SetImagePtr(&fliResultImage)))
+		{
+			ErrorPrint(res, "Failed to set image object on the image view.\n");
+			break;
+		}
+
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImageSource)))
+		{
+			ErrorPrint(res, "Failed to synchronize window.\n");
+			break;
+		}
+
+		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
+		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImageResult)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
@@ -98,10 +119,12 @@ int main()
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerLearn = viewImageLearn.GetLayer(0);
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
+		CGUIViewImageLayerWrap layerResult = viewImageResult.GetLayer(0);
 
 		// 기존에 Layer에 그려진 도형들을 삭제 // Clear the figures drawn on the existing layer
 		layerLearn.Clear();
 		layerSource.Clear();
+		layerResult.Clear();
 
 		// View 정보를 디스플레이 합니다. // Display View information.
 		// 아래 함수 DrawTextCanvas 는 Screen좌표를 기준으로 하는 String을 Drawing 한다.// The function DrawTextCanvas below draws a String based on the screen coordinates.
@@ -115,7 +138,13 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"INFERENCE", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Validation", YELLOW, BLACK, 30)))
+		{
+			ErrorPrint(res, "Failed to draw text\n");
+			break;
+		}
+
+		if(IsFail(res = layerResult.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Result", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -128,9 +157,6 @@ int main()
 		ocrdl.SetLearningImage(fliLearnImage);
 		// 검증할 이미지 설정 // Set the image to validate
 		ocrdl.SetLearningValidationImage(fliSourceImage);
-		// 분류할 이미지 설정 // Set the image to classify
-		ocrdl.SetInferenceImage(fliSourceImage);
-		ocrdl.SetInferenceResultImage(fliSourceImage);
 
 		// 학습할 StringBasedOCR 모델 설정 // Set up StringBasedOCR model to learn
 		ocrdl.SetModel(CStringBasedOCRDL::EModel_FLNet);
@@ -158,7 +184,7 @@ int main()
 		augSpec.SetCommonIoUThreshold(0.8);
 		augSpec.SetCommonInterpolationMethod(FLImaging::ImageProcessing::EInterpolationMethod_Bilinear);
 		augSpec.EnableRotation(true);
-		augSpec.SetRotationParam(10., false);
+		augSpec.SetRotationParam(10., false, false);
 
 		augSpec.EnableScale(true);
 		augSpec.SetScaleParam(.8, 1.2, .8, 1.2, false);
@@ -238,13 +264,6 @@ int main()
 				// 비용 기록이나 검증 결과 기록이 있다면 출력 // Print results if cost or validation history exists
 				if((vctCosts.GetCount() && i32PrevCostCount != (int32_t)vctCosts.GetCount()) || (vct1MNED.GetCount() && i32PrevValidationCount != (int32_t)vct1MNED.GetCount()) || (vctMeanAP.GetCount() && i32PrevValidationCount != (int32_t)vctMeanAP.GetCount()))
 				{
-					viewGraph.LockUpdate();
-
-					// 이전 그래프의 데이터를 삭제 // Clear previous grpah data
-					viewGraph.Clear();
-					// Graph View 데이터 입력 // Input Graph View Data
-					viewGraph.Plot(vctCosts, EChartType_Line, RED, L"Cost");
-
 					int32_t i32Step = ocrdl.GetLearningValidationStep();
 					CFLArray<float> flaX;
 
@@ -252,24 +271,24 @@ int main()
 						flaX.PushBack((float)(i * i32Step));
 
 					flaX.PushBack((float)(vctCosts.GetCount() - 1));
+
+					viewGraph.LockUpdate();
+
+					// 이전 그래프의 데이터를 삭제 // Clear previous grpah data
+					viewGraph.Clear();
+					// Graph View 데이터 입력 // Input Graph View Data
+					viewGraph.Plot(vctCosts, EChartType_Line, RED, L"Cost");
 					// Graph View 데이터 입력 // Input Graph View Data
 					viewGraph.Plot(flaX, vct1MNED, EChartType_Line, BLUE, L"1-NED");
-
-					flaX.Clear();
-
-					for(int64_t i = 0; i < vctMeanAP.GetCount() - 1; ++i)
-						flaX.PushBack((float)(i * i32Step));
-
-					flaX.PushBack((float)(vctCosts.GetCount() - 1));
 					// Graph View 데이터 입력 // Input Graph View Data
-					viewGraph.Plot(flaX, vctMeanAP, EChartType_Line, BLUE, L"mAP");
+					viewGraph.Plot(flaX, vctMeanAP, EChartType_Line, GREEN, L"mAP");
 
 					viewGraph.UnlockUpdate();
 					viewGraph.Invalidate();
 				}
 
-				// 검증 결과가 1.0일 경우 학습을 중단하고 분류 진행 
-				// If the validation result is 1.0, stop learning and classify images 
+				// 검증 결과가 1.0일 경우 학습을 중단하고 인식 진행 
+				// If the validation result is 1.0, stop learning and recognize
 				if(f321MNED == 1.f && f32MeanAP == 1.f || GetAsyncKeyState(VK_ESCAPE))
 					ocrdl.Stop();
 
@@ -295,6 +314,10 @@ int main()
 			break;
 		}
 
+		// 인식할 이미지 설정 // Set the image to Recognize
+		ocrdl.SetInferenceImage(fliSourceImage);
+		ocrdl.SetInferenceResultImage(fliResultImage);
+
 		// 알고리즘 수행 // Execute the algorithm
 		if(IsFail(res = ocrdl.Execute()))
 		{
@@ -303,13 +326,14 @@ int main()
 		}
 
 		// 이미지 뷰를 갱신 // Update the image view.
-		viewImageLearn.Invalidate(true);
-		viewImageSource.Invalidate(true);
+		viewImageLearn.RedrawWindow();
+		viewImageSource.RedrawWindow();
+		viewImageResult.RedrawWindow();
 		// 그래프 뷰를 갱신 // Update the Graph view.
-		viewGraph.Invalidate(true);
+		viewGraph.RedrawWindow();
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
-		while(viewImageLearn.IsAvailable() && viewImageSource.IsAvailable() && viewGraph.IsAvailable())
+		while(viewImageLearn.IsAvailable() && viewImageSource.IsAvailable() && viewImageResult.IsAvailable() && viewGraph.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
