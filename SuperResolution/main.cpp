@@ -226,7 +226,7 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = layerInferenceLowResolution.DrawTextCanvas(&CFLPoint<double>(0, 0), L"INFERENCE LOW RESOLUTION", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerInferenceLowResolution.DrawTextCanvas(&CFLPoint<double>(0, 0), L"VALIDATION LOW RESOLUTION", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
@@ -238,13 +238,13 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = layerInferenceHighResolution.DrawTextCanvas(&CFLPoint<double>(0, 0), L"INFERENCE HIGH RESOLUTION", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerInferenceHighResolution.DrawTextCanvas(&CFLPoint<double>(0, 0), L"VALIDATION HIGH RESOLUTION", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layerResultLabelFigure.DrawTextCanvas(&CFLPoint<double>(0, 0), L"RESULT LABEL FIGURE", GREEN, BLACK, 30)))
+		if(IsFail(res = layerResultLabelFigure.DrawTextCanvas(&CFLPoint<double>(0, 0), L"INFERENCE RESULTS", GREEN, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
