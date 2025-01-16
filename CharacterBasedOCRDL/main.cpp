@@ -170,7 +170,7 @@ int main()
 		// 학습할 OCR 모델 설정 // Set up OCR model to learn
 		ocr.SetModel(CCharacterBasedOCRDL::EModel_R_FLSegNet);
 		// 학습할 OCR 모델의 버전 설정 // Set up OCR model version to learn
-		ocr.SetModelVersion(CCharacterBasedOCRDL::EModelVersion_Mask_R_CNN_V1_512);
+		ocr.SetModelVersion(CCharacterBasedOCRDL::EModelVersion_R_FLSegNet_V1_512);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
 		ocr.SetLearningEpoch(10000);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
@@ -194,7 +194,7 @@ int main()
 		augSpec.SetGaussianNoiseParam(0, 0.02);
 
 		augSpec.EnableScale(true);
-		augSpec.SetScaleParam(.5, 2., .5, 2., true);
+		augSpec.SetScaleParam(.95, 1.05, .95, 1.05, true);
 
 		ocr.SetLearningAugmentationSpec(&augSpec);
 
