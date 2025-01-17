@@ -207,7 +207,7 @@ int main()
 		Moire3D.SetLearnImage(flaFliLrnImage);
 		// Source 이미지 설정 // Set the source image
 		Moire3D.SetSourceImage(flaFliSrcImage);
-		// Destination 이미지 설정 // Set the destination image
+		// Destination Height Map 이미지 설정 // Set the destination height map image
 		Moire3D.SetDestinationHeightMapImage(fliDstImage);
 		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
 		Moire3D.SetDestinationObject(fl3DOHM);

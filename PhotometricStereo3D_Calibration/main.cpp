@@ -119,11 +119,11 @@ int main()
 		photometric.SetSourceImage(fliSrcImage);
 		// Calibration 이미지 설정 // Set the calibration image
 		photometric.SetCalibrationImage(fliCalImage);
-		// Destination 이미지 설정 // Set the destination image
+		// Destination Height Map 이미지 설정 // Set the destination height map image
 		photometric.SetDestinationHeightMapImage(fliDstImage);
-		// 결과 Texture 이미지 설정 // Set the result texture image
+		// Destination Texture 이미지 설정 // Set the destination texture image
 		photometric.SetDestinationTextureImage(fliTxtImage);
-		// Destionation 3D Object 설정 // Set the destionation 3D object 
+		// Destination 3D Object 설정 // Set the destination 3D object 
 		photometric.SetDestinationObject(fl3DOHM);
 		// Calibration 데이터 설정 // Set Calibration Settings
 		photometric.SetCalibrationCircleROI(CFLCircle<double>(386.439657, 346.491239, 259.998140, 0.000000, 0.000000, 360.000000, EArcClosingMethod_EachOther));
