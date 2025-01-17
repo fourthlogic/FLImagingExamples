@@ -78,7 +78,7 @@ int main()
 		// Source 이미지 설정 // Set the source image
 		LaserTriangulation.SetSourceImage(fliSrcImage);
 		// Destination 이미지 설정 // Set the destination image
-		LaserTriangulation.SetDestinationImage(fliDstImage);
+		LaserTriangulation.SetDestinationHeightMapImage(fliDstImage);
 		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
 		LaserTriangulation.SetDestinationObject(fl3DOHM);
 		// Source 이미지 타입 설정 // Set the type of the source image

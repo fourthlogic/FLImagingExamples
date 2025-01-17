@@ -79,9 +79,9 @@ int main()
 		// Source 이미지 설정 // Set the source image
 		algMultiFocusDerivativeBased3D.SetSourceImage(fliSrcImage);
 		// Destination 이미지 설정 // Set the destination image
-		algMultiFocusDerivativeBased3D.SetDestinationImage(fliDstImage);
+		algMultiFocusDerivativeBased3D.SetDestinationHeightMapImage(fliDstImage);
 		// 결과 Texture 이미지 설정 // Set the res texture image
-		algMultiFocusDerivativeBased3D.SetResultTextureImage(&fliTxtImage);
+		algMultiFocusDerivativeBased3D.SetDestinationTextureImage(&fliTxtImage);
 		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
 		algMultiFocusDerivativeBased3D.SetDestinationObject(fl3DOHM);
 		// Pixel Accuracy 설정 // Set the pixel accuracy

@@ -80,9 +80,9 @@ int main()
 		// Source 이미지 설정 // Set the source image
 		if((res = algMultiFocusMAPBased3D.SetSourceImage(fliSrcImage)).IsFail()) break;
 		// 결과 height (destination) 이미지 설정 // Set the destination(result height) image
-		if((res = algMultiFocusMAPBased3D.SetDestinationImage(fliDstImage)).IsFail()) break;
+		if((res = algMultiFocusMAPBased3D.SetDestinationHeightMapImage(fliDstImage)).IsFail()) break;
 		// 결과 texture 이미지 설정 // Set the result texture image
-		if((res = algMultiFocusMAPBased3D.SetResultTextureImage(&fliTxtImage)).IsFail()) break;
+		if((res = algMultiFocusMAPBased3D.SetDestinationTextureImage(&fliTxtImage)).IsFail()) break;
 
 		// Focus measure bias page index 설정 // Set the focus measure bias page index
 		if((res = algMultiFocusMAPBased3D.SetFMBiasPageIndex(3)).IsFail()) break;

@@ -120,9 +120,9 @@ int main()
 		// Calibration 이미지 설정 // Set the calibration image
 		photometric.SetCalibrationImage(fliCalImage);
 		// Destination 이미지 설정 // Set the destination image
-		photometric.SetDestinationImage(fliDstImage);
+		photometric.SetDestinationHeightMapImage(fliDstImage);
 		// 결과 Texture 이미지 설정 // Set the result texture image
-		photometric.SetResultTextureImage(fliTxtImage);
+		photometric.SetDestinationTextureImage(fliTxtImage);
 		// Destionation 3D Object 설정 // Set the destionation 3D object 
 		photometric.SetDestinationObject(fl3DOHM);
 		// Calibration 데이터 설정 // Set Calibration Settings

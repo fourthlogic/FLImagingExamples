@@ -120,9 +120,9 @@ int main()
 		// Source 이미지 2 설정
 		disparity.SetSourceImage2(fliSrcImage2);
 		// Destination 이미지 설정 // Set the destination image
-		disparity.SetDestinationImage(fliDstImage);
+		disparity.SetDestinationHeightMapImage(fliDstImage);
 		// 결과 Texture 이미지 설정 // Set the res texture image
-		disparity.SetResultTextureImage(&fliTxtImage);
+		disparity.SetDestinationTextureImage(&fliTxtImage);
 		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
 		disparity.SetDestinationObject(fl3DOHM);
 		// 최소 허용 Disparity 값 설정 // Set the minimum allowed disparity value

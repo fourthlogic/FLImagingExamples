@@ -86,9 +86,9 @@ int main()
 		// Source 이미지 설정 // Set the source image
 		photometric.SetSourceImage(fliSrcImage);
 		// Destination 이미지 설정 // Set the destination image
-		photometric.SetDestinationImage(fliDstImage);
+		photometric.SetDestinationHeightMapImage(fliDstImage);
 		// 결과 Texture 이미지 설정 // Set the res texture image
-		photometric.SetResultTextureImage(&fliTxtImage);
+		photometric.SetDestinationTextureImage(&fliTxtImage);
 		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
 		photometric.SetDestinationObject(fl3DOHM);
 		// 동작 방식 설정 // Set Operation Mode

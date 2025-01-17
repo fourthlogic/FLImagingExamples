@@ -208,7 +208,7 @@ int main()
 		// Source 이미지 설정 // Set the source image
 		Moire3D.SetSourceImage(flaFliSrcImage);
 		// Destination 이미지 설정 // Set the destination image
-		Moire3D.SetDestinationImage(fliDstImage);
+		Moire3D.SetDestinationHeightMapImage(fliDstImage);
 		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
 		Moire3D.SetDestinationObject(fl3DOHM);
 		// 카메라의 working distance 설정 // Set working distance of the camera
