@@ -11,9 +11,10 @@ int main()
 	CFLImage fliImage2;
 	CFLImage fliImage3;
 
-	CFLFigure* pFlfROI1 = CFigureUtilities::ConvertFigureStringToObject(L"D{(132.03883080595011,-3.45695669993938),(1174.12971955658054,396.56425672952025),(1045.11138292280202,732.66851463916055),(3.02049417217151,332.64730120970091),INFO[NAME(1 2 3 4 5 6 7 8 9 0 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)]}");
-	CFLFigure* pFlfROI2 = CFigureUtilities::ConvertFigureStringToObject(L"D{(132.03883080595011,-3.45695669993938),(1174.12971955658054,396.56425672952025),(1045.11138292280202,732.66851463916055),(3.02049417217151,332.64730120970091),INFO[NAME(1 2 3 4 5 6 7 8 9 0 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)]}");
-	CFLFigure* pFlfROI3 = CFigureUtilities::ConvertFigureStringToObject(L"D(2.57650300000000,-4.01366100000000,932.76853500000004,296.00000000000000,INFO[NAME(1 2 3 4 5 6 7 8 9 0 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)])");
+	// ROI 선언 // Declare ROI object
+	CFLQuad<double> flqROI1;
+	CFLQuad<double> flqROI2;
+	CFLRect<double> flrROI3;
 
 	// 이미지 뷰 선언 // Declare image view
 	CGUIViewImageWrap viewImage1;
@@ -39,6 +40,25 @@ int main()
 		if((res = fliImage3.Load(L"../../ExampleImages/OCV/Print_Example3.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
+			break;
+		}
+
+		// ROI 로드 // Load ROI
+		if((res = flqROI1.Load(L"../../ExampleImages/OCV/Print_Example_ROI 1.fig")).IsFail())
+		{
+			ErrorPrint(res, L"Failed to load the ROI file.\n");
+			break;
+		}
+
+		if((res = flqROI2.Load(L"../../ExampleImages/OCV/Print_Example_ROI 2.fig")).IsFail())
+		{
+			ErrorPrint(res, L"Failed to load the ROI file.\n");
+			break;
+		}
+
+		if((res = flrROI3.Load(L"../../ExampleImages/OCV/Print_Example_ROI 3.fig")).IsFail())
+		{
+			ErrorPrint(res, L"Failed to load the ROI file.\n");
 			break;
 		}
 
@@ -149,7 +169,7 @@ int main()
 		}
 
 		// ROI 설정
-		if(IsFail(res = ocv.SetSourceROI(pFlfROI1)))
+		if(IsFail(res = ocv.SetSourceROI(flqROI1)))
 		{
 			ErrorPrint(res, L"Failed to set Source ROI.");
 			break;
@@ -228,7 +248,7 @@ int main()
 		}
 
 		// ROI 설정
-		if(IsFail(res = ocv.SetSourceROI(pFlfROI2)))
+		if(IsFail(res = ocv.SetSourceROI(flqROI2)))
 		{
 			ErrorPrint(res, L"Failed to set Source ROI.");
 			break;
@@ -304,7 +324,7 @@ int main()
 		}
 
 		// ROI 설정
-		if(IsFail(res = ocv.SetSourceROI(pFlfROI3)))
+		if(IsFail(res = ocv.SetSourceROI(flrROI3)))
 		{
 			ErrorPrint(res, L"Failed to set Source ROI.");
 			break;
@@ -382,10 +402,6 @@ int main()
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
-
-	delete pFlfROI1;
-	delete pFlfROI2;
-	delete pFlfROI3;
 
 	return 0;
 }
