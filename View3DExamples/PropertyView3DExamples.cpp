@@ -151,21 +151,21 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			{
 				CGUIPropertyItemText* pText = new CGUIPropertyItemText;
 				pText->SetName(L"x");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Position");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
 
 				pText = new CGUIPropertyItemText;
 				pText->SetName(L"y");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Position");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
 
 				pText = new CGUIPropertyItemText;
 				pText->SetName(L"z");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Position");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
@@ -180,21 +180,21 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			{
 				CGUIPropertyItemText* pText = new CGUIPropertyItemText;
 				pText->SetName(L"x");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Direction");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
 
 				pText = new CGUIPropertyItemText;
 				pText->SetName(L"y");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Direction");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
 
 				pText = new CGUIPropertyItemText;
 				pText->SetName(L"z");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Direction");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
@@ -209,21 +209,21 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			{
 				CGUIPropertyItemText* pText = new CGUIPropertyItemText;
 				pText->SetName(L"x");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Up Direction");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
 
 				pText = new CGUIPropertyItemText;
 				pText->SetName(L"y");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Up Direction");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
 
 				pText = new CGUIPropertyItemText;
 				pText->SetName(L"z");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Up Direction");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
@@ -238,21 +238,21 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			{
 				CGUIPropertyItemText* pText = new CGUIPropertyItemText;
 				pText->SetName(L"x");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Target");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
 
 				pText = new CGUIPropertyItemText;
 				pText->SetName(L"y");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Target");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
 
 				pText = new CGUIPropertyItemText;
 				pText->SetName(L"z");
-				pText->SetInputType(CGUIEditBase::EInputType_Double);
+				pText->SetInputType(CGUIEditBase::EInputType_Float);
 				pText->SetPath(L"Camera@Target");
 				pText->SetDefaultValue(L"0");
 				AddItem(pText);
@@ -261,7 +261,7 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			CGUIPropertyItemText* pText = new CGUIPropertyItemText;
 			pText->SetName(L"Angle of View(Degree)");
 			pText->SetDescription(L"Input the angle of view in degree(not radian)");
-			pText->SetInputType(CGUIEditBase::EInputType_Double);
+			pText->SetInputType(CGUIEditBase::EInputType_Float);
 			pText->SetPath(L"Camera");
 			pText->SetDefaultValue(L"45");
 			AddItem(pText);
