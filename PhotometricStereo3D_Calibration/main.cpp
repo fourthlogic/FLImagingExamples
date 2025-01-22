@@ -225,7 +225,7 @@ int main()
 			break;
 		}
 
-		if((res = layerTxt.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Texture Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerTxt.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Texture Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text.\n");
 			break;

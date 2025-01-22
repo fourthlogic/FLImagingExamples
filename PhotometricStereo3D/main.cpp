@@ -180,7 +180,7 @@ int main()
 			break;
 		}
 
-		if((res = layerDst.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerDst.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Height Map Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text.\n");
 			break;
