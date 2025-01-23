@@ -240,7 +240,7 @@ void CImageViewDlg::UpdateControls()
 
 		if(SelectedDeclType() == EFigureDeclType_CubicSpline || SelectedDeclType() == EFigureDeclType_Region || SelectedDeclType() == EFigureDeclType_ComplexRegion)
 		{
-			pComboBoxTemplateType->SetCurSel(EFigureTemplateType_Double - 1);
+			pComboBoxTemplateType->SetCurSel(pComboBoxTemplateType->GetCount() - 1);
 			pComboBoxTemplateType->EnableWindow(false);
 		}
 
@@ -405,7 +405,26 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 		if(!pComboBoxTemplateType)
 			break;
 
-		int32_t i32TemplateType = pComboBoxTemplateType->GetCurSel() + 1;
+		EFigureTemplateType eTemplateType = EFigureTemplateType_Unknown;
+
+		switch(pComboBoxTemplateType->GetCurSel())
+		{
+		case 0:
+			eTemplateType = EFigureTemplateType_Int32;
+			break;
+
+		case 1:
+			eTemplateType = EFigureTemplateType_Int64;
+			break;
+
+		case 2:
+			eTemplateType = EFigureTemplateType_Float;
+			break;
+
+		case 3:
+			eTemplateType = EFigureTemplateType_Double;
+			break;
+		}
 
 		// 이미지 뷰의 캔버스 영역을 얻어온다.
 		CFLRect<int32_t> flrlCanvas = m_viewImage.GetClientRectCanvasRegion();
@@ -429,7 +448,7 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 		{
 		case EFigureDeclType_Point:
 			{
-				switch(i32TemplateType)
+				switch(eTemplateType)
 				{
 				case EFigureTemplateType_Int32:
 					pFlFigure = new CFLPoint<int32_t>();
@@ -455,7 +474,7 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 
 		case EFigureDeclType_Line:
 			{
-				switch(i32TemplateType)
+				switch(eTemplateType)
 				{
 				case EFigureTemplateType_Int32:
 					pFlFigure = new CFLLine<int32_t>();
@@ -481,7 +500,7 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 
 		case EFigureDeclType_Rect:
 			{
-				switch(i32TemplateType)
+				switch(eTemplateType)
 				{
 				case EFigureTemplateType_Int32:
 					pFlFigure = new CFLRect<int32_t>();
@@ -507,7 +526,7 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 
 		case EFigureDeclType_Quad:
 			{
-				switch(i32TemplateType)
+				switch(eTemplateType)
 				{
 				case EFigureTemplateType_Int32:
 					pFlFigure = new CFLQuad<int32_t>();
@@ -533,7 +552,7 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 
 		case EFigureDeclType_Circle:
 			{
-				switch(i32TemplateType)
+				switch(eTemplateType)
 				{
 				case EFigureTemplateType_Int32:
 					pFlFigure = new CFLCircle<int32_t>();
@@ -559,7 +578,7 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 
 		case EFigureDeclType_Ellipse:
 			{
-				switch(i32TemplateType)
+				switch(eTemplateType)
 				{
 				case EFigureTemplateType_Int32:
 					pFlFigure = new CFLEllipse<int32_t>();
@@ -603,7 +622,7 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 
 		case EFigureDeclType_Doughnut:
 			{
-				switch(i32TemplateType)
+				switch(eTemplateType)
 				{
 				case EFigureTemplateType_Int32:
 					pFlFigure = new CFLDoughnut<int32_t>();
@@ -707,7 +726,7 @@ void CImageViewDlg::OnBnClickedButtonLoadImage()
 		// ex) EViewImageLoadOption_Load -> 이미지 파일/폴더 로드
 		//     EViewImageLoadOption_OpenDialog | EViewImageLoadOption_DialogTypeFile 이미지 파일 로드 다이얼로그 활성화
 		//     EViewImageLoadOption_OpenDialog | EViewImageLoadOption_DialogTypeFolder 폴더 로드 다이얼로그 활성화(폴더 내부의 이미지 파일들을 로드)
-		m_viewImage.Load(L"", EViewImageLoadOption_OpenDialog | EViewImageLoadOption_DialogTypeFile);
+		m_viewImage.Load(L"", EViewImageLoadOption_Load);
 
 		LockControls(false);
 	}
