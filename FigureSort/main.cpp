@@ -53,11 +53,10 @@ int main()
 		// 화면상에 잘 보이도록 좌표 1.5배율을 적용 // Apply 1.5 magnification to the coordinates so that they can be seen clearly on the screen
 		double f64Scale = 1.5;
 		// 화면상에 잘 보이도록 시점 Offset 조정 // Adjust the viewpoint offset so that it can be seen clearly on the screen
-		double f64OffsetX = 100.;
-		double f64OffsetY = 0.;
+		double f64CenterCoordX = 200.;
+		double f64CenterCoordY = 180.;
 
-		viewImage[0].SetScale(f64Scale);
-		viewImage[0].SetOffset(&CFLPoint<double>(f64OffsetX, f64OffsetY));
+		viewImage[0].SetViewCenterAndScale(CFLPoint<double>(f64CenterCoordX, f64CenterCoordY), f64Scale);
 
 		CFLFigureArray flfaCenterFirst(flfaSource);
 		CFLFigureArray flfaAreaFirst(flfaSource);

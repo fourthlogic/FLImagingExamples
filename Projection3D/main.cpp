@@ -112,7 +112,7 @@ int main()
 		}
 
 		//Source View와 동일한 시점을 유지하기 위해, 이미지의 정중앙을 뷰의 중앙에 맞추고 배율을 1로 설정
-		viewImgDst.MoveCenterImageCoord(CFLPointD(256, 256), 1.0);
+		viewImgDst.SetViewCenterAndScale(CFLPointD(256, 256), 1.0);
 
 		// 이미지 뷰를 갱신 합니다. // Update image view
 		view3DSrc.Invalidate(true);

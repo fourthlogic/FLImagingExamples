@@ -41,10 +41,12 @@ int main()
 			break;
 		}
 
-		// 화면상에 잘 보이도록 좌표 0.5배율을 적용 // Apply the coordinates 0.5 magnification so that it can be seen clearly on the screen
-		viewImage[0].SetScale(0.5);
+		// 화면상에 잘 보이도록 좌표 0.5배율을 적용 // Apply 0.5 magnification to the coordinates so that they can be seen clearly on the screen
+		double f64Scale = 0.5;
 		// 화면상에 잘 보이도록 시점 Offset 조정 // Adjust the viewpoint offset so that it can be seen clearly on the screen
-		viewImage[0].SetOffset(&CFLPoint<double>(-120., -35));
+		double f64CenterCoordX = 737.5;
+		double f64CenterCoordY = 524.5;
+		viewImage[0].SetViewCenterAndScale(CFLPoint<double>(f64CenterCoordX, f64CenterCoordY), f64Scale);
 
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
