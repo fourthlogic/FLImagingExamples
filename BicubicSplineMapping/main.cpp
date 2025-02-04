@@ -64,7 +64,7 @@ int main()
 		// 화면상에 잘 보이도록 좌표 90배율을 적용 // Apply 90 magnification to the coordinates so that they can be seen clearly on the screen
 		double f64Scale = 90;
 		// 화면상에 잘 보이도록 시점 Offset 조정 // Adjust the viewpoint offset so that it can be seen clearly on the screen
-		viewImage[0].SetViewCenterAndScale(CFLPoint<double>(2, 2), f64Scale);
+		viewImage[0].SetViewCenterAndScale(CFLPoint<double>(1.52, 1.50), f64Scale);
 
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
