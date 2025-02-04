@@ -61,7 +61,7 @@ int main()
 			break;
 		}
 
-		// 화면상에 잘 보이도록 좌표 95배율을 적용 // Apply 95 magnification to the coordinates so that they can be seen clearly on the screen
+		// 화면상에 잘 보이도록 좌표 90배율을 적용 // Apply 90 magnification to the coordinates so that they can be seen clearly on the screen
 		double f64Scale = 90;
 		// 화면상에 잘 보이도록 시점 Offset 조정 // Adjust the viewpoint offset so that it can be seen clearly on the screen
 		viewImage[0].SetViewCenterAndScale(CFLPoint<double>(2, 2), f64Scale);
