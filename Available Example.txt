@@ -954,6 +954,9 @@
       - PrewittFilter
         - The example of an algorithm that processes a prewitt differential filter to an image.
         - 이미지에서 프리윗 미분 필터를 처리하는 알고리즘 예제.
+      - RangeFilter
+        - The example of an algorithm that detects image edges through difference between maximum and minimum value.
+        - 최댓값과 최솟값의 차를 통해 이미지 경계를 검출하는 알고리즘 예제
       - RobertsFilter
         - The example of an algorithm that processes a roberts differential filter to an image.
         - 이미지에서 roberts 미분 필터를 처리하는 알고리즘 예제.
