@@ -195,9 +195,9 @@ int main()
 
 		ocrdl.SetLearningAugmentationSpec(&augSpec);
 
-		// 학습을 종료할 조건식 설정. Validation 값들이 1.0 이상인 경우 학습 종료한다.
-		// Set Conditional Expression to End Learning. If the validation values is 1.0 or higher, end the learning.
-		ocrdl.SetLearningStopCondition(L"metric >= 1 & map >= 1");
+		// 학습을 종료할 조건식 설정. Metric 값이 1.0 이상인 경우 학습 종료한다. Metric = (1-NED + mAP) / 2
+		// Set Conditional Expression to End Learning. If the metric value is 1.0 or higher, end the learning. Metric = (1-NED + mAP) / 2
+		ocrdl.SetLearningStopCondition(L"metric >= 1");
 
 		// 자동 저장 옵션 설정 // Set Auto-Save Options
 		CAutoSaveSpec autoSaveSpec;
@@ -206,8 +206,8 @@ int main()
 		autoSaveSpec.EnableAutoSave(true);
 		// 저장할 모델 경로 설정 // Set Model path to save
 		autoSaveSpec.SetAutoSavePath(L"model.flsbocrdl");
-		// 자동 저장 조건식 설정. 현재 1-NED 값이 최대 값인 경우 저장 활성화
-		// Set auto-save conditional expressions. Enable save if the current 1-NED value is the maximum value
+		// 자동 저장 조건식 설정. 현재 Metric 값이 최대 값인 경우 저장 활성화
+		// Set auto-save conditional expressions. Enable save if the current metric value is the maximum value
 		autoSaveSpec.SetAutoSaveCondition(L"epoch >= 10 & metric > max('metric')");
 
 		// 자동 저장 옵션 설정 // Set Auto-Save Options
