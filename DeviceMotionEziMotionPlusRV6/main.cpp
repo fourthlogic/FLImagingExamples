@@ -144,7 +144,7 @@ int main()
 				{
 					Sleep(100);
 				}
-				while(!pDMAxis->IsSearchOrigin());
+				while(pDMAxis->IsSearchOrigin());
 
 				if(!pDMAxis->IsSearchOriginEnd())
 					printf("Failed to search origin position.\n");
@@ -187,7 +187,7 @@ int main()
 					}
 					while(pDMAxis->IsInMotion());
 
-					if(!pDMAxis->GetInposition())
+					if(!pDMAxis->IsMotionDone())
 						printf("Failed to move absolute position.\n");
 					else
 						printf("Successed to move absolute position.\n");
@@ -207,10 +207,10 @@ int main()
 					}
 					while(pDMAxis->IsInMotion());
 
-					if(!pDMAxis->GetInposition())
-						printf("Failed to move incremental position.\n");
+					if(!pDMAxis->IsMotionDone())
+						printf("Failed to move absolute position.\n");
 					else
-						printf("Successed to move incremental position.\n");
+						printf("Successed to move absolute position.\n");
 				}
 			}
 		}
