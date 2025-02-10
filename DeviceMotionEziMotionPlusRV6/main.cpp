@@ -208,9 +208,9 @@ int main()
 					while(pDMAxis->IsInMotion());
 
 					if(!pDMAxis->IsMotionDone())
-						printf("Failed to move absolute position.\n");
+						printf("Failed to move incremental position.\n");
 					else
-						printf("Successed to move absolute position.\n");
+						printf("Successed to move incremental position.\n");
 				}
 			}
 		}
