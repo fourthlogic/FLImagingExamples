@@ -825,6 +825,9 @@
     - DericheEdgeDetector
       - The example of Deriche Edge Detection Algorithm.
       - 데리체 엣지 검출 알고리즘 예제
+    - NonMaximumSuppression
+      - The example of Non Maximum Suppression Algorithm.
+      - 비최대 억제 알고리즘 예제
     - HarrisCornerDetector
       - The example of Harris Corner Detection Algorithm.
       - 해리스 코너 검출 알고리즘 예제
