@@ -49,5 +49,4 @@
 
 
 #include <FLImaging.h>
-#include <Libraries/Includes/FLImagingGUI/GUIViewSNAPWrap.h>
 

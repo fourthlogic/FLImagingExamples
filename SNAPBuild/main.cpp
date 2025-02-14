@@ -1,7 +1,6 @@
 #include <cstdio>
 
 #include <FLImaging.h>
-#include <Libraries/Includes/FLImagingGUI/SNAPBuild.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
