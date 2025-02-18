@@ -185,13 +185,13 @@ int main()
 		augSpec.SetCommonIoUThreshold(0.8);
 		augSpec.SetCommonInterpolationMethod(FLImaging::ImageProcessing::EInterpolationMethod_Bilinear);
 		augSpec.EnableRotation(true);
-		augSpec.SetRotationParam(10., false, false);
+		augSpec.SetRotationParam(-10., 10., false, false);
 
 		augSpec.EnableScale(true);
 		augSpec.SetScaleParam(.8, 1.2, .8, 1.2, false);
 
 		augSpec.EnableTranslation(true);
-		augSpec.SetTranslationParam(.1, .1);
+		augSpec.SetTranslationParam(0., .1, 0., .1);
 
 		ocrdl.SetLearningAugmentationSpec(&augSpec);
 

@@ -193,7 +193,7 @@ int main()
 		augSpec.SetCommonActivationRatio(0.8);
 		augSpec.SetCommonInterpolationMethod(FLImaging::ImageProcessing::EInterpolationMethod_Bilinear);
 		augSpec.EnableRotation(true);
-		augSpec.SetRotationParam(30., true, false);
+		augSpec.SetRotationParam(-30., 30., true, false);
 		augSpec.EnableScale(true);
 		augSpec.SetScaleParam(1., 1.2, 1., 1.2, true);
 		augSpec.EnableHorizontalFlip(true);

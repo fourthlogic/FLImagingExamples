@@ -191,13 +191,13 @@ int main()
 		augSpec.SetCommonInterpolationMethod(EInterpolationMethod_Bilinear);
 
 		augSpec.EnablePerspective(true);
-		augSpec.SetPerspectiveParam(0.1);
+		augSpec.SetPerspectiveParam(0., 0.1);
 
 		augSpec.EnableScale(true);
 		augSpec.SetScaleParam(0.900000, 1.100000, 0.900000, 1.100000, true);
 
 		augSpec.EnablePerspective(true);
-		augSpec.SetPerspectiveParam(0.050000);
+		augSpec.SetPerspectiveParam(0., 0.050000);
 
 		AnomalyDetection.SetLearningAugmentationSpec(&augSpec);
 

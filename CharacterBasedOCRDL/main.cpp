@@ -189,10 +189,10 @@ int main()
 		augSpec.SetCommonActivationRatio(0.5);
 		augSpec.SetCommonInterpolationMethod(FLImaging::ImageProcessing::EInterpolationMethod_Bilinear);
 		augSpec.EnableRotation(true);
-		augSpec.SetRotationParam(45., false);
+		augSpec.SetRotationParam(-45, 45., false);
 
 		augSpec.EnableGaussianNoise(true);
-		augSpec.SetGaussianNoiseParam(0, 0.02);
+		augSpec.SetGaussianNoiseParam(0., 0., .02, .02);
 
 		augSpec.EnableScale(true);
 		augSpec.SetScaleParam(.95, 1.05, .95, 1.05, true);

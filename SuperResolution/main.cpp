@@ -294,7 +294,7 @@ int main()
 		augSpec.SetCommonIoUThreshold(0.000000);
 		augSpec.SetCommonInterpolationMethod(EInterpolationMethod_Bilinear);
 		augSpec.EnableTranslation(true);
-		augSpec.SetTranslationParam(0.1,0.1);
+		augSpec.SetTranslationParam(0., 0.1, 0., 0.1);
 		augSpec.EnableHorizontalFlip(true);
 		augSpec.EnableVerticalFlip(true);
 
