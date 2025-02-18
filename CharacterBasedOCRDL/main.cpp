@@ -192,7 +192,7 @@ int main()
 		augSpec.SetRotationParam(-45, 45., false);
 
 		augSpec.EnableGaussianNoise(true);
-		augSpec.SetGaussianNoiseParam(0., 0., .02, .02);
+		augSpec.SetGaussianNoiseParam(0., 0., 0., .02);
 
 		augSpec.EnableScale(true);
 		augSpec.SetScaleParam(.95, 1.05, .95, 1.05, true);
