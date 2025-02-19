@@ -730,6 +730,10 @@
 - [ImageProcessing]
 
   - [Adjustment]
+    
+    - Contrast
+      - The algorithm example for adjusting image contrast.
+      - 이미지 대비를 조정하는 알고리즘 예제.
 
     - GainOffset
       - The algorithm that transforms image by applying gain and offset.
