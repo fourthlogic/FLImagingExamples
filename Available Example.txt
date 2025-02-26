@@ -984,6 +984,9 @@
       - RobinsonFilter
         - The example of an algorithm that detects image edges
         - Robinson Operator를 사용하여 이미지 경계를 검출하는 알고리즘 예제
+      - ScharrFilter
+        - The example of an algorithm that processes a scharr differential filter to an image.
+        - 이미지에서 scharr 미분 필터를 처리하는 알고리즘 예제.
       - SobelFilter
         - The example of an algorithm that processes a sobel differential filter to an image.
         - 이미지에서 소벨 미분 필터를 처리하는 알고리즘 예제.
