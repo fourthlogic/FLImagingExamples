@@ -49,9 +49,9 @@ int main()
 		// Shape Match 객체 생성 // Create Shape Match object
 		CShapeMatchRectangle shapeMatch;
 
-		// 학습할 타원의 반지름 설정 // Set the radius of the rectangle to learn
+		// 학습할 사각형의 반지름 설정 // Set the radius of the rectangle to learn
 		shapeMatch.SetSize(60, 365);
-		// 학습할 타원의 각도 설정 // Set the angle of the rectangle to learn
+		// 학습할 사각형의 각도 설정 // Set the angle of the rectangle to learn
 		shapeMatch.SetAngle(0);
 
 		// 도형 학습 // Learn shape
