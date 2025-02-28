@@ -1455,6 +1455,9 @@
     - AutoThreshold
       - Algorithm that binarizes images through histogram and gaussian function.
       - 히스토그램과 가우스 함수를 통해 이미지를 이진화하는 알고리즘.
+    - HysteresisThreshold
+      - An algorithm that binarizes an image using global dual thresholds and local connectivity.
+      - 전역 이중 임계값과 지역 연결성을 통해 이미지를 이진화하는 알고리즘
     - IsoDataThreshold
       - Algorithm to calculate global image thresholds using the ISO Data method.
       - Iso Data 방법을 사용하여 전역 이미지 임계값을 계산하는 알고리즘.
@@ -1606,7 +1609,7 @@
         - 한개의 임계값을 통해 유효한 픽셀 갯수를 계산하는 알고리즘.
 
     - ActiveContour
-      - An example algorithm for guiding a figure to align with the detected edges.
+      - An example algorithm for guiding a figure to form a contour along the detected edges.
       - 감지된 엣지들을 따라 Figure 가 contour 를 형성하도록 유도하는 알고리즘 예제.
     - AlignmentTiling 
       - The algorithm example for merging multiple images into one image.
