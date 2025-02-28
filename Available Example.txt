@@ -1605,6 +1605,9 @@
         - Algorithm for calculating the number of valid pixels through one thresholds.
         - 한개의 임계값을 통해 유효한 픽셀 갯수를 계산하는 알고리즘.
 
+    - ActiveContour
+      - An example algorithm for guiding a figure to align with the detected edges.
+      - 감지된 엣지들을 따라 Figure 가 contour 를 형성하도록 유도하는 알고리즘 예제.
     - AlignmentTiling 
       - The algorithm example for merging multiple images into one image.
       - 여러장의 이미지를 하나의 이미지로 병합하는 알고리즘 예제.
