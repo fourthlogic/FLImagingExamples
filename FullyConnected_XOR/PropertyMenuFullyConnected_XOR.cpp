@@ -241,15 +241,19 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuFullyConnectedXOR::T
 
 			COptimizer<float> optm;
 			CLRSConstant<float> lrs;
+			CValidatorForClassifier<float> validator;
 
 			//Optimizer parameter ¼³Á¤
 			lrs.SetLearningRate(f32LearningRate);
 
 			m_pGfCost = &gfCost;
 			m_pGfEvaluation = &gfHypothesis;
+			m_pGfEvaluation->SetID(L"Valid");
+			validator.SetValidationFunctions(&gfPlaceHolderY, m_pGfEvaluation);
 
 			optm.SetLearningRateScheduler(lrs);
 			optm.SetFunction(*m_pGfCost);
+			optm.SetValidator(validator);
 			optm.Initialize();
 			m_pOpt = &optm;
 
