@@ -75,12 +75,17 @@ int main()
 
 		CFL3DObjectHeightMap fl3DOHM;
 
+		// Baseline ROI 생성 // Set the base line of the laser
+		CFLLine<double> fliBaseLine = CFLLine<double>(0, 61, 1216, 61);
+
 		// Source 이미지 설정 // Set the source image
 		LaserTriangulation.SetSourceImage(fliSrcImage);
 		// Destination Height Map 이미지 설정 // Set the destination height map image
 		LaserTriangulation.SetDestinationHeightMapImage(fliDstImage);
 		// Destionation 3D Object 설정 // Set the Destionation 3D Object 
 		LaserTriangulation.SetDestinationObject(fl3DOHM);
+		// Baseline ROI 설정 // Set the base line of the laser
+		LaserTriangulation.SetBaseLine(&fliBaseLine);
 		// Source 이미지 타입 설정 // Set the type of the source image
 		LaserTriangulation.SetSourceType(CLaserTriangulation3D::ESourceType_Image);
 		// Pixel Accuracy 설정 // Set the pixel accuracy
