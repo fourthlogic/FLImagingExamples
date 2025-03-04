@@ -19,7 +19,7 @@ int main()
 
 	do
 	{
-		// 이미지 1 로드 // Load image 1
+		// 이미지 로드 // Load image
 		if((res = fliSourceImage.Load(L"../../ExampleImages/Matching/DrawingImage.flif")).IsFail() ||
 		   (res = fliResultImage.Assign(fliSourceImage)).IsFail())
 		{
@@ -27,7 +27,7 @@ int main()
 			break;
 		}
 
-		// Source 이미지 뷰 생성(이미지 1) // Create the Source image view (Image 1)
+		// Source 이미지 뷰 생성(이미지 1) // Create the Source image view
 		if((res = viewImageSource.Create(0, 0, 600, 600)).IsFail() ||
 		   (res = viewImageResult.Create(600, 0, 1200, 600)).IsFail())
 		{
