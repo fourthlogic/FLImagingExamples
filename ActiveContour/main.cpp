@@ -69,25 +69,29 @@ int main()
 		CActiveContour ac;
 
 		// Source 이미지 설정 // Set source image 
-		ac.SetSourceImage(fliISrcImage);
+		res = ac.SetSourceImage(fliISrcImage);
+
+		// Source ROI 설정 // Set source ROI
+		CFLFigure* pFlfRegion = CFigureUtilities::ConvertFigureStringToObject(L"RG[D(129.22800000000007,126.67680000000001),D(731.22800000000007,120.67680000000001),D(733.22800000000007,262.67680000000001),D(253.22800000000007,246.67680000000001),D(265.22800000000007,600.67679999999996),D(603.22800000000007,594.67679999999996),D(607.22800000000007,400.67680000000001),D(403.22800000000007,396.67680000000001),D(409.22800000000007,448.67680000000001),D(565.22800000000007,450.67680000000001),D(549.22800000000007,556.67679999999996),D(289.22800000000007,558.67679999999996),D(291.22800000000007,292.67680000000001),D(721.22800000000007,294.67680000000001),D(721.22800000000007,720.67679999999996),D(119.22800000000007,718.67679999999996),D(113.22800000000007,142.67680000000001)]");
+		res = ac.SetSourceROI(pFlfRegion);
 
 		// Destination 이미지 설정 // Set destination image
-		ac.SetDestinationImage(fliIDstImage);
+		res = ac.SetDestinationImage(fliIDstImage);
 
 		// Point Count 설정 // Set Point Count
-		ac.SetPointCount(3000);
+		res = ac.SetPointCount(3000);
 
 		// Max Length 설정 // Set Max Length
-		ac.SetMaxLength(3);
+		res = ac.SetMaxLength(3);
 
 		// Low Threshold 설정 // Set Low Threshold
-		ac.SetLowThreshold(20);
+		res = ac.SetLowThreshold(20);
 
 		// High Threshold 설정 // Set High Threshold
-		ac.SetHighThreshold(50);
+		res = ac.SetHighThreshold(50);
 
 		// Fit Margin 설정 // Set Fit Margin
-		ac.SetFitMargin(5);
+		res = ac.SetFitMargin(5);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = ac.Execute()).IsFail())
@@ -96,6 +100,10 @@ int main()
 
 			break;
 		}
+
+		// 이미지 뷰를 갱신 합니다. // Update the image view.
+		viewImage[0].Invalidate(true);
+		viewImage[1].Invalidate(true);
 
 		for(int32_t i32Iteration = 0; i32Iteration < 20; ++i32Iteration)
 		{
@@ -120,8 +128,12 @@ int main()
 				viewImage[0].ClearFigureObject();
 				viewImage[0].PushBackFigureObject(ac.GetContourFigure());
 				viewImage[0].Invalidate(true);
+
+				Sleep(50);
 			}
 		}
+
+		viewImage[0].PushBackFigureObject((CFLFigure*)ac.GetSourceROI());
 
 		// 이미지 뷰 출력 문자열 // image view string
 		Base::CFLString<wchar_t> flsText1 = L"Source Image";
@@ -156,6 +168,8 @@ int main()
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
 		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable())
 			CThreadUtilities::Sleep(1);
+
+		delete pFlfRegion;
 	}
 	while(false);
 
