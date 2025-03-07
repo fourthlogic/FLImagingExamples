@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 
@@ -8,7 +8,7 @@ int main()
 {
 	CResult res = EResult_UnknownError;
 
-	// Á¶¸í ÄÁÆ®·Ñ·¯ WordopPD5_6024 ¼±¾ğ // Declare the WordopPD5_6024 Light Controller
+	// ì¡°ëª… ì»¨íŠ¸ë¡¤ëŸ¬ WordopPD5_6024 ì„ ì–¸ // Declare the WordopPD5_6024 Light Controller
 	CDeviceLightControllerWordopPD5_6024 lightController;
 
 	do
@@ -21,7 +21,7 @@ int main()
 
 		do
 		{
-			// Á¶¸í ÄÁÆ®·Ñ·¯ ¿¬°á ¹æ½ÄÀ» ¼±ÅÃÇÕ´Ï´Ù. // Select the connection method for the light controller.
+			// ì¡°ëª… ì»¨íŠ¸ë¡¤ëŸ¬ ì—°ê²° ë°©ì‹ì„ ì„ íƒí•©ë‹ˆë‹¤. // Select the connection method for the light controller.
 			printf("1. RS232C\n");
 			printf("2. TCP Server\n");
 			printf("3. TCP Client\n");
@@ -60,19 +60,19 @@ int main()
 		else if(i32ConnectionType == 4)
 			eConnectionMethod = CDeviceLightControllerWordopPD5_6024::EConnectionMethod_UDP;
 
-		// ¿¬°á ¹æ½ÄÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the connection method.
+		// ì—°ê²° ë°©ì‹ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the connection method.
 		lightController.SetConnectionMethod(eConnectionMethod);
 
 		if(i32ConnectionType == 1) // RS232C
 		{
-			// ÄÄÆ÷Æ® ¹øÈ£¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Enter the COM port number.
+			// ì»´í¬íŠ¸ ë²ˆí˜¸ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the COM port number.
 			int32_t i32ComPortNumber = 0;
 			printf("Port Number: ");
 			fgetws(arrInput, 4096, stdin);
 			flsInput = arrInput;
 			i32ComPortNumber = flsInput.ToInt32();
 			system("cls");
-			// ÄÄÆ÷Æ® ¹øÈ£ ¼³Á¤ // Set the COM port number.
+			// ì»´í¬íŠ¸ ë²ˆí˜¸ ì„¤ì • // Set the COM port number.
 			lightController.SetConnectionComPortNumber(i32ComPortNumber);
 		}
 		else
@@ -80,20 +80,20 @@ int main()
 			CFLString<wchar_t> flsIPAddress;
 			uint16_t u16Port = 0;
 
-			// IP ¹øÈ£¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Enter the IP address.
+			// IP ë²ˆí˜¸ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the IP address.
 			printf("Input IP Address: ");
 			fgetws(arrInput, 4096, stdin);
 
 			flsIPAddress = arrInput;
 
-			// Port ¹øÈ£¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Enter the port number.
+			// Port ë²ˆí˜¸ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the port number.
 			printf("Port Number: ");
 			fgetws(arrInput, 4096, stdin);
 			system("cls");
 			flsInput = arrInput;
 			u16Port = flsInput.ToInt32();
 
-			// IP ÁÖ¼Ò, Port ¼³Á¤ // Set the IP address and port.
+			// IP ì£¼ì†Œ, Port ì„¤ì • // Set the IP address and port.
 			lightController.SetConnectionIPAddress(flsIPAddress);
 			lightController.SetConnectionPort(u16Port);
 		}
@@ -108,7 +108,7 @@ int main()
 
 		do
 		{
-			// Ã¤³Î °¹¼ö¸¦ ¼±ÅÃÇÕ´Ï´Ù. // Select the number of channels.
+			// ì±„ë„ ê°¯ìˆ˜ë¥¼ ì„ íƒí•©ë‹ˆë‹¤. // Select the number of channels.
 			printf("1. Channel 4\n");
 			printf("2. Channel 8\n");
 			printf("0. Exit\n");
@@ -141,14 +141,14 @@ int main()
 		if(i32Channel == 1)
 			eLightChannel = CDeviceLightControllerWordopPD5_6024::ELightChannel_Port_8;
 
-		// Ã¤³Î °¹¼ö ¼³Á¤ // Set the number of channels.
+		// ì±„ë„ ê°¯ìˆ˜ ì„¤ì • // Set the number of channels.
 		lightController.SetLightChannel(eLightChannel);
 
 		int32_t i32CommuticationType = 0;
 
 		do
 		{
-			// Åë½Å ¹æ½ÄÀ» ¼±ÅÃÇÕ´Ï´Ù. // Select the communication method.
+			// í†µì‹  ë°©ì‹ì„ ì„ íƒí•©ë‹ˆë‹¤. // Select the communication method.
 			printf("1. ASCII Code\n");
 			printf("2. Hexadecimal\n");
 			printf("0. Exit\n");
@@ -181,7 +181,7 @@ int main()
 		if(i32CommuticationType == 2)
 			eCommunicationType = CDeviceLightControllerWordopPD5_6024::ECommunicationType_Hexadecimal;
 
-		// Åë½Å ¹æ½ÄÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the communication type.
+		// í†µì‹  ë°©ì‹ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the communication type.
 		lightController.SetCommunicationType(eCommunicationType);
 
 		int32_t i32TriggerMethod = 0;
@@ -190,7 +190,7 @@ int main()
 		{
 			int32_t i32SelectMode = 0;
 
-			// ÀÛ¾÷ ¸ğµå¸¦ ¼±ÅÃÇÕ´Ï´Ù. // Select the operation mode.
+			// ì‘ì—… ëª¨ë“œë¥¼ ì„ íƒí•©ë‹ˆë‹¤. // Select the operation mode.
 			printf("1. Light On/Off\n");
 			printf("2. Light Value\n");
 			printf("3. Strobe Time\n");
@@ -214,7 +214,7 @@ int main()
 			{
 				do
 				{
-					// Æ®¸®°Å ¹æ½ÄÀ» ¼±ÅÃÇÕ´Ï´Ù. // Select the trigger method.
+					// íŠ¸ë¦¬ê±° ë°©ì‹ì„ ì„ íƒí•©ë‹ˆë‹¤. // Select the trigger method.
 					printf("1. Low Level\n");
 					printf("2. High Level\n");
 					printf("3. Falling Edge\n");
@@ -250,12 +250,12 @@ int main()
 				else if(i32TriggerMethod == 4)
 					eTriggerMethod = CDeviceLightControllerWordopPD5_6024::ETriggerMethod_RisingEdge;
 
-				// Æ®¸®°Å ¹æ½ÄÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the trigger method.
+				// íŠ¸ë¦¬ê±° ë°©ì‹ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the trigger method.
 				lightController.SetTriggerMethod(eTriggerMethod);
 			}
 			else
 			{
-				// ¼³Á¤ÇÒ Ã¤³Î °ªÀ» ÀÔ·ÂÇÕ´Ï´Ù. // Enter the channel value to configure.
+				// ì„¤ì •í•  ì±„ë„ ê°’ì„ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the channel value to configure.
 				printf("Select Channel: ");
 				fgetws(arrInput, 4096, stdin);
 				flsInput = arrInput;
@@ -275,7 +275,7 @@ int main()
 
 					int32_t i32OnOff = flsInput.ToInt32();
 
-					// Ã¤³Îº° On/Off »óÅÂ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the On/Off state for the channel.
+					// ì±„ë„ë³„ On/Off ìƒíƒœë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the On/Off state for the channel.
 					if(i32OnOff == 0)
 						lightController.SetChannelState(i32Channel, true);
 					else if(i32OnOff == 1)
@@ -283,7 +283,7 @@ int main()
 				}
 				else if(i32SelectMode == 2)
 				{
-					// Á¶¸í °ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the light value.
+					// ì¡°ëª… ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the light value.
 					printf("Input Light Value (0 ~ 255): ");
 					fgetws(arrInput, 4096, stdin);
 					flsInput = arrInput;
@@ -294,7 +294,7 @@ int main()
 				}
 				else if(i32SelectMode == 3)
 				{
-					// ½ºÅä·Îºê Å¸ÀÓÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the strobe time.
+					// ìŠ¤í† ë¡œë¸Œ íƒ€ì„ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the strobe time.
 					printf("Input Strobe Time (1 ~ 999 ms): ");
 					fgetws(arrInput, 4096, stdin);
 					flsInput = arrInput;
@@ -305,7 +305,7 @@ int main()
 				}
 			}
 
-			// ÀÔ·ÂµÈ ÆÄ¶ó¹ÌÅÍ¸¦ Àû¿ëÇÕ´Ï´Ù. // Apply the configured parameters.
+			// ì…ë ¥ëœ íŒŒë¼ë¯¸í„°ë¥¼ ì ìš©í•©ë‹ˆë‹¤. // Apply the configured parameters.
 			lightController.Apply();
 		}
 
@@ -314,7 +314,7 @@ int main()
 	}
 	while(false);
 
-	// Á¶¸í ÄÁÆ®·Ñ·¯¿¡ ¿¬°áÀ» Á¾·áÇÕ´Ï´Ù. // Terminate the connection to the light controller.
+	// ì¡°ëª… ì»¨íŠ¸ë¡¤ëŸ¬ì— ì—°ê²°ì„ ì¢…ë£Œí•©ë‹ˆë‹¤. // Terminate the connection to the light controller.
 	if(IsFail(res = lightController.Terminate()))
 	{
 		ErrorPrint(res, "Failed to terminate the motion.\n");

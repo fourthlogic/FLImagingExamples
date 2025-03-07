@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
@@ -9,7 +9,7 @@ int main()
 	CFLImage fliDstImage;
 	CFLImage fliTxtImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSrc;
 	CGUIViewImageWrap viewImageCal;
 	CGUIViewImageWrap viewImageTxt;
@@ -17,10 +17,10 @@ int main()
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult res = EResult_UnknownError;
 
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = fliSrcImage.Load(L"../../ExampleImages/PhotometricStereo3D/Source.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -29,21 +29,21 @@ int main()
 
 		fliSrcImage.SelectPage(0);
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create the source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create the source image view
 		if((res = viewImageSrc.Create(100, 0, 498, 398)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if((res = viewImageSrc.SetImagePtr(&fliSrcImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Calibration ÀÌ¹ÌÁö ·Îµå // Load the calibration image
+		// Calibration ì´ë¯¸ì§€ ë¡œë“œ // Load the calibration image
 		if((res = fliCalImage.Load(L"../../ExampleImages/PhotometricStereo3D/Calibrate.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -52,56 +52,56 @@ int main()
 
 		fliCalImage.SelectPage(0);
 
-		// Calibration ÀÌ¹ÌÁö ºä »ı¼º // Create the calibration image view
+		// Calibration ì´ë¯¸ì§€ ë·° ìƒì„± // Create the calibration image view
 		if((res = viewImageCal.Create(498, 0, 896, 398)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Calibration ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the calibration image view
+		// Calibration ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the calibration image view
 		if((res = viewImageCal.SetImagePtr(&fliCalImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if((res = viewImageTxt.Create(100, 398, 498, 796)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if((res = viewImageTxt.SetImagePtr(&fliTxtImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination 3D ÀÌ¹ÌÁö ºä »ı¼º // Create the destination 3D image view
+		// Destination 3D ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination 3D image view
 		if((res = view3DDst.Create(896, 0, 1692, 769)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSrc.SynchronizeWindow(&viewImageCal)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSrc.SynchronizeWindow(&viewImageTxt)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSrc.SynchronizeWindow(&view3DDst)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
@@ -110,60 +110,60 @@ int main()
 
 		viewImageSrc.SetFixThumbnailView(true);
 
-		// PhotometricStereo °´Ã¼ »ı¼º // Create PhotometricStereo object
+		// PhotometricStereo ê°ì²´ ìƒì„± // Create PhotometricStereo object
 		CPhotometricStereo3D photometric;
 
 		CFL3DObjectHeightMap fl3DOHM;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		photometric.SetSourceImage(fliSrcImage);
-		// Calibration ÀÌ¹ÌÁö ¼³Á¤ // Set the calibration image
+		// Calibration ì´ë¯¸ì§€ ì„¤ì • // Set the calibration image
 		photometric.SetCalibrationImage(fliCalImage);
-		// Destination Height Map ÀÌ¹ÌÁö ¼³Á¤ // Set the destination height map image
+		// Destination Height Map ì´ë¯¸ì§€ ì„¤ì • // Set the destination height map image
 		photometric.SetDestinationHeightMapImage(fliDstImage);
-		// Destination Texture ÀÌ¹ÌÁö ¼³Á¤ // Set the destination texture image
+		// Destination Texture ì´ë¯¸ì§€ ì„¤ì • // Set the destination texture image
 		photometric.SetDestinationTextureImage(fliTxtImage);
-		// Destination 3D Object ¼³Á¤ // Set the destination 3D object 
+		// Destination 3D Object ì„¤ì • // Set the destination 3D object 
 		photometric.SetDestinationObject(fl3DOHM);
-		// Calibration µ¥ÀÌÅÍ ¼³Á¤ // Set Calibration Settings
+		// Calibration ë°ì´í„° ì„¤ì • // Set Calibration Settings
 		photometric.SetCalibrationCircleROI(CFLCircle<double>(386.439657, 346.491239, 259.998140, 0.000000, 0.000000, 360.000000, EArcClosingMethod_EachOther));
-		// µ¿ÀÛ ¹æ½Ä ¼³Á¤ // Set operation mode
+		// ë™ì‘ ë°©ì‹ ì„¤ì • // Set operation mode
 		photometric.SetReconstructionMode(CPhotometricStereo3D::EReconstructionMode_Poisson_FP32);
 
 		CMatrix<double> cmatdTemp(3, 3);
 
-		// Angle Degrees µ¿ÀÛ ¹æ½ÄÀ¸·Î ¼³Á¤ // Set operation method as angle degrees
+		// Angle Degrees ë™ì‘ ë°©ì‹ìœ¼ë¡œ ì„¤ì • // Set operation method as angle degrees
 		photometric.SetLightAngleDegrees(cmatdTemp);
 
-		// ¾Ë°í¸®Áò Calibration ½ÇÇà // Execute calibration of the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ Calibration ì‹¤í–‰ // Execute calibration of the algorithm
 		if((res = photometric.Calibrate()).IsFail())
 		{
 			ErrorPrint(res, "Failed to calibrate algorithm.\n");
 			break;
 		}
 
-		// Calibrate µÈ Angle Degree µ¥ÀÌÅÍ ÀúÀå // Save calibrated angle degree data
+		// Calibrate ëœ Angle Degree ë°ì´í„° ì €ì¥ // Save calibrated angle degree data
 		CMultiVar<double> cmvdSlant;
 		CMultiVar<double> cmvdTilt;
 
 		photometric.GetLightAngleDegrees(cmvdSlant, cmvdTilt);
 
-		// À§Ä¡ µ¥ÀÌÅÍ µ¿ÀÛ ¹æ½ÄÀ¸·Î ¼³Á¤ // Set operation method as positions
+		// ìœ„ì¹˜ ë°ì´í„° ë™ì‘ ë°©ì‹ìœ¼ë¡œ ì„¤ì • // Set operation method as positions
 		photometric.SetLightPositions(cmatdTemp);
 
-		// ¾Ë°í¸®Áò Calibration ½ÇÇà // Execute calibration of the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ Calibration ì‹¤í–‰ // Execute calibration of the algorithm
 		if((res = photometric.Calibrate()).IsFail())
 		{
 			ErrorPrint(res, "Failed to calibrate algorithm.\n");
 			break;
 		}
 
-		// Calibrate µÈ À§Ä¡ µ¥ÀÌÅÍ ÀúÀå // Save calibrated position data
+		// Calibrate ëœ ìœ„ì¹˜ ë°ì´í„° ì €ì¥ // Save calibrated position data
 		CMatrix<double> cmatdPosition;
 
 		photometric.GetLightPositions(cmatdPosition);
 
-		// Calibrate¸¦ ½ÇÇàÇÑ °á°ú¸¦ ConsoleÃ¢¿¡ Ãâ·ÂÇÕ´Ï´Ù. // Output the calibration result to the console window.
+		// Calibrateë¥¼ ì‹¤í–‰í•œ ê²°ê³¼ë¥¼ Consoleì°½ì— ì¶œë ¥í•©ë‹ˆë‹¤. // Output the calibration result to the console window.
 		int32_t i32CalibPageNum = fliCalImage.GetPageCount();
 
 		printf(" < Calibration Angle - Degrees >\n");
@@ -173,44 +173,44 @@ int main()
 
 		printf("\n");
 
-		// ±âÇÏÇĞÀû ÆĞÅÏ °ËÃâ °á°ú¸¦ ConsoleÃ¢¿¡ Ãâ·ÂÇÕ´Ï´Ù. // Output the geometric pattern detection result to the console window.
+		// ê¸°í•˜í•™ì  íŒ¨í„´ ê²€ì¶œ ê²°ê³¼ë¥¼ Consoleì°½ì— ì¶œë ¥í•©ë‹ˆë‹¤. // Output the geometric pattern detection result to the console window.
 		printf(" < Calibration Angle - Degrees >\n");
 
 		for(int i = 0; i < i32CalibPageNum; i++)
 			printf("Image %d ->\tX: %0.7lf\tY: %0.7lf \tZ: %0.7lf\n", i, *cmatdPosition.GetValue(i, 0), *cmatdPosition.GetValue(i, 1), *cmatdPosition.GetValue(i, 2));
 
-		// ¾Ë°í¸®Áò ½ÇÇà // Execute algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ì‹¤í–‰ // Execute algorithm
 		if((res = photometric.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to calibrate algorithm.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if((res = viewImageTxt.ZoomFit()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to zoom fit of the image view.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSrc = viewImageSrc.GetLayer(0);
 		CGUIViewImageLayerWrap layerCal = viewImageCal.GetLayer(0);
 		CGUIViewImageLayerWrap layerTxt = viewImageTxt.GetLayer(0);
 		CGUIView3DLayerWrap layer3D = view3DDst.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSrc.Clear();
 		layerCal.Clear();
 		layerTxt.Clear();
 		layer3D.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((res = layerSrc.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
@@ -231,7 +231,7 @@ int main()
 			break;
 		}
 
-		// 3D View Á¤º¸ µğ½ºÇÊ·¹ÀÌ // Display 3D view information
+		// 3D View ì •ë³´ ë””ìŠ¤í•„ë ˆì´ // Display 3D view information
 		float f32CenterX = (float)fliSrcImage.GetWidth() / 2;
 		float f32CenterY = (float)fliSrcImage.GetHeight() / 2;
 		float f32CenterZ = (float)fliDstImage.GetBuffer()[(long)(f32CenterY * fliSrcImage.GetWidth() + f32CenterX)];
@@ -256,12 +256,12 @@ int main()
 			view3DDst.PushObject(cgui3dlineTemp);
 		}
 
-		// Height Map¿¡ Texture Image ¼³Á¤
+		// Height Mapì— Texture Image ì„¤ì •
 		CFL3DObjectHeightMap* pFl3DOHM = dynamic_cast<CFL3DObjectHeightMap*>(photometric.GetDestinationObject());
 		pFl3DOHM->SetTextureImage(fliTxtImage);
 		pFl3DOHM->ActivateVertexColorTexture(false);
 
-		// 3D ÀÌ¹ÌÁö ºä¿¡ Height Map (Destination Image) ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the Height Map (Destination Image) on the 3D image view
+		// 3D ì´ë¯¸ì§€ ë·°ì— Height Map (Destination Image) ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the Height Map (Destination Image) on the 3D image view
 		if((res = view3DDst.PushObject(*pFl3DOHM)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
@@ -270,13 +270,13 @@ int main()
 
 		view3DDst.ZoomFit();
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSrc.Invalidate(true);
 		viewImageTxt.Invalidate(true);
 		viewImageCal.Invalidate(true);
 		view3DDst.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä, 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image and 3D view to close
+		// ì´ë¯¸ì§€ ë·°, 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image and 3D view to close
 		while(viewImageSrc.IsAvailable() && viewImageTxt.IsAvailable() && viewImageCal.IsAvailable() && view3DDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,34 +1,34 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main() {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSourceImage;
 	CFLImage fliOperandImage1;
 	CFLImage fliOperandImage2;
 	CFLImage fliDestinationImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSource;
 	CGUIViewImageWrap viewImageOperand1;
 	CGUIViewImageWrap viewImageOperand2;
 	CGUIViewImageWrap viewImageDestination;
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = fliSourceImage.Load(L"../../ExampleImages/OperationLinear/Space.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Operand1 ÀÌ¹ÌÁö ·Îµå // Loads the operand image
+		// Operand1 ì´ë¯¸ì§€ ë¡œë“œ // Loads the operand image
 		if((res = fliOperandImage1.Load(L"../../ExampleImages/OperationLinear/circle.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
@@ -41,118 +41,118 @@ int main() {
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ·Îµå // Loads the destination image
+		// Destination ì´ë¯¸ì§€ ë¡œë“œ // Loads the destination image
 		if((res = fliDestinationImage.Create(250, 250)).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if((res = viewImageSource.Create(100, 0, 400, 300)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Operand1 ÀÌ¹ÌÁö ºä »ı¼º // Creates operand image view
+		// Operand1 ì´ë¯¸ì§€ ë·° ìƒì„± // Creates operand image view
 		if((res = viewImageOperand1.Create(400, 0, 700, 300)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Operand2 ÀÌ¹ÌÁö ºä »ı¼º // Creates operand image view
+		// Operand2 ì´ë¯¸ì§€ ë·° ìƒì„± // Creates operand image view
 		if((res = viewImageOperand2.Create(700, 0, 1000, 300)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination image view
 		if((res = viewImageDestination.Create(1000, 0, 1300, 300)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿Í Operand1 ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the source view and the operand view
+		// Source ì´ë¯¸ì§€ ë·°ì™€ Operand1 ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the source view and the operand view
 		if((res = viewImageSource.SynchronizePointOfView(&viewImageOperand1)).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿Í Operand2 ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the source view and the operand view
+		// Source ì´ë¯¸ì§€ ë·°ì™€ Operand2 ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the source view and the operand view
 		if((res = viewImageSource.SynchronizePointOfView(&viewImageOperand2)).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿Í Destination ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the source view and the destination view
+		// Source ì´ë¯¸ì§€ ë·°ì™€ Destination ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the source view and the destination view
 		if((res = viewImageSource.SynchronizePointOfView(&viewImageDestination)).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if((res = viewImageSource.SetImagePtr(&fliSourceImage)).IsFail())
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Operand1 ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the operand image view
+		// Operand1 ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the operand image view
 		if((res = viewImageOperand1.SetImagePtr(&fliOperandImage1)).IsFail())
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Operand2 ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the operand image view
+		// Operand2 ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the operand image view
 		if((res = viewImageOperand2.SetImagePtr(&fliOperandImage2)).IsFail())
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if((res = viewImageDestination.SetImagePtr(&fliDestinationImage)).IsFail())
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSource.SynchronizeWindow(&viewImageOperand1)).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSource.SynchronizeWindow(&viewImageOperand2)).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSource.SynchronizeWindow(&viewImageDestination)).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// Operation Linear °´Ã¼ »ı¼º // Create Operation Linear object
+		// Operation Linear ê°ì²´ ìƒì„± // Create Operation Linear object
 		COperationLinear linear;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		linear.SetSourceImage(fliSourceImage);
 
-		// Operand ÀÌ¹ÌÁö ¼³Á¤ // Set the operand image
+		// Operand ì´ë¯¸ì§€ ì„¤ì • // Set the operand image
 		linear.SetOperandImage(fliOperandImage1);
 		linear.SetOperandImage2(fliOperandImage2);
 
@@ -160,37 +160,37 @@ int main() {
 		linear.SetOperationOrder(EOperationOrder_CoefficientConstant);
 		linear.SetOverflowMethod(EOverflowMethod_Wrapping);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		linear.SetDestinationImage(fliDestinationImage);
 
-		// Image Operation ¼Ò½º·Î ¼³Á¤ // Set Operation Source to image
+		// Image Operation ì†ŒìŠ¤ë¡œ ì„¤ì • // Set Operation Source to image
 		linear.SetOperationSource(EOperationSource_Image);
 
-		// °ø¹é »ö»ó Ä¥ÇÏ±â ¸ğµå ÇØÁ¦ // Set the Fill blank color mode false
-		// °á°ú ÀÌ¹ÌÁö°¡ ÀÌ¹Ì Á¸ÀçÇÒ °æ¿ì ¿¬»êµÇÁö ¾ÊÀº ¿µ¿ªÀ» °ø¹é »ö»óÀ¸·Î Ä¥ÇÏÁö ¾Ê°í ¿øº» ±×´ë·Î µĞ´Ù. // If the destination image already exists, the uncomputed area is left intact without being painted in a blank color.
+		// ê³µë°± ìƒ‰ìƒ ì¹ í•˜ê¸° ëª¨ë“œ í•´ì œ // Set the Fill blank color mode false
+		// ê²°ê³¼ ì´ë¯¸ì§€ê°€ ì´ë¯¸ ì¡´ì¬í•  ê²½ìš° ì—°ì‚°ë˜ì§€ ì•Šì€ ì˜ì—­ì„ ê³µë°± ìƒ‰ìƒìœ¼ë¡œ ì¹ í•˜ì§€ ì•Šê³  ì›ë³¸ ê·¸ëŒ€ë¡œ ë‘”ë‹¤. // If the destination image already exists, the uncomputed area is left intact without being painted in a blank color.
 		linear.EnableFillBlankColorMode(false);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = linear.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute operation Linear.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 		CGUIViewImageLayerWrap layerOperand1 = viewImageOperand1.GetLayer(0);
 		CGUIViewImageLayerWrap layerOperand2 = viewImageOperand2.GetLayer(0);
 		CGUIViewImageLayerWrap layerDestination = viewImageDestination.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSource.Clear();
 		layerOperand1.Clear();
 		layerOperand2.Clear();
 		layerDestination.Clear();
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if((res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
@@ -215,13 +215,13 @@ int main() {
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  // Update image view
 		viewImageSource.Invalidate(true);
 		viewImageOperand1.Invalidate(true);
 		viewImageOperand2.Invalidate(true);
 		viewImageDestination.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSource.IsAvailable() && viewImageOperand1.IsAvailable() && viewImageOperand2.IsAvailable() && viewImageDestination.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

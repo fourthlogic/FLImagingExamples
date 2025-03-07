@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,14 +6,14 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage[2];
 
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[0].Create(400, 0, 912, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -26,21 +26,21 @@ int main()
 			break;
 		}
 
-		// SourceView, DstView ÀÇ 0¹ø ·¹ÀÌ¾î °¡Á®¿À±â // Get Layer 0 of SourceView, DstView
+		// SourceView, DstView ì˜ 0ë²ˆ ë ˆì´ì–´ ê°€ì ¸ì˜¤ê¸° // Get Layer 0 of SourceView, DstView
 		CGUIViewImageLayerWrap SrcLayer0 = viewImage[0].GetLayer(0);
 		CGUIViewImageLayerWrap DstLayer0 = viewImage[1].GetLayer(0);
 
 		SrcLayer0.DrawTextCanvas(TPointD(0, 0), L"Figure To Save", YELLOW, BLACK, 15);
 		DstLayer0.DrawTextCanvas(TPointD(0, 0), L"Loaded Figure", YELLOW, BLACK, 15);
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
@@ -48,7 +48,7 @@ int main()
 		}
 
 		//////// Save
-		// Figure »ı¼º // Create figure
+		// Figure ìƒì„± // Create figure
 		CFLRect<double> flr(50, 50, 100, 100);
 
 		CFLCircle<double> flc(150., 100., 30., 0., 0., 80., EArcClosingMethod_Center);
@@ -69,36 +69,36 @@ int main()
 		strFigure.Format(L"Figure Array : %s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flfa).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
-		// SourceViewÀÇ 0¹ø ·¹ÀÌ¾î¿¡ ±×¸®±â // Draw on Layer 0 of SourceView
+		// SourceViewì˜ 0ë²ˆ ë ˆì´ì–´ì— ê·¸ë¦¬ê¸° // Draw on Layer 0 of SourceView
 		SrcLayer0.DrawFigureImage(flr, RED);
 		SrcLayer0.DrawFigureImage(flfa, BLUE);
 
-		// °æ·Î ¾øÀÌ ÆÄÀÏ¸í¸¸ ³Ö°í ÀúÀåÇÏ´Â °Íµµ °¡´É // It is also possible to put only the file name without path and save it
+		// ê²½ë¡œ ì—†ì´ íŒŒì¼ëª…ë§Œ ë„£ê³  ì €ì¥í•˜ëŠ” ê²ƒë„ ê°€ëŠ¥ // It is also possible to put only the file name without path and save it
 		flr.Save(L"FLRect.fig");
 
-		// È®ÀåÀÚ¸í ¾øÀÌ ÀúÀåÇÏ´Â °Íµµ °¡´É // It is also possible to save without an extension name
+		// í™•ì¥ìëª… ì—†ì´ ì €ì¥í•˜ëŠ” ê²ƒë„ ê°€ëŠ¥ // It is also possible to save without an extension name
 		res = flfa.Save(L"FigureArray");
 
 		//////// Load
-		// ´Ù¸¥ DeclType ÀÎ ÆÄÀÏÀ» LoadÇÒ °æ¿ì ¹İÈ¯°ªÀÌ EResult_OK °¡ ¾Æ´Ñ ´Ù¸¥ ¹İÈ¯°ªÀ» ¹İÈ¯
+		// ë‹¤ë¥¸ DeclType ì¸ íŒŒì¼ì„ Loadí•  ê²½ìš° ë°˜í™˜ê°’ì´ EResult_OK ê°€ ì•„ë‹Œ ë‹¤ë¥¸ ë°˜í™˜ê°’ì„ ë°˜í™˜
 		// When loading a file with a different DeclType, return value other than EResult_OK is returned
 		CFLRect<double> flrLoad;
 
-		// Rect ¿¡ FigureArray ·ÎµåÇßÀ¸¹Ç·Î ½ÇÆĞ // Failed because we loaded FigureArray into Rect
+		// Rect ì— FigureArray ë¡œë“œí–ˆìœ¼ë¯€ë¡œ ì‹¤íŒ¨ // Failed because we loaded FigureArray into Rect
 		res = flrLoad.Load(L"FigureArray");
 
-		// Rect ¿¡ Rect ÆÄÀÏÀ» ·ÎµåÇßÀ¸¹Ç·Î ÆÄÀÏÀ» ·ÎµåÇßÀ¸¹Ç·Î ¼º°ø EResult_OK ¹İÈ¯
+		// Rect ì— Rect íŒŒì¼ì„ ë¡œë“œí–ˆìœ¼ë¯€ë¡œ íŒŒì¼ì„ ë¡œë“œí–ˆìœ¼ë¯€ë¡œ ì„±ê³µ EResult_OK ë°˜í™˜
 		// Loaded the Rect file into Rect, so we loaded the file, so return EResult_OK
 		res = flrLoad.Load(L"FLRect");
 
-		// ´Ù¸¥ DeclType ÀÎ ÆÄÀÏÀ» LoadÇÒ °æ¿ì ¹İÈ¯°ªÀÌ EResult_OK °¡ ¾Æ´Ñ ´Ù¸¥ ¹İÈ¯°ªÀ» ¹İÈ¯
+		// ë‹¤ë¥¸ DeclType ì¸ íŒŒì¼ì„ Loadí•  ê²½ìš° ë°˜í™˜ê°’ì´ EResult_OK ê°€ ì•„ë‹Œ ë‹¤ë¥¸ ë°˜í™˜ê°’ì„ ë°˜í™˜
 		// When loading a file with a different DeclType, return value other than EResult_OK is returned
 		CFLFigureArray flfaLoad;
 
-		// FigureArray ¿¡ Rect ÆÄÀÏÀ» ·ÎµåÇßÀ¸¹Ç·Î ½ÇÆĞ // Failed because Rect file was loaded into FigureArray
+		// FigureArray ì— Rect íŒŒì¼ì„ ë¡œë“œí–ˆìœ¼ë¯€ë¡œ ì‹¤íŒ¨ // Failed because Rect file was loaded into FigureArray
 		res = flfaLoad.Load(L"FLRect");
 
-		// FigureArray ¿¡ FigureArray ÆÄÀÏÀ» ·ÎµåÇßÀ¸¹Ç·Î ¼º°ø EResult_OK ¹İÈ¯
+		// FigureArray ì— FigureArray íŒŒì¼ì„ ë¡œë“œí–ˆìœ¼ë¯€ë¡œ ì„±ê³µ EResult_OK ë°˜í™˜
 		// Success returned EResult_OK because FigureArray file was loaded into FigureArray
 		res = flfaLoad.Load(L"FigureArray");
 
@@ -110,15 +110,15 @@ int main()
 		strFigure.Format(L"Figure Array : %s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flfaLoad).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
-		// DestinationViewÀÇ 0¹ø ·¹ÀÌ¾î¿¡ ±×¸®±â // Draw on Layer 0 of DestinationView
+		// DestinationViewì˜ 0ë²ˆ ë ˆì´ì–´ì— ê·¸ë¦¬ê¸° // Draw on Layer 0 of DestinationView
 		DstLayer0.DrawFigureImage(flrLoad, MAGENTA);
 		DstLayer0.DrawFigureImage(flfaLoad, LIME);
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage[0].Invalidate(true);
 		viewImage[1].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

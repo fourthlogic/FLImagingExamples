@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -7,7 +7,7 @@ int main()
 {
 	CResult res;
 
-	// Axl DIO ÀåÄ¡¸¦ ¼±¾ğ // Declare Axl DIO device
+	// Axl DIO ì¥ì¹˜ë¥¼ ì„ ì–¸ // Declare Axl DIO device
 	CDeviceDIOAxl devDIO;
 
 	do
@@ -15,7 +15,7 @@ int main()
 		wchar_t arrInput[4096] = { 0, };
 		CFLString<wchar_t> flsInput = L"";
 
-		// DIO ÀåÄ¡¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù. // Initialize the DIO device.
+		// DIO ì¥ì¹˜ë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤. // Initialize the DIO device.
 		if((res = devDIO.Initialize()).IsFail())
 		{
  			ErrorPrint(res, L"Failed to initialize the device.");
@@ -24,7 +24,7 @@ int main()
 
 		while(true)
 		{
-			// »ç¿ëÇÒ ±â´ÉÀ» ¼±ÅÃÇÕ´Ï´Ù. // Select the features you want to use.
+			// ì‚¬ìš©í•  ê¸°ëŠ¥ì„ ì„ íƒí•©ë‹ˆë‹¤. // Select the features you want to use.
 			printf("1. Read input\n");
 			printf("2. Read output\n");
 			printf("3. Write input\n");
@@ -40,7 +40,7 @@ int main()
 			case 1:
 			case 2:
 				{
-					// Bit ¸¦ ÀÔ·Â ¹Ş½À´Ï´Ù. // Enter Bit.
+					// Bit ë¥¼ ì…ë ¥ ë°›ìŠµë‹ˆë‹¤. // Enter Bit.
 					printf("Bit input: ");
 					fgetws(arrInput, 4096, stdin);
 
@@ -49,7 +49,7 @@ int main()
 
 					bool bReadStatus = false;
 
-					// Bit ÀÇ »óÅÂ¸¦ ÀĞ½À´Ï´Ù. // Read Bit status.
+					// Bit ì˜ ìƒíƒœë¥¼ ì½ìŠµë‹ˆë‹¤. // Read Bit status.
 					if(i32Select == 1)
 						bReadStatus = devDIO.ReadInBit(i32Bit);
 					else 
@@ -62,14 +62,14 @@ int main()
 			case 3:
 			case 4:
 				{
-					// Bit ¸¦ ÀÔ·Â ¹Ş½À´Ï´Ù. // Enter Bit.
+					// Bit ë¥¼ ì…ë ¥ ë°›ìŠµë‹ˆë‹¤. // Enter Bit.
 					printf("Bit input: ");
 					fgetws(arrInput, 4096, stdin);
 
 					flsInput = arrInput;
 					int32_t i32Bit = flsInput.ToInt32();
 
-					// »óÅÂ¸¦ ÀÔ·Â ¹Ş½À´Ï´Ù. // Enter status.
+					// ìƒíƒœë¥¼ ì…ë ¥ ë°›ìŠµë‹ˆë‹¤. // Enter status.
 					printf("Status input: ");
 					fgetws(arrInput, 4096, stdin);
 					
@@ -80,7 +80,7 @@ int main()
 					if(flsInput.ToInt32())
 						bWriteStatus = true;
 
-					// Bit ¿¡ »óÅÂ¸¦ ±â·ÏÇÕ´Ï´Ù. // Write the status in Bit.
+					// Bit ì— ìƒíƒœë¥¼ ê¸°ë¡í•©ë‹ˆë‹¤. // Write the status in Bit.
 					if(i32Select == 3)
 						res = devDIO.WriteInBit(i32Bit, bWriteStatus);
 					else
@@ -101,7 +101,7 @@ int main()
 	}
 	while(false);
 
-	// DIO ÀåÄ¡ÀÇ ÃÊ±âÈ­¸¦ ÇØÁ¦ÇÕ´Ï´Ù. // Terminate the DIO device.
+	// DIO ì¥ì¹˜ì˜ ì´ˆê¸°í™”ë¥¼ í•´ì œí•©ë‹ˆë‹¤. // Terminate the DIO device.
 	devDIO.Terminate();
 
 	if(res.IsFail())

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PropertyMenuDialogProgressExample.h"
 
 using namespace FLImaging;
@@ -10,89 +10,89 @@ namespace FLImaging
 {
 	namespace GUI
 	{
-		// º¹ÀâÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ·¹ÀÌ¾Æ¿ôÀÇ row ÀÎµ¦½º
+		// ë³µì¡í•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë ˆì´ì•„ì›ƒì˜ row ì¸ë±ìŠ¤
 		enum class ERowLayout : int32_t
 		{
-			Main = 0,           // Main ·¹ÀÌ¾Æ¿ô
-			Button = 4,         // Button ·¹ÀÌ¾Æ¿ô
-			Details = 0,        // Details ·¹ÀÌ¾Æ¿ô
+			Main = 0,           // Main ë ˆì´ì•„ì›ƒ
+			Button = 4,         // Button ë ˆì´ì•„ì›ƒ
+			Details = 0,        // Details ë ˆì´ì•„ì›ƒ
 
-			Count = 5,          // Çà °³¼ö
+			Count = 5,          // í–‰ ê°œìˆ˜
 		};
 
-		// º¹ÀâÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ·¹ÀÌ¾Æ¿ôÀÇ col ÀÎµ¦½º
+		// ë³µì¡í•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë ˆì´ì•„ì›ƒì˜ col ì¸ë±ìŠ¤
 		enum class EColLayout : int32_t
 		{
-			Main = 0,           // Main ·¹ÀÌ¾Æ¿ô
-			Button = 0,         // Button ·¹ÀÌ¾Æ¿ô
-			Details = 1,        // Details ·¹ÀÌ¾Æ¿ô
+			Main = 0,           // Main ë ˆì´ì•„ì›ƒ
+			Button = 0,         // Button ë ˆì´ì•„ì›ƒ
+			Details = 1,        // Details ë ˆì´ì•„ì›ƒ
 
-			Count = 2,          // ÄÃ·³ °³¼ö
+			Count = 2,          // ì»¬ëŸ¼ ê°œìˆ˜
 		};
 
-		// º¹ÀâÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ¸ŞÀÎ ±×¸®µå ³»ºÎ ÄÁÆ®·ÑÀÇ row ÀÎµ¦½º
+		// ë³µì¡í•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë©”ì¸ ê·¸ë¦¬ë“œ ë‚´ë¶€ ì»¨íŠ¸ë¡¤ì˜ row ì¸ë±ìŠ¤
 		enum class ERowMainComplex : int32_t
 		{
-			Message = 0,        // ¸Ş¼¼Áö
-			ProgressCtrl = 3,   // ÇÁ·Î±×·¹½º ¹Ù
-			ElapsedTime = 4,    // ½Ã°£
+			Message = 0,        // ë©”ì„¸ì§€
+			ProgressCtrl = 3,   // í”„ë¡œê·¸ë ˆìŠ¤ ë°”
+			ElapsedTime = 4,    // ì‹œê°„
 
-			Count = 5,          // Çà °³¼ö
+			Count = 5,          // í–‰ ê°œìˆ˜
 		};
 
-		// º¹ÀâÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ¸ŞÀÎ ±×¸®µå ³»ºÎ ÄÁÆ®·ÑÀÇ col ÀÎµ¦½º
+		// ë³µì¡í•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë©”ì¸ ê·¸ë¦¬ë“œ ë‚´ë¶€ ì»¨íŠ¸ë¡¤ì˜ col ì¸ë±ìŠ¤
 		enum class EColMainComplex : int32_t
 		{
-			Message = 1,        // ¸Ş¼¼Áö
-			ProgressCtrl = 1,   // ÇÁ·Î±×·¹½º ¹Ù
-			ElapsedTime = 1,    // ½Ã°£
+			Message = 1,        // ë©”ì„¸ì§€
+			ProgressCtrl = 1,   // í”„ë¡œê·¸ë ˆìŠ¤ ë°”
+			ElapsedTime = 1,    // ì‹œê°„
 
-			Count = 6,          // ÄÃ·³ °³¼ö
+			Count = 6,          // ì»¬ëŸ¼ ê°œìˆ˜
 		};
 
-		// ´Ü¼øÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ¸ŞÀÎ ±×¸®µå ³»ºÎ ÄÁÆ®·ÑÀÇ row ÀÎµ¦½º
+		// ë‹¨ìˆœí•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë©”ì¸ ê·¸ë¦¬ë“œ ë‚´ë¶€ ì»¨íŠ¸ë¡¤ì˜ row ì¸ë±ìŠ¤
 		enum class ERowMainSimple : int32_t
 		{
-			Message = 0,       // ¸Ş¼¼Áö
-			ProgressCtrl = 2,  // ÇÁ·Î±×·¹½º ¹Ù
-			ElapsedTime = 3,   // ½Ã°£
+			Message = 0,       // ë©”ì„¸ì§€
+			ProgressCtrl = 2,  // í”„ë¡œê·¸ë ˆìŠ¤ ë°”
+			ElapsedTime = 3,   // ì‹œê°„
 
-			Count = 4,         // Çà °³¼ö
+			Count = 4,         // í–‰ ê°œìˆ˜
 		};
 
-		// ´Ü¼øÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ¸ŞÀÎ ±×¸®µå ³»ºÎ ÄÁÆ®·ÑÀÇ col ÀÎµ¦½º
+		// ë‹¨ìˆœí•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë©”ì¸ ê·¸ë¦¬ë“œ ë‚´ë¶€ ì»¨íŠ¸ë¡¤ì˜ col ì¸ë±ìŠ¤
 		enum class EColMainSimple : int32_t
 		{
-			Message = 0,       // ¸Ş¼¼Áö
-			ProgressCtrl = 0,  // ÇÁ·Î±×·¹½º ¹Ù
-			ElapsedTime = 0,   // ½Ã°£
+			Message = 0,       // ë©”ì„¸ì§€
+			ProgressCtrl = 0,  // í”„ë¡œê·¸ë ˆìŠ¤ ë°”
+			ElapsedTime = 0,   // ì‹œê°„
 
-			Count = 1,         // ÄÃ·³ °³¼ö
+			Count = 1,         // ì»¬ëŸ¼ ê°œìˆ˜
 		};
 
-		// º¹ÀâÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ¹öÆ° ±×¸®µåÀÇ row ÀÎµ¦½º
+		// ë³µì¡í•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë²„íŠ¼ ê·¸ë¦¬ë“œì˜ row ì¸ë±ìŠ¤
 		enum class ERowButtonComplex : int32_t
 		{
-			Details = 0,       // ¼¼ºÎ »çÇ× ¹öÆ°
-			Stop = 1,          // ÁßÁö ¹öÆ°
+			Details = 0,       // ì„¸ë¶€ ì‚¬í•­ ë²„íŠ¼
+			Stop = 1,          // ì¤‘ì§€ ë²„íŠ¼
 
-			Count = 2,         // Çà °³¼ö
+			Count = 2,         // í–‰ ê°œìˆ˜
 		};
 
-		// ´Ü¼øÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ¹öÆ° ±×¸®µåÀÇ row ÀÎµ¦½º
+		// ë‹¨ìˆœí•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë²„íŠ¼ ê·¸ë¦¬ë“œì˜ row ì¸ë±ìŠ¤
 		enum class ERowButtonSimple : int32_t
 		{
-			Stop = 0,          // ÁßÁö ¹öÆ°
+			Stop = 0,          // ì¤‘ì§€ ë²„íŠ¼
 
-			Count = 1,         // Çà °³¼ö
+			Count = 1,         // í–‰ ê°œìˆ˜
 		};
 
-		// ´ÙÀÌ¾ó·Î±×ÀÇ ¹öÆ° ±×¸®µåÀÇ col ÀÎµ¦½º
+		// ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë²„íŠ¼ ê·¸ë¦¬ë“œì˜ col ì¸ë±ìŠ¤
 		enum class EColButton : int32_t
 		{
-			Button = 2,        // ¹öÆ°
+			Button = 2,        // ë²„íŠ¼
 
-			Count = 3,         // ÄÃ·³ °³¼ö
+			Count = 3,         // ì»¬ëŸ¼ ê°œìˆ˜
 		};
 	}
 }
@@ -178,7 +178,7 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::ConfigureMenu(
 		pDrop->AddListItem(L"CENTER_BOTTOM");
 		pDrop->AddListItem(L"RIGHT_BOTTOM");
 		pDrop->SetDefaultValue(L"CENTER_CENTER");
-		pDrop->SetDescription(L"´ÙÀÌ¾ó·Î±× Ã¢ ³»ºÎ ÅØ½ºÆ® Á¤·Ä ¿É¼ÇÀ» ¼³Á¤ÇÕ´Ï´Ù.");
+		pDrop->SetDescription(L"ë‹¤ì´ì–¼ë¡œê·¸ ì°½ ë‚´ë¶€ í…ìŠ¤íŠ¸ ì •ë ¬ ì˜µì…˜ì„ ì„¤ì •í•©ë‹ˆë‹¤.");
 		AddItem(pDrop);
 
 		pDrop = new CGUIPropertyItemDropdownList;
@@ -193,17 +193,17 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::ConfigureMenu(
 		pDrop->AddListItem(L"CENTER_BOTTOM");
 		pDrop->AddListItem(L"RIGHT_BOTTOM");
 		pDrop->SetDefaultValue(L"LEFT_TOP");
-		pDrop->SetDescription(L"´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ ¾î´À À§Ä¡¸¦ ±âÁØÀ¸·Î Ã¢À» È®´ë ¶Ç´Â Ãà¼ÒÇÒÁö ±âÁØ À§Ä¡¸¦ Á¤ÇÕ´Ï´Ù.");
+		pDrop->SetDescription(L"ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ì–´ëŠ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì°½ì„ í™•ëŒ€ ë˜ëŠ” ì¶•ì†Œí• ì§€ ê¸°ì¤€ ìœ„ì¹˜ë¥¼ ì •í•©ë‹ˆë‹¤.");
 		AddItem(pDrop);
 
 		CGUIPropertyItemCheckBox* pCheck = new CGUIPropertyItemCheckBox;
 		pCheck->SetName(L"Keep Maximum Width");
-		pCheck->SetDescription(L"´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ º¯°æµÇ±â Àü Ã¢ÀÇ ³Êºñ°¡ ´õ Å©¸é, Ã¢ÀÇ ³Êºñ¸¦ º¯°æÇÏÁö ¾Ê°í ÀÌÀü ³Êºñ¸¦ À¯ÁöÇÒÁö ¿©ºÎ ¼³Á¤");
+		pCheck->SetDescription(L"ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ë³€ê²½ë˜ê¸° ì „ ì°½ì˜ ë„ˆë¹„ê°€ ë” í¬ë©´, ì°½ì˜ ë„ˆë¹„ë¥¼ ë³€ê²½í•˜ì§€ ì•Šê³  ì´ì „ ë„ˆë¹„ë¥¼ ìœ ì§€í• ì§€ ì—¬ë¶€ ì„¤ì •");
 		AddItem(pCheck);
 
 		pCheck = new CGUIPropertyItemCheckBox;
 		pCheck->SetName(L"Keep Maximum Height");
-		pCheck->SetDescription(L"´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ º¯°æµÇ±â Àü Ã¢ÀÇ ³ôÀÌ°¡ ´õ Å©¸é, Ã¢ÀÇ ³ôÀÌ¸¦ º¯°æÇÏÁö ¾Ê°í ÀÌÀü ³ôÀÌ¸¦ À¯ÁöÇÒÁö ¿©ºÎ ¼³Á¤");
+		pCheck->SetDescription(L"ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ë³€ê²½ë˜ê¸° ì „ ì°½ì˜ ë†’ì´ê°€ ë” í¬ë©´, ì°½ì˜ ë†’ì´ë¥¼ ë³€ê²½í•˜ì§€ ì•Šê³  ì´ì „ ë†’ì´ë¥¼ ìœ ì§€í• ì§€ ì—¬ë¶€ ì„¤ì •");
 		AddItem(pCheck);
 
 		cReturn = EResult_OK;
@@ -219,20 +219,20 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuDialogProgressExampl
 	*pProcedure = MakePropertyButtonClickProcedure
 	{
 		CreateSimpleDialog();
-		// ´ÙÀÌ¾ó·Î±× Ã¢ »ı¼º
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ ìƒì„±
 		m_pDlgProgress->OnInitDialog();
 
-		// ÀÛ¾÷ ½º·¹µå »ı¼º
+		// ì‘ì—… ìŠ¤ë ˆë“œ ìƒì„±
 		m_pThread = new std::future<void>(std::async(CPropertyMenuDialogProgressExample::AlgorithmThreadForSimpleDialog, this, &m_pThread));
 		SetThreadPriority(m_pThread, THREAD_PRIORITY_LOWEST);
 
-		// ½º·¹µå ÆÄ¶ó¹ÌÅÍ ÃÊ±âÈ­
+		// ìŠ¤ë ˆë“œ íŒŒë¼ë¯¸í„° ì´ˆê¸°í™”
 		ResetThreadParams();
 
-		// ÀÛ¾÷ ½º·¹µå¿¡¼­ ¾÷µ¥ÀÌÆ® ÇÑ °ªÀ» ¹İ¿µÇÏ¿© ´ÙÀÌ¾ó·Î±× Ã¢ ¾÷µ¥ÀÌÆ®
+		// ì‘ì—… ìŠ¤ë ˆë“œì—ì„œ ì—…ë°ì´íŠ¸ í•œ ê°’ì„ ë°˜ì˜í•˜ì—¬ ë‹¤ì´ì–¼ë¡œê·¸ ì°½ ì—…ë°ì´íŠ¸
 		UpdateSimpleDialog();
 
-		// ´ÙÀÌ¾ó·Î±× ´İ±â
+		// ë‹¤ì´ì–¼ë¡œê·¸ ë‹«ê¸°
 		CloseProgressDialog();
 
 		if(m_pThread)
@@ -299,13 +299,13 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateSimpleDi
 	{
 		CloseProgressDialog();
 
-		// ´ÙÀÌ¾ó·Î±× »ı¼º
+		// ë‹¤ì´ì–¼ë¡œê·¸ ìƒì„±
 		if(!m_pDlgProgress)
 			m_pDlgProgress = CGUIDialogProgress::CreateModelessDialog(AfxGetApp()->m_pMainWnd);
 
 		CFLString<wchar_t> strMessage;
 
-		// ¸Ş½ÃÁö, ÇÁ·Î±×·¹½º ¹Ù, ½Ã°£ µîÀÌ Ç¥½ÃµÇ´Â ¸ŞÀÎ ±×¸®µå ·¹ÀÌ¾Æ¿ô »ı¼º
+		// ë©”ì‹œì§€, í”„ë¡œê·¸ë ˆìŠ¤ ë°”, ì‹œê°„ ë“±ì´ í‘œì‹œë˜ëŠ” ë©”ì¸ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ìƒì„±
 		m_pGridMain = new CGUIGridLayout((int32_t)ERowMainSimple::Count, (int32_t)EColMainSimple::Count);
 		{
 			strMessage.Format
@@ -314,32 +314,32 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateSimpleDi
 				m_i32CurrentProgress, m_i32TotalProgress
 			);
 
-			// ¸Ş½ÃÁö¸¦ ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ë©”ì‹œì§€ë¥¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainSimple::Message, (int32_t)EColMainSimple::Message, 2, 1, strMessage);
-			// ÇÁ·Î±×·¹½º ¹Ù¸¦ ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ë¥¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainSimple::ProgressCtrl, (int32_t)EColMainSimple::ProgressCtrl, EControl_ProgressBarFloatingPoint);
-			// ¼Ò¿ä ½Ã°£À» ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ì†Œìš” ì‹œê°„ì„ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainSimple::ElapsedTime, (int32_t)EColMainSimple::ElapsedTime, L"Elapsed Time      00 : 00 : 00");
-			// ¼Ò¿ä ½Ã°£ÀÇ ÅØ½ºÆ® Á¤·Ä ¿É¼ÇÀ» ¼öÆò, ¼öÁ÷ ¸ğµÎ Áß°£ Á¤·Ä·Î ¼³Á¤
+			// ì†Œìš” ì‹œê°„ì˜ í…ìŠ¤íŠ¸ ì •ë ¬ ì˜µì…˜ì„ ìˆ˜í‰, ìˆ˜ì§ ëª¨ë‘ ì¤‘ê°„ ì •ë ¬ë¡œ ì„¤ì •
 			m_pGridMain->SetCtrlAlignment((int32_t)ERowMainSimple::ElapsedTime, (int32_t)EColMainSimple::ElapsedTime, EGUIAlignment_CENTER_CENTER);
-			// ¼Ò¿ä ½Ã°£ÀÌ m_pGridMain ·¹ÀÌ¾Æ¿ôÀÇ (int32_t)ERowMainSimple::ElapsedTime, (int32_t)EColMainSimple::ElapsedTime À§Ä¡¿¡ ÀÖ´Ù´Â °ÍÀ» m_pDlgProgress ¿¡ ¾Ë·ÁÁÜ
+			// ì†Œìš” ì‹œê°„ì´ m_pGridMain ë ˆì´ì•„ì›ƒì˜ (int32_t)ERowMainSimple::ElapsedTime, (int32_t)EColMainSimple::ElapsedTime ìœ„ì¹˜ì— ìˆë‹¤ëŠ” ê²ƒì„ m_pDlgProgress ì— ì•Œë ¤ì¤Œ
 			m_pDlgProgress->SetElapsedTimePosition(m_pGridMain, (int32_t)ERowMainSimple::ElapsedTime, (int32_t)EColMainSimple::ElapsedTime);
-			// ÁøÇà·ü ¾÷µ¥ÀÌÆ®¸¦ À§ÇØ ÇÁ·Î±×·¹½º ¹Ù °´Ã¼ Æ÷ÀÎÅÍ¸¦ ¾ò¾î ¿À±â
+			// ì§„í–‰ë¥  ì—…ë°ì´íŠ¸ë¥¼ ìœ„í•´ í”„ë¡œê·¸ë ˆìŠ¤ ë°” ê°ì²´ í¬ì¸í„°ë¥¼ ì–»ì–´ ì˜¤ê¸°
 			m_pProgressCtrlFP = (CGUIProgressCtrlFloatingPoint*)m_pGridMain->GetCtrl((int32_t)ERowMainSimple::ProgressCtrl, (int32_t)EColMainSimple::ProgressCtrl);
 		}
 
-		// ¹öÆ°ÀÌ Ç¥½ÃµÇ´Â ¹öÆ° ±×¸®µå ·¹ÀÌ¾Æ¿ô »ı¼º
+		// ë²„íŠ¼ì´ í‘œì‹œë˜ëŠ” ë²„íŠ¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ìƒì„±
 		m_pGridButtons = new CGUIGridLayout((int32_t)ERowButtonSimple::Count, (int32_t)EColButton::Count);
 		{
-			// ÁßÁö ¹öÆ°À» ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ì¤‘ì§€ ë²„íŠ¼ì„ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridButtons->AddCtrl((int32_t)ERowButtonSimple::Stop, (int32_t)EColButton::Button, EControl_Button, L"Stop");
-			// ÁßÁö ¹öÆ° °´Ã¼ Æ÷ÀÎÅÍ¸¦ ¾ò¾î ¿À±â
+			// ì¤‘ì§€ ë²„íŠ¼ ê°ì²´ í¬ì¸í„°ë¥¼ ì–»ì–´ ì˜¤ê¸°
 			m_pStopButton = (CGUIButton*)m_pGridButtons->GetCtrl((int32_t)ERowButtonSimple::Stop, (int32_t)EColButton::Button);
 		}
 
-		// ´ÙÀÌ¾ó·Î±×¿¡ ¸ŞÀÎ ±×¸®µå ·¹ÀÌ¾Æ¿ô Ãß°¡
+		// ë‹¤ì´ì–¼ë¡œê·¸ì— ë©”ì¸ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ì¶”ê°€
 		m_pDlgProgress->Add(m_pGridMain);
-		// ´ÙÀÌ¾ó·Î±×¿¡ ¹öÆ° ±×¸®µå ·¹ÀÌ¾Æ¿ô Ãß°¡
+		// ë‹¤ì´ì–¼ë¡œê·¸ì— ë²„íŠ¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ì¶”ê°€
 		m_pDlgProgress->Add(m_pGridButtons);
 
 		cr = EResult_OK;
@@ -367,7 +367,7 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 		bool bKeepMaxWidth = pCheckKeepMaxWidth->GetValue() == L"Checked";
 		bool bKeepMaxHeight = pCheckKeepMaxHeight->GetValue() == L"Checked";
 
-		// ´ÙÀÌ¾ó·Î±× »ı¼º
+		// ë‹¤ì´ì–¼ë¡œê·¸ ìƒì„±
 		if(!m_pDlgProgress)
 			m_pDlgProgress = CGUIDialogProgress::CreateModelessDialog(AfxGetApp()->m_pMainWnd);
 
@@ -383,7 +383,7 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 			CFLString<wchar_t>(L"<Validation>\n") +
 			CFLString<wchar_t>(L"96.12%%at 1 epoch\n\n\n");
 
-		// ¸Ş½ÃÁö, ÇÁ·Î±×·¹½º ¹Ù, ½Ã°£ µîÀÌ Ç¥½ÃµÇ´Â ¸ŞÀÎ ±×¸®µå ·¹ÀÌ¾Æ¿ô »ı¼º
+		// ë©”ì‹œì§€, í”„ë¡œê·¸ë ˆìŠ¤ ë°”, ì‹œê°„ ë“±ì´ í‘œì‹œë˜ëŠ” ë©”ì¸ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ìƒì„±
 		m_pGridMain = new CGUIGridLayout((int32_t)ERowMainComplex::Count, (int32_t)EColMainComplex::Count);
 		{
 			strMessage.Format
@@ -392,67 +392,67 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 				m_i32CurrentProgress, m_i32TotalProgress
 			);
 
-			// ¸Ş½ÃÁö¸¦ ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ë©”ì‹œì§€ë¥¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainComplex::Message, (int32_t)EColMainComplex::Message, 3, 4, strMessage);
-			// ¸Ş½ÃÁöÀÇ ÅØ½ºÆ® Á¤·Ä ¿É¼ÇÀ» "Text Alignment" ¿¡¼­ ¾ò¾î ¿Â °ªÀ¸·Î ¼³Á¤
+			// ë©”ì‹œì§€ì˜ í…ìŠ¤íŠ¸ ì •ë ¬ ì˜µì…˜ì„ "Text Alignment" ì—ì„œ ì–»ì–´ ì˜¨ ê°’ìœ¼ë¡œ ì„¤ì •
 			m_pGridMain->SetCtrlAlignment((int32_t)ERowMainComplex::Message, (int32_t)EColMainComplex::Message, eTextAlignment);
-			// ÇÁ·Î±×·¹½º ¹Ù¸¦ ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ë¥¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainComplex::ProgressCtrl, (int32_t)EColMainComplex::ProgressCtrl, 1, 4, EControl_ProgressBarFloatingPoint);
-			// ¼Ò¿ä ½Ã°£À» ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ì†Œìš” ì‹œê°„ì„ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainComplex::ElapsedTime, (int32_t)EColMainComplex::ElapsedTime, 1, 4, L"Elapsed Time      00 : 00 : 00");
-			// ¼Ò¿ä ½Ã°£ÀÇ ÅØ½ºÆ® Á¤·Ä ¿É¼ÇÀ» ¼öÆò, ¼öÁ÷ ¸ğµÎ Áß°£ Á¤·Ä·Î ¼³Á¤
+			// ì†Œìš” ì‹œê°„ì˜ í…ìŠ¤íŠ¸ ì •ë ¬ ì˜µì…˜ì„ ìˆ˜í‰, ìˆ˜ì§ ëª¨ë‘ ì¤‘ê°„ ì •ë ¬ë¡œ ì„¤ì •
 			m_pGridMain->SetCtrlAlignment((int32_t)ERowMainComplex::ElapsedTime, (int32_t)EColMainComplex::ElapsedTime, EGUIAlignment_CENTER_CENTER);
-			// ¼Ò¿ä ½Ã°£ÀÌ m_pGridMain ·¹ÀÌ¾Æ¿ôÀÇ (int32_t)ERowMainComplex::ElapsedTime, (int32_t)EColMainComplex::ElapsedTime À§Ä¡¿¡ ÀÖ´Ù´Â °ÍÀ» m_pDlgProgress ¿¡ ¾Ë·ÁÁÜ
+			// ì†Œìš” ì‹œê°„ì´ m_pGridMain ë ˆì´ì•„ì›ƒì˜ (int32_t)ERowMainComplex::ElapsedTime, (int32_t)EColMainComplex::ElapsedTime ìœ„ì¹˜ì— ìˆë‹¤ëŠ” ê²ƒì„ m_pDlgProgress ì— ì•Œë ¤ì¤Œ
 			m_pDlgProgress->SetElapsedTimePosition(m_pGridMain, (int32_t)ERowMainComplex::ElapsedTime, (int32_t)EColMainComplex::ElapsedTime);
-			// ÁøÇà·ü ¾÷µ¥ÀÌÆ®¸¦ À§ÇØ ÇÁ·Î±×·¹½º ¹Ù °´Ã¼ Æ÷ÀÎÅÍ¸¦ ¾ò¾î ¿À±â
+			// ì§„í–‰ë¥  ì—…ë°ì´íŠ¸ë¥¼ ìœ„í•´ í”„ë¡œê·¸ë ˆìŠ¤ ë°” ê°ì²´ í¬ì¸í„°ë¥¼ ì–»ì–´ ì˜¤ê¸°
 			m_pProgressCtrlFP = (CGUIProgressCtrlFloatingPoint*)m_pGridMain->GetCtrl((int32_t)ERowMainComplex::ProgressCtrl, (int32_t)EColMainComplex::ProgressCtrl);
 		}
 
-		// ¹öÆ°ÀÌ Ç¥½ÃµÇ´Â ¹öÆ° ±×¸®µå ·¹ÀÌ¾Æ¿ô »ı¼º
+		// ë²„íŠ¼ì´ í‘œì‹œë˜ëŠ” ë²„íŠ¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ìƒì„±
 		m_pGridButtons = new CGUIGridLayout((int32_t)ERowButtonComplex::Count, (int32_t)EColButton::Count);
 		{
-			// »ó¼¼ º¸±â ¹öÆ°À» ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ìƒì„¸ ë³´ê¸° ë²„íŠ¼ì„ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridButtons->AddCtrl((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button, EControl_Button, L"See Details");
-			// "See Details" ¹öÆ° Å¬¸¯ ÀÌº¥Æ® Ã³¸®±â »ı¼º
+			// "See Details" ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸ ì²˜ë¦¬ê¸° ìƒì„±
 			CWndCtrlProcedure* pVCP = new CWndCtrlProcedure;
-			// "See Details" ¹öÆ° Å¬¸¯ ½Ã ¼öÇàµÇ´Â ³»¿ë Á¤ÀÇ
+			// "See Details" ë²„íŠ¼ í´ë¦­ ì‹œ ìˆ˜í–‰ë˜ëŠ” ë‚´ìš© ì •ì˜
 			*pVCP = MakeWndCtrlProcedure
 			{
-				// "See Details" ¹öÆ°À» È¦¼ö ¹ø ´©¸¥ °æ¿ì
+				// "See Details" ë²„íŠ¼ì„ í™€ìˆ˜ ë²ˆ ëˆ„ë¥¸ ê²½ìš°
 				if(((CGUIButton*)m_pGridButtons->GetCtrl((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button))->GetClickCount() % 2 == 1)
 				{
-					// µğÅ×ÀÏ ±×¸®µå ·¹ÀÌ¾Æ¿ôÀ» show
+					// ë””í…Œì¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì„ show
 					m_pGridDetails->SetVisible(true);
-					// "See Details" ¹öÆ°ÀÇ ÅØ½ºÆ®¸¦ "Close Details" ·Î º¯°æ
+					// "See Details" ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ë¥¼ "Close Details" ë¡œ ë³€ê²½
 					m_pGridButtons->SetCtrlValue((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button, L"Close Details");
 				}
-				// "See Details" ¹öÆ°À» Â¦¼ö ¹ø ´©¸¥ °æ¿ì
+				// "See Details" ë²„íŠ¼ì„ ì§ìˆ˜ ë²ˆ ëˆ„ë¥¸ ê²½ìš°
 				else
 				{
-					// µğÅ×ÀÏ ±×¸®µå ·¹ÀÌ¾Æ¿ôÀ» hide
+					// ë””í…Œì¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì„ hide
 					m_pGridDetails->SetVisible(false);
-					// "Close Details" ¹öÆ°ÀÇ ÅØ½ºÆ®¸¦ "See Details" ·Î º¯°æ
+					// "Close Details" ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ë¥¼ "See Details" ë¡œ ë³€ê²½
 					m_pGridButtons->SetCtrlValue((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button, L"See Details");
 				}
 
-				// ´ÙÀÌ¾ó·Î±×ÀÇ ·¹ÀÌ¾Æ¿ôÀ» ¾÷µ¥ÀÌÆ®
+				// ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë ˆì´ì•„ì›ƒì„ ì—…ë°ì´íŠ¸
 				m_pDlgProgress->AdjustLayout();
 
 				return true;
 			};
-			// "See Details" ¹öÆ°¿¡ Å¬¸¯ ÀÌº¥Æ® Ã³¸®±â Ãß°¡
+			// "See Details" ë²„íŠ¼ì— í´ë¦­ ì´ë²¤íŠ¸ ì²˜ë¦¬ê¸° ì¶”ê°€
 			m_pGridButtons->SetWndCtrlProcedure((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button, pVCP);
 
-			// ÁßÁö ¹öÆ°À» ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ì¤‘ì§€ ë²„íŠ¼ì„ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridButtons->AddCtrl((int32_t)ERowButtonComplex::Stop, (int32_t)EColButton::Button, EControl_Button, L"Stop");
-			// ÁßÁö ¹öÆ° °´Ã¼ Æ÷ÀÎÅÍ¸¦ ¾ò¾î ¿À±â
+			// ì¤‘ì§€ ë²„íŠ¼ ê°ì²´ í¬ì¸í„°ë¥¼ ì–»ì–´ ì˜¤ê¸°
 			m_pStopButton = (CGUIButton*)m_pGridButtons->GetCtrl((int32_t)ERowButtonComplex::Stop, (int32_t)EColButton::Button);
 		}
 
-		// »ó¼¼ Á¤º¸°¡ Ç¥½ÃµÇ´Â ±×¸®µå ·¹ÀÌ¾Æ¿ô »ı¼º
+		// ìƒì„¸ ì •ë³´ê°€ í‘œì‹œë˜ëŠ” ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ìƒì„±
 		m_pGridDetails = new CGUIGridLayout(7, 2, true);
 		{
-			// ³»ºÎ ÄÁÆ®·Ñµé Ãß°¡
+			// ë‚´ë¶€ ì»¨íŠ¸ë¡¤ë“¤ ì¶”ê°€
 			m_pGridDetails->AddCtrl(0, 0, 1, 2, L"In a general sense, continuity \ndescribes how two items \ncome together. In ACIS, \nthese items may be two curves \nthat meet in some way, \ntwo portions of the same curve, etc. (In the latter case, \none is usually describing \nthe smoothness of a curve, \nwhich is a global property, \nin terms of a local property.)");
 			m_pGridDetails->SetCtrlAlignment(0, 0, EGUIAlignment_RIGHT_TOP);
 			m_pGridDetails->AddCtrl(1, 0, 1, 2, EControl_Slider);
@@ -483,41 +483,41 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 			m_pGridDetails->Add(6, 1, pGridInner);
 		}
 
-		// ·¹ÀÌ¾Æ¿ôµéÀ» ¹èÄ¡ÇÏ±â À§ÇÑ ¹è°æ ·¹ÀÌ¾Æ¿ô »ı¼º
+		// ë ˆì´ì•„ì›ƒë“¤ì„ ë°°ì¹˜í•˜ê¸° ìœ„í•œ ë°°ê²½ ë ˆì´ì•„ì›ƒ ìƒì„±
 		CGUIGridLayout* pGridBackground = new CGUIGridLayout((int32_t)ERowLayout::Count, (int32_t)EColLayout::Count);
 
-		// ¸ŞÀÎ ±×¸®µå ·¹ÀÌ¾Æ¿ôÀ» ERowLayout::Main, EColLayout::Main À§Ä¡¿¡¼­ row span = 4, col span = 1 À» Â÷ÁöÇÏµµ·Ï ¹èÄ¡
+		// ë©”ì¸ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì„ ERowLayout::Main, EColLayout::Main ìœ„ì¹˜ì—ì„œ row span = 4, col span = 1 ì„ ì°¨ì§€í•˜ë„ë¡ ë°°ì¹˜
 		pGridBackground->Add((int32_t)ERowLayout::Main, (int32_t)EColLayout::Main, 4, 1, m_pGridMain);
-		// ¹öÆ° ±×¸®µå ·¹ÀÌ¾Æ¿ôÀ» ERowLayout::Button, EColLayout::Main À§Ä¡¿¡¼­ row span = 1, col span = 1 À» Â÷ÁöÇÏµµ·Ï ¹èÄ¡
+		// ë²„íŠ¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì„ ERowLayout::Button, EColLayout::Main ìœ„ì¹˜ì—ì„œ row span = 1, col span = 1 ì„ ì°¨ì§€í•˜ë„ë¡ ë°°ì¹˜
 		pGridBackground->Add((int32_t)ERowLayout::Button, (int32_t)EColLayout::Button, m_pGridButtons);
-		// ¸ŞÀÎ ±×¸®µå ·¹ÀÌ¾Æ¿ôÀ» ERowLayout::Main, EColLayout::Main À§Ä¡¿¡¼­ row span = 5, col span = 1 À» Â÷ÁöÇÏµµ·Ï ¹èÄ¡
+		// ë©”ì¸ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì„ ERowLayout::Main, EColLayout::Main ìœ„ì¹˜ì—ì„œ row span = 5, col span = 1 ì„ ì°¨ì§€í•˜ë„ë¡ ë°°ì¹˜
 		pGridBackground->Add((int32_t)ERowLayout::Details, (int32_t)EColLayout::Details, 5, 1, m_pGridDetails);
-		// »ó¼¼ Á¤º¸ ·¹ÀÌ¾Æ¿ô ¼û±â±â Ã³¸®
+		// ìƒì„¸ ì •ë³´ ë ˆì´ì•„ì›ƒ ìˆ¨ê¸°ê¸° ì²˜ë¦¬
 		m_pGridDetails->SetVisible(false);
 
-		// ´ÙÀÌ¾ó·Î±×¿¡ ¹è°æ ·¹ÀÌ¾Æ¿ô Ãß°¡
+		// ë‹¤ì´ì–¼ë¡œê·¸ì— ë°°ê²½ ë ˆì´ì•„ì›ƒ ì¶”ê°€
 		m_pDlgProgress->Add(pGridBackground);
 
-		// ´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ ¾î´À À§Ä¡¸¦ ±âÁØÀ¸·Î Ã¢À» È®´ë ¶Ç´Â Ãà¼ÒÇÒÁö ±âÁØ À§Ä¡¸¦ Á¤ÇÕ´Ï´Ù.
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ì–´ëŠ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì°½ì„ í™•ëŒ€ ë˜ëŠ” ì¶•ì†Œí• ì§€ ê¸°ì¤€ ìœ„ì¹˜ë¥¼ ì •í•©ë‹ˆë‹¤.
 		m_pDlgProgress->SetResizeWindowPivot(eResizePivot);
-		// ´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ º¯°æµÇ±â Àü Ã¢ÀÇ ³Êºñ°¡ ´õ Å©¸é, Ã¢ÀÇ ³Êºñ¸¦ º¯°æÇÏÁö ¾Ê°í ÀÌÀü ³Êºñ¸¦ À¯ÁöÇÒÁö ¿©ºÎ ¼³Á¤
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ë³€ê²½ë˜ê¸° ì „ ì°½ì˜ ë„ˆë¹„ê°€ ë” í¬ë©´, ì°½ì˜ ë„ˆë¹„ë¥¼ ë³€ê²½í•˜ì§€ ì•Šê³  ì´ì „ ë„ˆë¹„ë¥¼ ìœ ì§€í• ì§€ ì—¬ë¶€ ì„¤ì •
 		m_pDlgProgress->KeepPreviousMaximumWidth(bKeepMaxWidth);
-		// ´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ º¯°æµÇ±â Àü Ã¢ÀÇ ³ôÀÌ°¡ ´õ Å©¸é, Ã¢ÀÇ ³ôÀÌ¸¦ º¯°æÇÏÁö ¾Ê°í ÀÌÀü ³ôÀÌ¸¦ À¯ÁöÇÒÁö ¿©ºÎ ¼³Á¤
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ë³€ê²½ë˜ê¸° ì „ ì°½ì˜ ë†’ì´ê°€ ë” í¬ë©´, ì°½ì˜ ë†’ì´ë¥¼ ë³€ê²½í•˜ì§€ ì•Šê³  ì´ì „ ë†’ì´ë¥¼ ìœ ì§€í• ì§€ ì—¬ë¶€ ì„¤ì •
 		m_pDlgProgress->KeepPreviousMaximumHeight(bKeepMaxHeight);
-		// ´ÙÀÌ¾ó·Î±× Ã¢ »ı¼º
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ ìƒì„±
 		m_pDlgProgress->OnInitDialog();
 
-		// ÀÛ¾÷ ½º·¹µå »ı¼º
+		// ì‘ì—… ìŠ¤ë ˆë“œ ìƒì„±
 		m_pThread = new std::future<void>(std::async(CPropertyMenuDialogProgressExample::AlgorithmThreadForComplexDialog, this, &m_pThread));
 		SetThreadPriority(m_pThread, THREAD_PRIORITY_LOWEST);
 
-		// ½º·¹µå ÆÄ¶ó¹ÌÅÍ ÃÊ±âÈ­
+		// ìŠ¤ë ˆë“œ íŒŒë¼ë¯¸í„° ì´ˆê¸°í™”
 		ResetThreadParams();
 
-		// ÀÛ¾÷ ½º·¹µå¿¡¼­ ¾÷µ¥ÀÌÆ® ÇÑ °ªÀ» ¹İ¿µÇÏ¿© ´ÙÀÌ¾ó·Î±× Ã¢ ¾÷µ¥ÀÌÆ®
+		// ì‘ì—… ìŠ¤ë ˆë“œì—ì„œ ì—…ë°ì´íŠ¸ í•œ ê°’ì„ ë°˜ì˜í•˜ì—¬ ë‹¤ì´ì–¼ë¡œê·¸ ì°½ ì—…ë°ì´íŠ¸
 		UpdateComplexDialog();
 
-		// ´ÙÀÌ¾ó·Î±× ´İ±â
+		// ë‹¤ì´ì–¼ë¡œê·¸ ë‹«ê¸°
 		CloseProgressDialog();
 
 		cr = EResult_OK;
@@ -549,31 +549,31 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateSimpleDi
 		bool bKeepMaxWidth = pCheckKeepMaxWidth->GetValue() == L"Checked";
 		bool bKeepMaxHeight = pCheckKeepMaxHeight->GetValue() == L"Checked";
 
-		// ´Ü¼øÇÑ ÁøÇà·ü Ç¥½Ã ´ÙÀÌ¾ó·Î±× »ı¼º
+		// ë‹¨ìˆœí•œ ì§„í–‰ë¥  í‘œì‹œ ë‹¤ì´ì–¼ë¡œê·¸ ìƒì„±
 		CreateSimpleDialog();
 
-		// ´ÙÀÌ¾ó·Î±×ÀÇ ¸Ş½ÃÁö ÅØ½ºÆ® Á¤·ÄÀ» ¼³Á¤
+		// ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë©”ì‹œì§€ í…ìŠ¤íŠ¸ ì •ë ¬ì„ ì„¤ì •
 		m_pGridMain->SetCtrlAlignment((int32_t)ERowMainSimple::Message, (int32_t)ERowMainSimple::Message, eTextAlignment);
-		// ´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ ¾î´À À§Ä¡¸¦ ±âÁØÀ¸·Î Ã¢À» È®´ë ¶Ç´Â Ãà¼ÒÇÒÁö ±âÁØ À§Ä¡¸¦ Á¤ÇÕ´Ï´Ù.
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ì–´ëŠ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì°½ì„ í™•ëŒ€ ë˜ëŠ” ì¶•ì†Œí• ì§€ ê¸°ì¤€ ìœ„ì¹˜ë¥¼ ì •í•©ë‹ˆë‹¤.
 		m_pDlgProgress->SetResizeWindowPivot(eResizePivot);
-		// ´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ º¯°æµÇ±â Àü Ã¢ÀÇ ³Êºñ°¡ ´õ Å©¸é, Ã¢ÀÇ ³Êºñ¸¦ º¯°æÇÏÁö ¾Ê°í ÀÌÀü ³Êºñ¸¦ À¯ÁöÇÒÁö ¿©ºÎ ¼³Á¤
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ë³€ê²½ë˜ê¸° ì „ ì°½ì˜ ë„ˆë¹„ê°€ ë” í¬ë©´, ì°½ì˜ ë„ˆë¹„ë¥¼ ë³€ê²½í•˜ì§€ ì•Šê³  ì´ì „ ë„ˆë¹„ë¥¼ ìœ ì§€í• ì§€ ì—¬ë¶€ ì„¤ì •
 		m_pDlgProgress->KeepPreviousMaximumWidth(bKeepMaxWidth);
-		// ´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ º¯°æµÇ±â Àü Ã¢ÀÇ ³ôÀÌ°¡ ´õ Å©¸é, Ã¢ÀÇ ³ôÀÌ¸¦ º¯°æÇÏÁö ¾Ê°í ÀÌÀü ³ôÀÌ¸¦ À¯ÁöÇÒÁö ¿©ºÎ ¼³Á¤
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ë³€ê²½ë˜ê¸° ì „ ì°½ì˜ ë†’ì´ê°€ ë” í¬ë©´, ì°½ì˜ ë†’ì´ë¥¼ ë³€ê²½í•˜ì§€ ì•Šê³  ì´ì „ ë†’ì´ë¥¼ ìœ ì§€í• ì§€ ì—¬ë¶€ ì„¤ì •
 		m_pDlgProgress->KeepPreviousMaximumHeight(bKeepMaxHeight);
-		// ´ÙÀÌ¾ó·Î±× Ã¢ »ı¼º
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ ìƒì„±
 		m_pDlgProgress->OnInitDialog();
 
-		// ÀÛ¾÷ ½º·¹µå »ı¼º
+		// ì‘ì—… ìŠ¤ë ˆë“œ ìƒì„±
 		m_pThread = new std::future<void>(std::async(CPropertyMenuDialogProgressExample::AlgorithmThreadForSimpleDialog, this, &m_pThread));
 		SetThreadPriority(m_pThread, THREAD_PRIORITY_LOWEST);
 
-		// ½º·¹µå ÆÄ¶ó¹ÌÅÍ ÃÊ±âÈ­
+		// ìŠ¤ë ˆë“œ íŒŒë¼ë¯¸í„° ì´ˆê¸°í™”
 		ResetThreadParams();
 
-		// ÀÛ¾÷ ½º·¹µå¿¡¼­ ¾÷µ¥ÀÌÆ® ÇÑ °ªÀ» ¹İ¿µÇÏ¿© ´ÙÀÌ¾ó·Î±× Ã¢ ¾÷µ¥ÀÌÆ®
+		// ì‘ì—… ìŠ¤ë ˆë“œì—ì„œ ì—…ë°ì´íŠ¸ í•œ ê°’ì„ ë°˜ì˜í•˜ì—¬ ë‹¤ì´ì–¼ë¡œê·¸ ì°½ ì—…ë°ì´íŠ¸
 		UpdateSimpleDialogWithSettings();
 
-		// ´ÙÀÌ¾ó·Î±× ´İ±â
+		// ë‹¤ì´ì–¼ë¡œê·¸ ë‹«ê¸°
 		CloseProgressDialog();
 
 		cr = EResult_OK;
@@ -597,16 +597,16 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::UpdateSimpleDi
 	{
 		while(true)
 		{
-			// ½º·¹µå°¡ ¿Ï·áµÇ¸é break
+			// ìŠ¤ë ˆë“œê°€ ì™„ë£Œë˜ë©´ break
 			if(m_bThreadDone)
 				break;
 
-			// ÁßÁö ¹öÆ°À» 1È¸ ÀÌ»ó Å¬¸¯ ½Ã break
+			// ì¤‘ì§€ ë²„íŠ¼ì„ 1íšŒ ì´ìƒ í´ë¦­ ì‹œ break
 			if(m_pStopButton->GetClickCount() >= 1)
 				break;
 			else
 			{
-				// °¡º¯ ±æÀÌÀÇ ¹®ÀÚ¿­À» ¼³Á¤
+				// ê°€ë³€ ê¸¸ì´ì˜ ë¬¸ìì—´ì„ ì„¤ì •
 				CFLString<wchar_t> strMessage;
 				strMessage.Format
 				(
@@ -614,17 +614,17 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::UpdateSimpleDi
 					m_i32CurrentProgress, m_i32TotalProgress
 				);
 
-				// m_pGridMain ÀÇ ERowMainSimple::Message, ERowMainSimple::Message À§Ä¡¿¡ ¹®ÀÚ¿­ °ª ¼³Á¤ÇÏ¿© ´ÙÀÌ¾ó·Î±× »ó¿¡¼­ º¸ÀÌ´Â ¸Ş¼¼Áö ¼³Á¤
+				// m_pGridMain ì˜ ERowMainSimple::Message, ERowMainSimple::Message ìœ„ì¹˜ì— ë¬¸ìì—´ ê°’ ì„¤ì •í•˜ì—¬ ë‹¤ì´ì–¼ë¡œê·¸ ìƒì—ì„œ ë³´ì´ëŠ” ë©”ì„¸ì§€ ì„¤ì •
 				m_pGridMain->SetCtrlValue((int32_t)ERowMainSimple::Message, (int32_t)ERowMainSimple::Message, strMessage);
 
-				// ÇÁ·Î±×·¹½º ¹Ù¿¡ ÁøÇà·ü Ç¥½Ã
+				// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ì— ì§„í–‰ë¥  í‘œì‹œ
 				m_pProgressCtrlFP->SetPos((double)m_i32CurrentProgress / (double)m_i32TotalProgress);
-				// ´ÙÀÌ¾ó·Î±× Ã¢ Å©±â ¾÷µ¥ÀÌÆ®
+				// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ í¬ê¸° ì—…ë°ì´íŠ¸
 				m_pDlgProgress->AdjustLayout();
 			}
-			// ¸Ş½ÃÁö ÆßÇÁ
+			// ë©”ì‹œì§€ íŒí”„
 			CGUIManager::PeekAndPump();
-			// Sleep ½Ã°£À» 1·Î ¼³Á¤
+			// Sleep ì‹œê°„ì„ 1ë¡œ ì„¤ì •
 			Sleep(1);
 		}
 
@@ -643,16 +643,16 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::UpdateSimpleDi
 	{
 		while(true)
 		{
-			// ½º·¹µå°¡ ¿Ï·áµÇ¸é break
+			// ìŠ¤ë ˆë“œê°€ ì™„ë£Œë˜ë©´ break
 			if(m_bThreadDone)
 				break;
 
-			// ÁßÁö ¹öÆ°À» 1È¸ ÀÌ»ó Å¬¸¯ ½Ã break
+			// ì¤‘ì§€ ë²„íŠ¼ì„ 1íšŒ ì´ìƒ í´ë¦­ ì‹œ break
 			if(m_pStopButton->GetClickCount() >= 1)
 				break;
 			else
 			{
-				// °¡º¯ ±æÀÌÀÇ ¹®ÀÚ¿­À» ¼³Á¤
+				// ê°€ë³€ ê¸¸ì´ì˜ ë¬¸ìì—´ì„ ì„¤ì •
 				CFLString<wchar_t> strMessage;
 				strMessage.Format
 				(
@@ -660,17 +660,17 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::UpdateSimpleDi
 					m_i32CurrentProgress, m_i32TotalProgress
 				);
 
-				// m_pGridMain ÀÇ ERowMainSimple::Message, ERowMainSimple::Message À§Ä¡¿¡ ¹®ÀÚ¿­ °ª ¼³Á¤ÇÏ¿© ´ÙÀÌ¾ó·Î±× »ó¿¡¼­ º¸ÀÌ´Â ¸Ş¼¼Áö ¼³Á¤
+				// m_pGridMain ì˜ ERowMainSimple::Message, ERowMainSimple::Message ìœ„ì¹˜ì— ë¬¸ìì—´ ê°’ ì„¤ì •í•˜ì—¬ ë‹¤ì´ì–¼ë¡œê·¸ ìƒì—ì„œ ë³´ì´ëŠ” ë©”ì„¸ì§€ ì„¤ì •
 				m_pGridMain->SetCtrlValue((int32_t)ERowMainSimple::Message, (int32_t)ERowMainSimple::Message, strMessage);
 
-				// ÇÁ·Î±×·¹½º ¹Ù¿¡ ÁøÇà·ü Ç¥½Ã
+				// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ì— ì§„í–‰ë¥  í‘œì‹œ
 				m_pProgressCtrlFP->SetPos((double)m_i32CurrentProgress / (double)m_i32TotalProgress);
-				// ´ÙÀÌ¾ó·Î±× Ã¢ Å©±â ¾÷µ¥ÀÌÆ®
+				// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ í¬ê¸° ì—…ë°ì´íŠ¸
 				m_pDlgProgress->AdjustLayout();
 			}
-			// ¸Ş½ÃÁö ÆßÇÁ
+			// ë©”ì‹œì§€ íŒí”„
 			CGUIManager::PeekAndPump();
-			// Sleep ½Ã°£À» 100 À¸·Î ¼³Á¤
+			// Sleep ì‹œê°„ì„ 100 ìœ¼ë¡œ ì„¤ì •
 			Sleep(100);
 		}
 
@@ -701,82 +701,82 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::UpdateComplexD
 
 		while(true)
 		{
-			// ½º·¹µå°¡ ¿Ï·áµÇ¸é while ¹® ºüÁ® ³ª°¡±â
+			// ìŠ¤ë ˆë“œê°€ ì™„ë£Œë˜ë©´ while ë¬¸ ë¹ ì ¸ ë‚˜ê°€ê¸°
 			if(m_bThreadDone)
 				break;
 
-			// ÁßÁö ¹öÆ° Å¬¸¯ È½¼ö°¡ º¯°æµÈ °æ¿ì
+			// ì¤‘ì§€ ë²„íŠ¼ í´ë¦­ íšŸìˆ˜ê°€ ë³€ê²½ëœ ê²½ìš°
 			if(m_pStopButton->GetClickCount() != m_i32BtnStopClickCount)
 			{
-				// ÁßÁö ¹öÆ°À» ÇÑ ¹ø Å¬¸¯ÇÑ °æ¿ì
+				// ì¤‘ì§€ ë²„íŠ¼ì„ í•œ ë²ˆ í´ë¦­í•œ ê²½ìš°
 				if(m_pStopButton->GetClickCount() == 1)
 				{
-					// ÁßÁö ¹öÆ° ³» ¹®ÀÚ¿­À» "Continue.." ·Î ¼³Á¤
+					// ì¤‘ì§€ ë²„íŠ¼ ë‚´ ë¬¸ìì—´ì„ "Continue.." ë¡œ ì„¤ì •
 					m_pGridButtons->SetCtrlValue((int32_t)ERowButtonComplex::Stop, (int32_t)EColButton::Button, L"Continue ..");
 				}
-				// ÁßÁö ¹öÆ°À» µÎ ¹ø Å¬¸¯ÇÑ °æ¿ì ("Continue.." ¹öÆ°À» Å¬¸¯ÇÑ °æ¿ì)
+				// ì¤‘ì§€ ë²„íŠ¼ì„ ë‘ ë²ˆ í´ë¦­í•œ ê²½ìš° ("Continue.." ë²„íŠ¼ì„ í´ë¦­í•œ ê²½ìš°)
 				else if(m_pStopButton->GetClickCount() == 2)
 				{
-					// ÁßÁö ¹öÆ° ¼û±â±â
+					// ì¤‘ì§€ ë²„íŠ¼ ìˆ¨ê¸°ê¸°
 					m_pGridButtons->SetCtrlVisible((int32_t)ERowButtonComplex::Stop, (int32_t)EColButton::Button, false);
 				}
 
-				// "Details" ¹öÆ° ¼û±â±â
+				// "Details" ë²„íŠ¼ ìˆ¨ê¸°ê¸°
 				m_pGridButtons->SetCtrlVisible((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button, false);
-				// »ó¼¼ Á¤º¸ ·¹ÀÌ¾Æ¿ô ¼û±â±â
+				// ìƒì„¸ ì •ë³´ ë ˆì´ì•„ì›ƒ ìˆ¨ê¸°ê¸°
 				m_pGridDetails->SetVisible(false);
-				// ÁßÁö ¹öÆ° Å¬¸¯ È½¼ö ¾÷µ¥ÀÌÆ®
+				// ì¤‘ì§€ ë²„íŠ¼ í´ë¦­ íšŸìˆ˜ ì—…ë°ì´íŠ¸
 				m_i32BtnStopClickCount = m_pStopButton->GetClickCount();
-				// ´ÙÀÌ¾ó·Î±×ÀÇ ·¹ÀÌ¾Æ¿ô ¾÷µ¥ÀÌÆ®
+				// ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë ˆì´ì•„ì›ƒ ì—…ë°ì´íŠ¸
 				m_pDlgProgress->AdjustLayout();
 			}
 
-			// ÁßÁö ¹öÆ°À» ÇÑ ¹ø Å¬¸¯ÇÑ °æ¿ì
+			// ì¤‘ì§€ ë²„íŠ¼ì„ í•œ ë²ˆ í´ë¦­í•œ ê²½ìš°
 			if(m_pStopButton->GetClickCount() == 1)
 			{
-				// ¸Ş¼¼Áö ¼³Á¤
+				// ë©”ì„¸ì§€ ì„¤ì •
 				strMessage.Format(L"[Step 3/3] Temp Message...\n\n<Temp Progress>");
 
-				// m_pGridMain ÀÇ ERowMainComplex::Message, EColMainComplex::Message À§Ä¡¿¡ ¹®ÀÚ¿­ °ª ¼³Á¤ÇÏ¿© ´ÙÀÌ¾ó·Î±× »ó¿¡¼­ º¸ÀÌ´Â ¸Ş¼¼Áö ¼³Á¤
+				// m_pGridMain ì˜ ERowMainComplex::Message, EColMainComplex::Message ìœ„ì¹˜ì— ë¬¸ìì—´ ê°’ ì„¤ì •í•˜ì—¬ ë‹¤ì´ì–¼ë¡œê·¸ ìƒì—ì„œ ë³´ì´ëŠ” ë©”ì„¸ì§€ ì„¤ì •
 				m_pGridMain->SetCtrlValue((int32_t)ERowMainComplex::Message, (int32_t)EColMainComplex::Message, strMessage);
 
-				// ÇÁ·Î±×·¹½º ¹Ù°¡ 100% ·Î Ã¤¿öÁöµµ·Ï ¼³Á¤
+				// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ê°€ 100% ë¡œ ì±„ì›Œì§€ë„ë¡ ì„¤ì •
 				m_pProgressCtrlFP->SetPos(1.);
-				// ´ÙÀÌ¾ó·Î±× È­¸é °»½Å
+				// ë‹¤ì´ì–¼ë¡œê·¸ í™”ë©´ ê°±ì‹ 
 				m_pDlgProgress->Invalidate();
-				// ¸Ş½ÃÁö ÆßÇÁ
+				// ë©”ì‹œì§€ íŒí”„
 				CGUIManager::PeekAndPump();
 				Sleep(1);
 				continue;
 			}
-			// ÁßÁö ¹öÆ°À» µÎ ¹ø Å¬¸¯ÇÑ °æ¿ì
+			// ì¤‘ì§€ ë²„íŠ¼ì„ ë‘ ë²ˆ í´ë¦­í•œ ê²½ìš°
 			else if(m_pStopButton->GetClickCount() == 2)
 			{
-				// ÁßÁö ÇÁ·Î¼¼½º ÁøÇàÀÌ ¾ÆÁ÷ ¿Ï·áµÇÁö ¾ÊÀº °æ¿ì
+				// ì¤‘ì§€ í”„ë¡œì„¸ìŠ¤ ì§„í–‰ì´ ì•„ì§ ì™„ë£Œë˜ì§€ ì•Šì€ ê²½ìš°
 				if(m_i32CurrentStopProgress <= m_i32TotalStopProgress)
 				{
-					// ¸Ş½ÃÁö ¼³Á¤
+					// ë©”ì‹œì§€ ì„¤ì •
 					strMessage.Format(L"[Step 3/3] Learning is being stopped...\n\n<Stop Progress>\n(%d/%d)", m_i32CurrentStopProgress, m_i32TotalStopProgress);
 					m_pGridMain->SetCtrlValue((int32_t)ERowMainComplex::Message, (int32_t)EColMainComplex::Message, strMessage);
 
-					// ÇÁ·Î±×·¹½º ¹Ù¿¡ ÁøÇà·ü ¼³Á¤
+					// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ì— ì§„í–‰ë¥  ì„¤ì •
 					m_pProgressCtrlFP->SetPos((double)m_i32CurrentStopProgress / (double)m_i32TotalStopProgress);
 
-					// ´ÙÀÌ¾ó·Î±× È­¸é °»½Å
+					// ë‹¤ì´ì–¼ë¡œê·¸ í™”ë©´ ê°±ì‹ 
 					m_pDlgProgress->Invalidate();
 				}
-				else // ÁßÁö ÇÁ·Î¼¼½º ÁøÇàÀÌ ¾ÆÁ÷ ¿Ï·áµÈ °æ¿ì while ¹®¿¡¼­ break
+				else // ì¤‘ì§€ í”„ë¡œì„¸ìŠ¤ ì§„í–‰ì´ ì•„ì§ ì™„ë£Œëœ ê²½ìš° while ë¬¸ì—ì„œ break
 					break;
 
-				// ¸Ş½ÃÁö ÆßÇÁ
+				// ë©”ì‹œì§€ íŒí”„
 				CGUIManager::PeekAndPump();
 				Sleep(1);
 				continue;
 			}
 
-			// ÁßÁö ¹öÆ°À» ÇÑ ¹øµµ ´©¸£Áö ¾ÊÀº °æ¿ì
+			// ì¤‘ì§€ ë²„íŠ¼ì„ í•œ ë²ˆë„ ëˆ„ë¥´ì§€ ì•Šì€ ê²½ìš°
 
-			// ¸Ş½ÃÁö ¼³Á¤
+			// ë©”ì‹œì§€ ì„¤ì •
 			strMessage.Format
 			(
 				strMessageFormat,
@@ -784,12 +784,12 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::UpdateComplexD
 			);
 			m_pGridMain->SetCtrlValue((int32_t)ERowMainComplex::Message, (int32_t)EColMainComplex::Message, strMessage);
 
-			// ÇÁ·Î±×·¹½º ¹Ù¿¡ ÁøÇà·ü ¼³Á¤
+			// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ì— ì§„í–‰ë¥  ì„¤ì •
 			m_pProgressCtrlFP->SetPos((double)m_i32CurrentProgress / (double)m_i32TotalProgress);
 
-			// ´ÙÀÌ¾ó·Î±× È­¸é °»½Å
+			// ë‹¤ì´ì–¼ë¡œê·¸ í™”ë©´ ê°±ì‹ 
 			m_pDlgProgress->Invalidate();
-			// ¸Ş½ÃÁö ÆßÇÁ
+			// ë©”ì‹œì§€ íŒí”„
 			CGUIManager::PeekAndPump();
 			Sleep(1);
 		}
@@ -819,7 +819,7 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 		bool bKeepMaxWidth = pCheckKeepMaxWidth->GetValue() == L"Checked";
 		bool bKeepMaxHeight = pCheckKeepMaxHeight->GetValue() == L"Checked";
 
-		// ´ÙÀÌ¾ó·Î±× »ı¼º
+		// ë‹¤ì´ì–¼ë¡œê·¸ ìƒì„±
 		if(!m_pDlgProgress)
 			m_pDlgProgress = CGUIDialogProgress::CreateModelessDialog(AfxGetApp()->m_pMainWnd);
 
@@ -835,7 +835,7 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 			CFLString<wchar_t>(L"<Validation>\n") +
 			CFLString<wchar_t>(L"96.12%%at 1 epoch\n\n\n");
 
-		// ¸Ş½ÃÁö, ÇÁ·Î±×·¹½º ¹Ù, ½Ã°£ µîÀÌ Ç¥½ÃµÇ´Â ¸ŞÀÎ ±×¸®µå ·¹ÀÌ¾Æ¿ô »ı¼º
+		// ë©”ì‹œì§€, í”„ë¡œê·¸ë ˆìŠ¤ ë°”, ì‹œê°„ ë“±ì´ í‘œì‹œë˜ëŠ” ë©”ì¸ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ìƒì„±
 		m_pGridMain = new CGUIGridLayout((int32_t)ERowMainComplex::Count, (int32_t)EColMainComplex::Count);
 		{
 			strMessage.Format
@@ -844,69 +844,69 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 				m_i32CurrentProgress, m_i32TotalProgress
 			);
 
-			// ¸Ş½ÃÁö¸¦ ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ë©”ì‹œì§€ë¥¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainComplex::Message, (int32_t)EColMainComplex::Message, 3, 4, strMessage);
-			// ¸Ş½ÃÁöÀÇ ÅØ½ºÆ® Á¤·Ä ¿É¼ÇÀ» "Text Alignment" ¿¡¼­ ¾ò¾î ¿Â °ªÀ¸·Î ¼³Á¤
+			// ë©”ì‹œì§€ì˜ í…ìŠ¤íŠ¸ ì •ë ¬ ì˜µì…˜ì„ "Text Alignment" ì—ì„œ ì–»ì–´ ì˜¨ ê°’ìœ¼ë¡œ ì„¤ì •
 			m_pGridMain->SetCtrlAlignment((int32_t)ERowMainComplex::Message, (int32_t)EColMainComplex::Message, eTextAlignment);
-			// ÇÁ·Î±×·¹½º ¹Ù¸¦ ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ë¥¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainComplex::ProgressCtrl, (int32_t)EColMainComplex::ProgressCtrl, 1, 4, EControl_ProgressBarFloatingPoint);
-			// ¼Ò¿ä ½Ã°£À» ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ì†Œìš” ì‹œê°„ì„ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainComplex::ElapsedTime, (int32_t)EColMainComplex::ElapsedTime, 1, 4, L"Elapsed Time      00 : 00 : 00");
-			// ¼Ò¿ä ½Ã°£ÀÇ ÅØ½ºÆ® Á¤·Ä ¿É¼ÇÀ» ¼öÆò, ¼öÁ÷ ¸ğµÎ Áß°£ Á¤·Ä·Î ¼³Á¤
+			// ì†Œìš” ì‹œê°„ì˜ í…ìŠ¤íŠ¸ ì •ë ¬ ì˜µì…˜ì„ ìˆ˜í‰, ìˆ˜ì§ ëª¨ë‘ ì¤‘ê°„ ì •ë ¬ë¡œ ì„¤ì •
 			m_pGridMain->SetCtrlAlignment((int32_t)ERowMainComplex::ElapsedTime, (int32_t)EColMainComplex::ElapsedTime, EGUIAlignment_CENTER_CENTER);
-			// ¼Ò¿ä ½Ã°£ÀÌ m_pGridMain ·¹ÀÌ¾Æ¿ôÀÇ (int32_t)ERowMainComplex::ElapsedTime, (int32_t)EColMainComplex::ElapsedTime À§Ä¡¿¡ ÀÖ´Ù´Â °ÍÀ» m_pDlgProgress ¿¡ ¾Ë·ÁÁÜ
+			// ì†Œìš” ì‹œê°„ì´ m_pGridMain ë ˆì´ì•„ì›ƒì˜ (int32_t)ERowMainComplex::ElapsedTime, (int32_t)EColMainComplex::ElapsedTime ìœ„ì¹˜ì— ìˆë‹¤ëŠ” ê²ƒì„ m_pDlgProgress ì— ì•Œë ¤ì¤Œ
 			m_pDlgProgress->SetElapsedTimePosition(m_pGridMain, (int32_t)ERowMainComplex::ElapsedTime, (int32_t)EColMainComplex::ElapsedTime);
-			// ÁøÇà·ü ¾÷µ¥ÀÌÆ®¸¦ À§ÇØ ÇÁ·Î±×·¹½º ¹Ù °´Ã¼ Æ÷ÀÎÅÍ¸¦ ¾ò¾î ¿À±â
+			// ì§„í–‰ë¥  ì—…ë°ì´íŠ¸ë¥¼ ìœ„í•´ í”„ë¡œê·¸ë ˆìŠ¤ ë°” ê°ì²´ í¬ì¸í„°ë¥¼ ì–»ì–´ ì˜¤ê¸°
 			m_pProgressCtrlFP = (CGUIProgressCtrlFloatingPoint*)m_pGridMain->GetCtrl((int32_t)ERowMainComplex::ProgressCtrl, (int32_t)EColMainComplex::ProgressCtrl);
 		}
 
-		// ¹öÆ°ÀÌ Ç¥½ÃµÇ´Â ¹öÆ° ±×¸®µå ·¹ÀÌ¾Æ¿ô »ı¼º
+		// ë²„íŠ¼ì´ í‘œì‹œë˜ëŠ” ë²„íŠ¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ìƒì„±
 		m_pGridButtons = new CGUIGridLayout((int32_t)ERowButtonComplex::Count, (int32_t)EColButton::Count);
 		{
-			// »ó¼¼ º¸±â ¹öÆ°À» ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ìƒì„¸ ë³´ê¸° ë²„íŠ¼ì„ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridButtons->AddCtrl((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button, EControl_Button, L"See Details");
-			// "See Details" ¹öÆ° Å¬¸¯ ÀÌº¥Æ® Ã³¸®±â »ı¼º
+			// "See Details" ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸ ì²˜ë¦¬ê¸° ìƒì„±
 			CWndCtrlProcedure* pVCP = new CWndCtrlProcedure;
-			// "See Details" ¹öÆ° Å¬¸¯ ½Ã ¼öÇàµÇ´Â ³»¿ë Á¤ÀÇ
+			// "See Details" ë²„íŠ¼ í´ë¦­ ì‹œ ìˆ˜í–‰ë˜ëŠ” ë‚´ìš© ì •ì˜
 			*pVCP = MakeWndCtrlProcedure
 			{
-				// "See Details" ¹öÆ°À» È¦¼ö ¹ø ´©¸¥ °æ¿ì
+				// "See Details" ë²„íŠ¼ì„ í™€ìˆ˜ ë²ˆ ëˆ„ë¥¸ ê²½ìš°
 				if(((CGUIButton*)m_pGridButtons->GetCtrl((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button))->GetClickCount() % 2 == 1)
 				{
-					// ½ÃÆ®°¡ Æ÷ÇÔµÈ ·¹ÀÌ¾Æ¿ôÀ» show
+					// ì‹œíŠ¸ê°€ í¬í•¨ëœ ë ˆì´ì•„ì›ƒì„ show
 					m_pLayoutForSheet->SetVisible(true);
-					// "See Details" ¹öÆ°ÀÇ ÅØ½ºÆ®¸¦ "Close Details" ·Î º¯°æ
+					// "See Details" ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ë¥¼ "Close Details" ë¡œ ë³€ê²½
 					m_pGridButtons->SetCtrlValue((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button, L"Close Details");
 				}
-				// "See Details" ¹öÆ°À» Â¦¼ö ¹ø ´©¸¥ °æ¿ì
+				// "See Details" ë²„íŠ¼ì„ ì§ìˆ˜ ë²ˆ ëˆ„ë¥¸ ê²½ìš°
 				else
 				{
-					// ½ÃÆ®°¡ Æ÷ÇÔµÈ ·¹ÀÌ¾Æ¿ôÀ» hide
+					// ì‹œíŠ¸ê°€ í¬í•¨ëœ ë ˆì´ì•„ì›ƒì„ hide
 					m_pLayoutForSheet->SetVisible(false);
-					// "Close Details" ¹öÆ°ÀÇ ÅØ½ºÆ®¸¦ "See Details" ·Î º¯°æ
+					// "Close Details" ë²„íŠ¼ì˜ í…ìŠ¤íŠ¸ë¥¼ "See Details" ë¡œ ë³€ê²½
 					m_pGridButtons->SetCtrlValue((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button, L"See Details");
 				}
 
-				// ´ÙÀÌ¾ó·Î±×ÀÇ ·¹ÀÌ¾Æ¿ôÀ» ¾÷µ¥ÀÌÆ®
+				// ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë ˆì´ì•„ì›ƒì„ ì—…ë°ì´íŠ¸
 				m_pDlgProgress->AdjustLayout();
 
 				return true;
 			};
-			// "See Details" ¹öÆ°¿¡ Å¬¸¯ ÀÌº¥Æ® Ã³¸®±â Ãß°¡
+			// "See Details" ë²„íŠ¼ì— í´ë¦­ ì´ë²¤íŠ¸ ì²˜ë¦¬ê¸° ì¶”ê°€
 			m_pGridButtons->SetWndCtrlProcedure((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button, pVCP);
 
-			// ÁßÁö ¹öÆ°À» ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ì¤‘ì§€ ë²„íŠ¼ì„ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridButtons->AddCtrl((int32_t)ERowButtonComplex::Stop, (int32_t)EColButton::Button, EControl_Button, L"Stop");
-			// ÁßÁö ¹öÆ° °´Ã¼ Æ÷ÀÎÅÍ¸¦ ¾ò¾î ¿À±â
+			// ì¤‘ì§€ ë²„íŠ¼ ê°ì²´ í¬ì¸í„°ë¥¼ ì–»ì–´ ì˜¤ê¸°
 			m_pStopButton = (CGUIButton*)m_pGridButtons->GetCtrl((int32_t)ERowButtonComplex::Stop, (int32_t)EColButton::Button);
 		}
 
-		// CFLSheet °¡ Æ÷ÇÔµÈ ¹Ú½º ·¹ÀÌ¾Æ¿ô
+		// CFLSheet ê°€ í¬í•¨ëœ ë°•ìŠ¤ ë ˆì´ì•„ì›ƒ
 		if(bBoxLayout)
 		{
 			m_pLayoutForSheet = new CGUIBoxLayout(EOrientation_Vertical, 300, 500, true);
 
-			// ½ÃÆ® Ãß°¡
+			// ì‹œíŠ¸ ì¶”ê°€
 			((CGUIBoxLayout*)m_pLayoutForSheet)->AddCtrl(EControl_Sheet);
 			((CGUIBoxLayout*)m_pLayoutForSheet)->AddCtrl(EControl_Sheet);
 		}
@@ -921,15 +921,15 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 			((CGUIGridLayout*)m_pLayoutForSheet)->AddCtrl(1, 1, EControl_EditCtrl);
 			((CGUIGridLayout*)m_pLayoutForSheet)->AddCtrl(2, 1, EControl_EditCtrl);
 
-			// ½ÃÆ® Ãß°¡
+			// ì‹œíŠ¸ ì¶”ê°€
 			((CGUIGridLayout*)m_pLayoutForSheet)->AddCtrl(3, 0, 6, 2, EControl_Sheet);
 			((CGUIGridLayout*)m_pLayoutForSheet)->AddCtrl(9, 0, 5, 2, EControl_Sheet);
 		}
 
 		{
-			// 0 ¹øÂ° ½ÃÆ®
+			// 0 ë²ˆì§¸ ì‹œíŠ¸
 			{
-				// Ãß°¡ÇÑ ½ÃÆ® ¾ò¾î ¿À±â
+				// ì¶”ê°€í•œ ì‹œíŠ¸ ì–»ì–´ ì˜¤ê¸°
 				CGUISheetInterface* pSheetInterface = nullptr;
 
 				if(bBoxLayout)
@@ -937,15 +937,15 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 				else
 					pSheetInterface = ((CGUIGridLayout*)m_pLayoutForSheet)->GetSheetInterface(3, 0);
 
-				// ½ÃÆ®ÀÇ µ¥ÀÌÅÍ Æ÷ÀÎÅÍ ¾ò¾î ¿À±â
+				// ì‹œíŠ¸ì˜ ë°ì´í„° í¬ì¸í„° ì–»ì–´ ì˜¤ê¸°
 				CFLArray<CFLArray<CFLString<wchar_t>>>* pData = pSheetInterface->GetDataPtr();
 
-				int32_t i32ColCnt = 10; // column °³¼ö
-				int32_t i32RowCnt = 10; // row °³¼ö
-				int32_t i32FixedColCnt = 1; // °íÁ¤ column °³¼ö
-				int32_t i32FixedRowCnt = 1; // °íÁ¤ row °³¼ö
+				int32_t i32ColCnt = 10; // column ê°œìˆ˜
+				int32_t i32RowCnt = 10; // row ê°œìˆ˜
+				int32_t i32FixedColCnt = 1; // ê³ ì • column ê°œìˆ˜
+				int32_t i32FixedRowCnt = 1; // ê³ ì • row ê°œìˆ˜
 
-				// ½ÃÆ®¿¡ µğ½ºÇÃ·¹ÀÌ ÇÒ ³»¿ë Ãß°¡
+				// ì‹œíŠ¸ì— ë””ìŠ¤í”Œë ˆì´ í•  ë‚´ìš© ì¶”ê°€
 				for(int32_t r = 0; r < i32FixedRowCnt; r++)
 				{
 					pData->Append(CFLArray<CFLString<wchar_t>>());
@@ -967,17 +967,17 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 						arrRow.Append(CFLString<wchar_t>().Format(L"(%d,%d)", r, c));
 				}
 
-				// µ¥ÀÌÅÍ¿¡ Ãß°¡ÇÑ ³»¿ëÀ» ½ÃÆ®¿¡ ¾÷µ¥ÀÌÆ®
+				// ë°ì´í„°ì— ì¶”ê°€í•œ ë‚´ìš©ì„ ì‹œíŠ¸ì— ì—…ë°ì´íŠ¸
 				pSheetInterface->UpdateSheetData();
 
-				// °íÁ¤ column, row °³¼ö ¼³Á¤
+				// ê³ ì • column, row ê°œìˆ˜ ì„¤ì •
 				pSheetInterface->SetFixedRowCount(i32FixedRowCnt);
 				pSheetInterface->SetFixedColumnCount(i32FixedColCnt);
 			}
 
-			// 1 ¹øÂ° ½ÃÆ®
+			// 1 ë²ˆì§¸ ì‹œíŠ¸
 			{
-				// Ãß°¡ÇÑ ½ÃÆ® ¾ò¾î ¿À±â
+				// ì¶”ê°€í•œ ì‹œíŠ¸ ì–»ì–´ ì˜¤ê¸°
 				CGUISheetInterface* pSheetInterface = nullptr;
 
 				if(bBoxLayout)
@@ -985,15 +985,15 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 				else
 					pSheetInterface = ((CGUIGridLayout*)m_pLayoutForSheet)->GetSheetInterface(9, 0);
 
-				// ½ÃÆ®ÀÇ µ¥ÀÌÅÍ Æ÷ÀÎÅÍ ¾ò¾î ¿À±â
+				// ì‹œíŠ¸ì˜ ë°ì´í„° í¬ì¸í„° ì–»ì–´ ì˜¤ê¸°
 				CFLArray<CFLArray<CFLString<wchar_t>>>* pData = pSheetInterface->GetDataPtr();
 
-				int32_t i32ColCnt = 10; // column °³¼ö
-				int32_t i32RowCnt = 10; // row °³¼ö
-				int32_t i32FixedColCnt = 1; // °íÁ¤ column °³¼ö
-				int32_t i32FixedRowCnt = 1; // °íÁ¤ row °³¼ö
+				int32_t i32ColCnt = 10; // column ê°œìˆ˜
+				int32_t i32RowCnt = 10; // row ê°œìˆ˜
+				int32_t i32FixedColCnt = 1; // ê³ ì • column ê°œìˆ˜
+				int32_t i32FixedRowCnt = 1; // ê³ ì • row ê°œìˆ˜
 
-				// ½ÃÆ®¿¡ µğ½ºÇÃ·¹ÀÌ ÇÒ ³»¿ë Ãß°¡
+				// ì‹œíŠ¸ì— ë””ìŠ¤í”Œë ˆì´ í•  ë‚´ìš© ì¶”ê°€
 				for(int32_t r = 0; r < i32FixedRowCnt; r++)
 				{
 					pData->Append(CFLArray<CFLString<wchar_t>>());
@@ -1015,50 +1015,50 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CreateComplexP
 						arrRow.Append(CFLString<wchar_t>().Format(L"(%d,%d)", r, c));
 				}
 
-				// µ¥ÀÌÅÍ¿¡ Ãß°¡ÇÑ ³»¿ëÀ» ½ÃÆ®¿¡ ¾÷µ¥ÀÌÆ®
+				// ë°ì´í„°ì— ì¶”ê°€í•œ ë‚´ìš©ì„ ì‹œíŠ¸ì— ì—…ë°ì´íŠ¸
 				pSheetInterface->UpdateSheetData();
 
-				// °íÁ¤ column, row °³¼ö ¼³Á¤
+				// ê³ ì • column, row ê°œìˆ˜ ì„¤ì •
 				pSheetInterface->SetFixedRowCount(i32FixedRowCnt);
 				pSheetInterface->SetFixedColumnCount(i32FixedColCnt);
 			}
 		}
 
-		// ·¹ÀÌ¾Æ¿ôµéÀ» ¹èÄ¡ÇÏ±â À§ÇÑ ¹è°æ ·¹ÀÌ¾Æ¿ô »ı¼º
+		// ë ˆì´ì•„ì›ƒë“¤ì„ ë°°ì¹˜í•˜ê¸° ìœ„í•œ ë°°ê²½ ë ˆì´ì•„ì›ƒ ìƒì„±
 		CGUIGridLayout* pGridBackground = new CGUIGridLayout((int32_t)ERowLayout::Count, (int32_t)EColLayout::Count);
 
-		// ¸ŞÀÎ ±×¸®µå ·¹ÀÌ¾Æ¿ôÀ» ERowLayout::Main, EColLayout::Main À§Ä¡¿¡¼­ row span = 4, col span = 1 À» Â÷ÁöÇÏµµ·Ï ¹èÄ¡
+		// ë©”ì¸ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì„ ERowLayout::Main, EColLayout::Main ìœ„ì¹˜ì—ì„œ row span = 4, col span = 1 ì„ ì°¨ì§€í•˜ë„ë¡ ë°°ì¹˜
 		pGridBackground->Add((int32_t)ERowLayout::Main, (int32_t)EColLayout::Main, 4, 1, m_pGridMain);
-		// ¹öÆ° ±×¸®µå ·¹ÀÌ¾Æ¿ôÀ» ERowLayout::Button, EColLayout::Main À§Ä¡¿¡¼­ row span = 1, col span = 1 À» Â÷ÁöÇÏµµ·Ï ¹èÄ¡
+		// ë²„íŠ¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì„ ERowLayout::Button, EColLayout::Main ìœ„ì¹˜ì—ì„œ row span = 1, col span = 1 ì„ ì°¨ì§€í•˜ë„ë¡ ë°°ì¹˜
 		pGridBackground->Add((int32_t)ERowLayout::Button, (int32_t)EColLayout::Button, m_pGridButtons);
-		// ¸ŞÀÎ ±×¸®µå ·¹ÀÌ¾Æ¿ôÀ» ERowLayout::Main, EColLayout::Main À§Ä¡¿¡¼­ row span = 5, col span = 1 À» Â÷ÁöÇÏµµ·Ï ¹èÄ¡
+		// ë©”ì¸ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì„ ERowLayout::Main, EColLayout::Main ìœ„ì¹˜ì—ì„œ row span = 5, col span = 1 ì„ ì°¨ì§€í•˜ë„ë¡ ë°°ì¹˜
 		pGridBackground->Add((int32_t)ERowLayout::Details, (int32_t)EColLayout::Details, 5, 1, m_pLayoutForSheet);
-		// »ó¼¼ Á¤º¸ ·¹ÀÌ¾Æ¿ô ¼û±â±â Ã³¸®
+		// ìƒì„¸ ì •ë³´ ë ˆì´ì•„ì›ƒ ìˆ¨ê¸°ê¸° ì²˜ë¦¬
 		m_pLayoutForSheet->SetVisible(false);
 
-		// ´ÙÀÌ¾ó·Î±×¿¡ ¹è°æ ·¹ÀÌ¾Æ¿ô Ãß°¡
+		// ë‹¤ì´ì–¼ë¡œê·¸ì— ë°°ê²½ ë ˆì´ì•„ì›ƒ ì¶”ê°€
 		m_pDlgProgress->Add(pGridBackground);
 
-		// ´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ ¾î´À À§Ä¡¸¦ ±âÁØÀ¸·Î Ã¢À» È®´ë ¶Ç´Â Ãà¼ÒÇÒÁö ±âÁØ À§Ä¡¸¦ Á¤ÇÕ´Ï´Ù.
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ì–´ëŠ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì°½ì„ í™•ëŒ€ ë˜ëŠ” ì¶•ì†Œí• ì§€ ê¸°ì¤€ ìœ„ì¹˜ë¥¼ ì •í•©ë‹ˆë‹¤.
 		m_pDlgProgress->SetResizeWindowPivot(eResizePivot);
-		// ´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ º¯°æµÇ±â Àü Ã¢ÀÇ ³Êºñ°¡ ´õ Å©¸é, Ã¢ÀÇ ³Êºñ¸¦ º¯°æÇÏÁö ¾Ê°í ÀÌÀü ³Êºñ¸¦ À¯ÁöÇÒÁö ¿©ºÎ ¼³Á¤
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ë³€ê²½ë˜ê¸° ì „ ì°½ì˜ ë„ˆë¹„ê°€ ë” í¬ë©´, ì°½ì˜ ë„ˆë¹„ë¥¼ ë³€ê²½í•˜ì§€ ì•Šê³  ì´ì „ ë„ˆë¹„ë¥¼ ìœ ì§€í• ì§€ ì—¬ë¶€ ì„¤ì •
 		m_pDlgProgress->KeepPreviousMaximumWidth(bKeepMaxWidth);
-		// ´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Å©±â°¡ º¯°æµÉ ¶§ º¯°æµÇ±â Àü Ã¢ÀÇ ³ôÀÌ°¡ ´õ Å©¸é, Ã¢ÀÇ ³ôÀÌ¸¦ º¯°æÇÏÁö ¾Ê°í ÀÌÀü ³ôÀÌ¸¦ À¯ÁöÇÒÁö ¿©ºÎ ¼³Á¤
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ì˜ í¬ê¸°ê°€ ë³€ê²½ë  ë•Œ ë³€ê²½ë˜ê¸° ì „ ì°½ì˜ ë†’ì´ê°€ ë” í¬ë©´, ì°½ì˜ ë†’ì´ë¥¼ ë³€ê²½í•˜ì§€ ì•Šê³  ì´ì „ ë†’ì´ë¥¼ ìœ ì§€í• ì§€ ì—¬ë¶€ ì„¤ì •
 		m_pDlgProgress->KeepPreviousMaximumHeight(bKeepMaxHeight);
-		// ´ÙÀÌ¾ó·Î±× Ã¢ »ı¼º
+		// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ ìƒì„±
 		m_pDlgProgress->OnInitDialog();
 
-		// ÀÛ¾÷ ½º·¹µå »ı¼º
+		// ì‘ì—… ìŠ¤ë ˆë“œ ìƒì„±
 		m_pThread = new std::future<void>(std::async(CPropertyMenuDialogProgressExample::AlgorithmThreadForComplexDialog, this, &m_pThread));
 		SetThreadPriority(m_pThread, THREAD_PRIORITY_LOWEST);
 
-		// ½º·¹µå ÆÄ¶ó¹ÌÅÍ ÃÊ±âÈ­
+		// ìŠ¤ë ˆë“œ íŒŒë¼ë¯¸í„° ì´ˆê¸°í™”
 		ResetThreadParams();
 
-		// ÀÛ¾÷ ½º·¹µå¿¡¼­ ¾÷µ¥ÀÌÆ® ÇÑ °ªÀ» ¹İ¿µÇÏ¿© ´ÙÀÌ¾ó·Î±× Ã¢ ¾÷µ¥ÀÌÆ®
+		// ì‘ì—… ìŠ¤ë ˆë“œì—ì„œ ì—…ë°ì´íŠ¸ í•œ ê°’ì„ ë°˜ì˜í•˜ì—¬ ë‹¤ì´ì–¼ë¡œê·¸ ì°½ ì—…ë°ì´íŠ¸
 		UpdateComplexDialogWithSheet();
 
-		// ´ÙÀÌ¾ó·Î±× ´İ±â
+		// ë‹¤ì´ì–¼ë¡œê·¸ ë‹«ê¸°
 		CloseProgressDialog();
 
 		cr = EResult_OK;
@@ -1094,82 +1094,82 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::UpdateComplexD
 
 		while(true)
 		{
-			// ½º·¹µå°¡ ¿Ï·áµÇ¸é while ¹® ºüÁ® ³ª°¡±â
+			// ìŠ¤ë ˆë“œê°€ ì™„ë£Œë˜ë©´ while ë¬¸ ë¹ ì ¸ ë‚˜ê°€ê¸°
 			if(m_bThreadDone)
 				break;
 
-			// ÁßÁö ¹öÆ° Å¬¸¯ È½¼ö°¡ º¯°æµÈ °æ¿ì
+			// ì¤‘ì§€ ë²„íŠ¼ í´ë¦­ íšŸìˆ˜ê°€ ë³€ê²½ëœ ê²½ìš°
 			if(m_pStopButton->GetClickCount() != m_i32BtnStopClickCount)
 			{
-				// ÁßÁö ¹öÆ°À» ÇÑ ¹ø Å¬¸¯ÇÑ °æ¿ì
+				// ì¤‘ì§€ ë²„íŠ¼ì„ í•œ ë²ˆ í´ë¦­í•œ ê²½ìš°
 				if(m_pStopButton->GetClickCount() == 1)
 				{
-					// ÁßÁö ¹öÆ° ³» ¹®ÀÚ¿­À» "Continue.." ·Î ¼³Á¤
+					// ì¤‘ì§€ ë²„íŠ¼ ë‚´ ë¬¸ìì—´ì„ "Continue.." ë¡œ ì„¤ì •
 					m_pGridButtons->SetCtrlValue((int32_t)ERowButtonComplex::Stop, (int32_t)EColButton::Button, L"Continue ..");
 				}
-				// ÁßÁö ¹öÆ°À» µÎ ¹ø Å¬¸¯ÇÑ °æ¿ì ("Continue.." ¹öÆ°À» Å¬¸¯ÇÑ °æ¿ì)
+				// ì¤‘ì§€ ë²„íŠ¼ì„ ë‘ ë²ˆ í´ë¦­í•œ ê²½ìš° ("Continue.." ë²„íŠ¼ì„ í´ë¦­í•œ ê²½ìš°)
 				else if(m_pStopButton->GetClickCount() == 2)
 				{
-					// ÁßÁö ¹öÆ° ¼û±â±â
+					// ì¤‘ì§€ ë²„íŠ¼ ìˆ¨ê¸°ê¸°
 					m_pGridButtons->SetCtrlVisible((int32_t)ERowButtonComplex::Stop, (int32_t)EColButton::Button, false);
 				}
 
-				// "Details" ¹öÆ° ¼û±â±â
+				// "Details" ë²„íŠ¼ ìˆ¨ê¸°ê¸°
 				m_pGridButtons->SetCtrlVisible((int32_t)ERowButtonComplex::Details, (int32_t)EColButton::Button, false);
-				// Sheet °¡ Æ÷ÇÔµÈ ·¹ÀÌ¾Æ¿ô ¼û±â±â
+				// Sheet ê°€ í¬í•¨ëœ ë ˆì´ì•„ì›ƒ ìˆ¨ê¸°ê¸°
 				m_pLayoutForSheet->SetVisible(false);
-				// ÁßÁö ¹öÆ° Å¬¸¯ È½¼ö ¾÷µ¥ÀÌÆ®
+				// ì¤‘ì§€ ë²„íŠ¼ í´ë¦­ íšŸìˆ˜ ì—…ë°ì´íŠ¸
 				m_i32BtnStopClickCount = m_pStopButton->GetClickCount();
-				// ´ÙÀÌ¾ó·Î±×ÀÇ ·¹ÀÌ¾Æ¿ô ¾÷µ¥ÀÌÆ®
+				// ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë ˆì´ì•„ì›ƒ ì—…ë°ì´íŠ¸
 				m_pDlgProgress->AdjustLayout();
 			}
 
-			// ÁßÁö ¹öÆ°À» ÇÑ ¹ø Å¬¸¯ÇÑ °æ¿ì
+			// ì¤‘ì§€ ë²„íŠ¼ì„ í•œ ë²ˆ í´ë¦­í•œ ê²½ìš°
 			if(m_pStopButton->GetClickCount() == 1)
 			{
-				// ¸Ş¼¼Áö ¼³Á¤
+				// ë©”ì„¸ì§€ ì„¤ì •
 				strMessage.Format(L"[Step 3/3] Temp Message...\n\n<Temp Progress>");
 
-				// m_pGridMain ÀÇ ERowMainComplex::Message, EColMainComplex::Message À§Ä¡¿¡ ¹®ÀÚ¿­ °ª ¼³Á¤ÇÏ¿© ´ÙÀÌ¾ó·Î±× »ó¿¡¼­ º¸ÀÌ´Â ¸Ş¼¼Áö ¼³Á¤
+				// m_pGridMain ì˜ ERowMainComplex::Message, EColMainComplex::Message ìœ„ì¹˜ì— ë¬¸ìì—´ ê°’ ì„¤ì •í•˜ì—¬ ë‹¤ì´ì–¼ë¡œê·¸ ìƒì—ì„œ ë³´ì´ëŠ” ë©”ì„¸ì§€ ì„¤ì •
 				m_pGridMain->SetCtrlValue((int32_t)ERowMainComplex::Message, (int32_t)EColMainComplex::Message, strMessage);
 
-				// ÇÁ·Î±×·¹½º ¹Ù°¡ 100% ·Î Ã¤¿öÁöµµ·Ï ¼³Á¤
+				// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ê°€ 100% ë¡œ ì±„ì›Œì§€ë„ë¡ ì„¤ì •
 				m_pProgressCtrlFP->SetPos(1.);
-				// ´ÙÀÌ¾ó·Î±× È­¸é °»½Å
+				// ë‹¤ì´ì–¼ë¡œê·¸ í™”ë©´ ê°±ì‹ 
 				m_pDlgProgress->Invalidate();
-				// ¸Ş½ÃÁö ÆßÇÁ
+				// ë©”ì‹œì§€ íŒí”„
 				CGUIManager::PeekAndPump();
 				Sleep(1);
 				continue;
 			}
-			// ÁßÁö ¹öÆ°À» µÎ ¹ø Å¬¸¯ÇÑ °æ¿ì
+			// ì¤‘ì§€ ë²„íŠ¼ì„ ë‘ ë²ˆ í´ë¦­í•œ ê²½ìš°
 			else if(m_pStopButton->GetClickCount() == 2)
 			{
-				// ÁßÁö ÇÁ·Î¼¼½º ÁøÇàÀÌ ¾ÆÁ÷ ¿Ï·áµÇÁö ¾ÊÀº °æ¿ì
+				// ì¤‘ì§€ í”„ë¡œì„¸ìŠ¤ ì§„í–‰ì´ ì•„ì§ ì™„ë£Œë˜ì§€ ì•Šì€ ê²½ìš°
 				if(m_i32CurrentStopProgress <= m_i32TotalStopProgress)
 				{
-					// ¸Ş½ÃÁö ¼³Á¤
+					// ë©”ì‹œì§€ ì„¤ì •
 					strMessage.Format(L"[Step 3/3] Learning is being stopped...\n\n<Stop Progress>\n(%d/%d)", m_i32CurrentStopProgress, m_i32TotalStopProgress);
 					m_pGridMain->SetCtrlValue((int32_t)ERowMainComplex::Message, (int32_t)EColMainComplex::Message, strMessage);
 
-					// ÇÁ·Î±×·¹½º ¹Ù¿¡ ÁøÇà·ü ¼³Á¤
+					// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ì— ì§„í–‰ë¥  ì„¤ì •
 					m_pProgressCtrlFP->SetPos((double)m_i32CurrentStopProgress / (double)m_i32TotalStopProgress);
 
-					// ´ÙÀÌ¾ó·Î±× È­¸é °»½Å
+					// ë‹¤ì´ì–¼ë¡œê·¸ í™”ë©´ ê°±ì‹ 
 					m_pDlgProgress->Invalidate();
 				}
-				else // ÁßÁö ÇÁ·Î¼¼½º ÁøÇàÀÌ ¾ÆÁ÷ ¿Ï·áµÈ °æ¿ì while ¹®¿¡¼­ break
+				else // ì¤‘ì§€ í”„ë¡œì„¸ìŠ¤ ì§„í–‰ì´ ì•„ì§ ì™„ë£Œëœ ê²½ìš° while ë¬¸ì—ì„œ break
 					break;
 
-				// ¸Ş½ÃÁö ÆßÇÁ
+				// ë©”ì‹œì§€ íŒí”„
 				CGUIManager::PeekAndPump();
 				Sleep(1);
 				continue;
 			}
 
-			// ÁßÁö ¹öÆ°À» ÇÑ ¹øµµ ´©¸£Áö ¾ÊÀº °æ¿ì
+			// ì¤‘ì§€ ë²„íŠ¼ì„ í•œ ë²ˆë„ ëˆ„ë¥´ì§€ ì•Šì€ ê²½ìš°
 
-			// ¸Ş½ÃÁö ¼³Á¤
+			// ë©”ì‹œì§€ ì„¤ì •
 			strMessage.Format
 			(
 				strMessageFormat,
@@ -1177,12 +1177,12 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::UpdateComplexD
 			);
 			m_pGridMain->SetCtrlValue((int32_t)ERowMainComplex::Message, (int32_t)EColMainComplex::Message, strMessage);
 
-			// ÇÁ·Î±×·¹½º ¹Ù¿¡ ÁøÇà·ü ¼³Á¤
+			// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ì— ì§„í–‰ë¥  ì„¤ì •
 			m_pProgressCtrlFP->SetPos((double)m_i32CurrentProgress / (double)m_i32TotalProgress);
 
-			// ´ÙÀÌ¾ó·Î±× È­¸é °»½Å
+			// ë‹¤ì´ì–¼ë¡œê·¸ í™”ë©´ ê°±ì‹ 
 			m_pDlgProgress->Invalidate();
-			// ¸Ş½ÃÁö ÆßÇÁ
+			// ë©”ì‹œì§€ íŒí”„
 			CGUIManager::PeekAndPump();
 			Sleep(1);
 		}
@@ -1215,39 +1215,39 @@ const CResult FLImaging::GUI::CPropertyMenuDialogProgressExample::CloseProgressD
 
 void FLImaging::GUI::CPropertyMenuDialogProgressExample::AlgorithmThreadForComplexDialog(CPropertyMenuDialogProgressExample* pInstance, std::future<void>** pContext)
 {
-	// º¹ÀâÇÑ ´ÙÀÌ¾ó·Î±×¿¡¼­ »ç¿ëµÇ´Â ½º·¹µå
+	// ë³µì¡í•œ ë‹¤ì´ì–¼ë¡œê·¸ì—ì„œ ì‚¬ìš©ë˜ëŠ” ìŠ¤ë ˆë“œ
 
 	if(pInstance->m_pDlgProgress)
 	{
 		while(true)
 		{
-			// ÇöÀç Á¾·á ÀÛ¾÷ ÁøÇà·®ÀÌ ÀüÃ¼ Á¾·á ÀÛ¾÷ ÁøÇà·® ÀÌ»óÀÌ µÈ °æ¿ì
+			// í˜„ì¬ ì¢…ë£Œ ì‘ì—… ì§„í–‰ëŸ‰ì´ ì „ì²´ ì¢…ë£Œ ì‘ì—… ì§„í–‰ëŸ‰ ì´ìƒì´ ëœ ê²½ìš°
 			if(pInstance->m_i32CurrentStopProgress >= pInstance->m_i32TotalStopProgress)
 			{
-				// ½º·¹µå°¡ Á¾·áµÇ¾úÀ½À» ¾Ë¸®´Â ÇÃ·¡±×¸¦ true ·Î ¼³Á¤ ÈÄ break
+				// ìŠ¤ë ˆë“œê°€ ì¢…ë£Œë˜ì—ˆìŒì„ ì•Œë¦¬ëŠ” í”Œë˜ê·¸ë¥¼ true ë¡œ ì„¤ì • í›„ break
 				pInstance->m_bThreadDone = true;
 				break;
 			}
 
-			// ¹öÆ°À» 2È¸ ÀÌ»ó Å¬¸¯ÇÑ °æ¿ì
+			// ë²„íŠ¼ì„ 2íšŒ ì´ìƒ í´ë¦­í•œ ê²½ìš°
 			if(pInstance->m_pStopButton->GetClickCount() >= 2)
 			{
 				Sleep(1);
-				// ÁßÁö ÀÛ¾÷ ÁøÇà·® °ªÀ» Áõ°¡½ÃÅ´
+				// ì¤‘ì§€ ì‘ì—… ì§„í–‰ëŸ‰ ê°’ì„ ì¦ê°€ì‹œí‚´
 				++pInstance->m_i32CurrentStopProgress;
 			}
 			else
 			{
-				// ÇöÀç ÀÛ¾÷ ÁøÇà·®ÀÌ ÀüÃ¼ ÀÛ¾÷ ÁøÇà·® ÀÌ»óÀÌ µÈ °æ¿ì
+				// í˜„ì¬ ì‘ì—… ì§„í–‰ëŸ‰ì´ ì „ì²´ ì‘ì—… ì§„í–‰ëŸ‰ ì´ìƒì´ ëœ ê²½ìš°
 				if(pInstance->m_i32CurrentProgress >= pInstance->m_i32TotalProgress)
 				{
-					// ½º·¹µå°¡ Á¾·áµÇ¾úÀ½À» ¾Ë¸®´Â ÇÃ·¡±×¸¦ true ·Î ¼³Á¤ ÈÄ break
+					// ìŠ¤ë ˆë“œê°€ ì¢…ë£Œë˜ì—ˆìŒì„ ì•Œë¦¬ëŠ” í”Œë˜ê·¸ë¥¼ true ë¡œ ì„¤ì • í›„ break
 					pInstance->m_bThreadDone = true;
 					break;
 				}
 
 				Sleep(1);
-				// ÀÛ¾÷ ÁøÇà·®ÀÇ °ªÀ» Áõ°¡½ÃÅ´
+				// ì‘ì—… ì§„í–‰ëŸ‰ì˜ ê°’ì„ ì¦ê°€ì‹œí‚´
 				++pInstance->m_i32CurrentProgress;
 			}
 		}
@@ -1256,31 +1256,31 @@ void FLImaging::GUI::CPropertyMenuDialogProgressExample::AlgorithmThreadForCompl
 
 void FLImaging::GUI::CPropertyMenuDialogProgressExample::AlgorithmThreadForSimpleDialog(CPropertyMenuDialogProgressExample* pInstance, std::future<void>** pContext)
 {
-	// ´Ü¼øÇÑ ´ÙÀÌ¾ó·Î±×¿¡¼­ »ç¿ëµÇ´Â ½º·¹µå
+	// ë‹¨ìˆœí•œ ë‹¤ì´ì–¼ë¡œê·¸ì—ì„œ ì‚¬ìš©ë˜ëŠ” ìŠ¤ë ˆë“œ
 
 	if(pInstance && pInstance->m_pDlgProgress)
 	{
 		while(true)
 		{
-			// ¹öÆ°À» 1È¸ ÀÌ»ó Å¬¸¯ÇÑ °æ¿ì
+			// ë²„íŠ¼ì„ 1íšŒ ì´ìƒ í´ë¦­í•œ ê²½ìš°
 			if(pInstance->m_pStopButton->GetClickCount() >= 1)
 			{
-				// ½º·¹µå°¡ Á¾·áµÇ¾úÀ½À» ¾Ë¸®´Â ÇÃ·¡±×¸¦ true ·Î ¼³Á¤ ÈÄ break
+				// ìŠ¤ë ˆë“œê°€ ì¢…ë£Œë˜ì—ˆìŒì„ ì•Œë¦¬ëŠ” í”Œë˜ê·¸ë¥¼ true ë¡œ ì„¤ì • í›„ break
 				pInstance->m_bThreadDone = true;
 				break;
 			}
 			else
 			{
-				// ÇöÀç ÀÛ¾÷ ÁøÇà·®ÀÌ ÀüÃ¼ ÀÛ¾÷ ÁøÇà·® ÀÌ»óÀÌ µÈ °æ¿ì
+				// í˜„ì¬ ì‘ì—… ì§„í–‰ëŸ‰ì´ ì „ì²´ ì‘ì—… ì§„í–‰ëŸ‰ ì´ìƒì´ ëœ ê²½ìš°
 				if(pInstance->m_i32CurrentProgress >= pInstance->m_i32TotalProgress)
 				{
-					// ½º·¹µå°¡ Á¾·áµÇ¾úÀ½À» ¾Ë¸®´Â ÇÃ·¡±×¸¦ true ·Î ¼³Á¤ ÈÄ break
+					// ìŠ¤ë ˆë“œê°€ ì¢…ë£Œë˜ì—ˆìŒì„ ì•Œë¦¬ëŠ” í”Œë˜ê·¸ë¥¼ true ë¡œ ì„¤ì • í›„ break
 					pInstance->m_bThreadDone = true;
 					break;
 				}
 
 				Sleep(1);
-				// ÀÛ¾÷ ÁøÇà·®ÀÇ °ªÀ» Áõ°¡½ÃÅ´
+				// ì‘ì—… ì§„í–‰ëŸ‰ì˜ ê°’ì„ ì¦ê°€ì‹œí‚´
 				++pInstance->m_i32CurrentProgress;
 			}
 		}
@@ -1317,7 +1317,7 @@ EGUIAlignment FLImaging::GUI::CPropertyMenuDialogProgressExample::GetAlignment(c
 
 void FLImaging::GUI::CPropertyMenuDialogProgressExample::ResetThreadParams()
 {
-	// ½º·¹µå ÆÄ¶ó¹ÌÅÍ °ªÀ» ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// ìŠ¤ë ˆë“œ íŒŒë¼ë¯¸í„° ê°’ì„ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	m_bThreadDone = false;
 	m_i32CurrentStopProgress = 0;
 	m_i32CurrentProgress = 0;

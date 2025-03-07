@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "TreeCtrlExampleDlg.h"
 
 namespace FLImaging
@@ -7,7 +7,7 @@ namespace FLImaging
 	{
 		class CGUITreeCtrl;
 
-		// ÇÁ·ÎÆÛÆ¼ ¸Ş´º Å¬·¡½º
+		// í”„ë¡œí¼í‹° ë©”ë‰´ í´ë˜ìŠ¤
 		class CPropertyMenuLight : public CGUIMenuItemBase
 		{
 			SupportToDuplicateObject(CPropertyMenuLight);
@@ -16,14 +16,14 @@ namespace FLImaging
 			CPropertyMenuLight();
 			virtual ~CPropertyMenuLight();
 
-			// ºÎ¸ğ Æ®¸® ¼³Á¤
+			// ë¶€ëª¨ íŠ¸ë¦¬ ì„¤ì •
 			virtual void SetParentTree(CGUITreeCtrl* pTree);
-			// ºÎ¸ğ ´ÙÀÌ¾ó·Î±× ¼³Á¤
+			// ë¶€ëª¨ ë‹¤ì´ì–¼ë¡œê·¸ ì„¤ì •
 			virtual void SetParentDialog(CTreeCtrlExampleDlg* m_pParentDlg);
 
-			// Tree Item ÀÇ LButtonDoubleClick ¸Ş½ÃÁö Ã³¸®±â
+			// Tree Item ì˜ LButtonDoubleClick ë©”ì‹œì§€ ì²˜ë¦¬ê¸°
 			virtual bool OnLButtonDoubleClick() override;
-			// Tree Item ÀÇ RButtonClick ¸Ş½ÃÁö Ã³¸®±â
+			// Tree Item ì˜ RButtonClick ë©”ì‹œì§€ ì²˜ë¦¬ê¸°
 			virtual bool OnRButtonClick()override;
 
 		protected:

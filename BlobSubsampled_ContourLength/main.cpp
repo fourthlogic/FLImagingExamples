@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,124 +6,124 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
 	do
 	{
 		CResult res = EResult_UnknownError;
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Blob/AlignBall.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage.Create(400, 0, 1424, 768)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// BlobSubsampled °´Ã¼ »ı¼º // Create BlobSubsampled object
+		// BlobSubsampled ê°ì²´ ìƒì„± // Create BlobSubsampled object
 		CBlobSubsampled blob;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì •
 		blob.SetSourceImage(fliImage);
 
-		// ³í¸® Á¶°Ç ¼³Á¤
+		// ë…¼ë¦¬ ì¡°ê±´ ì„¤ì •
 		blob.SetLogicalCondition(ELogicalCondition_Less);
 
-		// ÀÓ°è°ª ¼³Á¤,  À§ÀÇ Á¶°Ç°ú ¾Æ·¡ÀÇ Á¶°ÇÀÌ ÇÕÃÄÁö¸é 50º¸´Ù ÀÛÀº °´Ã¼¸¦ °ËÃâ
+		// ì„ê³„ê°’ ì„¤ì •,  ìœ„ì˜ ì¡°ê±´ê³¼ ì•„ë˜ì˜ ì¡°ê±´ì´ í•©ì³ì§€ë©´ 50ë³´ë‹¤ ì‘ì€ ê°ì²´ë¥¼ ê²€ì¶œ
 		blob.SetThreshold(50);
 
-		// Result Type ¼³Á¤
+		// Result Type ì„¤ì •
 		blob.SetResultType(CBlobSubsampled::EBlobResultType_Contour);
 
-		// Subsampling Level ¼³Á¤
+		// Subsampling Level ì„¤ì •
 		blob.SetSubsamplingLevel(3);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = blob.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute BlobSubsampled.");
 			break;
 		}
 
-		// ¸éÀûÀÌ 50 º¸´Ù ÀÛÀº °´Ã¼µéÀ» Á¦°Å(ÀÛÀº ³ëÀÌÁî Á¦°Å)
+		// ë©´ì ì´ 50 ë³´ë‹¤ ì‘ì€ ê°ì²´ë“¤ì„ ì œê±°(ì‘ì€ ë…¸ì´ì¦ˆ ì œê±°)
 		if(IsFail(res = blob.Filter(CBlobSubsampled::EFilterItem_Area, 50, ELogicalCondition_Less)))
 		{
 			ErrorPrint(res, "BlobSubsampled filtering algorithm error occurred.");
 			break;
 		}
 
-		// Circularity °á°ú°¡ 0.7º¸´Ù ÀÛÀº °´Ã¼µéÀ» Á¦°Å(¿øÇü¿¡ °¡±õÁö ¾ÊÀº °´Ã¼ Á¦°Å, ÃÖ´ë°ª : 1.0)
+		// Circularity ê²°ê³¼ê°€ 0.7ë³´ë‹¤ ì‘ì€ ê°ì²´ë“¤ì„ ì œê±°(ì›í˜•ì— ê°€ê¹ì§€ ì•Šì€ ê°ì²´ ì œê±°, ìµœëŒ€ê°’ : 1.0)
 		if(IsFail(res = blob.Filter(CBlobSubsampled::EFilterItem_Circularity, 0.7, ELogicalCondition_Less)))
 		{
 			ErrorPrint(res, "BlobSubsampled filtering algorithm error occurred.");
 			break;
 		}
 
-		// BlobSubsampled °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ CFLFigureArray ¼±¾ğ
+		// BlobSubsampled ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ CFLFigureArray ì„ ì–¸
 		CFLFigureArray flfaContours;
 
-		// BlobSubsampled °á°úµé Áß Contour À» ¾ò¾î¿È
+		// BlobSubsampled ê²°ê³¼ë“¤ ì¤‘ Contour ì„ ì–»ì–´ì˜´
 		if(IsFail(res = blob.GetResultContours(flfaContours)))
 		{
 			ErrorPrint(res, "Failed to get contours from the BlobSubsampled object.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 
-		// flfaContours ´Â FigureµéÀÇ ¹è¿­ÀÌ±â ¶§¹®¿¡ Layer¿¡ ³Ö±â¸¸ ÇØµµ ¸ğµÎ µå·ÎÀ®ÀÌ °¡´ÉÇÏ´Ù.
-		// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-		// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-		// ¿©±â¼­ 0.25ÀÌ¹Ç·Î ¿¶Àº ¹İÅõ¸í »óÅÂ¶ó°í º¼ ¼ö ÀÖ´Ù.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+		// flfaContours ëŠ” Figureë“¤ì˜ ë°°ì—´ì´ê¸° ë•Œë¬¸ì— Layerì— ë„£ê¸°ë§Œ í•´ë„ ëª¨ë‘ ë“œë¡œìœ™ì´ ê°€ëŠ¥í•˜ë‹¤.
+		// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+		// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+		// ì—¬ê¸°ì„œ 0.25ì´ë¯€ë¡œ ì˜…ì€ ë°˜íˆ¬ëª… ìƒíƒœë¼ê³  ë³¼ ìˆ˜ ìˆë‹¤.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 		if(IsFail(res = layer.DrawFigureImage(&flfaContours, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
 		{
 			ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage.Invalidate(true);
 
 		CFLString<wchar_t> str;
 		CFLString<wchar_t> flsTextResult;
 
-		// Image View °´Ã¼¿¡ Index, Contour Length ¼ø¼­´ë·Î Ãâ·Â
+		// Image View ê°ì²´ì— Index, Contour Length ìˆœì„œëŒ€ë¡œ ì¶œë ¥
 		for(int64_t i = 0; i < flfaContours.GetCount(); ++i)
 		{
 			str.Format(L"[%lld]\n", i);
 			flsTextResult.Format(L"\nContour Length %.2lf", flfaContours[i]->GetPerimeter());
 
-			// Image View Ãâ·Â
+			// Image View ì¶œë ¥
 			layer.DrawTextImage(CFLPoint<double>(flfaContours[i]), str, LIME, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
 			layer.DrawTextImage(CFLPoint<double>(flfaContours[i]), flsTextResult, YELLOW, BLACK, 10, false, 0., GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
 
-			// ÄÜ¼Ö¿¡ Ãâ·Â
+			// ì½˜ì†”ì— ì¶œë ¥
 			printf("[%lld] Contour Length %.2lf \n", i, flfaContours[i]->GetPerimeter());
 		}
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

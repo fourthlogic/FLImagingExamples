@@ -1,21 +1,21 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliLearnImage[3];
 	CFLImage fliFindImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageLearn[3];
 	CGUIViewImageWrap viewImageFind;
 
 	CResult res = EResult_UnknownError;
 
-	// Geometric Match Multi °´Ã¼ »ı¼º // Create Geometric Match Multi object
+	// Geometric Match Multi ê°ì²´ ìƒì„± // Create Geometric Match Multi object
 	CGeometricMatchMulti FLGeometricMatchMultiSave;
 	CGeometricMatchMulti FLGeometricMatchMultiLoad;
 
@@ -28,25 +28,25 @@ int main()
 		CFLString<wchar_t> arrClassName[3] = {L"A", L"B", L"C"};
 		uint32_t arrColor[3] = {LIME, RED, CYAN};
 
-		printf(" ¢¹ Learn Information\n");
+		printf(" â–· Learn Information\n");
 
 		for(int64_t i64DataIdx = 0; i64DataIdx < 3; ++i64DataIdx)
 		{
-			// ÀÌ¹ÌÁö ·Îµå // Loads image
+			// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 			if(IsFail(res = fliLearnImage[i64DataIdx].Load(arrPath[i64DataIdx].GetBuffer())))
 			{
 				ErrorPrint(res, "Failed to load the image file.\n");
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+			// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 			if(IsFail(res = viewImageLearn[i64DataIdx].Create((int32_t)(400 + 512 * i64DataIdx), 0, (int32_t)(400 + 512 * (i64DataIdx + 1)), 384)))
 			{
 				ErrorPrint(res, "Failed to create the image view.\n");
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 			if(IsFail(res = viewImageLearn[i64DataIdx].SetImagePtr(&fliLearnImage[i64DataIdx])))
 			{
 				ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -57,10 +57,10 @@ int main()
 
 			layerLearn.Clear();
 
-			// ÇĞ½ÀÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to learn
+			// í•™ìŠµí•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to learn
 			FLGeometricMatchMultiSave.SetLearnImage(fliLearnImage[i64DataIdx]);
 
-			// ÇĞ½ÀÇÒ ¿µ¿ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the area to learn.
+			// í•™ìŠµí•  ì˜ì—­ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the area to learn.
 			CFLRect<double> learnRegion;
 
 			if(i64DataIdx == 0)
@@ -74,24 +74,24 @@ int main()
 			FLGeometricMatchMultiSave.SetLearnROI(learnRegion);
 			FLGeometricMatchMultiSave.SetLearnPivot(flpLearnPivot);
 
-			// ÇĞ½À ÆÄ¶ó¹ÌÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the learning parameters.
-			// ÃßÃâÇÒ Æ¯Â¡Á¡ °³¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the number of feature points to be extracted.
+			// í•™ìŠµ íŒŒë¼ë¯¸í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the learning parameters.
+			// ì¶”ì¶œí•  íŠ¹ì§•ì  ê°œìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the number of feature points to be extracted.
 			FLGeometricMatchMultiSave.SetFeatureCount();
-			// ÃßÃâÇÒ Æ¯Â¡Á¡ Ã³¸®°úÁ¤¿¡¼­ÀÇ ³ëÀÌÁî ÇÊÅÍ¸µ Á¤µµ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the noise filtering degree in the process of processing the feature points to be extracted.
+			// ì¶”ì¶œí•  íŠ¹ì§•ì  ì²˜ë¦¬ê³¼ì •ì—ì„œì˜ ë…¸ì´ì¦ˆ í•„í„°ë§ ì •ë„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the noise filtering degree in the process of processing the feature points to be extracted.
 			FLGeometricMatchMultiSave.SetFeatureFiltering();
-			// ÃßÃâÇÒ Æ¯Â¡Á¡ Ã³¸®°úÁ¤¿¡¼­ÀÇ Çã¿ë ÀÓ°è°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the allowable threshold in the feature point processing process to be extracted.
+			// ì¶”ì¶œí•  íŠ¹ì§•ì  ì²˜ë¦¬ê³¼ì •ì—ì„œì˜ í—ˆìš© ì„ê³„ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the allowable threshold in the feature point processing process to be extracted.
 			FLGeometricMatchMultiSave.SetLearnThresholdCoefficient(1.3);
 
 
-			// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+			// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 			if(IsFail(res = FLGeometricMatchMultiSave.Learn(arrClassName[i64DataIdx])))
 			{
 				ErrorPrint(res, "Failed to execute Learn.\n");
 				break;
 			}
 
-			// ÃøÁ¤ ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the measurement area is
-			// FLImagingÀÇ Figure°´Ã¼µéÀº ¾î¶² µµÇü¸ğ¾çÀÌµç »ó°ü¾øÀÌ ÇÏ³ªÀÇ ÇÔ¼ö·Î µğ½ºÇÃ·¹ÀÌ°¡ °¡´É // Figure objects of FLImaging can be displayed with a single function regardless of any shape
+			// ì¸¡ì • ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the measurement area is
+			// FLImagingì˜ Figureê°ì²´ë“¤ì€ ì–´ë–¤ ë„í˜•ëª¨ì–‘ì´ë“  ìƒê´€ì—†ì´ í•˜ë‚˜ì˜ í•¨ìˆ˜ë¡œ ë””ìŠ¤í”Œë ˆì´ê°€ ê°€ëŠ¥ // Figure objects of FLImaging can be displayed with a single function regardless of any shape
 			if(IsFail(res = layerLearn.DrawFigureImage(&learnRegion, BLACK, 3)))
 			{
 				ErrorPrint(res, "Failed to draw figure\n");
@@ -104,7 +104,7 @@ int main()
 				break;
 			}
 
-			// ¼³Á¤µÈ Áß½ÉÁ¡ÀÇ À§Ä¡¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display the position of the set center point
+			// ì„¤ì •ëœ ì¤‘ì‹¬ì ì˜ ìœ„ì¹˜ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display the position of the set center point
 			CFLFigureArray flfaPointPivot = flpLearnPivot.MakeCrossHair(3, false);
 
 			if(IsFail(res = layerLearn.DrawFigureImage(&flfaPointPivot, BLACK, 3)))
@@ -120,8 +120,8 @@ int main()
 			}
 
 
-			// ÇĞ½ÀÇÑ Æ¯Â¡Á¡À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display the learned feature point
-			// ÇĞ½ÀÇÑ Æ¯Â¡Á¡ÀÌ Ã£°íÀÚÇÏ´Â °´Ã¼¸¦ ³ªÅ¸³»±â¿¡ ÃæºĞÇÏ°Ô Àß »ÌÇû´ÂÁö È®ÀÎÇÏ°í, ±×·¸Áö ¾Ê´Ù¸é ÇĞ½À ÆÄ¶ó¹ÌÅÍ¸¦ ÀçÁ¶Á¤ÇÔÀ¸·Î½á ÀçÈ®ÀÎÇÏ¸é °ËÃâ ½Ã ´õ È¿°úÀûÀÔ´Ï´Ù. // Check whether the learned feature points are selected well enough to represent the object to be found.
+			// í•™ìŠµí•œ íŠ¹ì§•ì ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display the learned feature point
+			// í•™ìŠµí•œ íŠ¹ì§•ì ì´ ì°¾ê³ ìí•˜ëŠ” ê°ì²´ë¥¼ ë‚˜íƒ€ë‚´ê¸°ì— ì¶©ë¶„í•˜ê²Œ ì˜ ë½‘í˜”ëŠ”ì§€ í™•ì¸í•˜ê³ , ê·¸ë ‡ì§€ ì•Šë‹¤ë©´ í•™ìŠµ íŒŒë¼ë¯¸í„°ë¥¼ ì¬ì¡°ì •í•¨ìœ¼ë¡œì¨ ì¬í™•ì¸í•˜ë©´ ê²€ì¶œ ì‹œ ë” íš¨ê³¼ì ì…ë‹ˆë‹¤. // Check whether the learned feature points are selected well enough to represent the object to be found.
 			CFLFigureArray flfaFeaturePoints;
 			FLGeometricMatchMultiSave.GetLearnedFeature(flfaFeaturePoints);
 
@@ -151,7 +151,7 @@ int main()
 				break;
 			}
 
-			// ÇĞ½ÀÇÑ Á¤º¸¿¡ ´ëÇØ ConsoleÃ¢¿¡ Ãâ·ÂÇÑ´Ù // Print the learned information to the console window
+			// í•™ìŠµí•œ ì •ë³´ì— ëŒ€í•´ Consoleì°½ì— ì¶œë ¥í•œë‹¤ // Print the learned information to the console window
 			printf("  < LEARN CLASS '%ws' > \n", arrClassName[i64DataIdx].GetBuffer());
 			printf("  1. ROI Shape Type : Rectangle\n");
 			printf("    left   : %.3lf\n", learnRegion.left);
@@ -162,18 +162,18 @@ int main()
 			printf("  2. Interest Pivot : (%.3lf, %.3lf)\n", flpLearnPivot.x, flpLearnPivot.y);
 			printf("\n");
 			
-			// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+			// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 			viewImageLearn[i64DataIdx].Invalidate(true);
 		}
 
-		// µ¥ÀÌÅÍ Ãß°¡¸¦ ¿Ï·á ÈÄ Save¸¦ ÁøÇàÇÕ´Ï´Ù. // After completing data addition, proceed with Save.
+		// ë°ì´í„° ì¶”ê°€ë¥¼ ì™„ë£Œ í›„ Saveë¥¼ ì§„í–‰í•©ë‹ˆë‹¤. // After completing data addition, proceed with Save.
 		if(IsFail(res = FLGeometricMatchMultiSave.Save(L"../../ExampleImages/Matching/Geometric Multi Learn File")))
 		{
 			ErrorPrint(res, "Failed to save\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliFindImage.Load(L"../../ExampleImages/Matching/Geometric Mult Find.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
@@ -181,14 +181,14 @@ int main()
 		}
 
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		if(IsFail(res = viewImageFind.Create(400, 384, 1168, 960)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 		if(IsFail(res = viewImageFind.SetImagePtr(&fliFindImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -197,7 +197,7 @@ int main()
 
 		for(int64_t i64DataIdx = 0 ; i64DataIdx < 3; ++i64DataIdx)
 		{
-			// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+			// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 			if(IsFail(res = viewImageFind.SynchronizeWindow(&viewImageLearn[i64DataIdx])))
 			{
 				ErrorPrint(res, "Failed to synchronize window.\n");
@@ -214,46 +214,46 @@ int main()
 			break;
 		}
 
-		// µ¥ÀÌÅÍ¸¦ LoadÇÕ´Ï´Ù. // Load data.
+		// ë°ì´í„°ë¥¼ Loadí•©ë‹ˆë‹¤. // Load data.
 		if(IsFail(res = FLGeometricMatchMultiLoad.Load(L"../../ExampleImages/Matching/Geometric Multi Learn File")))
 		{
 			ErrorPrint(res, "Failed to load\n");
 			break;
 		}
 
-		// °ËÃâÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set image to detect
+		// ê²€ì¶œí•  ì´ë¯¸ì§€ ì„¤ì • // Set image to detect
 		FLGeometricMatchMultiLoad.SetSourceImage(fliFindImage);
 
-		// °ËÃâ ½Ã »ç¿ëµÉ ÆÄ¶ó¹ÌÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the parameters to be used for detection.
-		// °ËÃâ ½Ã »ç¿ëµÉ ±âº» °¢µµ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the default angle to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  íŒŒë¼ë¯¸í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the parameters to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ê¸°ë³¸ ê°ë„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the default angle to be used for detection.
 		FLGeometricMatchMultiLoad.SetAngleBias(0.);
-		// °ËÃâ ½Ã »ç¿ëµÉ °¢µµÀÇ Å½»ö¹üÀ§¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the search range of the angle to be used for detection.
-		// °¢µµ´Â ±âº» °¢µµ¸¦ ±âÁØÀ¸·Î (±âº» °¢µµ - AngleTolerance, ±âº» °¢µµ + AngleTolerance)°¡ ÃÖÁ¾ Å½»ö¹üÀ§ // The angle is based on the basic angle (default angle - AngleTolerance, basic angle + AngleTolerance) is the final search range
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ê°ë„ì˜ íƒìƒ‰ë²”ìœ„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the search range of the angle to be used for detection.
+		// ê°ë„ëŠ” ê¸°ë³¸ ê°ë„ë¥¼ ê¸°ì¤€ìœ¼ë¡œ (ê¸°ë³¸ ê°ë„ - AngleTolerance, ê¸°ë³¸ ê°ë„ + AngleTolerance)ê°€ ìµœì¢… íƒìƒ‰ë²”ìœ„ // The angle is based on the basic angle (default angle - AngleTolerance, basic angle + AngleTolerance) is the final search range
 		FLGeometricMatchMultiLoad.SetAngleTolerance(180.);
-		// °ËÃâ ½Ã »ç¿ëµÉ ½ºÄÉÀÏ Å½»ö¹üÀ§¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the scale search range to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ìŠ¤ì¼€ì¼ íƒìƒ‰ë²”ìœ„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the scale search range to be used for detection.
 		FLGeometricMatchMultiLoad.SetScaleRange(0.98, 1.02);
-		// °ËÃâ ½Ã »ç¿ëµÉ ÃÖ¼Ò Å½»öÁ¡¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the minimum search score to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ìµœì†Œ íƒìƒ‰ì ìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the minimum search score to be used for detection.
 		FLGeometricMatchMultiLoad.SetMinimumDetectionScore(0.5);
-		// °ËÃâ ½Ã »ç¿ëµÉ Å½»ö ¹æ½ÄÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the search method to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  íƒìƒ‰ ë°©ì‹ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the search method to be used for detection.
 		FLGeometricMatchMultiLoad.SetMaxObjectMode(CGeometricMatchMulti::EMaxObjectMode_Total);
-		// °ËÃâ ½Ã »ç¿ëµÉ ÃÖ´ë Å½»ö°´Ã¼ ¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the maximum number of search objects to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ìµœëŒ€ íƒìƒ‰ê°ì²´ ìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the maximum number of search objects to be used for detection.
 		FLGeometricMatchMultiLoad.SetMaxObjectTotal(16);
 
-		// °ËÃâ ½Ã º¸°£¹ı »ç¿ë À¯¹«¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set whether to use interpolation when detecting.
+		// ê²€ì¶œ ì‹œ ë³´ê°„ë²• ì‚¬ìš© ìœ ë¬´ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set whether to use interpolation when detecting.
 		FLGeometricMatchMultiLoad.EnableInterpolation();
-		// °ËÃâ ½Ã ÃÖÀûÈ­ Á¤µµ¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the degree of optimization for detection.
+		// ê²€ì¶œ ì‹œ ìµœì í™” ì •ë„ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the degree of optimization for detection.
 		FLGeometricMatchMultiLoad.SetOptimizationOption();
-		// °ËÃâ ½Ã ´ëºñÁ¤µµ¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the contrast level for detection.
+		// ê²€ì¶œ ì‹œ ëŒ€ë¹„ì •ë„ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the contrast level for detection.
 		FLGeometricMatchMultiLoad.SetContrastOption();
-		// °ËÃâ ½Ã ÀÌ¹ÌÁö ¿µ¿ª¹ÛÀÇ Å½»ö Á¤µµ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the degree of search outside the image area when detecting.
+		// ê²€ì¶œ ì‹œ ì´ë¯¸ì§€ ì˜ì—­ë°–ì˜ íƒìƒ‰ ì •ë„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the degree of search outside the image area when detecting.
 		FLGeometricMatchMultiLoad.SetInvisibleRegionEstimation();
-		// °ËÃâ ½Ã Ã³¸®°úÁ¤¿¡¼­ÀÇ Çã¿ë ÀÓ°è°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the allowable threshold in the process of detection.
+		// ê²€ì¶œ ì‹œ ì²˜ë¦¬ê³¼ì •ì—ì„œì˜ í—ˆìš© ì„ê³„ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the allowable threshold in the process of detection.
 		FLGeometricMatchMultiLoad.SetFindThresholdCoefficient();
-		// °ËÃâ ½Ã °ãÃÄÁü Çã¿ë Á¤µµ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the allowable degree of overlap during detection.
+		// ê²€ì¶œ ì‹œ ê²¹ì³ì§ í—ˆìš© ì •ë„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the allowable degree of overlap during detection.
 		FLGeometricMatchMultiLoad.SetObjectOverlap();
-		// °ËÃâ ½Ã ÀÌ¹ÌÁö ÀüÃ³¸® À¯¹«¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set whether or not to pre-process the image during detection.
+		// ê²€ì¶œ ì‹œ ì´ë¯¸ì§€ ì „ì²˜ë¦¬ ìœ ë¬´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set whether or not to pre-process the image during detection.
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		res = FLGeometricMatchMultiLoad.Execute();
 
 		if(IsFail(res))
@@ -262,10 +262,10 @@ int main()
 			break;
 		}
 
-		// ±âÇÏÇĞÀû ÆĞÅÏ °ËÃâ °á°ú¸¦ °¡Á®¿É´Ï´Ù. // Get the geometric pattern detection result.
+		// ê¸°í•˜í•™ì  íŒ¨í„´ ê²€ì¶œ ê²°ê³¼ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the geometric pattern detection result.
 		int64_t i64ResultCount = FLGeometricMatchMultiLoad.GetResultCount();
 
-		printf(" ¢º Find Information\n");
+		printf(" â–¶ Find Information\n");
 
 		for(int64_t i = 0; i < i64ResultCount; ++i)
 		{
@@ -301,7 +301,7 @@ int main()
 			if(!pFlrResultRegion)
 				break;
 
-			// ±âÇÏÇĞÀû ÆĞÅÏ °ËÃâ °á°ú¸¦ ConsoleÃ¢¿¡ Ãâ·ÂÇÕ´Ï´Ù. // Output the geometric pattern detection result to the console window.
+			// ê¸°í•˜í•™ì  íŒ¨í„´ ê²€ì¶œ ê²°ê³¼ë¥¼ Consoleì°½ì— ì¶œë ¥í•©ë‹ˆë‹¤. // Output the geometric pattern detection result to the console window.
 			printf(" < Instance : %lld >\n", i);
 			printf(" Class Name : %ws\n", wstrClassName.GetBuffer());
 			printf("  1. ROI Shape Type : Rectangle\n");
@@ -315,7 +315,7 @@ int main()
 
 			printf("\n");
 
-			// °ËÃâ °á°úÀÇ Áß½ÉÁ¡À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display the center point of the detection result
+			// ê²€ì¶œ ê²°ê³¼ì˜ ì¤‘ì‹¬ì ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display the center point of the detection result
 			CFLFigureArray flfaPoint = flpPivot.MakeCrossHair(3, false);
 			flfaPoint.Rotate(f32Angle, &flpPivot);
 
@@ -331,7 +331,7 @@ int main()
 				break;
 			}
 
-			// °á°ú Æ¯Â¡Á¡À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display the resulting feature point
+			// ê²°ê³¼ íŠ¹ì§•ì ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display the resulting feature point
 			for(int32_t i32Index = 0; i32Index < (int32_t)flfaResultPoints.GetCount(); ++i32Index)
 			{
 				if(flfaResultPoints.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
@@ -373,7 +373,7 @@ int main()
 
 		viewImageFind.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageFind.IsAvailable() && viewImageLearn[0].IsAvailable() && viewImageLearn[1].IsAvailable() && viewImageLearn[2].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

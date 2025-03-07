@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
@@ -8,17 +8,17 @@ int main()
 	CFLImage fliDstImage;
 	CFLImage fliTxtImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSrc;
 	CGUIViewImageWrap viewImageDst;
 	CGUIView3DWrap view3DDst;
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult res = EResult_UnknownError;
 
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = fliSrcImage.Load(L"../../ExampleImages/MultiFocusDerivativeBased3D/")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -27,42 +27,42 @@ int main()
 
 		fliSrcImage.SelectPage(0);
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create the source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create the source image view
 		if((res = viewImageSrc.Create(100, 0, 548, 448)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if((res = viewImageSrc.SetImagePtr(&fliSrcImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if((res = viewImageDst.Create(548, 0, 996, 448)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if((res = viewImageDst.SetImagePtr(&fliDstImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination 3D ÀÌ¹ÌÁö ºä »ı¼º // Create the destination 3D image view
+		// Destination 3D ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination 3D image view
 		if((res = view3DDst.Create(400, 200, 1300, 800)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// µÎ ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two view windows
+		// ë‘ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two view windows
 		if((res = viewImageSrc.SynchronizeWindow(&viewImageDst)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
@@ -71,59 +71,59 @@ int main()
 
 		viewImageSrc.SetFixThumbnailView(true);
 
-		// Multi Focus Derivative Based °´Ã¼ »ı¼º // Create Multi Focus Derivative Based object
+		// Multi Focus Derivative Based ê°ì²´ ìƒì„± // Create Multi Focus Derivative Based object
 		CMultiFocusDerivativeBased3D algMultiFocusDerivativeBased3D;
 
 		CFL3DObjectHeightMap fl3DOHM;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		algMultiFocusDerivativeBased3D.SetSourceImage(fliSrcImage);
-		// Destination Height Map ÀÌ¹ÌÁö ¼³Á¤ // Set the destination height map image
+		// Destination Height Map ì´ë¯¸ì§€ ì„¤ì • // Set the destination height map image
 		algMultiFocusDerivativeBased3D.SetDestinationHeightMapImage(fliDstImage);
-		// Destination Texture ÀÌ¹ÌÁö ¼³Á¤ // Set the destination texture image
+		// Destination Texture ì´ë¯¸ì§€ ì„¤ì • // Set the destination texture image
 		algMultiFocusDerivativeBased3D.SetDestinationTextureImage(&fliTxtImage);
-		// Destination 3D Object ¼³Á¤ // Set the Destination 3D Object 
+		// Destination 3D Object ì„¤ì • // Set the Destination 3D Object 
 		algMultiFocusDerivativeBased3D.SetDestinationObject(fl3DOHM);
-		// Pixel Accuracy ¼³Á¤ // Set the pixel accuracy
+		// Pixel Accuracy ì„¤ì • // Set the pixel accuracy
 		algMultiFocusDerivativeBased3D.SetPixelAccuracy(0.1);
-		// Depth Pitch ¼³Á¤ // Set the depth pitch
+		// Depth Pitch ì„¤ì • // Set the depth pitch
 		algMultiFocusDerivativeBased3D.SetDepthPitch(0.2);
-		// Filter ¼³Á¤ // Set filter
+		// Filter ì„¤ì • // Set filter
 		algMultiFocusDerivativeBased3D.SetFilter(CMultiFocusDerivativeBased3D::EFilter_Guided);
 		// Set the sigma range value
 		algMultiFocusDerivativeBased3D.SetSigmaSpatial(5);
 		// Set the sigma spatial value
 		algMultiFocusDerivativeBased3D.SetSigmaRange(5);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = algMultiFocusDerivativeBased3D.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute multiFocus.");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if((res = viewImageDst.ZoomFit()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to zoom fit of the image view.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSrc = viewImageSrc.GetLayer(0);
 		CGUIViewImageLayerWrap layerDst = viewImageDst.GetLayer(0);
 		CGUIView3DLayerWrap layer3D = view3DDst.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSrc.Clear();
 		layerDst.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((res = layerSrc.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
@@ -142,7 +142,7 @@ int main()
 		pFl3DOHM->SetTextureImage(fliTxtImage);
 		pFl3DOHM->ActivateVertexColorTexture(true);
 
-		// 3D ÀÌ¹ÌÁö ºä¿¡ Height Map (Dst Image) ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ
+		// 3D ì´ë¯¸ì§€ ë·°ì— Height Map (Dst Image) ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´
 		if((res = view3DDst.PushObject(*pFl3DOHM)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
@@ -157,12 +157,12 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSrc.Invalidate(true);
 		viewImageDst.Invalidate(true);
 		view3DDst.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä, 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·°, 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(viewImageSrc.IsAvailable() && viewImageDst.IsAvailable() && view3DDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

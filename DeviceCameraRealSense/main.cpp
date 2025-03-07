@@ -1,31 +1,31 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 
 
-// Ä«¸Ş¶ó¿¡¼­ µ¥ÀÌÅÍ Ãëµæ ÀÌº¥Æ®¸¦ ¹Ş±â À§ÇØ CDeviceEventImageBase ¸¦ »ó¼Ó ¹Ş¾Æ¼­ ±¸Çö
+// ì¹´ë©”ë¼ì—ì„œ ë°ì´í„° ì·¨ë“ ì´ë²¤íŠ¸ë¥¼ ë°›ê¸° ìœ„í•´ CDeviceEventImageBase ë¥¼ ìƒì† ë°›ì•„ì„œ êµ¬í˜„
 class CDeviceEventImageEx : public CDeviceEventImageBase
 {
 public:
-	// CDeviceEventImageEx »ı¼ºÀÚ
+	// CDeviceEventImageEx ìƒì„±ì
 	CDeviceEventImageEx()
 	{
 		m_pView3D = nullptr;
 	}
 
-	// CDeviceEventImageEx ¼Ò¸êÀÚ
+	// CDeviceEventImageEx ì†Œë©¸ì
 	virtual ~CDeviceEventImageEx()
 	{
 	}
 
-	// ÃëµæÇÑ µ¥ÀÌÅÍ¸¦ Ç¥½ÃÇÒ 3D ºä¸¦ ¼³Á¤ÇÏ´Â ÇÔ¼ö
+	// ì·¨ë“í•œ ë°ì´í„°ë¥¼ í‘œì‹œí•  3D ë·°ë¥¼ ì„¤ì •í•˜ëŠ” í•¨ìˆ˜
 	void SetView3D(CGUIView3DWrap* pView3D)
 	{
 		if(pView3D)
 			m_pView3D = pView3D;
 	}
 
-	// Ä«¸Ş¶ó¿¡¼­ µ¥ÀÌÅÍ Ãëµæ ½Ã È£Ãâ µÇ´Â ÇÔ¼ö
+	// ì¹´ë©”ë¼ì—ì„œ ë°ì´í„° ì·¨ë“ ì‹œ í˜¸ì¶œ ë˜ëŠ” í•¨ìˆ˜
 	virtual void OnAcquisition(const CDeviceImageBase* pDeviceImage)
 	{
 		do
@@ -33,7 +33,7 @@ public:
 			if(!m_pView3D)
 				break;
 
-			// 3D ºäÀÇ À¯È¿¼ºÀ» È®ÀÎÇÑ´Ù.
+			// 3D ë·°ì˜ ìœ íš¨ì„±ì„ í™•ì¸í•œë‹¤.
 			if(!m_pView3D->IsAvailable())
 				break;
 
@@ -42,40 +42,40 @@ public:
 			if(!pCamera)
 				break;
 
-			// µ¥ÀÌÅÍ °´Ã¼ ¼±¾ğ
+			// ë°ì´í„° ê°ì²´ ì„ ì–¸
 			CFL3DObject floData;
 
-			// Ä«¸Ş¶ó¿¡¼­ Ãëµæ ÇÑ µ¥ÀÌÅÍ¸¦ ¾ò¾î¿Â´Ù.
+			// ì¹´ë©”ë¼ì—ì„œ ì·¨ë“ í•œ ë°ì´í„°ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 			pCamera->GetAcquired3DData(floData);
 
-			// 3D ºäÀÇ ¾÷µ¥ÀÌÆ®¸¦ ¸·½À´Ï´Ù.
+			// 3D ë·°ì˜ ì—…ë°ì´íŠ¸ë¥¼ ë§‰ìŠµë‹ˆë‹¤.
 			m_pView3D->LockUpdate();
 
-			// 3D ºäÀÇ À¯È¿¼ºÀ» È®ÀÎÇÑ´Ù.
+			// 3D ë·°ì˜ ìœ íš¨ì„±ì„ í™•ì¸í•œë‹¤.
 			if(!m_pView3D->IsAvailable())
 				break;
 
-			// 3D ºäÀÇ °´Ã¼ °³¼ö¸¦ ¾ò¾î¿É´Ï´Ù.
+			// 3D ë·°ì˜ ê°ì²´ ê°œìˆ˜ë¥¼ ì–»ì–´ì˜µë‹ˆë‹¤.
 			int32_t i32ObjectCount = m_pView3D->GetObjectCount();
 
-			// 3D ºäÀÇ °´Ã¼µéÀ» ¸ğµÎ Å¬¸®¾îÇÕ´Ï´Ù.
+			// 3D ë·°ì˜ ê°ì²´ë“¤ì„ ëª¨ë‘ í´ë¦¬ì–´í•©ë‹ˆë‹¤.
 			m_pView3D->ClearObjects();
 
-			// 3D ºäÀÇ À¯È¿¼ºÀ» È®ÀÎÇÑ´Ù.
+			// 3D ë·°ì˜ ìœ íš¨ì„±ì„ í™•ì¸í•œë‹¤.
 			if(!m_pView3D->IsAvailable())
 				break;
 
-			// 3D ºä¿¡ °´Ã¼¸¦ Ãß°¡ÇÕ´Ï´Ù.
+			// 3D ë·°ì— ê°ì²´ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
 			m_pView3D->PushObject(floData);
 
-			// 3D ºäÀÇ À¯È¿¼ºÀ» È®ÀÎÇÑ´Ù.
+			// 3D ë·°ì˜ ìœ íš¨ì„±ì„ í™•ì¸í•œë‹¤.
 			if(!m_pView3D->IsAvailable())
 				break;
 
-			// 3D ºäÀÇ ¾÷µ¥ÀÌÆ® ¸·Àº °ÍÀ» ÇØÁ¦ÇÕ´Ï´Ù.
+			// 3D ë·°ì˜ ì—…ë°ì´íŠ¸ ë§‰ì€ ê²ƒì„ í•´ì œí•©ë‹ˆë‹¤.
 			m_pView3D->UnlockUpdate();
 
-			// 3D ºäÀÇ ½ºÄÉÀÏÀ» Á¶Á¤ÇÕ´Ï´Ù.
+			// 3D ë·°ì˜ ìŠ¤ì¼€ì¼ì„ ì¡°ì •í•©ë‹ˆë‹¤.
 			if(!i32ObjectCount)
 				m_pView3D->ZoomFit();
 		}
@@ -91,10 +91,10 @@ int main()
 {
 	CResult drReturn = EResult_UnknownError;
 
-	// 3D ºä ¼±¾ğ
+	// 3D ë·° ì„ ì–¸
 	CGUIView3DWrap View3D;
 
-	// RealSense Ä«¸Ş¶ó ¼±¾ğ
+	// RealSense ì¹´ë©”ë¼ ì„ ì–¸
 	CDeviceCameraRealSense camRealSense;
 
 	do
@@ -104,7 +104,7 @@ int main()
 		int32_t i32SelectDevice = 0;
 		CFLString<wchar_t> flsConnection = L"";
 
-		// ÀåÄ¡ Ã£±â ¹æ¹ıÀ» ¼±ÅÃÇÕ´Ï´Ù.
+		// ì¥ì¹˜ ì°¾ê¸° ë°©ë²•ì„ ì„ íƒí•©ë‹ˆë‹¤.
 		while(true)
 		{
 			printf("1. Auto Detect\n");
@@ -143,7 +143,7 @@ int main()
 		{
 			CFLArray<CFLString<wchar_t>> flarrSerialNumbers;
 
-			// ¿¬°áµÇ¾î ÀÖ´Â Ä«¸Ş¶óÀÇ ½Ã¸®¾ó ¹øÈ£¸¦ ¾ò´Â´Ù.
+			// ì—°ê²°ë˜ì–´ ìˆëŠ” ì¹´ë©”ë¼ì˜ ì‹œë¦¬ì–¼ ë²ˆí˜¸ë¥¼ ì–»ëŠ”ë‹¤.
 			drReturn = camRealSense.GetAutoDetectCameraSerialNumbers(flarrSerialNumbers);
 
 			if(drReturn.IsFail() || !flarrSerialNumbers.GetCount())
@@ -153,7 +153,7 @@ int main()
 				break;
 			}
 
-			// ¿¬°á ÇÒ Ä«¸Ş¶ó¸¦ ¼±ÅÃÇÕ´Ï´Ù.
+			// ì—°ê²° í•  ì¹´ë©”ë¼ë¥¼ ì„ íƒí•©ë‹ˆë‹¤.
 			while(true)
 			{
 				for(int64_t i = 0; i < flarrSerialNumbers.GetCount(); ++i)
@@ -186,7 +186,7 @@ int main()
 		}
 		else
 		{
-			// ½Ã¸®¾ó ¹øÈ£¸¦ ÀÔ·Â ¹Ş´Â´Ù.
+			// ì‹œë¦¬ì–¼ ë²ˆí˜¸ë¥¼ ì…ë ¥ ë°›ëŠ”ë‹¤.
 			printf("Input Serial Number: ");
 			fgetws(arrInput, 4096, stdin);
 
@@ -194,20 +194,20 @@ int main()
 			flsConnection.Replace(L"\n", L"");
 		}
 
-		// ÀÌº¥Æ®¸¦ ¹ŞÀ» °´Ã¼ ¼±¾ğ
+		// ì´ë²¤íŠ¸ë¥¼ ë°›ì„ ê°ì²´ ì„ ì–¸
 		CDeviceEventImageEx eventImage;
 
-		// Ä«¸Ş¶ó¿¡ ÀÌº¥Æ® °´Ã¼ ¼³Á¤
+		// ì¹´ë©”ë¼ì— ì´ë²¤íŠ¸ ê°ì²´ ì„¤ì •
 		camRealSense.RegisterDeviceEvent(&eventImage);
 
 		if(bAutoDetect)
-			// ÀÎµ¦½º¿¡ ÇØ´çÇÏ´Â Ä«¸Ş¶ó·Î ¿¬°áÀ» ¼³Á¤ÇÕ´Ï´Ù.
+			// ì¸ë±ìŠ¤ì— í•´ë‹¹í•˜ëŠ” ì¹´ë©”ë¼ë¡œ ì—°ê²°ì„ ì„¤ì •í•©ë‹ˆë‹¤.
 			drReturn = camRealSense.AutoDetectCamera(i32SelectDevice);
 		else
-			// ½Ã¸®¾ó ¹øÈ£¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+			// ì‹œë¦¬ì–¼ ë²ˆí˜¸ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 			camRealSense.SetSerialNumber(flsConnection);
 
-		// Ä«¸Ş¶ó¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+		// ì¹´ë©”ë¼ë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 		drReturn = camRealSense.Initialize();
 
 		if(drReturn.IsFail())
@@ -216,7 +216,7 @@ int main()
 			break;
 		}
 
-		// 3D ºä »ı¼º
+		// 3D ë·° ìƒì„±
 		if(View3D.Create(0, 0, 1000, 1000).IsFail())
 		{
 			drReturn = EResult_FailedToCreateObject;
@@ -227,7 +227,7 @@ int main()
 
 		eventImage.SetView3D(&View3D);
 
-		// Ä«¸Ş¶ó¸¦ Live ÇÕ´Ï´Ù.
+		// ì¹´ë©”ë¼ë¥¼ Live í•©ë‹ˆë‹¤.
 		drReturn = camRealSense.Live();
 
 		if(drReturn.IsFail())
@@ -236,13 +236,13 @@ int main()
 			break;
 		}
 
-		// 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(View3D.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
 
-	// Ä«¸Ş¶óÀÇ ÃÊ±âÈ­¸¦ ÇØÁ¦ÇÕ´Ï´Ù.
+	// ì¹´ë©”ë¼ì˜ ì´ˆê¸°í™”ë¥¼ í•´ì œí•©ë‹ˆë‹¤.
 	camRealSense.Terminate();
 
 	if(drReturn.IsFail())

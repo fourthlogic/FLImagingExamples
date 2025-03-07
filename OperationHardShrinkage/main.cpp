@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,29 +6,29 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSourceImage;
 	CFLImage fliDestinationImage0;
 	CFLImage fliDestinationImage1;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSrc;
 	CGUIViewImageWrap viewImageDst0;
 	CGUIViewImageWrap viewImageDst1;
 
-	 // ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	 // ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/OperationHardShrinkage/Coord1D.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image views
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image views
 		if ((res = viewImageSrc.Create(100, 0, 600, 545)).IsFail() ||
 			(res = viewImageDst0.Create(600, 0, 1100, 545)).IsFail() ||
 			(res = viewImageDst1.Create(1100, 0, 1600, 545)).IsFail())
@@ -37,7 +37,7 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™”í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if ((res = viewImageSrc.SynchronizePointOfView(&viewImageDst0)).IsFail() ||
 			(res = viewImageSrc.SynchronizePointOfView(&viewImageDst1)).IsFail())
 		{
@@ -45,7 +45,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the images in the image views
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the images in the image views
 		if ((res = viewImageSrc.SetImagePtr(&fliSourceImage)).IsFail() ||
 			(res = viewImageDst0.SetImagePtr(&fliDestinationImage0)).IsFail() ||
 			(res = viewImageDst1.SetImagePtr(&fliDestinationImage1)).IsFail())
@@ -54,7 +54,7 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™”í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSrc.SynchronizeWindow(&viewImageDst0)).IsFail() ||
 		   (res = viewImageSrc.SynchronizeWindow(&viewImageDst1)).IsFail())
 		{
@@ -62,16 +62,16 @@ int main()
 			break;
 		}
 
-		// Operation HardShrinkage °´Ã¼ »ı¼º // Create Operation HardShrinkage object
+		// Operation HardShrinkage ê°ì²´ ìƒì„± // Create Operation HardShrinkage object
 		COperationHardShrinkage algObject;
 
-		// ÀÌ¹ÌÁö ¼³Á¤ // Set the images
+		// ì´ë¯¸ì§€ ì„¤ì • // Set the images
 		algObject.SetSourceImage(fliSourceImage);
 		algObject.SetDestinationImage(fliDestinationImage0);
 		algObject.SetOperationMode(COperationHardShrinkage::EOperationMode_Forward);
 		algObject.SetLambda(0.2);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = algObject.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute operation HardShrinkage.");
@@ -81,25 +81,25 @@ int main()
 		algObject.SetDestinationImage(fliDestinationImage1);
 		algObject.SetOperationMode(COperationHardShrinkage::EOperationMode_Backward);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = algObject.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute operation HardShrinkage.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View ¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image View ì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSource = viewImageSrc.GetLayer(0);
 		CGUIViewImageLayerWrap layerDestination0 = viewImageDst0.GetLayer(0);
 		CGUIViewImageLayerWrap layerDestination1 = viewImageDst1.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer ¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layer ì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSource.Clear();
 		layerDestination0.Clear();
 		layerDestination1.Clear();
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		CFLPoint<double> flpPoint = CFLPoint<double>(0, 0);
 
 		if ((res = layerSource.DrawTextCanvas(&flpPoint, L"Source Image", YELLOW, BLACK, 20)).IsFail() ||
@@ -110,22 +110,22 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºäÀÇ °ª Ç¥Çö ¹æ½Ä ¼³Á¤ // Set how values ??are expressed in image view
+		// ì´ë¯¸ì§€ ë·°ì˜ ê°’ í‘œí˜„ ë°©ì‹ ì„¤ì • // Set how values ??are expressed in image view
 		viewImageSrc.SetPixelNumberMode(EPixelNumberMode_Decimal);
 		viewImageDst0.SetPixelNumberMode(EPixelNumberMode_Decimal);
 		viewImageDst1.SetPixelNumberMode(EPixelNumberMode_Decimal);
 
-		// floating ÀÌ¹ÌÁöÀÇ »ö»ó Ç¥Çö ¹üÀ§ ¼³Á¤ // Set the color expression range of floating images
+		// floating ì´ë¯¸ì§€ì˜ ìƒ‰ìƒ í‘œí˜„ ë²”ìœ„ ì„¤ì • // Set the color expression range of floating images
 		viewImageSrc.SetFloatingImageValueRange(-1.0, 1.0);
 		viewImageDst0.SetFloatingImageValueRange(-1.0, 1.0);
 		viewImageDst1.SetFloatingImageValueRange(-1.0, 1.0);
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  // Update image view
 		viewImageSrc.Invalidate(true);
 		viewImageDst0.Invalidate(true);
 		viewImageDst1.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSrc.IsAvailable() && viewImageDst0.IsAvailable() && viewImageDst1.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

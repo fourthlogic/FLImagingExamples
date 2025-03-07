@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,99 +6,99 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSourceImage;
 	CFLImage fliIndexImage;
 	CFLImage fliDestinationImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSource;
 	CGUIViewImageWrap viewImageIndex;
 	CGUIViewImageWrap viewImageDestination;
 
-	// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+	// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = fliSourceImage.Load(L"../../ExampleImages/PagePixelPicker/MultiFile_Normal.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Index ÀÌ¹ÌÁö ·Îµå
+		// Index ì´ë¯¸ì§€ ë¡œë“œ
 		if((res = fliIndexImage.Load(L"../../ExampleImages/PagePixelPicker/IndexMap.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if((res = viewImageSource.Create(400, 0, 900, 500)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Index ÀÌ¹ÌÁö ºä »ı¼º
+		// Index ì´ë¯¸ì§€ ë·° ìƒì„±
 		if((res = viewImageIndex.Create(900, 0, 1400, 500)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination image view
 		if((res = viewImageDestination.Create(1400, 0, 1900, 500)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = viewImageSource.SynchronizePointOfView(&viewImageDestination)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = viewImageDestination.SynchronizePointOfView(&viewImageIndex)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSource.SynchronizeWindow(&viewImageDestination)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageDestination.SynchronizeWindow(&viewImageIndex)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if((res = viewImageSource.SetImagePtr(&fliSourceImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if((res = viewImageDestination.SetImagePtr(&fliDestinationImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Index ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the Index image view
+		// Index ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the Index image view
 		if((res = viewImageIndex.SetImagePtr(&fliIndexImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
@@ -107,39 +107,39 @@ int main()
 
 		viewImageSource.SetFixThumbnailView(true);
 
-		// Page Pixel Picker °´Ã¼ »ı¼º // Create Page Pixel Picker object
+		// Page Pixel Picker ê°ì²´ ìƒì„± // Create Page Pixel Picker object
 		CPagePixelPicker pagePixelPicker;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
-		// ¸ğµç Source ÀÌ¹ÌÁö´Â µ¿ÀÏÇÑ »çÀÌÁî¿Í Æ÷¸ËÀ» °¡Á®¾ßÇÕ´Ï´Ù. // All Source images must have the same size and format.
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
+		// ëª¨ë“  Source ì´ë¯¸ì§€ëŠ” ë™ì¼í•œ ì‚¬ì´ì¦ˆì™€ í¬ë§·ì„ ê°€ì ¸ì•¼í•©ë‹ˆë‹¤. // All Source images must have the same size and format.
 		pagePixelPicker.SetSourceImage(fliSourceImage);
 
-		// Index ÀÌ¹ÌÁö ¼³Á¤ // Set the index image
-		// 8bit ¿Í 16 bit ¸¦ Áö¿øÇÏ¸ç ¹İµå½Ã ÀÔ·ÂµÇ¾î¾ß ÇÕ´Ï´Ù. // 8 bit and 16 bit are supported and must be entered.
-		// Index ÀÌ¹ÌÁö´Â Source ÀÌ¹ÌÁö³ª Destination ÀÌ¹ÌÁö¿Í ´Ù¸£°Ô ¼³Á¤ÇØ¾ß ÇÕ´Ï´Ù. // The Index image must be set differently from the source image or destination image.
-		// Index ÀÌ¹ÌÁöÀÇ °¢ ÇÈ¼¿ °ªÀº ÀÔ·ÂµÈ Source ÀÌ¹ÌÁöÀÇ ÆäÀÌÁö ÀÎµ¦½º¸¦ ÀÇ¹ÌÇÕ´Ï´Ù. // Each pixel value of the index image means a page index of the input Source image.
+		// Index ì´ë¯¸ì§€ ì„¤ì • // Set the index image
+		// 8bit ì™€ 16 bit ë¥¼ ì§€ì›í•˜ë©° ë°˜ë“œì‹œ ì…ë ¥ë˜ì–´ì•¼ í•©ë‹ˆë‹¤. // 8 bit and 16 bit are supported and must be entered.
+		// Index ì´ë¯¸ì§€ëŠ” Source ì´ë¯¸ì§€ë‚˜ Destination ì´ë¯¸ì§€ì™€ ë‹¤ë¥´ê²Œ ì„¤ì •í•´ì•¼ í•©ë‹ˆë‹¤. // The Index image must be set differently from the source image or destination image.
+		// Index ì´ë¯¸ì§€ì˜ ê° í”½ì…€ ê°’ì€ ì…ë ¥ëœ Source ì´ë¯¸ì§€ì˜ í˜ì´ì§€ ì¸ë±ìŠ¤ë¥¼ ì˜ë¯¸í•©ë‹ˆë‹¤. // Each pixel value of the index image means a page index of the input Source image.
 		pagePixelPicker.SetIndexImage(fliIndexImage);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		pagePixelPicker.SetDestinationImage(fliDestinationImage);
 
-		// Source ROI, Source Pivot, Destination ROI, Destination Pivot ±â´ÉÀ» Áö¿øÇÕ´Ï´Ù. // Source ROI, Source Pivot, Destination ROI and Destination Pivot are supported
-		// ROI ¹× Pivot Àº Image Operation Scalar ¿¬»ê°ú µ¿ÀÏÇÑ µ¿ÀÛÀ» ¼öÇàÇÕ´Ï´Ù. // ROI and Pivot perform the same behavior as the Image Operation Scalar operation.
+		// Source ROI, Source Pivot, Destination ROI, Destination Pivot ê¸°ëŠ¥ì„ ì§€ì›í•©ë‹ˆë‹¤. // Source ROI, Source Pivot, Destination ROI and Destination Pivot are supported
+		// ROI ë° Pivot ì€ Image Operation Scalar ì—°ì‚°ê³¼ ë™ì¼í•œ ë™ì‘ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤. // ROI and Pivot perform the same behavior as the Image Operation Scalar operation.
 		 
-		// Blank Color ¼³Á¤ // Set blank color
-		// ±âº»ÀûÀ¸·Î Image Operation ÀÇ Blank Color ¿Í µ¿ÀÏÇÑ µ¿ÀÛÀ» ÇÕ´Ï´Ù. // By default, it behaves the same as the Blank Color in Image Operation.
-		// Index Image ÇÈ¼¿ °ª¿¡ ÇØ´çµÇ´Â ÆäÀÌÁö ÀÎµ¦½º°¡ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì Blank color ·Î Ã¤¿öÁı´Ï´Ù. // If the page index corresponding to the index image pixel value does not exist, it is populated with Blank color.
+		// Blank Color ì„¤ì • // Set blank color
+		// ê¸°ë³¸ì ìœ¼ë¡œ Image Operation ì˜ Blank Color ì™€ ë™ì¼í•œ ë™ì‘ì„ í•©ë‹ˆë‹¤. // By default, it behaves the same as the Blank Color in Image Operation.
+		// Index Image í”½ì…€ ê°’ì— í•´ë‹¹ë˜ëŠ” í˜ì´ì§€ ì¸ë±ìŠ¤ê°€ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš° Blank color ë¡œ ì±„ì›Œì§‘ë‹ˆë‹¤. // If the page index corresponding to the index image pixel value does not exist, it is populated with Blank color.
 		pagePixelPicker.SetBlankColor(200);
 
-		//EnableFillBlankColorMode ±â´ÉÀ» Áö¿øÇÏ¸ç, Image Operation Scalar ¿¬»ê°ú µ¿ÀÏÇÑ µ¿ÀÛÀ» ¼öÇàÇÕ´Ï´Ù. // It supports the EnableFillBlankColorMode function and performs the same behavior as the Image Operation Scalar operation.
+		//EnableFillBlankColorMode ê¸°ëŠ¥ì„ ì§€ì›í•˜ë©°, Image Operation Scalar ì—°ì‚°ê³¼ ë™ì¼í•œ ë™ì‘ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤. // It supports the EnableFillBlankColorMode function and performs the same behavior as the Image Operation Scalar operation.
 		//pagePixelPicker.EnableFillBlankColorMode(true);
 		
-		// Sampling ¸Ş¼Òµå ¼³Á¤ // Set sampling method
-		//	- ESamplingMethod_Normal : Index ÀÌ¹ÌÁö °¢ ÇÈ¼¿°ú ÁÂÇ¥¿¡ ´ëÀÀµÇ´Â Source ÀÌ¹ÌÁö ÇÈ¼¿ »ö»ó °ªÀ» Ãâ·ÂÇÕ´Ï´Ù. // - ESamplingMethod_Normal : Index Image Outputs the source image pixel color value corresponding to each pixel and coordinate.
-		//	- ESamplingMethod_Gaussian : Index ÀÌ¹ÌÁö °¢ ÇÈ¼¿°ú ÁÂÇ¥¿¡ ´ëÀÀµÇ´Â Source ÀÌ¹ÌÁö¿Í Àü ÈÄ ÆäÀÌÁö »ö»ó °ªÀ¸·Î °¡¿ì½Ã¾È °ªÀ» °è»êÇÏ¿© Ãâ·ÂÇÕ´Ï´Ù. // - ESamplingMethod_Gaussian : Index image calculates and outputs Gaussian values with the source image corresponding to each pixel and coordinates and the front and rear page color values.
+		// Sampling ë©”ì†Œë“œ ì„¤ì • // Set sampling method
+		//	- ESamplingMethod_Normal : Index ì´ë¯¸ì§€ ê° í”½ì…€ê³¼ ì¢Œí‘œì— ëŒ€ì‘ë˜ëŠ” Source ì´ë¯¸ì§€ í”½ì…€ ìƒ‰ìƒ ê°’ì„ ì¶œë ¥í•©ë‹ˆë‹¤. // - ESamplingMethod_Normal : Index Image Outputs the source image pixel color value corresponding to each pixel and coordinate.
+		//	- ESamplingMethod_Gaussian : Index ì´ë¯¸ì§€ ê° í”½ì…€ê³¼ ì¢Œí‘œì— ëŒ€ì‘ë˜ëŠ” Source ì´ë¯¸ì§€ì™€ ì „ í›„ í˜ì´ì§€ ìƒ‰ìƒ ê°’ìœ¼ë¡œ ê°€ìš°ì‹œì•ˆ ê°’ì„ ê³„ì‚°í•˜ì—¬ ì¶œë ¥í•©ë‹ˆë‹¤. // - ESamplingMethod_Gaussian : Index image calculates and outputs Gaussian values with the source image corresponding to each pixel and coordinates and the front and rear page color values.
 		pagePixelPicker.SetSamplingMethod(CPagePixelPicker::ESamplingMethod_Normal);
 		
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = pagePixelPicker.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute Page Pixel Picker.\n");
@@ -148,22 +148,22 @@ int main()
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 		CGUIViewImageLayerWrap layerIndex = viewImageIndex.GetLayer(0);
 		CGUIViewImageLayerWrap layerDestination = viewImageDestination.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSource.Clear();
 		layerIndex.Clear();
 		layerDestination.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
@@ -184,26 +184,26 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSource.Invalidate(true);
 		viewImageIndex.Invalidate(true);
 		viewImageDestination.Invalidate(true);
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if((res = viewImageIndex.ZoomFit()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to zoom fit\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if((res = viewImageDestination.ZoomFit()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to zoom fit\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSource.IsAvailable() && viewImageDestination.IsAvailable()&& viewImageIndex.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -13,53 +13,53 @@ enum EType
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage arrFliImage[ETypeCount];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap arrViewImage[ETypeCount];
 	
-	// µ¿ÀÛ °á°ú // operation result
+	// ë™ì‘ ê²°ê³¼ // operation result
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationBlend/Sky.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Operand ÀÌ¹ÌÁö ·Îµå // Load the operand image
+		// Operand ì´ë¯¸ì§€ ë¡œë“œ // Load the operand image
 		if((res = arrFliImage[EType_Operand].Load(L"../../ExampleImages/OperationBlend/Flower.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö¸¦ Source ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º // Create destination image as same as source image
+		// Destination ì´ë¯¸ì§€ë¥¼ Source ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„± // Create destination image as same as source image
 		if((arrFliImage[EType_Destination].Assign(arrFliImage[EType_Source])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to assign the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create source image view
 		if((res = arrViewImage[EType_Source].Create(100, 0, 612, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Operand ÀÌ¹ÌÁö ºä »ı¼º // Create operand image view
+		// Operand ì´ë¯¸ì§€ ë·° ìƒì„± // Create operand image view
 		if((res = arrViewImage[EType_Operand].Create(612, 0, 1124, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination image view
 		if((res = arrViewImage[EType_Destination].Create(1124, 0, 1636, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
@@ -68,7 +68,7 @@ int main()
 
 		bool bError = false;
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
 			if((res = arrViewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
@@ -82,48 +82,48 @@ int main()
 		if(bError)
 			break;
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Operand])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Operand])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// Operation Blend °´Ã¼ »ı¼º // Create Operation Blend object
+		// Operation Blend ê°ì²´ ìƒì„± // Create Operation Blend object
 		COperationBlend blend;
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		blend.SetSourceImage(arrFliImage[EType_Source]);
-		// Operand ÀÌ¹ÌÁö ¼³Á¤ // Set the operand image
+		// Operand ì´ë¯¸ì§€ ì„¤ì • // Set the operand image
 		blend.SetOperandImage(arrFliImage[EType_Operand]);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		blend.SetDestinationImage(arrFliImage[EType_Destination]);
-		// ¿¬»ê ¹æ½Ä ¼³Á¤ // Set operation source
+		// ì—°ì‚° ë°©ì‹ ì„¤ì • // Set operation source
 		blend.SetOperationSource(EOperationSource_Image);
-		// Blend Ratio ¼³Á¤ // Set Blend Ratio
+		// Blend Ratio ì„¤ì • // Set Blend Ratio
 		blend.SetSourceRatio(0.75f);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = blend.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute operation blend.");
@@ -134,19 +134,19 @@ int main()
 
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			// Ãâ·ÂÀ» À§ÇÑ ÀÌ¹ÌÁö ·¹ÀÌ¾î¸¦ ¾ò¾î¿É´Ï´Ù. //  Gets the image layer for output.
-			// µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä ¾øÀ½ // No need to release separately
+			// ì¶œë ¥ì„ ìœ„í•œ ì´ë¯¸ì§€ ë ˆì´ì–´ë¥¼ ì–»ì–´ì˜µë‹ˆë‹¤. //  Gets the image layer for output.
+			// ë”°ë¡œ í•´ì œí•  í•„ìš” ì—†ìŒ // No need to release separately
 			arrLayer[i] = arrViewImage[i].GetLayer(0);
 
-			// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+			// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 			arrLayer[i].Clear();
 		}
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display View information.
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display View information.
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((res = arrLayer[EType_Source].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
@@ -172,12 +172,12 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		arrViewImage[EType_Source].Invalidate(true);
 		arrViewImage[EType_Operand].Invalidate(true);
 		arrViewImage[EType_Destination].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(arrViewImage[EType_Source].IsAvailable()
 			  && arrViewImage[EType_Operand].IsAvailable()
 			  && arrViewImage[EType_Destination].IsAvailable())

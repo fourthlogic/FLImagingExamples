@@ -1,144 +1,144 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res;
 
 	do
 	{
-		// Image View »ı¼º // Create image view
+		// Image View ìƒì„± // Create image view
 		if(IsFail(res = viewImage.Create(200, 0, 800, 500)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 
-		// ½ºÅÙ½Ç Å¬·¡½º ¼±¾ğ // Declare CStencil class instance. 
+		// ìŠ¤í…ì‹¤ í´ë˜ìŠ¤ ì„ ì–¸ // Declare CStencil class instance. 
 		CStencil stencil;
 
-		// ÁÙ °£°İ ¼³Á¤ // Set the line spacing.
+		// ì¤„ ê°„ê²© ì„¤ì • // Set the line spacing.
 		if(IsFail(res = stencil.SetLineSpacing(0.2f)))
 		{
 			ErrorPrint(res, "Failed to set line spacing.\n");
 			break;
 		}
 
-		// ÀÚ°£ ¼³Á¤ // Set the letter spacing.
+		// ìê°„ ì„¤ì • // Set the letter spacing.
 		if(IsFail(res = stencil.SetLetterSpacing(0.3f)))
 		{
 			ErrorPrint(res, "Failed to set letter spacing.\n");
 			break;
 		}
 
-		// ÆùÆ® Å©±â ¼³Á¤ // Set the font size.
+		// í°íŠ¸ í¬ê¸° ì„¤ì • // Set the font size.
 		if(IsFail(res = stencil.SetFontSize(24)))
 		{
 			ErrorPrint(res, "Failed to set font size.\n");
 			break;
 		}
 
-		// Arial ÆùÆ®¸¦ ¹Ì¸® ·Îµå // Load font "Arial"
+		// Arial í°íŠ¸ë¥¼ ë¯¸ë¦¬ ë¡œë“œ // Load font "Arial"
 		if(IsFail(res = stencil.LoadFont("Arial")))
 		{
 			ErrorPrint(res, "Failed to load font : Arial.\n");
 			break;
 		}
 		
-		// Cambria ÆùÆ®¸¦ ¹Ì¸® ·Îµå // Load font "Cambria"
+		// Cambria í°íŠ¸ë¥¼ ë¯¸ë¦¬ ë¡œë“œ // Load font "Cambria"
 		if(IsFail(res = stencil.LoadFont("Cambria")))
 		{
 			ErrorPrint(res, "Failed to load font : Cambria.\n");
 			break;
  		}
 		
-		// ¹Ì¸® ·ÎµåÇÑ Arial ÆùÆ® ¼±ÅÃ // Select preloaded font "Arial"
+		// ë¯¸ë¦¬ ë¡œë“œí•œ Arial í°íŠ¸ ì„ íƒ // Select preloaded font "Arial"
 		if(IsFail(res = stencil.SelectFont("Arial")))
 		{
 			ErrorPrint(res, "Failed to select font : Arial.\n");
 			break;
  		}
 
-		// ÆùÆ® ÀÌ¸§ ¹®ÀÚ¿­ ¼±¾ğ // Declare string to get font name.
+		// í°íŠ¸ ì´ë¦„ ë¬¸ìì—´ ì„ ì–¸ // Declare string to get font name.
 		CFLString<wchar_t> strFontName = "";
 
-		// ¼±ÅÃÇÑ ÆùÆ®ÀÇ ÀÌ¸§ ¾ò¾î ¿À±â // Get selected font name.
+		// ì„ íƒí•œ í°íŠ¸ì˜ ì´ë¦„ ì–»ì–´ ì˜¤ê¸° // Get selected font name.
 		if(IsFail(res = stencil.GetSelectedFontName(strFontName)))
 		{
 			ErrorPrint(res, "Failed to get selected font name.\n");
 			break;
  		}
 
-		// µµÇü ¼±¾ğ // Declare CFLFigureArray instance.
+		// ë„í˜• ì„ ì–¸ // Declare CFLFigureArray instance.
 		CFLFigureArray flfaRes;
 
-		// ¹®ÀÚ¿­ ¼±¾ğ // Declare the string to convert to figure.
+		// ë¬¸ìì—´ ì„ ì–¸ // Declare the string to convert to figure.
 		CFLString<wchar_t> strText = "[Arial]\nFourthLogic CStencil class...";
 
-		// ¼±ÅÃÇÑ ÆùÆ®·Î ¹®ÀÚ¿­À» µµÇüÀ¸·Î º¯È¯ // Convert the text to figure
+		// ì„ íƒí•œ í°íŠ¸ë¡œ ë¬¸ìì—´ì„ ë„í˜•ìœ¼ë¡œ ë³€í™˜ // Convert the text to figure
 		if(IsFail(res = stencil.ConvertStringToFigure(strText, &flfaRes)))
 		{
 			ErrorPrint(res, "Failed to convert string to figure.\n");
 			break;
 		}
 
-		// ·¹ÀÌ¾î¿¡ µµÇüÀ» ±×¸®±â // Draw the figure on a layer.
+		// ë ˆì´ì–´ì— ë„í˜•ì„ ê·¸ë¦¬ê¸° // Draw the figure on a layer.
 		layer.DrawFigureImage(flfaRes, BLACK, 1, YELLOW);
 		
-		// ¹Ì¸® ·ÎµåÇÑ Cambria ÆùÆ® ¼±ÅÃ
+		// ë¯¸ë¦¬ ë¡œë“œí•œ Cambria í°íŠ¸ ì„ íƒ
 		if(IsFail(res = stencil.SelectFont("Cambria")))
 		{
 			ErrorPrint(res, "Failed to select font : Cambria.\n");
 			break;
  		}
 
-		// ÁÙ °£°İ ¼³Á¤ // Set the line spacing.
+		// ì¤„ ê°„ê²© ì„¤ì • // Set the line spacing.
 		if(IsFail(res = stencil.SetLineSpacing(1.0)))
 		{
 			ErrorPrint(res, "Failed to set line spacing.\n");
 			break;
 		}
 
-		// ÀÚ°£ ¼³Á¤ // Set the letter spacing.
+		// ìê°„ ì„¤ì • // Set the letter spacing.
 		if(IsFail(res = stencil.SetLetterSpacing(0)))
 		{
 			ErrorPrint(res, "Failed to set letter spacing.\n");
 			break;
 		}
 
-		// ¹®ÀÚ¿­ ³»¿ë º¯°æ // Set the text to convert to figure.
+		// ë¬¸ìì—´ ë‚´ìš© ë³€ê²½ // Set the text to convert to figure.
 		strText = "[Cambria]\nFourthLogic CStencil class...";
 		
-		// ¼±ÅÃÇÑ ÆùÆ®·Î ¹®ÀÚ¿­À» µµÇüÀ¸·Î º¯È¯ // Convert the string to figure.
+		// ì„ íƒí•œ í°íŠ¸ë¡œ ë¬¸ìì—´ì„ ë„í˜•ìœ¼ë¡œ ë³€í™˜ // Convert the string to figure.
 		if(IsFail(res = stencil.ConvertStringToFigure(strText, &flfaRes)))
 		{
 			ErrorPrint(res, "Failed to convert string to figure.\n");
 			break;
 		}
 
-		// ¾ò¾î ¿Â µµÇüÀÇ À§Ä¡¸¦ Á¶Á¤ // Offset the position of the converted figure.
+		// ì–»ì–´ ì˜¨ ë„í˜•ì˜ ìœ„ì¹˜ë¥¼ ì¡°ì • // Offset the position of the converted figure.
 		flfaRes.Offset((double)0, (double)stencil.GetFontSize() * 5);
 
-		// ·¹ÀÌ¾î¿¡ µµÇüÀ» ±×¸®±â // Draw the figure on a layer.
+		// ë ˆì´ì–´ì— ë„í˜•ì„ ê·¸ë¦¬ê¸° // Draw the figure on a layer.
 		layer.DrawFigureImage(flfaRes, BLACK, 1, CYAN);
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤.
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ ²¨Áö¸é Á¾·á·Î °£ÁÖ
+		// ì´ë¯¸ì§€ ë·°ê°€ êº¼ì§€ë©´ ì¢…ë£Œë¡œ ê°„ì£¼
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

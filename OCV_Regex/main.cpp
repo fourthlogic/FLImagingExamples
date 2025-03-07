@@ -1,26 +1,26 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage1;
 	CFLImage fliImage2;
 
-	// ROI ¼±¾ğ // Declare ROI object
+	// ROI ì„ ì–¸ // Declare ROI object
 	CFLFigureArray flfaROI1;
 	CFLFigureArray flfaROI2;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage1;
 	CGUIViewImageWrap viewImage2;
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if((res = fliImage1.Load(L"../../ExampleImages/OCV/FourthLogic Inc.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -33,7 +33,7 @@ int main()
 			break;
 		}
 
-		// ROI ·Îµå // Load ROI
+		// ROI ë¡œë“œ // Load ROI
 		if((res = flfaROI1.Load(L"../../ExampleImages/OCV/FourthLogic Inc_ROI 1.fig")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the ROI file.\n");
@@ -46,7 +46,7 @@ int main()
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if((res = viewImage1.Create(200, 0, 712, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
@@ -59,7 +59,7 @@ int main()
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if((res = viewImage1.SetImagePtr(&fliImage1)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
@@ -72,75 +72,75 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = viewImage1.SynchronizeWindow(&viewImage2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = viewImage1.SynchronizePointOfView(&viewImage2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer1 = viewImage1.GetLayer(0);
 		CGUIViewImageLayerWrap layer2 = viewImage2.GetLayer(1);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer1.Clear();
 		layer2.Clear();
 
-		// OpticalCharacterReader °´Ã¼ »ı¼º // Create OpticalCharacterReader object
+		// OpticalCharacterReader ê°ì²´ ìƒì„± // Create OpticalCharacterReader object
 		COCV ocv;
 
-		// OCR Font ÆÄÀÏÀ» ·Îµå
+		// OCR Font íŒŒì¼ì„ ë¡œë“œ
 		if(IsFail(res = ocv.LoadFontData(L"../../ExampleImages/OCR/OCR_FourthLogic.flocr")))
 		{
 			ErrorPrint(res, L"Failed to load Font file.");
 			break;
 		}
 
-		// Á¤±ÔÇ¥Çö½Ä »ç¿ë ¿©ºÎ ¼³Á¤
+		// ì •ê·œí‘œí˜„ì‹ ì‚¬ìš© ì—¬ë¶€ ì„¤ì •
 		if(IsFail(res = ocv.EnableRegularExpression(true)))
 		{
 			ErrorPrint(res, L"Failed to set regular expression.");
 			break;
 		}
 
-		// ÀÎÆ®·çÀü °ËÁõ ¿©ºÎ¸¦ ¼³Á¤ (ÇØ´ç ¿¹Á¦¿¡¼­´Â Ä÷¸®Æ¼ °ËÁõÀ» ¹èÁ¦ÇÔ)
+		// ì¸íŠ¸ë£¨ì „ ê²€ì¦ ì—¬ë¶€ë¥¼ ì„¤ì • (í•´ë‹¹ ì˜ˆì œì—ì„œëŠ” í€„ë¦¬í‹° ê²€ì¦ì„ ë°°ì œí•¨)
 		if(IsFail(res = ocv.EnableIntrusionInspection(false)))
 		{
 			ErrorPrint(res, L"Failed to set intrusion inspection.");
 			break;
 		}
 
-		// ÀÍ½ºÆ®·çÀü °ËÁõ ¿©ºÎ¸¦ ¼³Á¤ (ÇØ´ç ¿¹Á¦¿¡¼­´Â Ä÷¸®Æ¼ °ËÁõÀ» ¹èÁ¦ÇÔ)
+		// ìµìŠ¤íŠ¸ë£¨ì „ ê²€ì¦ ì—¬ë¶€ë¥¼ ì„¤ì • (í•´ë‹¹ ì˜ˆì œì—ì„œëŠ” í€„ë¦¬í‹° ê²€ì¦ì„ ë°°ì œí•¨)
 		if(IsFail(res = ocv.EnableExtrusionInspection(false)))
 		{
 			ErrorPrint(res, L"Failed to set extrusion inspection.");
 			break;
 		}
 
-		// ¹®ÀÚ¸¦ °ËÁõÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ë¬¸ìë¥¼ ê²€ì¦í•  ì´ë¯¸ì§€ ì„¤ì •
 		if(IsFail(res = ocv.SetSourceImage(fliImage1)))
 		{
 			ErrorPrint(res, L"Failed to set Source Image.");
 			break;
 		}
 
-		// ROI ¼³Á¤
+		// ROI ì„¤ì •
 		if(IsFail(res = ocv.SetSourceROI(flfaROI1)))
 		{
 			ErrorPrint(res, L"Failed to set Source ROI.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö¿¡¼­ ¹®ÀÚ¸¦ °ËÁõÇÏ´Â ±â´ÉÀ» ¼öÇà
+		// ì´ë¯¸ì§€ì—ì„œ ë¬¸ìë¥¼ ê²€ì¦í•˜ëŠ” ê¸°ëŠ¥ì„ ìˆ˜í–‰
 		if(IsFail(res = ocv.Execute()))
 		{
 			ErrorPrint(res, res.GetString());
@@ -153,10 +153,10 @@ int main()
 			break;
 		}
 
-		// Ã£Àº ¹®ÀÚÀÇ °³¼ö¸¦ ¹Ş¾Æ¿À´Â ÇÔ¼ö
+		// ì°¾ì€ ë¬¸ìì˜ ê°œìˆ˜ë¥¼ ë°›ì•„ì˜¤ëŠ” í•¨ìˆ˜
 		int64_t i64ResultCount = ocv.GetResultCount();
 
-		// Ã£Àº ¹®ÀÚÀÇ Á¤º¸¸¦ ¹Ş¾Æ¿Ã ÄÁÅ×ÀÌ³Ê
+		// ì°¾ì€ ë¬¸ìì˜ ì •ë³´ë¥¼ ë°›ì•„ì˜¬ ì»¨í…Œì´ë„ˆ
 		COCV::COCVVerificationCharacterInfo resultChar;
 
 		for(int64_t i = 0; i < i64ResultCount; ++i)
@@ -211,21 +211,21 @@ int main()
 			}
 		}
 
-		// ¹®ÀÚ¸¦ °ËÁõÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ë¬¸ìë¥¼ ê²€ì¦í•  ì´ë¯¸ì§€ ì„¤ì •
 		if(IsFail(res = ocv.SetSourceImage(fliImage2)))
 		{
 			ErrorPrint(res, L"Failed to set Source Image.");
 			break;
 		}
 
-		// ROI ¼³Á¤
+		// ROI ì„¤ì •
 		if(IsFail(res = ocv.SetSourceROI(flfaROI2)))
 		{
 			ErrorPrint(res, L"Failed to set Source ROI.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö¿¡¼­ ¹®ÀÚ¸¦ °ËÁõÇÏ´Â ±â´ÉÀ» ¼öÇà
+		// ì´ë¯¸ì§€ì—ì„œ ë¬¸ìë¥¼ ê²€ì¦í•˜ëŠ” ê¸°ëŠ¥ì„ ìˆ˜í–‰
 		if(IsFail(res = ocv.Execute()))
 		{
 			ErrorPrint(res, res.GetString());
@@ -238,7 +238,7 @@ int main()
 			break;
 		}
 
-		// Ã£Àº ¹®ÀÚÀÇ °³¼ö¸¦ ¹Ş¾Æ¿À´Â ÇÔ¼ö
+		// ì°¾ì€ ë¬¸ìì˜ ê°œìˆ˜ë¥¼ ë°›ì•„ì˜¤ëŠ” í•¨ìˆ˜
 		i64ResultCount = ocv.GetResultCount();
 
 		for(int64_t i = 0; i < i64ResultCount; ++i)
@@ -293,11 +293,11 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage1.Invalidate(true);
 		viewImage2.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage1.IsAvailable() && viewImage2.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

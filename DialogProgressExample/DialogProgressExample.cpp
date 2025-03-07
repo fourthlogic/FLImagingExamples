@@ -1,5 +1,5 @@
-
-// DialogProgressExample.cpp : ÀÀ¿ë ÇÁ·Î±×·¥¿¡ ´ëÇÑ Å¬·¡½º µ¿ÀÛÀ» Á¤ÀÇÇÕ´Ï´Ù.
+ï»¿
+// DialogProgressExample.cpp : ì‘ìš© í”„ë¡œê·¸ë¨ì— ëŒ€í•œ í´ë˜ìŠ¤ ë™ì‘ì„ ì •ì˜í•©ë‹ˆë‹¤.
 //
 
 #include "stdafx.h"
@@ -18,37 +18,37 @@ BEGIN_MESSAGE_MAP(CDialogProgressExampleApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-// CDialogProgressExampleApp »ı¼º
+// CDialogProgressExampleApp ìƒì„±
 
 CDialogProgressExampleApp::CDialogProgressExampleApp()
 {
-	// TODO: ¿©±â¿¡ »ı¼º ÄÚµå¸¦ Ãß°¡ÇÕ´Ï´Ù.
-	// InitInstance¿¡ ¸ğµç Áß¿äÇÑ ÃÊ±âÈ­ ÀÛ¾÷À» ¹èÄ¡ÇÕ´Ï´Ù.
+	// TODO: ì—¬ê¸°ì— ìƒì„± ì½”ë“œë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
+	// InitInstanceì— ëª¨ë“  ì¤‘ìš”í•œ ì´ˆê¸°í™” ì‘ì—…ì„ ë°°ì¹˜í•©ë‹ˆë‹¤.
 }
 
 
-// À¯ÀÏÇÑ CDialogProgressExampleApp °³Ã¼ÀÔ´Ï´Ù.
+// ìœ ì¼í•œ CDialogProgressExampleApp ê°œì²´ì…ë‹ˆë‹¤.
 
 CDialogProgressExampleApp theApp;
 
 
-// CDialogProgressExampleApp ÃÊ±âÈ­
+// CDialogProgressExampleApp ì´ˆê¸°í™”
 
 BOOL CDialogProgressExampleApp::InitInstance()
 {
 	CWinAppEx::InitInstance();
 	SetRegistryKey(_T("DialogProgressExample examples"));
 
-	// GUI Manager ÃÊ±âÈ­ ÀüÃ³¸®¸¦ ¼öÇàÇÕ´Ï´Ù.
+	// GUI Manager ì´ˆê¸°í™” ì „ì²˜ë¦¬ë¥¼ ìˆ˜í–‰í•©ë‹ˆë‹¤.
 	CGUIManager::PreInitialize();
 
-	// ÀÌ¹ÌÁö ºä »ı¼º ¸Ş´º¸¦ Ãß°¡ÇÕ´Ï´Ù.
+	// ì´ë¯¸ì§€ ë·° ìƒì„± ë©”ë‰´ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
 	CGUIManager::AddMenuItem(new CGUIMenuItemCreateViewImage);
 
-	// ¿¹Á¦ ÇÁ·ÎÆÛÆ¼ ¸Ş´º¸¦ µî·ÏÇÕ´Ï´Ù.
+	// ì˜ˆì œ í”„ë¡œí¼í‹° ë©”ë‰´ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤.
 	CGUIManager::RegisterMenu(CPropertyMenuDialogProgressExample(), L"Progress Dialog Example", L"Menu", false);
 
-	// GUI »ó¿¡¼­ »ç¿ëµÉ ºä¸¦ »ı¼ºÇÕ´Ï´Ù.
+	// GUI ìƒì—ì„œ ì‚¬ìš©ë  ë·°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 	std::vector<CGUIFixedViewDeclaration*> vctFixedViewDecl;
 
 	for(int32_t i = 0; i < 4; ++i)
@@ -60,7 +60,7 @@ BOOL CDialogProgressExampleApp::InitInstance()
 		vctFixedViewDecl.push_back(pDeclarationCam);
 	}
 
-	// GUI »ó¿¡¼­ ºäÀÇ ¹è¿­À» ¼³Á¤ÇÕ´Ï´Ù.
+	// GUI ìƒì—ì„œ ë·°ì˜ ë°°ì—´ì„ ì„¤ì •í•©ë‹ˆë‹¤.
 	CGUIFixedViewPlacement fvp;
 	CGUIFixedViewPlacementSet fvpSet1(false);
 	fvpSet1.SetName(L"Prompt Image View Set 1");
@@ -72,18 +72,18 @@ BOOL CDialogProgressExampleApp::InitInstance()
 
 	CGUIManagerView::AddFixedViewPlacementSet(fvpSet1);
 
-	// ÀÎµ¦½º¿¡ ÇØ´çÇÏ´Â ºäÀÇ ¼³Á¤À¸·Î ¼±ÅÃÇÕ´Ï´Ù.
+	// ì¸ë±ìŠ¤ì— í•´ë‹¹í•˜ëŠ” ë·°ì˜ ì„¤ì •ìœ¼ë¡œ ì„ íƒí•©ë‹ˆë‹¤.
 	CGUIManagerView::SelectFixedViewPlacementSet(0);
 
 	CGUIManager::PreInitializePaneVisibility(true, false, false, false, false);
 
-	// ¸ğµ¨ °ü¸®ÀÚ¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// ëª¨ë¸ ê´€ë¦¬ìë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	CGUIManagerModel::Initialize();
 
-	// GUI °ü¸®ÀÚ¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// GUI ê´€ë¦¬ìë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	CGUIManager::Initialize();
 
-	// Main Frame À§Ä¡¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+	// Main Frame ìœ„ì¹˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 	CGUIMainFrame* pMF = nullptr;
 
 	if(AfxGetApp() && AfxGetApp()->m_pMainWnd)

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -7,7 +7,7 @@ int main()
 {
 	CResult res;
 
-	// Axl Trigger ÀåÄ¡¸¦ ¼±¾ğ // Declare Axl Trigger device
+	// Axl Trigger ì¥ì¹˜ë¥¼ ì„ ì–¸ // Declare Axl Trigger device
 	CDeviceTriggerAxl devTrigger;
 
 	do
@@ -15,28 +15,28 @@ int main()
 		wchar_t arrInput[4096] = { 0, };
 		CFLString<wchar_t> flsInput = L"";
 
-		// ÀåÄ¡ÀÇ ¸ğµâ ÀÎµ¦½º¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Enter the module index of the device.
+		// ì¥ì¹˜ì˜ ëª¨ë“ˆ ì¸ë±ìŠ¤ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the module index of the device.
 		printf("Enter Module index: ");
 		fgetws(arrInput, 4096, stdin);
 		flsInput = arrInput;
 
 		int32_t i32ModuleIndex = flsInput.ToInt32();
 
-		// ÀåÄ¡ÀÇ ¸ğµâ ÀÎµ¦½º¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Sets the module index for the device.
+		// ì¥ì¹˜ì˜ ëª¨ë“ˆ ì¸ë±ìŠ¤ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Sets the module index for the device.
 		if((res = devTrigger.SetModuleIndex(i32ModuleIndex)).IsFail())
 		{
  			ErrorPrint(res, L"Failed to set module index.");
  			break;
 		}
 
-		// Trigger ÀåÄ¡¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù. // Initialize the Trigger device.
+		// Trigger ì¥ì¹˜ë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤. // Initialize the Trigger device.
 		if((res = devTrigger.Initialize()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to initialize the device.");
 			break;
 		}
 
-		// Æ®¸®°Å Ã¤³ÎÀ» ÀÔ·ÂÇÕ´Ï´Ù. // Enter the trigger channel.
+		// íŠ¸ë¦¬ê±° ì±„ë„ì„ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the trigger channel.
 		int32_t i32Channel = 0;
 
 		while(true)
@@ -55,7 +55,7 @@ int main()
 		}
 
 
-		// ¿£ÄÚ´õ ¼Ò½º¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Enter the encoder source.
+		// ì—”ì½”ë” ì†ŒìŠ¤ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the encoder source.
 		CDeviceTriggerAxl::EEncoderSource eEncoderSource = CDeviceTriggerAxl::EEncoderSource_ABPhase;
 
 		while(true)
@@ -93,7 +93,7 @@ int main()
 			printf("Incorrect input. Please select again.\n");
 		}
 
-		// ¿£ÄÚ´õ ¼Ò½º¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Sets the encoder source.
+		// ì—”ì½”ë” ì†ŒìŠ¤ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Sets the encoder source.
 		if((res = devTrigger.SetEncoderSource(i32Channel, eEncoderSource)).IsFail())
 		{
  			ErrorPrint(res, L"Failed to set encoder source.");
@@ -101,7 +101,7 @@ int main()
 		}
 
 
-		// ¿£ÄÚ´õ ¹æ½ÄÀ» ÀÔ·ÂÇÕ´Ï´Ù. // Enter the encoder method.
+		// ì—”ì½”ë” ë°©ì‹ì„ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the encoder method.
 		CDeviceTriggerAxl::EEncoderMethod eEncoderMethod = CDeviceTriggerAxl::EEncoderMethod_UpDownSqr1;
 
 		while(true)
@@ -164,14 +164,14 @@ int main()
 			printf("Incorrect input. Please select again.\n");
 		}
 
-		// ¿£ÄÚ´õ ¹æ½ÄÀ» ¼³Á¤ÇÕ´Ï´Ù. // Sets the encoder method.
+		// ì—”ì½”ë” ë°©ì‹ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Sets the encoder method.
 		if((res = devTrigger.SetEncoderMethod(i32Channel, eEncoderMethod)).IsFail())
 		{
  			ErrorPrint(res, L"Failed to set encoder method.");
  			break;
 		}
 
-		// Æ®¸®°Å ¸ğµå¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Sets the trigger mode.
+		// íŠ¸ë¦¬ê±° ëª¨ë“œë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Sets the trigger mode.
 		if((res = devTrigger.SetTriggerMode(i32Channel, CDeviceTriggerAxl::ETriggerMode_Position)).IsFail())
 		{
  			ErrorPrint(res, L"Failed to set trigger mode.");
@@ -180,30 +180,30 @@ int main()
 		
 		while(true)
 		{
-			// Æ®¸®°Å¸¦ ºñÈ°¼ºÈ­ ÇÕ´Ï´Ù. // Disable the trigger.
+			// íŠ¸ë¦¬ê±°ë¥¼ ë¹„í™œì„±í™” í•©ë‹ˆë‹¤. // Disable the trigger.
 			if((res = devTrigger.SetTriggerEnable(i32Channel, false)).IsFail())
 			{
 	 			ErrorPrint(res, L"Failed to set trigger enable.");
 	 			break;
 			}
 
-			// ¿£ÄÚ´õ Æ÷Áö¼ÇÀ» 0 À¸·Î ¼³Á¤ÇÕ´Ï´Ù. // Set the encoder position to 0.
+			// ì—”ì½”ë” í¬ì§€ì…˜ì„ 0 ìœ¼ë¡œ ì„¤ì •í•©ë‹ˆë‹¤. // Set the encoder position to 0.
 			if((res = devTrigger.SetEncoderPosition(i32Channel, 0.)).IsFail())
 			{
 	 			ErrorPrint(res, L"Failed to set encoder position.");
 	 			break;
 			}
 
-			// Æ÷Áö¼Ç °ªÀ» ÀÔ·ÂÇÕ´Ï´Ù. // Enter a position value.
+			// í¬ì§€ì…˜ ê°’ì„ ì…ë ¥í•©ë‹ˆë‹¤. // Enter a position value.
 			printf("\n");
 			printf("Enter trigger position(10, 20, 30, ...): ");
 			fgetws(arrInput, 4096, stdin);
 			flsInput = arrInput;
 
-			// Æ÷Áö¼Ç °ªÀ» ´ã±âÀ§ÇØ CFLArray<double> »ı¼º // Create CFLArray<double>> to hold position values
+			// í¬ì§€ì…˜ ê°’ì„ ë‹´ê¸°ìœ„í•´ CFLArray<double> ìƒì„± // Create CFLArray<double>> to hold position values
 			CFLArray<double> flaPosition;
 
-			// ÀÔ·Â ¹ŞÀº ¹®ÀÚ¿­À» ',' À¸·Î ±¸ºĞÇÏ¿© double °ªÀ¸·Î º¯È¯ÇÕ´Ï´Ù. // Separate the input string with ',' and convert it to a double value.
+			// ì…ë ¥ ë°›ì€ ë¬¸ìì—´ì„ ',' ìœ¼ë¡œ êµ¬ë¶„í•˜ì—¬ double ê°’ìœ¼ë¡œ ë³€í™˜í•©ë‹ˆë‹¤. // Separate the input string with ',' and convert it to a double value.
 			int64_t i64TokenIdx = 0;
 
 			while(true)
@@ -219,14 +219,14 @@ int main()
 				flaPosition.PushBack(flstrToken.ToDouble());
 			}
 
-			// Æ®¸®°Å Æ÷Áö¼ÇÀ» ¼³Á¤ÇÕ´Ï´Ù. // Sets the trigger position.
+			// íŠ¸ë¦¬ê±° í¬ì§€ì…˜ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Sets the trigger position.
 			if((res = devTrigger.SetTriggerPosition(i32Channel, flaPosition)).IsFail())
 			{
 	 			ErrorPrint(res, L"Failed to set trigger position.");
 	 			break;
 			}
 
-			// Æ®¸®°Å¸¦ È°¼ºÈ­ ÇÕ´Ï´Ù. // Enables the trigger.
+			// íŠ¸ë¦¬ê±°ë¥¼ í™œì„±í™” í•©ë‹ˆë‹¤. // Enables the trigger.
 			if((res = devTrigger.SetTriggerEnable(i32Channel, true)).IsFail())
 			{
 	 			ErrorPrint(res, L"Failed to set trigger enable.");
@@ -246,7 +246,7 @@ int main()
 	}
 	while(false);
 
-	// Trigger ÀåÄ¡ÀÇ ÃÊ±âÈ­¸¦ ÇØÁ¦ÇÕ´Ï´Ù. // Terminate the Trigger device.
+	// Trigger ì¥ì¹˜ì˜ ì´ˆê¸°í™”ë¥¼ í•´ì œí•©ë‹ˆë‹¤. // Terminate the Trigger device.
 	devTrigger.Terminate();
 
 	if(res.IsFail())

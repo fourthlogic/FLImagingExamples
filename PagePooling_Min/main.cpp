@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,92 +6,92 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSourceImage;
 	CFLImage fliDestinationImage;
 	CFLImage fliIndexImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSource;
 	CGUIViewImageWrap viewImageDestination;
 	CGUIViewImageWrap viewImageIndex;
 
-	// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+	// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if((res = fliSourceImage.Load(L"../../ExampleImages/PagePooling/Multiple File_Min.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if((res = viewImageSource.Create(200, 0, 712, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination image view
 		if((res = viewImageDestination.Create(712, 0, 1224, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Index ÀÌ¹ÌÁö ºä »ı¼º
+		// Index ì´ë¯¸ì§€ ë·° ìƒì„±
 		if((res = viewImageIndex.Create(1224, 0, 1736, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = viewImageSource.SynchronizePointOfView(&viewImageDestination)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = viewImageDestination.SynchronizePointOfView(&viewImageIndex)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSource.SynchronizeWindow(&viewImageDestination)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageDestination.SynchronizeWindow(&viewImageIndex)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if((res = viewImageSource.SetImagePtr(&fliSourceImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if((res = viewImageDestination.SetImagePtr(&fliDestinationImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Index ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the Index image view
+		// Index ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the Index image view
 		if((res = viewImageIndex.SetImagePtr(&fliIndexImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
@@ -100,37 +100,37 @@ int main()
 
 		viewImageSource.SetFixThumbnailView(true);
 
-		// Page Pooling °´Ã¼ »ı¼º // Create Page Pooling object
+		// Page Pooling ê°ì²´ ìƒì„± // Create Page Pooling object
 		CPagePooling pagePooling;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		pagePooling.SetSourceImage(fliSourceImage);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		pagePooling.SetDestinationImage(fliDestinationImage);
 
-		// Index ÀÌ¹ÌÁö // Index image
-		//	- °¢ ÇÈ¼¿º°·Î ÃßÃâÇÑ °á°ú °ªÀÌ À§Ä¡ÇÑ ÆäÀÌÁö ÀÎµ¦½º °ªÀ» ´ëÀÀµÇ´Â ÁÂÇ¥ÀÇ ÇÈ¼¿·Î Ãâ·ÂÇÕ´Ï´Ù. // For each pixel, output the page index value where the resulting value is located to the pixel of the corresponding coordinates.
-		//	- Sampling ¸Ş¼Òµå°¡ Min Gaussian, Max Gaussian ¸ğµåÀÎ °æ¿ì Ãâ·ÂµÇ´Â ÀÎµ¦½º ÀÌ¹ÌÁö´Â °¢°¢ Min, Max ¸ğµå·Î µ¿ÀÛÇÒ ¶§ Ãâ·ÂµÇ´Â ÀÎµ¦½º ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÕ´Ï´Ù. // If the sampling method is in Min Gaussian and Max Gaussian modes, the output index image is the same as the output index image when operating in Min and Max modes, respectively.
-		//	- Sampling ¸Ş¼Òµå°¡ Mean ¸ğµåÀÎ °æ¿ì´Â ÀÎµ¦½º ÀÌ¹ÌÁö Ãâ·ÂÀ» Áö¿øÇÏÁö ¾Ê½À´Ï´Ù. // Index image output is not supported when the Sampling method is in Mean mode.
-		//	- ÃßÃâÇÒ °á°ú °ªÀÌ ¿©·¯ ÆäÀÌÁö¿¡ µ¿ÀÏÇÏ°Ô Á¸ÀçÇÒ °æ¿ì, °¡Àå ¾ÕÀÇ ÀÎµ¦½º¸¦ Ãâ·ÂÇÕ´Ï´Ù. // Outputs the leading index if the resulting values to be extracted are equally present on multiple pages.
-		//	- SetIndexImage ´Â SetSourceImage ³ª SetDestinationImage ¿¡¼­ ¼³Á¤ÇÑ ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÏ¸é µ¿ÀÛÇÏÁö ¾Ê½À´Ï´Ù. // - SetIndexImage will not work if it is the same as the image set in SetSourceImage or SetDestinationImage.
-		//	- Index Image ¸¦ ÁöÁ¤ÇÏÁö ¾ÊÀ» °æ¿ì ÀÎµ¦½º ÀÌ¹ÌÁö¸¦ Ãâ·ÂÇÏÁö ¾Ê´Â ¸ğµå·Î µ¿ÀÛÇÕ´Ï´Ù. // If SetIndexImage is not specified, it operates in a mode that does not output the index image.
-		//	- ÀÎµ¦½º ÀÌ¹ÌÁö ÃßÃâÀº ÃÖ´ë 65535 Àå ±îÁö¸¸ Áö¿øµË´Ï´Ù. // Index image extraction is supported up to 65535 pages
-		//	- Source ROI ¿µ¿ª ¹Û¿¡ ÇØ´çÇÏ´Â ÀÎµ¦½º´Â ¹«È¿ °ªÀ¸·Î 8bit ÀÎµ¦½º ÀÌ¹ÌÁö¿¡¼­´Â 255, 16bit ÀÎµ¦½º ÀÌ¹ÌÁö¿¡¼­´Â 65535 °¡ ÀÔ·ÂµË´Ï´Ù. // Indexes outside the Source ROI area are invalid values, with 255 for an 8-bit index image and 65535 for a 16-bit index image.
+		// Index ì´ë¯¸ì§€ // Index image
+		//	- ê° í”½ì…€ë³„ë¡œ ì¶”ì¶œí•œ ê²°ê³¼ ê°’ì´ ìœ„ì¹˜í•œ í˜ì´ì§€ ì¸ë±ìŠ¤ ê°’ì„ ëŒ€ì‘ë˜ëŠ” ì¢Œí‘œì˜ í”½ì…€ë¡œ ì¶œë ¥í•©ë‹ˆë‹¤. // For each pixel, output the page index value where the resulting value is located to the pixel of the corresponding coordinates.
+		//	- Sampling ë©”ì†Œë“œê°€ Min Gaussian, Max Gaussian ëª¨ë“œì¸ ê²½ìš° ì¶œë ¥ë˜ëŠ” ì¸ë±ìŠ¤ ì´ë¯¸ì§€ëŠ” ê°ê° Min, Max ëª¨ë“œë¡œ ë™ì‘í•  ë•Œ ì¶œë ¥ë˜ëŠ” ì¸ë±ìŠ¤ ì´ë¯¸ì§€ì™€ ë™ì¼í•©ë‹ˆë‹¤. // If the sampling method is in Min Gaussian and Max Gaussian modes, the output index image is the same as the output index image when operating in Min and Max modes, respectively.
+		//	- Sampling ë©”ì†Œë“œê°€ Mean ëª¨ë“œì¸ ê²½ìš°ëŠ” ì¸ë±ìŠ¤ ì´ë¯¸ì§€ ì¶œë ¥ì„ ì§€ì›í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. // Index image output is not supported when the Sampling method is in Mean mode.
+		//	- ì¶”ì¶œí•  ê²°ê³¼ ê°’ì´ ì—¬ëŸ¬ í˜ì´ì§€ì— ë™ì¼í•˜ê²Œ ì¡´ì¬í•  ê²½ìš°, ê°€ì¥ ì•ì˜ ì¸ë±ìŠ¤ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤. // Outputs the leading index if the resulting values to be extracted are equally present on multiple pages.
+		//	- SetIndexImage ëŠ” SetSourceImage ë‚˜ SetDestinationImage ì—ì„œ ì„¤ì •í•œ ì´ë¯¸ì§€ì™€ ë™ì¼í•˜ë©´ ë™ì‘í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. // - SetIndexImage will not work if it is the same as the image set in SetSourceImage or SetDestinationImage.
+		//	- Index Image ë¥¼ ì§€ì •í•˜ì§€ ì•Šì„ ê²½ìš° ì¸ë±ìŠ¤ ì´ë¯¸ì§€ë¥¼ ì¶œë ¥í•˜ì§€ ì•ŠëŠ” ëª¨ë“œë¡œ ë™ì‘í•©ë‹ˆë‹¤. // If SetIndexImage is not specified, it operates in a mode that does not output the index image.
+		//	- ì¸ë±ìŠ¤ ì´ë¯¸ì§€ ì¶”ì¶œì€ ìµœëŒ€ 65535 ì¥ ê¹Œì§€ë§Œ ì§€ì›ë©ë‹ˆë‹¤. // Index image extraction is supported up to 65535 pages
+		//	- Source ROI ì˜ì—­ ë°–ì— í•´ë‹¹í•˜ëŠ” ì¸ë±ìŠ¤ëŠ” ë¬´íš¨ ê°’ìœ¼ë¡œ 8bit ì¸ë±ìŠ¤ ì´ë¯¸ì§€ì—ì„œëŠ” 255, 16bit ì¸ë±ìŠ¤ ì´ë¯¸ì§€ì—ì„œëŠ” 65535 ê°€ ì…ë ¥ë©ë‹ˆë‹¤. // Indexes outside the Source ROI area are invalid values, with 255 for an 8-bit index image and 65535 for a 16-bit index image.
 
-		// Index ÀÌ¹ÌÁö ¼³Á¤
+		// Index ì´ë¯¸ì§€ ì„¤ì •
 		pagePooling.SetIndexImage(fliIndexImage);
 
-		// Sampling ¸Ş¼Òµå ¼³Á¤ // Set the sampling method
-		//	- Max : ÀÔ·ÂµÈ ÀÌ¹ÌÁö °¡¿îµ¥ ÃÖ´ë °ªÀ» Ãâ·ÂÇÕ´Ï´Ù. // Max : Outputs the maximum value of the entered image.
-		//	- MaxGaussian : ÀÔ·ÂµÈ ÀÌ¹ÌÁö °¡¿îµ¥ °¡Àå ¾Õ ÂÊ ÀÎµ¦½º¿¡ À§Ä¡ÇÑ ÃÖ´ë °ªÀ» ±âÁØÀ¸·Î °¡¿ì½Ã¾È °ªÀ» Ãâ·ÂÇÕ´Ï´Ù. // MaxGaussian : Outputs the Gaussian value based on the maximum value located in the leading index of the entered image.
-		//	- Min : ÀÔ·ÂµÈ ÀÌ¹ÌÁö °¡¿îµ¥ ÃÖ¼Ò °ªÀ» Ãâ·ÂÇÕ´Ï´Ù. // Min : Outputs the minimum value of the entered image.
-		//	- MinGaussian : ÀÔ·ÂµÈ ÀÌ¹ÌÁö °¡¿îµ¥ °¡Àå ¾Õ ÂÊ ÀÎµ¦½º¿¡ À§Ä¡ÇÑ ÃÖ¼Ò °ªÀ» ±âÁØÀ¸·Î °¡¿ì½Ã¾È °ªÀ» Ãâ·ÂÇÕ´Ï´Ù. // MinGaussian : Outputs the Gaussian value based on the minimum value located in the leading index of the entered image.
-		//	- Mean : ÀÔ·ÂµÈ ÀÌ¹ÌÁöµéÀÇ Æò±Õ °ªÀ» Ãâ·ÂÇÕ´Ï´Ù. (ÃÖ´ë 16843009 Àå ±îÁö Áö¿øµË´Ï´Ù.) // Mean: Outputs the average value of the entered images. (Up to 16843009 pages are supported.)
+		// Sampling ë©”ì†Œë“œ ì„¤ì • // Set the sampling method
+		//	- Max : ì…ë ¥ëœ ì´ë¯¸ì§€ ê°€ìš´ë° ìµœëŒ€ ê°’ì„ ì¶œë ¥í•©ë‹ˆë‹¤. // Max : Outputs the maximum value of the entered image.
+		//	- MaxGaussian : ì…ë ¥ëœ ì´ë¯¸ì§€ ê°€ìš´ë° ê°€ì¥ ì• ìª½ ì¸ë±ìŠ¤ì— ìœ„ì¹˜í•œ ìµœëŒ€ ê°’ì„ ê¸°ì¤€ìœ¼ë¡œ ê°€ìš°ì‹œì•ˆ ê°’ì„ ì¶œë ¥í•©ë‹ˆë‹¤. // MaxGaussian : Outputs the Gaussian value based on the maximum value located in the leading index of the entered image.
+		//	- Min : ì…ë ¥ëœ ì´ë¯¸ì§€ ê°€ìš´ë° ìµœì†Œ ê°’ì„ ì¶œë ¥í•©ë‹ˆë‹¤. // Min : Outputs the minimum value of the entered image.
+		//	- MinGaussian : ì…ë ¥ëœ ì´ë¯¸ì§€ ê°€ìš´ë° ê°€ì¥ ì• ìª½ ì¸ë±ìŠ¤ì— ìœ„ì¹˜í•œ ìµœì†Œ ê°’ì„ ê¸°ì¤€ìœ¼ë¡œ ê°€ìš°ì‹œì•ˆ ê°’ì„ ì¶œë ¥í•©ë‹ˆë‹¤. // MinGaussian : Outputs the Gaussian value based on the minimum value located in the leading index of the entered image.
+		//	- Mean : ì…ë ¥ëœ ì´ë¯¸ì§€ë“¤ì˜ í‰ê·  ê°’ì„ ì¶œë ¥í•©ë‹ˆë‹¤. (ìµœëŒ€ 16843009 ì¥ ê¹Œì§€ ì§€ì›ë©ë‹ˆë‹¤.) // Mean: Outputs the average value of the entered images. (Up to 16843009 pages are supported.)
 		pagePooling.SetSamplingMethod(CPagePooling::ESamplingMethod_Min);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = pagePooling.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute Page Pooling.\n");
@@ -139,22 +139,22 @@ int main()
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 		CGUIViewImageLayerWrap layerDestination = viewImageDestination.GetLayer(0);
 		CGUIViewImageLayerWrap layerIndex = viewImageIndex.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSource.Clear();
 		layerDestination.Clear();
 		layerIndex.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
@@ -175,26 +175,26 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSource.Invalidate(true);
 		viewImageDestination.Invalidate(true);
 		viewImageIndex.Invalidate(true);
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if((res = viewImageDestination.ZoomFit()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to zoom fit\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if((res = viewImageIndex.ZoomFit()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to zoom fit\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSource.IsAvailable() && viewImageDestination.IsAvailable()&& viewImageIndex.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

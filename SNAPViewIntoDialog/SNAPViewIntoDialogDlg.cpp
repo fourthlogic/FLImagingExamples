@@ -1,4 +1,4 @@
-
+ï»¿
 // SNAPViewIntoDialogDlg.cpp : implementation file
 //
 
@@ -104,10 +104,10 @@ BOOL CSNAPViewIntoDialogDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 
-	// ½º³À ºä »ı¼º // Create SNAP view
+	// Â½ÂºÂ³Ã€ ÂºÃ¤ Â»Ã½Â¼Âº // Create SNAP view
 	CResult res = m_viewSNAP.CreateAndFitParent((size_t)GetSafeHwnd());
 
-	// ½º³À ÆÄÀÏ ·Îµå // Load SNAP file
+	// Â½ÂºÂ³Ã€ Ã†Ã„Ã€Ã Â·ÃÂµÃ¥ // Load SNAP file
 	res = m_viewSNAP.Load(L"C:\\Users\\Public\\Documents\\FLImaging\\ExamplesSNAP\\Advanced Functions\\Object\\Blob.flsf");
 
 	m_viewSNAP.ZoomFit();
@@ -171,7 +171,7 @@ BOOL CSNAPViewIntoDialogDlg::DestroyWindow()
 {
 	// TODO: Add your specialized code here and/or call the base class
 
-	// ½º³À ºä¸¦ Á¾·áÇÑ´Ù.
+	// Â½ÂºÂ³Ã€ ÂºÃ¤Â¸Â¦ ÃÂ¾Â·Ã¡Ã‡Ã‘Â´Ã™.
 	m_viewSNAP.Destroy();
 
 	return CDialogEx::DestroyWindow();

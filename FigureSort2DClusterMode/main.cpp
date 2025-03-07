@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,10 +6,10 @@
 
 int main()
 {
-	// Figure °´Ã¼ ¼±¾ğ // Declare figure object
+	// Figure ê°ì²´ ì„ ì–¸ // Declare figure object
 	CFLFigureArray flfaSource;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageNormalSort2D;
 	CGUIViewImageWrap viewImageSort2DClusterMode;
 
@@ -17,14 +17,14 @@ int main()
 	{
 		CResult res = EResult_UnknownError;
 
-		// Figure ·Îµå // Load figure
+		// Figure ë¡œë“œ // Load figure
 		if(IsFail(res = flfaSource.Load(L"../../ExampleImages/Figure/RectangleArray.fig")))
 		{
 			ErrorPrint(res, "Failed to load the figure file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImageNormalSort2D.Create(200, 0, 968, 576)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -37,14 +37,14 @@ int main()
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿Í Destination ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù
+		// Source ì´ë¯¸ì§€ ë·°ì™€ Destination ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤
 		if(IsFail(res = viewImageNormalSort2D.SynchronizePointOfView(&viewImageSort2DClusterMode)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageNormalSort2D.SynchronizeWindow(&viewImageSort2DClusterMode)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
@@ -54,7 +54,7 @@ int main()
 		CFLFigureArray flfaNormalSort2D(flfaSource);
 		CFLFigureArray flfaSort2DClusterMode(flfaSource);
 
-		// FigureArray¸¦ ÀÏ¹İ Sort Á¤·Ä. 1¼øÀ§ Y¿À¸§Â÷¼ø, 2¼øÀ§ X¿À¸§Â÷¼ø
+		// FigureArrayë¥¼ ì¼ë°˜ Sort ì •ë ¬. 1ìˆœìœ„ Yì˜¤ë¦„ì°¨ìˆœ, 2ìˆœìœ„ Xì˜¤ë¦„ì°¨ìˆœ
 		// Normal Sort sort the FigureArray. 1st rank Y ascending, 2nd rank X ascending
 		if(IsFail(res = flfaNormalSort2D.Sort2D(ESortOrder2D_Y_Asc_X_Asc)))
 		{
@@ -62,7 +62,7 @@ int main()
 			break;
 		}
 
-		// FigureArray¸¦ Sort2DClusterMode Á¤·Ä. 1¼øÀ§ Y¿À¸§Â÷¼ø, 2¼øÀ§ X¿À¸§Â÷¼ø
+		// FigureArrayë¥¼ Sort2DClusterMode ì •ë ¬. 1ìˆœìœ„ Yì˜¤ë¦„ì°¨ìˆœ, 2ìˆœìœ„ Xì˜¤ë¦„ì°¨ìˆœ
 		// Sort the FigureArray with Sort2DClusterMode. 1st rank Y ascending, 2nd rank X ascending
 		if(IsFail(res = flfaSort2DClusterMode.Sort2DClusterMode(ESortOrder2D_Y_Asc_X_Asc)))
 		{
@@ -70,13 +70,13 @@ int main()
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 
 		CGUIViewImageLayerWrap layerNormalSort2D = viewImageNormalSort2D.GetLayer(0);
 		CGUIViewImageLayerWrap layerSort2DClusterMode = viewImageSort2DClusterMode.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerNormalSort2D.Clear();
 		layerSort2DClusterMode.Clear();
 
@@ -92,11 +92,11 @@ int main()
 			break;
 		}
 
-		// flfaNormalSort2D ´Â FigureµéÀÇ ¹è¿­ÀÌ±â ¶§¹®¿¡ Layer¿¡ ³Ö±â¸¸ ÇØµµ ¸ğµÎ µå·ÎÀ®ÀÌ °¡´ÉÇÏ´Ù.
-		// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-		// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-		// ¿©±â¼­ 0.25ÀÌ¹Ç·Î ¿¶Àº ¹İÅõ¸í »óÅÂ¶ó°í º¼ ¼ö ÀÖ´Ù.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+		// flfaNormalSort2D ëŠ” Figureë“¤ì˜ ë°°ì—´ì´ê¸° ë•Œë¬¸ì— Layerì— ë„£ê¸°ë§Œ í•´ë„ ëª¨ë‘ ë“œë¡œìœ™ì´ ê°€ëŠ¥í•˜ë‹¤.
+		// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+		// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+		// ì—¬ê¸°ì„œ 0.25ì´ë¯€ë¡œ ì˜…ì€ ë°˜íˆ¬ëª… ìƒíƒœë¼ê³  ë³¼ ìˆ˜ ìˆë‹¤.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 		if(IsFail(res = layerNormalSort2D.DrawFigureImage(&flfaNormalSort2D, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
 		{
 			ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
@@ -109,7 +109,7 @@ int main()
 			break;
 		}
 
-		// Á¤º¸°ªÀ» °¢°¢ È®ÀÎÇÏ´Â ÄÚµå // Code to check each information value
+		// ì •ë³´ê°’ì„ ê°ê° í™•ì¸í•˜ëŠ” ì½”ë“œ // Code to check each information value
 		for(int64_t i = 0; i < flfaNormalSort2D.GetCount(); ++i)
 		{
 			CFLRegion* pFlrg = (CFLRegion*)flfaNormalSort2D.GetAt(i);
@@ -129,7 +129,7 @@ int main()
 
 		wprintf(L"\n");
 
-		// Á¤º¸°ªÀ» °¢°¢ È®ÀÎÇÏ´Â ÄÚµå // Code to check each information value
+		// ì •ë³´ê°’ì„ ê°ê° í™•ì¸í•˜ëŠ” ì½”ë“œ // Code to check each information value
 		for(int64_t i = 0; i < flfaSort2DClusterMode.GetCount(); ++i)
 		{
 			CFLFigureArray* pFlfaCluster = (CFLFigureArray*)flfaSort2DClusterMode.GetAt(i);
@@ -160,11 +160,11 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageNormalSort2D.Invalidate(true);
 		viewImageSort2DClusterMode.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageNormalSort2D.IsAvailable() && viewImageSort2DClusterMode.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

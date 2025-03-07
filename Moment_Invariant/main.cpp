@@ -1,34 +1,34 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage;
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Moment/airEdge.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		if(IsFail(res = viewImage.Create(400, 0, 1424, 768)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 		 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -37,18 +37,18 @@ int main()
 
 		CResult res = EResult_UnknownError;
 
-		// Moment °´Ã¼ »ı¼º // Create Moment object
+		// Moment ê°ì²´ ìƒì„± // Create Moment object
 		CMoment moment;
 
-		// ROI ¹üÀ§ ¼³Á¤ // Set ROI range
+		// ROI ë²”ìœ„ ì„¤ì • // Set ROI range
 		CFLRect<int32_t> flrROI(15, 150, 420, 280);
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to process
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to process
 		moment.SetSourceImage(fliImage);
-		// Ã³¸®ÇÒ ROI ¼³Á¤ // Set the ROI to be processed
+		// ì²˜ë¦¬í•  ROI ì„¤ì • // Set the ROI to be processed
 		moment.SetSourceROI(flrROI);
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁöÀÇ ÀÌÁøÈ­ÀÌ¹ÌÁö·Î ÆÇ´Ü À¯¹« ¼³Á¤ // Set whether to judge the image to be processed as a binarized image
-		// ÀÌÁøÈ­ÀÌ¹ÌÁö·Î ÆÇ´ÜÇÒ °æ¿ì 0ÀÌ ¾Æ´Ñ ¸ğµç È­¼Ò°ªÀº 1·Î Ã³¸®ÇÔ // When judging as a binarized image, all non-zero pixel values ??are treated as 1.
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ì˜ ì´ì§„í™”ì´ë¯¸ì§€ë¡œ íŒë‹¨ ìœ ë¬´ ì„¤ì • // Set whether to judge the image to be processed as a binarized image
+		// ì´ì§„í™”ì´ë¯¸ì§€ë¡œ íŒë‹¨í•  ê²½ìš° 0ì´ ì•„ë‹Œ ëª¨ë“  í™”ì†Œê°’ì€ 1ë¡œ ì²˜ë¦¬í•¨ // When judging as a binarized image, all non-zero pixel values ??are treated as 1.
 		moment.EnableBinaryImage(true);
 
 		bool bCalcGeometricMoment = true;
@@ -57,29 +57,29 @@ int main()
 		bool bCalcNormalizedCentralMoment= true;
 		bool bCalcHuMoment= true;
 
-		// °è»ê ´ë»ó¿¡ ±âÇÏÇĞÀû ¸ğ¸àÆ®¸¦ Æ÷ÇÔÇÕ´Ï´Ù. // Include the geometric moment in the computed object.
+		// ê³„ì‚° ëŒ€ìƒì— ê¸°í•˜í•™ì  ëª¨ë©˜íŠ¸ë¥¼ í¬í•¨í•©ë‹ˆë‹¤. // Include the geometric moment in the computed object.
 		moment.EnableGeometricMoment(bCalcGeometricMoment);
-		// °è»ê ´ë»ó¿¡ µµ½É ¸ğ¸àÆ®¸¦ Æ÷ÇÔÇÕ´Ï´Ù. // Include the centroid moment in the calculation target.
+		// ê³„ì‚° ëŒ€ìƒì— ë„ì‹¬ ëª¨ë©˜íŠ¸ë¥¼ í¬í•¨í•©ë‹ˆë‹¤. // Include the centroid moment in the calculation target.
 		moment.EnableCentroidMoment(bCalcCentroidMoment);
-		// °è»ê ´ë»ó¿¡ Áß½É ¸ğ¸àÆ®¸¦ Æ÷ÇÔÇÕ´Ï´Ù. // Include the central moment in the calculation target.
+		// ê³„ì‚° ëŒ€ìƒì— ì¤‘ì‹¬ ëª¨ë©˜íŠ¸ë¥¼ í¬í•¨í•©ë‹ˆë‹¤. // Include the central moment in the calculation target.
 		moment.EnableCentralMoment(bCalcCentralMoment);
-		// °è»ê ´ë»ó¿¡ Á¤±ÔÈ­µÈ Áß½É ¸ğ¸àÆ®¸¦ Æ÷ÇÔÇÕ´Ï´Ù. // Include the normalized central moment in the computed target.
+		// ê³„ì‚° ëŒ€ìƒì— ì •ê·œí™”ëœ ì¤‘ì‹¬ ëª¨ë©˜íŠ¸ë¥¼ í¬í•¨í•©ë‹ˆë‹¤. // Include the normalized central moment in the computed target.
 		moment.EnableNormalizedCentralMoment(bCalcNormalizedCentralMoment);
-		// °è»ê ´ë»ó¿¡ ÈŞ(ºÒº¯) ¸ğ¸àÆ®¸¦ Æ÷ÇÔÇÕ´Ï´Ù. // Include the idle (invariant) moment in the calculation target.
+		// ê³„ì‚° ëŒ€ìƒì— íœ´(ë¶ˆë³€) ëª¨ë©˜íŠ¸ë¥¼ í¬í•¨í•©ë‹ˆë‹¤. // Include the idle (invariant) moment in the calculation target.
 		moment.EnableHuMoment(bCalcHuMoment);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if(IsFail(res = moment.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute moment.\n");
 			break;
 		}
 
-		// ¸ğ¸àÆ® °á°úµéÀ» °¡Á®¿É´Ï´Ù. // Get the moment results.
+		// ëª¨ë©˜íŠ¸ ê²°ê³¼ë“¤ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the moment results.
 		CMoment::SMoments results;
 		moment.GetMoment(results);
 
-		// ¸ğ¸àÆ® °á°ú¸¦ ConsoleÃ¢¿¡ Ãâ·Â // Output the moment result to the console window
+		// ëª¨ë©˜íŠ¸ ê²°ê³¼ë¥¼ Consoleì°½ì— ì¶œë ¥ // Output the moment result to the console window
 		if(bCalcGeometricMoment)
 		{
 			printf("< Geometric Moment > \n");
@@ -153,17 +153,17 @@ int main()
 
 		layer.Clear();
 
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the ROI area is
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the ROI area is
 		if(IsFail(res = layer.DrawFigureImage(&flrROI, BLUE)))
 		{
 			ErrorPrint(res, "Failed to draw figure\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

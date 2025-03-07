@@ -1,4 +1,4 @@
-
+ï»¿
 // GraphViewDlg.cpp : implementation file
 //
 
@@ -189,7 +189,7 @@ void CGraphViewDlg::UpdateControls()
 		GetDlgItem(IDC_BUTTON_CHART_ADD)->EnableWindow(false);
 		GetDlgItem(IDC_BUTTON_CHART_CLEAR)->EnableWindow(false);
 	}
-	// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+	// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 	else if(!m_viewGraph.IsAvailable())
 	{
 		GetDlgItem(IDC_BUTTON_OPEN_GRAPH_VIEW)->EnableWindow(true);
@@ -210,7 +210,7 @@ void CGraphViewDlg::UpdateControls()
 
 		GetDlgItem(IDC_BUTTON_LOAD_GRAPH)->EnableWindow(true);
 
-		// ±×·¡ÇÁ Â÷Æ® µ¥ÀÌÅÍ/¼ö½Ä µ¥ÀÌÅÍÀÇ Á¸Àç À¯¹«¸¦ ¾ò¾î ¿Â´Ù.
+		// ê·¸ë˜í”„ ì°¨íŠ¸ ë°ì´í„°/ìˆ˜ì‹ ë°ì´í„°ì˜ ì¡´ì¬ ìœ ë¬´ë¥¼ ì–»ì–´ ì˜¨ë‹¤.
 		if(m_viewGraph.DoesGraphExist())
 		{
 			GetDlgItem(IDC_BUTTON_SAVE_GRAPH)->EnableWindow(true);
@@ -258,7 +258,7 @@ BOOL CGraphViewDlg::DestroyWindow()
 	// TODO: Add your specialized code here and/or call the base class
 	KillTimer(1024);
 
-	// ±×·¡ÇÁ ºä¸¦ Á¾·áÇÑ´Ù.
+	// ê·¸ë˜í”„ ë·°ë¥¼ ì¢…ë£Œí•œë‹¤.
 	m_viewGraph.Destroy();
 
 	return CDialogEx::DestroyWindow();
@@ -269,11 +269,11 @@ void CGraphViewDlg::OnBnClickedButtonOpenGraphView()
 	// TODO: Add your control notification handler code here
 	do 
 	{
-		// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+		// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 		if(m_viewGraph.IsAvailable())
 			break;
 
-		// ±×·¡ÇÁ ºä »ı¼º
+		// ê·¸ë˜í”„ ë·° ìƒì„±
 		CResult res = m_viewGraph.Create(0, 0, 500, 500);
 
 		if(res.IsFail())
@@ -288,11 +288,11 @@ void CGraphViewDlg::OnBnClickedButtonTerminateGraphView()
 	// TODO: Add your control notification handler code here
 	do 
 	{
-		// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+		// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewGraph.IsAvailable())
 			break;
 
-		// ±×·¡ÇÁ ºä¸¦ Á¾·áÇÑ´Ù.
+		// ê·¸ë˜í”„ ë·°ë¥¼ ì¢…ë£Œí•œë‹¤.
 		CResult res = m_viewGraph.Destroy();
 
 		if(res.IsFail())
@@ -309,7 +309,7 @@ void CGraphViewDlg::OnBnClickedButtonChartAdd()
 
 	do 
 	{
-		// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+		// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewGraph.IsAvailable())
 			break;
 
@@ -317,7 +317,7 @@ void CGraphViewDlg::OnBnClickedButtonChartAdd()
 		if(!pEditChartName)
 			break;
 
-		// ÀÔ·ÂÇÑ Â÷Æ®ÀÌ¸§À» ¾ò¾î¿Â´Ù.
+		// ì…ë ¥í•œ ì°¨íŠ¸ì´ë¦„ì„ ì–»ì–´ì˜¨ë‹¤.
 		CString strChartName = _T("");
 		pEditChartName->GetWindowText(strChartName);
 
@@ -329,10 +329,10 @@ void CGraphViewDlg::OnBnClickedButtonChartAdd()
 		if(!pComboBoxChartType)
 			break;
 
-		// ¼±ÅÃÇÑ Â÷Æ®Å¸ÀÔÀ» ¾ò¾î¿Â´Ù.
+		// ì„ íƒí•œ ì°¨íŠ¸íƒ€ì…ì„ ì–»ì–´ì˜¨ë‹¤.
 		EChartType eChartType = (EChartType)(pComboBoxChartType->GetCurSel() + 1);
 
-		// ·£´ıÀ¸·Î 10°³ÀÇ µ¥ÀÌÅÍ¸¦ »ı¼ºÇÑ´Ù.
+		// ëœë¤ìœ¼ë¡œ 10ê°œì˜ ë°ì´í„°ë¥¼ ìƒì„±í•œë‹¤.
 		const size_t stDataCount = 10;
 		double arrF64DataX1[stDataCount] = { 0., };
 		double arrF64DataY1[stDataCount] = { 0., };
@@ -343,10 +343,10 @@ void CGraphViewDlg::OnBnClickedButtonChartAdd()
 			arrF64DataY1[i] = (double)(rand() % 100);
 		}
 
-		// ±×·¡ÇÁ¿¡ »ı¼ºÇÑ µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù.
+		// ê·¸ë˜í”„ì— ìƒì„±í•œ ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤.
 		m_viewGraph.Plot(arrF64DataX1, arrF64DataY1, stDataCount, eChartType, COLOR(rand()%255, rand()%255, rand()%255), flstrChartName, nullptr);
 
-		// ±×·¡ÇÁ ºä¸¦ °»½Å ÇÑ´Ù.
+		// ê·¸ë˜í”„ ë·°ë¥¼ ê°±ì‹  í•œë‹¤.
 		m_viewGraph.Invalidate();
 	}
 	while (false);
@@ -358,14 +358,14 @@ void CGraphViewDlg::OnBnClickedButtonChartClear()
 	// TODO: Add your control notification handler code here
 	do 
 	{
-		// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+		// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewGraph.IsAvailable())
 			break;
 
-		// ±×·¡ÇÁÀÇ µ¥ÀÌÅÍ¸¦ Å¬¸®¾îÇÑ´Ù.
+		// ê·¸ë˜í”„ì˜ ë°ì´í„°ë¥¼ í´ë¦¬ì–´í•œë‹¤.
 		m_viewGraph.Clear();
 
-		// ±×·¡ÇÁ ºä¸¦ °»½Å ÇÑ´Ù.
+		// ê·¸ë˜í”„ ë·°ë¥¼ ê°±ì‹  í•œë‹¤.
 		m_viewGraph.Invalidate();
 	}
 	while (false);
@@ -377,19 +377,19 @@ void CGraphViewDlg::OnBnClickedButtonLoadGraph()
 	// TODO: Add your control notification handler code here
 	do 
 	{
-		// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+		// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewGraph.IsAvailable())
 			break;
 
 		LockControls(true);
 
-		// ±×·¡ÇÁ ÆÄÀÏ ·Îµå ´ÙÀÌ¾ó·Î±×¸¦ È°¼ºÈ­ ½ÃÅ²´Ù.
-		// °¡Àå ¸¶Áö¸· ÆÄ¶ó¹ÌÅÍ·Î ·Îµå ¿É¼ÇÀ» ÁöÁ¤ÇÑ´Ù.
-		// ex) EViewGraphLoadOption_Load -> ±×·¡ÇÁ ÆÄÀÏ
-		//     EViewGraphLoadOption_Load | EViewGraphLoadOption_OpenDialog ±×·¡ÇÁ ÆÄÀÏ ·Îµå ´ÙÀÌ¾ó·Î±× È°¼ºÈ­
+		// ê·¸ë˜í”„ íŒŒì¼ ë¡œë“œ ë‹¤ì´ì–¼ë¡œê·¸ë¥¼ í™œì„±í™” ì‹œí‚¨ë‹¤.
+		// ê°€ì¥ ë§ˆì§€ë§‰ íŒŒë¼ë¯¸í„°ë¡œ ë¡œë“œ ì˜µì…˜ì„ ì§€ì •í•œë‹¤.
+		// ex) EViewGraphLoadOption_Load -> ê·¸ë˜í”„ íŒŒì¼
+		//     EViewGraphLoadOption_Load | EViewGraphLoadOption_OpenDialog ê·¸ë˜í”„ íŒŒì¼ ë¡œë“œ ë‹¤ì´ì–¼ë¡œê·¸ í™œì„±í™”
 		m_viewGraph.Load(nullptr, EViewGraphLoadOption_Load | EViewGraphLoadOption_OpenDialog);
 
-		// ±×·¡ÇÁ ºä¸¦ °»½Å ÇÑ´Ù.
+		// ê·¸ë˜í”„ ë·°ë¥¼ ê°±ì‹  í•œë‹¤.
 		m_viewGraph.Invalidate();
 
 		LockControls(false);
@@ -403,13 +403,13 @@ void CGraphViewDlg::OnBnClickedButtonSaveGraph()
 	// TODO: Add your control notification handler code here
 	do 
 	{
-		// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+		// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewGraph.IsAvailable())
 			break;
 
 		LockControls(true);
 
-		// ±×·¡ÇÁ ÀúÀå ´ÙÀÌ¾ó·Î±×¸¦ È°¼ºÈ­ ½ÃÅ²´Ù.
+		// ê·¸ë˜í”„ ì €ì¥ ë‹¤ì´ì–¼ë¡œê·¸ë¥¼ í™œì„±í™” ì‹œí‚¨ë‹¤.
 		m_viewGraph.Save();
 
 		LockControls(false);

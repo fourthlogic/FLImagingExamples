@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h" 
@@ -6,70 +6,70 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliISrcImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage1;
 
 	do
 	{
-		// µ¿ÀÛ °á°ú // operation result
+		// ë™ì‘ ê²°ê³¼ // operation result
 		CResult res = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Loads image 
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image 
 		if(IsFail(res = fliISrcImage.Load(L"../../ExampleImages/PixelCounter/Semiconductor.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage1.Create(300, 0, 300 + 512, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the image view
 		if(IsFail(res = viewImage1.SetImagePtr(&fliISrcImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Pixel Counter °´Ã¼ »ı¼º // Create Pixel Counter object
+		// Pixel Counter ê°ì²´ ìƒì„± // Create Pixel Counter object
 		CPixelCounter PixelCounter;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set source image 
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set source image 
 		PixelCounter.SetSourceImage(fliISrcImage);
 
-		// Source ROI ¼³Á¤ // Set source ROI 
+		// Source ROI ì„¤ì • // Set source ROI 
 		CFLQuad<double> flfSourceROI(170.550171, 102.400000, 380.243003, 135.950853, 341.100341, 312.092833, 124.417747, 265.960410);
 		PixelCounter.SetSourceROI(flfSourceROI);
 
-		// PixelCounter ¸ğµå ¼³Á¤(Dual) // Set Threshold Mode(Dual)
+		// PixelCounter ëª¨ë“œ ì„¤ì •(Dual) // Set Threshold Mode(Dual)
 		PixelCounter.SetThresholdMode(EThresholdMode_Dual_And);
 
-		// MultiVar °´Ã¼ »ı¼º // Create MultiVar object
+		// MultiVar ê°ì²´ ìƒì„± // Create MultiVar object
 		CMultiVar<double> mvThresholdValue1, mvThresholdValue2;
 		CMultiVarL mvCondition1, mvCondition2;
 
-		// ÀÓ°è°ª ÀÔ·Â // PixelCounter value push
+		// ì„ê³„ê°’ ì…ë ¥ // PixelCounter value push
 		mvThresholdValue1.PushBack(120);
 		mvThresholdValue2.PushBack(230);
 
-		// ÀÓ°è°ª ¼³Á¤ (´ÙÃ¤³Î °æ¿ì CMultiVar<double> »ç¿ë) // Set PixelCounter value(Use CMultiVar<double> for multi-channel)
+		// ì„ê³„ê°’ ì„¤ì • (ë‹¤ì±„ë„ ê²½ìš° CMultiVar<double> ì‚¬ìš©) // Set PixelCounter value(Use CMultiVar<double> for multi-channel)
 		PixelCounter.SetThreshold(mvThresholdValue1, mvThresholdValue2);
 
-		// 1Ã¤³Î ³í¸®Á¶°Ç ÀÔ·Â // 1Channel condition push
+		// 1ì±„ë„ ë…¼ë¦¬ì¡°ê±´ ì…ë ¥ // 1Channel condition push
 		mvCondition1.PushBack(ELogicalCondition_Greater);
 		mvCondition2.PushBack(ELogicalCondition_Less);
 
-		// ³í¸® Á¶°Ç ¼³Á¤ // Set condition value
+		// ë…¼ë¦¬ ì¡°ê±´ ì„¤ì • // Set condition value
 		PixelCounter.SetLogicalCondition(mvCondition1, mvCondition2);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if((res = PixelCounter.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Pixel Counter.");
@@ -80,24 +80,24 @@ int main()
 		int64_t i64ValidPixel = PixelCounter.GetResultValidPixelCount();
 		int64_t i64InvalidPixel = PixelCounter.GetResultInvalidPixelCount();
 
-		// ÀüÃ¼ ÇÈ¼¿, À¯È¿ÇÑ ÇÈ¼¿, À¯È¿ÇÏÁö ¾ÊÀº ÇÈ¼¿ °¹¼ö Ãâ·Â // display Total, Valid, Invalid Pixel Count
+		// ì „ì²´ í”½ì…€, ìœ íš¨í•œ í”½ì…€, ìœ íš¨í•˜ì§€ ì•Šì€ í”½ì…€ ê°¯ìˆ˜ ì¶œë ¥ // display Total, Valid, Invalid Pixel Count
 		{
 			printf("Total Pixel Count : %lld\n", i64TotalPixel);
 			printf("Valid Pixel Count : %lld\n", i64ValidPixel);
 			printf("Invalid Pixel Count : %lld\n", i64InvalidPixel);
 		}
 
-		// Text Ãâ·Â // Draw Text 
+		// Text ì¶œë ¥ // Draw Text 
 		CFLString<wchar_t> flsDrawText;
 		flsDrawText.Format(L"Source Image\n120 < threshold < 230\nTotal Pixel Count: %lld\nValid Pixel Count: %lld\nInvalid Pixel Count: %lld", i64TotalPixel, i64ValidPixel, i64InvalidPixel);
 
-		// ·¹ÀÌ¾î´Â µû·Î ÇØÁ¦ÇÏÁö ¾Ê¾Æµµ View°¡ ÇØÁ¦ µÉ ¶§ °°ÀÌ ÇØÁ¦µÈ´Ù. // The layer is released together when View is released without releasing it separately.
+		// ë ˆì´ì–´ëŠ” ë”°ë¡œ í•´ì œí•˜ì§€ ì•Šì•„ë„ Viewê°€ í•´ì œ ë  ë•Œ ê°™ì´ í•´ì œëœë‹¤. // The layer is released together when View is released without releasing it separately.
 		CGUIViewImageLayerWrap layer = viewImage1.GetLayer(0);
 
-		// PixelCounter °ªÀ» µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display PixelCounter value.
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù.// The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// PixelCounter ê°’ì„ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display PixelCounter value.
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤.// The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if(IsFail(res = layer.DrawTextCanvas(&CFLPoint<double>(0, 0), flsDrawText, YELLOW, BLACK, 15, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false)))
@@ -106,7 +106,7 @@ int main()
 			break;
 		}
 
-		// Source ROI ±×¸®±â // Draw Source ROI
+		// Source ROI ê·¸ë¦¬ê¸° // Draw Source ROI
 		if(IsFail(res = layer.DrawFigureImage(flfSourceROI, LIME)))
 		{
 			ErrorPrint(res, "Failed to draw Source ROI on the image view.\n");
@@ -115,7 +115,7 @@ int main()
 
 		viewImage1.Invalidate(false);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage1.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 
 namespace FLImaging
 {
 	namespace GUI
 	{
-		// ÇÁ·ÎÆÛÆ¼ ¸Ş´º Å¬·¡½º
+		// í”„ë¡œí¼í‹° ë©”ë‰´ í´ë˜ìŠ¤
 		class CPropertyMenuExample : public CGUIPropertyMenuBase
 		{
 			SupportToDuplicateObject(CPropertyMenuExample);
@@ -13,19 +13,19 @@ namespace FLImaging
 			CPropertyMenuExample();
 			virtual ~CPropertyMenuExample();
 
-			// ÇÁ·ÎÆÛÆ¼ ¸Ş´º ¾ÆÀÌÅÛ ±¸¼º
+			// í”„ë¡œí¼í‹° ë©”ë‰´ ì•„ì´í…œ êµ¬ì„±
 			virtual const CResult ConfigureMenu() override;
 
 		protected:
-			// ÀÌ¹ÌÁö ·Îµå ÇÁ·Î½ÃÀú
+			// ì´ë¯¸ì§€ ë¡œë“œ í”„ë¡œì‹œì €
 			CPropertyButtonClickProcedure* LoadImage();
-			// Å¬¸®¾î ºä ÇÁ·Î½ÃÀú
+			// í´ë¦¬ì–´ ë·° í”„ë¡œì‹œì €
 			CPropertyButtonClickProcedure* ClearView();
-			// Execute ÇÁ·Î½ÃÀú
+			// Execute í”„ë¡œì‹œì €
 			CPropertyButtonClickProcedure* DrawFigure();
-			// Å¬¸®¾î ·¹ÀÌ¾î ÇÁ·Î½ÃÀú
+			// í´ë¦¬ì–´ ë ˆì´ì–´ í”„ë¡œì‹œì €
 			CPropertyButtonClickProcedure* ClearLayer();
-			// ÇÁ·ÎÆÛÆ¼ Pane º¯°æ ÇÔ¼ö
+			// í”„ë¡œí¼í‹° Pane ë³€ê²½ í•¨ìˆ˜
 			const CResult OnPropertyPaneChanged(GUI::CGUIPropertyItemBase* pBase, Base::CFLString<wchar_t>& strValue);
 		};
 	}

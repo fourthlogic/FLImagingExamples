@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,29 +6,29 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSourceImage;
 	CFLImage fliDestinationImage1;
 	CFLImage fliDestinationImage2;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSource;
 	CGUIViewImageWrap viewImageDestination1;
 	CGUIViewImageWrap viewImageDestination2;
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/OperationDivide/FlowerWall.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö¸¦ Src ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º
+		// Destination ì´ë¯¸ì§€ë¥¼ Src ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„±
 		if(IsFail(res = fliDestinationImage1.Assign(fliSourceImage)))
 		{
 			ErrorPrint(res, "Failed to assign the image file.\n");
@@ -41,100 +41,100 @@ int main()
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if(IsFail(res = viewImageSource.Create(100, 0, 612, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination1 ÀÌ¹ÌÁö ºä »ı¼º // Create destination1 image view
+		// Destination1 ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination1 image view
 		if(IsFail(res = viewImageDestination1.Create(612, 0,1124, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination2 ÀÌ¹ÌÁö ºä »ı¼º // Create destination2 image view
+		// Destination2 ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination2 image view
 		if(IsFail(res = viewImageDestination2.Create(1124, 0,1636, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if(IsFail(res = viewImageSource.SynchronizePointOfView(&viewImageDestination1)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if(IsFail(res = viewImageSource.SynchronizePointOfView(&viewImageDestination2)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination1 ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ
+		// Destination1 ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´
 		if(IsFail(res = viewImageDestination1.SetImagePtr(&fliDestinationImage1)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination2 ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ
+		// Destination2 ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´
 		if(IsFail(res = viewImageDestination2.SetImagePtr(&fliDestinationImage2)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImageDestination1)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImageDestination2)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// Operation Divide °´Ã¼ »ı¼º // Create Operation Divide object
+		// Operation Divide ê°ì²´ ìƒì„± // Create Operation Divide object
 		COperationDivide divide;
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		divide.SetSourceImage(fliSourceImage);
-		// ¿¬»ê ¹æ½Ä ¼³Á¤ // Set operation source
+		// ì—°ì‚° ë°©ì‹ ì„¤ì • // Set operation source
 		divide.SetOperationSource(EOperationSource_Scalar);
-		// Destination1 ÀÌ¹ÌÁö ¼³Á¤ // Set the destination1 image
+		// Destination1 ì´ë¯¸ì§€ ì„¤ì • // Set the destination1 image
 		divide.SetDestinationImage(fliDestinationImage1);
-		// Scalar °ª ¼³Á¤ // Set Scalar value
+		// Scalar ê°’ ì„¤ì • // Set Scalar value
 		divide.SetScalarValue(CMultiVar<double>(1.5, 1.5, 1.5));
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = divide.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute operation divide.");
 			break;
 		}
 
-		// Destination1 ÀÌ¹ÌÁö ¼³Á¤ // Set the destination1 image
+		// Destination1 ì´ë¯¸ì§€ ì„¤ì • // Set the destination1 image
 		divide.SetDestinationImage(fliDestinationImage2);
-		// Scalar °ª ¼³Á¤ // Set Scalar value
+		// Scalar ê°’ ì„¤ì • // Set Scalar value
 		divide.SetScalarValue(CMultiVar<double>(3.0, 3.0, 3.0));
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = divide.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute operation divide.");
@@ -142,22 +142,22 @@ int main()
 		}
 		
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 		CGUIViewImageLayerWrap layerDestination1 = viewImageDestination1.GetLayer(0);
 		CGUIViewImageLayerWrap layerDestination2 = viewImageDestination2.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSource.Clear();
 		layerDestination1.Clear();
 		layerDestination2.Clear();
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
@@ -178,11 +178,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  // Update image view
 		viewImageSource.Invalidate(true);
 		viewImageDestination1.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSource.IsAvailable()
 			&& viewImageDestination1.IsAvailable()
 			&& viewImageDestination2.IsAvailable())

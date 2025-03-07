@@ -1,34 +1,34 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage;
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/GridOfDotsDetector/GridOfDots.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		if(IsFail(res = viewImage.Create(400, 0, 1040, 480)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -37,13 +37,13 @@ int main()
 
 		CResult res = EResult_UnknownError;
 
-		// Grid Of Dots Detector °´Ã¼ »ı¼º // Create Grid Of Dots Detector object
+		// Grid Of Dots Detector ê°ì²´ ìƒì„± // Create Grid Of Dots Detector object
 		CGridOfDotsDetector gridofDots;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤ // set the image to process
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì • // set the image to process
 		gridofDots.SetSourceImage(fliImage);
 
-		// Grid Of Dots Detector ¼öÇà // Execute Grid Of Dots Detector
+		// Grid Of Dots Detector ìˆ˜í–‰ // Execute Grid Of Dots Detector
 		if(IsFail(res = gridofDots.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute Grid Of Dots Detector.\n");
@@ -54,14 +54,14 @@ int main()
 
 		layer.Clear();
 
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the ROI area is.
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the ROI area is.
 		CFLQuad<double> flqRegion;
 		int64_t i64ResultRow = 0;
 		int64_t i64ResultCol = 0;
 		double f64AverageCellPitch;
 		CFLArray<CFLArray<TPoint<double>>> flaPoints;
 
-		// ÆäÀÌÁö 0¹ø º¸µå °¹¼ö¸¦ °¡Á®¿È. // Page 0 Gets the number of boards.
+		// í˜ì´ì§€ 0ë²ˆ ë³´ë“œ ê°¯ìˆ˜ë¥¼ ê°€ì ¸ì˜´. // Page 0 Gets the number of boards.
 		int64_t i64PageIndex = 0;
 		int64_t i64BoardCount = gridofDots.GetResultBoardCount(i64PageIndex);
 
@@ -199,10 +199,10 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,77 +1,77 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// 3D °´Ã¼ ¼±¾ğ // Declare 3D object
+	// 3D ê°ì²´ ì„ ì–¸ // Declare 3D object
 	CFL3DObject fl3DOReferenceObject;
 	CFL3DObject fl3DOTargetObject;
 
-	// 3D ºä ¼±¾ğ // Declare 3D view	
+	// 3D ë·° ì„ ì–¸ // Declare 3D view	
 	CGUIView3DWrap view3DReference;
 	CGUIView3DWrap view3DTarget;
 
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult eResult = EResult_UnknownError;
 
 
-		// Reference Object ·Îµå // Load the Reference object
+		// Reference Object ë¡œë“œ // Load the Reference object
 		if((eResult = fl3DOReferenceObject.Load(L"../../ExampleImages/ResidualEvaluator3D/ReferencePoints.ply")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the object file.\n");
 			break;
 		}
 
-		// Target Object ·Îµå // Load the Target object
+		// Target Object ë¡œë“œ // Load the Target object
 		if((eResult = fl3DOTargetObject.Load(L"../../ExampleImages/ResidualEvaluator3D/MeasuredPoints.ply")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the object file.\n");
 			break;
 		}
 
-		// Reference 3D ºä »ı¼º
+		// Reference 3D ë·° ìƒì„±
 		if(IsFail(eResult = view3DReference.Create(612, 0, 1124, 512)))
 		{
 			ErrorPrint(eResult, "Failed to create the Destination 3D view.\n");
 			break;
 		}
 
-		// Target 3D ºä »ı¼º
+		// Target 3D ë·° ìƒì„±
 		if(IsFail(eResult = view3DTarget.Create(1124, 0, 1636, 512)))
 		{
 			ErrorPrint(eResult, "Failed to create the Reference 3D view.\n");
 			break;
 		}
 
-		// Reference Object 3D ºä »ı¼º // Create the reference object 3D view
+		// Reference Object 3D ë·° ìƒì„± // Create the reference object 3D view
 		if((eResult = view3DReference.PushObject(fl3DOReferenceObject)).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to display the 3D object.\n");
 			break;
 		}
 
-		// Target Object 3D ºä »ı¼º // Create the Target object 3D view
+		// Target Object 3D ë·° ìƒì„± // Create the Target object 3D view
 		if((eResult = view3DTarget.PushObject(fl3DOTargetObject)).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to display the 3D object.\n");
 			break;
 		}
 
-		// ResidualEvaluator3D °´Ã¼ »ı¼º // Create ResidualEvaluator3D object
+		// ResidualEvaluator3D ê°ì²´ ìƒì„± // Create ResidualEvaluator3D object
 		CResidualEvaluator3D ResidualEvaluator3D;
 
-		// Destination object ¼³Á¤ // Set the destination object
+		// Destination object ì„¤ì • // Set the destination object
 		ResidualEvaluator3D.SetLearnObject(fl3DOReferenceObject);
-		// Target object ¼³Á¤ // Set the target object
+		// Target object ì„¤ì • // Set the target object
 		ResidualEvaluator3D.SetSourceObject(fl3DOTargetObject);
-		// ÃÖ´ë °á°ú °³¼ö ¼³Á¤ // Set the max count of match result
+		// ìµœëŒ€ ê²°ê³¼ ê°œìˆ˜ ì„¤ì • // Set the max count of match result
 		ResidualEvaluator3D.SetResidualType(CResidualEvaluator3D::EResidualType_RMSE);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((eResult = ResidualEvaluator3D.Execute()).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to execute Surface Match 3D.");
@@ -81,20 +81,20 @@ int main()
 		view3DTarget.ZoomFit();
 		view3DReference.ZoomFit();
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately		
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately		
 		CGUIView3DLayerWrap layer3DReference = view3DReference.GetLayer(0);
 		CGUIView3DLayerWrap layer3DTarget = view3DTarget.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer3DReference.Clear();
 		layer3DTarget.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvasÀº ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvasì€ Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 
@@ -122,7 +122,7 @@ int main()
 		tp3Center.y = (tp3Min.y + tp3Max.y) / 2;
 		tp3Center.z = (tp3Min.z + tp3Max.z) / 2;
 
-		// ÃßÁ¤µÈ Æ÷Áî Çà·Ä ¹× score Ãâ·Â
+		// ì¶”ì •ëœ í¬ì¦ˆ í–‰ë ¬ ë° score ì¶œë ¥
 		if((eResult = layer3DTarget.DrawText3D(tp3Center, strText, YELLOW, 0, 9)).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to draw text.\n");
@@ -132,11 +132,11 @@ int main()
 		view3DTarget.ZoomFit();
 		view3DReference.ZoomFit();
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		view3DTarget.Invalidate(true);
 		view3DReference.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä, 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·°, 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(view3DTarget.IsAvailable() && view3DReference.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -14,89 +14,89 @@ enum EType
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage arrFliImage0[ETypeCount];
 	CFLImage arrFliImage1[ETypeCount];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap arrViewImage0[ETypeCount];
 	CGUIViewImageWrap arrViewImage1[ETypeCount];
 
-	// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+	// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 	CResult result = EResult_UnknownError;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((result = arrFliImage0[EType_Source].Load(L"../../ExampleImages/OperationPower/Sea3Ch.flif")).IsFail())
 		{
 			ErrorPrint(result, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Operand ÀÌ¹ÌÁö ·Îµå // Loads the operand image
+		// Operand ì´ë¯¸ì§€ ë¡œë“œ // Loads the operand image
 		if((result = arrFliImage0[EType_Operand].Load(L"../../ExampleImages/OperationPower/Gradation.flif")).IsFail())
 		{
 			ErrorPrint(result, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((result = arrFliImage1[EType_Source].Load(L"../../ExampleImages/OperationPower/Sea3ChF32.flif")).IsFail())
 		{
 			ErrorPrint(result, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Operand ÀÌ¹ÌÁö ·Îµå // Loads the operand image
+		// Operand ì´ë¯¸ì§€ ë¡œë“œ // Loads the operand image
 		if((result = arrFliImage1[EType_Operand].Load(L"../../ExampleImages/OperationPower/Gradation.flif")).IsFail())
 		{
 			ErrorPrint(result, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö¸¦ Source ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º // Create destination image as same as source image
+		// Destination ì´ë¯¸ì§€ë¥¼ Source ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„± // Create destination image as same as source image
 		if((result = arrFliImage0[EType_Destination].Assign(arrFliImage0[EType_Source])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to assign the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if((result = arrViewImage0[EType_Source].Create(100, 0, 548, 448)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Operand ÀÌ¹ÌÁö ºä »ı¼º // Creates operand image view
+		// Operand ì´ë¯¸ì§€ ë·° ìƒì„± // Creates operand image view
 		if((result = arrViewImage0[EType_Operand].Create(548, 0, 996, 448)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination image view
 		if((result = arrViewImage0[EType_Destination].Create(996, 0, 1444, 448)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to create the image view.\n");
 			break;
 		}
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if((result = arrViewImage1[EType_Source].Create(100, 448, 548, 896)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Operand ÀÌ¹ÌÁö ºä »ı¼º // Creates operand image view
+		// Operand ì´ë¯¸ì§€ ë·° ìƒì„± // Creates operand image view
 		if((result = arrViewImage1[EType_Operand].Create(548, 448, 996, 896)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination image view
 		if((result = arrViewImage1[EType_Destination].Create(996, 448, 1444, 896)).IsFail())
 		{
 			ErrorPrint(result, L"Failed to create the image view.\n");
@@ -105,7 +105,7 @@ int main()
 
 		bool bError = false;
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
 			if((result = arrViewImage0[i].SetImagePtr(&arrFliImage0[i])).IsFail())
@@ -129,88 +129,88 @@ int main()
 		if(bError)
 			break;
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((result = arrViewImage0[EType_Source].SynchronizePointOfView(&arrViewImage0[EType_Operand])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((result = arrViewImage0[EType_Source].SynchronizePointOfView(&arrViewImage0[EType_Destination])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((result = arrViewImage0[EType_Source].SynchronizeWindow(&arrViewImage0[EType_Operand])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((result = arrViewImage0[EType_Source].SynchronizeWindow(&arrViewImage0[EType_Destination])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((result = arrViewImage0[EType_Source].SynchronizePointOfView(&arrViewImage1[EType_Source])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((result = arrViewImage0[EType_Source].SynchronizePointOfView(&arrViewImage1[EType_Operand])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((result = arrViewImage0[EType_Source].SynchronizePointOfView(&arrViewImage1[EType_Destination])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((result = arrViewImage0[EType_Source].SynchronizeWindow(&arrViewImage1[EType_Source])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((result = arrViewImage0[EType_Source].SynchronizeWindow(&arrViewImage1[EType_Operand])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((result = arrViewImage0[EType_Source].SynchronizeWindow(&arrViewImage1[EType_Destination])).IsFail())
 		{
 			ErrorPrint(result, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// Operation Power °´Ã¼ »ı¼º // Create Operation Power object
+		// Operation Power ê°ì²´ ìƒì„± // Create Operation Power object
 		COperationPower power;
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		power.SetSourceImage(arrFliImage0[EType_Source]);
-		// Operand ÀÌ¹ÌÁö ¼³Á¤ // Set the operand image
+		// Operand ì´ë¯¸ì§€ ì„¤ì • // Set the operand image
 		power.SetOperandImage(arrFliImage0[EType_Operand]);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		power.SetDestinationImage(arrFliImage0[EType_Destination]);
-		// Image Operation ¸ğµå·Î ¼³Á¤ // Set operation mode to image
+		// Image Operation ëª¨ë“œë¡œ ì„¤ì • // Set operation mode to image
 		power.SetOperationSource(EOperationSource_Image);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((result = power.Execute()).IsFail())
 		{
 			ErrorPrint(result, L"Failed to execute operation power.");
@@ -218,18 +218,18 @@ int main()
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		power.SetSourceImage(arrFliImage1[EType_Source]);
-		// Operand ÀÌ¹ÌÁö ¼³Á¤ // Set the operand image
+		// Operand ì´ë¯¸ì§€ ì„¤ì • // Set the operand image
 		power.SetOperandImage(arrFliImage1[EType_Operand]);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		power.SetDestinationImage(arrFliImage1[EType_Destination]);
-		// Overflow Method Wrapping ¿É¼ÇÀ¸·Î ¼³Á¤ // Set Overflow Method to Wrapping option
+		// Overflow Method Wrapping ì˜µì…˜ìœ¼ë¡œ ì„¤ì • // Set Overflow Method to Wrapping option
 		power.SetOverflowMethod(EOverflowMethod_Wrapping);
-		// Image Operation ¸ğµå·Î ¼³Á¤ // Set operation mode to image
+		// Image Operation ëª¨ë“œë¡œ ì„¤ì • // Set operation mode to image
 		power.SetOperationSource(EOperationSource_Image);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((result = power.Execute()).IsFail())
 		{
 			ErrorPrint(result, L"Failed to execute operation power.");
@@ -242,29 +242,29 @@ int main()
 
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-			// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+			// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+			// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 			arrLayer0[i] = arrViewImage0[i].GetLayer(0);
 
-			// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+			// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 			arrLayer0[i].Clear();
 		}
 
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-			// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+			// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+			// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 			arrLayer1[i] = arrViewImage1[i].GetLayer(0);
 
-			// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+			// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 			arrLayer1[i].Clear();
 		}
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((result = arrLayer0[EType_Source].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
@@ -303,7 +303,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  // Update image view
 		arrViewImage0[EType_Source].Invalidate(true);
 		arrViewImage0[EType_Operand].Invalidate(true);
 		arrViewImage0[EType_Destination].Invalidate(true);
@@ -311,7 +311,7 @@ int main()
 		arrViewImage1[EType_Operand].Invalidate(true);
 		arrViewImage1[EType_Destination].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(arrViewImage0[EType_Source].IsAvailable()
 			  && arrViewImage0[EType_Operand].IsAvailable()
 			  && arrViewImage0[EType_Destination].IsAvailable()

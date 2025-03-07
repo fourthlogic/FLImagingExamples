@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h" 
@@ -6,27 +6,27 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliSourceImage;
 	CFLImage fliDestinationImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageSource;
 	CGUIViewImageWrap viewImageDestination;
 
 	do
 	{
-		// µ¿ÀÛ °á°ú // operation result
+		// ë™ì‘ ê²°ê³¼ // operation result
 		CResult res = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/ChannelVariance/Color.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImageSource.Create(400, 0, 1052, 427)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -39,21 +39,21 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views. 
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views. 
 		if(IsFail(res = viewImageSource.SynchronizePointOfView(&viewImageDestination)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImageDestination)))
 		{
 			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the image view
 		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -66,16 +66,16 @@ int main()
 			break;
 		}
 
-		// Channel Variance °´Ã¼ »ı¼º // Create Channel Variance object
+		// Channel Variance ê°ì²´ ìƒì„± // Create Channel Variance object
 		CChannelVariance channelVariance;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set source image 
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set source image 
 		channelVariance.SetSourceImage(fliSourceImage);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set destination image
 		channelVariance.SetDestinationImage(fliDestinationImage);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if((res = channelVariance.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Channel Variance.\n");
@@ -84,19 +84,19 @@ int main()
 			break;
 		}
 
-		// Ãâ·ÂÀ» À§ÇÑ ÀÌ¹ÌÁö ·¹ÀÌ¾î¸¦ ¾ò¾î¿É´Ï´Ù. //  Gets the image layer for output.
-		// µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä ¾øÀ½ // No need to release separately
+		// ì¶œë ¥ì„ ìœ„í•œ ì´ë¯¸ì§€ ë ˆì´ì–´ë¥¼ ì–»ì–´ì˜µë‹ˆë‹¤. //  Gets the image layer for output.
+		// ë”°ë¡œ í•´ì œí•  í•„ìš” ì—†ìŒ // No need to release separately
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 		CGUIViewImageLayerWrap layerDestination = viewImageDestination.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Delete the shapes drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Delete the shapes drawn on the existing layer
 		layerSource.Clear();
 		layerDestination.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display View information.
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù.// The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display View information.
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤.// The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
@@ -111,18 +111,18 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImageSource.Invalidate(true);
 		viewImageDestination.Invalidate(true);
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if((res = viewImageDestination.ZoomFit()).IsFail())
 		{
 			ErrorPrint(res, "Failed to zoom fit\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSource.IsAvailable() && viewImageDestination.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,109 +1,109 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include "../CommomHeader/ErrorPrint.h"
 #include <FLImaging.h>
 
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSrcImage;
 	CFLImage fliDstImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSrc;
 	CGUIViewImageWrap viewImageDst;
 
 	do
 	{
-        // ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+        // ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult res = EResult_UnknownError;
 
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 		
-		// Destination ÀÌ¹ÌÁö¸¦ Source ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º // Create destination image as same as source image
+		// Destination ì´ë¯¸ì§€ë¥¼ Source ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„± // Create destination image as same as source image
 		if(IsFail(res = fliDstImage.Assign(fliSrcImage)))
 		{
 			ErrorPrint(res, "Failed to assign the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create the source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create the source image view
 		if(IsFail(res = viewImageSrc.Create(400, 0, 912, 612)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if(IsFail(res = viewImageSrc.SetImagePtr(&fliSrcImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if(IsFail(res = viewImageDst.Create(912, 0, 1424, 612)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if(IsFail(res = viewImageDst.SetImagePtr(&fliDstImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if(IsFail(res = viewImageSrc.SynchronizePointOfView(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageSrc.SynchronizeWindow(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// Source Image Å©±â¿¡ ¸Â°Ô viewÀÇ Å©±â¸¦ Á¶Á¤ // Zoom the view to fit the image size
+		// Source Image í¬ê¸°ì— ë§ê²Œ viewì˜ í¬ê¸°ë¥¼ ì¡°ì • // Zoom the view to fit the image size
 		if(IsFail(res = viewImageSrc.ZoomFit()))
 		{
 			ErrorPrint(res, "Failed to zoom fit\n");
 			break;
 		}
 
-		// Destination Image Å©±â¿¡ ¸Â°Ô viewÀÇ Å©±â¸¦ Á¶Á¤ // Zoom the view to fit the image size
+		// Destination Image í¬ê¸°ì— ë§ê²Œ viewì˜ í¬ê¸°ë¥¼ ì¡°ì • // Zoom the view to fit the image size
 		if(IsFail(res = viewImageDst.ZoomFit()))
 		{
 			ErrorPrint(res, "Failed to zoom fit\n");
 			break;
 		}
 
-		// ContraharmonicMeanFilter °´Ã¼ »ı¼º // Create ContraharmonicMeanFilter object
+		// ContraharmonicMeanFilter ê°ì²´ ìƒì„± // Create ContraharmonicMeanFilter object
 		CContraharmonicMeanFilter contraharmonicMeanFilter;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		contraharmonicMeanFilter.SetSourceImage(fliSrcImage);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		contraharmonicMeanFilter.SetDestinationImage(fliDstImage);
 
-		// Ã³¸®ÇÒ FilterÀÇ Radius ¼³Á¤ // Set the radius of the filter
+		// ì²˜ë¦¬í•  Filterì˜ Radius ì„¤ì • // Set the radius of the filter
 		contraharmonicMeanFilter.SetRadius(2);
 
-		// Â÷¼ö ¼³Á¤ // Set the order
+		// ì°¨ìˆ˜ ì„¤ì • // Set the order
 		contraharmonicMeanFilter.SetOrder(1);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = contraharmonicMeanFilter.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute Contraharmonic Mean Filter.");
@@ -125,11 +125,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSrc.Invalidate(true);
 		viewImageDst.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSrc.IsAvailable() && viewImageDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

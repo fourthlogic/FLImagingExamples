@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -20,16 +20,16 @@ int main()
 		CCrossGauge::ETransitionType_DarkToBrightToDarkOrBrightToDarkToBright,
 	};
 
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliImage[i32ExampleCount];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage[i32ExampleCount];
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliImage[0].Load(L"../../ExampleImages/Gauge/Cross_Bright.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
@@ -48,7 +48,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		for(int32_t i = 0; i < i32ExampleCount; ++i)
 		{
 			int32_t i32X = 400 * (i % 4);
@@ -59,14 +59,14 @@ int main()
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 			if(IsFail(res = viewImage[i].SetImagePtr(&fliImage[i])))
 			{
 				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the all image views. 
+			// ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the all image views. 
 			if(i)
 			{
 				if(IsFail(res = viewImage[i].SynchronizePointOfView(&viewImage[0])))
@@ -79,60 +79,60 @@ int main()
 
 		CResult res = EResult_UnknownError;
 
-		// Cross Gauge °´Ã¼ »ı¼º // Create Cross Gauge object
+		// Cross Gauge ê°ì²´ ìƒì„± // Create Cross Gauge object
 		CCrossGauge CrossGauge;
 
-		// ÃøÁ¤ÇÒ ¿µ¿ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the area to measure.
+		// ì¸¡ì •í•  ì˜ì—­ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the area to measure.
 		CFLRect<double> measureRegion(126., 126., 400., 400.);
 		double tolerance = 70.;
 		CrossGauge.SetMeasurementRegion(measureRegion, tolerance);
 
-		// ÃßÃâÇÏ±âÀ§ÇÑ ÆÄ¶ó¹ÌÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set parameters for extraction.		
-		// ½ÊÀÚÇüÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÑ °æ°èÁ¡ Áß »ç¿ëÇÒ °æ°èÁ¡ À¯ÇüÀ» ¼±ÅÃÇÕ´Ï´Ù. // Select the boundary point type to use among the boundary points extracted to estimate the crosshair.
+		// ì¶”ì¶œí•˜ê¸°ìœ„í•œ íŒŒë¼ë¯¸í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set parameters for extraction.		
+		// ì‹­ìí˜•ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•œ ê²½ê³„ì  ì¤‘ ì‚¬ìš©í•  ê²½ê³„ì  ìœ í˜•ì„ ì„ íƒí•©ë‹ˆë‹¤. // Select the boundary point type to use among the boundary points extracted to estimate the crosshair.
 		CrossGauge.SetTransitionChoice(CCrossGauge::ETransitionChoice_Closest);
-		// ½ÊÀÚÇüÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ÀÇ º¯È­ ÀÓ°è°ª¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the threshold change of the boundary point to be extracted to estimate the crosshair.
+		// ì‹­ìí˜•ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ì˜ ë³€í™” ì„ê³„ê°’ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the threshold change of the boundary point to be extracted to estimate the crosshair.
 		CrossGauge.SetThreshold(20);
-		// ½ÊÀÚÇüÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ÀÇ º¯È­ ÀÓ°è°ª¿¡ º¸Á¤°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the correction value to the threshold change of the boundary point to be extracted to estimate the crosshair.
+		// ì‹­ìí˜•ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ì˜ ë³€í™” ì„ê³„ê°’ì— ë³´ì •ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the correction value to the threshold change of the boundary point to be extracted to estimate the crosshair.
 		CrossGauge.SetMinimumAmplitude(10);
-		// ½ÊÀÚÇüÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ´ëÇ¥°ª Ç¥º» °³¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the number of representative sample values ??of the boundary points to be extracted to estimate the crosshairs.
+		// ì‹­ìí˜•ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ëŒ€í‘œê°’ í‘œë³¸ ê°œìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the number of representative sample values ??of the boundary points to be extracted to estimate the crosshairs.
 		CrossGauge.SetThickness(1);
-		// ½ÊÀÚÇüÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÃßÃâ °£°İÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the extraction interval of boundary points to be extracted to estimate the crosshair.
+		// ì‹­ìí˜•ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì¶”ì¶œ ê°„ê²©ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the extraction interval of boundary points to be extracted to estimate the crosshair.
 		CrossGauge.SetSamplingStep(1.);
-		// ½ÊÀÚÇüÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÀÌ»óÄ¡ Á¶Á¤À» À§ÇÑ ÀÓ°è°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the threshold value for outlier adjustment of the boundary points to be extracted to estimate the crosshairs.
+		// ì‹­ìí˜•ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì´ìƒì¹˜ ì¡°ì •ì„ ìœ„í•œ ì„ê³„ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the threshold value for outlier adjustment of the boundary points to be extracted to estimate the crosshairs.
 		CrossGauge.SetOutliersThreshold(3.);
-		// ½ÊÀÚÇüÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÀÌ»óÄ¡ Á¶Á¤ È½¼öÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the number of outlier adjustments for boundary points to be extracted to estimate the crosshairs.
+		// ì‹­ìí˜•ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì´ìƒì¹˜ ì¡°ì • íšŸìˆ˜ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the number of outlier adjustments for boundary points to be extracted to estimate the crosshairs.
 		CrossGauge.SetOutliersThresholdCount(3);
-		// ½ÊÀÚÇüÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ Á¡ Å¬·¯½ºÅÍ¸µ Ã³¸® À¯¹«¿¡ ´ëÇÑ ¼³Á¤À» ÇÕ´Ï´Ù. // Set whether or not to process point clustering to estimate the crosshairs.
+		// ì‹­ìí˜•ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì  í´ëŸ¬ìŠ¤í„°ë§ ì²˜ë¦¬ ìœ ë¬´ì— ëŒ€í•œ ì„¤ì •ì„ í•©ë‹ˆë‹¤. // Set whether or not to process point clustering to estimate the crosshairs.
 		CrossGauge.EnableClusterMode(true);
-		// ½ÊÀÚÇüÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ¸¶ÁøÀ» ¼³Á¤ÇÕ´Ï´Ù. ÇÊ¿ä¿¡ µû¶ó °¢ ±¸¿ªº°·Î ¼³Á¤°¡´ÉÇÕ´Ï´Ù. // Set the margin to estimate the crosshairs. It can be set for each zone as needed.
+		// ì‹­ìí˜•ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ë§ˆì§„ì„ ì„¤ì •í•©ë‹ˆë‹¤. í•„ìš”ì— ë”°ë¼ ê° êµ¬ì—­ë³„ë¡œ ì„¤ì •ê°€ëŠ¥í•©ë‹ˆë‹¤. // Set the margin to estimate the crosshairs. It can be set for each zone as needed.
 		CrossGauge.SetMeasurementMarginRatio(0.5, 0.1);
 
 		for(int32_t i = 0; i < i32ExampleCount; ++i)
 		{
-			// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to process
+			// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to process
 			CrossGauge.SetSourceImage(fliImage[i]);
 
-			// ½ÊÀÚÇüÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ º¯È­ ¹æÇâ¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the boundary point change direction to extract to estimate the crosshair.
+			// ì‹­ìí˜•ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì  ë³€í™” ë°©í–¥ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the boundary point change direction to extract to estimate the crosshair.
 			CrossGauge.SetTransitionType(arrTransitionType[i]);
 
-			// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+			// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 			if(IsFail(res = CrossGauge.Execute()))
 			{
 				ErrorPrint(res, "Failed to execute Cross gauge.\n");
 				break;
 			}
 
-			// ½ÇÇà °á°ú¸¦ °¡Á®¿É´Ï´Ù. // Get the execution result.
+			// ì‹¤í–‰ ê²°ê³¼ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the execution result.
 			CFLPoint<double> resultRegion;
 			CFLFigureArray flfaResultLine;
 			CFLFigureArray flfaResultsValid, flfaResultsInvalid;
-			// ÃßÁ¤À» À§ÇÑ ¶óÀÎÀ» °¡Á®¿É´Ï´Ù. // Get the line for inference.
+			// ì¶”ì •ì„ ìœ„í•œ ë¼ì¸ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the line for inference.
 			CrossGauge.GetMeasuredLines(flfaResultLine);
-			// ÃßÁ¤µÈ ½ÊÀÚÇüÀ» °¡Á®¿É´Ï´Ù. // Get the estimated crosshairs.
+			// ì¶”ì •ëœ ì‹­ìí˜•ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the estimated crosshairs.
 			CrossGauge.GetMeasuredObject(resultRegion);
-			// ÃßÁ¤µÈ ½ÊÀÚÇüÀ» ÃßÃâ¿¡ »ç¿ëµÈ À¯È¿ °æ°èÁ¡À» °¡Á®¿É´Ï´Ù. // Get the valid boundary points used to extract the estimated crosshairs.
+			// ì¶”ì •ëœ ì‹­ìí˜•ì„ ì¶”ì¶œì— ì‚¬ìš©ëœ ìœ íš¨ ê²½ê³„ì ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the valid boundary points used to extract the estimated crosshairs.
 			CrossGauge.GetMeasuredValidPoints(flfaResultsValid);
-			// ÃßÁ¤µÈ ½ÊÀÚÇüÀ» ÃßÃâ¿¡ »ç¿ëµÇÁö ¸øÇÑ À¯È¿ÇÏÁö ¾ÊÀº °æ°èÁ¡À» °¡Á®¿É´Ï´Ù. // Get invalid boundary points that were not used to extract the estimated crosshairs.
+			// ì¶”ì •ëœ ì‹­ìí˜•ì„ ì¶”ì¶œì— ì‚¬ìš©ë˜ì§€ ëª»í•œ ìœ íš¨í•˜ì§€ ì•Šì€ ê²½ê³„ì ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get invalid boundary points that were not used to extract the estimated crosshairs.
 			CrossGauge.GetMeasuredInvalidPoints(flfaResultsInvalid);
 
 			CGUIViewImageLayerWrap layer = viewImage[i].GetLayer(0);
@@ -154,7 +154,7 @@ int main()
 			layer.DrawFigureImage(flfaResultLine, BLACK, 5);
 			layer.DrawFigureImage(flfaResultLine, CYAN, 3);
 
-			// ½ÇÁ¦ °Ë»ç ¿µ¿ªÀ» °¡Á®¿É´Ï´Ù. // Gets the actual inspection area.
+			// ì‹¤ì œ ê²€ì‚¬ ì˜ì—­ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Gets the actual inspection area.
 			CFLFigureArray flfaMeasurementRegion = CrossGauge.GetActualMeasurementRegion();
 
 			layer.DrawFigureImage(flfaMeasurementRegion, BLUE, 1, LIGHTBLUE, GUI::EGUIViewImagePenStyle_Solid, 0.5f, 0.25f);
@@ -164,10 +164,10 @@ int main()
 				double f64ResultAngle;
 				CrossGauge.GetMeasuredAngle(f64ResultAngle);
 
-				printf("Cross Center : (%.2lf, %.2lf)\nAngle : %.2lf¢ª\n", resultRegion.x, resultRegion.y, f64ResultAngle);
+				printf("Cross Center : (%.2lf, %.2lf)\nAngle : %.2lfËš\n", resultRegion.x, resultRegion.y, f64ResultAngle);
 			}
 
-			// ÃßÃâµÈ À¯È¿Á¡ÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the extracted valid point is
+			// ì¶”ì¶œëœ ìœ íš¨ì ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the extracted valid point is
 			for(int32_t i32Index = 0; i32Index < (int32_t)flfaResultsValid.GetCount(); ++i32Index)
 			{
 				if(flfaResultsValid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
@@ -184,7 +184,7 @@ int main()
 				}
 			}
 
-			// ÃßÃâµÈ À¯È¿ÇÏÁö ¾ÊÀº Á¡ÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to see where the extracted invalid points are
+			// ì¶”ì¶œëœ ìœ íš¨í•˜ì§€ ì•Šì€ ì ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to see where the extracted invalid points are
 			for(int32_t i32Index = 0; i32Index < (int32_t)flfaResultsInvalid.GetCount(); ++i32Index)
 			{
 				if(flfaResultsInvalid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
@@ -201,19 +201,19 @@ int main()
 				}
 			}
 
-			// ÃøÁ¤ ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the measurement area is
+			// ì¸¡ì • ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the measurement area is
 			if(IsFail(res = layer.DrawFigureImage(&measureRegion, BLUE)))
 			{
 				ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+			// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 			viewImage[i].Invalidate(true);
 		}
 
 		bool bTerminated = false;
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(!bTerminated)
 		{
 			for(int32_t i = 0; i < i32ExampleCount; ++i)

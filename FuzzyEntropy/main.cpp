@@ -1,92 +1,92 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if((res = fliImage.Load(L"../../ExampleImages/FuzzyEntropy/FuzzyEntropySource.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if((res = viewImage.Create(400, 0, 912, 612)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if((res = viewImage.SetImagePtr(&fliImage)).IsFail())
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.");
 			break;
 		}
 
-		// fuzzyentropy °´Ã¼ »ı¼º // Create fuzzyentropy object
+		// fuzzyentropy ê°ì²´ ìƒì„± // Create fuzzyentropy object
 		CFuzzyEntropy fuzzyentropy;
 
-		// ROI ¹üÀ§ ¼³Á¤ // Set the ROI value		
+		// ROI ë²”ìœ„ ì„¤ì • // Set the ROI value		
 		CFLCircle<double> flrROI(310.466830, 81.769042, 81.769042, 0.000000, 0.000000, 360.000000, EArcClosingMethod_EachOther);
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the Source Image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the Source Image
 		fuzzyentropy.SetSourceImage(fliImage);
-		// Source ROI ¼³Á¤ // Set the Source ROI
+		// Source ROI ì„¤ì • // Set the Source ROI
 		fuzzyentropy.SetSourceROI(flrROI);
 
-		// Parameter A, C »ı¼º (A: 0, C: 255) // Create the parameter A and C (A: 0, C: 255)
+		// Parameter A, C ìƒì„± (A: 0, C: 255) // Create the parameter A and C (A: 0, C: 255)
 		const Base::CMultiVar<double> flmvParameterA = Base::CMultiVar<double>(0.);
 		const Base::CMultiVar<double> flmvParameterC = Base::CMultiVar<double>(255.);
 
-		// Parameter ¼³Á¤(A: 0, C: 255) // Set the parameter(A: 0, C: 255)
+		// Parameter ì„¤ì •(A: 0, C: 255) // Set the parameter(A: 0, C: 255)
 		fuzzyentropy.SetParameterA(flmvParameterA);
 		fuzzyentropy.SetParameterC(flmvParameterC);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if((res = fuzzyentropy.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute FuzzyEntropy.");
 			break;
 		}
 
-		// °á°ú°ªÀ» ¹Ş¾Æ¿Ã CMultiVar<double> ÄÁÅ×ÀÌ³Ê »ı¼º // Create the CMultiVar<double> object to push the result
+		// ê²°ê³¼ê°’ì„ ë°›ì•„ì˜¬ CMultiVar<double> ì»¨í…Œì´ë„ˆ ìƒì„± // Create the CMultiVar<double> object to push the result
 		CMultiVar<double> mvFuzzyEntropy;
 
-		// ÀÌ¹ÌÁö ÀüÃ¼(È¤Àº ROI ¿µ¿ª) ÇÈ¼¿°ªÀÇ Fuzzy Entropy¸¦ ±¸ÇÏ´Â ÇÔ¼ö // Function that calculate the fuzzy entropy of the image(or the region of ROI)
+		// ì´ë¯¸ì§€ ì „ì²´(í˜¹ì€ ROI ì˜ì—­) í”½ì…€ê°’ì˜ Fuzzy Entropyë¥¼ êµ¬í•˜ëŠ” í•¨ìˆ˜ // Function that calculate the fuzzy entropy of the image(or the region of ROI)
 		if((res = fuzzyentropy.GetResultFuzzyEntropy(mvFuzzyEntropy)).IsFail())
 		{
 			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ÀüÃ¼(È¤Àº ROI ¿µ¿ª) ÇÈ¼¿°ªÀÇ ÃÖ¼Ò°ªÀ» ±¸ÇÏ´Â ÇÔ¼ö // Function that calculate the min of the pixel value of the image(or the region of ROI)
+		// ì´ë¯¸ì§€ ì „ì²´(í˜¹ì€ ROI ì˜ì—­) í”½ì…€ê°’ì˜ ìµœì†Œê°’ì„ êµ¬í•˜ëŠ” í•¨ìˆ˜ // Function that calculate the min of the pixel value of the image(or the region of ROI)
 		if((res = fuzzyentropy.GetResultFuzzyEntropy(mvFuzzyEntropy)).IsFail())
 		{
 			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to find out where ROI is
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to find out where ROI is
 		if((res = layer.DrawFigureImage(&flrROI, LIME)).IsFail())
 			ErrorPrint(res, "Failed to draw figure\n");
 
@@ -95,7 +95,7 @@ int main()
 
 		wprintf_s(L"%s\n", strFuzzyEntropy.GetString());
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 0), strFuzzyEntropy.GetString(), YELLOW, BLACK, 25)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
@@ -105,10 +105,10 @@ int main()
 		if((res = layer.DrawFigureImage(&flrROI, LIME)).IsFail())
 			ErrorPrint(res, "Failed to draw figure\n");
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

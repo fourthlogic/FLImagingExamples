@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -13,52 +13,52 @@ enum EType
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage arrFliImage[ETypeCount];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap arrViewImage[ETypeCount];
 
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res =arrFliImage[EType_Source].Load(L"../../ExampleImages/EmphasizeFilter/houses.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination1 ÀÌ¹ÌÁö¸¦ Source ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º // Create the Destination1 image as the Source image.
+		// Destination1 ì´ë¯¸ì§€ë¥¼ Source ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„± // Create the Destination1 image as the Source image.
 		if((res =arrFliImage[EType_Destination1].Assign(arrFliImage[EType_Source])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to assign the image file.\n");
 			break;
 		}
 
-		// Destination2 ÀÌ¹ÌÁö¸¦ Source ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º // Create the Destination2 image as the Source image.
+		// Destination2 ì´ë¯¸ì§€ë¥¼ Source ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„± // Create the Destination2 image as the Source image.
 		if((res =arrFliImage[EType_Destination2].Assign(arrFliImage[EType_Source])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to assign the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create the source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create the source image view
 		if((res =arrViewImage[EType_Source].Create(100, 0, 612, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination1 ÀÌ¹ÌÁö ºä »ı¼º  // Create the destination1 image
+		// Destination1 ì´ë¯¸ì§€ ë·° ìƒì„±  // Create the destination1 image
 		if((res =arrViewImage[EType_Destination1].Create(612, 0,1124, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination2 ÀÌ¹ÌÁö ºä »ı¼º // Create the destination2 image
+		// Destination2 ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination2 image
 		if((res =arrViewImage[EType_Destination2].Create(1124, 0,1636, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
@@ -67,7 +67,7 @@ int main()
 
 		bool bError = false;
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ  Displays the image in the image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´  Displays the image in the image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
 			if((res =arrViewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
@@ -81,61 +81,61 @@ int main()
 		if(bError)
 			break;
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res =arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination1])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views.
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views.
 		if((res =arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination2])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res =arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination1])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res =arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination2])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// EmphasizeFilter °´Ã¼ »ı¼º // Create EmphasizeFilter object
+		// EmphasizeFilter ê°ì²´ ìƒì„± // Create EmphasizeFilter object
 		CEmphasizeFilter emphasizeFilter;
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source Image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source Image
 		emphasizeFilter.SetSourceImage(arrFliImage[EType_Source]);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination Image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination Image
 		emphasizeFilter.SetDestinationImage(arrFliImage[EType_Destination1]);
-		// ÆÄ¶ó¹ÌÅÍ °ª ¼³Á¤ // Set parameters
+		// íŒŒë¼ë¯¸í„° ê°’ ì„¤ì • // Set parameters
  		emphasizeFilter.SetMaskWidth(7);
  		emphasizeFilter.SetMaskHeight(7);
  		emphasizeFilter.SetFactor(1.5);
 		emphasizeFilter.SetPaddingMethod(EPaddingMethod_DecreasingKernel);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm according to the previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm according to the previously set parameters
 		if((res =emphasizeFilter.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute operation rolling.");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination Image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination Image
 		emphasizeFilter.SetDestinationImage(arrFliImage[EType_Destination2]);
-		// ÆÄ¶ó¹ÌÅÍ °ª ¼³Á¤ // Set parameters
+		// íŒŒë¼ë¯¸í„° ê°’ ì„¤ì • // Set parameters
 		emphasizeFilter.SetMaskWidth(3);
 		emphasizeFilter.SetMaskHeight(3);
 		emphasizeFilter.SetFactor(2.5);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm according to the previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm according to the previously set parameters
 		if((res =emphasizeFilter.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute operation rolling.");
@@ -146,19 +146,19 @@ int main()
 
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Get layer 0 from Image View to display on the screen
-			// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // Since this object belongs to the ImageView, it does not need to be freed.
+			// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Get layer 0 from Image View to display on the screen
+			// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // Since this object belongs to the ImageView, it does not need to be freed.
 			arrLayer[i] = arrViewImage[i].GetLayer(0);
 
-			// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Delete the shapes drawn on the existing layer
+			// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Delete the shapes drawn on the existing layer
 			arrLayer[i].Clear();
 		}
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas draws a String based on screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color. // If the color parameter is set as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by treating it as a background color
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas draws a String based on screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color. // If the color parameter is set as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by treating it as a background color
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((res =arrLayer[EType_Source].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
@@ -179,12 +179,12 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å // Update image views
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  // Update image views
 		arrViewImage[EType_Source].Invalidate(true);
 		arrViewImage[EType_Destination1].Invalidate(true);
 		arrViewImage[EType_Destination2].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the imageview to exit.
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the imageview to exit.
 		while(arrViewImage[EType_Source].IsAvailable()
 			&& arrViewImage[EType_Destination1].IsAvailable()
 			&& arrViewImage[EType_Destination2].IsAvailable())

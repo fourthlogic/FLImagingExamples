@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PropertyTimerExample.h"
 
 using namespace FLImaging;
@@ -66,13 +66,13 @@ void FLImaging::GUI::CPropertyTimerExample::OnReceiveBroadcast(const Base::CBroa
 		if(!pMessage)
 			break;
 
-		// CGUIButton ÀÇ ¸¶¿ì½º ÀÌº¥Æ®¿¡ ´ëÇÑ ºê·ÎµåÄ³½ºÆ® ¸Ş½ÃÁö
+		// CGUIButton ì˜ ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸ì— ëŒ€í•œ ë¸Œë¡œë“œìºìŠ¤íŠ¸ ë©”ì‹œì§€
 		// A broadcast message of CGUIButton mouse event
 		CBroadcastMessage_GUI_Button_MouseEvent* pMsgMouseEventButton = dynamic_cast<CBroadcastMessage_GUI_Button_MouseEvent*>((Base::CBroadcastMessage*)pMessage);
 
 		switch(pMessage->GetChannel())
 		{
-			// ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°À» ´­·¶À» °æ¿ì // On mouse left button down
+			// ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì„ ëˆŒë €ì„ ê²½ìš° // On mouse left button down
 		case EGUIBroadcast_GUIButton_PostLButtonDown:
 			{
 				if(!pMsgMouseEventButton)
@@ -81,18 +81,18 @@ void FLImaging::GUI::CPropertyTimerExample::OnReceiveBroadcast(const Base::CBroa
 				if(!GetPaneProperties())
 					break;
 
-				// ºê·ÎµåÄ³½ºÆ® ¸Ş½ÃÁö¸¦ º¸³½ ¹öÆ° °´Ã¼
+				// ë¸Œë¡œë“œìºìŠ¤íŠ¸ ë©”ì‹œì§€ë¥¼ ë³´ë‚¸ ë²„íŠ¼ ê°ì²´
 				// The button object who sent the broadcast message
 				CGUIButton* pBtn = (CGUIButton*)pMsgMouseEventButton->GetCaller();
 
 				if(pBtn && pBtn->GetParentPropertyButton() && pBtn->GetParentPropertyButton()->GetGUIMenuItemProperty() == this && pBtn->GetParentPropertyButton()->GetName() == L"Move Position")
 				{
 					// interval = 10 ms
-					// 10 ms ¸¶´Ù ÇÑ ¹ø¾¿ ¼öÇàµÊÀ» ÀÇ¹Ì
+					// 10 ms ë§ˆë‹¤ í•œ ë²ˆì”© ìˆ˜í–‰ë¨ì„ ì˜ë¯¸
 					int64_t i64Interval = 10;
 
 					// Define what will be done every 10 ms
-					// 10 ms ¸¶´Ù ¼öÇàµÉ ³»¿ëÀ» Á¤ÀÇ
+					// 10 ms ë§ˆë‹¤ ìˆ˜í–‰ë  ë‚´ìš©ì„ ì •ì˜
 					CPropertyTimerProcedure* pTimerFunc = new CPropertyTimerProcedure;
 					*pTimerFunc = MakePropertyTimerProcedure
 					{
@@ -112,16 +112,16 @@ void FLImaging::GUI::CPropertyTimerExample::OnReceiveBroadcast(const Base::CBroa
 						m_ptPos.x += 2;
 					};
 
-					// Å¸ÀÌ¸Ó ÇÚµé·¯ Ãß°¡ // Add timer handler
+					// íƒ€ì´ë¨¸ í•¸ë“¤ëŸ¬ ì¶”ê°€ // Add timer handler
 					// Received id of added timer as m_u32TimerID
-					// Ãß°¡µÈ Å¸ÀÌ¸ÓÀÇ id ¸¦ m_u32TimerID ·Î ¹Ş¾Æ ¿È
+					// ì¶”ê°€ëœ íƒ€ì´ë¨¸ì˜ id ë¥¼ m_u32TimerID ë¡œ ë°›ì•„ ì˜´
 					GetPaneProperties()->SetTimerHandler(i64Interval, pTimerFunc, &m_u32TimerID);
 				}
 			}
 			break;
 
-			// ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°¿¡¼­ ¶¼¾úÀ» °æ¿ì // On left button up
-			// ¸¶¿ì½º À§Ä¡°¡ ¹öÆ°¿¡¼­ ¹ş¾î³µÀ» °æ¿ì // On mouse leave
+			// ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì—ì„œ ë–¼ì—ˆì„ ê²½ìš° // On left button up
+			// ë§ˆìš°ìŠ¤ ìœ„ì¹˜ê°€ ë²„íŠ¼ì—ì„œ ë²—ì–´ë‚¬ì„ ê²½ìš° // On mouse leave
 		case EGUIBroadcast_GUIButton_PostMouseLeave:
 		case EGUIBroadcast_GUIButton_PostLButtonUp:
 			{
@@ -131,18 +131,18 @@ void FLImaging::GUI::CPropertyTimerExample::OnReceiveBroadcast(const Base::CBroa
 				if(!GetPaneProperties())
 					break;
 
-				// ºê·ÎµåÄ³½ºÆ® ¸Ş½ÃÁö¸¦ º¸³½ ¹öÆ° °´Ã¼
+				// ë¸Œë¡œë“œìºìŠ¤íŠ¸ ë©”ì‹œì§€ë¥¼ ë³´ë‚¸ ë²„íŠ¼ ê°ì²´
 				// The button object who sent the broadcast message
 				CGUIButton* pBtn = (CGUIButton*)pMsgMouseEventButton->GetCaller();
 
 				if(pBtn && pBtn->GetParentPropertyButton() && pBtn->GetParentPropertyButton()->GetGUIMenuItemProperty() == this && pBtn->GetParentPropertyButton()->GetName() == L"Move Position")
 				{
 					// Kill added timer m_u32TimerID
-					// Ãß°¡µÈ Å¸ÀÌ¸Ó m_u32TimerID ¸¦ Á¾·á ¹× Á¦°Å
+					// ì¶”ê°€ëœ íƒ€ì´ë¨¸ m_u32TimerID ë¥¼ ì¢…ë£Œ ë° ì œê±°
 					GetPaneProperties()->KillTimerHandler(m_u32TimerID);
 
 					// Reset timer ID
-					// Å¸ÀÌ¸Ó ¾ÆÀÌµğ ÃÊ±âÈ­
+					// íƒ€ì´ë¨¸ ì•„ì´ë”” ì´ˆê¸°í™”
 					m_u32TimerID = 0;
 				}
 			}

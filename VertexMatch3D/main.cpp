@@ -1,14 +1,14 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// 3D °´Ã¼ ¼±¾ğ // Declare 3D object
+	// 3D ê°ì²´ ì„ ì–¸ // Declare 3D object
 	CFL3DObject fl3DOLearnObject;
 	CFL3DObject fl3DOSourceObject;
 
-	// 3D ºä ¼±¾ğ // Declare 3D view	
+	// 3D ë·° ì„ ì–¸ // Declare 3D view	
 	CGUIView3DWrap view3DDst;
 	CGUIView3DWrap view3DLearn;
 	CGUIView3DWrap view3DSource;
@@ -16,89 +16,89 @@ int main()
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult eResult = EResult_UnknownError;
 
 
-		// Learn Object ·Îµå // Load the learn object
+		// Learn Object ë¡œë“œ // Load the learn object
 		if((eResult = fl3DOLearnObject.Load(L"../../ExampleImages/VertexMatch3D/ResultPoints.ply")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the object file.\n");
 			break;
 		}
 
-		// Source Object ·Îµå // Load the Source object
+		// Source Object ë¡œë“œ // Load the Source object
 		if((eResult = fl3DOSourceObject.Load(L"../../ExampleImages/VertexMatch3D/ReferencePoints.ply")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the object file.\n");
 			break;
 		}
 
-		// Learn 3D ºä »ı¼º
+		// Learn 3D ë·° ìƒì„±
 		if(IsFail(eResult = view3DLearn.Create(100, 0, 612, 512)))
 		{
 			ErrorPrint(eResult, "Failed to create the Source 3D view.\n");
 			break;
 		}
 
-		// Source 3D ºä »ı¼º
+		// Source 3D ë·° ìƒì„±
 		if(IsFail(eResult = view3DSource.Create(612, 0, 1124, 512)))
 		{
 			ErrorPrint(eResult, "Failed to create the Learn 3D view.\n");
 			break;
 		}
 
-		// Dst 3D ºä »ı¼º
+		// Dst 3D ë·° ìƒì„±
 		if(IsFail(eResult = view3DDst.Create(1124, 0, 1636, 512)))
 		{
 			ErrorPrint(eResult, "Failed to create the Dst 3D view.\n");
 			break;
 		}
 
-		// Learn Object 3D ºä »ı¼º // Create the learn object 3D view
+		// Learn Object 3D ë·° ìƒì„± // Create the learn object 3D view
 		if((eResult = view3DLearn.PushObject(fl3DOLearnObject)).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to display the 3D object.\n");
 			break;
 		}
 
-		// Source Object 3D ºä »ı¼º // Create the source object 3D view
+		// Source Object 3D ë·° ìƒì„± // Create the source object 3D view
 		if((eResult = view3DSource.PushObject(fl3DOSourceObject)).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to display the 3D object.\n");
 			break;
 		}
 
-		// VertexMatch3D °´Ã¼ »ı¼º // Create VertexMatch3D object
+		// VertexMatch3D ê°ì²´ ìƒì„± // Create VertexMatch3D object
 		CVertexMatch3D VertexMatch3D;
 
-		// Learn object ¼³Á¤ // Set the learn object
+		// Learn object ì„¤ì • // Set the learn object
 		VertexMatch3D.CAlgorithmFeature_3D_LO_SO::SetLearnObject(fl3DOLearnObject);
-		// Source object ¼³Á¤ // Set the source object
+		// Source object ì„¤ì • // Set the source object
 		VertexMatch3D.CAlgorithmFeature_3D_LO_SO::SetSourceObject(fl3DOSourceObject);
-		// Min score ¼³Á¤ // Set the min score
+		// Min score ì„¤ì • // Set the min score
 		VertexMatch3D.SetMinScore(0.3);
-		// ÃÖ´ë °á°ú °³¼ö ¼³Á¤ // Set the max count of match result
+		// ìµœëŒ€ ê²°ê³¼ ê°œìˆ˜ ì„¤ì • // Set the max count of match result
 		VertexMatch3D.SetMaxObject(1);
-		// ÇĞ½À »ùÇÃ¸µ °Å¸® ¼³Á¤ // Set the learn sampling distance
+		// í•™ìŠµ ìƒ˜í”Œë§ ê±°ë¦¬ ì„¤ì • // Set the learn sampling distance
 		VertexMatch3D.SetLearnSamplingDistance(0.03);
-		// Àå¸é »ùÇÃ¸µ °Å¸® ¼³Á¤ // Set the scene sampling distance
+		// ì¥ë©´ ìƒ˜í”Œë§ ê±°ë¦¬ ì„¤ì • // Set the scene sampling distance
 		VertexMatch3D.SetSceneSamplingDistance(0.03);
-		// Å°Æ÷ÀÎÆ® ºñÀ² ¼³Á¤ // Set the keypoint ratio.
+		// í‚¤í¬ì¸íŠ¸ ë¹„ìœ¨ ì„¤ì • // Set the keypoint ratio.
 		VertexMatch3D.SetKeypointRatio(0.5);
-		// Å¬·¯½ºÅÍ¸µ ¹üÀ§ ¼³Á¤ // Set the clustering range
+		// í´ëŸ¬ìŠ¤í„°ë§ ë²”ìœ„ ì„¤ì • // Set the clustering range
 		VertexMatch3D.SetClusterRange(0.02);
-		// Æ÷Áî Á¶Á¤ ¹İº¹ È½¼ö ¼³Á¤ // Set the iteration value of pose refinement
+		// í¬ì¦ˆ ì¡°ì • ë°˜ë³µ íšŸìˆ˜ ì„¤ì • // Set the iteration value of pose refinement
 		VertexMatch3D.SetIteration(5);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((eResult = VertexMatch3D.Learn()).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to execute Vertex Match 3D.");
 			break;
 		}
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((eResult = VertexMatch3D.Execute()).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to execute Vertex Match 3D.");
@@ -115,22 +115,22 @@ int main()
 		view3DDst.ZoomFit();
 
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately		
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately		
 		CGUIView3DLayerWrap layer3DDst = view3DDst.GetLayer(0);
 		CGUIView3DLayerWrap layer3DLearn = view3DLearn.GetLayer(0);
 		CGUIView3DLayerWrap layer3DSource = view3DSource.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer3DDst.Clear();
 		layer3DLearn.Clear();
 		layer3DSource.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((eResult = layer3DLearn.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Learn Object", YELLOW, BLACK, 20)).IsFail())
@@ -151,7 +151,7 @@ int main()
 			break;
 		}
 
-		// 3D ¿ÀºêÁ§Æ® ºä¿¡ °á°ú Object¿Í ºñ±³¸¦ À§ÇÑ Source ¿ÀºêÁ§Æ® µğ½ºÇÃ·¹ÀÌ
+		// 3D ì˜¤ë¸Œì íŠ¸ ë·°ì— ê²°ê³¼ Objectì™€ ë¹„êµë¥¼ ìœ„í•œ Source ì˜¤ë¸Œì íŠ¸ ë””ìŠ¤í”Œë ˆì´
 		if((eResult = view3DDst.PushObject((CFL3DObject)VertexMatch3D.GetSourceObject())).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to set object on the 3d view.\n");
@@ -177,14 +177,14 @@ int main()
 			CFL3DObject fl3DOLearnTransform;
 			Base::TPoint3<double> tp3Center;
 
-			// ÃßÁ¤µÈ Æ÷Áî Çà·Ä °¡Á®¿À±â
+			// ì¶”ì •ëœ í¬ì¦ˆ í–‰ë ¬ ê°€ì ¸ì˜¤ê¸°
 			if((eResult = VertexMatch3D.GetResultPoseMatrix(i, sResult)).IsFail())
 			{
 				ErrorPrint(eResult, L"Failed to estimate pose matrix.\n");
 				break;
 			}
 
-			// ÃßÁ¤µÈ Æ÷Áî Çà·ÄÀÌ Àû¿ëµÈ °á°ú ¿ÀºêÁ§Æ® °¡Á®¿À±â
+			// ì¶”ì •ëœ í¬ì¦ˆ í–‰ë ¬ì´ ì ìš©ëœ ê²°ê³¼ ì˜¤ë¸Œì íŠ¸ ê°€ì ¸ì˜¤ê¸°
 			if((eResult = VertexMatch3D.GetResultObject(i, fl3DOLearnTransform, tp3Center)).IsFail())
 			{
 				ErrorPrint(eResult, L"Failed to estimate pose matrix.\n");
@@ -203,8 +203,8 @@ int main()
 			flp3F64Translation.y = sResult.f64Ty;
 			flp3F64Translation.z = sResult.f64Tz;
 
-			// ÃßÁ¤ÇÑ Æ÷Áî °á°ú¸¦ ConsoleÃ¢¿¡ Ãâ·ÂÇÑ´Ù // Print the estimated pose matrix to the console window
-			printf(" ¢¹ Pose Matrix %d\n", (int32_t)i);
+			// ì¶”ì •í•œ í¬ì¦ˆ ê²°ê³¼ë¥¼ Consoleì°½ì— ì¶œë ¥í•œë‹¤ // Print the estimated pose matrix to the console window
+			printf(" â–· Pose Matrix %d\n", (int32_t)i);
 			printf("  1. R : Rotation, T : Translation\n");
 			printf("    Rx   : %.3lf\n", tp3F64Rotation.x);
 			printf("    Ry   : %.3lf\n", tp3F64Rotation.y);
@@ -228,7 +228,7 @@ int main()
 			strText.Format(L"R(%.04lf,%.04lf,%.04lf)\nRVec(%.04lf,%.04lf,%.04lf)\nT(%.04lf,%.04lf,%.04lf)\nScore : %lf\nResidual : %lf"
 						   , tp3F64Rotation.x, tp3F64Rotation.y, tp3F64Rotation.z, tp3F64RotVec.x, tp3F64RotVec.y, tp3F64RotVec.z, flp3F64Translation.x, flp3F64Translation.y, flp3F64Translation.z, f64Score, f64Residual);
 
-			// ÃßÁ¤µÈ Æ÷Áî Çà·Ä ¹× score Ãâ·Â
+			// ì¶”ì •ëœ í¬ì¦ˆ í–‰ë ¬ ë° score ì¶œë ¥
 			if((eResult = layer3DDst.DrawText3D(tp3Center, strText, YELLOW, 0, 9)).IsFail())
 			{
 				ErrorPrint(eResult, L"Failed to draw text.\n");
@@ -240,12 +240,12 @@ int main()
 		view3DSource.ZoomFit();
 		view3DDst.ZoomFit();
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		view3DLearn.Invalidate(true);
 		view3DSource.Invalidate(true);
 		view3DDst.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä, 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·°, 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(view3DLearn.IsAvailable() && view3DSource.IsAvailable() && view3DDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

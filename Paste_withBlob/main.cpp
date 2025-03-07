@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -14,53 +14,53 @@ enum EType
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage arrFliImage[ETypeCount];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap arrViewImage[ETypeCount];
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Paste/ChessBoard.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination1 ÀÌ¹ÌÁö ·Îµå. // Load the destination1 image
+		// Destination1 ì´ë¯¸ì§€ ë¡œë“œ. // Load the destination1 image
 		if(IsFail(res = arrFliImage[EType_Destination1].Load(L"../../ExampleImages/Paste/Floor.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination2 ÀÌ¹ÌÁö¸¦ Destination1 ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º
+		// Destination2 ì´ë¯¸ì§€ë¥¼ Destination1 ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„±
 		if(IsFail(res = arrFliImage[EType_Destination2].Assign(arrFliImage[EType_Destination1])))
 		{
 			ErrorPrint(res, "Failed to assign the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if(IsFail(res = arrViewImage[EType_Source].Create(100, 0, 612, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination1 ÀÌ¹ÌÁö ºä »ı¼º // Create destination1 image view
+		// Destination1 ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination1 image view
 		if(IsFail(res = arrViewImage[EType_Destination1].Create(612, 0, 1124, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination2 ÀÌ¹ÌÁö ºä »ı¼º // Create destination2 image view
+		// Destination2 ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination2 image view
 		if(IsFail(res = arrViewImage[EType_Destination2].Create(1124, 0, 1636, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -69,7 +69,7 @@ int main()
 
 		bool bError = false;
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
 			if(IsFail(res = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
@@ -83,63 +83,63 @@ int main()
 		if(bError)
 			break;
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if(IsFail(res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination1])))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if(IsFail(res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[EType_Destination2])))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination1])))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[EType_Destination2])))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// Blob °´Ã¼ »ı¼º // Create Blob object
+		// Blob ê°ì²´ ìƒì„± // Create Blob object
 		CBlob blob;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to process
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to process
 		blob.SetSourceImage(arrFliImage[EType_Source]);
-		// Threshold ¸ğµå ¼³Á¤. ¿©±â¼­´Â 2Áß Threshold¿¡ µÎ°³ÀÇ Á¶°ÇÀÇ And Á¶°ÇÀ» ÂüÀ¸·Î ¼³Á¤ÇÑ´Ù.
+		// Threshold ëª¨ë“œ ì„¤ì •. ì—¬ê¸°ì„œëŠ” 2ì¤‘ Thresholdì— ë‘ê°œì˜ ì¡°ê±´ì˜ And ì¡°ê±´ì„ ì°¸ìœ¼ë¡œ ì„¤ì •í•œë‹¤.
 		// Threshold mode setting. Here, set the AND condition of the two conditions to true in the double threshold.
 		blob.SetThresholdMode(EThresholdMode_Dual_And);
-		// ³í¸® Á¶°Ç ¼³Á¤ // Set logical condition
+		// ë…¼ë¦¬ ì¡°ê±´ ì„¤ì • // Set logical condition
 		blob.SetLogicalCondition(ELogicalCondition_Greater, ELogicalCondition_Less);
-		// ÀÓ°è°ª ¼³Á¤,  À§ÀÇ Á¶°Ç°ú ¾Æ·¡ÀÇ Á¶°ÇÀÌ ÇÕÃÄÁö¸é 130º¸´Ù Å©°í 240º¸´Ù ÀÛÀº °´Ã¼¸¦ °ËÃâ
+		// ì„ê³„ê°’ ì„¤ì •,  ìœ„ì˜ ì¡°ê±´ê³¼ ì•„ë˜ì˜ ì¡°ê±´ì´ í•©ì³ì§€ë©´ 130ë³´ë‹¤ í¬ê³  240ë³´ë‹¤ ì‘ì€ ê°ì²´ë¥¼ ê²€ì¶œ
 		// Set the threshold, when the above and below conditions are combined, objects greater than 130 and less than 240 are detected
 		blob.SetThreshold(130, 240);
 
-		// °¡¿îµ¥ ±¸¸Û³­ Contour¸¦ Áö¿øÇÏ±â À§ÇØ Perforated ¸ğµå ¼³Á¤
+		// ê°€ìš´ë° êµ¬ë©ë‚œ Contourë¥¼ ì§€ì›í•˜ê¸° ìœ„í•´ Perforated ëª¨ë“œ ì„¤ì •
 		// Set perforated mode to support perforated contours
 		blob.SetContourResultType(CBlob::EContourResultType_Perforated);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = blob.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute Blob.");
 			break;
 		}
 
-		// Blob °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FigureArray ¼±¾ğ // Declare FigureArray to get blob result
+		// Blob ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FigureArray ì„ ì–¸ // Declare FigureArray to get blob result
 		CFLFigureArray flfaContours;
 
-		// Blob °á°úµé Áß Contour¸¦ ¾ò¾î¿È // Get Contour from Blob results
+		// Blob ê²°ê³¼ë“¤ ì¤‘ Contourë¥¼ ì–»ì–´ì˜´ // Get Contour from Blob results
 		if(IsFail(res = blob.GetResultContours(flfaContours)))
 		{
 			ErrorPrint(res, "Failed to get boundary rects from the Blob object.");
@@ -147,30 +147,30 @@ int main()
 		}
 
 
-		// Paste °´Ã¼ »ı¼º // Create Paste object
+		// Paste ê°ì²´ ìƒì„± // Create Paste object
 		CPaste paste;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		paste.SetSourceImage(arrFliImage[EType_Source]);
-		// Blob °á°úÀÎ flfaContours¸¦ Src ROI·Î ¼³Á¤ // Set blob result flfaContours as Src ROI
+		// Blob ê²°ê³¼ì¸ flfaContoursë¥¼ Src ROIë¡œ ì„¤ì • // Set blob result flfaContours as Src ROI
 		paste.SetSourceROI(flfaContours);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		paste.SetDestinationImage(arrFliImage[EType_Destination2]);
-		// Destination Pivot ¼³Á¤ // Set the destination pivot
+		// Destination Pivot ì„¤ì • // Set the destination pivot
 		paste.SetDestinationPivot(flfaContours.GetCenter());
-		// Ç×»ó °ø¹é ¿µ¿ªÀ» ÁöÁ¤ÇÑ »öÀ¸·Î Ã¤¿ìµµ·Ï ¼³Á¤ÇÒ °ÍÀÎÁö ¼±ÅÃ // Choose whether to always fill blank areas with the specified color
+		// í•­ìƒ ê³µë°± ì˜ì—­ì„ ì§€ì •í•œ ìƒ‰ìœ¼ë¡œ ì±„ìš°ë„ë¡ ì„¤ì •í•  ê²ƒì¸ì§€ ì„ íƒ // Choose whether to always fill blank areas with the specified color
 		paste.EnableFillBlankColorMode(false);
-		// °ø¹é ¿µ¿ª »ö»ó ÁöÁ¤ // Set the blank color
+		// ê³µë°± ì˜ì—­ ìƒ‰ìƒ ì§€ì • // Set the blank color
 		paste.SetBlankColor(CMultiVar<double>(0., 0., 0.));
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = paste.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute paste.");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if(IsFail(res = arrViewImage[EType_Destination2].ZoomFit()))
 		{
 			ErrorPrint(res, "Failed to zoom fit of the image view.\n");
@@ -181,19 +181,19 @@ int main()
 
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-			// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+			// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+			// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 			arrLayer[i] = arrViewImage[i].GetLayer(0);
 
-			// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+			// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 			arrLayer[i].Clear();
 		}
 
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to find out where ROI is
-		// FLImagingÀÇ Figure °´Ã¼µéÀº ¾î¶² µµÇü¸ğ¾çÀÌµç »ó°ü¾øÀÌ ÇÏ³ªÀÇ ÇÔ¼ö·Î µğ½ºÇÃ·¹ÀÌ°¡ °¡´É // FLimaging's Figure objects can be displayed as a function regardless of the shape
-		// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-		// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to find out where ROI is
+		// FLImagingì˜ Figure ê°ì²´ë“¤ì€ ì–´ë–¤ ë„í˜•ëª¨ì–‘ì´ë“  ìƒê´€ì—†ì´ í•˜ë‚˜ì˜ í•¨ìˆ˜ë¡œ ë””ìŠ¤í”Œë ˆì´ê°€ ê°€ëŠ¥ // FLimaging's Figure objects can be displayed as a function regardless of the shape
+		// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+		// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 		if(IsFail(res = arrLayer[EType_Source].DrawFigureImage(&flfaContours, LIME)))
 			ErrorPrint(res, "Failed to draw figure\n");
 
@@ -201,11 +201,11 @@ int main()
 			ErrorPrint(res, "Failed to draw figure\n");
 
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if(IsFail(res = arrLayer[EType_Source].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)))
@@ -226,12 +226,12 @@ int main()
 			break;
 		}
 
-		// Contours Á¤º¸°ªÀ» °¢°¢ È®ÀÎÇÏ´Â ÄÚµå // Code to check each Contours information value
+		// Contours ì •ë³´ê°’ì„ ê°ê° í™•ì¸í•˜ëŠ” ì½”ë“œ // Code to check each Contours information value
 		for(int64_t i = 0; i < flfaContours.GetCount(); ++i)
 		{
 			CFLRegion* pFlrg = (CFLRegion*)flfaContours.GetAt(i);
 
-			// Æú¸®°ïÀÇ Á¤Á¡ Á¤º¸¸¦ ÄÜ¼Ö¿¡ Ãâ·Â // Print polygon vertex information to the console
+			// í´ë¦¬ê³¤ì˜ ì •ì  ì •ë³´ë¥¼ ì½˜ì†”ì— ì¶œë ¥ // Print polygon vertex information to the console
 			printf("Blob Result No. %lld : [", i);
 			for(int64_t j = 0; j < pFlrg->GetCount(); ++j)
 			{
@@ -253,11 +253,11 @@ int main()
 			arrLayer[EType_Source].DrawTextImage(&CFLPoint<double>(flr.left, (flr.top + flr.bottom) * .5), (wchar_t*)strNumber.GetString(), BLACK, YELLOW, 12, false, 0, EGUIViewImageTextAlignment_CENTER, nullptr, 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false);
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 			arrViewImage[i].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		bool bAvailable = true;
 		while(bAvailable)
 		{

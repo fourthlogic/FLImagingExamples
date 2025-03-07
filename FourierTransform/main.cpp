@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h" 
@@ -6,29 +6,29 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliImage;
 	CFLImage fliFFTImage;
 	CFLImage fliIFFTImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageOriginal;
 	CGUIViewImageWrap viewImageFFT;
 	CGUIViewImageWrap viewImageIFFT;
 
 	do
 	{
-		// µ¿ÀÛ °á°ú // operation result
+		// ë™ì‘ ê²°ê³¼ // operation result
 		CResult res = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/FourierTransform/TempleNoise.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImageOriginal.Create(300, 0, 300 + 512, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -47,7 +47,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the image view
 		if(IsFail(res = viewImageOriginal.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -60,7 +60,7 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageOriginal.SynchronizeWindow(&viewImageFFT)))
 		{
 			ErrorPrint(res, "Failed to synchronize window\n");
@@ -73,95 +73,95 @@ int main()
 			break;
 		}
 
-		// Fourier Transform °´Ã¼ »ı¼º // Create Fourier Transform object
+		// Fourier Transform ê°ì²´ ìƒì„± // Create Fourier Transform object
 		CFourierTransform fourierTransform;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set source image 
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set source image 
 		fourierTransform.SetSourceImage(fliImage);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤(FFT image) // Set destination image(FFT image) 
+		// Destination ì´ë¯¸ì§€ ì„¤ì •(FFT image) // Set destination image(FFT image) 
 		fourierTransform.SetDestinationImage(fliFFTImage);
 
-		// °á°ú ÀÌ¹ÌÁö Æ÷¸ä ¼³Á¤ (FFT image, 32/64 bit Floating Point ¼³Á¤ °¡´É) // Set Result image format(FFT image, 32/64 bit Floating Point) 
+		// ê²°ê³¼ ì´ë¯¸ì§€ í¬ë©§ ì„¤ì • (FFT image, 32/64 bit Floating Point ì„¤ì • ê°€ëŠ¥) // Set Result image format(FFT image, 32/64 bit Floating Point) 
 		fourierTransform.SetResultType(EFloatingPointAccuracy_Bit32);
 
-		// Çª¸®¿¡ º¯È¯ °á°ú ÀÌ¹ÌÁö¸¦ ½¬ÇÁÆ®ÇØ¼­ ¹Şµµ·Ï ¼³Á¤ // Set to receive a shifted image of the Fourier transform result
+		// í‘¸ë¦¬ì— ë³€í™˜ ê²°ê³¼ ì´ë¯¸ì§€ë¥¼ ì‰¬í”„íŠ¸í•´ì„œ ë°›ë„ë¡ ì„¤ì • // Set to receive a shifted image of the Fourier transform result
 		fourierTransform.SetShiftSpectrum(EFourierTransformShiftSpectrum_Shift);
 
-		// ¾Ë°í¸®Áò ¼öÇà(FFT) // Execute the algorithm(FFT)
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰(FFT) // Execute the algorithm(FFT)
 		if((res = fourierTransform.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Fourier Transform.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the image view
 		if(IsFail(res = viewImageFFT.SetImagePtr(&fliFFTImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁöÀÇ ³ëÀÌÁî¸¦ °¨¼ÒÇÏ±â(Mask »ç¿ë) // Reduce the noise in the image (using Mask)
-		// Mask °´Ã¼ »ı¼º // Create Mask object
+		// ì´ë¯¸ì§€ì˜ ë…¸ì´ì¦ˆë¥¼ ê°ì†Œí•˜ê¸°(Mask ì‚¬ìš©) // Reduce the noise in the image (using Mask)
+		// Mask ê°ì²´ ìƒì„± // Create Mask object
 		CMask imageMask;
 
-		// º¯È¯ ÀÌ¹ÌÁö¸¦ ¼³Á¤(FFT) // Set source image(FFT image)
+		// ë³€í™˜ ì´ë¯¸ì§€ë¥¼ ì„¤ì •(FFT) // Set source image(FFT image)
 		imageMask.SetSourceImage(fliFFTImage);
 
-		// CFLFigureArray °´Ã¼¸¦ »ı¼º // Create CFLFigureArray object
+		// CFLFigureArray ê°ì²´ë¥¼ ìƒì„± // Create CFLFigureArray object
 		CFLFigureArray flaROIs;
 
-		// ¹Ì¸® ±×·ÁµĞ Mask region Figure Array ºÒ·¯¿À±â // Load Pre-drawn Mask Region Figure Array
+		// ë¯¸ë¦¬ ê·¸ë ¤ë‘” Mask region Figure Array ë¶ˆëŸ¬ì˜¤ê¸° // Load Pre-drawn Mask Region Figure Array
 		if((res = flaROIs.Load(L"../../ExampleImages/FourierTransform/FFTRegion.fig")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the figure file.");
 			break;
 		}
 
-		// ÁöÁ¤ÇÑ ROI¸¦ ÀÔ·Â // Set mask ROI
+		// ì§€ì •í•œ ROIë¥¼ ì…ë ¥ // Set mask ROI
 		imageMask.SetSourceROI(&flaROIs);
 
-		// ¸¶½ºÅ© °ªÀ» ÀÔ·Â // set mask value
+		// ë§ˆìŠ¤í¬ ê°’ì„ ì…ë ¥ // set mask value
 		imageMask.SetMask(CMultiVar<double>(0.0));
 
-		// ¾Ë°í¸®Áò ¼öÇà(mask) // Execute the algorithm(mask)		
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰(mask) // Execute the algorithm(mask)		
 		if((res = imageMask.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Image Mask.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImageFFT.Invalidate(true);
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤(FFT image) // Set source image (FFT image)
+		// Source ì´ë¯¸ì§€ ì„¤ì •(FFT image) // Set source image (FFT image)
 		fourierTransform.SetSourceImage(fliFFTImage);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤(IFFT image) // Set destination image(IFFT image)
+		// Destination ì´ë¯¸ì§€ ì„¤ì •(IFFT image) // Set destination image(IFFT image)
 		fourierTransform.SetDestinationImage(fliIFFTImage);
 
-		// ¾Ë°í¸®Áò ¼öÇà(IFFT) // Execute the algorithm(IFFT)
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰(IFFT) // Execute the algorithm(IFFT)
 		if((res = fourierTransform.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Fourier Transform.");
 			break;
 		}
 
-		// Ãâ·ÂÀ» À§ÇÑ ÀÌ¹ÌÁö ·¹ÀÌ¾î¸¦ ¾ò¾î¿É´Ï´Ù. //  Gets the image layer for output.
-		// µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä ¾øÀ½ // No need to release separately
+		// ì¶œë ¥ì„ ìœ„í•œ ì´ë¯¸ì§€ ë ˆì´ì–´ë¥¼ ì–»ì–´ì˜µë‹ˆë‹¤. //  Gets the image layer for output.
+		// ë”°ë¡œ í•´ì œí•  í•„ìš” ì—†ìŒ // No need to release separately
 		CGUIViewImageLayerWrap layer1 = viewImageOriginal.GetLayer(0);
 		CGUIViewImageLayerWrap layer2 = viewImageFFT.GetLayer(0);
 		CGUIViewImageLayerWrap layer3 = viewImageIFFT.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Delete the shapes drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Delete the shapes drawn on the existing layer
 		layer1.Clear();
 
-		// Mask ROI ¿µ¿ªÀ» Ãâ·Â // Display the mask ROI area
+		// Mask ROI ì˜ì—­ì„ ì¶œë ¥ // Display the mask ROI area
 		if(IsFail(res = layer2.DrawFigureImage(&flaROIs, LIME)))
 			ErrorPrint(res, "Failed to draw figure\n");
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display View information.
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display View information.
 		if(IsFail(res = layer1.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Spatial Domain", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
@@ -180,7 +180,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImageOriginal.ZoomFit();
 		viewImageFFT.ZoomFit();
 		viewImageIFFT.ZoomFit();
@@ -188,7 +188,7 @@ int main()
 		viewImageFFT.Invalidate(true);
 		viewImageIFFT.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageOriginal.IsAvailable() && viewImageFFT.IsAvailable() && viewImageIFFT.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

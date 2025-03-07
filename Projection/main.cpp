@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h" 
@@ -6,118 +6,118 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliSourceImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageSource;
 	CGUIViewGraphWrap viewGraph;
 
 	do
 	{
-		// µ¿ÀÛ °á°ú // operation result
+		// ë™ì‘ ê²°ê³¼ // operation result
 		CResult res = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö 1 ·Îµå
+		// ì´ë¯¸ì§€ 1 ë¡œë“œ
 		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/Projection/mountains.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImageSource.Create(100, 0, 100 + 440, 340)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Graph ºä »ı¼º // Create graph view
+		// Graph ë·° ìƒì„± // Create graph view
 		if(IsFail(res = viewGraph.Create(100 + 440 * 1, 0, 100 + 440 * 2, 340)))
 		{
 			ErrorPrint(res, " Failed to create the graph view. \n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the image view
 		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // / Synchronize the positions of windows
+		// ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // / Synchronize the positions of windows
 		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewGraph)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// Projection °´Ã¼ »ı¼º // Create Projection object
+		// Projection ê°ì²´ ìƒì„± // Create Projection object
 		CProjection Projection;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set source image
 		Projection.SetSourceImage(fliSourceImage);
 
-		// ¿¬»ê ¹æÇâ ¼³Á¤ // Set operation direction
+		// ì—°ì‚° ë°©í–¥ ì„¤ì • // Set operation direction
 		Projection.SetProjectionMode(CProjection::EProjectionDirection_Column);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if((res = Projection.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Projection.");
 			break;
 		}
 
-		// Result °á°ú °¹¼ö È®ÀÎ // get result count
+		// Result ê²°ê³¼ ê°¯ìˆ˜ í™•ì¸ // get result count
 		int64_t i64Count = Projection.GetResultCount();
 
-		// Channel °ª Ç¥±â¸¦ À§ÇÑ String º¯¼ö // string variable to indicate Channel value
+		// Channel ê°’ í‘œê¸°ë¥¼ ìœ„í•œ String ë³€ìˆ˜ // string variable to indicate Channel value
 		Base::CFLString<wchar_t> strChannel;
 
-		// ±×·¡ÇÁ ¼± »ö»ó // Graph line color
+		// ê·¸ë˜í”„ ì„  ìƒ‰ìƒ // Graph line color
 		uint32_t arrColor[10] = { GRAPHVIEW_RED , GRAPHVIEW_GREEN , GRAPHVIEW_BLUE ,VIOLET,CYAN ,MAGENTA,AQUA,ORANGE,BLACK,YELLOW };
 
-		// Projection °á°ú°ª // Projection Result Object
+		// Projection ê²°ê³¼ê°’ // Projection Result Object
 		Base::CFLArray<double> flaResult;
 
 		for(int64_t i = 0; i < i64Count; ++i)
 		{
-			// ÀÌÀü µ¥ÀÌÅÍ »èÁ¦ // data clear
+			// ì´ì „ ë°ì´í„° ì‚­ì œ // data clear
 			flaResult.Clear();
 
-			// Projection °á°ú °ª °¡Á®¿À±â // get projection result
+			// Projection ê²°ê³¼ ê°’ ê°€ì ¸ì˜¤ê¸° // get projection result
 			if(IsFail(res = Projection.GetResult(i, flaResult)))
 				break;
 
-			// Ã¤³Î String // Channel String
+			// ì±„ë„ String // Channel String
 			strChannel.Format(L"Ch%d", i);
 
-			// Graph View µ¥ÀÌÅÍ ÀÔ·Â // Input Graph View Data
+			// Graph View ë°ì´í„° ì…ë ¥ // Input Graph View Data
 			viewGraph.Plot(flaResult, GUI::EChartType_Line, arrColor[i], strChannel, nullptr);
 		}
 
-		// ±×·¡ÇÁ ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the Graph view.
+		// ê·¸ë˜í”„ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the Graph view.
 		viewGraph.Invalidate(true);
 
-		// Ãâ·ÂÀ» À§ÇÑ ÀÌ¹ÌÁö ·¹ÀÌ¾î¸¦ ¾ò¾î¿É´Ï´Ù. //  Gets the image layer for output.
-		// µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä ¾øÀ½ // No need to release separately
+		// ì¶œë ¥ì„ ìœ„í•œ ì´ë¯¸ì§€ ë ˆì´ì–´ë¥¼ ì–»ì–´ì˜µë‹ˆë‹¤. //  Gets the image layer for output.
+		// ë”°ë¡œ í•´ì œí•  í•„ìš” ì—†ìŒ // No need to release separately
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Delete the shapes drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Delete the shapes drawn on the existing layer
 		layerSource.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display View information.
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display View information.
 		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImageSource.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä / ±×·¡ÇÁ ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·° / ê·¸ë˜í”„ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(viewImageSource.IsAvailable() && viewGraph.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

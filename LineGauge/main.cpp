@@ -1,4 +1,4 @@
-#include <FLImaging.h>
+ï»¿#include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
@@ -68,23 +68,23 @@ int main()
 		100.,
 	};
 
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage[i32ExampleCount];
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Gauge/Stripe.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		for(int32_t i = 0; i < i32ExampleCount; ++i)
 		{
 			int32_t i32X = 300 * (i % 4);
@@ -96,14 +96,14 @@ int main()
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 			if(IsFail(res = viewImage[i].SetImagePtr(&fliImage)))
 			{
 				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the all image views. 
+			// ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the all image views. 
 			if(i)
 			{
 				if(IsFail(res = viewImage[i].SynchronizePointOfView(&viewImage[0])))
@@ -116,55 +116,55 @@ int main()
 
 		CResult res = EResult_UnknownError;
 
-		// Line Gauge °´Ã¼ »ı¼º // Create Line Gauge object
+		// Line Gauge ê°ì²´ ìƒì„± // Create Line Gauge object
 		CLineGauge lineGauge;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to process
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to process
 		lineGauge.SetSourceImage(fliImage);
-		// ¼±À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ÀÇ º¯È­ ÀÓ°è°ª¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the threshold change of the boundary point to be extracted to estimate the line.
+		// ì„ ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ì˜ ë³€í™” ì„ê³„ê°’ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the threshold change of the boundary point to be extracted to estimate the line.
 		lineGauge.SetThreshold(20);
-		// ¼±À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ÀÇ º¯È­ ÀÓ°è°ª¿¡ º¸Á¤°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the correction value to the threshold change of the boundary point to be extracted to estimate the line.
+		// ì„ ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ì˜ ë³€í™” ì„ê³„ê°’ì— ë³´ì •ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the correction value to the threshold change of the boundary point to be extracted to estimate the line.
 		lineGauge.SetMinimumAmplitude(10);
-		// ¼±À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ´ëÇ¥°ª Ç¥º» °³¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the number of representative sample values ??of the boundary points to be extracted to estimate the line.
+		// ì„ ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ëŒ€í‘œê°’ í‘œë³¸ ê°œìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the number of representative sample values ??of the boundary points to be extracted to estimate the line.
 		lineGauge.SetThickness(1);
-		// ¼±À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÃßÃâ °£°İÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the extraction interval of boundary points to be extracted to estimate the line.
+		// ì„ ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì¶”ì¶œ ê°„ê²©ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the extraction interval of boundary points to be extracted to estimate the line.
 		lineGauge.SetSamplingStep(1.);
-		// ¼±À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÀÌ»óÄ¡ Á¶Á¤À» À§ÇÑ ÀÓ°è°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the threshold value for outlier adjustment of the boundary points to be extracted to estimate the line.
+		// ì„ ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì´ìƒì¹˜ ì¡°ì •ì„ ìœ„í•œ ì„ê³„ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the threshold value for outlier adjustment of the boundary points to be extracted to estimate the line.
 		lineGauge.SetOutliersThreshold(3.);
-		// ¼±À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÀÌ»óÄ¡ Á¶Á¤ È½¼öÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the number of outlier adjustments for boundary points to be extracted to estimate the line.
+		// ì„ ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì´ìƒì¹˜ ì¡°ì • íšŸìˆ˜ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the number of outlier adjustments for boundary points to be extracted to estimate the line.
 		lineGauge.SetOutliersThresholdCount(3);
-		// ¼±À» ÃßÁ¤ÇÏ±âÀ§ÇØ Á¡ Å¬·¯½ºÅÍ¸µ Ã³¸® À¯¹«¿¡ ´ëÇÑ ¼³Á¤À» ÇÕ´Ï´Ù. // Set whether or not to process point clustering to estimate the line.
+		// ì„ ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì  í´ëŸ¬ìŠ¤í„°ë§ ì²˜ë¦¬ ìœ ë¬´ì— ëŒ€í•œ ì„¤ì •ì„ í•©ë‹ˆë‹¤. // Set whether or not to process point clustering to estimate the line.
 		lineGauge.EnableClusterMode(true);
 
 		CFLLine<double> measureRegion(250., 480., 250., 80.);
 
 		for(int32_t i = 0; i < i32ExampleCount; ++i)
 		{
-			// ÃøÁ¤ÇÒ ¿µ¿ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the area to measure.
+			// ì¸¡ì •í•  ì˜ì—­ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the area to measure.
 			lineGauge.SetMeasurementRegion(measureRegion, arrTolerance[i]);
-			// ÃßÃâÇÏ±âÀ§ÇÑ ÆÄ¶ó¹ÌÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set parameters for extraction.
-			// ¼±À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ º¯È­ ¹æÇâ¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the boundary point change direction to extract to estimate the line.
+			// ì¶”ì¶œí•˜ê¸°ìœ„í•œ íŒŒë¼ë¯¸í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set parameters for extraction.
+			// ì„ ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì  ë³€í™” ë°©í–¥ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the boundary point change direction to extract to estimate the line.
 			lineGauge.SetTransitionType(arrTransitionType[i]);
-			// ¼±À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÑ °æ°èÁ¡ Áß »ç¿ëÇÒ °æ°èÁ¡ À¯ÇüÀ» ¼±ÅÃÇÕ´Ï´Ù. // Select the boundary point type to use among the boundary points extracted to estimate the line.
+			// ì„ ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•œ ê²½ê³„ì  ì¤‘ ì‚¬ìš©í•  ê²½ê³„ì  ìœ í˜•ì„ ì„ íƒí•©ë‹ˆë‹¤. // Select the boundary point type to use among the boundary points extracted to estimate the line.
 			lineGauge.SetTransitionChoice(arrTransitionChoice[i]);
 
-			// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+			// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 			if(IsFail(res = lineGauge.Execute()))
 			{
 				ErrorPrint(res, "Failed to execute Line gauge.\n");
 				break;
 			}
 
-			// ½ÇÇà °á°ú¸¦ °¡Á®¿É´Ï´Ù. // Get the execution result.
+			// ì‹¤í–‰ ê²°ê³¼ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the execution result.
 			CFLLine<double> fllResult;
 			CFLFigureArray flfaResultsValid, flfaResultsInvalid;
 
-			// indexÀÇ °æ¿ì TransitionChoiceÀÇ Begin, End¿¡¼­¸¸ À¯È¿ÇÕ´Ï´Ù. //Index works only at Begin and End of TransitionChoice
-			// ÃßÁ¤µÈ ¼±À» °¡Á®¿É´Ï´Ù. // Get the estimated line.	
+			// indexì˜ ê²½ìš° TransitionChoiceì˜ Begin, Endì—ì„œë§Œ ìœ íš¨í•©ë‹ˆë‹¤. //Index works only at Begin and End of TransitionChoice
+			// ì¶”ì •ëœ ì„ ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the estimated line.	
 			lineGauge.GetMeasuredObject(fllResult, i % 4);
-			// ÃßÁ¤µÈ ¼±À» ÃßÃâ¿¡ »ç¿ëµÈ À¯È¿ °æ°èÁ¡À» °¡Á®¿É´Ï´Ù. // Get the effective boundary point used to extract the estimated line.
+			// ì¶”ì •ëœ ì„ ì„ ì¶”ì¶œì— ì‚¬ìš©ëœ ìœ íš¨ ê²½ê³„ì ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the effective boundary point used to extract the estimated line.
 			lineGauge.GetMeasuredValidPoints(flfaResultsValid, i % 4);
-			// ÃßÁ¤µÈ ¼±À» ÃßÃâ¿¡ »ç¿ëµÇÁö ¸øÇÑ À¯È¿ÇÏÁö ¾ÊÀº °æ°èÁ¡À» °¡Á®¿É´Ï´Ù. // Get an invalid boundary point that is not used to extract the estimated line.
+			// ì¶”ì •ëœ ì„ ì„ ì¶”ì¶œì— ì‚¬ìš©ë˜ì§€ ëª»í•œ ìœ íš¨í•˜ì§€ ì•Šì€ ê²½ê³„ì ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get an invalid boundary point that is not used to extract the estimated line.
 			lineGauge.GetMeasuredInvalidPoints(flfaResultsInvalid, i % 4);
 
 			CGUIViewImageLayerWrap layer = viewImage[i].GetLayer(0);
@@ -177,7 +177,7 @@ int main()
 				break;
 			}
 
-			// ÃßÃâµÈ À¯È¿Á¡ÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the extracted valid point is
+			// ì¶”ì¶œëœ ìœ íš¨ì ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the extracted valid point is
 			for(int32_t i32Index = 0; i32Index < (int32_t)flfaResultsValid.GetCount(); ++i32Index)
 			{
 				if(flfaResultsValid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
@@ -194,7 +194,7 @@ int main()
 				}
 			}
 
-			// ÃßÃâµÈ À¯È¿ÇÏÁö ¾ÊÀº Á¡ÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to see where the extracted invalid points are
+			// ì¶”ì¶œëœ ìœ íš¨í•˜ì§€ ì•Šì€ ì ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to see where the extracted invalid points are
 			for(int32_t i32Index = 0; i32Index < (int32_t)flfaResultsInvalid.GetCount(); ++i32Index)
 			{
 				if(flfaResultsInvalid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
@@ -211,14 +211,14 @@ int main()
 				}
 			}
 
-			// ÃøÁ¤ ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the measurement area is
+			// ì¸¡ì • ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the measurement area is
 			if(IsFail(res = layer.DrawFigureImage(&measureRegion, YELLOW)))
 			{
 				ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 				break;
 			}
 
-		// ¼±ÀÇ ¹æÇâÀ» µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display the direction of the line.
+		// ì„ ì˜ ë°©í–¥ì„ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display the direction of the line.
 			CFLPoint<double> flpCenter;
 			double f64Angle;
 			CFLLine<double> fllCenter;
@@ -254,7 +254,7 @@ int main()
 				break;
 			}
 
-			// ¼³Á¤µÈ ROI¿¡ ´ëÇØ ÃøÁ¤¿µ¿ªÀ» µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display the measurement area for the set ROI.
+			// ì„¤ì •ëœ ROIì— ëŒ€í•´ ì¸¡ì •ì˜ì—­ì„ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display the measurement area for the set ROI.
 			CFLQuad<double> flqDraw;
 			double f64ToleranceLeft, f64ToleranceRight;
 			lineGauge.GetTolerance(f64ToleranceLeft, f64ToleranceRight);
@@ -273,7 +273,7 @@ int main()
 
 			if(IsOK(res))
 			{
-				// ÃßÁ¤µÈ ¼±ºĞÀ» µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display the estimated line segment.
+				// ì¶”ì •ëœ ì„ ë¶„ì„ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display the estimated line segment.
 				if(IsFail(res = layer.DrawFigureImage(&fllResult, BLACK, 5)))
 				{
 					ErrorPrint(res, "Failed to draw figure\n");
@@ -286,18 +286,18 @@ int main()
 					break;
 				}
 
-				// ¼±ÀÇ Á¤º¸¸¦ ConsoleÃ¢¿¡ Ãâ·ÂÇÕ´Ï´Ù. // Output the original information to the console window.
+				// ì„ ì˜ ì •ë³´ë¥¼ Consoleì°½ì— ì¶œë ¥í•©ë‹ˆë‹¤. // Output the original information to the console window.
 				CFLPoint<double> flpLineCenter = fllResult.GetCenter();
 				double f64LineAngle = fllResult.GetAngle();
-				printf("Line Center : (%.2lf, %.2lf)\nAngle : %.2lf¢ª\n", flpLineCenter.x, flpLineCenter.y, f64LineAngle);
+				printf("Line Center : (%.2lf, %.2lf)\nAngle : %.2lfËš\n", flpLineCenter.x, flpLineCenter.y, f64LineAngle);
 			}
 
-			// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+			// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 			viewImage[i].Invalidate(true);
 		}
 
 		bool bTerminated = false;
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(!bTerminated)
 		{
 			for(int32_t i = 0; i < i32ExampleCount; ++i)

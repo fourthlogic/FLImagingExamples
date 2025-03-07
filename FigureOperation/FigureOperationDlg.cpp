@@ -1,4 +1,4 @@
-
+ï»¿
 // FigureOperationDlg.cpp : implementation file
 //
 
@@ -108,13 +108,13 @@ BOOL CFigureOperationDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 	
-	// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+	// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
  	CResult res = m_viewImage.CreateAndFitParent((size_t)GetDlgItem(IDC_STATIC_IMAGE_VIEW)->GetSafeHwnd());
  
  	if(res.IsFail())
  		ErrorMessageBox(res);
 
-	// ÄŞº¸ ¹Ú½º¿¡ ¼±ÅÃ Ç×¸ñÀ» ¼³Á¤ÇÑ´Ù.
+	// ì½¤ë³´ ë°•ìŠ¤ì— ì„ íƒ í•­ëª©ì„ ì„¤ì •í•œë‹¤.
 	CComboBox* pComboBoxDeclType = (CComboBox*)GetDlgItem(IDC_COMBO_FIGURE_OBJECT_DECL_TYPE);
 	pComboBoxDeclType->ResetContent();
 
@@ -218,7 +218,7 @@ void CFigureOperationDlg::UpdateControls()
 	CWnd* pWndOperation = GetDlgItem(IDC_COMBO_FIGURE_OBJECT_OPERATION);
 	CWnd* pWndExecute = GetDlgItem(IDC_BUTTON_FIGURE_OBJECT_EXECUTE);
 
-	// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+	// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 	if(!m_viewImage.IsAvailable())
 	{
 		pWndDeclType->EnableWindow(false);
@@ -236,7 +236,7 @@ void CFigureOperationDlg::UpdateControls()
 		pWndTempType->EnableWindow(true);
 		pWndCreate->EnableWindow(true);
 
-		// ÀÌ¹ÌÁö ºäÀÇ Figure object °³¼ö¸¦ ¾ò¾î¿Â´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ Figure object ê°œìˆ˜ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 		pWndClear->EnableWindow(m_viewImage.GetFigureObjectCount() ? true : false);
 
 		pWndSelect1->EnableWindow(true);
@@ -253,13 +253,13 @@ void CFigureOperationDlg::UpdateControls()
 		if(!pCombo1 || !pCombo2)
 			break;
 
-		// ÀÌ¹ÌÁö ºäÀÇ Figure object °³¼ö¸¦ ¾ò¾î¿Â´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ Figure object ê°œìˆ˜ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 		size_t stCount = m_viewImage.GetFigureObjectCount();
 
 		if(pCombo1->GetCount() == stCount && pCombo2->GetCount() == stCount)
 			break;
 
-		// ÄŞº¸ ¹Ú½º¿¡ Figure Object Ç×¸ñÀ» ¼³Á¤ÇÑ´Ù.
+		// ì½¤ë³´ ë°•ìŠ¤ì— Figure Object í•­ëª©ì„ ì„¤ì •í•œë‹¤.
 		UpdateFigureObjectList();
 	}
 	while (false);
@@ -267,7 +267,7 @@ void CFigureOperationDlg::UpdateControls()
 
 EFigureDeclType CFigureOperationDlg::SelectedDeclType()
 {
-	// ÇöÀç ¼±ÅÃµÈ Decl Type À» ¾ò¾î¿Â´Ù.
+	// í˜„ì¬ ì„ íƒëœ Decl Type ì„ ì–»ì–´ì˜¨ë‹¤.
 	EFigureDeclType eReturn = EFigureDeclType_Unknown;
 
 	do 
@@ -345,28 +345,28 @@ void CFigureOperationDlg::UpdateFigureObjectList()
 		pCombo1->ResetContent();
 		pCombo2->ResetContent();
 
-		// ÀÌ¹ÌÁö ºäÀÇ Figure object °³¼ö¸¦ ¾ò¾î¿Â´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ Figure object ê°œìˆ˜ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 		size_t stCount = m_viewImage.GetFigureObjectCount();
 		if(!stCount)
 			break;
 
 		for(size_t i = 0; i < stCount; ++i)
 		{
-			// ÇØ´ç ÀÎµ¦½ºÀÇ Figure Object ¸¦ ¾ò¾î¿Â´Ù.
+			// í•´ë‹¹ ì¸ë±ìŠ¤ì˜ Figure Object ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 			CFLFigure* pFigure = m_viewImage.GetFigureObject((int32_t)i);
 			if(!pFigure)
 				continue;
 
-			// Figure Object ÀÇ ÀÌ¸§À» ¼³Á¤ÇÑ´Ù.
+			// Figure Object ì˜ ì´ë¦„ì„ ì„¤ì •í•œë‹¤.
 			CFLString<wchar_t> strFigureName = MakeFigureObjectName(i, pFigure);
 			if(strFigureName.IsEmpty())
 				break;
 
-			// ÄŞº¸ ¹Ú½º¿¡ Ç×¸ñÀ» Ãß°¡ÇÑ´Ù.
+			// ì½¤ë³´ ë°•ìŠ¤ì— í•­ëª©ì„ ì¶”ê°€í•œë‹¤.
 			pCombo1->AddString(strFigureName);
 			pCombo2->AddString(strFigureName);
 
-			// ¾ò¾î¿Â Figure Object ÇØÁ¦
+			// ì–»ì–´ì˜¨ Figure Object í•´ì œ
 			delete pFigure;
 			pFigure = nullptr;
 		}
@@ -389,7 +389,7 @@ CFLString<wchar_t> CFigureOperationDlg::MakeFigureObjectName(size_t stIndex, CFL
 
 		strReturn.Format(L"[%d] ", stIndex);
 
-		// Figure ÀÇ Decl Type ¿¡ µû¸¥ ÀÌ¸§ ¼³Á¤
+		// Figure ì˜ Decl Type ì— ë”°ë¥¸ ì´ë¦„ ì„¤ì •
 		switch(pFigure->GetDeclType())
 		{
 		case EFigureDeclType_Point:
@@ -444,7 +444,7 @@ CFLString<wchar_t> CFigureOperationDlg::MakeFigureObjectName(size_t stIndex, CFL
 		if(bError)
 			break;
 
-		// Figure ÀÇ Template Type ¿¡ µû¸¥ ÀÌ¸§ ¼³Á¤
+		// Figure ì˜ Template Type ì— ë”°ë¥¸ ì´ë¦„ ì„¤ì •
 		switch(pFigure->GetTemplateType())
 		{
 		case EFigureTemplateType_Int32:
@@ -478,21 +478,21 @@ CFLString<wchar_t> CFigureOperationDlg::MakeFigureObjectName(size_t stIndex, CFL
 
 void CFigureOperationDlg::DrawSelectedFigure()
 {
-	// ¼±ÅÃµÈ Figure Object ¸¦ ¾ò¾î¿Â´Ù.
+	// ì„ íƒëœ Figure Object ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 	CFLFigure* pFigure1 = GetSelectedFigure1();
 	CFLFigure* pFigure2 = GetSelectedFigure2();
 
 	do 
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = m_viewImage.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 
 		if(!pFigure1 && !pFigure2)
@@ -500,39 +500,39 @@ void CFigureOperationDlg::DrawSelectedFigure()
 
 		if(pFigure1)
 		{
-			// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-			// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-			// ¿©±â¼­ 0.5, 0.3ÀÌ¹Ç·Î ¿¶Àº ¹İÅõ¸í »óÅÂ¶ó°í º¼ ¼ö ÀÖ´Ù.
-			// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+			// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+			// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+			// ì—¬ê¸°ì„œ 0.5, 0.3ì´ë¯€ë¡œ ì˜…ì€ ë°˜íˆ¬ëª… ìƒíƒœë¼ê³  ë³¼ ìˆ˜ ìˆë‹¤.
+			// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 			layer.DrawFigureImage(pFigure1, RED, 5, RED, EGUIViewImagePenStyle_Solid, 0.5f, 0.3f);
 		}
 
 		if(pFigure2)
 		{
-			// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-			// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-			// ¿©±â¼­ 0.5, 0.3ÀÌ¹Ç·Î ¿¶Àº ¹İÅõ¸í »óÅÂ¶ó°í º¼ ¼ö ÀÖ´Ù.
-			// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+			// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+			// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+			// ì—¬ê¸°ì„œ 0.5, 0.3ì´ë¯€ë¡œ ì˜…ì€ ë°˜íˆ¬ëª… ìƒíƒœë¼ê³  ë³¼ ìˆ˜ ìˆë‹¤.
+			// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 			layer.DrawFigureImage(pFigure2, BLUE, 5, BLUE, EGUIViewImagePenStyle_Solid, 0.5f, 0.3f);
 		}
 	}
 	while (false);
 
-	// ¾ò¾î¿Â Figure Object ÇØÁ¦
+	// ì–»ì–´ì˜¨ Figure Object í•´ì œ
 	if(pFigure1)
 	{
 		delete pFigure1;
 		pFigure1 = nullptr;
 	}
 
-	// ¾ò¾î¿Â Figure Object ÇØÁ¦
+	// ì–»ì–´ì˜¨ Figure Object í•´ì œ
 	if(pFigure2)
 	{
 		delete pFigure2;
 		pFigure2 = nullptr;
 	}
 
-	// ÀÌ¹ÌÁö ºä¸¦ °»½ÅÇÑ´Ù.
+	// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹ í•œë‹¤.
 	m_viewImage.Invalidate(true);
 }
 
@@ -542,7 +542,7 @@ CFLFigure* CFigureOperationDlg::GetSelectedFigure1()
 
 	do 
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
@@ -554,7 +554,7 @@ CFLFigure* CFigureOperationDlg::GetSelectedFigure1()
 		if(i32Selected < 0)
 			break;
 
-		// ÇØ´ç ÀÎµ¦½ºÀÇ Figure Object ¸¦ ¾ò¾î¿Â´Ù.
+		// í•´ë‹¹ ì¸ë±ìŠ¤ì˜ Figure Object ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 		pReturn = m_viewImage.GetFigureObject(i32Selected);
 	}
 	while (false);
@@ -568,7 +568,7 @@ CFLFigure* CFigureOperationDlg::GetSelectedFigure2()
 
 	do 
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
@@ -580,7 +580,7 @@ CFLFigure* CFigureOperationDlg::GetSelectedFigure2()
 		if(i32Selected < 0)
 			break;
 
-		// ÇØ´ç ÀÎµ¦½ºÀÇ Figure Object ¸¦ ¾ò¾î¿Â´Ù.
+		// í•´ë‹¹ ì¸ë±ìŠ¤ì˜ Figure Object ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 		pReturn = m_viewImage.GetFigureObject(i32Selected);
 	}
 	while (false);
@@ -638,7 +638,7 @@ BOOL CFigureOperationDlg::DestroyWindow()
 	// TODO: Add your specialized code here and/or call the base class
 	KillTimer(1024);
 
-	// ÀÌ¹ÌÁö ºä¸¦ Á¾·áÇÑ´Ù.
+	// ì´ë¯¸ì§€ ë·°ë¥¼ ì¢…ë£Œí•œë‹¤.
 	m_viewImage.Destroy();
 
 	return CDialogEx::DestroyWindow();
@@ -651,7 +651,7 @@ void CFigureOperationDlg::OnBnClickedButtonFigureObjectCreate()
 
 	do 
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
@@ -662,13 +662,13 @@ void CFigureOperationDlg::OnBnClickedButtonFigureObjectCreate()
 
 		int32_t i32TemplateType = pComboBoxTemplateType->GetCurSel() + 1;
 
-		// ÀÌ¹ÌÁö ºäÀÇ Äµ¹ö½º ¿µ¿ªÀ» ¾ò¾î¿Â´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ ìº”ë²„ìŠ¤ ì˜ì—­ì„ ì–»ì–´ì˜¨ë‹¤.
 		CFLRect<int32_t> flrlCanvas = m_viewImage.GetClientRectCanvasRegion();
 
-		// Äµ¹ö½º ¿µ¿ªÀÇ ÁÂÇ¥°è¸¦ ÀÌ¹ÌÁö ¿µ¿ªÀÇ ÁÂÇ¥°è·Î º¯È¯ÇÑ´Ù.
+		// ìº”ë²„ìŠ¤ ì˜ì—­ì˜ ì¢Œí‘œê³„ë¥¼ ì´ë¯¸ì§€ ì˜ì—­ì˜ ì¢Œí‘œê³„ë¡œ ë³€í™˜í•œë‹¤.
 		CFLRect<double> flrdImage =  m_viewImage.ConvertCanvasCoordToImageCoord(flrlCanvas);
 
-		// ÀÌ¹ÌÁö ¿µ¿ªÀ» ±âÁØÀ¸·Î »ı¼ºµÉ Figure ÀÇ Å©±â¿Í ¸ğ¾çÀ» »ç°¢ÇüÀ¸·Î ¼³Á¤ÇÑ´Ù.
+		// ì´ë¯¸ì§€ ì˜ì—­ì„ ê¸°ì¤€ìœ¼ë¡œ ìƒì„±ë  Figure ì˜ í¬ê¸°ì™€ ëª¨ì–‘ì„ ì‚¬ê°í˜•ìœ¼ë¡œ ì„¤ì •í•œë‹¤.
 		double f64Width = flrdImage.GetWidth() / 10.;
 		double f64Height = flrdImage.GetHeight() / 10.;
 		double f64Size = __min(f64Width, f64Height);
@@ -678,8 +678,8 @@ void CFigureOperationDlg::OnBnClickedButtonFigureObjectCreate()
 
 		CFLRect<double> flrdFigureShape(flpdCenter.x - f64Size, flpdCenter.y - f64Size, flpdCenter.x + f64Size, flpdCenter.y + f64Size);
 
-		// ¼±ÅÃÇÑ Decl Type, Template Type À¸·Î Figure ¸¦ »ı¼ºÇÑ´Ù.
-		// CubicSpline, ComplexRegion °°Àº °æ¿ì¿¡´Â Template Type ÀÌ double ÇüÀ¸·Î °íÁ¤ÀÌ´Ù.
+		// ì„ íƒí•œ Decl Type, Template Type ìœ¼ë¡œ Figure ë¥¼ ìƒì„±í•œë‹¤.
+		// CubicSpline, ComplexRegion ê°™ì€ ê²½ìš°ì—ëŠ” Template Type ì´ double í˜•ìœ¼ë¡œ ê³ ì •ì´ë‹¤.
 		switch(SelectedDeclType())
 		{
 		case EFigureDeclType_Point:
@@ -888,28 +888,28 @@ void CFigureOperationDlg::OnBnClickedButtonFigureObjectCreate()
 		if(!pFlFigure)
 			break;
 
-		// »ı¼ºµÈ Figure ¿¡ »ç°¢ÇüÀ» ¼³Á¤ÇÔÀ¸·Î½á °¢ Çü»ó¿¡ ¸Â°Ô ±¸¼ºÇÑ´Ù.
+		// ìƒì„±ëœ Figure ì— ì‚¬ê°í˜•ì„ ì„¤ì •í•¨ìœ¼ë¡œì¨ ê° í˜•ìƒì— ë§ê²Œ êµ¬ì„±í•œë‹¤.
 		pFlFigure->Set(flrdFigureShape);
 
-		// ÀÌ¹ÌÁö ºä¿¡ Figure object ¸¦ »ı¼ºÇÑ´Ù.
-		// °¡Àå ¸¶Áö¸· ÆÄ¶ó¹ÌÅÍ´Â È°¼ºÈ­ µÇ´Â ¸Ş´ºÀÇ ±¸¼ºÀÌ¸ç, EAvailableFigureContextMenu_All °¡ ±âº» ¸Ş´º¸¦ È°¼ºÈ­ ÇÑ´Ù.
-		// È°¼ºÈ­ ÇÏ°íÀÚ ÇÏ´Â ¸Ş´º¸¦ Ãß°¡ È¤Àº Á¦°Å ÇÏ±â À§ÇØ¼­´Â enum °ªÀ» ºñÆ® ¿¬»êÀ¸·Î ³Ö¾îÁÖ¸é µÈ´Ù.
-		// ex) EAvailableFigureContextMenu_None -> È°¼ºÈ­ µÇ´Â ¸Ş´º ¾øÀ½
-		//     EAvailableFigureContextMenu_All -> ÀüÃ¼ ¸Ş´º È°¼ºÈ­
-		//     EAvailableFigureContextMenu_DeclType | EAvailableFigureContextMenu_TemplateType -> Decl Type, Template Type º¯È¯ ¸Ş´º È°¼ºÈ­
+		// ì´ë¯¸ì§€ ë·°ì— Figure object ë¥¼ ìƒì„±í•œë‹¤.
+		// ê°€ì¥ ë§ˆì§€ë§‰ íŒŒë¼ë¯¸í„°ëŠ” í™œì„±í™” ë˜ëŠ” ë©”ë‰´ì˜ êµ¬ì„±ì´ë©°, EAvailableFigureContextMenu_All ê°€ ê¸°ë³¸ ë©”ë‰´ë¥¼ í™œì„±í™” í•œë‹¤.
+		// í™œì„±í™” í•˜ê³ ì í•˜ëŠ” ë©”ë‰´ë¥¼ ì¶”ê°€ í˜¹ì€ ì œê±° í•˜ê¸° ìœ„í•´ì„œëŠ” enum ê°’ì„ ë¹„íŠ¸ ì—°ì‚°ìœ¼ë¡œ ë„£ì–´ì£¼ë©´ ëœë‹¤.
+		// ex) EAvailableFigureContextMenu_None -> í™œì„±í™” ë˜ëŠ” ë©”ë‰´ ì—†ìŒ
+		//     EAvailableFigureContextMenu_All -> ì „ì²´ ë©”ë‰´ í™œì„±í™”
+		//     EAvailableFigureContextMenu_DeclType | EAvailableFigureContextMenu_TemplateType -> Decl Type, Template Type ë³€í™˜ ë©”ë‰´ í™œì„±í™”
 
 		m_viewImage.PushBackFigureObject(pFlFigure, EAvailableFigureContextMenu_All);
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½ÅÇÑ´Ù.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹ í•œë‹¤.
 		m_viewImage.Invalidate(true);
 
-		// ÄŞº¸ ¹Ú½º¿¡ Figure Object Ç×¸ñÀ» ¼³Á¤ÇÑ´Ù.
+		// ì½¤ë³´ ë°•ìŠ¤ì— Figure Object í•­ëª©ì„ ì„¤ì •í•œë‹¤.
 		UpdateFigureObjectList();
 	}
 	while (false);
 
-	// »ı¼ºÇÑ Figure °´Ã¼ ÇØÁ¦
-	// PushBackFigureObject() ÇÔ¼ö ³»ºÎ¿¡¼­ Figure º¹»ç°¡ µÇ±â ¶§¹®¿¡ »ı¼ºÇß´ø °´Ã¼¸¦ ÇØÁ¦ÇØ Áà¾ßÇÑ´Ù.
+	// ìƒì„±í•œ Figure ê°ì²´ í•´ì œ
+	// PushBackFigureObject() í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ Figure ë³µì‚¬ê°€ ë˜ê¸° ë•Œë¬¸ì— ìƒì„±í–ˆë˜ ê°ì²´ë¥¼ í•´ì œí•´ ì¤˜ì•¼í•œë‹¤.
 	if(pFlFigure)
 	{
 		delete pFlFigure;
@@ -925,13 +925,13 @@ void CFigureOperationDlg::OnBnClickedButtonFigureObjectClear()
 		if(!m_viewImage.IsAvailable())
 			break;
 
-		// ÇöÀç ÀÌ¹ÌÁö ºä¿¡ ÀÖ´Â Figure Objects ¸¦ Á¦°ÅÇÑ´Ù.
+		// í˜„ì¬ ì´ë¯¸ì§€ ë·°ì— ìˆëŠ” Figure Objects ë¥¼ ì œê±°í•œë‹¤.
 		m_viewImage.ClearFigureObject();
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½ÅÇÑ´Ù.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹ í•œë‹¤.
 		m_viewImage.Invalidate(true);
 
-		// ÄŞº¸ ¹Ú½º¿¡ Figure Object Ç×¸ñÀ» ¼³Á¤ÇÑ´Ù.
+		// ì½¤ë³´ ë°•ìŠ¤ì— Figure Object í•­ëª©ì„ ì„¤ì •í•œë‹¤.
 		UpdateFigureObjectList();
 	}
 	while (false);
@@ -951,7 +951,7 @@ void CFigureOperationDlg::OnBnClickedButtonFigureObjectExecute()
 		if(!pComboOperation)
 			break;
 
-		// ¼±ÅÃµÈ Figure Object ¸¦ ¾ò¾î¿Â´Ù.
+		// ì„ íƒëœ Figure Object ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 		pFigure1 = GetSelectedFigure1();
 		pFigure2 = GetSelectedFigure2();
 
@@ -961,75 +961,75 @@ void CFigureOperationDlg::OnBnClickedButtonFigureObjectExecute()
 			break;
 		}
 
-		// Operation °á°ú¸¦ ¾ò±â À§ÇØ FLFigureArray ¸¦ »ı¼ºÇÑ´Ù.
+		// Operation ê²°ê³¼ë¥¼ ì–»ê¸° ìœ„í•´ FLFigureArray ë¥¼ ìƒì„±í•œë‹¤.
 		CFLFigureArray flfa;
 
 		switch(pComboOperation->GetCurSel())
 		{
 		case 0:
-			// Intersection Operation ¼öÇà
+			// Intersection Operation ìˆ˜í–‰
 			res = pFigure1->GetRegionOfIntersection(pFigure2, &flfa);
 			break;
 
 		case 1:
-			// Union Operation ¼öÇà
+			// Union Operation ìˆ˜í–‰
 			res = pFigure1->GetRegionOfUnion(pFigure2, &flfa);
 			break;
 
 		case 2:
-			// Subtraction Operation ¼öÇà
+			// Subtraction Operation ìˆ˜í–‰
 			res = pFigure1->GetRegionOfSubtraction(pFigure2, &flfa);
 			break;
 
 		case 3:
-			// Exclusive Or Operation ¼öÇà
+			// Exclusive Or Operation ìˆ˜í–‰
 			res = pFigure1->GetRegionOfExclusiveOr(pFigure2, &flfa);
 			break;
 		}
 
-		// ¼öÇà °á°ú¸¦ È®ÀÎÇÑ´Ù.
+		// ìˆ˜í–‰ ê²°ê³¼ë¥¼ í™•ì¸í•œë‹¤.
 		if(IsFail(res))
 			break;
 
 		if(!flfa.GetCount())
 			break;
 
-		// ÀÌ¹ÌÁö ºä¿¡ Figure object ¸¦ »ı¼ºÇÑ´Ù.
+		// ì´ë¯¸ì§€ ë·°ì— Figure object ë¥¼ ìƒì„±í•œë‹¤.
 		if(flfa.GetCount() == 1)
 			m_viewImage.PushBackFigureObject(flfa.GetAt(0), EAvailableFigureContextMenu_All);
 		else
 			m_viewImage.PushBackFigureObject(&flfa, EAvailableFigureContextMenu_All);
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½ÅÇÑ´Ù.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹ í•œë‹¤.
 		m_viewImage.Invalidate(true);
 
-		// ÄŞº¸ ¹Ú½º¿¡ Figure Object Ç×¸ñÀ» ¼³Á¤ÇÑ´Ù.
+		// ì½¤ë³´ ë°•ìŠ¤ì— Figure Object í•­ëª©ì„ ì„¤ì •í•œë‹¤.
 		UpdateFigureObjectList();
 	}
 	while (false);
 
-	// ¾ò¾î¿Â Figure Object ÇØÁ¦
+	// ì–»ì–´ì˜¨ Figure Object í•´ì œ
 	if(pFigure1)
 	{
 		delete pFigure1;
 		pFigure1 = nullptr;
 	}
 
-	// ¾ò¾î¿Â Figure Object ÇØÁ¦
+	// ì–»ì–´ì˜¨ Figure Object í•´ì œ
 	if(pFigure2)
 	{
 		delete pFigure2;
 		pFigure2 = nullptr;
 	}
 
-	// ¼öÇà °á°ú ¸Ş¼¼Áö¸¦ Ç¥½ÃÇÑ´Ù.
+	// ìˆ˜í–‰ ê²°ê³¼ ë©”ì„¸ì§€ë¥¼ í‘œì‹œí•œë‹¤.
 	DisplayMessage(res.GetString());
 }
 
 void CFigureOperationDlg::OnCbnSelchangeComboFigureObjectSelect1()
 {
 	// TODO: Add your control notification handler code here
-	// ¼±ÅÃµÈ Figure ¸¦ ±×¸°´Ù.
+	// ì„ íƒëœ Figure ë¥¼ ê·¸ë¦°ë‹¤.
 	DrawSelectedFigure();
 }
 
@@ -1037,6 +1037,6 @@ void CFigureOperationDlg::OnCbnSelchangeComboFigureObjectSelect1()
 void CFigureOperationDlg::OnCbnSelchangeComboFigureObjectSelect2()
 {
 	// TODO: Add your control notification handler code here
-	// ¼±ÅÃµÈ Figure ¸¦ ±×¸°´Ù.
+	// ì„ íƒëœ Figure ë¥¼ ê·¸ë¦°ë‹¤.
 	DrawSelectedFigure();
 }

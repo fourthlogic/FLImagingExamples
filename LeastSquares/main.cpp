@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <locale.h>
 #include <time.h>
 
@@ -26,7 +26,7 @@ int main()
 
 			printf("Please input generate sample data count: ");
 
-			// °è¼ö ¹®ÀÚ¿­À» ÀÔ·Â ¹Ş´Â´Ù. // Receive the count string.
+			// ê³„ìˆ˜ ë¬¸ìì—´ì„ ì…ë ¥ ë°›ëŠ”ë‹¤. // Receive the count string.
 			fgets(arrInput, 4096, stdin);
 
 			CFLString<char> flstrInput(arrInput);
@@ -43,7 +43,7 @@ int main()
 				break;
 			}
 
-			// ÀÔ·Â ¹ŞÀº °³¼ö¸¸Å­ µ¥ÀÌÅÍ¸¦ »ı¼ºÇÑ´Ù. // Generate data as many as the input number.
+			// ì…ë ¥ ë°›ì€ ê°œìˆ˜ë§Œí¼ ë°ì´í„°ë¥¼ ìƒì„±í•œë‹¤. // Generate data as many as the input number.
 			pF64DataX = new double[i32DataCount];
 			pF64DataY = new double[i32DataCount];
 
@@ -81,19 +81,19 @@ int main()
 			printf(flstrSampleData);
 			printf("\n\n");
 
-			// LeastSquaresD °´Ã¼ »ı¼º // Create LeastSquaresD object
+			// LeastSquaresD ê°ì²´ ìƒì„± // Create LeastSquaresD object
 			CLeastSquaresD ls;
-			// µ¥ÀÌÅÍ¸¦ ÇÒ´ç // Assign data
+			// ë°ì´í„°ë¥¼ í• ë‹¹ // Assign data
 			ls.Assign(pF64DataX, pF64DataY, i32DataCount);
 
 			for(int32_t i = 1; i <= 5; ++i)
 			{
-				// °è¼ö °ªÀ» ¹Ş±â À§ÇØ FLArray »ı¼º // Create FLArray to receive coefficient values
+				// ê³„ìˆ˜ ê°’ì„ ë°›ê¸° ìœ„í•´ FLArray ìƒì„± // Create FLArray to receive coefficient values
 				CFLArray<double> vctOutput;
-				// R square °ªÀ» ¹Ş±â À§ÇØ double ¼±¾ğ // Declare double to receive R square value
+				// R square ê°’ì„ ë°›ê¸° ìœ„í•´ double ì„ ì–¸ // Declare double to receive R square value
 				double f64TRSqr = 0.;
 
-				// ´ÙÇ×½Ä °è¼ö¸¦ ¾ò´Â´Ù. // Get polynomial coefficients
+				// ë‹¤í•­ì‹ ê³„ìˆ˜ë¥¼ ì–»ëŠ”ë‹¤. // Get polynomial coefficients
 				ls.GetPoly(i, &vctOutput, &f64TRSqr);
 
 				CFLString<char> flstrEquation = "";
@@ -104,7 +104,7 @@ int main()
 
 				CFLArray<std::complex<double>> flaCoef;
 
-				// ¾ò¾î¿Â °è¼ö·Î ´ÙÇ×½ÄÀ» ¸¸µç´Ù. // Create a polynomial with the obtained coefficients.
+				// ì–»ì–´ì˜¨ ê³„ìˆ˜ë¡œ ë‹¤í•­ì‹ì„ ë§Œë“ ë‹¤. // Create a polynomial with the obtained coefficients.
 				for(int64_t j = 0; j < i64Count; ++j)
 				{
 					double f64Coef = vctOutput.GetAt(j);
@@ -147,13 +147,13 @@ int main()
 				printf(flstrR);
 				printf(flstrEquation);
 
-				// ¹æÁ¤½ÄÀÇ ÇØ¸¦ ¾ò±âÀ§ÇØ CFLArray<std::complex<double>> »ı¼º // Create CFLArray<std::complex<double>> to get solution of equation
+				// ë°©ì •ì‹ì˜ í•´ë¥¼ ì–»ê¸°ìœ„í•´ CFLArray<std::complex<double>> ìƒì„± // Create CFLArray<std::complex<double>> to get solution of equation
 				CFLArray<std::complex<double>> flaEquationResult;
 
-				// ¹æÁ¤½ÄÀÇ ÇØ¸¦ ¾ò¾î¿Â´Ù. // Get the solution of the equation.
+				// ë°©ì •ì‹ì˜ í•´ë¥¼ ì–»ì–´ì˜¨ë‹¤. // Get the solution of the equation.
 				CEquation::Solve(flaCoef, &flaEquationResult);
 
-				// ¹æÁ¤½ÄÀÇ ÇØ¸¦ Ç¥½ÃÇÑ´Ù. // Display the solution of the equation.
+				// ë°©ì •ì‹ì˜ í•´ë¥¼ í‘œì‹œí•œë‹¤. // Display the solution of the equation.
 				CFLString<char> flstrResult = "Result \n";
 
 				for(int64_t i = 0; i < flaEquationResult.GetCount(); ++i)

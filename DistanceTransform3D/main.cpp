@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
@@ -104,24 +104,24 @@ const CResult DrawResult(GUI::CGUIView3DWrap* pView3D, const Base::CFLArray<Base
 
 int main()
 {
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIView3DWrap view3DSrc;
 	CGUIView3DWrap view3DDst;
 	CFL3DObject fl3DObject;
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult res = EResult_UnknownError;
 
-		// Source 3D ÀÌ¹ÌÁö ºä »ı¼º // Create the Source 3D image view
+		// Source 3D ì´ë¯¸ì§€ ë·° ìƒì„± // Create the Source 3D image view
 		if((res = view3DSrc.Create(100, 0, 600, 500)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination 3D ÀÌ¹ÌÁö ºä »ı¼º // Create the destination 3D image view
+		// Destination 3D ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination 3D image view
 		if((res = view3DDst.Create(600, 0, 1100, 500)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
@@ -130,23 +130,23 @@ int main()
 
 		fl3DObject.Load(L"../../ExampleImages/DistanceTransform3D/binary-vertex.ply");
 
-		// Distance Transform 3D °´Ã¼ »ı¼º // Create Distance Transform 3D object
+		// Distance Transform 3D ê°ì²´ ìƒì„± // Create Distance Transform 3D object
 		CDistanceTransform3D DistanceTransform3D;
 
 		TPoint3<float> tpPosition = TPoint3<float>(0.0f, 0.0f, 0.0f);
 		TPoint3<float> tpDirection = TPoint3<float>(-0.1f, 0.0f, -1.0f);
 		TPoint3<float> tpUpVector = TPoint3<float>(0.0f, 1.0f, 0.0f);
 
-		// Source °´Ã¼ ¼³Á¤ // Set the source object
+		// Source ê°ì²´ ì„¤ì • // Set the source object
 		DistanceTransform3D.SetSourceObject(&fl3DObject);
-		// Ä«¸Ş¶ó À§Ä¡ ¼³Á¤ // Set the camera position
+		// ì¹´ë©”ë¼ ìœ„ì¹˜ ì„¤ì • // Set the camera position
 		DistanceTransform3D.SetPosition(tpPosition);
-		// Ä«¸Ş¶ó ¹æÇâ ¼³Á¤ // Set the camera direction
+		// ì¹´ë©”ë¼ ë°©í–¥ ì„¤ì • // Set the camera direction
 		DistanceTransform3D.SetDirection(tpDirection);
-		// Ä«¸Ş¶ó ¾÷ º¤ÅÍ ¼³Á¤ // Set the camera up vector
+		// ì¹´ë©”ë¼ ì—… ë²¡í„° ì„¤ì • // Set the camera up vector
 		DistanceTransform3D.SetUpVector(tpUpVector);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = DistanceTransform3D.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute multiFocus.");
@@ -154,22 +154,22 @@ int main()
 		}
 
 		CFLArray<TPoint3<float>> arrResult;
-		// °Å¸® °á°ú °¡Á®¿À±â // Get the distance
+		// ê±°ë¦¬ ê²°ê³¼ ê°€ì ¸ì˜¤ê¸° // Get the distance
 		DistanceTransform3D.GetResultDistanceAxis(arrResult);
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIView3DLayerWrap layer3DSrc = view3DSrc.GetLayer(0);
 		CGUIView3DLayerWrap layer3DDst = view3DDst.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer3DSrc.Clear();
 		layer3DDst.Clear();
 
-		// °Å¸® °á°ú¸¦ ±×·ÁÁØ´Ù // Draw distance result
+		// ê±°ë¦¬ ê²°ê³¼ë¥¼ ê·¸ë ¤ì¤€ë‹¤ // Draw distance result
 		DrawResult(&view3DDst, fl3DObject.GetVertices(), arrResult, L"Delta Z");
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if((res = view3DDst.ZoomFit()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to zoom fit of the image view.\n");
@@ -191,11 +191,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		view3DSrc.Invalidate(true);
 		view3DDst.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä, 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·°, 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(view3DSrc.IsAvailable() || view3DDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

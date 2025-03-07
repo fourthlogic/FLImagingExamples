@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -18,30 +18,30 @@ bool Calibration(COrthogonalCalibrator& sCC, CFLImage& fliLearnImage)
 
 	do
 	{ 
-		// Learn ÀÌ¹ÌÁö ¼³Á¤ // Learn image settings
+		// Learn ì´ë¯¸ì§€ ì„¤ì • // Learn image settings
 		if(IsFail(res = sCC.SetLearnImageForCameraCalibration(&fliLearnImage)))
 		{
 			ErrorPrint(res, L"Failed to set image\n");
 			break;
 		}
 
-		// CalibatorÇÒ ´ë»ó Á¾·ù¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the target type for Calibator.
+		// Calibatorí•  ëŒ€ìƒ ì¢…ë¥˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the target type for Calibator.
 		sCC.SetGridTypeForCameraCalibration(COrthogonalCalibrator::EGridType_ChessBoard);
 
-		// Á÷±³ º¸Á¤ °è»êÀ» ÇÒ Learn ÀÌ¹ÌÁö ¼³Á¤ // Learn image settings for orthogonal correction
+		// ì§êµ ë³´ì • ê³„ì‚°ì„ í•  Learn ì´ë¯¸ì§€ ì„¤ì • // Learn image settings for orthogonal correction
 		if(IsFail(res = sCC.SetLearnImageForOrthogonalCorrection(&fliLearnImage)))
 		{
 			ErrorPrint(res, L"Failed to set image\n");
 			break;
 		}
 
-		// Á÷±³ º¸Á¤ÇÒ ´ë»ó Á¾·ù¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the target type for orthogonal correction.
+		// ì§êµ ë³´ì •í•  ëŒ€ìƒ ì¢…ë¥˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the target type for orthogonal correction.
 		sCC.SetGridTypeForOrthogonalCorrection(COrthogonalCalibrator::EGridType_ChessBoard);
 
-		// °á°ú¿¡ ´ëÇÑ ÇĞ½À·üÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the learning rate for the result.
+		// ê²°ê³¼ì— ëŒ€í•œ í•™ìŠµë¥ ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the learning rate for the result.
 		sCC.SetOptimalSolutionAccuracy();
 
-		// Calibration ½ÇÇà // Execute Calibration
+		// Calibration ì‹¤í–‰ // Execute Calibration
 		if(IsFail(res = sCC.Calibrate()))
 		{
 			ErrorPrint(res, L"Calibration failed\n");
@@ -65,28 +65,28 @@ bool Undistortion(COrthogonalCalibrator& sCC, CFLImage& fliSourceImage, CFLImage
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set Source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set Source image
 		if(IsFail(eFResult = sCC.SetSourceImage(&fliSourceImage)))
 		{
 			ErrorPrint(res, L"Failed to Loads image\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set destination image
 		if(IsFail(eIResult = sCC.SetDestinationImage(&fliDestinationImage)))
 		{
 			ErrorPrint(res, L"Failed to Loads image\n");
 			break;
 		}
 
-		// Interpolation ¾Ë°í¸®Áò ¼³Á¤ // Set the Interpolation Algorithm
+		// Interpolation ì•Œê³ ë¦¬ì¦˜ ì„¤ì • // Set the Interpolation Algorithm
 		if(IsFail(res = sCC.SetInterpolationMethod(ImageProcessing::EInterpolationMethod_Bilinear)))
 		{
 			ErrorPrint(res, L"Failed to set interpolation method\n");
 			break;
 		}
 
-		// Undistortion ½ÇÇà // Execute Undistortion
+		// Undistortion ì‹¤í–‰ // Execute Undistortion
 		if(IsFail(res = sCC.Execute()))
 		{
 			ErrorPrint(res, L"Undistortion failed\n");
@@ -102,33 +102,33 @@ bool Undistortion(COrthogonalCalibrator& sCC, CFLImage& fliSourceImage, CFLImage
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliLearnImage, fliSourceImage, fliDestinationImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageLearn, viewImageSource, viewImageDestination;
 
-	// Camera Calibrator °´Ã¼ »ı¼º // Create Camera Calibrator object
+	// Camera Calibrator ê°ì²´ ìƒì„± // Create Camera Calibrator object
 	COrthogonalCalibrator sCC;
 	CResult res;
 
 	do
 	{
-		// Learn ÀÌ¹ÌÁö ·Îµå // Load the Learn image
+		// Learn ì´ë¯¸ì§€ ë¡œë“œ // Load the Learn image
 		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/OrthogonalCalibrator/Orthogonal_ChessBoard.flif")))
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Learn ÀÌ¹ÌÁö ºä »ı¼º // Create the Learn image view
+		// Learn ì´ë¯¸ì§€ ë·° ìƒì„± // Create the Learn image view
 		if(IsFail(res = viewImageLearn.Create(300, 0, 300 + 480, 360)))
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Learn ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the Learn image view
+		// Learn ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the Learn image view
 		if(IsFail(res = viewImageLearn.SetImagePtr(&fliLearnImage)))
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
@@ -140,14 +140,14 @@ int main()
 		if(!Calibration(sCC, fliLearnImage))
 			break;
 
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/OrthogonalCalibrator/Orthogonal_ChessBoard.flif")))
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö »ı¼º // Create destination image
+		// Destination ì´ë¯¸ì§€ ìƒì„± // Create destination image
 		if(IsFail(res = fliDestinationImage.Create(fliSourceImage.GetWidth(), fliSourceImage.GetHeight(), CMultiVarLL(0), fliSourceImage.GetPixelFormat())))
 		{
 			ErrorPrint(res, L"Failed to create the image file.\n");
@@ -157,7 +157,7 @@ int main()
 		if(!Undistortion(sCC, fliSourceImage, fliDestinationImage, viewImageSource, viewImageDestination))
 			break;
 
-		// È­¸é¿¡ °İÀÚ Å½Áö °á°ú Ãâ·Â // Output the grid detection result on the screen
+		// í™”ë©´ì— ê²©ì íƒì§€ ê²°ê³¼ ì¶œë ¥ // Output the grid detection result on the screen
 		SGridDisplay sArrGridDisplay;
 		int64_t i64ObjectCount = sCC.GetResultGridPointsObjectCnt(0);
 
@@ -309,63 +309,63 @@ int main()
 
 		viewImageLearn.Invalidate();
 		
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if(IsFail(res = viewImageSource.Create(300, 360, 780, 720)))
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Creates the Destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Creates the Destination image view
 		if(IsFail(res = viewImageDestination.Create(780, 360, 1260, 720)))
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the Source ImageView
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the Source ImageView
 		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the Destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the Destination image view
 		if(IsFail(res = viewImageDestination.SetImagePtr(&fliDestinationImage)))
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù. // Synchronize the viewpoints of the two image views.
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤. // Synchronize the viewpoints of the two image views.
 		if(IsFail(res = viewImageLearn.SynchronizePointOfView(&viewImageSource)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù. // Synchronize the viewpoints of the two image views.
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤. // Synchronize the viewpoints of the two image views.
 		if(IsFail(res = viewImageLearn.SynchronizePointOfView(&viewImageDestination)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImageSource)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImageDestination)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 		
-		// calibration data Ãâ·Â // Output calibration data  // Output calibration data
+		// calibration data ì¶œë ¥ // Output calibration data  // Output calibration data
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 		COrthogonalCalibrator::SIntrinsicParameters sIntrinsicParam = sCC.GetResultIntrinsicParameters();
 		COrthogonalCalibrator::SDistortionCoefficients sDistortCoeef = sCC.GetResultDistortionCoefficients();
@@ -396,7 +396,7 @@ int main()
 		CFLPoint<double> ptDistTitle(80, 350);
 		CFLPoint<double> ptDist(100, 370);
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Intrinsic Parameters: ", YELLOW, BLACK, 13)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
@@ -434,7 +434,7 @@ int main()
 		viewImageSource.Invalidate(true);
 		viewImageDestination.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageLearn.IsAvailable() && viewImageSource.IsAvailable() && viewImageDestination.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

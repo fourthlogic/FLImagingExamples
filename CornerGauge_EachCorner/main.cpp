@@ -1,34 +1,34 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage;
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Gauge/Rect.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Loads image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Loads image view
 		if(IsFail(res = viewImage.Create(400, 0, 1424, 768)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -37,44 +37,44 @@ int main()
 
 		CResult res = EResult_UnknownError;
 
-		// Corner Gauge °´Ã¼ »ı¼º // Create Corner Gauge object
+		// Corner Gauge ê°ì²´ ìƒì„± // Create Corner Gauge object
 		CCornerGauge CornerGauge;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to process
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to process
 		CornerGauge.SetSourceImage(fliImage);
 
-		// ÃøÁ¤ÇÒ ¿µ¿ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the area to measure.
+		// ì¸¡ì •í•  ì˜ì—­ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the area to measure.
 		CFLRect<double> measureRegion(213.577428, 262.324155, 295.020437, 348.179290);
 		double tolerance = 50.;
 		CornerGauge.SetMeasurementRegion(measureRegion, tolerance);
 
-		// ÃßÃâÇÏ±âÀ§ÇÑ ÆÄ¶ó¹ÌÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set parameters for extraction.
-		// ÄÚ³Ê¸¦ ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ º¯È­ ¹æÇâ¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the boundary point change direction to extract to estimate the corner.
+		// ì¶”ì¶œí•˜ê¸°ìœ„í•œ íŒŒë¼ë¯¸í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set parameters for extraction.
+		// ì½”ë„ˆë¥¼ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì  ë³€í™” ë°©í–¥ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the boundary point change direction to extract to estimate the corner.
 		CornerGauge.SetTransitionType(CCornerGauge::ETransitionType_DarkToBrightOrBrightToDark);
-		// ÄÚ³Ê¸¦ ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÑ °æ°èÁ¡ Áß »ç¿ëÇÒ °æ°èÁ¡ À¯ÇüÀ» ¼±ÅÃÇÕ´Ï´Ù. // Select the boundary point type to use among the boundary points extracted to estimate the corner.
+		// ì½”ë„ˆë¥¼ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•œ ê²½ê³„ì  ì¤‘ ì‚¬ìš©í•  ê²½ê³„ì  ìœ í˜•ì„ ì„ íƒí•©ë‹ˆë‹¤. // Select the boundary point type to use among the boundary points extracted to estimate the corner.
 		CornerGauge.SetTransitionChoice(CCornerGauge::ETransitionChoice_Closest);
-		// ÄÚ³Ê¸¦ ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ÀÇ º¯È­ ÀÓ°è°ª¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the threshold change of the boundary point to be extracted to estimate the corner.
+		// ì½”ë„ˆë¥¼ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ì˜ ë³€í™” ì„ê³„ê°’ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the threshold change of the boundary point to be extracted to estimate the corner.
 		CornerGauge.SetThreshold(20);
-		// ÄÚ³Ê¸¦ ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ÀÇ º¯È­ ÀÓ°è°ª¿¡ º¸Á¤°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the correction value to the threshold change of the boundary point to be extracted to estimate the corner.
+		// ì½”ë„ˆë¥¼ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ì˜ ë³€í™” ì„ê³„ê°’ì— ë³´ì •ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the correction value to the threshold change of the boundary point to be extracted to estimate the corner.
 		CornerGauge.SetMinimumAmplitude(10);
-		// ÄÚ³Ê¸¦ ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ´ëÇ¥°ª Ç¥º» °³¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the number of representative sample values ??of the boundary points to be extracted to estimate the corner.
+		// ì½”ë„ˆë¥¼ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ëŒ€í‘œê°’ í‘œë³¸ ê°œìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the number of representative sample values ??of the boundary points to be extracted to estimate the corner.
 		CornerGauge.SetThickness(1);
-		// ÄÚ³Ê¸¦ ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÃßÃâ °£°İÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the extraction interval of boundary points to be extracted to estimate the corner.
+		// ì½”ë„ˆë¥¼ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì¶”ì¶œ ê°„ê²©ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the extraction interval of boundary points to be extracted to estimate the corner.
 		CornerGauge.SetSamplingStep(1.);
-		// ÄÚ³Ê¸¦ ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÀÌ»óÄ¡ Á¶Á¤À» À§ÇÑ ÀÓ°è°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the threshold value for outlier adjustment of the boundary points to be extracted to estimate the corner.
+		// ì½”ë„ˆë¥¼ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì´ìƒì¹˜ ì¡°ì •ì„ ìœ„í•œ ì„ê³„ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the threshold value for outlier adjustment of the boundary points to be extracted to estimate the corner.
 		CornerGauge.SetOutliersThreshold(1.);
-		// ÄÚ³Ê¸¦ ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÀÌ»óÄ¡ Á¶Á¤ È½¼öÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the number of outlier adjustments for boundary points to be extracted to estimate the corner.
+		// ì½”ë„ˆë¥¼ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì´ìƒì¹˜ ì¡°ì • íšŸìˆ˜ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the number of outlier adjustments for boundary points to be extracted to estimate the corner.
 		CornerGauge.SetOutliersThresholdCount(3);
-		// ÄÚ³Ê¸¦ ÃßÁ¤ÇÏ±âÀ§ÇØ Á¡ Å¬·¯½ºÅÍ¸µ Ã³¸® À¯¹«¿¡ ´ëÇÑ ¼³Á¤À» ÇÕ´Ï´Ù. // Set whether or not to process point clustering to estimate the corner.
+		// ì½”ë„ˆë¥¼ ì¶”ì •í•˜ê¸°ìœ„í•´ ì  í´ëŸ¬ìŠ¤í„°ë§ ì²˜ë¦¬ ìœ ë¬´ì— ëŒ€í•œ ì„¤ì •ì„ í•©ë‹ˆë‹¤. // Set whether or not to process point clustering to estimate the corner.
 		CornerGauge.EnableClusterMode(true);
-		// ÄÚ³Ê¸¦ ÃßÁ¤ÇÏ±âÀ§ÇØ ¸¶ÁøÀ» ¼³Á¤ÇÕ´Ï´Ù. ÇÊ¿ä¿¡ µû¶ó °¢ ±¸¿ªº°·Î ¼³Á¤°¡´ÉÇÕ´Ï´Ù. // Set the margin to estimate the corner. It can be set for each zone as needed.
+		// ì½”ë„ˆë¥¼ ì¶”ì •í•˜ê¸°ìœ„í•´ ë§ˆì§„ì„ ì„¤ì •í•©ë‹ˆë‹¤. í•„ìš”ì— ë”°ë¼ ê° êµ¬ì—­ë³„ë¡œ ì„¤ì •ê°€ëŠ¥í•©ë‹ˆë‹¤. // Set the margin to estimate the corner. It can be set for each zone as needed.
 		CornerGauge.SetMeasurementMarginRatio(0., CCornerGauge::EMargin_All);
-		// ÄÚ³Ê¸¦ ÃßÁ¤ÇÏ±âÀ§ÇÑ Tolerance¸¦ ¼³Á¤ÇÕ´Ï´Ù. ÇÊ¿ä¿¡ µû¶ó °¢ ±¸¿ªº°·Î ¼³Á¤°¡´ÉÇÕ´Ï´Ù. // Set the Tolerance for estimating the corner. It can be set for each zone as needed.
+		// ì½”ë„ˆë¥¼ ì¶”ì •í•˜ê¸°ìœ„í•œ Toleranceë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. í•„ìš”ì— ë”°ë¼ ê° êµ¬ì—­ë³„ë¡œ ì„¤ì •ê°€ëŠ¥í•©ë‹ˆë‹¤. // Set the Tolerance for estimating the corner. It can be set for each zone as needed.
 		CornerGauge.SetTolerance(tolerance, CCornerGauge::ETolerance_All);
-		// ÄÚ³Ê¸¦ ÃøÁ¤ÇÏ±âÀ§ÇÑ ¿µ¿ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the area for measuring corners.
+		// ì½”ë„ˆë¥¼ ì¸¡ì •í•˜ê¸°ìœ„í•œ ì˜ì—­ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the area for measuring corners.
 		CornerGauge.SetCorner(CCornerGauge::ECorner_All);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if(IsFail(res = CornerGauge.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute Corner gauge.\n");
@@ -88,9 +88,9 @@ int main()
 
 		if(IsOK(res))
 		{
-			// ½ÇÇà °á°ú¸¦ °¡Á®¿É´Ï´Ù. // Get the execution result.
+			// ì‹¤í–‰ ê²°ê³¼ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the execution result.
 			CFLFigureArray flfaResultLine;
-			// ÃßÁ¤µÈ ¼±À» °¡Á®¿É´Ï´Ù. // Get the estimated line.
+			// ì¶”ì •ëœ ì„ ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the estimated line.
 			CornerGauge.GetMeasuredLines(flfaResultLine);
 
 			layer.DrawFigureImage(flfaResultLine, BLACK, 5);
@@ -100,7 +100,7 @@ int main()
 			arrLines[0] = dynamic_cast<CFLLine<double>*>(flfaResultLine.GetAt(0));
 			arrLines[1] = dynamic_cast<CFLLine<double>*>(flfaResultLine.GetAt(1));
 
-			// ÃßÁ¤µÈ ÄÚ³Ê¸¦ °¡Á®¿É´Ï´Ù. // Get the estimated corner.
+			// ì¶”ì •ëœ ì½”ë„ˆë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the estimated corner.
 			for(int32_t i32CornerIndex = 0; i32CornerIndex < 4; ++i32CornerIndex)
 			{
 				CFLPoint<double> flpResultCorner;
@@ -116,18 +116,18 @@ int main()
 			{
 				double f64ResultAngle;
 				f64ResultAngle = arrLines[i].GetAngle();
-				printf("Line Angle : %.2lf¢ª\n", f64ResultAngle);
+				printf("Line Angle : %.2lfËš\n", f64ResultAngle);
 			}
 		}
 
 		CFLFigureArray flfaResultsValid, flfaResultsInvalid;
-		// ÃßÁ¤µÈ ÄÚ³Ê¸¦ ÃßÃâ¿¡ »ç¿ëµÈ À¯È¿ °æ°èÁ¡À» °¡Á®¿É´Ï´Ù. // Get the effective boundary point used to extract the estimated corner.
+		// ì¶”ì •ëœ ì½”ë„ˆë¥¼ ì¶”ì¶œì— ì‚¬ìš©ëœ ìœ íš¨ ê²½ê³„ì ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the effective boundary point used to extract the estimated corner.
 		CornerGauge.GetMeasuredValidPoints(flfaResultsValid);
-		// ÃßÁ¤µÈ ÄÚ³Ê¸¦ ÃßÃâ¿¡ »ç¿ëµÇÁö ¸øÇÑ À¯È¿ÇÏÁö ¾ÊÀº °æ°èÁ¡À» °¡Á®¿É´Ï´Ù. // Get an invalid boundary point that is not used to extract the estimated corner.
+		// ì¶”ì •ëœ ì½”ë„ˆë¥¼ ì¶”ì¶œì— ì‚¬ìš©ë˜ì§€ ëª»í•œ ìœ íš¨í•˜ì§€ ì•Šì€ ê²½ê³„ì ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get an invalid boundary point that is not used to extract the estimated corner.
 		CornerGauge.GetMeasuredInvalidPoints(flfaResultsInvalid);
 
 
-		// ÃßÃâµÈ À¯È¿Á¡ÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the extracted valid point is
+		// ì¶”ì¶œëœ ìœ íš¨ì ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the extracted valid point is
 		for(int32_t i32Index = 0; i32Index < (int32_t)flfaResultsValid.GetCount(); ++i32Index)
 		{
 			if(flfaResultsValid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
@@ -144,7 +144,7 @@ int main()
 			}
 		}
 
-		// ÃßÃâµÈ À¯È¿ÇÏÁö ¾ÊÀº Á¡ÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to see where the extracted invalid points are
+		// ì¶”ì¶œëœ ìœ íš¨í•˜ì§€ ì•Šì€ ì ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to see where the extracted invalid points are
 		for(int32_t i32Index = 0; i32Index < (int32_t)flfaResultsInvalid.GetCount(); ++i32Index)
 		{
 			if(flfaResultsInvalid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
@@ -161,17 +161,17 @@ int main()
 			}
 		}
 
-		// ÃøÁ¤ ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the measurement area is
+		// ì¸¡ì • ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the measurement area is
 		if(IsFail(res = layer.DrawFigureImage(&measureRegion, BLUE)))
 		{
 			ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 			break;
 		}
 		
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

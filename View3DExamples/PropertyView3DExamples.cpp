@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PropertyView3DExamples.h"
 
 using namespace FLImaging;
@@ -39,7 +39,7 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIDD->SetPath(L"PushObject");
 			pPIDD->SetName(L"Object Type");
 			pPIDD->SetDescription(L"Select the type of object to be displayed in the 3D view.\n\
-								  3D ºä¿¡ µğ½ºÇÃ·¹ÀÌ ÇÒ °´Ã¼ Å¸ÀÔÀ» ¼±ÅÃÇÕ´Ï´Ù.");
+								  3D ë·°ì— ë””ìŠ¤í”Œë ˆì´ í•  ê°ì²´ íƒ€ì…ì„ ì„ íƒí•©ë‹ˆë‹¤.");
 
 			pPIDD->AddListItem(L"PLY File");
 			pPIDD->AddListItem(L"Image(Height Map)");
@@ -57,7 +57,7 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIButton->SetButtonName(L"PushObject");
 			pPIButton->SetPropertyButtonClickProcedure(PushObject());
 			pPIButton->SetDescription(L"An example of adding an object to be displayed in a 3D view.\n\
-									  3D ºä¿¡ µğ½ºÇÃ·¹ÀÌ ÇÒ °´Ã¼¸¦ Ãß°¡ÇÏ´Â ¿¹Á¦ÀÔ´Ï´Ù.");
+									  3D ë·°ì— ë””ìŠ¤í”Œë ˆì´ í•  ê°ì²´ë¥¼ ì¶”ê°€í•˜ëŠ” ì˜ˆì œì…ë‹ˆë‹¤.");
 			AddItem(pPIButton);
 		}
 
@@ -79,7 +79,7 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIButton->SetDescription(L"Example of CROIUtilities3D");
 			pPIButton->SetPropertyButtonClickProcedure(ROIUtilities3DTest());
 			pPIButton->SetDescription(L"An example of using CROIUtilities3D.\n\
-									  CROIUtilities3D »ç¿ë¿¡ °üÇÑ ¿¹Á¦ÀÔ´Ï´Ù.");
+									  CROIUtilities3D ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œì…ë‹ˆë‹¤.");
 			AddItem(pPIButton);
 
 			pPIButton = new CGUIPropertyItemButton;
@@ -88,7 +88,7 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIButton->SetButtonName(L"Execute");
 			pPIButton->SetPropertyButtonClickProcedure(FrustumCollisionTest());
 			pPIButton->SetDescription(L"An example of testing for collisions between a frustum and 3D objects.\n\
-									  ÀıµÎÃ¼¿Í 3D °´Ã¼ °£ÀÇ Ãæµ¹ ¿©ºÎ Å×½ºÆ® ¿¹Á¦ÀÔ´Ï´Ù.");
+									  ì ˆë‘ì²´ì™€ 3D ê°ì²´ ê°„ì˜ ì¶©ëŒ ì—¬ë¶€ í…ŒìŠ¤íŠ¸ ì˜ˆì œì…ë‹ˆë‹¤.");
 			AddItem(pPIButton);
 		}
 
@@ -127,7 +127,7 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIButton->SetDescription(L"Example of CFL3DObjectUtilities");
 			pPIButton->SetPropertyButtonClickProcedure(FL3DObjectUtilitiesTest());
 			pPIButton->SetDescription(L"An example of using CFL3DObjectUtilities, which supports transformation functions such as object rotation, scaling, and translation.\n\
-									  °´Ã¼ È¸Àü, ½ºÄÉÀÏ, ÀÌµ¿ µî º¯È¯ ±â´ÉÀ» Áö¿øÇÏ´Â CFL3DObjectUtilities »ç¿ë¿¡ °üÇÑ ¿¹Á¦ÀÔ´Ï´Ù.");
+									  ê°ì²´ íšŒì „, ìŠ¤ì¼€ì¼, ì´ë™ ë“± ë³€í™˜ ê¸°ëŠ¥ì„ ì§€ì›í•˜ëŠ” CFL3DObjectUtilities ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œì…ë‹ˆë‹¤.");
 			AddItem(pPIButton);
 		}
 
@@ -272,7 +272,7 @@ const CResult CPropertyView3DExamples::ConfigureMenu()
 			pPIButton->SetButtonName(L"Apply");
 			pPIButton->SetPropertyButtonClickProcedure(SetCameraParameters());
 			pPIButton->SetDescription(L"An example of using the camera object (CGUIView3DCamera).\n\
-									  Ä«¸Ş¶ó °´Ã¼(CGUIView3DCamera) »ç¿ë¿¡ °üÇÑ ¿¹Á¦ÀÔ´Ï´Ù.");
+									  ì¹´ë©”ë¼ ê°ì²´(CGUIView3DCamera) ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œì…ë‹ˆë‹¤.");
 			AddItem(pPIButton);
 		}
 
@@ -622,7 +622,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::SetC
 
 			CGUIPropertyItemText* pTextAoV = dynamic_cast<CGUIPropertyItemText*>(FindItemByFullPath(L"Camera@Angle of View(Degree)"));
 
-			// 3D View ¿¡¼­ Ä«¸Ş¶ó °´Ã¼ ¾ò¾î ¿À±â
+			// 3D View ì—ì„œ ì¹´ë©”ë¼ ê°ì²´ ì–»ì–´ ì˜¤ê¸°
 			// Gets the camera object from the 3D View.
 			CGUIView3DCamera* pCamera = (CGUIView3DCamera*)pView3D->GetCamera();
 
@@ -633,7 +633,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::SetC
 					float f32DY = (float)_wtof(pTextDY->GetValue());
 					float f32DZ = (float)_wtof(pTextDZ->GetValue());
 
-					// Ä«¸Ş¶ó°¡ ¹Ù¶óº¸´Â ¹æÇâÀ» ¼³Á¤
+					// ì¹´ë©”ë¼ê°€ ë°”ë¼ë³´ëŠ” ë°©í–¥ì„ ì„¤ì •
 					// Sets the direction that the camera is looking.
 					pCamera->SetDirection(CFLPoint3<float>(f32DX, f32DY, f32DZ));
 				}
@@ -643,7 +643,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::SetC
 					float f32UDY = (float)_wtof(pTextUDY->GetValue());
 					float f32UDZ = (float)_wtof(pTextUDZ->GetValue());
 
-					// Ä«¸Ş¶óÀÇ À§ÂÊ ¹æÇâ º¤ÅÍ¸¦ ¼³Á¤
+					// ì¹´ë©”ë¼ì˜ ìœ„ìª½ ë°©í–¥ ë²¡í„°ë¥¼ ì„¤ì •
 					// Sets the up direction vector of the camera.
 					pCamera->SetDirectionUp(CFLPoint3<float>(f32UDX, f32UDY, f32UDZ));
 				}
@@ -653,7 +653,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::SetC
 					float f32PY = (float)_wtof(pTextPY->GetValue());
 					float f32PZ = (float)_wtof(pTextPZ->GetValue());
 
-					// Ä«¸Ş¶óÀÇ Æ÷Áö¼ÇÀ» ¼³Á¤
+					// ì¹´ë©”ë¼ì˜ í¬ì§€ì…˜ì„ ì„¤ì •
 					// Sets the position of the camera.
 					pCamera->SetPosition(CFLPoint3<float>(f32PX, f32PY, f32PZ));
 				}
@@ -663,7 +663,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::SetC
 					float f32TY = (float)_wtof(pTextTY->GetValue());
 					float f32TZ = (float)_wtof(pTextTZ->GetValue());
 
-					// Ä«¸Ş¶ó°¡ ¹Ù¶óº¸´Â ¹°Ã¼ÀÇ ÁÂÇ¥¸¦ ¼³Á¤
+					// ì¹´ë©”ë¼ê°€ ë°”ë¼ë³´ëŠ” ë¬¼ì²´ì˜ ì¢Œí‘œë¥¼ ì„¤ì •
 					// Sets the coordinates of the object that the camera is looking at.
 					pCamera->SetTarget(CFLPoint3<float>(f32TX, f32TY, f32TZ));
 				}
@@ -671,12 +671,12 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::SetC
 				{
 					float f32AoV = (float)_wtof(pTextAoV->GetValue());
 
-					// Ä«¸Ş¶óÀÇ È­°¢ ¼³Á¤
+					// ì¹´ë©”ë¼ì˜ í™”ê° ì„¤ì •
 					// Sets the angle of view
 					pCamera->SetAngleOfViewY(f32AoV, false);
 				}
 
-				// ºä ¾÷µ¥ÀÌÆ® // Update the view	
+				// ë·° ì—…ë°ì´íŠ¸ // Update the view	
 				pView3D->UpdateScreen();
 
 				CFLPoint3<float> flp3D = pCamera->GetDirection();
@@ -745,30 +745,30 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::FL3D
 			if(!pPIDD)
 				break;
 
-			// È­»ìÇ¥ÀÇ ±æÀÌ // Height of the arrow.
+			// í™”ì‚´í‘œì˜ ê¸¸ì´ // Height of the arrow.
 			float f32Height = 30.f;
-			// È­»ìÇ¥¿¡¼­ »ÏÁ·ÇÑ ºÎºĞ(¿ø»Ô)ÀÌ Â÷ÁöÇÏ´Â ºñÀ²
+			// í™”ì‚´í‘œì—ì„œ ë¾°ì¡±í•œ ë¶€ë¶„(ì›ë¿”)ì´ ì°¨ì§€í•˜ëŠ” ë¹„ìœ¨
 			// Ratio of the arrowhead (cone) to the total arrow length.
 			float f32ArrowRatio = 0.15f;
-			// È­»ìÇ¥ÀÇ ÆÄÀÌÇÁ ¹İÁö¸§ // Radius of the arrow's pipe.
+			// í™”ì‚´í‘œì˜ íŒŒì´í”„ ë°˜ì§€ë¦„ // Radius of the arrow's pipe.
 			float f32PipeRadius = f32Height / 40.f;
-			// È­»ìÇ¥ÀÇ »ÏÁ·ÇÑ ºÎºĞ(¿ø»Ô)ÀÇ ¹İÁö¸§ // Radius of the arrowhead (cone).
+			// í™”ì‚´í‘œì˜ ë¾°ì¡±í•œ ë¶€ë¶„(ì›ë¿”)ì˜ ë°˜ì§€ë¦„ // Radius of the arrowhead (cone).
 			float f32ArrowBottomRadius = f32Height / 20.f;
 
-			// CGUIView3DObject °´Ã¼ ¼±¾ğ(ÀÓ½Ã º¯¼ö)
+			// CGUIView3DObject ê°ì²´ ì„ ì–¸(ì„ì‹œ ë³€ìˆ˜)
 			// Declare CGUIView3DObject (temporary variable)
 			CGUIView3DObject mesh1, mesh2;
 
-			// CGUIView3DObject °´Ã¼ÀÇ ÅäÆú·ÎÁö Å¸ÀÔÀ» ¼Ö¸®µå·Î ¼³Á¤
+			// CGUIView3DObject ê°ì²´ì˜ í† í´ë¡œì§€ íƒ€ì…ì„ ì†”ë¦¬ë“œë¡œ ì„¤ì •
 			// Set the topology type of the CGUIView3DObject to solid
 			mesh1.SetTopologyType(ETopologyType3D_Solid);
 			mesh2.SetTopologyType(ETopologyType3D_Solid);
 
-			// È­»ìÇ¥ °´Ã¼¸¦ »ı¼º(ÆÄ¶õ»ö)
+			// í™”ì‚´í‘œ ê°ì²´ë¥¼ ìƒì„±(íŒŒë€ìƒ‰)
 			// Create the arrow object(Blue color).
 			GetArrowObject(mesh1, mesh2, TPoint3<float>(0, 0, 0), f32Height, f32ArrowRatio, f32PipeRadius, f32ArrowBottomRadius, BLUE);
 
-			// CGUIView3DObject °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ
+			// CGUIView3DObject ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´
 			// Display the CGUIView3DObject in the view
 			pView3DSource->Clear();
 			pView3DTarget->Clear();
@@ -827,24 +827,24 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectPLY(CGUIView3D*
 
 		pView3D->Clear();
 
-		// CGUIView3DObject °´Ã¼ ¼±¾ğ(ÀÓ½Ã º¯¼ö)
+		// CGUIView3DObject ê°ì²´ ì„ ì–¸(ì„ì‹œ ë³€ìˆ˜)
 		// Declare CGUIView3DObject (temporary variable)
 		CGUIView3DObject objTemp;
 
-		// CGUIView3DObject °´Ã¼ÀÇ ÅäÆú·ÎÁö Å¸ÀÔÀ» ¼Ö¸®µå·Î ¼³Á¤
+		// CGUIView3DObject ê°ì²´ì˜ í† í´ë¡œì§€ íƒ€ì…ì„ ì†”ë¦¬ë“œë¡œ ì„¤ì •
 		// Set the topology type of the CGUIView3DObject to solid
 		objTemp.SetTopologyType(ETopologyType3D_Solid);
 
-		// CGUIView3DObject °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ ÇßÀ» ¶§, °´Ã¼ÀÇ ÀÎµ¦½º¸¦ ¾ò¾î ¿À±â À§ÇÑ º¯¼ö ¼±¾ğ
+		// CGUIView3DObject ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´ í–ˆì„ ë•Œ, ê°ì²´ì˜ ì¸ë±ìŠ¤ë¥¼ ì–»ì–´ ì˜¤ê¸° ìœ„í•œ ë³€ìˆ˜ ì„ ì–¸
 		// Declare a variable to obtain the index of the object when the CGUIView3DObject is displayed in the view
 		int32_t i32Index = -1;
 
-		// CGUIView3DObject °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ
+		// CGUIView3DObject ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´
 		// Display the CGUIView3DObject in the view
 		if((res = pView3D->PushObject(objTemp, &i32Index)).IsFail())
 			break;
 
-		// ºä¿¡ µğ½ºÇÃ·¹ÀÌµÈ CGUIView3DObject °´Ã¼¸¦ ÀÎµ¦½º¸¦ ÅëÇØ ¾ò¾î ¿À±â
+		// ë·°ì— ë””ìŠ¤í”Œë ˆì´ëœ CGUIView3DObject ê°ì²´ë¥¼ ì¸ë±ìŠ¤ë¥¼ í†µí•´ ì–»ì–´ ì˜¤ê¸°
 		// Retrieve the displayed CGUIView3DObject using the index
 		CGUIView3DObject* pView3DObject = (CGUIView3DObject*)pView3D->GetView3DObject(i32Index);
 
@@ -854,30 +854,30 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectPLY(CGUIView3D*
 			break;
 		}
 
-		// ºä¿¡ µğ½ºÇÃ·¹ÀÌµÈ CGUIView3DObject °´Ã¼ÀÇ ³»ºÎ µ¥ÀÌÅÍ Æ÷ÀÎÅÍ ¾ò¾î ¿À±â
-		// ¹öÅØ½º, ÄÃ·¯ µîÀÇ Á¤º¸´Â ³»ºÎ µ¥ÀÌÅÍ °´Ã¼ÀÎ CFL3DObject ¾È¿¡ ÀÖÀ½
+		// ë·°ì— ë””ìŠ¤í”Œë ˆì´ëœ CGUIView3DObject ê°ì²´ì˜ ë‚´ë¶€ ë°ì´í„° í¬ì¸í„° ì–»ì–´ ì˜¤ê¸°
+		// ë²„í…ìŠ¤, ì»¬ëŸ¬ ë“±ì˜ ì •ë³´ëŠ” ë‚´ë¶€ ë°ì´í„° ê°ì²´ì¸ CFL3DObject ì•ˆì— ìˆìŒ
 		// Retrieve the internal data pointer of the displayed CGUIView3DObject
 		// Information such as vertices, colors, etc., are inside the internal data object CFL3DObject
 		CFL3DObject* pObjData = (CFL3DObject*)pView3DObject->GetData();
 
-		// CFL3DObject °´Ã¼ÀÇ Load() ÇÔ¼ö È£ÃâÀ» ÅëÇØ PLY ÆÄÀÏÀ» ·ÎµåÇÏ¿© 
-		// °´Ã¼¿¡ ¹öÅØ½º, ÄÃ·¯, ³ë¸Ö, ÆäÀÌ½º µîÀÇ Á¤º¸¸¦ ÀúÀå
+		// CFL3DObject ê°ì²´ì˜ Load() í•¨ìˆ˜ í˜¸ì¶œì„ í†µí•´ PLY íŒŒì¼ì„ ë¡œë“œí•˜ì—¬ 
+		// ê°ì²´ì— ë²„í…ìŠ¤, ì»¬ëŸ¬, ë…¸ë©€, í˜ì´ìŠ¤ ë“±ì˜ ì •ë³´ë¥¼ ì €ì¥
 		// Load the PLY file through the Load() function of the CFL3DObject object
 		// and store information such as vertices, colors, normals, faces, etc., in the object
 		if((res = pObjData->Load(L"../../ExampleImages/View3DExamples/Car wheel example.ply")).IsFail())
 			break;
 
-		// CGUIView3DObject °´Ã¼ÀÇ ³»ºÎ µ¥ÀÌÅÍ °´Ã¼ÀÎ CFL3DObject °¡ º¯°æµÇ¾úÀ¸¹Ç·Î 
-		// ºä¿¡¼­µµ º¯°æ »çÇ×À» ¹İ¿µÇØ¼­ µğ½ºÇÃ·¹ÀÌ ÇÏ±â À§ÇØ ¾÷µ¥ÀÌÆ® ÇÃ·¡±× ¼³Á¤
+		// CGUIView3DObject ê°ì²´ì˜ ë‚´ë¶€ ë°ì´í„° ê°ì²´ì¸ CFL3DObject ê°€ ë³€ê²½ë˜ì—ˆìœ¼ë¯€ë¡œ 
+		// ë·°ì—ì„œë„ ë³€ê²½ ì‚¬í•­ì„ ë°˜ì˜í•´ì„œ ë””ìŠ¤í”Œë ˆì´ í•˜ê¸° ìœ„í•´ ì—…ë°ì´íŠ¸ í”Œë˜ê·¸ ì„¤ì •
 		// Since the internal data object of CGUIView3DObject, CFL3DObject, has changed
 		// set the update flag to reflect the changes in the view and display
 		pView3DObject->UpdateAll();
 
-		// ºä¿¡¼­ ÇØ´ç °´Ã¼¸¦ ¾÷µ¥ÀÌÆ®
+		// ë·°ì—ì„œ í•´ë‹¹ ê°ì²´ë¥¼ ì—…ë°ì´íŠ¸
 		// Update the object in the view
 		pView3D->UpdateObject(i32Index);
 
-		// ¾÷µ¥ÀÌÆ®µÈ °´Ã¼ÀÇ Å©±â¸¦ ¹İ¿µÇÏ¿© ºä¸¦ ZoomFit
+		// ì—…ë°ì´íŠ¸ëœ ê°ì²´ì˜ í¬ê¸°ë¥¼ ë°˜ì˜í•˜ì—¬ ë·°ë¥¼ ZoomFit
 		// ZoomFit the view to reflect the size of the updated object
 		pView3D->ZoomFit();
 
@@ -901,24 +901,24 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectSphere(CGUIView
 			break;
 		}
 
-		// CGUIView3DObject °´Ã¼ ¼±¾ğ(ÀÓ½Ã º¯¼ö)
+		// CGUIView3DObject ê°ì²´ ì„ ì–¸(ì„ì‹œ ë³€ìˆ˜)
 		// Declare CGUIView3DObject (temporary variable)
 		CGUIView3DObject objTemp;
 
-		// CGUIView3DObject °´Ã¼ÀÇ ÅäÆú·ÎÁö Å¸ÀÔÀ» ¼Ö¸®µå·Î ¼³Á¤
+		// CGUIView3DObject ê°ì²´ì˜ í† í´ë¡œì§€ íƒ€ì…ì„ ì†”ë¦¬ë“œë¡œ ì„¤ì •
 		// Set the topology type of the CGUIView3DObject to solid
 		objTemp.SetTopologyType(ETopologyType3D_Solid);
 
-		// CGUIView3DObject °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ ÇßÀ» ¶§, °´Ã¼ÀÇ ÀÎµ¦½º¸¦ ¾ò¾î ¿À±â À§ÇÑ º¯¼ö ¼±¾ğ
+		// CGUIView3DObject ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´ í–ˆì„ ë•Œ, ê°ì²´ì˜ ì¸ë±ìŠ¤ë¥¼ ì–»ì–´ ì˜¤ê¸° ìœ„í•œ ë³€ìˆ˜ ì„ ì–¸
 		// Declare a variable to obtain the index of the object when the CGUIView3DObject is displayed in the view
 		int32_t i32Index = -1;
 
-		// CGUIView3DObject °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ
+		// CGUIView3DObject ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´
 		// Display the CGUIView3DObject in the view
 		if((res = pView3D->PushObject(objTemp, &i32Index)).IsFail())
 			break;
 
-		// ºä¿¡ µğ½ºÇÃ·¹ÀÌµÈ CGUIView3DObject °´Ã¼¸¦ ÀÎµ¦½º¸¦ ÅëÇØ ¾ò¾î ¿À±â
+		// ë·°ì— ë””ìŠ¤í”Œë ˆì´ëœ CGUIView3DObject ê°ì²´ë¥¼ ì¸ë±ìŠ¤ë¥¼ í†µí•´ ì–»ì–´ ì˜¤ê¸°
 		// Retrieve the displayed CGUIView3DObject using the index
 		CGUIView3DObject* pView3DObject = (CGUIView3DObject*)pView3D->GetView3DObject(i32Index);
 
@@ -928,36 +928,36 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectSphere(CGUIView
 			break;
 		}
 
-		// ±¸ÀÇ ¹İÁö¸§ 
+		// êµ¬ì˜ ë°˜ì§€ë¦„ 
 		// Sets the radius of the sphere.
 		float f32Radius = 30.f;
 
-		// ±¸ÀÇ ½½¶óÀÌ½º °³¼ö. °ªÀÌ Å¬¼ö·Ï ºÎµå·¯¿î ±¸°¡ ¸¸µé¾îÁı´Ï´Ù.
+		// êµ¬ì˜ ìŠ¬ë¼ì´ìŠ¤ ê°œìˆ˜. ê°’ì´ í´ìˆ˜ë¡ ë¶€ë“œëŸ¬ìš´ êµ¬ê°€ ë§Œë“¤ì–´ì§‘ë‹ˆë‹¤.
 		// Sets the number of slices for the sphere. Higher values create a smoother sphere.
 		uint32_t u32SliceCount = 30;
 
-		// ±¸ÀÇ ½ºÅÃ °³¼ö. °ªÀÌ Å¬¼ö·Ï ºÎµå·¯¿î ±¸°¡ ¸¸µé¾îÁı´Ï´Ù.
+		// êµ¬ì˜ ìŠ¤íƒ ê°œìˆ˜. ê°’ì´ í´ìˆ˜ë¡ ë¶€ë“œëŸ¬ìš´ êµ¬ê°€ ë§Œë“¤ì–´ì§‘ë‹ˆë‹¤.
 		// Sets the number of stacks for the sphere. Higher values create a smoother sphere.
 		uint32_t u32StackCount = 30;
 
-		// CGUIView3DObject °´Ã¼¿¡ ¹öÅØ½º, ÄÃ·¯, ³ë¸», ÆäÀÌ½º Á¤º¸¸¦ ¼³Á¤
+		// CGUIView3DObject ê°ì²´ì— ë²„í…ìŠ¤, ì»¬ëŸ¬, ë…¸ë§, í˜ì´ìŠ¤ ì •ë³´ë¥¼ ì„¤ì •
 		// Sets the vertex, color, normal, and face information to the CGUIView3DObject object.
 		if((res = GetSphereObject(*pView3DObject, f32Radius, u32SliceCount, u32StackCount)).IsFail())
 			break;
 
-		// CGUIView3DObject °´Ã¼¿¡ ½¦ÀÌµù Å¸ÀÔÀ» Phong shading À¸·Î ¼³Á¤
+		// CGUIView3DObject ê°ì²´ì— ì‰ì´ë”© íƒ€ì…ì„ Phong shading ìœ¼ë¡œ ì„¤ì •
 		// Sets the shading type of the CGUIView3DObject object to Phong shading.
 		pView3DObject->SetShadingType(EShadingType3D_Phong);
 
-		// CGUIView3DObject °´Ã¼ÀÇ ³»ºÎ µ¥ÀÌÅÍ °´Ã¼ÀÎ CFL3DObject °¡ º¯°æµÇ¾úÀ¸¹Ç·Î 
-		// ºä¿¡¼­µµ º¯°æ »çÇ×À» ¹İ¿µÇØ¼­ µğ½ºÇÃ·¹ÀÌ ÇÏ±â À§ÇØ ¾÷µ¥ÀÌÆ® ÇÃ·¡±× ¼³Á¤
+		// CGUIView3DObject ê°ì²´ì˜ ë‚´ë¶€ ë°ì´í„° ê°ì²´ì¸ CFL3DObject ê°€ ë³€ê²½ë˜ì—ˆìœ¼ë¯€ë¡œ 
+		// ë·°ì—ì„œë„ ë³€ê²½ ì‚¬í•­ì„ ë°˜ì˜í•´ì„œ ë””ìŠ¤í”Œë ˆì´ í•˜ê¸° ìœ„í•´ ì—…ë°ì´íŠ¸ í”Œë˜ê·¸ ì„¤ì •
 		// Since the internal data object of CGUIView3DObject, CFL3DObject, has changed
 		// set the update flag to reflect the changes in the view and display
 		pView3DObject->UpdateVertex();
 		pView3DObject->UpdateNormal();
 		pView3DObject->UpdateColor();
 
-		// ºä¿¡¼­ ÇØ´ç °´Ã¼¸¦ ¾÷µ¥ÀÌÆ®
+		// ë·°ì—ì„œ í•´ë‹¹ ê°ì²´ë¥¼ ì—…ë°ì´íŠ¸
 		// Update the object in the view
 		pView3D->UpdateObject(i32Index);
 		pView3D->UpdateScreen();
@@ -982,60 +982,60 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectHeightMap(CGUIV
 			break;
 		}
 
-		// CGUIView3DObjectHeightMap °´Ã¼ ¼±¾ğ(ÀÓ½Ã º¯¼ö)
+		// CGUIView3DObjectHeightMap ê°ì²´ ì„ ì–¸(ì„ì‹œ ë³€ìˆ˜)
 		// Declare CGUIView3DObjectHeightMap (temporary variable)
 		CGUIView3DObjectHeightMap objTemp;
 
-		// CGUIView3DObjectHeightMap °´Ã¼ÀÇ ÅäÆú·ÎÁö Å¸ÀÔÀ» ¼Ö¸®µå·Î ¼³Á¤
+		// CGUIView3DObjectHeightMap ê°ì²´ì˜ í† í´ë¡œì§€ íƒ€ì…ì„ ì†”ë¦¬ë“œë¡œ ì„¤ì •
 		// Set the topology type of the CGUIView3DObjectHeightMap to solid
 		objTemp.SetTopologyType(ETopologyType3D_Solid);
 
-		// CGUIView3DObjectHeightMap °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ ÇßÀ» ¶§, °´Ã¼ÀÇ ÀÎµ¦½º¸¦ ¾ò¾î ¿À±â À§ÇÑ º¯¼ö ¼±¾ğ
+		// CGUIView3DObjectHeightMap ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´ í–ˆì„ ë•Œ, ê°ì²´ì˜ ì¸ë±ìŠ¤ë¥¼ ì–»ì–´ ì˜¤ê¸° ìœ„í•œ ë³€ìˆ˜ ì„ ì–¸
 		// Declare a variable to obtain the index of the object when the CGUIView3DObjectHeightMap is displayed in the view
 		int32_t i32Index = -1;
 
-		// CGUIView3DObjectHeightMap °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ
+		// CGUIView3DObjectHeightMap ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´
 		// Display the CGUIView3DObjectHeightMap in the view
 		if((res = pView3D->PushObject(objTemp, &i32Index)).IsFail())
 			break;
 
-		// ºä¿¡ µğ½ºÇÃ·¹ÀÌµÈ CGUIView3DObjectHeightMap °´Ã¼¸¦ ÀÎµ¦½º¸¦ ÅëÇØ ¾ò¾î ¿À±â
+		// ë·°ì— ë””ìŠ¤í”Œë ˆì´ëœ CGUIView3DObjectHeightMap ê°ì²´ë¥¼ ì¸ë±ìŠ¤ë¥¼ í†µí•´ ì–»ì–´ ì˜¤ê¸°
 		// Retrieve the displayed CGUIView3DObjectHeightMap using the index
 		CGUIView3DObjectHeightMap* pObjHeightMap = (CGUIView3DObjectHeightMap*)pView3D->GetView3DObject(i32Index);
 
 		if(!pObjHeightMap)
 			break;
 
-		// ºä¿¡ µğ½ºÇÃ·¹ÀÌµÈ CGUIView3DObjectHeightMap °´Ã¼ÀÇ ³»ºÎ µ¥ÀÌÅÍ Æ÷ÀÎÅÍ ¾ò¾î ¿À±â
-		// ¹öÅØ½º, ÄÃ·¯ µîÀÇ Á¤º¸´Â ³»ºÎ µ¥ÀÌÅÍ °´Ã¼ÀÎ CFL3DObjectHeightMap ¾È¿¡ ÀÖÀ½
+		// ë·°ì— ë””ìŠ¤í”Œë ˆì´ëœ CGUIView3DObjectHeightMap ê°ì²´ì˜ ë‚´ë¶€ ë°ì´í„° í¬ì¸í„° ì–»ì–´ ì˜¤ê¸°
+		// ë²„í…ìŠ¤, ì»¬ëŸ¬ ë“±ì˜ ì •ë³´ëŠ” ë‚´ë¶€ ë°ì´í„° ê°ì²´ì¸ CFL3DObjectHeightMap ì•ˆì— ìˆìŒ
 		// Retrieve the internal data pointer of the displayed CGUIView3DObjectHeightMap
 		// Information such as vertices, colors, etc., are inside the internal data object CFL3DObjectHeightMap
 		CFL3DObjectHeightMap* pObjData = (CFL3DObjectHeightMap*)pObjHeightMap->GetData();
 
-		// ³ôÀÌ ¸ÊÀ¸·Î »ç¿ëÇÒ ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ
+		// ë†’ì´ ë§µìœ¼ë¡œ ì‚¬ìš©í•  ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸
 		// Declares an image object to be used as a height map.
 		CFLImage fliHeightMap;
 
-		// ³ôÀÌ ¸Ê ÆÄÀÏ ·Îµå
+		// ë†’ì´ ë§µ íŒŒì¼ ë¡œë“œ
 		// Loads the height map file.
 		fliHeightMap.Load(L"../../ExampleImages/View3DExamples/mountain.flif");
 
-		// ÀÌ¹ÌÁö °´Ã¼¸¦ CFL3DObjectHeightMap °´Ã¼¿¡ Assign
+		// ì´ë¯¸ì§€ ê°ì²´ë¥¼ CFL3DObjectHeightMap ê°ì²´ì— Assign
 		// Assigns the image object to a CFL3DObjectHeightMap object.
 		pObjData->Assign(fliHeightMap);
 
-		// CGUIView3DObjectHeightMap °´Ã¼ÀÇ ³»ºÎ µ¥ÀÌÅÍ °´Ã¼ÀÎ CFL3DObjectHeightMap ÀÌ º¯°æµÇ¾úÀ¸¹Ç·Î 
-		// ºä¿¡¼­µµ º¯°æ »çÇ×À» ¹İ¿µÇØ¼­ µğ½ºÇÃ·¹ÀÌ ÇÏ±â À§ÇØ ¾÷µ¥ÀÌÆ® ÇÃ·¡±× ¼³Á¤
+		// CGUIView3DObjectHeightMap ê°ì²´ì˜ ë‚´ë¶€ ë°ì´í„° ê°ì²´ì¸ CFL3DObjectHeightMap ì´ ë³€ê²½ë˜ì—ˆìœ¼ë¯€ë¡œ 
+		// ë·°ì—ì„œë„ ë³€ê²½ ì‚¬í•­ì„ ë°˜ì˜í•´ì„œ ë””ìŠ¤í”Œë ˆì´ í•˜ê¸° ìœ„í•´ ì—…ë°ì´íŠ¸ í”Œë˜ê·¸ ì„¤ì •
 		// Since the internal data object of CGUIView3DObjectHeightMap, CFL3DObjectHeightMap, has changed
 		// set the update flag to reflect the changes in the view and display
 		pObjHeightMap->UpdateVertex();
 		pObjHeightMap->UpdateColor();
 
-		// ºä¿¡¼­ ÇØ´ç °´Ã¼¸¦ ¾÷µ¥ÀÌÆ®
+		// ë·°ì—ì„œ í•´ë‹¹ ê°ì²´ë¥¼ ì—…ë°ì´íŠ¸
 		// Update the object in the view
 		pView3D->UpdateObject(i32Index);
 
-		// ¾÷µ¥ÀÌÆ®µÈ °´Ã¼ÀÇ Å©±â¸¦ ¹İ¿µÇÏ¿© ºä¸¦ ZoomFit
+		// ì—…ë°ì´íŠ¸ëœ ê°ì²´ì˜ í¬ê¸°ë¥¼ ë°˜ì˜í•˜ì—¬ ë·°ë¥¼ ZoomFit
 		// ZoomFit the view to reflect the size of the updated object
 		pView3D->ZoomFit();
 
@@ -1059,24 +1059,24 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectHeightMapAndTex
 			break;
 		}
 
-		// CGUIView3DObjectHeightMap °´Ã¼ ¼±¾ğ(ÀÓ½Ã º¯¼ö)
+		// CGUIView3DObjectHeightMap ê°ì²´ ì„ ì–¸(ì„ì‹œ ë³€ìˆ˜)
 		// Declare CGUIView3DObjectHeightMap (temporary variable)
 		CGUIView3DObjectHeightMap objTemp;
 
-		// CGUIView3DObjectHeightMap °´Ã¼ÀÇ ÅäÆú·ÎÁö Å¸ÀÔÀ» ¼Ö¸®µå·Î ¼³Á¤
+		// CGUIView3DObjectHeightMap ê°ì²´ì˜ í† í´ë¡œì§€ íƒ€ì…ì„ ì†”ë¦¬ë“œë¡œ ì„¤ì •
 		// Set the topology type of the CGUIView3DObjectHeightMap to solid
 		objTemp.SetTopologyType(ETopologyType3D_Solid);
 
-		// CGUIView3DObjectHeightMap °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ ÇßÀ» ¶§, °´Ã¼ÀÇ ÀÎµ¦½º¸¦ ¾ò¾î ¿À±â À§ÇÑ º¯¼ö ¼±¾ğ
+		// CGUIView3DObjectHeightMap ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´ í–ˆì„ ë•Œ, ê°ì²´ì˜ ì¸ë±ìŠ¤ë¥¼ ì–»ì–´ ì˜¤ê¸° ìœ„í•œ ë³€ìˆ˜ ì„ ì–¸
 		// Declare a variable to obtain the index of the object when the CGUIView3DObjectHeightMap is displayed in the view
 		int32_t i32Index = -1;
 
-		// CGUIView3DObjectHeightMap °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ
+		// CGUIView3DObjectHeightMap ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´
 		// Display the CGUIView3DObjectHeightMap in the view
 		if((res = pView3D->PushObject(objTemp, &i32Index)).IsFail())
 			break;
 
-		// ºä¿¡ µğ½ºÇÃ·¹ÀÌµÈ CGUIView3DObjectHeightMap °´Ã¼¸¦ ÀÎµ¦½º¸¦ ÅëÇØ ¾ò¾î ¿À±â
+		// ë·°ì— ë””ìŠ¤í”Œë ˆì´ëœ CGUIView3DObjectHeightMap ê°ì²´ë¥¼ ì¸ë±ìŠ¤ë¥¼ í†µí•´ ì–»ì–´ ì˜¤ê¸°
 		// Retrieve the displayed CGUIView3DObjectHeightMap using the index
 		CGUIView3DObjectHeightMap* pObjHeightMap = (CGUIView3DObjectHeightMap*)pView3D->GetView3DObject(i32Index);
 
@@ -1086,49 +1086,49 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectHeightMapAndTex
 			break;
 		}
 
-		// ºä¿¡ µğ½ºÇÃ·¹ÀÌµÈ CGUIView3DObjectHeightMap °´Ã¼ÀÇ ³»ºÎ µ¥ÀÌÅÍ Æ÷ÀÎÅÍ ¾ò¾î ¿À±â
-		// ¹öÅØ½º, ÄÃ·¯ µîÀÇ Á¤º¸´Â ³»ºÎ µ¥ÀÌÅÍ °´Ã¼ÀÎ CFL3DObjectHeightMap ¾È¿¡ ÀÖÀ½
+		// ë·°ì— ë””ìŠ¤í”Œë ˆì´ëœ CGUIView3DObjectHeightMap ê°ì²´ì˜ ë‚´ë¶€ ë°ì´í„° í¬ì¸í„° ì–»ì–´ ì˜¤ê¸°
+		// ë²„í…ìŠ¤, ì»¬ëŸ¬ ë“±ì˜ ì •ë³´ëŠ” ë‚´ë¶€ ë°ì´í„° ê°ì²´ì¸ CFL3DObjectHeightMap ì•ˆì— ìˆìŒ
 		// Retrieve the internal data pointer of the displayed CGUIView3DObjectHeightMap
 		// Information such as vertices, colors, etc., are inside the internal data object CFL3DObjectHeightMap
 		CFL3DObjectHeightMap* pObjData = (CFL3DObjectHeightMap*)pObjHeightMap->GetData();
 
-		// ³ôÀÌ ¸ÊÀ¸·Î »ç¿ëÇÒ ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ
+		// ë†’ì´ ë§µìœ¼ë¡œ ì‚¬ìš©í•  ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸
 		// Declares an image object to be used as a height map.
 		CFLImage fliHeightMap;
 
-		// ³ôÀÌ ¸Ê ÆÄÀÏ ·Îµå
+		// ë†’ì´ ë§µ íŒŒì¼ ë¡œë“œ
 		// Loads the height map file.
 		fliHeightMap.Load(L"../../ExampleImages/View3DExamples/mountain.flif");
 
-		// ÅØ½ºÃÄ·Î »ç¿ëÇÒ ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ
+		// í…ìŠ¤ì³ë¡œ ì‚¬ìš©í•  ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸
 		// Declares an image object to be used as a texture
 		CFLImage fliTexture;
 
-		// ÅØ½ºÃÄ ÆÄÀÏ ·Îµå
+		// í…ìŠ¤ì³ íŒŒì¼ ë¡œë“œ
 		// Loads the texture file.
 		fliTexture.Load(L"../../ExampleImages/View3DExamples/mountain_texture.flif");
 
-		// ³ôÀÌ ¸Ê ÀÌ¹ÌÁö °´Ã¼¸¦ CFL3DObjectHeightMap °´Ã¼¿¡ Assign
+		// ë†’ì´ ë§µ ì´ë¯¸ì§€ ê°ì²´ë¥¼ CFL3DObjectHeightMap ê°ì²´ì— Assign
 		// Assigns the height map image object to a CFL3DObjectHeightMap object.
 		pObjData->Assign(fliHeightMap);
 
-		// ÅØ½ºÃÄ ÀÌ¹ÌÁö °´Ã¼¸¦ CFL3DObjectHeightMap °´Ã¼¿¡ Assign
+		// í…ìŠ¤ì³ ì´ë¯¸ì§€ ê°ì²´ë¥¼ CFL3DObjectHeightMap ê°ì²´ì— Assign
 		// Assigns the texture image object to a CFL3DObjectHeightMap object.
 		pObjData->SetTextureImage(fliTexture);
 		pObjData->ActivateVertexColorTexture(true);
 
-		// CGUIView3DObjectHeightMap °´Ã¼ÀÇ ³»ºÎ µ¥ÀÌÅÍ °´Ã¼ÀÎ CFL3DObjectHeightMap ÀÌ º¯°æµÇ¾úÀ¸¹Ç·Î 
-		// ºä¿¡¼­µµ º¯°æ »çÇ×À» ¹İ¿µÇØ¼­ µğ½ºÇÃ·¹ÀÌ ÇÏ±â À§ÇØ ¾÷µ¥ÀÌÆ® ÇÃ·¡±× ¼³Á¤
+		// CGUIView3DObjectHeightMap ê°ì²´ì˜ ë‚´ë¶€ ë°ì´í„° ê°ì²´ì¸ CFL3DObjectHeightMap ì´ ë³€ê²½ë˜ì—ˆìœ¼ë¯€ë¡œ 
+		// ë·°ì—ì„œë„ ë³€ê²½ ì‚¬í•­ì„ ë°˜ì˜í•´ì„œ ë””ìŠ¤í”Œë ˆì´ í•˜ê¸° ìœ„í•´ ì—…ë°ì´íŠ¸ í”Œë˜ê·¸ ì„¤ì •
 		// Since the internal data object of CGUIView3DObjectHeightMap, CFL3DObjectHeightMap, has changed
 		// set the update flag to reflect the changes in the view and display
 		pObjHeightMap->UpdateVertex();
 		pObjHeightMap->UpdateColor();
 
-		// ºä¿¡¼­ ÇØ´ç °´Ã¼¸¦ ¾÷µ¥ÀÌÆ®
+		// ë·°ì—ì„œ í•´ë‹¹ ê°ì²´ë¥¼ ì—…ë°ì´íŠ¸
 		// Update the object in the view
 		pView3D->UpdateObject(i32Index);
 
-		// ¾÷µ¥ÀÌÆ®µÈ °´Ã¼ÀÇ Å©±â¸¦ ¹İ¿µÇÏ¿© ºä¸¦ ZoomFit
+		// ì—…ë°ì´íŠ¸ëœ ê°ì²´ì˜ í¬ê¸°ë¥¼ ë°˜ì˜í•˜ì—¬ ë·°ë¥¼ ZoomFit
 		// ZoomFit the view to reflect the size of the updated object
 		pView3D->ZoomFit();
 
@@ -1152,38 +1152,38 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectLine(CGUIView3D
 			break;
 		}
 
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ¶óÀÎÀÇ ½ÃÀÛÁ¡ -> ¶óÀÎÀÇ ³¡Á¡ -> ¶óÀÎ »ö»ó -> ¶óÀÎ µÎ²² -> Ææ ½ºÅ¸ÀÏ
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë¼ì¸ì˜ ì‹œì‘ì  -> ë¼ì¸ì˜ ëì  -> ë¼ì¸ ìƒ‰ìƒ -> ë¼ì¸ ë‘ê»˜ -> íœ ìŠ¤íƒ€ì¼
 		// Parameter Order: Start Point of Line -> End Point of Line -> Line Color -> Line Thickness -> Pen Style
 		pView3D->PushObject(CGUIView3DObjectLine(TPoint3<float>(0, 10, 0), TPoint3<float>(40, 10, 0), WHITE, 6.f, EGUIViewImagePenStyle_Solid));
 		pView3D->PushObject(CGUIView3DObjectLine(TPoint3<float>(0, 20, 0), TPoint3<float>(40, 20, 0), YELLOW, 2.f, EGUIViewImagePenStyle_Dash));
 		pView3D->PushObject(CGUIView3DObjectLine(TPoint3<float>(0, 30, 0), TPoint3<float>(40, 30, 0), VIOLET, 3.f, EGUIViewImagePenStyle_Dot));
 
-		// ¾÷µ¥ÀÌÆ®µÈ °´Ã¼ÀÇ Å©±â¸¦ ¹İ¿µÇÏ¿© ºä¸¦ ZoomFit
+		// ì—…ë°ì´íŠ¸ëœ ê°ì²´ì˜ í¬ê¸°ë¥¼ ë°˜ì˜í•˜ì—¬ ë·°ë¥¼ ZoomFit
 		// ZoomFit the view to reflect the size of the updated object
 		pView3D->ZoomFit();
 
-		// 3D View ¿¡¼­ Ä«¸Ş¶ó °´Ã¼ ¾ò¾î ¿À±â
+		// 3D View ì—ì„œ ì¹´ë©”ë¼ ê°ì²´ ì–»ì–´ ì˜¤ê¸°
 		// Gets the camera object from the 3D View.
 		CGUIView3DCamera* pCamera = (CGUIView3DCamera*)pView3D->GetCamera();
 
 		if(pCamera)
 		{
-			// Ãß°¡ÇÑ ¶óÀÎÀ» Àß º¼ ¼ö ÀÖ´Â ½ÃÁ¡À¸·Î ÀÌµ¿
+			// ì¶”ê°€í•œ ë¼ì¸ì„ ì˜ ë³¼ ìˆ˜ ìˆëŠ” ì‹œì ìœ¼ë¡œ ì´ë™
 			// Moves the viewpoint to a good position to see the added line.
 
-			// Ä«¸Ş¶ó°¡ ¹Ù¶óº¸´Â ¹æÇâÀ» ¼³Á¤
+			// ì¹´ë©”ë¼ê°€ ë°”ë¼ë³´ëŠ” ë°©í–¥ì„ ì„¤ì •
 			// Sets the direction that the camera is looking.
 			pCamera->SetDirection(CFLPoint3<float>(0, 0, -1));
 
-			// Ä«¸Ş¶óÀÇ À§ÂÊ ¹æÇâ º¤ÅÍ¸¦ ¼³Á¤
+			// ì¹´ë©”ë¼ì˜ ìœ„ìª½ ë°©í–¥ ë²¡í„°ë¥¼ ì„¤ì •
 			// Sets the up direction vector of the camera.
 			pCamera->SetDirectionUp(CFLPoint3<float>(0, 1, 0));
 
-			// Ä«¸Ş¶óÀÇ Æ÷Áö¼ÇÀ» ¼³Á¤
+			// ì¹´ë©”ë¼ì˜ í¬ì§€ì…˜ì„ ì„¤ì •
 			// Sets the position of the camera.
 			pCamera->SetPosition(CFLPoint3<float>(20, 20, 100));
 
-			// Ä«¸Ş¶ó°¡ ¹Ù¶óº¸´Â ¹°Ã¼ÀÇ ÁÂÇ¥¸¦ ¼³Á¤
+			// ì¹´ë©”ë¼ê°€ ë°”ë¼ë³´ëŠ” ë¬¼ì²´ì˜ ì¢Œí‘œë¥¼ ì„¤ì •
 			// Sets the coordinates of the object that the camera is looking at.
 			pCamera->SetTarget(CFLPoint3<float>(20, 20, 0));
 		}
@@ -1208,93 +1208,93 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectUnselectableAxi
 			break;
 		}
 
-		// Á÷Á¢ Ãß°¡ÇÑ 3D Axis ¸¦ ¶ç¿ì±â À§ÇØ ±âÁ¸ÀÇ µğÆúÆ® Axis ´Â ¼û±â±â Ã³¸®
+		// ì§ì ‘ ì¶”ê°€í•œ 3D Axis ë¥¼ ë„ìš°ê¸° ìœ„í•´ ê¸°ì¡´ì˜ ë””í´íŠ¸ Axis ëŠ” ìˆ¨ê¸°ê¸° ì²˜ë¦¬
 		// Hides the default axis to display the custom 3D axis.
 		pView3D->ShowAxis(false);
 
-		// È­»ìÇ¥ÀÇ ±æÀÌ // Height of the arrow.
+		// í™”ì‚´í‘œì˜ ê¸¸ì´ // Height of the arrow.
 		float f32Height = 30.f;
-		// È­»ìÇ¥¿¡¼­ »ÏÁ·ÇÑ ºÎºĞ(¿ø»Ô)ÀÌ Â÷ÁöÇÏ´Â ºñÀ²
+		// í™”ì‚´í‘œì—ì„œ ë¾°ì¡±í•œ ë¶€ë¶„(ì›ë¿”)ì´ ì°¨ì§€í•˜ëŠ” ë¹„ìœ¨
 		// Ratio of the arrowhead (cone) to the total arrow length.
 		float f32ArrowRatio = 0.15f;
-		// È­»ìÇ¥ÀÇ ÆÄÀÌÇÁ ¹İÁö¸§ // Radius of the arrow's pipe.
+		// í™”ì‚´í‘œì˜ íŒŒì´í”„ ë°˜ì§€ë¦„ // Radius of the arrow's pipe.
 		float f32PipeRadius = f32Height / 40.f;
-		// È­»ìÇ¥ÀÇ »ÏÁ·ÇÑ ºÎºĞ(¿ø»Ô)ÀÇ ¹İÁö¸§ // Radius of the arrowhead (cone).
+		// í™”ì‚´í‘œì˜ ë¾°ì¡±í•œ ë¶€ë¶„(ì›ë¿”)ì˜ ë°˜ì§€ë¦„ // Radius of the arrowhead (cone).
 		float f32ArrowBottomRadius = f32Height / 20.f;
 
-		// CGUIView3DObject °´Ã¼ ¼±¾ğ(ÀÓ½Ã º¯¼ö)
+		// CGUIView3DObject ê°ì²´ ì„ ì–¸(ì„ì‹œ ë³€ìˆ˜)
 		// Declare CGUIView3DObject (temporary variable)
 		CGUIView3DObject mesh1, mesh2;
 
-		// CGUIView3DObject °´Ã¼ÀÇ ÅäÆú·ÎÁö Å¸ÀÔÀ» ¼Ö¸®µå·Î ¼³Á¤
+		// CGUIView3DObject ê°ì²´ì˜ í† í´ë¡œì§€ íƒ€ì…ì„ ì†”ë¦¬ë“œë¡œ ì„¤ì •
 		// Set the topology type of the CGUIView3DObject to solid
 		mesh1.SetTopologyType(ETopologyType3D_Solid);
 		mesh2.SetTopologyType(ETopologyType3D_Solid);
 
-		// ÀÌ CGUIView3DObject °´Ã¼°¡ ROI ¶Ç´Â Crop Object ¿¬»ê ½Ã ¹«½ÃµÇµµ·Ï ¼±ÅÃÀÌ ºÒ°¡ÇÏ°Ô Ã³¸®
+		// ì´ CGUIView3DObject ê°ì²´ê°€ ROI ë˜ëŠ” Crop Object ì—°ì‚° ì‹œ ë¬´ì‹œë˜ë„ë¡ ì„ íƒì´ ë¶ˆê°€í•˜ê²Œ ì²˜ë¦¬
 		// Make these CGUIView3DObjects unselectable for ROI or Crop Object operations.
 		mesh1.EnableSelection(false);
 		mesh2.EnableSelection(false);
 
-		// X Ãà // Axis x
+		// X ì¶• // Axis x
 		{
-			// È­»ìÇ¥ °´Ã¼¸¦ »ı¼º(»¡°£»ö)
+			// í™”ì‚´í‘œ ê°ì²´ë¥¼ ìƒì„±(ë¹¨ê°„ìƒ‰)
 			// Create the arrow object(Red color).
 			GetArrowObject(mesh1, mesh2, TPoint3<float>(0, 0, 0), f32Height, f32ArrowRatio, f32PipeRadius, f32ArrowBottomRadius, RED);
 
-			// CFL3DObjectUtilities ¸¦ »ç¿ëÇÏ¿© °£ÆíÇÏ°Ô È¸Àü
-			// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ½ÃÀÛ ÁöÁ¡ º¤ÅÍ -> Á¾·á ÁöÁ¡ º¤ÅÍ -> È¸ÀüÇÒ °´Ã¼
-			// ½ÃÀÛ º¤ÅÍ¿¡¼­ Á¾·á º¤ÅÍ»çÀÌÀÇ °¢µµ¸¸Å­ È¸ÀüµË´Ï´Ù.
+			// CFL3DObjectUtilities ë¥¼ ì‚¬ìš©í•˜ì—¬ ê°„í¸í•˜ê²Œ íšŒì „
+			// íŒŒë¼ë¯¸í„° ìˆœì„œ : ì‹œì‘ ì§€ì  ë²¡í„° -> ì¢…ë£Œ ì§€ì  ë²¡í„° -> íšŒì „í•  ê°ì²´
+			// ì‹œì‘ ë²¡í„°ì—ì„œ ì¢…ë£Œ ë²¡í„°ì‚¬ì´ì˜ ê°ë„ë§Œí¼ íšŒì „ë©ë‹ˆë‹¤.
 			// Rotate the arrow using CFL3DObjectUtilities.
 			// Parameter order: start point vector -> end point vector -> object to rotate
 			// Rotates by the angle between the start and end vectors.
 			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(1, 0, 0), *(Foundation::CFL3DObject*)mesh1.GetData());
 			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(1, 0, 0), *(Foundation::CFL3DObject*)mesh2.GetData());
 
-			// CGUIView3DObject °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ
+			// CGUIView3DObject ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´
 			// Display the CGUIView3DObject in the view
 			pView3D->PushObject(mesh1);
 			pView3D->PushObject(mesh2);
 
-			// ´ÙÀ½ Ãà(YÃà)À» ±×¸®±â À§ÇØ Å¬¸®¾î
+			// ë‹¤ìŒ ì¶•(Yì¶•)ì„ ê·¸ë¦¬ê¸° ìœ„í•´ í´ë¦¬ì–´
 			// Clear the objects to prepare for drawing the next axis (Y axis).
 			((Foundation::CFL3DObject*)mesh1.GetData())->Clear();
 			((Foundation::CFL3DObject*)mesh2.GetData())->Clear();
 		}
 
-		// Y Ãà // Axis y
+		// Y ì¶• // Axis y
 		{
-			// È­»ìÇ¥ °´Ã¼¸¦ »ı¼º(ÃÊ·Ï»ö)
+			// í™”ì‚´í‘œ ê°ì²´ë¥¼ ìƒì„±(ì´ˆë¡ìƒ‰)
 			// Create the arrow object(Green color).
 			GetArrowObject(mesh1, mesh2, TPoint3<float>(0, 0, 0), f32Height, f32ArrowRatio, f32PipeRadius, f32ArrowBottomRadius, GREEN);
 
-			// CFL3DObjectUtilities ¸¦ »ç¿ëÇÏ¿© °£ÆíÇÏ°Ô È¸Àü
-			// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ½ÃÀÛ ÁöÁ¡ º¤ÅÍ -> Á¾·á ÁöÁ¡ º¤ÅÍ -> È¸ÀüÇÒ °´Ã¼
-			// ½ÃÀÛ º¤ÅÍ¿¡¼­ Á¾·á º¤ÅÍ»çÀÌÀÇ °¢µµ¸¸Å­ È¸ÀüµË´Ï´Ù.
+			// CFL3DObjectUtilities ë¥¼ ì‚¬ìš©í•˜ì—¬ ê°„í¸í•˜ê²Œ íšŒì „
+			// íŒŒë¼ë¯¸í„° ìˆœì„œ : ì‹œì‘ ì§€ì  ë²¡í„° -> ì¢…ë£Œ ì§€ì  ë²¡í„° -> íšŒì „í•  ê°ì²´
+			// ì‹œì‘ ë²¡í„°ì—ì„œ ì¢…ë£Œ ë²¡í„°ì‚¬ì´ì˜ ê°ë„ë§Œí¼ íšŒì „ë©ë‹ˆë‹¤.
 			// Rotate the arrow using CFL3DObjectUtilities.
 			// Parameter order: start point vector -> end point vector -> object to rotate
 			// Rotates by the angle between the start and end vectors.
 			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(0, 1, 0), *(Foundation::CFL3DObject*)mesh1.GetData());
 			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(0, 1, 0), *(Foundation::CFL3DObject*)mesh2.GetData());
 
-			// CGUIView3DObject °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ
+			// CGUIView3DObject ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´
 			// Display the CGUIView3DObject in the view
 			pView3D->PushObject(mesh1);
 			pView3D->PushObject(mesh2);
 
-			// ´ÙÀ½ Ãà(ZÃà)À» ±×¸®±â À§ÇØ Å¬¸®¾î
+			// ë‹¤ìŒ ì¶•(Zì¶•)ì„ ê·¸ë¦¬ê¸° ìœ„í•´ í´ë¦¬ì–´
 			// Clear the objects to prepare for drawing the next axis (Z axis).
 			((Foundation::CFL3DObject*)mesh1.GetData())->Clear();
 			((Foundation::CFL3DObject*)mesh2.GetData())->Clear();
 		}
 
-		// Z Ãà // Axis z
+		// Z ì¶• // Axis z
 		{
-			// È­»ìÇ¥ °´Ã¼¸¦ »ı¼º(ÆÄ¶õ»ö)
+			// í™”ì‚´í‘œ ê°ì²´ë¥¼ ìƒì„±(íŒŒë€ìƒ‰)
 			// Create the arrow object(Blue color).
 			GetArrowObject(mesh1, mesh2, TPoint3<float>(0, 0, 0), f32Height, f32ArrowRatio, f32PipeRadius, f32ArrowBottomRadius, BLUE);
 
-			// CGUIView3DObject °´Ã¼¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ
+			// CGUIView3DObject ê°ì²´ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´
 			// Display the CGUIView3DObject in the view
 			pView3D->PushObject(mesh1);
 			pView3D->PushObject(mesh2);
@@ -1342,9 +1342,9 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::RotateObject(CGUIView3D* 
 			if(!pObjData)
 				continue;
 
-			// CFL3DObjectUtilities ¸¦ »ç¿ëÇÏ¿© °£ÆíÇÏ°Ô È¸Àü
-			// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ½ÃÀÛ ÁöÁ¡ º¤ÅÍ -> Á¾·á ÁöÁ¡ º¤ÅÍ -> È¸ÀüÇÒ °´Ã¼
-			// ½ÃÀÛ º¤ÅÍ¿¡¼­ Á¾·á º¤ÅÍ»çÀÌÀÇ °¢µµ¸¸Å­ È¸ÀüµË´Ï´Ù.
+			// CFL3DObjectUtilities ë¥¼ ì‚¬ìš©í•˜ì—¬ ê°„í¸í•˜ê²Œ íšŒì „
+			// íŒŒë¼ë¯¸í„° ìˆœì„œ : ì‹œì‘ ì§€ì  ë²¡í„° -> ì¢…ë£Œ ì§€ì  ë²¡í„° -> íšŒì „í•  ê°ì²´
+			// ì‹œì‘ ë²¡í„°ì—ì„œ ì¢…ë£Œ ë²¡í„°ì‚¬ì´ì˜ ê°ë„ë§Œí¼ íšŒì „ë©ë‹ˆë‹¤.
 			// Rotate the object using CFL3DObjectUtilities.
 			// Parameter order: start point vector -> end point vector -> object to rotate
 			// Rotates by the angle between the start and end vectors.
@@ -1394,7 +1394,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::RotateObjectWithPivot(CGU
 			if(!pObjData)
 				continue;
 
-			// ÇÇº¿À» Áß½ÉÀ¸·Î È¸Àü
+			// í”¼ë´‡ì„ ì¤‘ì‹¬ìœ¼ë¡œ íšŒì „
 			// An example of rotating around a pivot 
 			CFL3DObjectUtilities::Rotate(CFLPoint3<float>(0, 0, 30), // Pivot
 										 CFLGeometry3DQuaternion<float>(CFLGeometry3DVector<float>(0.f, 1.f, 0.f), 
@@ -1445,7 +1445,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::TranslateObject(CGUIView3
 			if(!pObjData)
 				continue;
 
-			// CFL3DObjectUtilities ¸¦ »ç¿ëÇÏ¿© °£ÆíÇÏ°Ô ÀÌµ¿
+			// CFL3DObjectUtilities ë¥¼ ì‚¬ìš©í•˜ì—¬ ê°„í¸í•˜ê²Œ ì´ë™
 			// Translate the object using CFL3DObjectUtilities.
 			CFL3DObjectUtilities::Translate(CFLGeometry3DVector<float>(4, 0, 0), *pObjData);
 
@@ -1493,7 +1493,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::ScaleObject(CGUIView3D* p
 			if(!pObjData)
 				continue;
 
-			// CFL3DObjectUtilities ¸¦ »ç¿ëÇÏ¿© °£ÆíÇÏ°Ô ½ºÄÉÀÏ
+			// CFL3DObjectUtilities ë¥¼ ì‚¬ìš©í•˜ì—¬ ê°„í¸í•˜ê²Œ ìŠ¤ì¼€ì¼
 			// Scales the object using CFL3DObjectUtilities.
 			CFL3DObjectUtilities::Scale(CFLGeometry3DVector<float>(0, 0, 0), 2.f, *pObjData);
 

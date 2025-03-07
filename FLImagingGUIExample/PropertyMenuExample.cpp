@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PropertyMenuExample.h"
 
 FLImaging::GUI::CPropertyMenuExample::CPropertyMenuExample() : CGUIPropertyMenuBase()
@@ -15,21 +15,21 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå ¹öÆ°À» Ãß°¡ÇÕ´Ï´Ù.
+		// ì´ë¯¸ì§€ ë¡œë“œ ë²„íŠ¼ì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 		CGUIPropertyButton* pBtn = new CGUIPropertyButton;
 		pBtn->SetName(L"Load Image");
 		pBtn->SetPropertyButtonClickProcedure(CPropertyMenuExample::LoadImage());
 		pBtn->SetButtonWidthRatio(.6);
 		AddButton(pBtn);
 
-		// Å¬¸®¾î ºä ¹öÆ°À» Ãß°¡ÇÕ´Ï´Ù.
+		// í´ë¦¬ì–´ ë·° ë²„íŠ¼ì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 		pBtn = new CGUIPropertyButton;
 		pBtn->SetName(L"Clear View");
 		pBtn->SetPropertyButtonClickProcedure(CPropertyMenuExample::ClearView());
 		pBtn->SetButtonWidthRatio(.4);
 		AddButton(pBtn);
 
-		// Draw Figure ¹öÆ°À» Ãß°¡ÇÕ´Ï´Ù.
+		// Draw Figure ë²„íŠ¼ì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 		pBtn = new CGUIPropertyButton;
 		pBtn->SetName(L"Draw Figure");
 		pBtn->SetPropertyButtonClickProcedure(CPropertyMenuExample::DrawFigure());
@@ -37,7 +37,7 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 		SetShortcut(EKeyType_F5, pBtn);
 		AddButton(pBtn);
 
-		// Clear Layer ¹öÆ°À» Ãß°¡ÇÕ´Ï´Ù.
+		// Clear Layer ë²„íŠ¼ì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 		pBtn = new CGUIPropertyButton;
 		pBtn->SetName(L"Clear Layer");
 		pBtn->SetPropertyButtonClickProcedure(CPropertyMenuExample::ClearLayer());
@@ -45,24 +45,24 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 		SetShortcut(EKeyType_F6, pBtn);
 		AddButton(pBtn);
 
-		// Ä«Å×°í¸® ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù.
+		// ì¹´í…Œê³ ë¦¬ ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 		CGUIPropertyItemCategory* pCatImageView = new CGUIPropertyItemCategory;
 		pCatImageView->SetName(L"Example");
 		AddItem(pCatImageView);
 		{
-			// Example Ä«Å×°í¸®¿¡ ÇÏÀ§ Ä«Å×°í¸®ÀÎ Image Ä«Å×°í¸®¸¦ Ãß°¡ÇÕ´Ï´Ù.
+			// Example ì¹´í…Œê³ ë¦¬ì— í•˜ìœ„ ì¹´í…Œê³ ë¦¬ì¸ Image ì¹´í…Œê³ ë¦¬ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
 			pCatImageView = new CGUIPropertyItemCategory;
 			pCatImageView->SetName(L"Image");
 			pCatImageView->SetPath(L"Example");
 			AddItem(pCatImageView);
 			{
-				// ºä ÀÌ¹ÌÁö ¸®½ºÆ® ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù.
+				// ë·° ì´ë¯¸ì§€ ë¦¬ìŠ¤íŠ¸ ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 				CGUIPropertyItemViewImageList* pViewImageList = new CGUIPropertyItemViewImageList;
 				pViewImageList->SetName(L"Image View");
 				pViewImageList->SetPath(L"Example@Image");
 				AddItem(pViewImageList);
 
-				// ÆÄÀÏ ¼±ÅÃ ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù.
+				// íŒŒì¼ ì„ íƒ ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 				CGUIPropertyItemFile* pFile = new CGUIPropertyItemFile;
 				pFile->SetName(L"File");
 				pFile->SetPath(L"Example@Image");
@@ -70,7 +70,7 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 				pFile->SetFileFilter(L"All Supporting Files (*.flif;*.bmp;*.jpg;*.jpeg;*.tif;*.png;)|*.flif;*.bmp;*.jpg;*.jpeg;*.tif;*.png; |FLImaging Image Files(*.flif;) | *.flif; |Bitmap Files(*.bmp;) | *.bmp; |JPEG Files(*.jpg; *.jpeg;) | *.jpg; *.jpeg; |TIFF Files(*.tif; *.tiff;) | *.tif; *.tiff; |PNG Files(*.png;) | *.png; |All Files(*.*;) | *.*; ||");
 				AddItem(pFile);
 
-				// ºä ÀÌ¹ÌÁö ROI ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù.
+				// ë·° ì´ë¯¸ì§€ ROI ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 				CGUIPropertyItemViewImageFigure* pViewImageROI = new CGUIPropertyItemViewImageFigure;
 				pViewImageROI->SetName(L"ROI");
 				pViewImageROI->SetPath(L"Example@Image");
@@ -78,13 +78,13 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 				AddItem(pViewImageROI);
 			}
 
-			// Example Ä«Å×°í¸®¿¡ ÇÏÀ§ Ä«Å×°í¸®ÀÎ Parameters Ä«Å×°í¸®¸¦ Ãß°¡ÇÕ´Ï´Ù.
+			// Example ì¹´í…Œê³ ë¦¬ì— í•˜ìœ„ ì¹´í…Œê³ ë¦¬ì¸ Parameters ì¹´í…Œê³ ë¦¬ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
 			pCatImageView = new CGUIPropertyItemCategory;
 			pCatImageView->SetName(L"Parameters");
 			pCatImageView->SetPath(L"Example");
 			AddItem(pCatImageView);
 			{
-				// ÅØ½ºÆ® ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù.
+				// í…ìŠ¤íŠ¸ ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 				CGUIPropertyItemText* pText = new CGUIPropertyItemText;
 				pText->SetName(L"Text");
 				pText->SetPath(L"Example@Parameters");
@@ -92,7 +92,7 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 				pText->SetDescription(L"Custom Description");
 				AddItem(pText);
 
-				// InputType¸¦ ÁöÁ¤ÇÑ ÅØ½ºÆ® ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù.
+				// InputTypeë¥¼ ì§€ì •í•œ í…ìŠ¤íŠ¸ ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 				pText = new CGUIPropertyItemText;
 				pText->SetName(L"Only Number");
 				pText->SetPath(L"Example@Parameters");
@@ -100,7 +100,7 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 				pText->SetDefaultValue(L"123");
 				AddItem(pText);
 
-				// ÄÞº¸¹Ú½º ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù.
+				// ì½¤ë³´ë°•ìŠ¤ ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 				CGUIPropertyItemDropdownList* pDropdownList = new CGUIPropertyItemDropdownList;
 				pDropdownList->SetName(L"Dropdown List");
 				pDropdownList->SetPath(L"Example@Parameters");
@@ -110,11 +110,11 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 				pDropdownList->SetDefaultValue(L"OK");
 				AddItem(pDropdownList);
 
-				// Ã¼Å©¹Ú½º ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù.
+				// ì²´í¬ë°•ìŠ¤ ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 				CGUIPropertyItemCheckBox* pCheckBox = new CGUIPropertyItemCheckBox;
 				pCheckBox->SetName(L"Hide Image Category");
 				pCheckBox->SetPath(L"Example@Parameters");
-				// CallBack Ã³¸® ÇÔ¼ö¸¦ Ãß°¡ÇÕ´Ï´Ù.
+				// CallBack ì²˜ë¦¬ í•¨ìˆ˜ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
 				CPropertyCallback* pPropertyCallBack = new CPropertyCallback;
 				*pPropertyCallBack = MakePropertyCallback
 				{
@@ -124,7 +124,7 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 				pCheckBox->SetDefaultValue(L"Unchecked");
 				AddItem(pCheckBox);
 
-				// ½½¶óÀÌ´õ ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù.
+				// ìŠ¬ë¼ì´ë” ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 				CGUIPropertyItemSlider* pSlider = new CGUIPropertyItemSlider(CGUIPropertyItemSlider::ETemplateType_Int32);
 				pSlider->SetName(L"Slider");
 				pSlider->SetPath(L"Example@Parameters");
@@ -133,7 +133,7 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 				pSlider->SetDefaultValue(L"0");
 				AddItem(pSlider);
 
-				// Spin ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù.
+				// Spin ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 				CGUIPropertyItemSpin* pSpin = new CGUIPropertyItemSpin;
 				pSpin->SetName(L"Spin");
 				pSpin->SetPath(L"Example@Parameters");
@@ -141,7 +141,7 @@ const CResult FLImaging::GUI::CPropertyMenuExample::ConfigureMenu()
 				pSpin->SetDefaultValue(L"0");
 				AddItem(pSpin);
 
-				// IP Address ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù.
+				// IP Address ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 				CGUIPropertyItemIPAddress* pIPAddress = new CGUIPropertyItemIPAddress;
 				pIPAddress->SetName(L"IPAddress");
 				pIPAddress->SetPath(L"Example@Parameters");
@@ -237,7 +237,7 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuExample::DrawFigure(
 			if(!pLayer)
 				break;
 
-			// ROI¸¦ ¹Þ¾Æ¿É´Ï´Ù.
+			// ROIë¥¼ ë°›ì•„ì˜µë‹ˆë‹¤.
 			CFLFigureArray flfaROI;
 			CFigureUtilities::ConvertFigureStringToObject(&mu.GetValue(L"Example@Image", L"ROI"), &flfaROI);
 

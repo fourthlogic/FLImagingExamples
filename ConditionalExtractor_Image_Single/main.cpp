@@ -1,57 +1,57 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage arrFliImage[3];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage[3];
 
-    // ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+    // ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = arrFliImage[0].Load(L"../../ExampleImages/ConditionalExtractor/CatSource.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Operand ÀÌ¹ÌÁö ·Îµå // Loads the operand image
+		// Operand ì´ë¯¸ì§€ ë¡œë“œ // Loads the operand image
 		if((res = arrFliImage[1].Load(L"../../ExampleImages/ConditionalExtractor/CatOperand.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö¸¦ Source ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º // Create destination image as same as source image
+		// Destination ì´ë¯¸ì§€ë¥¼ Source ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„± // Create destination image as same as source image
 		if((res = arrFliImage[2].Assign(arrFliImage[0])).IsFail())
 		{
 			ErrorPrint(res, "Failed to assign the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if((res = viewImage[0].Create(100, 0, 612, 512)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Operand ÀÌ¹ÌÁö ºä »ı¼º // Creates operand image view
+		// Operand ì´ë¯¸ì§€ ë·° ìƒì„± // Creates operand image view
 		if((res = viewImage[1].Create(612, 0, 1124, 512)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination image view
 		if((res = viewImage[2].Create(1124, 0, 1636, 512)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -60,7 +60,7 @@ int main()
 
 		bool bError = false;
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		for(int32_t i = 0; i < 3; ++i)
 		{
 			if((res = viewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
@@ -74,71 +74,71 @@ int main()
 		if(bError)
 			break;
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = viewImage[0].SynchronizePointOfView(&viewImage[1])).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = viewImage[0].SynchronizePointOfView(&viewImage[2])).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = viewImage[0].SynchronizeWindow(&viewImage[1])).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = viewImage[0].SynchronizeWindow(&viewImage[2])).IsFail())
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// Conditional Extractor °´Ã¼ »ı¼º // Create Conditional Extractor object
+		// Conditional Extractor ê°ì²´ ìƒì„± // Create Conditional Extractor object
 		CConditionalExtractor conditionalExtractor;
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		conditionalExtractor.SetSourceImage(arrFliImage[0]);
-		// Operand ÀÌ¹ÌÁö ¼³Á¤ // Set the operand image
+		// Operand ì´ë¯¸ì§€ ì„¤ì • // Set the operand image
 		conditionalExtractor.SetOperandImage(arrFliImage[1]);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		conditionalExtractor.SetDestinationImage(arrFliImage[2]);
 
-		// Operation Source ¼³Á¤ // Set the Operation Source
+		// Operation Source ì„¤ì • // Set the Operation Source
 		conditionalExtractor.SetOperationSource(EOperationSource_Image);
 
-		// Threshold Mode ¼³Á¤ // Set the Threshold Mode
+		// Threshold Mode ì„¤ì • // Set the Threshold Mode
 		conditionalExtractor.SetThresholdMode(EThresholdMode_Single);
 
-		// ³í¸® Á¶°ÇÀÌ ÀÔ·ÂµÉ MultiVar °´Ã¼ »ı¼º // Create the MultiVar object that push the logical condition
+		// ë…¼ë¦¬ ì¡°ê±´ì´ ì…ë ¥ë  MultiVar ê°ì²´ ìƒì„± // Create the MultiVar object that push the logical condition
 		CMultiVarL mvCondition1;
 
-		// ³í¸® Á¶°Ç ÀÔ·Â // Set the logical condition
+		// ë…¼ë¦¬ ì¡°ê±´ ì…ë ¥ // Set the logical condition
 		mvCondition1.PushBack(ELogicalCondition_Less);
 
-		// ³í¸® Á¶°Ç ¼³Á¤ // Set the logical condition
+		// ë…¼ë¦¬ ì¡°ê±´ ì„¤ì • // Set the logical condition
 		conditionalExtractor.SetLogicalCondition(mvCondition1);
 
-		// Á¶°ÇÀÌ °ÅÁşÀÏ °æ¿ì Out of Range °ª ¼³Á¤ ¿©ºÎ °áÁ¤ // Determine the Out of Range value if the condition is false
+		// ì¡°ê±´ì´ ê±°ì§“ì¼ ê²½ìš° Out of Range ê°’ ì„¤ì • ì—¬ë¶€ ê²°ì • // Determine the Out of Range value if the condition is false
 		conditionalExtractor.EnableOutOfRange(true);
 
-		// Á¶°ÇÀÌ °ÅÁşÀÏ °æ¿ì Out of range °ª ¼³Á¤ÇÏ±â À§ÇÑ MultiVar °´Ã¼ »ı¼º // Create the MultiVar object that sets the Out of Range value if the condition is false
+		// ì¡°ê±´ì´ ê±°ì§“ì¼ ê²½ìš° Out of range ê°’ ì„¤ì •í•˜ê¸° ìœ„í•œ MultiVar ê°ì²´ ìƒì„± // Create the MultiVar object that sets the Out of Range value if the condition is false
 		CMultiVar<double> mvOutOfRange;
 
-		// 1Ã¤³Î Out of Range °ª ÀÔ·Â // Push the 1Channel Out of Range value
+		// 1ì±„ë„ Out of Range ê°’ ì…ë ¥ // Push the 1Channel Out of Range value
 		mvOutOfRange.PushBack(0.0);
 
-		// Out of Range °ª ¼³Á¤ // Set Out of Range value
+		// Out of Range ê°’ ì„¤ì • // Set Out of Range value
 		conditionalExtractor.SetOutOfRangeValue(mvOutOfRange);
 
-		// ¾Õ¿¡¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î Conditional Extractor ¼öÇà // Execute Conditional Extractor algorithm according to previously set parameters
+		// ì•ì—ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ Conditional Extractor ìˆ˜í–‰ // Execute Conditional Extractor algorithm according to previously set parameters
 		if((res = conditionalExtractor.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Conditional Extractor.");
@@ -150,19 +150,19 @@ int main()
 
 		for(int32_t i = 0; i < 3; ++i)
 		{
-			// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-			// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+			// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+			// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 			arrLayer[i] = viewImage[i].GetLayer(0);
 
-			// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+			// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 			arrLayer[i].Clear();
 		}
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((res = arrLayer[0].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)).IsFail())
@@ -183,12 +183,12 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  // Update image view
 		viewImage[0].Invalidate(true);
 		viewImage[1].Invalidate(true);
 		viewImage[2].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage[0].IsAvailable()
 			  && viewImage[1].IsAvailable()
 			  && viewImage[2].IsAvailable())

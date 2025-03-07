@@ -1,38 +1,38 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// 3D °´Ã¼ ¼±¾ğ // Declare 3D object
+	// 3D ê°ì²´ ì„ ì–¸ // Declare 3D object
 	CFL3DObject floSourceObject;
 	CFL3DObject floDestinationObject;
 
-	// 3D ºä ¼±¾ğ // Declare 3D view	
+	// 3D ë·° ì„ ì–¸ // Declare 3D view	
 	CGUIView3DWrap view3DDst;
 	CGUIView3DWrap view3DSource;
 
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult eResult = EResult_UnknownError;
 
-		// Source Object ·Îµå // Load the Source object
+		// Source Object ë¡œë“œ // Load the Source object
 		if((eResult = floSourceObject.Load(L"../../ExampleImages/SurfaceReconstruction3D/Source.ply")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the object file.\n");
 			break;
 		}
 
-		// Source 3D ºä »ı¼º
+		// Source 3D ë·° ìƒì„±
 		if(IsFail(eResult = view3DSource.Create(612, 0, 1124, 512)))
 		{
 			ErrorPrint(eResult, "Failed to create the Source 3D view.\n");
 			break;
 		}
 
-		// Dst 3D ºä »ı¼º
+		// Dst 3D ë·° ìƒì„±
 		if(IsFail(eResult = view3DDst.Create(1124, 0, 1636, 512)))
 		{
 			ErrorPrint(eResult, "Failed to create the Dst 3D view.\n");
@@ -45,40 +45,40 @@ int main()
 			break;
 		}
 
-		// SurfaceReconstruction3D °´Ã¼ »ı¼º // Create SurfaceReconstruction3D object
+		// SurfaceReconstruction3D ê°ì²´ ìƒì„± // Create SurfaceReconstruction3D object
 		CSurfaceReconstruction3D SurfaceReconstruction3D;
 
-		// Source object ¼³Á¤ // Set the source object
+		// Source object ì„¤ì • // Set the source object
 		SurfaceReconstruction3D.SetSourceObject(floSourceObject);
 
-		// Destination object ¼³Á¤ // Set the destination object
+		// Destination object ì„¤ì • // Set the destination object
 		SurfaceReconstruction3D.SetDestinationObject(floDestinationObject);
 
-		// Reconstruction Method ¼³Á¤ // Set the reconstruction method
+		// Reconstruction Method ì„¤ì • // Set the reconstruction method
 		SurfaceReconstruction3D.SetReconstructionMethod(CSurfaceReconstruction3D::EReconstructionMethod_Explicit_RegionGrowing);
 
-		// ÃÖ´ë ¹İ°æ ÀÚµ¿ °è»êÇÏµµ·Ï ¼³Á¤ // Set to auto-calculate maximum radius
+		// ìµœëŒ€ ë°˜ê²½ ìë™ ê³„ì‚°í•˜ë„ë¡ ì„¤ì • // Set to auto-calculate maximum radius
 		SurfaceReconstruction3D.EnableExplicitAutoRadius(true);
 
-		// ÃÖ´ë ¹İ°æ °è¼ö ¼³Á¤ // Set the maximum radius coefficient
+		// ìµœëŒ€ ë°˜ê²½ ê³„ìˆ˜ ì„¤ì • // Set the maximum radius coefficient
 		SurfaceReconstruction3D.SetExplicitMaxRadiusCoefficient(5.000000f);
 
-		// Hole filling ÃÖ´ë ¹İ°æ ÀÚµ¿ °è»êÇÏµµ·Ï ¼³Á¤ // Set to auto-calculate hole filling maximum radius
+		// Hole filling ìµœëŒ€ ë°˜ê²½ ìë™ ê³„ì‚°í•˜ë„ë¡ ì„¤ì • // Set to auto-calculate hole filling maximum radius
 		SurfaceReconstruction3D.EnableExplicitHoleFillingAutoRadius(true);
 
-		// ÃÖ´ë ¹İ°æ °è¼ö ¼³Á¤ // Set the maximum radius coefficient
+		// ìµœëŒ€ ë°˜ê²½ ê³„ìˆ˜ ì„¤ì • // Set the maximum radius coefficient
 		SurfaceReconstruction3D.SetExplicitHoleFillingRadiusCoefficient(1.000000f);
 
-		// ½ÃÀÛ ÁöÁ¡ ÃÖ´ë °³¼ö ¼³Á¤ // Set the maximum number of starting points
+		// ì‹œì‘ ì§€ì  ìµœëŒ€ ê°œìˆ˜ ì„¤ì • // Set the maximum number of starting points
 		SurfaceReconstruction3D.SetExplicitMaxSeed(10000);
 
-		// ±×¸®µå ¼¿ °Å¸® ÀÚµ¿ °è»êÇÏµµ·Ï ¼³Á¤ // Set to auto-calculate grid cell distance
+		// ê·¸ë¦¬ë“œ ì…€ ê±°ë¦¬ ìë™ ê³„ì‚°í•˜ë„ë¡ ì„¤ì • // Set to auto-calculate grid cell distance
 		SurfaceReconstruction3D.EnableExplicitAutoCellRadius(true);
 
-		// ±×¸®µå ¼¿ °Å¸® °è¼ö ¼³Á¤ // Set the grid cell distance coefficient
+		// ê·¸ë¦¬ë“œ ì…€ ê±°ë¦¬ ê³„ìˆ˜ ì„¤ì • // Set the grid cell distance coefficient
 		SurfaceReconstruction3D.SetExplicitCellRadiusCoefficient(1.000000f);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((eResult = SurfaceReconstruction3D.Execute()).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to execute Surface Reconstruction 3D.");
@@ -98,20 +98,20 @@ int main()
 		view3DDst.ZoomFit();
 
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately		
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately		
 		CGUIView3DLayerWrap layer3DDst = view3DDst.GetLayer(0);
 		CGUIView3DLayerWrap layer3DSource = view3DSource.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer3DDst.Clear();
 		layer3DSource.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 
@@ -132,11 +132,11 @@ int main()
 
 		view3DSource.SynchronizePointOfView(&view3DDst);
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		view3DSource.Invalidate(true);
 		view3DDst.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä, 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·°, 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(view3DSource.IsAvailable() && view3DDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,13 +6,13 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö µå·ÎÀ× °´Ã¼ ¼±¾ğ // Declare image drawing object
+	// ì´ë¯¸ì§€ ë“œë¡œì‰ ê°ì²´ ì„ ì–¸ // Declare image drawing object
 	CFLImageDrawingWrap fliImageDrawing;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSrc;
 	CGUIViewImageWrap viewImageDst;
 
@@ -20,67 +20,67 @@ int main()
 	{
 		CResult res = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Blob/AlignBall.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Drawing ÀÌ¹ÌÁö¸¦ Src ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º
+		// Drawing ì´ë¯¸ì§€ë¥¼ Src ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„±
 		if(IsFail(res = fliImageDrawing.Assign(fliImage)))
 		{
 			ErrorPrint(res, "Failed to assign the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImageSrc.Create(400, 0, 800, 400)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImageDst.Create(800, 0, 1200, 400)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù. // Synchronize the viewpoints of the two image views.
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤. // Synchronize the viewpoints of the two image views.
 		if(IsFail(res = viewImageSrc.SynchronizePointOfView(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageSrc.SynchronizeWindow(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if(IsFail(res = viewImageSrc.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// ·¹ÀÌ¾î´Â µû·Î ÇØÁ¦ÇÏÁö ¾Ê¾Æµµ View°¡ ÇØÁ¦ µÉ ¶§ °°ÀÌ ÇØÁ¦µÈ´Ù. // The layer is released together when View is released without releasing it separately.
+		// ë ˆì´ì–´ëŠ” ë”°ë¡œ í•´ì œí•˜ì§€ ì•Šì•„ë„ Viewê°€ í•´ì œ ë  ë•Œ ê°™ì´ í•´ì œëœë‹¤. // The layer is released together when View is released without releasing it separately.
 		CGUIViewImageLayerWrap layerSrc = viewImageSrc.GetLayer(0);
 
-		// ÀÌ¹ÌÁö¿¡ Ãâ·ÂÇÏ±â À§ÇØ ÀÌ¹ÌÁö µå·ÎÀ× °´Ã¤¿¡¼­ ·¹ÀÌ¾î¸¦ ¾ò¾î¿È // Gets layers from image drawing object for output to image
+		// ì´ë¯¸ì§€ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ ì´ë¯¸ì§€ ë“œë¡œì‰ ê°ì±„ì—ì„œ ë ˆì´ì–´ë¥¼ ì–»ì–´ì˜´ // Gets layers from image drawing object for output to image
 		CGUIViewImageLayerWrap layerDst = fliImageDrawing.GetLayer();
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSrc.Clear();
 		layerDst.Clear();
 
 
-		// ÀÌ¹ÌÁö¿¡ Á¤º¸ Ç¥½Ã // Display image information
+		// ì´ë¯¸ì§€ì— ì •ë³´ í‘œì‹œ // Display image information
 		layerSrc.DrawTextImage(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30);
 		layerDst.DrawTextImage(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 30);
 
@@ -115,25 +115,25 @@ int main()
 		layerDst.DrawFigureImage(fleDraw, VIOLET, 3);
 
 
-		// ÀÌ¹ÌÁö¿¡ ±×¸³´Ï´Ù. // Draw in the image.
+		// ì´ë¯¸ì§€ì— ê·¸ë¦½ë‹ˆë‹¤. // Draw in the image.
 		if(IsFail(res = fliImageDrawing.Draw()))
 		{
 			ErrorPrint(res, "Failed to draw.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if(IsFail(res = viewImageDst.SetImagePtr(&fliImageDrawing)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSrc.Invalidate();
 		viewImageDst.Invalidate();
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSrc.IsAvailable() || viewImageDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <locale.h>
 
 #include <FLImaging.h>
@@ -9,28 +9,28 @@ int main()
 {
 	setlocale(LC_ALL, "Korean");
 
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
 	do
 	{
 		CResult res = EResult_UnknownError;
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage.Create(400, 0, 1424, 768)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ¹®ÀÚ¿­À» ÀÔ·Â ¹ŞÀ» wchar_t Çü ¹è¿­ ¼±¾ğ
+		// ë¬¸ìì—´ì„ ì…ë ¥ ë°›ì„ wchar_t í˜• ë°°ì—´ ì„ ì–¸
 		wchar_t arrWcEncoding[4096] = { 0, };
 
 		printf("Please input encoding message.: ");
 
-		// ¹®ÀÚ¿­À» ÀÔ·Â ¹Ş´Â´Ù
+		// ë¬¸ìì—´ì„ ì…ë ¥ ë°›ëŠ”ë‹¤
 		fgetws(arrWcEncoding, 4096, stdin);
 
 		int32_t i32StrLen = (int32_t)wcslen(arrWcEncoding);
@@ -48,23 +48,23 @@ int main()
 				arrWcEncoding[wcslen(arrWcEncoding) - 1] = '\0';
 		}
 
-		// QR Code Encoder °´Ã¼ ¼±¾ğ
+		// QR Code Encoder ê°ì²´ ì„ ì–¸
 		CQRCodeEncoder qrCodeEncoder;
 		CQRCodeSpec codeSpec;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì •
 		qrCodeEncoder.SetSourceImage(fliImage);
-		// Encoding Message ¼³Á¤
+		// Encoding Message ì„¤ì •
 		qrCodeEncoder.SetEncodingMessage(CFLString<wchar_t>(arrWcEncoding));
-		// Encoder µ¥ÀÌÅÍ ¿µ¿ª »ö»ó ¼³Á¤
-		// Ã¹¹øÂ° ÆÄ¶ó¹ÌÅÍ·Î EQRCodeColor_Custom ¸¦ ÀÔ·ÂÇÏ¸é µ¥ÀÌÅÍ ¿µ¿ª°ú ¹è°æ »ö»óÀ» ÀÚÀ¯·Ó°Ô ÁöÁ¤ ÇÒ ¼ö ÀÖ´Ù.
+		// Encoder ë°ì´í„° ì˜ì—­ ìƒ‰ìƒ ì„¤ì •
+		// ì²«ë²ˆì§¸ íŒŒë¼ë¯¸í„°ë¡œ EQRCodeColor_Custom ë¥¼ ì…ë ¥í•˜ë©´ ë°ì´í„° ì˜ì—­ê³¼ ë°°ê²½ ìƒ‰ìƒì„ ììœ ë¡­ê²Œ ì§€ì • í•  ìˆ˜ ìˆë‹¤.
 		codeSpec.SetColorMode(EDataCodeColor_BlackOnWhite);
 
-		// Encoding ½ºÆå ¼³Á¤
-		// ¼³Á¤ÇÏÁö ¾ÊÀ» ½Ã¿¡´Â ±âº» °ªÀ¸·Î µ¿ÀÛÇÑ´Ù
+		// Encoding ìŠ¤í™ ì„¤ì •
+		// ì„¤ì •í•˜ì§€ ì•Šì„ ì‹œì—ëŠ” ê¸°ë³¸ ê°’ìœ¼ë¡œ ë™ì‘í•œë‹¤
 		qrCodeEncoder.SetQRCodeEncodingSpec(codeSpec);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = qrCodeEncoder.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute QR code encoder.");
@@ -72,108 +72,108 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// QR Code Decoder °´Ã¼ »ı¼º // Create QR Code Decoder object
+		// QR Code Decoder ê°ì²´ ìƒì„± // Create QR Code Decoder object
 		CQRCodeDecoder qrCodeDecoder;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì •
 		qrCodeDecoder.SetSourceImage(fliImage);
 
-		// Decode µ¥ÀÌÅÍ ¿µ¿ª »ö»ó ¼³Á¤
-		// EQRCodeColors_Auto ·Î ¼³Á¤ ½Ã ÀÚµ¿À¸·Î Decode µÈ´Ù.
+		// Decode ë°ì´í„° ì˜ì—­ ìƒ‰ìƒ ì„¤ì •
+		// EQRCodeColors_Auto ë¡œ ì„¤ì • ì‹œ ìë™ìœ¼ë¡œ Decode ëœë‹¤.
 		qrCodeDecoder.SetColorMode(EDataCodeColor_BlackOnWhite);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = qrCodeDecoder.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute QR code decoder.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 
-		// QR Code Decoder °á°ú °³¼ö¸¦ ¾ò´Â´Ù.
+		// QR Code Decoder ê²°ê³¼ ê°œìˆ˜ë¥¼ ì–»ëŠ”ë‹¤.
 		int64_t i64Results = qrCodeDecoder.GetResultCount();
 
 		for(int64_t i = 0; i < i64Results; ++i)
 		{
-			// QR Code Decoder °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FLQuadD ¼±¾ğ
+			// QR Code Decoder ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FLQuadD ì„ ì–¸
 			CFLQuad<double> flqdRegion;
 
-			// QR Code Decoder °á°úµé Áß Data Region À» ¾ò¾î¿È
+			// QR Code Decoder ê²°ê³¼ë“¤ ì¤‘ Data Region ì„ ì–»ì–´ì˜´
 			if(IsFail(res = qrCodeDecoder.GetResultDataRegion(i, flqdRegion)))
 			{
 				ErrorPrint(res, "Failed to get data region from the QR code decoder object.");
 				continue;
 			}
 		
-			// QR Code ÀÇ ¿µ¿ªÀ» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù.
-			// FLImagingÀÇ Figure °´Ã¼µéÀº ¾î¶² µµÇü¸ğ¾çÀÌµç »ó°ü¾øÀÌ ÇÏ³ªÀÇ ÇÔ¼ö·Î µğ½ºÇÃ·¹ÀÌ°¡ °¡´É // FLimaging's Figure objects can be displayed as a function regardless of the shape
-			// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-			// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-			// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+			// QR Code ì˜ ì˜ì—­ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤.
+			// FLImagingì˜ Figure ê°ì²´ë“¤ì€ ì–´ë–¤ ë„í˜•ëª¨ì–‘ì´ë“  ìƒê´€ì—†ì´ í•˜ë‚˜ì˜ í•¨ìˆ˜ë¡œ ë””ìŠ¤í”Œë ˆì´ê°€ ê°€ëŠ¥ // FLimaging's Figure objects can be displayed as a function regardless of the shape
+			// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+			// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+			// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 			if(IsFail(res = layer.DrawFigureImage(&flqdRegion, LIME, 2)))
 			{
 				ErrorPrint(res, "Failed to draw figure object on the image view.\n");
 				continue;
 			}
 
-			// QR Code Decoder °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FigureArray ¼±¾ğ
+			// QR Code Decoder ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FigureArray ì„ ì–¸
 			CFLFigureArray flfaGridRegion;
 
-			// QR Code Decoder °á°úµé Áß Grid Region À» ¾ò¾î¿È
+			// QR Code Decoder ê²°ê³¼ë“¤ ì¤‘ Grid Region ì„ ì–»ì–´ì˜´
 			if(IsFail(res = qrCodeDecoder.GetResultGridRegion(i, flfaGridRegion)))
 			{
 				ErrorPrint(res, "Failed to get grid region from the QR code decoder object.");
 				continue;
 			}
 
-			// QR Code ÀÇ Grid Region À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù.
+			// QR Code ì˜ Grid Region ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤.
 			if(IsFail(res = layer.DrawFigureImage(&flfaGridRegion, LIME, 2)))
 			{
 				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				continue;
 			}
 
-			// QR Code Decoder °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FLFigureArray ¼±¾ğ
+			// QR Code Decoder ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FLFigureArray ì„ ì–¸
 			CFLFigureArray flfaFinderPattern;
 
-			// QR Code Decoder °á°úµé Áß Finder Pattern À» ¾ò¾î¿È
+			// QR Code Decoder ê²°ê³¼ë“¤ ì¤‘ Finder Pattern ì„ ì–»ì–´ì˜´
 			qrCodeDecoder.GetResultFinderPattern(i, flfaFinderPattern);
 
-			// QR Code ÀÇ Finder Pattern À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù.
+			// QR Code ì˜ Finder Pattern ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤.
 			if(IsFail(res = layer.DrawFigureImage(&flfaFinderPattern, CYAN, 5)))
 			{
 				ErrorPrint(res, "Failed to draw figure object on the image view.\n");
 				continue;
 			}
 
-			// QR Code Decoder °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FLStringW ¼±¾ğ
+			// QR Code Decoder ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FLStringW ì„ ì–¸
 			CFLString<wchar_t> flstrDecoded;
 
-			// QR Code Decoder °á°úµé Áß Decoded String À» ¾ò¾î¿È
+			// QR Code Decoder ê²°ê³¼ë“¤ ì¤‘ Decoded String ì„ ì–»ì–´ì˜´
 			if(IsFail(res = qrCodeDecoder.GetResultDecodedString(i, flstrDecoded)))
 			{
 				ErrorPrint(res, "Failed to get decoded string from the QR code decoder object.");
 				continue;
 			}
 
-			// Decoded String À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù.
-			// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-			// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-			// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-			//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+			// Decoded String ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤.
+			// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+			// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+			// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+			//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 			// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 			//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 
@@ -184,10 +184,10 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

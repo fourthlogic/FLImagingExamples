@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -8,28 +8,28 @@ int main() // Alignment Tiling
 {
 	const int32_t i32SrcImageCount = 4;
 
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSrcImage;
 	CFLImage fliDstImage;
 	CFLImage fliSrcImages[4];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap arrViewImageSrc[i32SrcImageCount];
 	CGUIViewImageWrap viewImageDst;
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/AlignmentTiling/AlignmentTilingExampleImage.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create the source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create the source image view
 		for(int32_t i = 0; i < i32SrcImageCount; ++i)
 		{
 			if(i < 2)
@@ -52,18 +52,18 @@ int main() // Alignment Tiling
 			arrViewImageSrc[i].SetFixThumbnailView(true);
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÆäÀÌÁö¿¡ °¢°¢ Á¸ÀçÇÏ´Â ÀÌ¹ÌÁö¸¦ °¢°¢¿¡ ºä¿¡ µğ½ºÇÃ·¹ÀÌ ÇÏ±â À§ÇØ ¾èÀº º¹»ç·Î °¢°¢ÀÇ ÀÌ¹ÌÁö °´Ã¼¿¡ ÇÒ´ç.
+		// Source ì´ë¯¸ì§€ ë·°ì— í˜ì´ì§€ì— ê°ê° ì¡´ì¬í•˜ëŠ” ì´ë¯¸ì§€ë¥¼ ê°ê°ì— ë·°ì— ë””ìŠ¤í”Œë ˆì´ í•˜ê¸° ìœ„í•´ ì–•ì€ ë³µì‚¬ë¡œ ê°ê°ì˜ ì´ë¯¸ì§€ ê°ì²´ì— í• ë‹¹.
 		// Assign each image object to each image object by shallow copying to display each image on the page in the source image view to each view.
 		for(int32_t i = 0; i < i32SrcImageCount; ++i)
 		{
-			// ¿øº»ÀÌ¹ÌÁö°¡ °¡Áø 4°³ÀÇ ÆäÀÌÁöµéÀ» °¢ ÆäÀÌÁö ¸¶´Ù µğ½ºÇÃ·¹ÀÌ ÇÏ±â À§ÇØ ¿øº»À» ¹ÙÅÁÀ¸·Î ¾èÀº º¹»ç(Shallow copy)¸¦ ¼öÇà
+			// ì›ë³¸ì´ë¯¸ì§€ê°€ ê°€ì§„ 4ê°œì˜ í˜ì´ì§€ë“¤ì„ ê° í˜ì´ì§€ ë§ˆë‹¤ ë””ìŠ¤í”Œë ˆì´ í•˜ê¸° ìœ„í•´ ì›ë³¸ì„ ë°”íƒ•ìœ¼ë¡œ ì–•ì€ ë³µì‚¬(Shallow copy)ë¥¼ ìˆ˜í–‰
 			// Perform a shallow copy based on the original to display the 4 pages of the original image for each page
 			fliSrcImages[i].Assign(fliSrcImage, false);
-			// ¾èÀº º¹»çµÈ ÀÌ¹ÌÁö °´Ã¼¿¡ ´ëÇØ Ç¥½ÃÇÒ ÆäÀÌÁö¸¦ ¼±ÅÃ (ÀÌ¹ÌÁö µ¥ÀÌÅÍ´Â °øÀ¯ÇÏÁö¸¸, ÆäÀÌÁö µîÀÇ ¼³Á¤Àº °³º°ÀûÀ¸·Î µ¿ÀÛ)
+			// ì–•ì€ ë³µì‚¬ëœ ì´ë¯¸ì§€ ê°ì²´ì— ëŒ€í•´ í‘œì‹œí•  í˜ì´ì§€ë¥¼ ì„ íƒ (ì´ë¯¸ì§€ ë°ì´í„°ëŠ” ê³µìœ í•˜ì§€ë§Œ, í˜ì´ì§€ ë“±ì˜ ì„¤ì •ì€ ê°œë³„ì ìœ¼ë¡œ ë™ì‘)
 			// Select a page to display for shallow copied image objects (Image data is shared, but settings such as pages work individually)
 			fliSrcImages[i].SelectPage(i);
 
-			// ¾èÀº º¹»çµÈ ÇØ´ç ÆäÀÌÁö¸¦ ¼±ÅÃÇÑ ÀÌ¹ÌÁö¸¦ ºä¿¡ µğ½ºÇÃ·¹ÀÌ
+			// ì–•ì€ ë³µì‚¬ëœ í•´ë‹¹ í˜ì´ì§€ë¥¼ ì„ íƒí•œ ì´ë¯¸ì§€ë¥¼ ë·°ì— ë””ìŠ¤í”Œë ˆì´
 			// Display the selected image of the shallow-copied page in the view
 			if(IsFail(res = arrViewImageSrc[i].SetImagePtr(&fliSrcImages[i])))
 			{
@@ -72,21 +72,21 @@ int main() // Alignment Tiling
 			}
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if(IsFail(res = viewImageDst.Create(912, 0, 1424, 612)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if(IsFail(res = viewImageDst.SetImagePtr(&fliDstImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Align the position of the image view window
+		// ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Align the position of the image view window
 		for(int32_t i = 1; i < i32SrcImageCount; ++i)
 		{
 			if(IsFail(res = arrViewImageSrc[0].SynchronizeWindow(&arrViewImageSrc[i])))
@@ -102,46 +102,46 @@ int main() // Alignment Tiling
 			break;
 		}
 
-		// AlignmentTiling °´Ã¼ »ı¼º // Create AlignmentTiling object
+		// AlignmentTiling ê°ì²´ ìƒì„± // Create AlignmentTiling object
 		CAlignmentTiling alignmentTiling;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		alignmentTiling.SetSourceImage(fliSrcImage);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		alignmentTiling.SetDestinationImage(fliDstImage);
-		// °ø¹é ¿µ¿ª »ö»ó ÁöÁ¤ // Set the blank color
+		// ê³µë°± ì˜ì—­ ìƒ‰ìƒ ì§€ì • // Set the blank color
 		alignmentTiling.SetBlankColor(CMultiVar<double>(200.));
-		// Interpolation ¿É¼Ç ¼³Á¤ // Set the Interpolation option
+		// Interpolation ì˜µì…˜ ì„¤ì • // Set the Interpolation option
 		alignmentTiling.SetInterpolationMethod(EInterpolationMethod_Bilinear);
-		// º´ÇÕÇÒ ÀÌ¹ÌÁöÀÇ ¹è¿­ ¼³Á¤ (Row, Column) // Set the array of images to be merged (Row, Column)
+		// ë³‘í•©í•  ì´ë¯¸ì§€ì˜ ë°°ì—´ ì„¤ì • (Row, Column) // Set the array of images to be merged (Row, Column)
 		alignmentTiling.SetImageArrangement(2, 2);
-		// °á°ú ÀÌ¹ÌÁöÀÇ Å©±â ÁöÁ¤À¯¹« ¿É¼Ç ¼³Á¤ // Set whether or not to specify the size of the resulting image
+		// ê²°ê³¼ ì´ë¯¸ì§€ì˜ í¬ê¸° ì§€ì •ìœ ë¬´ ì˜µì…˜ ì„¤ì • // Set whether or not to specify the size of the resulting image
 		alignmentTiling.SetResizeMethod(EResizeMethod_Resize);
-		// ResizeÀÏ °æ¿ì, °á°ú ÀÌ¹ÌÁöÀÇ Å©±â ¼³Á¤ // In case of Resize, set the size of the resulting image
+		// Resizeì¼ ê²½ìš°, ê²°ê³¼ ì´ë¯¸ì§€ì˜ í¬ê¸° ì„¤ì • // In case of Resize, set the size of the resulting image
 		alignmentTiling.SetResultImageSize(1500, 1500);
-		// º¸Á¤¿¡ »ç¿ëÇÒ Accuracy ¼³Á¤ // Set the Accuracy to be used for calibration
+		// ë³´ì •ì— ì‚¬ìš©í•  Accuracy ì„¤ì • // Set the Accuracy to be used for calibration
 		alignmentTiling.SetAccuracy(EFloatingPointAccuracy_Bit32);
-		// °á°ú ÀÌ¹ÌÁöÀÇ Áß½ÉÀÌ µÉ À§Ä¡¸¦ ¼³Á¤ // Set the location to be the center of the resulting image
+		// ê²°ê³¼ ì´ë¯¸ì§€ì˜ ì¤‘ì‹¬ì´ ë  ìœ„ì¹˜ë¥¼ ì„¤ì • // Set the location to be the center of the resulting image
 		alignmentTiling.SetSourcePivot(Foundation::CFLPoint<int32_t>(192, 778));
-		// PivotÀÌ ÁöÁ¤µÈ Page Index¸¦ ¼³Á¤ // Set the Page Index with Pivot specified
+		// Pivotì´ ì§€ì •ëœ Page Indexë¥¼ ì„¤ì • // Set the Page Index with Pivot specified
 		alignmentTiling.SetPivotPageIndex(1);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = alignmentTiling.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute alignment tiling.");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if(IsFail(res = viewImageDst.ZoomFit()))
 		{
 			ErrorPrint(res, "Failed to zoom fit of the image view.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSrc[i32SrcImageCount];
 		CGUIViewImageLayerWrap layerDst = viewImageDst.GetLayer(0);
 
@@ -149,24 +149,24 @@ int main() // Alignment Tiling
 		{
 			layerSrc[i] = arrViewImageSrc[i].GetLayer(0);
 
-			// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+			// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 			layerSrc[i].Clear();
 		}
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerDst.Clear();
 
-		// º´ÇÕµÈ ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to see where the merged area is
-		// FLImagingÀÇ Figure °´Ã¼µéÀº ¾î¶² µµÇü¸ğ¾çÀÌµç »ó°ü¾øÀÌ ÇÏ³ªÀÇ ÇÔ¼ö·Î µğ½ºÇÃ·¹ÀÌ°¡ °¡´É // FLImaging's Figure objects can be displayed as a function regardless of the shape
-		// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-		// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+		// ë³‘í•©ëœ ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to see where the merged area is
+		// FLImagingì˜ Figure ê°ì²´ë“¤ì€ ì–´ë–¤ ë„í˜•ëª¨ì–‘ì´ë“  ìƒê´€ì—†ì´ í•˜ë‚˜ì˜ í•¨ìˆ˜ë¡œ ë””ìŠ¤í”Œë ˆì´ê°€ ê°€ëŠ¥ // FLImaging's Figure objects can be displayed as a function regardless of the shape
+		// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+		// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 
 		CFLQuad<double> flqResult;
 
 		for(int32_t i = 0; i < i32SrcImageCount; ++i)
 		{
-			// °á°ú ÀÌ¹ÌÁö ±âÁØÀ¸·Î °¢°¢ÀÇ ÀÎµ¦½º¿¡ ÇØ´çÇÏ´Â º´ÇÕµÈ °á°ú ¿µ¿ªÀ» ¹Ş¾Æ¿Â´Ù.
+			// ê²°ê³¼ ì´ë¯¸ì§€ ê¸°ì¤€ìœ¼ë¡œ ê°ê°ì˜ ì¸ë±ìŠ¤ì— í•´ë‹¹í•˜ëŠ” ë³‘í•©ëœ ê²°ê³¼ ì˜ì—­ì„ ë°›ì•„ì˜¨ë‹¤.
 			// Receive the merged result area corresponding to each index based on the result image.
 			alignmentTiling.GetPartialResultRegion(i, flqResult);
 
@@ -176,11 +176,11 @@ int main() // Alignment Tiling
 
 
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		for(int32_t i = 0; i < i32SrcImageCount; ++i)
@@ -201,13 +201,13 @@ int main() // Alignment Tiling
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½ÅÇÑ´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹ í•œë‹¤. // Update the image view.
 		for(int32_t i = 0; i < i32SrcImageCount; ++i)
 			arrViewImageSrc[i].RedrawWindow();
 
 		viewImageDst.Invalidate(false);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		bool bRun = true;
 		while(bRun)
 		{

@@ -1,29 +1,29 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res;
 
 	do 
 	{
-		// ½º³À ºôµå °´Ã¼ ¼±¾ğ // Declare SNAP Build
+		// ìŠ¤ëƒ… ë¹Œë“œ ê°ì²´ ì„ ì–¸ // Declare SNAP Build
 		CSNAPBuild snapBuild;
 
-		// ½º³À ÆÄÀÏ ·Îµå // Load SNAP file
+		// ìŠ¤ëƒ… íŒŒì¼ ë¡œë“œ // Load SNAP file
 		if((res = snapBuild.Load(L"C:\\Users\\Public\\Documents\\FLImaging\\ExamplesSNAP\\Advanced Functions\\Object\\Blob.flsf")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the SNAP file.\n");
 			break;
 		}
 
-		// ½º³À ½ÇÇà // Run SNAP
+		// ìŠ¤ëƒ… ì‹¤í–‰ // Run SNAP
 		res = snapBuild.Run();
 
-		// ½º³ÀÀÌ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the SNAP to close
+		// ìŠ¤ëƒ…ì´ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the SNAP to close
 		while(snapBuild.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

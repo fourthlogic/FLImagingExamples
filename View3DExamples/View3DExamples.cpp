@@ -1,5 +1,5 @@
-
-// View3DExamples.cpp : ÀÀ¿ë ÇÁ·Î±×·¥¿¡ ´ëÇÑ Å¬·¡½º µ¿ÀÛÀ» Á¤ÀÇÇÕ´Ï´Ù.
+ï»¿
+// View3DExamples.cpp : ì‘ìš© í”„ë¡œê·¸ë¨ì— ëŒ€í•œ í´ë˜ìŠ¤ ë™ì‘ì„ ì •ì˜í•©ë‹ˆë‹¤.
 //
 
 #include "stdafx.h"
@@ -18,35 +18,35 @@ BEGIN_MESSAGE_MAP(CView3DExamplesApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-// CView3DExamplesApp »ı¼º
+// CView3DExamplesApp ìƒì„±
 
 CView3DExamplesApp::CView3DExamplesApp()
 {
-	// TODO: ¿©±â¿¡ »ı¼º ÄÚµå¸¦ Ãß°¡ÇÕ´Ï´Ù.
-	// InitInstance¿¡ ¸ğµç Áß¿äÇÑ ÃÊ±âÈ­ ÀÛ¾÷À» ¹èÄ¡ÇÕ´Ï´Ù.
+	// TODO: ì—¬ê¸°ì— ìƒì„± ì½”ë“œë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
+	// InitInstanceì— ëª¨ë“  ì¤‘ìš”í•œ ì´ˆê¸°í™” ì‘ì—…ì„ ë°°ì¹˜í•©ë‹ˆë‹¤.
 }
 
 
-// À¯ÀÏÇÑ CView3DExamplesApp °³Ã¼ÀÔ´Ï´Ù.
+// ìœ ì¼í•œ CView3DExamplesApp ê°œì²´ì…ë‹ˆë‹¤.
 
 CView3DExamplesApp theApp;
 
 
-// CView3DExamplesApp ÃÊ±âÈ­
+// CView3DExamplesApp ì´ˆê¸°í™”
 
 BOOL CView3DExamplesApp::InitInstance()
 {
 	CWinAppEx::InitInstance();
 	SetRegistryKey(_T("View3DExamples examples"));
 
-	// GUI Manager ÃÊ±âÈ­ ÀüÃ³¸®¸¦ ¼öÇàÇÕ´Ï´Ù.
+	// GUI Manager ì´ˆê¸°í™” ì „ì²˜ë¦¬ë¥¼ ìˆ˜í–‰í•©ë‹ˆë‹¤.
 	CGUIManager::PreInitialize();
 
-	// ¿¹Á¦ ÇÁ·ÎÆÛÆ¼ ¸Ş´º¸¦ µî·ÏÇÕ´Ï´Ù.
+	// ì˜ˆì œ í”„ë¡œí¼í‹° ë©”ë‰´ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤.
 	CGUIManager::RegisterMenu(CPropertyView3DExamples(), L"View3D Example", L"Menu", false);
 
 
-	// GUI »ó¿¡¼­ »ç¿ëµÉ ºä¸¦ »ı¼ºÇÕ´Ï´Ù.
+	// GUI ìƒì—ì„œ ì‚¬ìš©ë  ë·°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 	std::vector<CGUIFixedViewDeclaration*> vctFixedViewDecl;
 
 	for(int32_t i = 0; i < 4; ++i)
@@ -58,7 +58,7 @@ BOOL CView3DExamplesApp::InitInstance()
 		vctFixedViewDecl.push_back(pDeclarationCam);
 	}
 
-	// GUI »ó¿¡¼­ ºäÀÇ ¹è¿­À» ¼³Á¤ÇÕ´Ï´Ù.
+	// GUI ìƒì—ì„œ ë·°ì˜ ë°°ì—´ì„ ì„¤ì •í•©ë‹ˆë‹¤.
 	CGUIFixedViewPlacement fvp;
 
 	CGUIFixedViewPlacementSet fvpSet1(false);
@@ -132,18 +132,18 @@ BOOL CView3DExamplesApp::InitInstance()
 	CGUIManagerView::AddFixedViewPlacementSet(fvpSet3);
 	CGUIManagerView::AddFixedViewPlacementSet(fvpSet4);
 
-	// ÀÎµ¦½º¿¡ ÇØ´çÇÏ´Â ºäÀÇ ¼³Á¤À¸·Î ¼±ÅÃÇÕ´Ï´Ù.
+	// ì¸ë±ìŠ¤ì— í•´ë‹¹í•˜ëŠ” ë·°ì˜ ì„¤ì •ìœ¼ë¡œ ì„ íƒí•©ë‹ˆë‹¤.
 	CGUIManagerView::SelectFixedViewPlacementSet(3);
 
 	CGUIManager::PreInitializePaneVisibility(true, true, false, false, false);
 
-	// ¸ğµ¨ °ü¸®ÀÚ¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// ëª¨ë¸ ê´€ë¦¬ìë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	CGUIManagerModel::Initialize();
 
-	// GUI °ü¸®ÀÚ¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// GUI ê´€ë¦¬ìë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	CGUIManager::Initialize();
 
-	// Main Frame À§Ä¡¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+	// Main Frame ìœ„ì¹˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 	CGUIMainFrame* pMF = nullptr;
 
 	if(AfxGetApp() && AfxGetApp()->m_pMainWnd)
@@ -164,10 +164,10 @@ BOOL CView3DExamplesApp::InitInstance()
 		pMF->SetWindowPos(NULL, 0, 0, 1280, 1024, NULL);
 	}
 
-	// "View3D Example" ÀÌ¶ó´Â ÀÌ¸§ÀÇ ¸Ş´º ¾ÆÀÌÅÛ Ã£±â
+	// "View3D Example" ì´ë¼ëŠ” ì´ë¦„ì˜ ë©”ë‰´ ì•„ì´í…œ ì°¾ê¸°
 	CPropertyView3DExamples* pPropertyMenu = dynamic_cast<CPropertyView3DExamples*>(CGUIManager::GetMenuItem(L"View3D Example", L"Menu"));
 
-	// "View3D Example" ÀÌ¶ó´Â ÀÌ¸§ÀÇ ¸Ş´º ¾ÆÀÌÅÛÀÌ ÀÖÀ» °æ¿ì, ÇÁ·ÎÆÛÆ¼ Ã¢ ¿­±â
+	// "View3D Example" ì´ë¼ëŠ” ì´ë¦„ì˜ ë©”ë‰´ ì•„ì´í…œì´ ìˆì„ ê²½ìš°, í”„ë¡œí¼í‹° ì°½ ì—´ê¸°
 	if(pPropertyMenu)
 	{
 		if(!pPropertyMenu->OnLButtonDoubleClick())

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,15 +6,15 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage[4];
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[0].Create(400, 0, 912, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -39,7 +39,7 @@ int main()
 			break;
 		}
 
-		// SourceView, DstView ÀÇ 0¹ø ·¹ÀÌ¾î °¡Á®¿À±â // Get Layer 0 of SourceView, DstView
+		// SourceView, DstView ì˜ 0ë²ˆ ë ˆì´ì–´ ê°€ì ¸ì˜¤ê¸° // Get Layer 0 of SourceView, DstView
 		CGUIViewImageLayerWrap SrcLayer0 = viewImage[0].GetLayer(0);
 		CGUIViewImageLayerWrap DstLayer0 = viewImage[1].GetLayer(0);
 		CGUIViewImageLayerWrap SrcLayer1 = viewImage[2].GetLayer(0);
@@ -50,7 +50,7 @@ int main()
 		SrcLayer1.DrawTextCanvas(TPoint<double>(0, 0), L"Source Figure And Region2", YELLOW, BLACK, 15);
 		DstLayer1.DrawTextCanvas(TPoint<double>(0, 0), L"Get Figure Within Region2", YELLOW, BLACK, 15);
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		for(int32_t i = 1; i < 4; ++i)
 		{
 			if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[i])))
@@ -60,7 +60,7 @@ int main()
 			}
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		for(int32_t i = 1; i < 4; ++i)
 		{
 			if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[i])))
@@ -70,7 +70,7 @@ int main()
 			}
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		for(int32_t i = 1; i < 4; ++i)
 		{
 			if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[i])))
@@ -80,7 +80,7 @@ int main()
 			}
 		}
 
-		// Figure »ı¼º // Create figure
+		// Figure ìƒì„± // Create figure
 		CFLLine<double> fll(76, 300, 130, 210);
 
 		CFLRect<double> flr(50, 50, 100, 100);
@@ -102,7 +102,7 @@ int main()
 		flfaSource.PushBack(fle);
 		flfaSource.PushBack(flcr);
 
-		// Region »ı¼º // Create region
+		// Region ìƒì„± // Create region
 		CFLComplexRegion flcrRegion1;
 
 		flcrRegion1.PushBack(CFLPoint<double>(0, 0));
@@ -133,7 +133,7 @@ int main()
 		strFigure.Format(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flcrRegion1).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
-		// SourceView1ÀÇ 0¹ø ·¹ÀÌ¾î¿¡ Source Figure, Region1 ±×¸®±â // Draw Source Figure, Region1 on Layer 0 of SourceView1
+		// SourceView1ì˜ 0ë²ˆ ë ˆì´ì–´ì— Source Figure, Region1 ê·¸ë¦¬ê¸° // Draw Source Figure, Region1 on Layer 0 of SourceView1
 		SrcLayer0.DrawFigureImage(flfaSource, CYAN);
 		SrcLayer0.DrawFigureImage(flcrRegion1, BLUE, 1, BLUE, EGUIViewImagePenStyle_Solid, 1, 0.2f);
 
@@ -142,11 +142,11 @@ int main()
 		strFigure.Format(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flcrRegion2).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
-		// SourceView2ÀÇ 0¹ø ·¹ÀÌ¾î¿¡ Source Figure, Region2 ±×¸®±â // Draw Source Figure, Region2 on Layer 0 of SourceView2
+		// SourceView2ì˜ 0ë²ˆ ë ˆì´ì–´ì— Source Figure, Region2 ê·¸ë¦¬ê¸° // Draw Source Figure, Region2 on Layer 0 of SourceView2
 		SrcLayer1.DrawFigureImage(flfaSource, CYAN);
 		SrcLayer1.DrawFigureImage(flcrRegion2, BLUE, 1, BLUE, EGUIViewImagePenStyle_Solid, 1, 0.2f);
 
-		// Region1°ú °ãÃÄÁö´Â Figure ÃßÃâ // Get figure overlapping with Region1
+		// Region1ê³¼ ê²¹ì³ì§€ëŠ” Figure ì¶”ì¶œ // Get figure overlapping with Region1
 		CFLFigureArray flfaResult1;
 		flfaSource.GetFigureWithinRegion(flcrRegion1, &flfaResult1);
 
@@ -155,12 +155,12 @@ int main()
 		strFigure.Format(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flfaResult1).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
-		// DstView1ÀÇ 0¹ø ·¹ÀÌ¾î¿¡ °á°ú ±×¸®±â // Draw the result on layer 0 of DstView1
+		// DstView1ì˜ 0ë²ˆ ë ˆì´ì–´ì— ê²°ê³¼ ê·¸ë¦¬ê¸° // Draw the result on layer 0 of DstView1
 		DstLayer0.DrawFigureImage(flfaSource, CYAN);
 		DstLayer0.DrawFigureImage(flcrRegion1, BLUE, 1, BLUE, EGUIViewImagePenStyle_Solid, 1, 0.2f);
 		DstLayer0.DrawFigureImage(flfaResult1, LIME, 3, LIME, EGUIViewImagePenStyle_Solid, 1, 0.2f);
 
-		// Region2°ú °ãÃÄÁö´Â Figure ÃßÃâ // Get figure overlapping with Region2
+		// Region2ê³¼ ê²¹ì³ì§€ëŠ” Figure ì¶”ì¶œ // Get figure overlapping with Region2
 		CFLFigureArray flfaResult2;
 		flfaSource.GetFigureWithinRegion(&flcrRegion2, &flfaResult2);
 
@@ -169,16 +169,16 @@ int main()
 		strFigure.Format(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flfaResult2).GetString());
 		wprintf(L"%s", strFigure.GetString());
 
-		// DstView1ÀÇ 0¹ø ·¹ÀÌ¾î¿¡ °á°ú ±×¸®±â // Draw the result on layer 0 of DstView1
+		// DstView1ì˜ 0ë²ˆ ë ˆì´ì–´ì— ê²°ê³¼ ê·¸ë¦¬ê¸° // Draw the result on layer 0 of DstView1
 		DstLayer1.DrawFigureImage(flfaSource, CYAN);
 		DstLayer1.DrawFigureImage(flcrRegion2, BLUE, 1, BLUE, EGUIViewImagePenStyle_Solid, 1, 0.2f);
 		DstLayer1.DrawFigureImage(flfaResult2, LIME, 3, LIME, EGUIViewImagePenStyle_Solid, 1, 0.2f);
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		for(int32_t i = 0; i < 4; ++i)
 			viewImage[i].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable() && viewImage[2].IsAvailable() && viewImage[3].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

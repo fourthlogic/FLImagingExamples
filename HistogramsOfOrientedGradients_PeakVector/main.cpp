@@ -1,102 +1,102 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewSrcImage;
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if((res = fliImage.Load(L"../../ExampleImages/OperationCompare/candle.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if((res = viewSrcImage.Create(400, 0, 912, 484)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if((res = viewSrcImage.SetImagePtr(&fliImage)).IsFail())
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewSrcImage.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 
-		// HOG °´Ã¼ »ı¼º // Create HOG object
+		// HOG ê°ì²´ ìƒì„± // Create HOG object
 		CHistogramsOfOrientedGradients hog;
 
-		// ROI ¹üÀ§ »ı¼º // Create ROI area
+		// ROI ë²”ìœ„ ìƒì„± // Create ROI area
 		CFLRect<int32_t> flrROI(200, 10, 300, 200);
 
-		// ¿¬»êÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set Image to Calculate
+		// ì—°ì‚°í•  ì´ë¯¸ì§€ ì„¤ì • // Set Image to Calculate
 		if(IsFail(res = hog.SetSourceImage(fliImage)))
 		{
 			ErrorPrint(res, "Failed to set Source Image.");
 			break;
 		}
 
-		// ¿¬»êÇÒ ROI ¼³Á¤ // Set ROI to Calculate
+		// ì—°ì‚°í•  ROI ì„¤ì • // Set ROI to Calculate
 		if(IsFail(res = hog.SetSourceROI(flrROI)))
 		{
 			ErrorPrint(res, "Failed to set Source ROI.");
 			break;
 		}
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if((res = hog.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Histograms Of Oriented Gradients.");
 			break;
 		}
 
-		// ½ÇÇà °á°ú¸¦ ¹Ş¾Æ¿À±â À§ÇÑ ÄÁÅ×ÀÌ³Ê // Container to get Calculated results
+		// ì‹¤í–‰ ê²°ê³¼ë¥¼ ë°›ì•„ì˜¤ê¸° ìœ„í•œ ì»¨í…Œì´ë„ˆ // Container to get Calculated results
 		CFLFigureArray flfaPeakVectors;
 
-		// ÇÇÅ© º¤ÅÍ ÃßÃâ // Get Peak Vectors
+		// í”¼í¬ ë²¡í„° ì¶”ì¶œ // Get Peak Vectors
 		if((res = hog.GetPeakVectorsFigure(0, flfaPeakVectors)).IsFail())
 		{
 			ErrorPrint(res, "Failed to get result.");
 			break;
 		}
 
-		// ÇÇÅ© º¤ÅÍ¸¦ Ãâ·Â // Print Peak Vectors
+		// í”¼í¬ ë²¡í„°ë¥¼ ì¶œë ¥ // Print Peak Vectors
 		layer.DrawFigureImage(flfaPeakVectors[0], BLUE, 3, BLUE, EGUIViewImagePenStyle_Solid, 0.3f, 0.3f);
 		layer.DrawFigureImage(flfaPeakVectors[1], GREEN, 3, GREEN, EGUIViewImagePenStyle_Solid, 0.3f, 0.3f);
 		layer.DrawFigureImage(flfaPeakVectors[2], RED, 3, RED, EGUIViewImagePenStyle_Solid, 0.3f, 0.3f);
 
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to find out where ROI is
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to find out where ROI is
 		if(IsFail(res = layer.DrawFigureImage(&flrROI, LIME)))
 		{
 			ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewSrcImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewSrcImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

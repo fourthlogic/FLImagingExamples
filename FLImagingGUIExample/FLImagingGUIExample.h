@@ -1,18 +1,18 @@
-
-// FLImagingGUIExample.h : PROJECT_NAME ÀÀ¿ë ÇÁ·Î±×·¥¿¡ ´ëÇÑ ÁÖ Çì´õ ÆÄÀÏÀÔ´Ï´Ù.
+ï»¿
+// FLImagingGUIExample.h : PROJECT_NAME ì‘ìš© í”„ë¡œê·¸ëž¨ì— ëŒ€í•œ ì£¼ í—¤ë” íŒŒì¼ìž…ë‹ˆë‹¤.
 //
 
 #pragma once
 
 #ifndef __AFXWIN_H__
-	#error "PCH¿¡ ´ëÇØ ÀÌ ÆÄÀÏÀ» Æ÷ÇÔÇÏ±â Àü¿¡ 'stdafx.h'¸¦ Æ÷ÇÔÇÕ´Ï´Ù."
+	#error "PCHì— ëŒ€í•´ ì´ íŒŒì¼ì„ í¬í•¨í•˜ê¸° ì „ì— 'stdafx.h'ë¥¼ í¬í•¨í•©ë‹ˆë‹¤."
 #endif
 
-#include "resource.h"		// ÁÖ ±âÈ£ÀÔ´Ï´Ù.
+#include "resource.h"		// ì£¼ ê¸°í˜¸ìž…ë‹ˆë‹¤.
 
 
 // CFLImagingGUIExampleApp:
-// ÀÌ Å¬·¡½ºÀÇ ±¸Çö¿¡ ´ëÇØ¼­´Â FLImagingGUIExample.cppÀ» ÂüÁ¶ÇÏ½Ê½Ã¿À.
+// ì´ í´ëž˜ìŠ¤ì˜ êµ¬í˜„ì— ëŒ€í•´ì„œëŠ” FLImagingGUIExample.cppì„ ì°¸ì¡°í•˜ì‹­ì‹œì˜¤.
 //
 
 class CFLImagingGUIExampleApp : public CWinAppEx
@@ -20,11 +20,11 @@ class CFLImagingGUIExampleApp : public CWinAppEx
 public:
 	CFLImagingGUIExampleApp();
 
-// ÀçÁ¤ÀÇÀÔ´Ï´Ù.
+// ìž¬ì •ì˜ìž…ë‹ˆë‹¤.
 public:
 	virtual BOOL InitInstance();
 
-// ±¸ÇöÀÔ´Ï´Ù.
+// êµ¬í˜„ìž…ë‹ˆë‹¤.
 
 	DECLARE_MESSAGE_MAP()
 };

@@ -1,15 +1,15 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliLearnImage;
 	CFLImage fliFindImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageLearn;
 	CGUIViewImageWrap viewImageFind;
 
@@ -17,7 +17,7 @@ int main()
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/Matching/Pattern2 Single Learn.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
@@ -30,7 +30,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		if(IsFail(res = viewImageLearn.Create(400, 0, 912, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -43,7 +43,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 		if(IsFail(res = viewImageLearn.SetImagePtr(&fliLearnImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -56,7 +56,7 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImageFind)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
@@ -81,29 +81,29 @@ int main()
 			break;
 		}
 
-		// Pattern Match °´Ã¼ »ı¼º // Create Pattern Match object
+		// Pattern Match ê°ì²´ ìƒì„± // Create Pattern Match object
 		CPatternMatchSparse FLPatternMatchSparse;
 
-		// ÇĞ½ÀÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to learn
+		// í•™ìŠµí•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to learn
 		FLPatternMatchSparse.SetLearnImage(fliLearnImage);
 
-		// ÇĞ½ÀÇÒ ¿µ¿ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the area to learn.
+		// í•™ìŠµí•  ì˜ì—­ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the area to learn.
 		CFLRect<double> learnRegion(150, 150, 760, 840);
 		CFLPoint<double> flpLearnPivot = learnRegion.GetCenter();
 		FLPatternMatchSparse.SetLearnROI(learnRegion);
 		FLPatternMatchSparse.SetLearnPivot(flpLearnPivot);
 
-		// »ùÇÃ¸µ °³¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the sample count.
+		// ìƒ˜í”Œë§ ê°œìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the sample count.
 		FLPatternMatchSparse.SetSampleCount(64);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if(IsFail(res = FLPatternMatchSparse.Learn()))
 		{
 			ErrorPrint(res, "Failed to execute Learn.\n");
 			break;
 		}
 
-		// ÃøÁ¤ ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the measurement area is
+		// ì¸¡ì • ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the measurement area is
 		if(IsFail(res = layerLearn.DrawFigureImage(&learnRegion, BLACK, 3)))
 		{
 			ErrorPrint(res, "Failed to draw figure\n");
@@ -116,7 +116,7 @@ int main()
 			break;
 		}
 
-		// ¼³Á¤µÈ Áß½ÉÁ¡ÀÇ À§Ä¡¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display the position of the set center point
+		// ì„¤ì •ëœ ì¤‘ì‹¬ì ì˜ ìœ„ì¹˜ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display the position of the set center point
 		CFLFigureArray flfaPointPivot = flpLearnPivot.MakeCrossHair(3, false);
 
 		if(IsFail(res = layerLearn.DrawFigureImage(&flfaPointPivot, BLACK, 3)))
@@ -131,8 +131,8 @@ int main()
 			break;
 		}
 
-		// ÇĞ½ÀÇÑ Á¤º¸¿¡ ´ëÇØ ConsoleÃ¢¿¡ Ãâ·ÂÇÑ´Ù // Print the learned information to the console window
-		printf(" ¢¹ Learn Information\n");
+		// í•™ìŠµí•œ ì •ë³´ì— ëŒ€í•´ Consoleì°½ì— ì¶œë ¥í•œë‹¤ // Print the learned information to the console window
+		printf(" â–· Learn Information\n");
 		printf("  1. ROI Shape Type : Rectangle\n");
 		printf("    left   : %.3lf\n", learnRegion.left);
 		printf("    right  : %.3lf\n", learnRegion.right);
@@ -142,22 +142,22 @@ int main()
 		printf("  2. Interest Pivot : (%.3lf, %.3lf)\n", flpLearnPivot.x, flpLearnPivot.y);
 		printf("\n");
 
-		// °ËÃâÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set image to detect
+		// ê²€ì¶œí•  ì´ë¯¸ì§€ ì„¤ì • // Set image to detect
 		FLPatternMatchSparse.SetSourceImage(fliFindImage);
 
-		// °ËÃâ ½Ã »ç¿ëµÉ ±âº» °¢µµ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the default angle to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ê¸°ë³¸ ê°ë„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the default angle to be used for detection.
 		FLPatternMatchSparse.SetAngleBias(0.);
-		// °ËÃâ ½Ã »ç¿ëµÉ °¢µµÀÇ Å½»ö¹üÀ§¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the search range of the angle to be used for detection.
-		// °¢µµ´Â ±âº» °¢µµ¸¦ ±âÁØÀ¸·Î (±âº» °¢µµ - AngleTolerance, ±âº» °¢µµ + AngleTolerance)°¡ ÃÖÁ¾ Å½»ö¹üÀ§ // The angle is based on the basic angle (default angle - AngleTolerance, basic angle + AngleTolerance) is the final search range
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ê°ë„ì˜ íƒìƒ‰ë²”ìœ„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the search range of the angle to be used for detection.
+		// ê°ë„ëŠ” ê¸°ë³¸ ê°ë„ë¥¼ ê¸°ì¤€ìœ¼ë¡œ (ê¸°ë³¸ ê°ë„ - AngleTolerance, ê¸°ë³¸ ê°ë„ + AngleTolerance)ê°€ ìµœì¢… íƒìƒ‰ë²”ìœ„ // The angle is based on the basic angle (default angle - AngleTolerance, basic angle + AngleTolerance) is the final search range
 		FLPatternMatchSparse.SetAngleTolerance(10.);
-		// °ËÃâ ½Ã »ç¿ëµÉ ÃÖ¼Ò Å½»öÁ¡¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the minimum search score to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ìµœì†Œ íƒìƒ‰ì ìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the minimum search score to be used for detection.
 		FLPatternMatchSparse.SetMinimumDetectionScore(0.7);
-		// °ËÃâ ½Ã »ç¿ëµÉ ÃÖ´ë Å½»ö°´Ã¼ ¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the maximum number of search objects to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ìµœëŒ€ íƒìƒ‰ê°ì²´ ìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the maximum number of search objects to be used for detection.
 		FLPatternMatchSparse.SetMaxObject(1);
-		// °ËÃâ ½Ã º¸°£¹ı »ç¿ë À¯¹«¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set whether to use interpolation when detecting.
+		// ê²€ì¶œ ì‹œ ë³´ê°„ë²• ì‚¬ìš© ìœ ë¬´ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set whether to use interpolation when detecting.
 		FLPatternMatchSparse.EnableInterpolation(true);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		res = FLPatternMatchSparse.Execute();
 
 		if(IsFail(res))
@@ -166,10 +166,10 @@ int main()
 			break;
 		}
 
-		// ÆĞÅÏ °ËÃâ °á°ú¸¦ °¡Á®¿É´Ï´Ù. // Get the pattern detection result.
+		// íŒ¨í„´ ê²€ì¶œ ê²°ê³¼ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the pattern detection result.
 		int64_t i64ResultCount = FLPatternMatchSparse.GetResultCount();
 
-		printf(" ¢º Find Information\n");
+		printf(" â–¶ Find Information\n");
 
 		for(int64_t i = 0; i < i64ResultCount; ++i)
 		{
@@ -192,7 +192,7 @@ int main()
 			CFLString<wchar_t> strData;
 			CFLPoint<double> flpResultRegion = CFLPoint<double>(flrResultRegion.left, flrResultRegion.top);
 
-			// ÆĞÅÏ °ËÃâ °á°ú¸¦ ConsoleÃ¢¿¡ Ãâ·ÂÇÕ´Ï´Ù. // Output the pattern detection result to the console window.
+			// íŒ¨í„´ ê²€ì¶œ ê²°ê³¼ë¥¼ Consoleì°½ì— ì¶œë ¥í•©ë‹ˆë‹¤. // Output the pattern detection result to the console window.
 			printf(" < Instance : %lld >\n", i);
 			printf("  1. ROI Shape Type : Rectangle\n");
 			printf("    left   : %.3lf\n", flrResultRegion.left);
@@ -204,7 +204,7 @@ int main()
 			printf("  3. Score : %0.3lf\n  4. Angle : %0.3lf\n  5. Scale : %0.3lf\n", f32Score, flrResultRegion.angle, f32Scale);
 			printf("\n");
 
-			// °ËÃâ °á°úÀÇ Áß½ÉÁ¡À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display the center point of the detection result
+			// ê²€ì¶œ ê²°ê³¼ì˜ ì¤‘ì‹¬ì ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display the center point of the detection result
 			CFLFigureArray flfaPoint = flpPivot.MakeCrossHair(3, false);
 			flfaPoint.Rotate(f32Angle, &flpPivot);
 
@@ -220,7 +220,7 @@ int main()
 				break;
 			}
 			
-			// °á°ú ¿µ¿ªÀ» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display the result area
+			// ê²°ê³¼ ì˜ì—­ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display the result area
 			if(IsFail(res = layerFind.DrawFigureImage(&flrResultRegion, BLACK, 3)))
 			{
 				ErrorPrint(res, "Failed to draw figure\n");
@@ -247,11 +247,11 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImageLearn.Invalidate(true);
 		viewImageFind.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageLearn.IsAvailable() && viewImageFind.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 
@@ -8,7 +8,7 @@ int main()
 {
 	CResult res = EResult_UnknownError;
 
-	// Á¶¸í ÄÁÆ®·Ñ·¯ ProtecPSC_CH03 ¼±¾ğ // Declare the ProtecPSC_CH03 Light Controller
+	// ì¡°ëª… ì»¨íŠ¸ë¡¤ëŸ¬ ProtecPSC_CH03 ì„ ì–¸ // Declare the ProtecPSC_CH03 Light Controller
 	CDeviceLightControllerProtecPSC_CH03 lightController;
 
 	do
@@ -19,14 +19,14 @@ int main()
 		bool bExit = false;
 
 		{
-			// ÄÄÆ÷Æ® ¹øÈ£¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Enter the COM port number.
+			// ì»´í¬íŠ¸ ë²ˆí˜¸ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the COM port number.
 			int32_t i32ComPortNumber = 0;
 			printf("Port Number: ");
 			fgetws(arrInput, 4096, stdin);
 			flsInput = arrInput;
 			i32ComPortNumber = flsInput.ToInt32();
 			system("cls");
-			// ÄÄÆ÷Æ® ¹øÈ£ ¼³Á¤ // Set the COM port number.
+			// ì»´í¬íŠ¸ ë²ˆí˜¸ ì„¤ì • // Set the COM port number.
 			lightController.SetComPortNumber(i32ComPortNumber);
 		}
 
@@ -40,7 +40,7 @@ int main()
 		{
 			int32_t i32SelectMode = 0;
 
-			// ÀÛ¾÷ ¸ğµå¸¦ ¼±ÅÃÇÕ´Ï´Ù. // Select the operation mode.
+			// ì‘ì—… ëª¨ë“œë¥¼ ì„ íƒí•©ë‹ˆë‹¤. // Select the operation mode.
 			printf("1. Live Mode\n");
 			printf("2. Strobe Mode\n");
 			printf("0. Exit\n");
@@ -62,7 +62,7 @@ int main()
 
 			if(i32SelectMode == 1)
 			{
-				// On/Off »óÅÂ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the On/Off state.
+				// On/Off ìƒíƒœë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the On/Off state.
 				printf("1. Live On\n");
 				printf("2. Live Off\n");
 				printf("\n");
@@ -80,14 +80,14 @@ int main()
 				{
 					lightController.EnableLiveTurnOn(true);
 
-					// ¼³Á¤ÇÒ Ã¤³Î °ªÀ» ÀÔ·ÂÇÕ´Ï´Ù. // Enter the channel value to configure.
+					// ì„¤ì •í•  ì±„ë„ ê°’ì„ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the channel value to configure.
 					printf("Select Channel Index: ");
 					fgetws(arrInput, 4096, stdin);
 					flsInput = arrInput;
 
 					int32_t i32Channel = flsInput.ToInt32();
 
-					// Á¶¸í °ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the light value.
+					// ì¡°ëª… ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the light value.
 					printf("Input Light Value (0 ~ 255): ");
 					fgetws(arrInput, 4096, stdin);
 					flsInput = arrInput;
@@ -103,21 +103,21 @@ int main()
 			{
 				lightController.SetOperationMode(CDeviceLightControllerProtecPSC_CH03::EOperationMode_Strobe);
 
-				// ¼³Á¤ÇÒ Æ®¸®°Å IndexÀ» ÀÔ·ÂÇÕ´Ï´Ù. // Enter the trigger index value to configure.
+				// ì„¤ì •í•  íŠ¸ë¦¬ê±° Indexì„ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the trigger index value to configure.
 				printf("Select Trigger Index: ");
 				fgetws(arrInput, 4096, stdin);
 				flsInput = arrInput;
 
 				i32TriggerIndex = flsInput.ToInt32();
 
-				// ¼³Á¤ÇÒ Ã¤³Î Index À» ÀÔ·ÂÇÕ´Ï´Ù. // Enter the channel index to configure.
+				// ì„¤ì •í•  ì±„ë„ Index ì„ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the channel index to configure.
 				printf("Select Channel Index: ");
 				fgetws(arrInput, 4096, stdin);
 				flsInput = arrInput;
 
 				int32_t i32Channel = flsInput.ToInt32();
 
-				// ½ºÅä·Îºê °ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the strobe value.
+				// ìŠ¤í† ë¡œë¸Œ ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the strobe value.
 				printf("Input Strobe Value (0 ~ 4000 us): ");
 				fgetws(arrInput, 4096, stdin);
 				flsInput = arrInput;
@@ -127,7 +127,7 @@ int main()
 				lightController.SetStrobe(i32TriggerIndex, i32Channel, u16StrobeTime);
 			}
 
-			// ÀÔ·ÂµÈ ÆÄ¶ó¹ÌÅÍ¸¦ Àû¿ëÇÕ´Ï´Ù. // Apply the configured parameters.
+			// ì…ë ¥ëœ íŒŒë¼ë¯¸í„°ë¥¼ ì ìš©í•©ë‹ˆë‹¤. // Apply the configured parameters.
 			if(IsFail(res = lightController.Apply(i32TriggerIndex)))
 			{
 				ErrorPrint(res, "Failed to apply the light controller.\n");
@@ -140,7 +140,7 @@ int main()
 	}
 	while(false);
 
-	// Á¶¸í ÄÁÆ®·Ñ·¯¿¡ ¿¬°áÀ» Á¾·áÇÕ´Ï´Ù. // Terminate the connection to the light controller.
+	// ì¡°ëª… ì»¨íŠ¸ë¡¤ëŸ¬ì— ì—°ê²°ì„ ì¢…ë£Œí•©ë‹ˆë‹¤. // Terminate the connection to the light controller.
 	if(IsFail(res = lightController.Terminate()))
 	{
 		ErrorPrint(res, "Failed to terminate the motion.\n");

@@ -1,5 +1,5 @@
-
-// MenuBarUserDefinedInfoExample.cpp : ÀÀ¿ë ÇÁ·Î±×·¥¿¡ ´ëÇÑ Å¬·¡½º µ¿ÀÛÀ» Á¤ÀÇÇÕ´Ï´Ù.
+ï»¿
+// MenuBarUserDefinedInfoExample.cpp : ì‘ìš© í”„ë¡œê·¸ë¨ì— ëŒ€í•œ í´ë˜ìŠ¤ ë™ì‘ì„ ì •ì˜í•©ë‹ˆë‹¤.
 //
 
 #include "stdafx.h"
@@ -18,35 +18,35 @@ BEGIN_MESSAGE_MAP(CMenuBarUserDefinedInfoExampleApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-// CMenuBarUserDefinedInfoExampleApp »ı¼º
+// CMenuBarUserDefinedInfoExampleApp ìƒì„±
 
 CMenuBarUserDefinedInfoExampleApp::CMenuBarUserDefinedInfoExampleApp()
 {
-	// TODO: ¿©±â¿¡ »ı¼º ÄÚµå¸¦ Ãß°¡ÇÕ´Ï´Ù.
-	// InitInstance¿¡ ¸ğµç Áß¿äÇÑ ÃÊ±âÈ­ ÀÛ¾÷À» ¹èÄ¡ÇÕ´Ï´Ù.
+	// TODO: ì—¬ê¸°ì— ìƒì„± ì½”ë“œë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
+	// InitInstanceì— ëª¨ë“  ì¤‘ìš”í•œ ì´ˆê¸°í™” ì‘ì—…ì„ ë°°ì¹˜í•©ë‹ˆë‹¤.
 }
 
 
-// À¯ÀÏÇÑ CMenuBarUserDefinedInfoExampleApp °³Ã¼ÀÔ´Ï´Ù.
+// ìœ ì¼í•œ CMenuBarUserDefinedInfoExampleApp ê°œì²´ì…ë‹ˆë‹¤.
 
 CMenuBarUserDefinedInfoExampleApp theApp;
 
 
-// CMenuBarUserDefinedInfoExampleApp ÃÊ±âÈ­
+// CMenuBarUserDefinedInfoExampleApp ì´ˆê¸°í™”
 
 BOOL CMenuBarUserDefinedInfoExampleApp::InitInstance()
 {
 	CWinAppEx::InitInstance();
 	SetRegistryKey(_T("MenuBarUserDefinedInfoExample examples"));
 
-	// GUI Manager ÃÊ±âÈ­ ÀüÃ³¸®¸¦ ¼öÇàÇÕ´Ï´Ù.
+	// GUI Manager ì´ˆê¸°í™” ì „ì²˜ë¦¬ë¥¼ ìˆ˜í–‰í•©ë‹ˆë‹¤.
 	CGUIManager::PreInitialize();
 
-	// ¿¹Á¦ ÇÁ·ÎÆÛÆ¼ ¸Ş´º¸¦ µî·ÏÇÕ´Ï´Ù.
+	// ì˜ˆì œ í”„ë¡œí¼í‹° ë©”ë‰´ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤.
 	CGUIManager::RegisterMenu(CPropertyMenuBarUserDefinedInfoExample(), L"MenuBar User Defined Info Example", L"Menu", false);
 
 
-	// GUI »ó¿¡¼­ »ç¿ëµÉ ºä¸¦ »ı¼ºÇÕ´Ï´Ù.
+	// GUI ìƒì—ì„œ ì‚¬ìš©ë  ë·°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 	std::vector<CGUIFixedViewDeclaration*> vctFixedViewDecl;
 
 	for(int32_t i = 0; i < 4; ++i)
@@ -58,7 +58,7 @@ BOOL CMenuBarUserDefinedInfoExampleApp::InitInstance()
 		vctFixedViewDecl.push_back(pDeclarationCam);
 	}
 
-	// GUI »ó¿¡¼­ ºäÀÇ ¹è¿­À» ¼³Á¤ÇÕ´Ï´Ù.
+	// GUI ìƒì—ì„œ ë·°ì˜ ë°°ì—´ì„ ì„¤ì •í•©ë‹ˆë‹¤.
 	CGUIFixedViewPlacement fvp;
 
 	CGUIFixedViewPlacementSet fvpSet1(false);
@@ -132,18 +132,18 @@ BOOL CMenuBarUserDefinedInfoExampleApp::InitInstance()
 	CGUIManagerView::AddFixedViewPlacementSet(fvpSet3);
 	CGUIManagerView::AddFixedViewPlacementSet(fvpSet4);
 
-	// ÀÎµ¦½º¿¡ ÇØ´çÇÏ´Â ºäÀÇ ¼³Á¤À¸·Î ¼±ÅÃÇÕ´Ï´Ù.
+	// ì¸ë±ìŠ¤ì— í•´ë‹¹í•˜ëŠ” ë·°ì˜ ì„¤ì •ìœ¼ë¡œ ì„ íƒí•©ë‹ˆë‹¤.
 	CGUIManagerView::SelectFixedViewPlacementSet(3);
 
 	CGUIManager::PreInitializePaneVisibility(true, false, false, false, false);
 
-	// ¸ğµ¨ °ü¸®ÀÚ¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// ëª¨ë¸ ê´€ë¦¬ìë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	CGUIManagerModel::Initialize();
 
-	// GUI °ü¸®ÀÚ¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// GUI ê´€ë¦¬ìë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	CGUIManager::Initialize();
 
-	// Main Frame À§Ä¡¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+	// Main Frame ìœ„ì¹˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 	CGUIMainFrame* pMF = nullptr;
 
 	if(AfxGetApp() && AfxGetApp()->m_pMainWnd)
@@ -163,26 +163,26 @@ BOOL CMenuBarUserDefinedInfoExampleApp::InitInstance()
 		pMF->ModifyStyle(WS_MAXIMIZEBOX, 0, 0);
 		pMF->SetWindowPos(NULL, 0, 0, 1280, 1024, NULL);
 
-		// MainFrame ¿¡¼­ CGUIMenuBar °´Ã¼ ¾ò¾î ¿À±â
+		// MainFrame ì—ì„œ CGUIMenuBar ê°ì²´ ì–»ì–´ ì˜¤ê¸°
 		CGUIMenuBar* pMenuBar = pMF->GetMenuBar();
 
 		if(pMenuBar)
 		{
-			// °´Ã¼ »ı¼º ¹× ¹®ÀÚ¿­, ¹è°æ»ö ¼³Á¤
+			// ê°ì²´ ìƒì„± ë° ë¬¸ìì—´, ë°°ê²½ìƒ‰ ì„¤ì •
 			CGUIMenuBarUserDefinedInfo udi(L"Stopped", RGB(128, 0, 0));
 
-			// Current model name »ç°¢ÇüÀÇ ¿ŞÂÊ ¹æÇâÀ¸·Î ÇÏ³ª¾¿ Ãß°¡µË´Ï´Ù.
-			// »ı¼ºÇÑ °´Ã¼¸¦ ¸Ç µÚ¿¡ Ãß°¡(PushBack)
+			// Current model name ì‚¬ê°í˜•ì˜ ì™¼ìª½ ë°©í–¥ìœ¼ë¡œ í•˜ë‚˜ì”© ì¶”ê°€ë©ë‹ˆë‹¤.
+			// ìƒì„±í•œ ê°ì²´ë¥¼ ë§¨ ë’¤ì— ì¶”ê°€(PushBack)
 			pMenuBar->PushBackUserDefinedInfo(udi);
 
 			pMenuBar->Invalidate();
 		}
 	}
 
-	// "MenuBar User Defined Info Example" ÀÌ¶ó´Â ÀÌ¸§ÀÇ ¸Ş´º ¾ÆÀÌÅÛ Ã£±â
+	// "MenuBar User Defined Info Example" ì´ë¼ëŠ” ì´ë¦„ì˜ ë©”ë‰´ ì•„ì´í…œ ì°¾ê¸°
 	CPropertyMenuBarUserDefinedInfoExample* pPropertyMenu = dynamic_cast<CPropertyMenuBarUserDefinedInfoExample*>(CGUIManager::GetMenuItem(L"MenuBar User Defined Info Example", L"Menu"));
 
-	// "MenuBar User Defined Info Example" ÀÌ¶ó´Â ÀÌ¸§ÀÇ ¸Ş´º ¾ÆÀÌÅÛÀÌ ÀÖÀ» °æ¿ì, ÇÁ·ÎÆÛÆ¼ Ã¢ ¿­±â
+	// "MenuBar User Defined Info Example" ì´ë¼ëŠ” ì´ë¦„ì˜ ë©”ë‰´ ì•„ì´í…œì´ ìˆì„ ê²½ìš°, í”„ë¡œí¼í‹° ì°½ ì—´ê¸°
 	if(pPropertyMenu)
 	{
 		if(!pPropertyMenu->OnLButtonDoubleClick())

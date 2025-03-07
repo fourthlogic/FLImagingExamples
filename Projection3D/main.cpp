@@ -1,44 +1,44 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
-{	// 3D °´Ã¼ ¼±¾ğ // Declare 3D object
+{	// 3D ê°ì²´ ì„ ì–¸ // Declare 3D object
 	CFL3DObject floSrc;
 	CFLImage fliDst;
-	// 3D ºä ¼±¾ğ // Declare 3D view	
+	// 3D ë·° ì„ ì–¸ // Declare 3D view	
 
 	CGUIView3DWrap view3DSrc;
 	CGUIViewImageWrap viewImgDst;
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult res = EResult_UnknownError;
 
 
-		// Source Object ·Îµå // Load the Source object
+		// Source Object ë¡œë“œ // Load the Source object
 		if((res = floSrc.Load(L"../../ExampleImages/Projection3D/icosahedron.ply")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the object file.\n");
 			break;
 		}
 
-		// Source 3D ºä »ı¼º
+		// Source 3D ë·° ìƒì„±
 		if((res = view3DSrc.Create(612, 0, 1124, 512)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the Source 3D view.\n");
 			break;
 		}
 
-		// Dst 3D ºä »ı¼º
+		// Dst 3D ë·° ìƒì„±
 		if((res = viewImgDst.Create(1124, 0, 1636, 512)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the Destination Image view.\n");
 			break;
 		}
 
-		// Source Object 3D ºä »ı¼º // Create the source object 3D view
+		// Source Object 3D ë·° ìƒì„± // Create the source object 3D view
 		if((res = view3DSrc.PushObject(floSrc)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to display the 3D object.\n");
@@ -49,16 +49,16 @@ int main()
 
 		
 
-		// Projection3D °´Ã¼ »ı¼º // Create Projection3D object
+		// Projection3D ê°ì²´ ìƒì„± // Create Projection3D object
 		CProjection3D projection3D;
 
-		// Destination object ¼³Á¤ // Set the destination object
+		// Destination object ì„¤ì • // Set the destination object
 		projection3D.SetDestinationImage(fliDst);
-		// Source object ¼³Á¤ // Set the source object
+		// Source object ì„¤ì • // Set the source object
 		projection3D.SetSourceObject(floSrc);
 		projection3D.SetImageSize(512, 512);
 
-		//3D ViewÀÇ Ä«¸Ş¶ó ÆÄ¶ó¹ÌÅÍ °ªÀ» ÃÊ±âÈ­ÇÏ±â À§ÇÏ¿© ¸ÕÀú È£Ãâ
+		//3D Viewì˜ ì¹´ë©”ë¼ íŒŒë¼ë¯¸í„° ê°’ì„ ì´ˆê¸°í™”í•˜ê¸° ìœ„í•˜ì—¬ ë¨¼ì € í˜¸ì¶œ
 		view3DSrc.ZoomFit();
 
 		auto &cam = *view3DSrc.GetCamera();
@@ -81,21 +81,21 @@ int main()
 		projection3D.SetAngleOfView(f32AovX, f32AovY);
 		projection3D.SetWorkingDistance(f32TargetDistance);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = projection3D.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute Projection 3D.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer number 0 from view for display
-		// ÀÌ °´Ã¼´Â ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to the view and does not need to be released separately		
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer number 0 from view for display
+		// ì´ ê°ì²´ëŠ” ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to the view and does not need to be released separately		
 
 		CGUIView3DLayerWrap layer3DSrc = view3DSrc.GetLayer(0);
 		CGUIViewImageLayerWrap layer3DDst = viewImgDst.GetLayer(0);
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌÇÑ´Ù. // Display view information
-		// ÇÔ¼ö DrawTextCanvas´Â Screen ÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â ¹®ÀÚ¿­À» µå·ÎÀ×ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´í•œë‹¤. // Display view information
+		// í•¨ìˆ˜ DrawTextCanvasëŠ” Screen ì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” ë¬¸ìì—´ì„ ë“œë¡œì‰í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
 		CFLPoint<double> flpTopLeft(0, 0);
 		if((res = layer3DSrc.DrawTextCanvas(&flpTopLeft, L"Source Object", YELLOW, BLACK, 20)).IsFail() ||
 		   (res = layer3DDst.DrawTextCanvas(&flpTopLeft, L"Destination Image", YELLOW, BLACK, 20)).IsFail())
@@ -104,21 +104,21 @@ int main()
 			break;
 		}
 
-		// °á°ú ÀÌ¹ÌÁö¸¦ ºä¿¡ ¿¬°á // Map the result image to the destination view
+		// ê²°ê³¼ ì´ë¯¸ì§€ë¥¼ ë·°ì— ì—°ê²° // Map the result image to the destination view
 		if((res = viewImgDst.SetImagePtr(&fliDst)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set object on the 3d view.\n");
 			break;
 		}
 
-		//Source View¿Í µ¿ÀÏÇÑ ½ÃÁ¡À» À¯ÁöÇÏ±â À§ÇØ, ÀÌ¹ÌÁöÀÇ Á¤Áß¾ÓÀ» ºäÀÇ Áß¾Ó¿¡ ¸ÂÃß°í ¹èÀ²À» 1·Î ¼³Á¤
+		//Source Viewì™€ ë™ì¼í•œ ì‹œì ì„ ìœ ì§€í•˜ê¸° ìœ„í•´, ì´ë¯¸ì§€ì˜ ì •ì¤‘ì•™ì„ ë·°ì˜ ì¤‘ì•™ì— ë§ì¶”ê³  ë°°ìœ¨ì„ 1ë¡œ ì„¤ì •
 		viewImgDst.SetViewCenterAndScale(CFLPointD(256, 256), 1.0);
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		view3DSrc.Invalidate(true);
 		viewImgDst.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä, 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·°, 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(view3DSrc.IsAvailable() && viewImgDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

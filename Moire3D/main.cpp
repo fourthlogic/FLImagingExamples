@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
@@ -11,7 +11,7 @@ int main()
 	CFLImage fliDstImage;
 	CFLImage fliTxtImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageLrn[2];
 	CGUIViewImageWrap viewImageSrc[2];
 	CGUIViewImageWrap viewImageDst;
@@ -19,10 +19,10 @@ int main()
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult res = EResult_UnknownError;
 
-		// Learn ÀÌ¹ÌÁö ·Îµå // Load the reference plane image for calibration
+		// Learn ì´ë¯¸ì§€ ë¡œë“œ // Load the reference plane image for calibration
 		if((res = fliLearnImage[0].Load(L"../../ExampleImages/Moire3D/Learn0/")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -31,7 +31,7 @@ int main()
 
 		fliLearnImage[0].SelectPage(0);
 
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = fliSourceImage[0].Load(L"../../ExampleImages/Moire3D/Object0/")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -40,7 +40,7 @@ int main()
 
 		fliSourceImage[0].SelectPage(0);
 
-		// Learn ÀÌ¹ÌÁö ·Îµå // Load the reference plane image for calibration
+		// Learn ì´ë¯¸ì§€ ë¡œë“œ // Load the reference plane image for calibration
 		if((res = fliLearnImage[1].Load(L"../../ExampleImages/Moire3D/Learn1/")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -49,7 +49,7 @@ int main()
 
 		fliLearnImage[1].SelectPage(0);
 
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = fliSourceImage[1].Load(L"../../ExampleImages/Moire3D/Object1/")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -58,48 +58,48 @@ int main()
 
 		fliSourceImage[1].SelectPage(0);
 
-		// CFLArray<CFLImage*> °´Ã¼¿¡ CFImage* Ãß°¡ // Push back CFImage* to CFLArray<CFLImage*> 
+		// CFLArray<CFLImage*> ê°ì²´ì— CFImage* ì¶”ê°€ // Push back CFImage* to CFLArray<CFLImage*> 
 		flaFliLrnImage.PushBack(&fliLearnImage[0]);
 		flaFliLrnImage.PushBack(&fliLearnImage[1]);
 		flaFliSrcImage.PushBack(&fliSourceImage[0]);
 		flaFliSrcImage.PushBack(&fliSourceImage[1]);
 
-		// Learn ÀÌ¹ÌÁö ºä »ı¼º // Create the learn image view
+		// Learn ì´ë¯¸ì§€ ë·° ìƒì„± // Create the learn image view
 		if((res = viewImageLrn[0].Create(100, 0, 548, 348)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Learn ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Learn ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if((res = viewImageLrn[1].Create(548, 0, 996, 348)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create the Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create the Source image view
 		if((res = viewImageSrc[0].Create(100, 348, 548, 696)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if((res = viewImageSrc[1].Create(548, 348, 996, 696)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Dst ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Dst ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if((res = viewImageDst.Create(996, 348, 1444, 696)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Learn ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the Learn image view
+		// Learn ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the Learn image view
 		for(int32_t i32I = 0; i32I < 2; ++i32I)
 		{
 			if((res = viewImageLrn[i32I].SetImagePtr(flaFliLrnImage[i32I])).IsFail())
@@ -109,7 +109,7 @@ int main()
 			}
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the Source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the Source image view
 		for(int32_t i32I = 0; i32I < 2; ++i32I)
 		{
 			if((res = viewImageSrc[i32I].SetImagePtr(flaFliSrcImage[i32I])).IsFail())
@@ -119,21 +119,21 @@ int main()
 			}
 		}
 
-		// Dst ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Dst ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if((res = viewImageDst.SetImagePtr(&fliDstImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two view windows
+		// ë‘ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two view windows
 		if((res = viewImageLrn[1].SynchronizeWindow(&viewImageLrn[0])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two view windows
+		// ë‘ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two view windows
 		for(int32_t i32I = 0; i32I < 2; ++i32I)
 		{
 			if((res = viewImageSrc[i32I].SynchronizeWindow(&viewImageLrn[0])).IsFail())
@@ -143,21 +143,21 @@ int main()
 			}
 		}
 
-		// µÎ ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two view windows
+		// ë‘ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two view windows
 		if((res = viewImageDst.SynchronizeWindow(&viewImageLrn[0])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù. // Synchronize the viewpoints of the two image views. 
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤. // Synchronize the viewpoints of the two image views. 
 		if((res = viewImageLrn[1].SynchronizePointOfView(&viewImageLrn[0])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù. // Synchronize the viewpoints of the two image views. 
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤. // Synchronize the viewpoints of the two image views. 
 		for(int32_t i32I = 0; i32I < 2; ++i32I)
 		{
 			if((res = viewImageSrc[i32I].SynchronizePointOfView(&viewImageLrn[0])).IsFail())
@@ -167,21 +167,21 @@ int main()
 			}
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù. // Synchronize the viewpoints of the two image views. 
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤. // Synchronize the viewpoints of the two image views. 
 		if((res = viewImageDst.SynchronizePointOfView(&viewImageLrn[0])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ÆäÀÌÁö¸¦ µ¿±âÈ­ ÇÑ´Ù. // Synchronize the page of the two image views. 
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ í˜ì´ì§€ë¥¼ ë™ê¸°í™” í•œë‹¤. // Synchronize the page of the two image views. 
 		if((res = viewImageLrn[1].SynchronizePageIndex(&viewImageLrn[0])).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ÆäÀÌÁö¸¦ µ¿±âÈ­ ÇÑ´Ù. // Synchronize the page of the two image views. 
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ í˜ì´ì§€ë¥¼ ë™ê¸°í™” í•œë‹¤. // Synchronize the page of the two image views. 
 		for(int32_t i32I = 0; i32I < 2; ++i32I)
 		{
 			if((res = viewImageSrc[i32I].SynchronizePageIndex(&viewImageLrn[0])).IsFail())
@@ -191,55 +191,55 @@ int main()
 			}
 		}
 
-		// Destination 3D ÀÌ¹ÌÁö ºä »ı¼º // Create the destination 3D image view
+		// Destination 3D ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination 3D image view
 		if((res = view3DDst.Create(400, 200, 1300, 800)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Moire 3D °´Ã¼ »ı¼º // Create Moire 3D object
+		// Moire 3D ê°ì²´ ìƒì„± // Create Moire 3D object
 		CMoire3D Moire3D;
 
 		CFL3DObjectHeightMap fl3DOHM;
 
-		// Learn ÀÌ¹ÌÁö ¼³Á¤ // Set the learn image
+		// Learn ì´ë¯¸ì§€ ì„¤ì • // Set the learn image
 		Moire3D.SetLearnImage(flaFliLrnImage);
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		Moire3D.SetSourceImage(flaFliSrcImage);
-		// Destination Height Map ÀÌ¹ÌÁö ¼³Á¤ // Set the destination height map image
+		// Destination Height Map ì´ë¯¸ì§€ ì„¤ì • // Set the destination height map image
 		Moire3D.SetDestinationHeightMapImage(fliDstImage);
-		// Destionation 3D Object ¼³Á¤ // Set the Destionation 3D Object 
+		// Destionation 3D Object ì„¤ì • // Set the Destionation 3D Object 
 		Moire3D.SetDestinationObject(fl3DOHM);
-		// Ä«¸Ş¶óÀÇ working distance ¼³Á¤ // Set working distance of the camera
+		// ì¹´ë©”ë¼ì˜ working distance ì„¤ì • // Set working distance of the camera
 		Moire3D.SetWorkingDistance(330);
-		// Ä«¸Ş¶óÀÇ field of view ¼³Á¤ // Set field of view of the camera
+		// ì¹´ë©”ë¼ì˜ field of view ì„¤ì • // Set field of view of the camera
 		Moire3D.SetFieldOfView(400);
-		// ÇÁ·ÎÁ§ÅÍ °¢µµ ¼³Á¤ // Set angle of projector
+		// í”„ë¡œì í„° ê°ë„ ì„¤ì • // Set angle of projector
 		Moire3D.SetAngleOfProjector(CMultiVar<double>(73, 105));
-		// Phase Unwrap È÷½ºÅä±×·¥ bin ¹üÀ§ ¼³Á¤ // Set histogram bin range for phase unwrapping
+		// Phase Unwrap íˆìŠ¤í† ê·¸ë¨ bin ë²”ìœ„ ì„¤ì • // Set histogram bin range for phase unwrapping
 		Moire3D.SetBinInterval(CMultiVar<double>(1, 1));
-		// ÆĞÅÏ Å¸ÀÔ ¼³Á¤ // Set Pattern Type
+		// íŒ¨í„´ íƒ€ì… ì„¤ì • // Set Pattern Type
 		Moire3D.SetPatternType(CMoire3D::EPatternType_SquareWave);
-		// Noise °¨¼è ¸ğµå È°¼ºÈ­ // Enable noise reduction mode
+		// Noise ê°ì‡  ëª¨ë“œ í™œì„±í™” // Enable noise reduction mode
 		Moire3D.EnableNoiseReduction(true);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î Calibration ¼öÇà // Calibrate algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ Calibration ìˆ˜í–‰ // Calibrate algorithm according to previously set parameters
 		if((res = Moire3D.Calibrate()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to calibrate.");
 			break;
 		}
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = Moire3D.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute algorithm.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSrc0 = viewImageSrc[0].GetLayer(0);
 		CGUIViewImageLayerWrap layerSrc1 = viewImageSrc[1].GetLayer(0);
 		CGUIViewImageLayerWrap layerLrn0 = viewImageLrn[0].GetLayer(0);
@@ -247,18 +247,18 @@ int main()
 		CGUIViewImageLayerWrap layerDst = viewImageDst.GetLayer(0);
 		CGUIView3DLayerWrap layer3D = view3DDst.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSrc0.Clear();
 		layerSrc1.Clear();
 		layerLrn0.Clear();
 		layerLrn1.Clear();
 		layerDst.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((res = layerLrn0.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Learn Image[0]", YELLOW, BLACK, 20)).IsFail())
@@ -287,26 +287,26 @@ int main()
 
 		CFLImage fliTexture;
 
-		// Texture ÀÌ¹ÌÁö ·Îµå // Load the texture image
+		// Texture ì´ë¯¸ì§€ ë¡œë“œ // Load the texture image
 		if((res = fliTexture.Load(L"../../ExampleImages/Moire3D/text.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Height Map¿¡ Texture Image ¼³Á¤
+		// Height Mapì— Texture Image ì„¤ì •
 		CFL3DObjectHeightMap* pFl3DOHM = dynamic_cast<CFL3DObjectHeightMap *>(Moire3D.GetDestinationObject());
 		pFl3DOHM->SetTextureImage(fliTexture);
 		pFl3DOHM->ActivateVertexColorTexture(true);
 
-		// 3D ÀÌ¹ÌÁö ºä¿¡ Height Map (Dst Image) ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ
+		// 3D ì´ë¯¸ì§€ ë·°ì— Height Map (Dst Image) ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´
 		if((res = view3DDst.PushObject(*pFl3DOHM)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if((res = view3DDst.ZoomFit()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to zoom fit of the 3D view.\n");
@@ -324,7 +324,7 @@ int main()
 		viewImageSrc[0].SetLayerAutoClearMode(ELayerAutoClearMode_PageChanged, false);
 		viewImageSrc[1].SetLayerAutoClearMode(ELayerAutoClearMode_PageChanged, false);
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageLrn[0].Invalidate(true);
 		viewImageLrn[1].Invalidate(true);
 		viewImageSrc[0].Invalidate(true);
@@ -332,7 +332,7 @@ int main()
 		viewImageDst.Invalidate(true);
 		view3DDst.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä, 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·°, 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(viewImageLrn[0].IsAvailable() && viewImageLrn[1].IsAvailable() && viewImageSrc[0].IsAvailable() && viewImageSrc[1].IsAvailable() && view3DDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 #include <map>
@@ -12,22 +12,22 @@ int main()
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult res = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Load the image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load the image
 		if((res = floSrc.Load(L"../../ExampleImages/ConvexHull3D/RandomPointsOnSphere.ply")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the 3D Object.\n");
 			break;
 		}
 		
-		// CConvexHull3D °´Ã¼ »ı¼º // Create CConvexHull3D object
+		// CConvexHull3D ê°ì²´ ìƒì„± // Create CConvexHull3D object
 		CConvexHull3D convexhull3D;
 
 
 		{
-			// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+			// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 			if((res = view3DSrc.Create(100, 0, 612, 512)).IsFail() ||
 			   (res = view3DDst.Create(612, 0, 1124, 512)).IsFail())
 			{
@@ -35,34 +35,34 @@ int main()
 				break;
 			}
 
-			// Ã³¸®ÇÒ 3D °´Ã¼ ¼³Á¤ // Set 3D object to process
+			// ì²˜ë¦¬í•  3D ê°ì²´ ì„¤ì • // Set 3D object to process
 			convexhull3D.SetSourceObject(floSrc);
 			convexhull3D.SetDestinationObject(floDst);
 			
-			// »ı¼ºµÉ º¼·Ï²®Áú °´Ã¼ÀÇ ÄÃ·¯¸¦ ¼³Á¤ // Set color of new 3D object
+			// ìƒì„±ë  ë³¼ë¡ê»ì§ˆ ê°ì²´ì˜ ì»¬ëŸ¬ë¥¼ ì„¤ì • // Set color of new 3D object
 			convexhull3D.EnableVertexRecoloring(true);
 			convexhull3D.SetTargetVertexColor(TPoint3<uint8_t>(255, 125, 0));
 
-			// 3D ºä¿¡ Ç¥½ÃÇÒ 3D °´Ã¼ Ãß°¡ // Add 3D object to the 3D view
+			// 3D ë·°ì— í‘œì‹œí•  3D ê°ì²´ ì¶”ê°€ // Add 3D object to the 3D view
 			view3DSrc.PushObject(floSrc);
 			view3DSrc.SetPointSize(3);
 
-			// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+			// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 			if((res = convexhull3D.Execute()).IsFail())
 			{
 				ErrorPrint(res, L"Failed to execute Convex Hull 3D.");
 				break;
 			}
 
-			// 3D ºä¿¡ Ç¥½ÃÇÒ 3D °´Ã¼ Ãß°¡ // Add 3D object to the 3D view
+			// 3D ë·°ì— í‘œì‹œí•  3D ê°ì²´ ì¶”ê°€ // Add 3D object to the 3D view
 			view3DDst.PushObject(floDst);
 
-			// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer number 0 from view for display
-			// ÀÌ °´Ã¼´Â ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to a view and does not need to be released separately		
+			// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer number 0 from view for display
+			// ì´ ê°ì²´ëŠ” ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to a view and does not need to be released separately		
 			CGUIView3DLayerWrap layerViewSrc = view3DSrc.GetLayer(0);
 			CGUIView3DLayerWrap layerViewDst = view3DDst.GetLayer(0);
 
-			// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
+			// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
 			CFLPoint<double> flpTopLeft(0, 0);
 			if((res = layerViewSrc.DrawTextCanvas(&flpTopLeft, L"Source Object(Point Cloud)", YELLOW, BLACK, 20)).IsFail() ||
 			   (res = layerViewDst.DrawTextCanvas(&flpTopLeft, L"Destination Object(Convex Hull)", YELLOW, BLACK, 20)).IsFail())
@@ -71,19 +71,19 @@ int main()
 				break;
 			}
 
-			// ÀÔ·Â ºäÀÇ ½ÃÁ¡À» ÀÌµ¿
+			// ì…ë ¥ ë·°ì˜ ì‹œì ì„ ì´ë™
 			view3DSrc.ZoomFit();
 
-			// ÀÔ·Â, Ãâ·Â ºäÀÇ ½ÃÁ¡À» ¸ÂÃã
+			// ì…ë ¥, ì¶œë ¥ ë·°ì˜ ì‹œì ì„ ë§ì¶¤
 			view3DSrc.SynchronizePointOfView(&view3DDst);
 
-			// ÀÔ·Â, Ãâ·Â ºä¸¦ ÇÏ³ªÀÇ Ã¢À¸·Î Ãë±Ş
+			// ì…ë ¥, ì¶œë ¥ ë·°ë¥¼ í•˜ë‚˜ì˜ ì°½ìœ¼ë¡œ ì·¨ê¸‰
 			view3DSrc.SynchronizeWindow(&view3DDst);
 
 			view3DSrc.Invalidate();
 			view3DDst.Invalidate();
 
-			// 3D ºä°¡ Á¾·áµÉ ¶§±îÁö ±â´Ù¸²
+			// 3D ë·°ê°€ ì¢…ë£Œë  ë•Œê¹Œì§€ ê¸°ë‹¤ë¦¼
 			while(view3DSrc.IsAvailable() && view3DDst.IsAvailable())
 				CThreadUtilities::Sleep(1);
 		}

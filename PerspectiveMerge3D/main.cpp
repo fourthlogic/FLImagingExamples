@@ -1,10 +1,10 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIView3DWrap view3DSrc;
 	CGUIView3DWrap view3DSrc2;
 	CGUIView3DWrap view3DDst;
@@ -18,21 +18,21 @@ int main()
 
 	do
 	{
-		// Source 3D ÀÌ¹ÌÁö ºä »ı¼º // Create the Source 3D image view
+		// Source 3D ì´ë¯¸ì§€ ë·° ìƒì„± // Create the Source 3D image view
 		if((res = view3DSrc.Create(100, 0, 600, 500)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Source 3D ÀÌ¹ÌÁö ºä »ı¼º // Create the Source 3D image view
+		// Source 3D ì´ë¯¸ì§€ ë·° ìƒì„± // Create the Source 3D image view
 		if((res = view3DSrc2.Create(600, 0, 1100, 500)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination 3D ÀÌ¹ÌÁö ºä »ı¼º // Create the destination 3D image view
+		// Destination 3D ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination 3D image view
 		if((res = view3DDst.Create(1100, 0, 1600, 500)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -55,14 +55,14 @@ int main()
 		TPoint3<float> tpPosition2 = TPoint3<float>(0.152f, 0.0f, 0.0f);
 		TPoint3<float> tpRotation2 = TPoint3<float>(-8.0f, -29.0f, 90.0f);
 
-		// Ä«¸Ş¶ó 1, 2ÀÇ Source °´Ã¼ ¼³Á¤ // Set the source object of camera 1, 2
+		// ì¹´ë©”ë¼ 1, 2ì˜ Source ê°ì²´ ì„¤ì • // Set the source object of camera 1, 2
 		algoObject.AddSourceObject(&fl3DObjectSrc, tpPosition, tpRotation);
 		algoObject.AddSourceObject(&fl3DObjectSrc2, tpPosition2, tpRotation2);
 
-		// Destination °´Ã¼ ¼³Á¤ // Set the destination object
+		// Destination ê°ì²´ ì„¤ì • // Set the destination object
 		algoObject.SetDestinationObject(fl3DObjectDst);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = algoObject.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute MultiFocus.\n");
@@ -73,7 +73,7 @@ int main()
 		view3DSrc2.PushObject(fl3DObjectSrc2);
 		view3DDst.PushObject(*algoObject.GetDestinationObject());
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		view3DSrc.ZoomFit();
 		view3DSrc2.ZoomFit();
 		view3DDst.ZoomFit();
@@ -111,13 +111,13 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		view3DSrc.Invalidate(true);
 		view3DSrc2.Invalidate(true);
 		view3DDst.Invalidate(true);
 		viewTestDescription.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä, 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image and 3D view to close
+		// ì´ë¯¸ì§€ ë·°, 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image and 3D view to close
 		while(view3DSrc.IsAvailable() || view3DSrc2.IsAvailable() || view3DDst.IsAvailable() || viewTestDescription.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

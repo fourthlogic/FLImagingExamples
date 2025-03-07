@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -11,81 +11,81 @@ bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fl
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/CameraCalibrator/Undistortion.flif")))
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö »ı¼º // Create destination image
+		// Destination ì´ë¯¸ì§€ ìƒì„± // Create destination image
 		if(IsFail(res = fliDestinationImage.Create(fliSourceImage.GetWidth(), fliSourceImage.GetHeight(), CMultiVarLL(0), fliSourceImage.GetPixelFormat())))
 		{
 			ErrorPrint(res, L"Failed to create the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if(IsFail(res = viewImageSource.Create(400, 480, 1040, 960)))
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Creates the Destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Creates the Destination image view
 		if(IsFail(res = viewImageDestination.Create(1040, 480, 1680, 960)))
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the Source ImageView
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the Source ImageView
 		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the Destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the Destination image view
 		if(IsFail(res = viewImageDestination.SetImagePtr(&fliDestinationImage)))
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set Source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set Source image
 		if(IsFail(res = sCC.SetSourceImage(&fliSourceImage)))
 		{
 			ErrorPrint(res, L"Failed to Loads image\n");
 			break;
 		}
 		 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set destination image
 		if(IsFail(res = sCC.SetDestinationImage(&fliDestinationImage)))
 		{
 			ErrorPrint(res, L"Failed to Loads image\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageSource.SynchronizeWindow(&viewImageDestination)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// Interpolation ¾Ë°í¸®Áò ¼³Á¤ // Set the Interpolation Algorithm
+		// Interpolation ì•Œê³ ë¦¬ì¦˜ ì„¤ì • // Set the Interpolation Algorithm
 		if(IsFail(res = sCC.SetInterpolationMethod(ImageProcessing::EInterpolationMethod_Bilinear)))
 		{
 			ErrorPrint(res, L"Failed to set interpolation method\n");
 			break;
 		}
 
-		// ¼Ò¿ä½Ã°£ ÃøÁ¤ ÃÊ±âÈ­ // Initialize time measurement
+		// ì†Œìš”ì‹œê°„ ì¸¡ì • ì´ˆê¸°í™” // Initialize time measurement
 		CPerformanceCounter sPC;
 		sPC.Start();
 
-		// Undistortion ½ÇÇà // Execute Undistortion
+		// Undistortion ì‹¤í–‰ // Execute Undistortion
 		if(IsFail(res = sCC.Execute()))
 		{
 			ErrorPrint(res, L"Undistortion failed\n");
@@ -110,7 +110,7 @@ bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fl
 			break;
 		}
 
-		// ¼Ò¿ä½Ã°£ Ãâ·Â // Output time required
+		// ì†Œìš”ì‹œê°„ ì¶œë ¥ // Output time required
 		double f64ElapsedMS = sPC.GetCheckPointInMilliSecond();
 
 		CFLString<wchar_t> strMS;
@@ -136,18 +136,18 @@ int main()
 {
 	CResult res;
 
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliSourceImage, fliDestinationImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageSource, viewImageDestination;
 
-	// Camera Calibrator °´Ã¼ »ı¼º // Create Camera Calibrator object
+	// Camera Calibrator ê°ì²´ ìƒì„± // Create Camera Calibrator object
 	CCameraCalibrator sCC;
 
 	do
 	{
-		// Setter·Î ÀÔ·Â // Input as setter
+		// Setterë¡œ ì…ë ¥ // Input as setter
 		double arrF64Intrinc[9] = { 605.9413643192689, 0, 325.9133439121233, 0, 605.3834974915350, 234.0647625697701, 0, 0, 1 };
 		double arrF64Dist[5] = { 0.1748895907714, -1.4909467274276, -0.0070404809103, 0.0017880490098, 5.9363069879613 };
 
@@ -210,7 +210,7 @@ int main()
 
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if(IsFail(res = layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Intrinsic Parameters: ", YELLOW, BLACK, 13)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
@@ -240,7 +240,7 @@ int main()
 
 		viewImageSource.Invalidate();
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSource.IsAvailable() && viewImageDestination.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

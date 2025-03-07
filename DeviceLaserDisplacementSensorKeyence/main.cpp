@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -7,7 +7,7 @@ int main()
 {
 	CResult res;
 
-	// Keyence ·¹ÀÌÀú º¯À§ ¼¾¼­ ÀåÄ¡¸¦ ¼±¾ğ // Declare keyence laser displacement sensor device
+	// Keyence ë ˆì´ì € ë³€ìœ„ ì„¼ì„œ ì¥ì¹˜ë¥¼ ì„ ì–¸ // Declare keyence laser displacement sensor device
 	CDeviceLaserDisplacementSensorKeyence devLaserDisplacement;
 
 	do
@@ -15,7 +15,7 @@ int main()
 		wchar_t arrInput[4096] = { 0, };
 		CFLString<wchar_t> flsInput = L"";
 
-		// ÄÄÆ÷Æ® ¹øÈ£¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Enter the com port number.
+		// ì»´í¬íŠ¸ ë²ˆí˜¸ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the com port number.
 		printf("Enter com port number: ");
 		fgetws(arrInput, 4096, stdin);
 		flsInput = arrInput;
@@ -26,7 +26,7 @@ int main()
 
 		while(true)
 		{
-			// º¸µå ·¹ÀÌÆ®¸¦ ¼±ÅÃÇÕ´Ï´Ù. // Select the baud rate.
+			// ë³´ë“œ ë ˆì´íŠ¸ë¥¼ ì„ íƒí•©ë‹ˆë‹¤. // Select the baud rate.
 			printf("\n");
 			printf("1. 9600\n");
 			printf("2. 19200\n");
@@ -71,7 +71,7 @@ int main()
 
 		while(true)
 		{
-			// ÆĞ¸®Æ¼¸¦ ¼±ÅÃÇÕ´Ï´Ù. // Select the parity.
+			// íŒ¨ë¦¬í‹°ë¥¼ ì„ íƒí•©ë‹ˆë‹¤. // Select the parity.
 			printf("\n");
 			printf("1. None\n");
 			printf("2. Even\n");
@@ -106,7 +106,7 @@ int main()
 			printf("Incorrect input. Please select again.\n\n");
 		}
 		
-		// ·¹ÀÌÀú º¯À§ ¼¾¼­ ÀåÄ¡¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù. // Initialize the laser displacement sensor device.
+		// ë ˆì´ì € ë³€ìœ„ ì„¼ì„œ ì¥ì¹˜ë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤. // Initialize the laser displacement sensor device.
 		if((res = devLaserDisplacement.Initialize()).IsFail())
 		{
  			ErrorPrint(res, L"Failed to initialize the device.");
@@ -115,7 +115,7 @@ int main()
 
 		while(true)
 		{
-			// Ãâ·Â Ã¤³ÎÀ» ¼±ÅÃÇÕ´Ï´Ù. // Select the output channel.
+			// ì¶œë ¥ ì±„ë„ì„ ì„ íƒí•©ë‹ˆë‹¤. // Select the output channel.
 			printf("\n");
 			printf("1. Output channel 1\n");
 			printf("2. Output channel 2\n");
@@ -126,7 +126,7 @@ int main()
 
 			int32_t i32Select = flsInput.ToInt32();
 
-			// ÃøÁ¤°ªÀ» ¾ò¾î¿É´Ï´Ù. // Retrieve the measured value
+			// ì¸¡ì •ê°’ì„ ì–»ì–´ì˜µë‹ˆë‹¤. // Retrieve the measured value
 			CFLArray<double> flaMeasured;
 
 			switch(i32Select)
@@ -158,7 +158,7 @@ int main()
 	}
 	while(false);
 
-	// ·¹ÀÌÀú º¯À§ ¼¾¼­ ÀåÄ¡ÀÇ ÃÊ±âÈ­¸¦ ÇØÁ¦ÇÕ´Ï´Ù. // Terminate the laser displacement sensor device.
+	// ë ˆì´ì € ë³€ìœ„ ì„¼ì„œ ì¥ì¹˜ì˜ ì´ˆê¸°í™”ë¥¼ í•´ì œí•©ë‹ˆë‹¤. // Terminate the laser displacement sensor device.
 	devLaserDisplacement.Terminate();
 
 	if(res.IsFail())

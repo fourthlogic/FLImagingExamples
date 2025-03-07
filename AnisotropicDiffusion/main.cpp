@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -14,18 +14,18 @@ enum EType
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage arrFliImage[ETypeCount];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage[ETypeCount];
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = arrFliImage[EType_Source].Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
@@ -36,7 +36,7 @@ int main()
 
 		for(int32_t i = EType_Destination1; i < ETypeCount; ++i)
 		{
-			// Destination ÀÌ¹ÌÁö¸¦ Source ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º // Create destination image as same as source image
+			// Destination ì´ë¯¸ì§€ë¥¼ Source ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„± // Create destination image as same as source image
 			if(IsFail(res = arrFliImage[i].Assign(arrFliImage[EType_Source])))
 			{
 				ErrorPrint(res, "Failed to assign the image file.\n");
@@ -50,7 +50,7 @@ int main()
 			int32_t x = i % 2;
 			int32_t y = i / 2;
 
-			// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+			// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 			if(IsFail(res = viewImage[i].Create(x * 400 + 400, y * 400, x * 400 + 400 + 400, y * 400 + 400)))
 			{
 				ErrorPrint(res, "Failed to create the image view.\n");
@@ -58,7 +58,7 @@ int main()
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 			if(IsFail(res = viewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
 				ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -69,7 +69,7 @@ int main()
 			if(i == EType_Source)
 				continue;
 
-			// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+			// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 			if(IsFail(res = viewImage[EType_Source].SynchronizePointOfView(&viewImage[i])))
 			{
 				ErrorPrint(res, "Failed to synchronize view\n");
@@ -77,7 +77,7 @@ int main()
 				break;
 			}
 
-			// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+			// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 			if(IsFail(res = viewImage[EType_Source].SynchronizeWindow(&viewImage[i])))
 			{
 				ErrorPrint(res, "Failed to synchronize window.\n");
@@ -86,28 +86,28 @@ int main()
 			}
 		}
 
-		// AnisotropicDiffusion °´Ã¼ »ı¼º // Create AnisotropicDiffusion object
+		// AnisotropicDiffusion ê°ì²´ ìƒì„± // Create AnisotropicDiffusion object
 		CAnisotropicDiffusion AnisotropicDiffusion;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		AnisotropicDiffusion.SetSourceImage(arrFliImage[EType_Source]);
 
-		// Destination1 ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination1 ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		AnisotropicDiffusion.SetDestinationImage(arrFliImage[EType_Destination1]);
 
-		// diffusion coefficient ¸ğµå ¼³Á¤(Parabolic) // Set the diffusion coefficient mode
+		// diffusion coefficient ëª¨ë“œ ì„¤ì •(Parabolic) // Set the diffusion coefficient mode
 		AnisotropicDiffusion.SetDiffusionMode(CAnisotropicDiffusion::EDiffusionCoefficientMode_Parabolic);
 
-		// Contrast = 3 ¼³Á¤ // Set the Contrast = 3
+		// Contrast = 3 ì„¤ì • // Set the Contrast = 3
 		AnisotropicDiffusion.SetContrast(3.0);
 
-		// Theta = 3 ¼³Á¤ // Set the Theta = 3
+		// Theta = 3 ì„¤ì • // Set the Theta = 3
 		AnisotropicDiffusion.SetTheta(3.0);
 
-		// Iteration = 5 ¼³Á¤ // Set the Iteration = 5
+		// Iteration = 5 ì„¤ì • // Set the Iteration = 5
 		AnisotropicDiffusion.SetIteration(5);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = AnisotropicDiffusion.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute AnisotropicDiffusion.\n");
@@ -115,13 +115,13 @@ int main()
 			break;
 		}
 
-		// Destination2 ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination2 ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		AnisotropicDiffusion.SetDestinationImage(arrFliImage[EType_Destination2]);
 
-		// diffusion coefficient ¸ğµå ¼³Á¤(Perona-Malik) // Set the diffusion coefficient mode
+		// diffusion coefficient ëª¨ë“œ ì„¤ì •(Perona-Malik) // Set the diffusion coefficient mode
 		AnisotropicDiffusion.SetDiffusionMode(CAnisotropicDiffusion::EDiffusionCoefficientMode_PeronaMalik);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = AnisotropicDiffusion.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute AnisotropicDiffusion.\n");
@@ -129,13 +129,13 @@ int main()
 			break;
 		}
 
-		// Destination3 ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination3 ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		AnisotropicDiffusion.SetDestinationImage(arrFliImage[EType_Destination3]);
 
-		// diffusion coefficient ¸ğµå ¼³Á¤(Weickert) // Set the diffusion coefficient mode
+		// diffusion coefficient ëª¨ë“œ ì„¤ì •(Weickert) // Set the diffusion coefficient mode
 		AnisotropicDiffusion.SetDiffusionMode(CAnisotropicDiffusion::EDiffusionCoefficientMode_Weickert);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = AnisotropicDiffusion.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute AnisotropicDiffusion.\n");
@@ -147,14 +147,14 @@ int main()
 
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-			// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+			// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+			// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 
 			arrLayer[i] = viewImage[i].GetLayer(0);
 			arrLayer[i].Clear();
 		}
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if((res = arrLayer[EType_Source].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
@@ -179,11 +179,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 			viewImage[i].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		bool bAvailable = true;
 		while(bAvailable)
 		{

@@ -1,4 +1,4 @@
-
+ï»¿
 // View3DIntoDialogDlg.cpp : implementation file
 //
 
@@ -104,13 +104,13 @@ BOOL CView3DIntoDialogDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 
-	// 3D ºä »ı¼º
+	// 3D ë·° ìƒì„±
 	CResult res = m_view3D.CreateAndFitParent((size_t)GetDlgItem(IDC_STATIC_VIEW3D)->GetSafeHwnd());
 
 	if(res.IsFail())
 		ErrorMessageBox(res);
 
-	// ³ôÀÌ ¸Ê ÀÌ¹ÌÁö¿Í ÅØ½ºÃÄ ÀÌ¹ÌÁö ·Îµå // Load height map image and texture
+	// ë†’ì´ ë§µ ì´ë¯¸ì§€ì™€ í…ìŠ¤ì³ ì´ë¯¸ì§€ ë¡œë“œ // Load height map image and texture
 	m_view3D.Load(L"../../ExampleImages/View3D/mountain.flif", L"../../ExampleImages/View3D/mountain_texture.flif");
 
 	UpdateControls();
@@ -190,7 +190,7 @@ void CView3DIntoDialogDlg::UpdateControls()
 
 	do
 	{
-		// 3D ºä À¯È¿¼º Ã¼Å©
+		// 3D ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_view3D.IsAvailable())
 			break;
 
@@ -223,7 +223,7 @@ BOOL CView3DIntoDialogDlg::DestroyWindow()
 	// TODO: Add your specialized code here and/or call the base class
 	KillTimer(1024);
 
-	// 3D ºä¸¦ Á¾·áÇÑ´Ù.
+	// 3D ë·°ë¥¼ ì¢…ë£Œí•œë‹¤.
 	m_view3D.Destroy();
 
 	return CDialogEx::DestroyWindow();
@@ -233,14 +233,14 @@ void CView3DIntoDialogDlg::OnBnClickedButtonGetHeightProfile()
 {
 	do
 	{
-		// 3D ºä À¯È¿¼º Ã¼Å©
+		// 3D ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_view3D.IsAvailable())
 			break;
 
 		long i64StartX, i64StartY, i64EndX, i64EndY;
 		CString strHeightValue;
 
-		// Edit Box¿¡ ÀÖ´Â ¼ıÀÚ°ªÀ» longÀ¸·Î º¯È¯ÇÏ¿© ½ÃÀÛÁÂÇ¥¿Í ³¡ÁÂÇ¥ ¾ò¾î ¿À±â
+		// Edit Boxì— ìˆëŠ” ìˆ«ìê°’ì„ longìœ¼ë¡œ ë³€í™˜í•˜ì—¬ ì‹œì‘ì¢Œí‘œì™€ ëì¢Œí‘œ ì–»ì–´ ì˜¤ê¸°
 		GetDlgItem(IDC_EDIT_HP_SX)->GetWindowText(strHeightValue);
 		i64StartX = _wtoi(strHeightValue);
 		GetDlgItem(IDC_EDIT_HP_SY)->GetWindowText(strHeightValue);
@@ -250,15 +250,15 @@ void CView3DIntoDialogDlg::OnBnClickedButtonGetHeightProfile()
 		GetDlgItem(IDC_EDIT_HP_EY)->GetWindowText(strHeightValue);
 		i64EndY = _wtoi(strHeightValue);
 
-		// ½ÃÀÛÁÂÇ¥¿Í ³¡ÁÂÇ¥ ¼³Á¤
+		// ì‹œì‘ì¢Œí‘œì™€ ëì¢Œí‘œ ì„¤ì •
 		CFLPoint<int64_t> flp1(i64StartX, i64StartY);
 		CFLPoint<int64_t> flp2(i64EndX, i64EndY);
 		CFLArrayD flaD;
 		
-		// ½ÃÀÛÁÂÇ¥¿Í ³¡ÁÂÇ¥¸¦ ÀÕ´Â ¼±ºĞ¿¡ ´ëÇÑ Height Profile ¾ò±â
+		// ì‹œì‘ì¢Œí‘œì™€ ëì¢Œí‘œë¥¼ ì‡ëŠ” ì„ ë¶„ì— ëŒ€í•œ Height Profile ì–»ê¸°
 		m_view3D.GetHeightProfile(&flp1, &flp2, &flaD);
 
-		// ¾òÀº Height Profile À» È­¸é¿¡ µğ½ºÇÃ·¹ÀÌ
+		// ì–»ì€ Height Profile ì„ í™”ë©´ì— ë””ìŠ¤í”Œë ˆì´
 		CFLString<wchar_t> flstr, flstrIndex, flstrVal;
 
 		for(int64_t i = 0; i < flaD.GetCount(); ++i)

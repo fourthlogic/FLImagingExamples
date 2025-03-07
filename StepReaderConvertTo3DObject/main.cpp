@@ -1,4 +1,4 @@
-#include <cstdio>
+Ôªø#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,7 +6,7 @@
 
 int main()
 {
-	// 3D ∫‰ º±æ
+	// 3D Î∑∞ ÏÑ†Ïñ∏
 	CGUIView3DWrap view3D[2];
 
 	CResult res = EResult_UnknownError;
@@ -14,7 +14,7 @@ int main()
 
 	do
 	{
-		// 3D ∫‰ ª˝º∫
+		// 3D Î∑∞ ÏÉùÏÑ±
 		// Create 3D views.
 		if(IsFail(res = view3D[0].Create(100, 0, 612, 512)))
 		{
@@ -31,17 +31,17 @@ int main()
 		view3D[0].SetTopologyType(ETopologyType3D_Wireframe);
 		view3D[1].SetTopologyType(ETopologyType3D_Wireframe);
 
-		//∞Óº±¿« ¡¢º±ø°º≠ ƒ⁄µÂ(Chord, ∞Óº±¿« µŒ ¡°¿ª ¡˜º±¿∏∑Œ ø¨∞·«— º±∫–)∞° π˛æÓ≥Ø ºˆ ¿÷¥¬ √÷¥Î ∞≈∏Æ∏¶ ≥™≈∏≥¿¥œ¥Ÿ. 
-		// ¿Ã ∞™¿Ã ≈¨ºˆ∑œ ∫–«“µ» ªÔ∞¢«¸¿« ºˆ∞° ¿˚æÓ¡ˆ∏Á, 
-		// π›¥Î∑Œ ∞™¿Ã ¿€¿ªºˆ∑œ ¥ı ∏π¿∫ ªÔ∞¢«¸¿Ã «¸º∫µ«æÓ ∞Óº±¿ª ¥ı ¡§π–«œ∞‘ ±ŸªÁ«’¥œ¥Ÿ. 
-		// ±‚∫ª∞™ 0¿ª ¿‘∑¬«œ∏È step ∏µ®ø°º≠ ¿˚¿˝«— chordal deviation ∞™¿ª ¿⁄µø¿∏∑Œ ∞ËªÍ«’¥œ¥Ÿ.
+		//Í≥°ÏÑ†Ïùò Ï†ëÏÑ†ÏóêÏÑú ÏΩîÎìú(Chord, Í≥°ÏÑ†Ïùò Îëê Ï†êÏùÑ ÏßÅÏÑ†ÏúºÎ°ú Ïó∞Í≤∞Ìïú ÏÑ†Î∂Ñ)Í∞Ä Î≤óÏñ¥ÎÇ† Ïàò ÏûàÎäî ÏµúÎåÄ Í±∞Î¶¨Î•º ÎÇòÌÉÄÎÉÖÎãàÎã§. 
+		// Ïù¥ Í∞íÏù¥ ÌÅ¥ÏàòÎ°ù Î∂ÑÌï†Îêú ÏÇºÍ∞ÅÌòïÏùò ÏàòÍ∞Ä Ï†ÅÏñ¥ÏßÄÎ©∞, 
+		// Î∞òÎåÄÎ°ú Í∞íÏù¥ ÏûëÏùÑÏàòÎ°ù Îçî ÎßéÏùÄ ÏÇºÍ∞ÅÌòïÏù¥ ÌòïÏÑ±ÎêòÏñ¥ Í≥°ÏÑ†ÏùÑ Îçî Ï†ïÎ∞ÄÌïòÍ≤å Í∑ºÏÇ¨Ìï©ÎãàÎã§. 
+		// Í∏∞Î≥∏Í∞í 0ÏùÑ ÏûÖÎ†•ÌïòÎ©¥ step Î™®Îç∏ÏóêÏÑú Ï†ÅÏ†àÌïú chordal deviation Í∞íÏùÑ ÏûêÎèôÏúºÎ°ú Í≥ÑÏÇ∞Ìï©ÎãàÎã§.
 		// It represents the maximum distance that a chord (a straight line segment connecting two points on the curve) can deviate from the tangent of the curve. 
 		// A larger value results in fewer triangles being formed, 
 		// while a smaller value results in more triangles, providing a more precise approximation of the curve. 
 		// The default value of 0 automatically calculates the appropriate chordal deviation value based on the imported step model.
 		double f64ChordalDeviation = 0.;
 
-		// πÊπ˝ 1. CFL3DObject ø°º≠ Step ∆ƒ¿œ ∑ŒµÂ
+		// Î∞©Î≤ï 1. CFL3DObject ÏóêÏÑú Step ÌååÏùº Î°úÎìú
 		// Method 1. Load the STEP file in CFL3DObject
 		CFL3DObject fl3DObj0;
 
@@ -58,7 +58,7 @@ int main()
 		}
 
 
-		// πÊπ˝ 2. CStepReader ø°º≠ Step ∆ƒ¿œ ∑ŒµÂ »ƒ GetResult3DObject() ∑Œ CFL3DObject ø° «“¥Á
+		// Î∞©Î≤ï 2. CStepReader ÏóêÏÑú Step ÌååÏùº Î°úÎìú ÌõÑ GetResult3DObject() Î°ú CFL3DObject Ïóê Ìï†Îãπ
 		// Method 2. Load the STEP file using CStepReader and then assign it to CFL3DObject using GetResult3DObject().
 		CFL3DObject fl3DObj1;
 		CStepReader sr;
@@ -85,10 +85,10 @@ int main()
 		view3D[0].ZoomFit();
 		view3D[1].ZoomFit();
 
-		// æ∆∑° «‘ºˆ DrawTextCanvas()¥¬ screen¡¬«•∏¶ ±‚¡ÿ¿∏∑Œ «œ¥¬ string¿ª drawing «—¥Ÿ. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// ªˆªÛ ∆ƒ∂ÛπÃ≈Õ∏¶ EGUIViewImageLayerTransparencyColor ¿∏∑Œ ≥÷æÓ¡÷∞‘µ«∏È πË∞Êªˆ¿∏∑Œ √≥∏Æ«‘¿∏∑Œ ∫“≈ı∏Ìµµ∏¶ 0¿∏∑Œ «—∞Õ∞˙ ∞∞¿∫ »ø∞˙∞° ¿÷¥Ÿ. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ∆ƒ∂ÛπÃ≈Õ º¯º≠ : ∑π¿ÃæÓ -> ±‚¡ÿ ¡¬«• Figure ∞¥√º -> πÆ¿⁄ø≠ -> ∆˘∆Æ ªˆ -> ∏È ªˆ -> ∆˘∆Æ ≈©±‚ -> Ω«¡¶ ≈©±‚ ¿Øπ´ -> ∞¢µµ ->
-		//                 æÛ∂Û¿Œ -> ∆˘∆Æ ¿Ã∏ß -> ∆˘∆Æ æÀ∆ƒ∞™(∫“≈ı∏Ìµµ) -> ∏È æÀ∆ƒ∞™ (∫“≈ı∏Ìµµ) -> ∆˘∆Æ µŒ≤≤ -> ∆˘∆Æ ¿Ã≈⁄∏Ø
+		// ÏïÑÎûò Ìï®Ïàò DrawTextCanvas()Îäî screenÏ¢åÌëúÎ•º Í∏∞Ï§ÄÏúºÎ°ú ÌïòÎäî stringÏùÑ drawing ÌïúÎã§. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ÏÉâÏÉÅ ÌååÎùºÎØ∏ÌÑ∞Î•º EGUIViewImageLayerTransparencyColor ÏúºÎ°ú ÎÑ£Ïñ¥Ï£ºÍ≤åÎêòÎ©¥ Î∞∞Í≤ΩÏÉâÏúºÎ°ú Ï≤òÎ¶¨Ìï®ÏúºÎ°ú Î∂àÌà¨Î™ÖÎèÑÎ•º 0ÏúºÎ°ú ÌïúÍ≤ÉÍ≥º Í∞ôÏùÄ Ìö®Í≥ºÍ∞Ä ÏûàÎã§. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// ÌååÎùºÎØ∏ÌÑ∞ ÏàúÏÑú : Î†àÏù¥Ïñ¥ -> Í∏∞Ï§Ä Ï¢åÌëú Figure Í∞ùÏ≤¥ -> Î¨∏ÏûêÏó¥ -> Ìè∞Ìä∏ ÏÉâ -> Î©¥ ÏÉâ -> Ìè∞Ìä∏ ÌÅ¨Í∏∞ -> Ïã§Ï†ú ÌÅ¨Í∏∞ Ïú†Î¨¥ -> Í∞ÅÎèÑ ->
+		//                 ÏñºÎùºÏù∏ -> Ìè∞Ìä∏ Ïù¥Î¶Ñ -> Ìè∞Ìä∏ ÏïåÌååÍ∞í(Î∂àÌà¨Î™ÖÎèÑ) -> Î©¥ ÏïåÌååÍ∞í (Î∂àÌà¨Î™ÖÎèÑ) -> Ìè∞Ìä∏ ÎëêÍªò -> Ìè∞Ìä∏ Ïù¥ÌÖîÎ¶≠
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		CFLPoint<double> flp(0, 0);
@@ -107,11 +107,11 @@ int main()
 		view3D[0].SetCanvasColor(WHITE);
 		view3D[1].SetCanvasColor(WHITE);
 
-		// 3D ∫‰∏¶ ∞ªΩ≈ // Update 3D view
+		// 3D Î∑∞Î•º Í∞±Ïã† // Update 3D view
 		view3D[0].UpdateScreen();
 		view3D[1].UpdateScreen();
 
-		// 3D ∫‰∞° ¡æ∑·µ… ∂ß ±Ó¡ˆ ±‚¥Ÿ∏≤ // Wait for the 3D view 
+		// 3D Î∑∞Í∞Ä Ï¢ÖÎ£åÎê† Îïå ÍπåÏßÄ Í∏∞Îã§Î¶º // Wait for the 3D view 
 		while(view3D[0].IsAvailable() && view3D[1].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

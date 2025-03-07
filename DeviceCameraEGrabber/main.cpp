@@ -1,25 +1,25 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h" 
 
 
-// Ä«¸Ş¶ó¿¡¼­ ÀÌ¹ÌÁö Ãëµæ ÀÌº¥Æ®¸¦ ¹Ş±â À§ÇØ CDeviceEventImageBase ¸¦ »ó¼Ó ¹Ş¾Æ¼­ ±¸Çö
+// ì¹´ë©”ë¼ì—ì„œ ì´ë¯¸ì§€ ì·¨ë“ ì´ë²¤íŠ¸ë¥¼ ë°›ê¸° ìœ„í•´ CDeviceEventImageBase ë¥¼ ìƒì† ë°›ì•„ì„œ êµ¬í˜„
 class CDeviceEventImageEx : public CDeviceEventImageBase
 {
 public:
-	// CDeviceEventImageEx »ı¼ºÀÚ
+	// CDeviceEventImageEx ìƒì„±ì
 	CDeviceEventImageEx()
 	{
 		m_pViewImage = nullptr;
-		// ÀÌ¹ÌÁö¸¦ ¹ŞÀ» °´Ã¼ »ı¼º // Create ÀÌ¹ÌÁö¸¦ ¹ŞÀ» object
+		// ì´ë¯¸ì§€ë¥¼ ë°›ì„ ê°ì²´ ìƒì„± // Create ì´ë¯¸ì§€ë¥¼ ë°›ì„ object
 		m_pImage = new CFLImage;
 	}
 
-	// CDeviceEventImageEx ¼Ò¸êÀÚ
+	// CDeviceEventImageEx ì†Œë©¸ì
 	virtual ~CDeviceEventImageEx()
 	{
-		// »ı¼ºÇÑ ÀÌ¹ÌÁö °´Ã¼ ÇØÁ¦
+		// ìƒì„±í•œ ì´ë¯¸ì§€ ê°ì²´ í•´ì œ
 		if(m_pImage)
 		{
 			delete m_pImage;
@@ -27,28 +27,28 @@ public:
 		}
 	}
 
-	// ÃëµæÇÑ ÀÌ¹ÌÁö¸¦ Ç¥½ÃÇÒ ÀÌ¹ÌÁö ºä¸¦ ¼³Á¤ÇÏ´Â ÇÔ¼ö
+	// ì·¨ë“í•œ ì´ë¯¸ì§€ë¥¼ í‘œì‹œí•  ì´ë¯¸ì§€ ë·°ë¥¼ ì„¤ì •í•˜ëŠ” í•¨ìˆ˜
 	void SetViewImage(CGUIViewImageWrap* pViewImage)
 	{
 		if(pViewImage)
 		{
 			m_pViewImage = pViewImage;
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö Æ÷ÀÎÅÍ ¼³Á¤
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ í¬ì¸í„° ì„¤ì •
 			m_pViewImage->SetImagePtr(m_pImage);
 		}
 	}
 
-	// Ä«¸Ş¶ó¿¡¼­ ÀÌ¹ÌÁö Ãëµæ ½Ã È£Ãâ µÇ´Â ÇÔ¼ö
+	// ì¹´ë©”ë¼ì—ì„œ ì´ë¯¸ì§€ ì·¨ë“ ì‹œ í˜¸ì¶œ ë˜ëŠ” í•¨ìˆ˜
 	virtual void OnAcquisition(const CDeviceImageBase* pDeviceImage)
 	{
-		// ÀÌ¹ÌÁö ºäÀÇ À¯È¿¼ºÀ» È®ÀÎÇÑ´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ ìœ íš¨ì„±ì„ í™•ì¸í•œë‹¤.
 		if(m_pViewImage && m_pViewImage->IsAvailable())
 		{
-			// Ä«¸Ş¶ó¿¡¼­ Ãëµæ ÇÑ ÀÌ¹ÌÁö¸¦ ¾ò¾î¿Â´Ù.
+			// ì¹´ë©”ë¼ì—ì„œ ì·¨ë“ í•œ ì´ë¯¸ì§€ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 			pDeviceImage->GetAcquiredImage(m_pImage);
 
-			// ÀÌ¹ÌÁö ºä¸¦ Àç°»½Å ÇÑ´Ù.
+			// ì´ë¯¸ì§€ ë·°ë¥¼ ì¬ê°±ì‹  í•œë‹¤.
 			m_pViewImage->Invalidate();
 		}
 	}
@@ -63,10 +63,10 @@ int main()
 {
 	CResult res = EResult_UnknownError;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
-	// EGrabber Ä«¸Ş¶ó ¼±¾ğ
+	// EGrabber ì¹´ë©”ë¼ ì„ ì–¸
 	CDeviceCameraEGrabber camEGrabber;
 
 	do
@@ -79,13 +79,13 @@ int main()
 
 		CFLString<wchar_t> flsInput = L"";
 
-		// º¸µåÀÇ ÀÎµ¦½º¸¦ ÀÔ·ÂÇÕ´Ï´Ù.
+		// ë³´ë“œì˜ ì¸ë±ìŠ¤ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤.
 		printf("Enter board index: ");
 		fgetws(arrInput, 4096, stdin);
 		flsInput = arrInput;
 		i32BoardIndex = flsInput.ToInt32();
 
-		// ¸ğµâÀÇ ÀÎµ¦½º¸¦ ÀÔ·ÂÇÕ´Ï´Ù.
+		// ëª¨ë“ˆì˜ ì¸ë±ìŠ¤ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤.
 		printf("Enter module index: ");
 		fgetws(arrInput, 4096, stdin);
 		flsInput = arrInput;
@@ -93,24 +93,24 @@ int main()
 
 		printf("\n");
 
-		// ÀÌº¥Æ®¸¦ ¹ŞÀ» °´Ã¼ ¼±¾ğ
+		// ì´ë²¤íŠ¸ë¥¼ ë°›ì„ ê°ì²´ ì„ ì–¸
 		CDeviceEventImageEx eventImage;
 
-		// Ä«¸Ş¶ó¿¡ ÀÌº¥Æ® °´Ã¼ ¼³Á¤
+		// ì¹´ë©”ë¼ì— ì´ë²¤íŠ¸ ê°ì²´ ì„¤ì •
 		camEGrabber.RegisterDeviceEvent(&eventImage);
 
-		// Ä«¸Ş¶ó¿¡ ÀåÄ¡ ¼³Á¤
+		// ì¹´ë©”ë¼ì— ì¥ì¹˜ ì„¤ì •
 		camEGrabber.SetBoardIndex(i32BoardIndex);
 		camEGrabber.SetModuleIndex(i32ModuleIndex);
 
-		// Ä«¸Ş¶ó¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+		// ì¹´ë©”ë¼ë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 		if(IsFail(res = camEGrabber.Initialize()))
 		{
 			ErrorPrint(res, "Failed to initialize the camera.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage.Create(0, 0, 1000, 1000)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -119,20 +119,20 @@ int main()
 
 		eventImage.SetViewImage(&viewImage);
 
-		// Ä«¸Ş¶ó¸¦ Live ÇÕ´Ï´Ù.
+		// ì¹´ë©”ë¼ë¥¼ Live í•©ë‹ˆë‹¤.
 		if(IsFail(res = camEGrabber.Live()))
 		{
 			ErrorPrint(res, "Failed to live the camera.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
 
-	// Ä«¸Ş¶óÀÇ ÃÊ±âÈ­¸¦ ÇØÁ¦ÇÕ´Ï´Ù.
+	// ì¹´ë©”ë¼ì˜ ì´ˆê¸°í™”ë¥¼ í•´ì œí•©ë‹ˆë‹¤.
 	camEGrabber.Terminate();
 
 	return 0;

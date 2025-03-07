@@ -1,14 +1,14 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliFindImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageLearn;
 	CGUIViewImageWrap viewImageFind;
 
@@ -23,7 +23,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		if(IsFail(res = viewImageLearn.Create(400, 0, 912, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -60,34 +60,34 @@ int main()
 			break;
 		}
 
-		// Geometric Match °´Ã¼ »ı¼º // Create Geometric Match object
+		// Geometric Match ê°ì²´ ìƒì„± // Create Geometric Match object
 		CDrawingMatch FLDrawingMatch;
 
-		// ÇĞ½ÀÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to learn
-		// ÇĞ½ÀÇÒ µµ¸éÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the drawing to learn.
+		// í•™ìŠµí•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to learn
+		// í•™ìŠµí•  ë„ë©´ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the drawing to learn.
 		FLDrawingMatch.SetDrawing(L"../../ExampleImages/Matching/Drawing.gbr");
-		// µµ¸é¿¡ ´ëÇÑ ºĞÇØ´É ´ÜÀ§¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set unit of pixel accuracy.
+		// ë„ë©´ì— ëŒ€í•œ ë¶„í•´ëŠ¥ ë‹¨ìœ„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set unit of pixel accuracy.
 		FLDrawingMatch.SetDistanceUnit(CDrawingMatch::EDistanceUnit_Millimeter);
-		// µµ¸é¿¡ ´ëÇÑ ºĞÇØ´ÉÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set  pixel accuracy.
+		// ë„ë©´ì— ëŒ€í•œ ë¶„í•´ëŠ¥ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set  pixel accuracy.
 		FLDrawingMatch.SetPixelAccuracy(0.05, 0.05);
 
-		// ÇĞ½À ÆÄ¶ó¹ÌÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the learning parameters.
-		// ÃßÃâÇÒ Æ¯Â¡Á¡ °³¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the number of feature points to be extracted.
+		// í•™ìŠµ íŒŒë¼ë¯¸í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the learning parameters.
+		// ì¶”ì¶œí•  íŠ¹ì§•ì  ê°œìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the number of feature points to be extracted.
 		FLDrawingMatch.SetFeatureCount();
-		// ÃßÃâÇÒ Æ¯Â¡Á¡ Ã³¸®°úÁ¤¿¡¼­ÀÇ ³ëÀÌÁî ÇÊÅÍ¸µ Á¤µµ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the noise filtering degree in the process of processing the feature points to be extracted.
+		// ì¶”ì¶œí•  íŠ¹ì§•ì  ì²˜ë¦¬ê³¼ì •ì—ì„œì˜ ë…¸ì´ì¦ˆ í•„í„°ë§ ì •ë„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the noise filtering degree in the process of processing the feature points to be extracted.
 		FLDrawingMatch.SetFeatureFiltering();
-		// ÃßÃâÇÒ Æ¯Â¡Á¡ Ã³¸®°úÁ¤¿¡¼­ÀÇ Çã¿ë ÀÓ°è°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the allowable threshold in the feature point processing process to be extracted.
+		// ì¶”ì¶œí•  íŠ¹ì§•ì  ì²˜ë¦¬ê³¼ì •ì—ì„œì˜ í—ˆìš© ì„ê³„ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the allowable threshold in the feature point processing process to be extracted.
 		FLDrawingMatch.SetLearnThresholdCoefficient();
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if(IsFail(res = FLDrawingMatch.Learn()))
 		{
 			ErrorPrint(res, "Failed to execute Learn.\n");
 			break;
 		}
 
-		// ÇĞ½ÀÇÑ Æ¯Â¡Á¡À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display the learned feature point
-		// ÇĞ½ÀÇÑ Æ¯Â¡Á¡ÀÌ Ã£°íÀÚÇÏ´Â °´Ã¼¸¦ ³ªÅ¸³»±â¿¡ ÃæºĞÇÏ°Ô Àß »ÌÇû´ÂÁö È®ÀÎÇÏ°í, ±×·¸Áö ¾Ê´Ù¸é ÇĞ½À ÆÄ¶ó¹ÌÅÍ¸¦ ÀçÁ¶Á¤ÇÔÀ¸·Î½á ÀçÈ®ÀÎÇÏ¸é °ËÃâ ½Ã ´õ È¿°úÀûÀÔ´Ï´Ù. // Check whether the learned feature points are selected well enough to represent the object to be found.
+		// í•™ìŠµí•œ íŠ¹ì§•ì ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display the learned feature point
+		// í•™ìŠµí•œ íŠ¹ì§•ì ì´ ì°¾ê³ ìí•˜ëŠ” ê°ì²´ë¥¼ ë‚˜íƒ€ë‚´ê¸°ì— ì¶©ë¶„í•˜ê²Œ ì˜ ë½‘í˜”ëŠ”ì§€ í™•ì¸í•˜ê³ , ê·¸ë ‡ì§€ ì•Šë‹¤ë©´ í•™ìŠµ íŒŒë¼ë¯¸í„°ë¥¼ ì¬ì¡°ì •í•¨ìœ¼ë¡œì¨ ì¬í™•ì¸í•˜ë©´ ê²€ì¶œ ì‹œ ë” íš¨ê³¼ì ì…ë‹ˆë‹¤. // Check whether the learned feature points are selected well enough to represent the object to be found.
 		flfLearnedDrawing = FLDrawingMatch.GetLearnedDrawing();
 
 		if(IsFail(res = layerLearn.DrawFigureImage(flfLearnedDrawing, BLUE)))
@@ -97,37 +97,37 @@ int main()
 		}
 
 
-		// °ËÃâÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set image to detect
+		// ê²€ì¶œí•  ì´ë¯¸ì§€ ì„¤ì • // Set image to detect
 		FLDrawingMatch.SetSourceImage(fliFindImage);
 
-		// °ËÃâ ½Ã »ç¿ëµÉ ÆÄ¶ó¹ÌÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the parameters to be used for detection.
-		// °ËÃâ ½Ã »ç¿ëµÉ ±âº» °¢µµ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the default angle to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  íŒŒë¼ë¯¸í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the parameters to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ê¸°ë³¸ ê°ë„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the default angle to be used for detection.
 		FLDrawingMatch.SetAngleBias(0.);
-		// °ËÃâ ½Ã »ç¿ëµÉ °¢µµÀÇ Å½»ö¹üÀ§¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the search range of the angle to be used for detection.
-		// °¢µµ´Â ±âº» °¢µµ¸¦ ±âÁØÀ¸·Î (±âº» °¢µµ - AngleTolerance, ±âº» °¢µµ + AngleTolerance)°¡ ÃÖÁ¾ Å½»ö¹üÀ§ // The angle is based on the basic angle (default angle - AngleTolerance, basic angle + AngleTolerance) is the final search range
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ê°ë„ì˜ íƒìƒ‰ë²”ìœ„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the search range of the angle to be used for detection.
+		// ê°ë„ëŠ” ê¸°ë³¸ ê°ë„ë¥¼ ê¸°ì¤€ìœ¼ë¡œ (ê¸°ë³¸ ê°ë„ - AngleTolerance, ê¸°ë³¸ ê°ë„ + AngleTolerance)ê°€ ìµœì¢… íƒìƒ‰ë²”ìœ„ // The angle is based on the basic angle (default angle - AngleTolerance, basic angle + AngleTolerance) is the final search range
 		FLDrawingMatch.SetAngleTolerance(5.);
-		// °ËÃâ ½Ã »ç¿ëµÉ ½ºÄÉÀÏ Å½»ö¹üÀ§¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the scale search range to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ìŠ¤ì¼€ì¼ íƒìƒ‰ë²”ìœ„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the scale search range to be used for detection.
 		FLDrawingMatch.SetScaleRange(0.9, 1.1);
-		// °ËÃâ ½Ã »ç¿ëµÉ ÃÖ¼Ò Å½»öÁ¡¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the minimum search score to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ìµœì†Œ íƒìƒ‰ì ìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the minimum search score to be used for detection.
 		FLDrawingMatch.SetMinimumDetectionScore(0.5);
-		// °ËÃâ ½Ã »ç¿ëµÉ ÃÖ´ë Å½»ö°´Ã¼ ¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the maximum number of search objects to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ìµœëŒ€ íƒìƒ‰ê°ì²´ ìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the maximum number of search objects to be used for detection.
 		FLDrawingMatch.SetMaxObject(1);
 
-		// °ËÃâ ½Ã º¸°£¹ı »ç¿ë À¯¹«¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set whether to use interpolation when detecting.
+		// ê²€ì¶œ ì‹œ ë³´ê°„ë²• ì‚¬ìš© ìœ ë¬´ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set whether to use interpolation when detecting.
 		FLDrawingMatch.EnableInterpolation();
-		// °ËÃâ ½Ã ÃÖÀûÈ­ Á¤µµ¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the degree of optimization for detection.
+		// ê²€ì¶œ ì‹œ ìµœì í™” ì •ë„ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the degree of optimization for detection.
 		FLDrawingMatch.SetOptimizationOption();
-		// °ËÃâ ½Ã ´ëºñÁ¤µµ¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the contrast level for detection.
+		// ê²€ì¶œ ì‹œ ëŒ€ë¹„ì •ë„ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the contrast level for detection.
 		FLDrawingMatch.SetContrastOption();
-		// °ËÃâ ½Ã ÀÌ¹ÌÁö ¿µ¿ª¹ÛÀÇ Å½»ö Á¤µµ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the degree of search outside the image area when detecting.
+		// ê²€ì¶œ ì‹œ ì´ë¯¸ì§€ ì˜ì—­ë°–ì˜ íƒìƒ‰ ì •ë„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the degree of search outside the image area when detecting.
 		FLDrawingMatch.SetContrastOption();
-		// °ËÃâ ½Ã Ã³¸®°úÁ¤¿¡¼­ÀÇ Çã¿ë ÀÓ°è°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the allowable threshold in the process of detection.
+		// ê²€ì¶œ ì‹œ ì²˜ë¦¬ê³¼ì •ì—ì„œì˜ í—ˆìš© ì„ê³„ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the allowable threshold in the process of detection.
 		FLDrawingMatch.SetFindThresholdCoefficient();
-		// °ËÃâ ½Ã °ãÃÄÁü Çã¿ë Á¤µµ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the allowable degree of overlap during detection.
+		// ê²€ì¶œ ì‹œ ê²¹ì³ì§ í—ˆìš© ì •ë„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the allowable degree of overlap during detection.
 		FLDrawingMatch.SetObjectOverlap();
-		// °ËÃâ ½Ã ÀÌ¹ÌÁö ÀüÃ³¸® À¯¹«¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set whether or not to pre-process the image during detection.
+		// ê²€ì¶œ ì‹œ ì´ë¯¸ì§€ ì „ì²˜ë¦¬ ìœ ë¬´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set whether or not to pre-process the image during detection.
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		res = FLDrawingMatch.Execute();
 
 		if(IsFail(res))
@@ -137,11 +137,11 @@ int main()
 		}
 
 
-		// ±âÇÏÇĞÀû ÆĞÅÏ °ËÃâ °á°ú¸¦ °¡Á®¿É´Ï´Ù. // Get the geometric pattern detection result.
+		// ê¸°í•˜í•™ì  íŒ¨í„´ ê²€ì¶œ ê²°ê³¼ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the geometric pattern detection result.
 		std::vector<CDrawingMatch::SResult> vctResults;
 		int64_t i64ResultCount = FLDrawingMatch.GetResultCount();
 
-		printf(" ¢º Find Information\n");
+		printf(" â–¶ Find Information\n");
 
 		for(int64_t i = 0; i < i64ResultCount; ++i)
 		{
@@ -159,7 +159,7 @@ int main()
 
 			CFLRect<double> flrResultRegion = pFlfRegion->GetBoundaryRect();
 
-			// ±âÇÏÇĞÀû ÆĞÅÏ °ËÃâ °á°ú¸¦ ConsoleÃ¢¿¡ Ãâ·ÂÇÕ´Ï´Ù. // Output the geometric pattern detection result to the console window.
+			// ê¸°í•˜í•™ì  íŒ¨í„´ ê²€ì¶œ ê²°ê³¼ë¥¼ Consoleì°½ì— ì¶œë ¥í•©ë‹ˆë‹¤. // Output the geometric pattern detection result to the console window.
 			printf(" < Instance : %lld >\n", i);
 			printf("  1. ROI Shape Type : Rectangle\n");
 			printf("    left   : %.3lf\n", flrResultRegion.left);
@@ -172,7 +172,7 @@ int main()
 
 			printf("\n");
 
-			// °ËÃâ °á°úÀÇ Áß½ÉÁ¡À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display the center point of the detection result
+			// ê²€ì¶œ ê²°ê³¼ì˜ ì¤‘ì‹¬ì ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display the center point of the detection result
 			CFLFigureArray flfaPoint = flpPivot.MakeCrossHair(3, false);
 			flfaPoint.Rotate(f32Angle, &flpPivot);
 
@@ -214,12 +214,12 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImageLearn.ZoomFitToLayer(0);
 		viewImageLearn.Invalidate(true);
 		viewImageFind.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageLearn.IsAvailable() && viewImageFind.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

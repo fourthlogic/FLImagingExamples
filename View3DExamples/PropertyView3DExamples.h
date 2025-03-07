@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 namespace FLImaging
 {
@@ -14,7 +14,7 @@ namespace FLImaging
 
 			virtual const CResult ConfigureMenu() override;
 
-			// PushObject ¹öÆ° Å¬¸¯ ÇÁ·Î½ÃÀú
+			// PushObject ë²„íŠ¼ í´ë¦­ í”„ë¡œì‹œì €
 			CPropertyItemButtonClickProcedure* PushObject();
 			CPropertyItemButtonClickProcedure* ROIUtilities3DTest();
 			CPropertyItemButtonClickProcedure* FrustumCollisionTest();
@@ -33,10 +33,10 @@ namespace FLImaging
 			const CResult TranslateObject(CGUIView3D* pView3D);
 			const CResult ScaleObject(CGUIView3D* pView3D);
 
-			// Sphere ¸¸µå´Â ¿¹Á¦ // Example of creating a sphere
+			// Sphere ë§Œë“œëŠ” ì˜ˆì œ // Example of creating a sphere
 			const CResult GetSphereObject(CGUIView3DObject& meshSphere, float f32Radius, uint32_t sliceCount, uint32_t stackCount);
 
-			// Arrow ¸¸µå´Â ¿¹Á¦ // Example of creating an Arrow
+			// Arrow ë§Œë“œëŠ” ì˜ˆì œ // Example of creating an Arrow
 			const CResult GetArrowObject(CGUIView3DObject& mesh1, CGUIView3DObject& mesh2, const TPoint3<float>& tp3Origin, float f32Length, float f32ArrowRatio, float f32PipeRadius, float f32ArrowBottomRadius, COLORREF clr);
 
 			DeclareGetClassType();

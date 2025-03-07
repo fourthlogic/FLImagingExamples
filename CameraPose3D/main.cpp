@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 #include <map>
@@ -24,31 +24,31 @@ int main()
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult eResult = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Load the image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load the image
 		if((eResult = fliSource.Load(L"../../ExampleImages/CameraPose3D/ChessBoard(9).flif")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the image.\n");
 			break;
 		}
 		
-		// CameraPose3D °´Ã¼ »ı¼º // Create CameraPose3D object
+		// CameraPose3D ê°ì²´ ìƒì„± // Create CameraPose3D object
 		CCameraPose3D CameraPose3D;
 
-		// Camera Matrix ¼³Á¤ // Set the camera matrix
+		// Camera Matrix ì„¤ì • // Set the camera matrix
 		CFLPoint<double> flpFocalLength(617.8218, 618.2815);
 		CFLPoint<double> flpPrincipalPoint(319.05237, 243.0472);
 		CameraPose3D.SetCameraMatrix(flpPrincipalPoint, flpFocalLength);
 
-		// ¼¿ °£°İ ¼³Á¤ // Set the board cell pitch
+		// ì…€ ê°„ê²© ì„¤ì • // Set the board cell pitch
 		CameraPose3D.SetBoardCellPitch(5, 5);
 
-		// Ä¶¸®ºê·¹ÀÌ¼Ç °´Ã¼ Å¸ÀÔ ¼³Á¤ // Set the calibration object type
+		// ìº˜ë¦¬ë¸Œë ˆì´ì…˜ ê°ì²´ íƒ€ì… ì„¤ì • // Set the calibration object type
 		CameraPose3D.SetCalibrationObjectType(ECalibrationObjectType_ChessBoard);
 
-		// ÀÌ¹ÌÁö ÀüÃ³¸® Å¸ÀÔ ¼³Á¤ // Set the image preprocessing method
+		// ì´ë¯¸ì§€ ì „ì²˜ë¦¬ íƒ€ì… ì„¤ì • // Set the image preprocessing method
 		CameraPose3D.SetPreprocessingMethod(ECalibrationPreprocessingMethod_ShadingCorrection);
 		
 		const int32_t i32PageCount = fliSource.GetPageCount();
@@ -76,34 +76,34 @@ int main()
 
 		for(int32_t i = 0; i < i32PageCount; i++)
 		{			
-			// ÆäÀÌÁö ¼±ÅÃ
+			// í˜ì´ì§€ ì„ íƒ
 			fliPage[i].Assign(fliSource.GetPage(i));
 
-			// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤
+			// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì •
 			CameraPose3D.SetSourceImage(fliPage[i]);
 
-			// ÀÌ¹ÌÁö Æ÷ÀÎÅÍ ¼³Á¤ // Set image pointer
+			// ì´ë¯¸ì§€ í¬ì¸í„° ì„¤ì • // Set image pointer
 			arrViewWrap[i].SetImagePtr(&fliPage[i]);
 
-			// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+			// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 			if((eResult = CameraPose3D.Execute()).IsFail())
 			{
 				ErrorPrint(eResult, L"Failed to execute Camera Pose 3D.");
 				break;
 			}
 
-			// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-			// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately		
+			// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+			// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately		
 			CGUIViewImageLayerWrap layerViewSource = arrViewWrap[i].GetLayer(0);
 
-			// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+			// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 			layerViewSource.Clear();
 
-			// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-			// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-			// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-			// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-			//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+			// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+			// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+			// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+			// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+			//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 			// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 			//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 			if((eResult = layerViewSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 15)).IsFail())
@@ -112,18 +112,18 @@ int main()
 				break;
 			}
 
-			// °á°ú °´Ã¼ ¿µ¿ª °¡Á®¿À±â // Get the result board region
+			// ê²°ê³¼ ê°ì²´ ì˜ì—­ ê°€ì ¸ì˜¤ê¸° // Get the result board region
 			CFLQuad<double> flqBoardRegion;
 			CameraPose3D.GetResultBoardRegion(flqBoardRegion);
 
-			// °á°ú ÄÚ³ÊÁ¡ °¡Á®¿À±â // Get the result corner points
+			// ê²°ê³¼ ì½”ë„ˆì  ê°€ì ¸ì˜¤ê¸° // Get the result corner points
 			CFLFigureArray flfaCornerPoints;
 			CameraPose3D.GetResultCornerPoints(flfaCornerPoints);
 
-			// °á°ú °´Ã¼ ¿µ¿ª ±×¸®±â // Draw the result board region
+			// ê²°ê³¼ ê°ì²´ ì˜ì—­ ê·¸ë¦¬ê¸° // Draw the result board region
 			layerViewSource.DrawFigureImage(flqBoardRegion, BLUE, 3);
 
-			// °á°ú ÄÚ³ÊÁ¡ ±×¸®±â // Draw the result corner points
+			// ê²°ê³¼ ì½”ë„ˆì  ê·¸ë¦¬ê¸° // Draw the result corner points
 			flfaCornerPoints.Flatten();
 
 			for(int64_t k = 0; k < flfaCornerPoints.GetCount(); ++k)
@@ -131,11 +131,11 @@ int main()
 
 			CFLString<wchar_t> strDisplay;
 
-			// °á°ú °¡Á®¿À±â // Get the results
+			// ê²°ê³¼ ê°€ì ¸ì˜¤ê¸° // Get the results
 			CFLArray<double> flaResultRotationVector, flaResultTranslationVector, flaResultEulerAngle;
 			CMatrix<double> matResultRotationMatrix;
 
-			// ¿ÀÀÏ·¯ °¢ ¼ø¼­ ¼³Á¤ // Set the euler sequence
+			// ì˜¤ì¼ëŸ¬ ê° ìˆœì„œ ì„¤ì • // Set the euler sequence
 			EEulerSequence eEulerSequence = EEulerSequence_Extrinsic_XYZ;
 
 			CameraPose3D.GetResultRotationVector(flaResultRotationVector);
@@ -188,7 +188,7 @@ int main()
 		if(arrViewWrap[0].IsAvailable())
 			arrViewWrap[0].Invalidate();
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(arrViewWrap[0].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

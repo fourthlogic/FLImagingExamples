@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,132 +6,132 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/HarrisCornerDetector/Chip.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage.Create(400, 0, 1168, 540)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 
-		// harris °´Ã¼ »ı¼º // Create harris object
+		// harris ê°ì²´ ìƒì„± // Create harris object
 		CHarrisCornerDetector harris;
 
-		// ROI ¹üÀ§ ¼³Á¤
+		// ROI ë²”ìœ„ ì„¤ì •
 		CFLRect<int32_t> flrROI(100, 50, 450, 450);
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì •
 		if(IsFail(res = harris.SetSourceImage(fliImage)))
 		{
 			ErrorPrint(res, "Failed to set Source Image.");
 			break;
 		}
 
-		// Ã³¸®ÇÒ ROI ¼³Á¤
+		// ì²˜ë¦¬í•  ROI ì„¤ì •
 		if(IsFail(res = harris.SetSourceROI(flrROI)))
 		{
 			ErrorPrint(res, "Failed to set Source ROI.");
 			break;
 		}
 
-		// ÄÚ³Ê¸¦ °ËÃâÇÏ´Â ÀÌ¹ÌÁöÀÇ Scale °ªÀ» ¼³Á¤
+		// ì½”ë„ˆë¥¼ ê²€ì¶œí•˜ëŠ” ì´ë¯¸ì§€ì˜ Scale ê°’ì„ ì„¤ì •
 		if(IsFail(res = harris.SetScale(1.0)))
 		{
 			ErrorPrint(res, "Failed to set scale.");
 			break;
 		}
 
-		// °ËÃâÇÒ ÃÖ´ë Á¡ÀÇ °³¼ö¸¦ ¼³Á¤
+		// ê²€ì¶œí•  ìµœëŒ€ ì ì˜ ê°œìˆ˜ë¥¼ ì„¤ì •
 		if(IsFail(res = harris.SetMaxPoints(500)))
 		{
 			ErrorPrint(res, "Failed to set max points.");
 			break;
 		}
 
-		// °ËÃâÇÒ Á¡¼öÀÇ ÀÓ°è°ªÀ» ¼³Á¤
+		// ê²€ì¶œí•  ì ìˆ˜ì˜ ì„ê³„ê°’ì„ ì„¤ì •
 		if(IsFail(res = harris.SetScoreThreshold(0.8f)))
 		{
 			ErrorPrint(res, "Failed to set score threshold.");
 			break;
 		}
 
-		// ÇØ¸®½º ÄÚ³Ê µğÅØÅÍÀÇ ÆÄ¸®¹ÌÅÍ K¸¦ ¼³Á¤
+		// í•´ë¦¬ìŠ¤ ì½”ë„ˆ ë””í…í„°ì˜ íŒŒë¦¬ë¯¸í„° Kë¥¼ ì„¤ì •
 		if(IsFail(res = harris.SetParamK(0.04f)))
 		{
 			ErrorPrint(res, "Failed to set param K.");
 			break;
 		}
 
-		// ÇØ¸®½º ÄÚ³Ê µğÅØÅÍ ½ÇÇà ÇÔ¼ö
+		// í•´ë¦¬ìŠ¤ ì½”ë„ˆ ë””í…í„° ì‹¤í–‰ í•¨ìˆ˜
 		if(IsFail(res = harris.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute.");
 			break;
 		}
 
-		// ½ÇÇà °á°ú¸¦ ¹Ş¾Æ¿À±â À§ÇÑ ÄÁÅ×ÀÌ³Ê
+		// ì‹¤í–‰ ê²°ê³¼ë¥¼ ë°›ì•„ì˜¤ê¸° ìœ„í•œ ì»¨í…Œì´ë„ˆ
 		Foundation::CFLFigureArray flfaResultPoints;
 
-		// ÇØ¸®½º ÄÚ³Ê µğÅØÅÍ ½ÇÇà ÇÔ¼ö
+		// í•´ë¦¬ìŠ¤ ì½”ë„ˆ ë””í…í„° ì‹¤í–‰ í•¨ìˆ˜
 		if(IsFail(res = harris.GetResultPoints(&flfaResultPoints)))
 		{
 			ErrorPrint(res, "Failed to get result.");
 			break;
 		}
 
-		// °ËÃâµÈ Á¡ÀÇ °³¼ö¸¦ °¡Á®¿À´Â ÇÔ¼ö
+		// ê²€ì¶œëœ ì ì˜ ê°œìˆ˜ë¥¼ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜
 		int64_t i64Count = harris.GetResultCount();
 
 		for(int64_t i = 0; i < i64Count; i++)
 		{
-			// °ËÃâµÈ Á¡À» Ãâ·Â
+			// ê²€ì¶œëœ ì ì„ ì¶œë ¥
 			CFLPoint<double>* pFlpTemp = dynamic_cast<CFLPoint<double>*>(flfaResultPoints.GetAt(i));
 			layer.DrawFigureImage(pFlpTemp, RED, 1);
 		}
 
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to find out where ROI is
-		// FLImagingÀÇ Figure°´Ã¼µéÀº ¾î¶² µµÇü¸ğ¾çÀÌµç »ó°ü¾øÀÌ ÇÏ³ªÀÇ ÇÔ¼ö·Î µğ½ºÇÃ·¹ÀÌ°¡ °¡´É
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to find out where ROI is
+		// FLImagingì˜ Figureê°ì²´ë“¤ì€ ì–´ë–¤ ë„í˜•ëª¨ì–‘ì´ë“  ìƒê´€ì—†ì´ í•˜ë‚˜ì˜ í•¨ìˆ˜ë¡œ ë””ìŠ¤í”Œë ˆì´ê°€ ê°€ëŠ¥
 		if(IsFail(res = layer.DrawFigureImage(&flrROI, BLUE)))
 		{
 			ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

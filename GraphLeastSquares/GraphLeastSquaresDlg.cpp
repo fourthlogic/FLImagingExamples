@@ -1,4 +1,4 @@
-
+ï»¿
 // GraphLeastSquaresDlg.cpp : implementation file
 //
 
@@ -105,7 +105,7 @@ BOOL CGraphLeastSquaresDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 
-	// ±×·¡ÇÁ ºä »ı¼º
+	// ê·¸ë˜í”„ ë·° ìƒì„±
 	CResult res = m_viewGraph.CreateAndFitParent((size_t)GetDlgItem(IDC_STATIC_GRAPH_VIEW)->GetSafeHwnd());
 
 	if(res.IsFail())
@@ -191,10 +191,10 @@ HCURSOR CGraphLeastSquaresDlg::OnQueryDragIcon()
 
 void CGraphLeastSquaresDlg::UpdateControls()
 {
-	// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+	// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 	GetDlgItem(IDC_BUTTON_GRAPH_ADD)->EnableWindow(m_viewGraph.IsAvailable());
 
-	// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©, ±×·¡ÇÁ ºä µ¥ÀÌÅÍ Á¸Àç ¿©ºÎ Ã¼Å©
+	// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬, ê·¸ë˜í”„ ë·° ë°ì´í„° ì¡´ì¬ ì—¬ë¶€ ì²´í¬
 	GetDlgItem(IDC_BUTTON_GRAPH_CLEAR)->EnableWindow(m_viewGraph.IsAvailable() && m_viewGraph.DoesGraphExist());
 }
 
@@ -222,7 +222,7 @@ BOOL CGraphLeastSquaresDlg::DestroyWindow()
 	// TODO: Add your specialized code here and/or call the base class
 	KillTimer(1024);
 
-	// ±×·¡ÇÁ ºä¸¦ Á¾·áÇÑ´Ù.
+	// ê·¸ë˜í”„ ë·°ë¥¼ ì¢…ë£Œí•œë‹¤.
 	m_viewGraph.Destroy();
 
 	return CDialogEx::DestroyWindow();
@@ -238,7 +238,7 @@ void CGraphLeastSquaresDlg::OnBnClickedButtonGraphAdd()
 
 	do 
 	{
-		// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+		// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewGraph.IsAvailable())
 			break;
 
@@ -259,7 +259,7 @@ void CGraphLeastSquaresDlg::OnBnClickedButtonGraphAdd()
 		CFLString<wchar_t> flstrName(strName);
 		int32_t i32Degree = _wtoi(strDegree);
 
-		// ·£´ıÀ¸·Î 100°³ÀÇ µ¥ÀÌÅÍ¸¦ »ı¼ºÇÑ´Ù.
+		// ëœë¤ìœ¼ë¡œ 100ê°œì˜ ë°ì´í„°ë¥¼ ìƒì„±í•œë‹¤.
 		const size_t stDataCount = 100;
 		double arrF64DataX[stDataCount] = { 0., };
 		double arrF64DataY[stDataCount] = { 0., };
@@ -279,7 +279,7 @@ void CGraphLeastSquaresDlg::OnBnClickedButtonGraphAdd()
 			f64PrevY = arrF64DataY[i];
 		}
 
-		// ±×·¡ÇÁ¿¡ »ı¼ºÇÑ µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù.
+		// ê·¸ë˜í”„ì— ìƒì„±í•œ ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤.
 		m_viewGraph.Plot(arrF64DataX, arrF64DataY, stDataCount, EChartType_Scatter, ui32Color, flstrName, nullptr);
 
 		if(i32Degree == 0)
@@ -288,17 +288,17 @@ void CGraphLeastSquaresDlg::OnBnClickedButtonGraphAdd()
 			break;
 		}
 
-		// LeastSquaresD °´Ã¼ »ı¼º // Create LeastSquaresD object
+		// LeastSquaresD ê°ì²´ ìƒì„± // Create LeastSquaresD object
 		CLeastSquaresD ls;
-		// µ¥ÀÌÅÍ¸¦ ÇÒ´ç
+		// ë°ì´í„°ë¥¼ í• ë‹¹
 		ls.Assign(arrF64DataX, arrF64DataY, stDataCount);
 
-		// °è¼ö °ªÀ» ¹Ş±â À§ÇØ FLArray »ı¼º
+		// ê³„ìˆ˜ ê°’ì„ ë°›ê¸° ìœ„í•´ FLArray ìƒì„±
 		CFLArray<double> vctOutput;
-		// R square °ªÀ» ¹Ş±â À§ÇØdouble »ı¼º
+		// R square ê°’ì„ ë°›ê¸° ìœ„í•´double ìƒì„±
 		double f64TRSqr = 0.;
 
-		// ´ÙÇ×½Ä °è¼ö¸¦ ¾ò´Â´Ù.
+		// ë‹¤í•­ì‹ ê³„ìˆ˜ë¥¼ ì–»ëŠ”ë‹¤.
 		ls.GetPoly(i32Degree, &vctOutput, &f64TRSqr);
 
 		CFLString<wchar_t> flstrEquation = L"";
@@ -310,11 +310,11 @@ void CGraphLeastSquaresDlg::OnBnClickedButtonGraphAdd()
 			break;
 		}
 
-		// Â÷¼ö°¡ ³ô¾ÆÁú¼ö·Ï °è¼öÀÇ Á¤µµ¸¦ ³ôÀÎ´Ù.
-		// ¿¹¸¦ µé¾î 4Â÷½ÄÀÎ °æ¿ì, 4 + 12 = 16, Áï ¼Ò¼öÁ¡ 16Â° ÀÚ¸®±îÁö °è¼ö¸¦ Ç¥ÇöÇÑ´Ù.
+		// ì°¨ìˆ˜ê°€ ë†’ì•„ì§ˆìˆ˜ë¡ ê³„ìˆ˜ì˜ ì •ë„ë¥¼ ë†’ì¸ë‹¤.
+		// ì˜ˆë¥¼ ë“¤ì–´ 4ì°¨ì‹ì¸ ê²½ìš°, 4 + 12 = 16, ì¦‰ ì†Œìˆ˜ì  16ì§¸ ìë¦¬ê¹Œì§€ ê³„ìˆ˜ë¥¼ í‘œí˜„í•œë‹¤.
 		int32_t i32Precision = 12 + i32Degree;
 
-		// ¾ò¾î¿Â °è¼ö·Î ´ÙÇ×½ÄÀ» ¸¸µç´Ù.
+		// ì–»ì–´ì˜¨ ê³„ìˆ˜ë¡œ ë‹¤í•­ì‹ì„ ë§Œë“ ë‹¤.
 		for(int32_t i = 0; i < i64Count; ++i)
 		{
 			double f64Coef = vctOutput.GetAt(i);
@@ -346,15 +346,15 @@ void CGraphLeastSquaresDlg::OnBnClickedButtonGraphAdd()
 
 		flstrInfo.Format(L"R square value: %lf", f64TRSqr);
 
-		// ¼ö½Ä °´Ã¼ »ı¼º // Create ¼ö½Ä object
+		// ìˆ˜ì‹ ê°ì²´ ìƒì„± // Create ìˆ˜ì‹ object
 		CExpression exp;
-		// ¼ö½Ä ¹®ÀÚ¿­À» ¼³Á¤ÇÑ´Ù
+		// ìˆ˜ì‹ ë¬¸ìì—´ì„ ì„¤ì •í•œë‹¤
 		exp.SetExpression(flstrEquation);
 
-		// ±×·¡ÇÁ ºä¿¡ ¼ö½Ä µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù
+		// ê·¸ë˜í”„ ë·°ì— ìˆ˜ì‹ ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤
 		m_viewGraph.Plot(&exp, ui32Color);
 
-		// ±×·¡ÇÁ ºä¸¦ °»½ÅÇÑ´Ù
+		// ê·¸ë˜í”„ ë·°ë¥¼ ê°±ì‹ í•œë‹¤
 		m_viewGraph.Invalidate();
 	}
 	while(false);
@@ -368,14 +368,14 @@ void CGraphLeastSquaresDlg::OnBnClickedButtonGraphClear()
 	// TODO: Add your control notification handler code here
 	do 
 	{
-		// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+		// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewGraph.IsAvailable())
 			break;
 
-		// ±×·¡ÇÁ ºäÀÇ µ¥ÀÌÅÍ¸¦ ÃÊ±âÈ­ÇÑ´Ù
+		// ê·¸ë˜í”„ ë·°ì˜ ë°ì´í„°ë¥¼ ì´ˆê¸°í™”í•œë‹¤
 		m_viewGraph.Clear();
 
-		// ±×·¡ÇÁ ºä¸¦ °»½ÅÇÑ´Ù
+		// ê·¸ë˜í”„ ë·°ë¥¼ ê°±ì‹ í•œë‹¤
 		m_viewGraph.Invalidate();
 	}
 	while(false);

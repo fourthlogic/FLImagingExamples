@@ -1,36 +1,36 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res;
 
 	do 
 	{
-		// ½º³À ºä °´Ã¼ ¼±¾ğ // Declare SNAP View
+		// ìŠ¤ëƒ… ë·° ê°ì²´ ì„ ì–¸ // Declare SNAP View
 		CGUIViewSNAPWrap viewSNAP;
 
-		// ½º³À ºä »ı¼º // Create SNAP view
+		// ìŠ¤ëƒ… ë·° ìƒì„± // Create SNAP view
 		if((res = viewSNAP.Create(0, 0, 600, 600)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the SNAP view.\n");
 			break;
 		}
 
-		// ½º³À ÆÄÀÏ ·Îµå // Load SNAP file
+		// ìŠ¤ëƒ… íŒŒì¼ ë¡œë“œ // Load SNAP file
 		if((res = viewSNAP.Load(L"C:\\Users\\Public\\Documents\\FLImaging\\ExamplesSNAP\\Advanced Functions\\Object\\Blob.flsf")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the SNAP file.\n");
 			break;
 		}
 
-		// ½º³À ½ÇÇà // Run SNAP
+		// ìŠ¤ëƒ… ì‹¤í–‰ // Run SNAP
 		res = viewSNAP.Run();
 
-		// ½º³ÀÀÌ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the SNAP to close
+		// ìŠ¤ëƒ…ì´ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the SNAP to close
 		while(viewSNAP.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

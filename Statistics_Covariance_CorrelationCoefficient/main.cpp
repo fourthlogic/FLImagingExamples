@@ -1,92 +1,92 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
-    // ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+    // ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if((res = fliImage.Load(L"../../ExampleImages/Statistics/MultiChannelSource.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if((res = viewImage.Create(400, 0, 1150, 700)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if((res = viewImage.SetImagePtr(&fliImage)).IsFail())
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Statistics °´Ã¼ »ı¼º // Create Statistics object
+		// Statistics ê°ì²´ ìƒì„± // Create Statistics object
 		CImageStatistics statistics;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the Source Image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the Source Image
 		statistics.SetSourceImage(fliImage);
-		// »ó°ü°ü°è¸¦ ±¸ÇÒ Ã¤³ÎÀ» ¼³Á¤ // Set the Correlation Channels
+		// ìƒê´€ê´€ê³„ë¥¼ êµ¬í•  ì±„ë„ì„ ì„¤ì • // Set the Correlation Channels
 		statistics.SetCorrelatedChannel(0, 1);
 
-		// °á°ú°ªÀ» ¹Ş¾Æ¿Ã CMultiVar<double> ÄÁÅ×ÀÌ³Ê »ı¼º // Create the CMultiVar<double> object to push the result
+		// ê²°ê³¼ê°’ì„ ë°›ì•„ì˜¬ CMultiVar<double> ì»¨í…Œì´ë„ˆ ìƒì„± // Create the CMultiVar<double> object to push the result
 		double f64Covariance, f64CorrelationCoeff;
 
-		// ÀÌ¹ÌÁö ÀüÃ¼(È¤Àº ROI ¿µ¿ª) ÇÈ¼¿°ªÀÇ °øºĞ»êÀ» ±¸ÇÏ´Â ÇÔ¼ö // Function that calculate the covariance of the pixel value of the image(or the region of ROI)
+		// ì´ë¯¸ì§€ ì „ì²´(í˜¹ì€ ROI ì˜ì—­) í”½ì…€ê°’ì˜ ê³µë¶„ì‚°ì„ êµ¬í•˜ëŠ” í•¨ìˆ˜ // Function that calculate the covariance of the pixel value of the image(or the region of ROI)
 		if((res = statistics.GetCovariance(f64Covariance)).IsFail())
 		{
 			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ÀüÃ¼(È¤Àº ROI ¿µ¿ª) ÇÈ¼¿°ªÀÇ »ó°ü°è¼ö¸¦ ±¸ÇÏ´Â ÇÔ¼ö // Function that calculate the correlation coefficient of the pixel value of the image(or the region of ROI)
+		// ì´ë¯¸ì§€ ì „ì²´(í˜¹ì€ ROI ì˜ì—­) í”½ì…€ê°’ì˜ ìƒê´€ê³„ìˆ˜ë¥¼ êµ¬í•˜ëŠ” í•¨ìˆ˜ // Function that calculate the correlation coefficient of the pixel value of the image(or the region of ROI)
 		if((res = statistics.GetCorrelationCoefficient(f64CorrelationCoeff)).IsFail())
 		{
 			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
-		// »ó°ü°ü°è¸¦ ±¸ÇÒ Ã¤³ÎÀ» ¼³Á¤ // Set the Correlation Channels
+		// ìƒê´€ê´€ê³„ë¥¼ êµ¬í•  ì±„ë„ì„ ì„¤ì • // Set the Correlation Channels
 		statistics.SetCorrelatedChannel(0, 2);
 
-		// °á°ú°ªÀ» ¹Ş¾Æ¿Ã CMultiVar<double> ÄÁÅ×ÀÌ³Ê »ı¼º // Create the CMultiVar<double> object to push the result
+		// ê²°ê³¼ê°’ì„ ë°›ì•„ì˜¬ CMultiVar<double> ì»¨í…Œì´ë„ˆ ìƒì„± // Create the CMultiVar<double> object to push the result
 		double f64Covariance2, f64CorrelationCoeff2;
 
-		// ÀÌ¹ÌÁö ÀüÃ¼(È¤Àº ROI ¿µ¿ª) ÇÈ¼¿°ªÀÇ °øºĞ»êÀ» ±¸ÇÏ´Â ÇÔ¼ö // Function that calculate the covariance of the pixel value of the image(or the region of ROI)
+		// ì´ë¯¸ì§€ ì „ì²´(í˜¹ì€ ROI ì˜ì—­) í”½ì…€ê°’ì˜ ê³µë¶„ì‚°ì„ êµ¬í•˜ëŠ” í•¨ìˆ˜ // Function that calculate the covariance of the pixel value of the image(or the region of ROI)
 		if((res = statistics.GetCovariance(f64Covariance2)).IsFail())
 		{
 			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ÀüÃ¼(È¤Àº ROI ¿µ¿ª) ÇÈ¼¿°ªÀÇ »ó°ü°è¼ö¸¦ ±¸ÇÏ´Â ÇÔ¼ö // Function that calculate the correlation coefficient of the pixel value of the image(or the region of ROI)
+		// ì´ë¯¸ì§€ ì „ì²´(í˜¹ì€ ROI ì˜ì—­) í”½ì…€ê°’ì˜ ìƒê´€ê³„ìˆ˜ë¥¼ êµ¬í•˜ëŠ” í•¨ìˆ˜ // Function that calculate the correlation coefficient of the pixel value of the image(or the region of ROI)
 		if((res = statistics.GetCorrelationCoefficient(f64CorrelationCoeff2)).IsFail())
 		{
 			ErrorPrint(res, "Failed to process.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 
 		CFLString<wchar_t> strCorrChannel, strCovarianceValue, strCorrelationCoeffValue;
@@ -107,42 +107,42 @@ int main()
 		wprintf_s(L"%s\n", strCovarianceValue2.GetString());
 		wprintf_s(L"%s\n", strCorrelationCoeffValue2.GetString());
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 0), strCorrChannel.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 30), strCovarianceValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 60), strCorrelationCoeffValue.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 90), strCorrChannel2.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 120), strCovarianceValue2.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 150), strCorrelationCoeffValue2.GetString(), YELLOW, BLACK, 30)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
@@ -150,10 +150,10 @@ int main()
 		}
 
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

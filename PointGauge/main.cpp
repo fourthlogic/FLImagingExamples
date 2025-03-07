@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -54,23 +54,23 @@ int main()
 		CPointGauge::ETransitionChoice_Closest,
 	};
 
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage[i32ExampleCount];
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Gauge/Stripe.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		for(int32_t i = 0; i < i32ExampleCount; ++i)
 		{
 			int32_t i32X = 300 * (i % 4);
@@ -82,14 +82,14 @@ int main()
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 			if(IsFail(res = viewImage[i].SetImagePtr(&fliImage)))
 			{
 				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the all image views. 
+			// ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the all image views. 
 			if(i)
 			{
 				if(IsFail(res = viewImage[i].SynchronizePointOfView(&viewImage[0])))
@@ -102,44 +102,44 @@ int main()
 
 		CResult res = EResult_UnknownError;
 
-		// Point Gauge °´Ã¼ »ı¼º // Create Point Gauge object
+		// Point Gauge ê°ì²´ ìƒì„± // Create Point Gauge object
 		CPointGauge pointGauge;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to process
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to process
 		pointGauge.SetSourceImage(fliImage);
 
-		// ÃøÁ¤ÇÒ ¿µ¿ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the area to measure.
+		// ì¸¡ì •í•  ì˜ì—­ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the area to measure.
 		CFLPoint<double> measureCenter(267, 240);
 		double tolerance = 400.;
 		double angle = 25.;
 		pointGauge.SetMeasurementRegion(measureCenter, tolerance, angle);
 
-		// ÃßÃâÇÏ±âÀ§ÇÑ ÆÄ¶ó¹ÌÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set parameters for extraction.
-		// Á¡À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ÀÇ º¯È­ ÀÓ°è°ª¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the threshold change of the boundary point to be extracted to estimate the point.
+		// ì¶”ì¶œí•˜ê¸°ìœ„í•œ íŒŒë¼ë¯¸í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set parameters for extraction.
+		// ì ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ì˜ ë³€í™” ì„ê³„ê°’ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the threshold change of the boundary point to be extracted to estimate the point.
 		pointGauge.SetThreshold(20);
-		// Á¡À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ÀÇ º¯È­ ÀÓ°è°ª¿¡ º¸Á¤°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the correction value to the threshold change of the boundary point to be extracted to estimate the point.
+		// ì ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ì˜ ë³€í™” ì„ê³„ê°’ì— ë³´ì •ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the correction value to the threshold change of the boundary point to be extracted to estimate the point.
 		pointGauge.SetMinimumAmplitude(10);
-		// Á¡À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ´ëÇ¥°ª Ç¥º» °³¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the number of representative sample values ??of the boundary points to be extracted to estimate the points.
+		// ì ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ëŒ€í‘œê°’ í‘œë³¸ ê°œìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the number of representative sample values ??of the boundary points to be extracted to estimate the points.
 		pointGauge.SetThickness(1);
 
 
 		for(int32_t i = 0; i < i32ExampleCount; ++i)
 		{
-			// Á¡À» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ º¯È­ ¹æÇâ¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the boundary point change direction to extract to estimate the point.
+			// ì ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì  ë³€í™” ë°©í–¥ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the boundary point change direction to extract to estimate the point.
 			pointGauge.SetTransitionType(arrTransitionType[i]);
-			// ÃßÃâÇÑ °æ°èÁ¡ Áß ÃÖÁ¾ÀûÀ¸·Î ¾ò°íÀÚÇÏ´Â °æ°èÁ¡ À¯ÇüÀ» ¼±ÅÃÇÕ´Ï´Ù. // Select the boundary point type you want to finally get among the extracted boundary points.
+			// ì¶”ì¶œí•œ ê²½ê³„ì  ì¤‘ ìµœì¢…ì ìœ¼ë¡œ ì–»ê³ ìí•˜ëŠ” ê²½ê³„ì  ìœ í˜•ì„ ì„ íƒí•©ë‹ˆë‹¤. // Select the boundary point type you want to finally get among the extracted boundary points.
 			pointGauge.SetTransitionChoice(arrTransitionChoice[i]);
 
-			// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+			// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 			if(IsFail(res = pointGauge.Execute()))
 			{
 				ErrorPrint(res, "Failed to execute Line gauge.\n");
 				break;
 			}
 
-			// ½ÇÇà °á°ú¸¦ °¡Á®¿É´Ï´Ù. // Get the execution result.
+			// ì‹¤í–‰ ê²°ê³¼ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the execution result.
 			int64_t i64Count = pointGauge.GetMeasuredObjectCount();
-			// ÃßÁ¤°úÁ¤¿¡ »ç¿ëµÈ ¼±À» °¡Á®¿É´Ï´Ù. // Get the line used in the estimation process.
+			// ì¶”ì •ê³¼ì •ì— ì‚¬ìš©ëœ ì„ ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the line used in the estimation process.
 			CFLLine<double> fllLine = pointGauge.GetMeasurementRegion();
 
 			CGUIViewImageLayerWrap layer = viewImage[i].GetLayer(0);
@@ -152,14 +152,14 @@ int main()
 				break;
 			}
 
-			// ÃøÁ¤ Áß½É À§Ä¡¸¦ µğ½ºÇÃ·¹ÀÌÇÑ´Ù. // Display the measurement center position.
+			// ì¸¡ì • ì¤‘ì‹¬ ìœ„ì¹˜ë¥¼ ë””ìŠ¤í”Œë ˆì´í•œë‹¤. // Display the measurement center position.
 			if(IsFail(res = layer.DrawFigureImage(measureCenter.MakeCrossHair(10), RED)))
 			{
 				ErrorPrint(res, "Failed to draw figure\n");
 				break;
 			}
 
-			// ÃßÃâµÈ Á¡ÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the extracted point is
+			// ì¶”ì¶œëœ ì ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the extracted point is
 			for(int32_t i32Index = 0; i32Index < (int32_t)i64Count; ++i32Index)
 			{
 				CFLPoint<double> flp;
@@ -171,7 +171,7 @@ int main()
 					break;
 				}
 
-				// begin, endÀÎ °æ¿ì ¼³Á¤µÈ index(0~2)ÀÇ point´Â CYAN»ö»óÀ¸·Î Ç¥½ÃÇÏ°í, ³ª¸ÓÁö index´Â YELLOW·Î Ç¥½ÃÇÑ´Ù. // In the case of begin, end, the point of the set index (0-2) is displayed in CYAN color, and the remaining index is displayed in YELLOW.
+				// begin, endì¸ ê²½ìš° ì„¤ì •ëœ index(0~2)ì˜ pointëŠ” CYANìƒ‰ìƒìœ¼ë¡œ í‘œì‹œí•˜ê³ , ë‚˜ë¨¸ì§€ indexëŠ” YELLOWë¡œ í‘œì‹œí•œë‹¤. // In the case of begin, end, the point of the set index (0-2) is displayed in CYAN color, and the remaining index is displayed in YELLOW.
 				COLORREF col = (arrTransitionChoice[i] == CPointGauge::ETransitionChoice_Begin || arrTransitionChoice[i] == CPointGauge::ETransitionChoice_End) && i32Index != i % 4 ? YELLOW : CYAN;
 
 				if(IsFail(res = layer.DrawFigureImage(flp.MakeCrossHair(10, true), col, 3)))
@@ -183,19 +183,19 @@ int main()
 				printf("Index %d : (%lf, %lf)\n", i32Index, flp.x, flp.y);
 			}
 
-			// ÃøÁ¤ ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the measurement area is
+			// ì¸¡ì • ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the measurement area is
 			if(IsFail(res = layer.DrawFigureImage(&fllLine, BLUE)))
 			{
 				ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+			// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 			viewImage[i].Invalidate(true);
 		}
 
 		bool bTerminated = false;
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(!bTerminated)
 		{
 			for(int32_t i = 0; i < i32ExampleCount; ++i)

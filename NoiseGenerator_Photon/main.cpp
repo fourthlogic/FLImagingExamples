@@ -1,21 +1,21 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliImage;
 	CFLImage fliDestinationImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage[2];
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/NoiseGenerator/Plate.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
@@ -28,7 +28,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		if(IsFail(res = viewImage[0].Create(400, 0, 912, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -41,14 +41,14 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù. // Synchronize the viewpoints of the two image views.
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤. // Synchronize the viewpoints of the two image views.
 		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 		if(IsFail(res = viewImage[0].SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -61,7 +61,7 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
@@ -70,25 +70,25 @@ int main()
 
 		CResult res = EResult_UnknownError;
 
-		// Noise Generator °´Ã¼ »ı¼º // Create Noise Generator object
+		// Noise Generator ê°ì²´ ìƒì„± // Create Noise Generator object
 		CNoiseGenerator noiseGenerator;
 
-		// ROI ¹üÀ§ ¼³Á¤ // Set ROI range
+		// ROI ë²”ìœ„ ì„¤ì • // Set ROI range
 		CFLRect<int32_t> flrROI(61, 63, 583, 376);
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to process
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to process
 		noiseGenerator.SetSourceImage(fliImage);
 		noiseGenerator.SetDestinationImage(fliDestinationImage);
-		// Ã³¸®ÇÒ ROI ¼³Á¤ // Set the ROI to be processed
+		// ì²˜ë¦¬í•  ROI ì„¤ì • // Set the ROI to be processed
 		noiseGenerator.SetSourceROI(flrROI);
 		noiseGenerator.SetDestinationROI(flrROI);
 
-		// »ı¼ºÇÒ ³ëÀÌÁî ¼³Á¤ // Set the noise to generate
+		// ìƒì„±í•  ë…¸ì´ì¦ˆ ì„¤ì • // Set the noise to generate
 		noiseGenerator.SetNoiseType(CNoiseGenerator::ENoiseType_PhotonNoise);
-		// ±¤ÀÚ¾ç ÀâÀ½ÀÇ ±¤ÀÚ Æò±Õ¾ç ¼³Á¤ // Set the average photon amount of photon noise
+		// ê´‘ìì–‘ ì¡ìŒì˜ ê´‘ì í‰ê· ì–‘ ì„¤ì • // Set the average photon amount of photon noise
 		noiseGenerator.SetPhotonNoise(100000000);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if(IsFail(res = noiseGenerator.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute noise generator.\n");
@@ -101,7 +101,7 @@ int main()
 		layer.Clear();
 		layerDst.Clear();
 
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the ROI area is
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the ROI area is
 		if(IsFail(res = layer.DrawFigureImage(&flrROI, LIME)))
 		{
 			ErrorPrint(res, "Failed to draw figure\n");
@@ -114,7 +114,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if(IsFail(res = layer.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
@@ -127,11 +127,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImage[0].Invalidate(true);
 		viewImage[1].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

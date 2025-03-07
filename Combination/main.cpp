@@ -1,11 +1,11 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 
 
 int main()
 {
-	// Á¶ÇÕ °´Ã¼ ¼±¾ğ // Declare a combination object
+	// ì¡°í•© ê°ì²´ ì„ ì–¸ // Declare a combination object
 	CCombination C;
 
 	while(true)
@@ -21,18 +21,18 @@ int main()
 			printf("ex) 6, 2\n");
 			printf("Input: ");
 
-			// °è¼ö ¹®ÀÚ¿­À» ÀÔ·Â ¹Ş´Â´Ù. // Receive the count string.
+			// ê³„ìˆ˜ ë¬¸ìì—´ì„ ì…ë ¥ ë°›ëŠ”ë‹¤. // Receive the count string.
 			fgets(arrInput, 4096, stdin);
 
 			CFLString<char> flstrInput(arrInput);
 			if(flstrInput.IsEmpty())
 				break;
 
-			// °è¼ö °ªÀ» ´ã±âÀ§ÇØ CFLArray<int> »ı¼º // Create CFLArray<int> to hold coefficient values
+			// ê³„ìˆ˜ ê°’ì„ ë‹´ê¸°ìœ„í•´ CFLArray<int> ìƒì„± // Create CFLArray<int> to hold coefficient values
 			CFLArray<int> flaNK;
 			int64_t i64TokenIdx = 0;
 
-			// ÀÔ·Â ¹ŞÀº ¹®ÀÚ¿­À» ',' À¸·Î ±¸ºĞÇÏ¿© int °ªÀ¸·Î º¯È¯ÇÑ´Ù. // Separates the input string with ',' and converts it to an int value.
+			// ì…ë ¥ ë°›ì€ ë¬¸ìì—´ì„ ',' ìœ¼ë¡œ êµ¬ë¶„í•˜ì—¬ int ê°’ìœ¼ë¡œ ë³€í™˜í•œë‹¤. // Separates the input string with ',' and converts it to an int value.
 			while(true)
 			{
 				CFLString<char> flstrToken = flstrInput.Tokenize(",", i64TokenIdx);
@@ -60,14 +60,14 @@ int main()
 				break;
 			}
 
-			// nCk, n °³¿¡¼­ k °³¸¦ ¼±ÅÃÇÏ´Â Á¶ÇÕ // nCk, a combination of selecting k objects from n objects
+			// nCk, n ê°œì—ì„œ k ê°œë¥¼ ì„ íƒí•˜ëŠ” ì¡°í•© // nCk, a combination of selecting k objects from n objects
 			C.SetMax(n);
 			C.SetSelection(k);
 
-			// Á¶ÇÕÀ» °è»ê // Calculate combinations
+			// ì¡°í•©ì„ ê³„ì‚° // Calculate combinations
 			C.Calculate();
 
-			// Á¶ÇÕ °á°ú°ª ¾ò±â // Get combination result
+			// ì¡°í•© ê²°ê³¼ê°’ ì–»ê¸° // Get combination result
 			CFLArray<CFLArrayL> flaCombination = C.GetResult();
 
 			CFLString<char> flstrCombination = "";

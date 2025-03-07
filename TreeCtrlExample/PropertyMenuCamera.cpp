@@ -1,4 +1,4 @@
-#include "stdafx.h"
+Ôªø#include "stdafx.h"
 #include "PropertyMenuCamera.h"
 
 FLImaging::GUI::CPropertyMenuCamera::CPropertyMenuCamera() : CGUIMenuItemBase()
@@ -61,13 +61,13 @@ bool FLImaging::GUI::CPropertyMenuCamera::OnRButtonClick()
 			{
 				if(m_pTree)
 				{
-					// «ˆ¿Á ∆Æ∏Æø°º≠ º±≈√µ» æ∆¿Ã≈€
+					// ÌòÑÏû¨ Ìä∏Î¶¨ÏóêÏÑú ÏÑ†ÌÉùÎêú ÏïÑÏù¥ÌÖú
 					HTREEITEM hItemThis = m_pTree->GetSelectedItem();
 
-					// ¿⁄Ωƒ ºˆ ±∏«œ±‚
+					// ÏûêÏãù Ïàò Íµ¨ÌïòÍ∏∞
 					int32_t i32ChildCount = 0;
 					{
-						// º±≈√µ» æ∆¿Ã≈€¿« √π π¯¬∞ ¿⁄Ωƒ æ∆¿Ã≈€
+						// ÏÑ†ÌÉùÎêú ÏïÑÏù¥ÌÖúÏùò Ï≤´ Î≤àÏß∏ ÏûêÏãù ÏïÑÏù¥ÌÖú
 						HTREEITEM hChild = m_pTree->GetChildItem(hItemThis);
 
 						while(hChild)
@@ -77,13 +77,13 @@ bool FLImaging::GUI::CPropertyMenuCamera::OnRButtonClick()
 						}
 					}
 
-					// ªı æ∆¿Ã≈€ √ﬂ∞°
+					// ÏÉà ÏïÑÏù¥ÌÖú Ï∂îÍ∞Ä
 					{
 						HTREEITEM hNewItem = m_pTree->InsertItem(
-							CFLString<wchar_t>().Format(L"NewItem %d", i32ChildCount), // ªı ∆Æ∏Æ æ∆¿Ã≈€ ¿Ã∏ß
-							(int32_t)ETreeItemIcon_DocEmpty, // æ∆¿Ãƒ‹
-							(int32_t)ETreeItemIcon_DocEmpty_Selected, // º±≈√µ» ªÛ≈¬¿« æ∆¿Ãƒ‹
-							hItemThis // ªı ∆Æ∏Æ æ∆¿Ã≈€¿« ∫Œ∏ æ∆¿Ã≈€
+							CFLString<wchar_t>().Format(L"NewItem %d", i32ChildCount), // ÏÉà Ìä∏Î¶¨ ÏïÑÏù¥ÌÖú Ïù¥Î¶Ñ
+							(int32_t)ETreeItemIcon_DocEmpty, // ÏïÑÏù¥ÏΩò
+							(int32_t)ETreeItemIcon_DocEmpty_Selected, // ÏÑ†ÌÉùÎêú ÏÉÅÌÉúÏùò ÏïÑÏù¥ÏΩò
+							hItemThis // ÏÉà Ìä∏Î¶¨ ÏïÑÏù¥ÌÖúÏùò Î∂ÄÎ™® ÏïÑÏù¥ÌÖú
 						);
 
 						m_pTree->RecursiveExpand(hItemThis, TVE_EXPAND);
@@ -97,11 +97,11 @@ bool FLImaging::GUI::CPropertyMenuCamera::OnRButtonClick()
 
 				if(u32Answer == IDYES)
 				{
-					// ∆Æ∏Æø°º≠ ∆Æ∏Ææ∆¿Ã≈€ ¡¶∞≈
+					// Ìä∏Î¶¨ÏóêÏÑú Ìä∏Î¶¨ÏïÑÏù¥ÌÖú Ï†úÍ±∞
 					if(m_pTree)
 						m_pTree->DeleteItem(m_pTree->GetSelectedItem());
 
-					// «ˆ¿Á ∞¥√º(this) ∏¶ CTreeCtrlExampleDlg ¿« m_vctItems ø°º≠ ¡¶∞≈ π◊ ∞¥√º º“∏Í
+					// ÌòÑÏû¨ Í∞ùÏ≤¥(this) Î•º CTreeCtrlExampleDlg Ïùò m_vctItems ÏóêÏÑú Ï†úÍ±∞ Î∞è Í∞ùÏ≤¥ ÏÜåÎ©∏
 					if(m_pParentDlg)
 						m_pParentDlg->PostMessage(ETreeCtrlExampleMessage_DeleteMenuItem, 0, (LPARAM)this);
 				}

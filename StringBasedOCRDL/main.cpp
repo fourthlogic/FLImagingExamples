@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -23,27 +23,27 @@ unsigned int __stdcall LearnThread(void* pParam)
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliLearnImage;
 	CFLImage fliSourceImage;
 	CFLImage fliResultImage;
 
-	/// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	/// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageLearn;
 	CGUIViewImageWrap viewImageSource;
 	CGUIViewImageWrap viewImageResult;
 
-	// ±×·¡ÇÁ ºä ¼±¾ğ // Declare the graph view
+	// ê·¸ë˜í”„ ë·° ì„ ì–¸ // Declare the graph view
 	CGUIViewGraphWrap viewGraph;
 
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ¶óÀÌºê·¯¸®°¡ ¿ÏÀüÈ÷ ·Îµå µÉ ¶§±îÁö ±â´Ù¸² // Wait for the library to fully load
+		// ë¼ì´ë¸ŒëŸ¬ë¦¬ê°€ ì™„ì „íˆ ë¡œë“œ ë  ë•Œê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the library to fully load
 		CThreadUtilities::Sleep(1000);
 
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/StringBasedOCR/Learn.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
@@ -56,7 +56,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates image view
 		if(IsFail(res = viewImageLearn.Create(100, 0, 600, 500)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -75,14 +75,14 @@ int main()
 			break;
 		}
 
-		// Graph ºä »ı¼º // Create graph view
+		// Graph ë·° ìƒì„± // Create graph view
 		if(IsFail(res = viewGraph.Create(1100, 0, 1600, 500)))
 		{
 			ErrorPrint(res, " Failed to create the graph view. \n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 		if(IsFail(res = viewImageLearn.SetImagePtr(&fliLearnImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -101,35 +101,35 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImageSource)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImageResult)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerLearn = viewImageLearn.GetLayer(0);
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 		CGUIViewImageLayerWrap layerResult = viewImageResult.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerLearn.Clear();
 		layerSource.Clear();
 		layerResult.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display View information.
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù.// The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display View information.
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤.// The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPoint<double>(0, 0), L"LEARN", YELLOW, BLACK, 30)))
@@ -150,34 +150,34 @@ int main()
 			break;
 		}
 
-		// StringBasedOCR °´Ã¼ »ı¼º // Create StringBasedOCR object
+		// StringBasedOCR ê°ì²´ ìƒì„± // Create StringBasedOCR object
 		CStringBasedOCRDL ocrdl;
 		
-		// ÇĞ½ÀÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to learn
+		// í•™ìŠµí•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to learn
 		ocrdl.SetLearningImage(fliLearnImage);
-		// °ËÁõÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to validate
+		// ê²€ì¦í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to validate
 		ocrdl.SetLearningValidationImage(fliSourceImage);
 
-		// ÇĞ½ÀÇÒ StringBasedOCR ¸ğµ¨ ¼³Á¤ // Set up StringBasedOCR model to learn
+		// í•™ìŠµí•  StringBasedOCR ëª¨ë¸ ì„¤ì • // Set up StringBasedOCR model to learn
 		ocrdl.SetModel(CStringBasedOCRDL::EModel_FLNet);
-		// ÇĞ½ÀÇÒ StringBasedOCR ¸ğµ¨ ¼³Á¤ // Set up StringBasedOCR model to learn
+		// í•™ìŠµí•  StringBasedOCR ëª¨ë¸ ì„¤ì • // Set up StringBasedOCR model to learn
 		ocrdl.SetModelVersion(CStringBasedOCRDL::EModelVersion_FLNet_V1_32_256_B2);
-		// ÇĞ½À epoch °ªÀ» ¼³Á¤ // Set the learn epoch value 
+		// í•™ìŠµ epoch ê°’ì„ ì„¤ì • // Set the learn epoch value 
 		ocrdl.SetLearningEpoch(500);
-		// ÇĞ½À ÀÌ¹ÌÁö Interpolation ¹æ½Ä ¼³Á¤ // Set Interpolation method of learn image
+		// í•™ìŠµ ì´ë¯¸ì§€ Interpolation ë°©ì‹ ì„¤ì • // Set Interpolation method of learn image
 		ocrdl.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 
-		// OptimizerSpec °´Ã¼ »ı¼º // Create OptimizerSpec object
+		// OptimizerSpec ê°ì²´ ìƒì„± // Create OptimizerSpec object
 		COptimizerSpecAdamGradientDescent optSpec;
 
-		// OptimizerÀÇ ÇĞ½À·ü ¼³Á¤ // Set learning rate of Optimizer
+		// Optimizerì˜ í•™ìŠµë¥  ì„¤ì • // Set learning rate of Optimizer
 		optSpec.SetLearningRate(1e-3f);
 
-		// ¼³Á¤ÇÑ Optimizer¸¦ StringBasedOCR¿¡ Àû¿ë // Apply the Optimizer that we set up to StringBasedOCR
+		// ì„¤ì •í•œ Optimizerë¥¼ StringBasedOCRì— ì ìš© // Apply the Optimizer that we set up to StringBasedOCR
 		ocrdl.SetLearningOptimizerSpec(optSpec);
 		ocrdl.EnableOptimalLearningStatePreservation(true);
 
-		// AugmentationSpec ¼³Á¤ // Set the AugmentationSpec
+		// AugmentationSpec ì„¤ì • // Set the AugmentationSpec
 		CAugmentationSpec augSpec;
 
 		augSpec.EnableAugmentation(true);
@@ -195,28 +195,28 @@ int main()
 
 		ocrdl.SetLearningAugmentationSpec(&augSpec);
 
-		// ÇĞ½ÀÀ» Á¾·áÇÒ Á¶°Ç½Ä ¼³Á¤. Metric °ªÀÌ 1.0 ÀÌ»óÀÎ °æ¿ì ÇĞ½À Á¾·áÇÑ´Ù. Metric = (1-NED + mAP) / 2
+		// í•™ìŠµì„ ì¢…ë£Œí•  ì¡°ê±´ì‹ ì„¤ì •. Metric ê°’ì´ 1.0 ì´ìƒì¸ ê²½ìš° í•™ìŠµ ì¢…ë£Œí•œë‹¤. Metric = (1-NED + mAP) / 2
 		// Set Conditional Expression to End Learning. If the metric value is 1.0 or higher, end the learning. Metric = (1-NED + mAP) / 2
 		ocrdl.SetLearningStopCondition(L"metric >= 1");
 
-		// ÀÚµ¿ ÀúÀå ¿É¼Ç ¼³Á¤ // Set Auto-Save Options
+		// ìë™ ì €ì¥ ì˜µì…˜ ì„¤ì • // Set Auto-Save Options
 		CAutoSaveSpec autoSaveSpec;
 
-		// ÀÚµ¿ ÀúÀå È°¼ºÈ­ // Enable Auto-Save
+		// ìë™ ì €ì¥ í™œì„±í™” // Enable Auto-Save
 		autoSaveSpec.EnableAutoSave(true);
-		// ÀúÀåÇÒ ¸ğµ¨ °æ·Î ¼³Á¤ // Set Model path to save
+		// ì €ì¥í•  ëª¨ë¸ ê²½ë¡œ ì„¤ì • // Set Model path to save
 		autoSaveSpec.SetAutoSavePath(L"model.flsbocrdl");
-		// ÀÚµ¿ ÀúÀå Á¶°Ç½Ä ¼³Á¤. ÇöÀç Metric °ªÀÌ ÃÖ´ë °ªÀÎ °æ¿ì ÀúÀå È°¼ºÈ­
+		// ìë™ ì €ì¥ ì¡°ê±´ì‹ ì„¤ì •. í˜„ì¬ Metric ê°’ì´ ìµœëŒ€ ê°’ì¸ ê²½ìš° ì €ì¥ í™œì„±í™”
 		// Set auto-save conditional expressions. Enable save if the current metric value is the maximum value
 		autoSaveSpec.SetAutoSaveCondition(L"epoch >= 10 & metric > max('metric')");
 
-		// ÀÚµ¿ ÀúÀå ¿É¼Ç ¼³Á¤ // Set Auto-Save Options
+		// ìë™ ì €ì¥ ì˜µì…˜ ì„¤ì • // Set Auto-Save Options
 		ocrdl.SetLearningAutoSaveSpec(autoSaveSpec);
 
-		// Learn µ¿ÀÛÀ» ÇÏ´Â ÇÚµé °´Ã¼ ¼±¾ğ // Declare HANDLE object execute learn function
+		// Learn ë™ì‘ì„ í•˜ëŠ” í•¸ë“¤ ê°ì²´ ì„ ì–¸ // Declare HANDLE object execute learn function
 		HANDLE hThread;
 
-		// StringBasedOCR learn functionÀ» ÁøÇàÇÏ´Â ½º·¹µå »ı¼º // Create the StringBasedOCR Learn function thread
+		// StringBasedOCR learn functionì„ ì§„í–‰í•˜ëŠ” ìŠ¤ë ˆë“œ ìƒì„± // Create the StringBasedOCR Learn function thread
 		hThread = (HANDLE)_beginthreadex(NULL, 0, LearnThread, (void*)&ocrdl, 0, nullptr);
 
 		while(!ocrdl.IsRunning() && !g_bTerminated)
@@ -231,16 +231,16 @@ int main()
 		{
 			CThreadUtilities::Sleep(1);
 
-			// ¸¶Áö¸· ¹Ì´Ï ¹èÄ¡ ÃÖ´ë ¹İº¹ È½¼ö ¹Ş±â // Get the last maximum number of iterations of the last mini batch 
+			// ë§ˆì§€ë§‰ ë¯¸ë‹ˆ ë°°ì¹˜ ìµœëŒ€ ë°˜ë³µ íšŸìˆ˜ ë°›ê¸° // Get the last maximum number of iterations of the last mini batch 
 			int i32MiniBatchCount = ocrdl.GetActualMiniBatchCount();
-			// ¸¶Áö¸· ¹Ì´Ï ¹èÄ¡ ÃÖ´ë ¹İº¹ È½¼ö ¹Ş±â // Get the last maximum number of iterations of the last mini batch 
+			// ë§ˆì§€ë§‰ ë¯¸ë‹ˆ ë°°ì¹˜ ìµœëŒ€ ë°˜ë³µ íšŸìˆ˜ ë°›ê¸° // Get the last maximum number of iterations of the last mini batch 
 			int32_t i32MaxIteration = ocrdl.GetActualMiniBatchCount();
-			// ¸¶Áö¸· ¹Ì´Ï ¹èÄ¡ ¹İº¹ È½¼ö ¹Ş±â // Get the last number of mini batch iterations
+			// ë§ˆì§€ë§‰ ë¯¸ë‹ˆ ë°°ì¹˜ ë°˜ë³µ íšŸìˆ˜ ë°›ê¸° // Get the last number of mini batch iterations
 			int32_t i32Iteration = ocrdl.GetLearningResultCurrentIteration();
-			// ¸¶Áö¸· ÇĞ½À È½¼ö ¹Ş±â // Get the last epoch learning
+			// ë§ˆì§€ë§‰ í•™ìŠµ íšŸìˆ˜ ë°›ê¸° // Get the last epoch learning
 			int32_t i32Epoch = ocrdl.GetLastEpoch();
 
-			// ÇĞ½À °á°ú ºñ¿ë°ú °ËÁõ °á°ú ±â·ÏÀ» ¹Ş¾Æ ±×·¡ÇÁ ºä¿¡ Ãâ·Â  
+			// í•™ìŠµ ê²°ê³¼ ë¹„ìš©ê³¼ ê²€ì¦ ê²°ê³¼ ê¸°ë¡ì„ ë°›ì•„ ê·¸ë˜í”„ ë·°ì— ì¶œë ¥  
 			// Get the history of cost and validation and print it at graph view
 			CFLArray<float> vctCosts;
 			CFLArray<float> vct1MNED;
@@ -249,20 +249,20 @@ int main()
 
 			ocrdl.GetLearningResultAllHistory(vctCosts, vct1MNED, vctMeanAP, vctValidationEpoch);
 			
-			// ¹Ì´Ï ¹èÄ¡ ¹İº¹ÀÌ ¿Ï·áµÇ¸é cost¿Í validation °ªÀ» µğ½ºÇÃ·¹ÀÌ 
+			// ë¯¸ë‹ˆ ë°°ì¹˜ ë°˜ë³µì´ ì™„ë£Œë˜ë©´ costì™€ validation ê°’ì„ ë””ìŠ¤í”Œë ˆì´ 
 			// Display cost and validation value if iterations of the mini batch is completed 
 			if(vctCosts.GetCount() && i32Epoch != i32PrevEpoch && i32Iteration == i32MaxIteration && i32Epoch > 0)
 			{
-				// ¸¶Áö¸· ÇĞ½À °á°ú ºñ¿ë ¹Ş±â // Get the last cost of the learning result
+				// ë§ˆì§€ë§‰ í•™ìŠµ ê²°ê³¼ ë¹„ìš© ë°›ê¸° // Get the last cost of the learning result
 				float f32CurrCost = vctCosts.Back();
-				// ¸¶Áö¸· 1-NED °á°ú ¹Ş±â // Get the last 1-NED result
+				// ë§ˆì§€ë§‰ 1-NED ê²°ê³¼ ë°›ê¸° // Get the last 1-NED result
 				float f321MNED = vct1MNED.GetCount() ? vct1MNED.Back() : 0;
-				// ¸¶Áö¸· MeanAP °á°ú ¹Ş±â // Get the last MeanAP result
+				// ë§ˆì§€ë§‰ MeanAP ê²°ê³¼ ë°›ê¸° // Get the last MeanAP result
 				float f32MeanAP = vctMeanAP.GetCount() ? vctMeanAP.Back() : 0;
-				// ÇØ´ç epochÀÇ ºñ¿ë°ú °ËÁõ °á°ú °ª Ãâ·Â // Print cost and validation value for the relevant epoch
+				// í•´ë‹¹ epochì˜ ë¹„ìš©ê³¼ ê²€ì¦ ê²°ê³¼ ê°’ ì¶œë ¥ // Print cost and validation value for the relevant epoch
 				printf("Cost : %.6f 1-NED : %.6f mAP : %.6f Epoch %d / %d\n", f32CurrCost, f321MNED, f32MeanAP, i32Epoch, i32MaxEpoch);
 
-				// ºñ¿ë ±â·ÏÀÌ³ª °ËÁõ °á°ú ±â·ÏÀÌ ÀÖ´Ù¸é Ãâ·Â // Print results if cost or validation history exists
+				// ë¹„ìš© ê¸°ë¡ì´ë‚˜ ê²€ì¦ ê²°ê³¼ ê¸°ë¡ì´ ìˆë‹¤ë©´ ì¶œë ¥ // Print results if cost or validation history exists
 				if((vctCosts.GetCount() && i32PrevCostCount != (int32_t)vctCosts.GetCount()) || (vct1MNED.GetCount() && i32PrevValidationCount != (int32_t)vct1MNED.GetCount()) || (vctMeanAP.GetCount() && i32PrevValidationCount != (int32_t)vctMeanAP.GetCount()))
 				{
 					int32_t i32Step = ocrdl.GetLearningValidationStep();
@@ -275,20 +275,20 @@ int main()
 
 					viewGraph.LockUpdate();
 
-					// ÀÌÀü ±×·¡ÇÁÀÇ µ¥ÀÌÅÍ¸¦ »èÁ¦ // Clear previous grpah data
+					// ì´ì „ ê·¸ë˜í”„ì˜ ë°ì´í„°ë¥¼ ì‚­ì œ // Clear previous grpah data
 					viewGraph.Clear();
-					// Graph View µ¥ÀÌÅÍ ÀÔ·Â // Input Graph View Data
+					// Graph View ë°ì´í„° ì…ë ¥ // Input Graph View Data
 					viewGraph.Plot(vctCosts, EChartType_Line, RED, L"Cost");
-					// Graph View µ¥ÀÌÅÍ ÀÔ·Â // Input Graph View Data
+					// Graph View ë°ì´í„° ì…ë ¥ // Input Graph View Data
 					viewGraph.Plot(flaX, vct1MNED, EChartType_Line, BLUE, L"1-NED");
-					// Graph View µ¥ÀÌÅÍ ÀÔ·Â // Input Graph View Data
+					// Graph View ë°ì´í„° ì…ë ¥ // Input Graph View Data
 					viewGraph.Plot(flaX, vctMeanAP, EChartType_Line, GREEN, L"mAP");
 
 					viewGraph.UnlockUpdate();
 					viewGraph.Invalidate();
 				}
 
-				// °ËÁõ °á°ú°¡ 1.0ÀÏ °æ¿ì ÇĞ½ÀÀ» Áß´ÜÇÏ°í ÀÎ½Ä ÁøÇà 
+				// ê²€ì¦ ê²°ê³¼ê°€ 1.0ì¼ ê²½ìš° í•™ìŠµì„ ì¤‘ë‹¨í•˜ê³  ì¸ì‹ ì§„í–‰ 
 				// If the validation result is 1.0, stop learning and recognize
 				if(f321MNED == 1.f && f32MeanAP == 1.f || GetAsyncKeyState(VK_ESCAPE))
 					ocrdl.Stop();
@@ -298,12 +298,12 @@ int main()
 				i32PrevValidationCount = (int32_t)vct1MNED.GetCount();
 			}
 
-			// epoch¸¸Å­ ÇĞ½ÀÀÌ ¿Ï·áµÇ¸é Á¾·á // End when learning progresses as much as epoch
+			// epochë§Œí¼ í•™ìŠµì´ ì™„ë£Œë˜ë©´ ì¢…ë£Œ // End when learning progresses as much as epoch
 			if(!ocrdl.IsRunning())
 			{
-				// learn µ¿ÀÛ ½º·¹µå°¡ ¿ÏÀüÈ÷ Á¾·áµÉ ±îÁö ´ë±â // Wait until learning is completely terminated
+				// learn ë™ì‘ ìŠ¤ë ˆë“œê°€ ì™„ì „íˆ ì¢…ë£Œë  ê¹Œì§€ ëŒ€ê¸° // Wait until learning is completely terminated
 				WaitForSingleObject(hThread, INFINITE);
-				// ½º·¹µå ÇÚµé Á¾·á // Close thread handle
+				// ìŠ¤ë ˆë“œ í•¸ë“¤ ì¢…ë£Œ // Close thread handle
 				CloseHandle(hThread);
 				break;
 			}
@@ -315,25 +315,25 @@ int main()
 			break;
 		}
 
-		// ÀÎ½ÄÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to Recognize
+		// ì¸ì‹í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to Recognize
 		ocrdl.SetInferenceImage(fliSourceImage);
 		ocrdl.SetInferenceResultImage(fliResultImage);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if(IsFail(res = ocrdl.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute Learn.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  // Update the image view.
 		viewImageLearn.RedrawWindow();
 		viewImageSource.RedrawWindow();
 		viewImageResult.RedrawWindow();
-		// ±×·¡ÇÁ ºä¸¦ °»½Å // Update the Graph view.
+		// ê·¸ë˜í”„ ë·°ë¥¼ ê°±ì‹  // Update the Graph view.
 		viewGraph.RedrawWindow();
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageLearn.IsAvailable() && viewImageSource.IsAvailable() && viewImageResult.IsAvailable() && viewGraph.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

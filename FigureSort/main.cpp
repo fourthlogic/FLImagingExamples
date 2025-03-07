@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,24 +6,24 @@
 
 int main()
 {
-	// Figure °´Ã¼ ¼±¾ğ // Declare figure object
+	// Figure ê°ì²´ ì„ ì–¸ // Declare figure object
 	CFLFigureArray flfaSource;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage[2];
 
 	do
 	{
 		CResult res = EResult_UnknownError;
 
-		// Figure ·Îµå // Load figure
+		// Figure ë¡œë“œ // Load figure
 		if(IsFail(res = flfaSource.Load(L"../../ExampleImages/Figure/various shapes2.fig")))
 		{
 			ErrorPrint(res, "Failed to load the figure file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[0].Create(200, 0, 968, 576)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -36,23 +36,23 @@ int main()
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿Í Destination ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù
+		// Source ì´ë¯¸ì§€ ë·°ì™€ Destination ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤
 		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// È­¸é»ó¿¡ Àß º¸ÀÌµµ·Ï ÁÂÇ¥ 1.5¹èÀ²À» Àû¿ë // Apply 1.5 magnification to the coordinates so that they can be seen clearly on the screen
+		// í™”ë©´ìƒì— ì˜ ë³´ì´ë„ë¡ ì¢Œí‘œ 1.5ë°°ìœ¨ì„ ì ìš© // Apply 1.5 magnification to the coordinates so that they can be seen clearly on the screen
 		double f64Scale = 1.5;
-		// È­¸é»ó¿¡ Àß º¸ÀÌµµ·Ï ½ÃÁ¡ Offset Á¶Á¤ // Adjust the viewpoint offset so that it can be seen clearly on the screen
+		// í™”ë©´ìƒì— ì˜ ë³´ì´ë„ë¡ ì‹œì  Offset ì¡°ì • // Adjust the viewpoint offset so that it can be seen clearly on the screen
 		double f64CenterCoordX = 200.;
 		double f64CenterCoordY = 180.;
 
@@ -61,7 +61,7 @@ int main()
 		CFLFigureArray flfaCenterFirst(flfaSource);
 		CFLFigureArray flfaAreaFirst(flfaSource);
 
-		// FigureArray¸¦ 1¼øÀ§ CenterY ¿À¸§Â÷¼ø, 2¼øÀ§ CenterX ¿À¸§Â÷¼ø, 3¼øÀ§ Area ³»¸²Â÷¼øÀ¸·Î Á¤·Ä
+		// FigureArrayë¥¼ 1ìˆœìœ„ CenterY ì˜¤ë¦„ì°¨ìˆœ, 2ìˆœìœ„ CenterX ì˜¤ë¦„ì°¨ìˆœ, 3ìˆœìœ„ Area ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ ì •ë ¬
 		// Sort FigureArray in ascending order as 1st priority CenterY, ascending order as 2nd priority CenterX, and descending order as 3rd priority Area.
 		if(IsFail(res = flfaCenterFirst.Sort(ESortOrderFigure_CenterY_Asc, ESortOrderFigure_CenterX_Asc, ESortOrderFigure_Area_Desc)))
 		{
@@ -69,7 +69,7 @@ int main()
 			break;
 		}
 
-		// FigureArray¸¦ 1¼øÀ§ Area ³»¸²Â÷¼ø, 2¼øÀ§ CenterY ¿À¸§Â÷¼ø, 3¼øÀ§ CenterX ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä
+		// FigureArrayë¥¼ 1ìˆœìœ„ Area ë‚´ë¦¼ì°¨ìˆœ, 2ìˆœìœ„ CenterY ì˜¤ë¦„ì°¨ìˆœ, 3ìˆœìœ„ CenterX ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬
 		// Sort FigureArray in descending order as 1st priority Area, ascending order as 2nd priority CenterY, and ascending order as 3rd priority CenterX.
 		if(IsFail(res = flfaAreaFirst.Sort(ESortOrderFigure_Area_Desc, ESortOrderFigure_CenterY_Asc, ESortOrderFigure_CenterX_Asc)))
 		{
@@ -77,14 +77,14 @@ int main()
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer[2];
 
 		for(int32_t i = 0; i < 2; ++i)
 			layer[i] = viewImage[i].GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		for(int32_t i = 0; i < 2; ++i)
 			layer[i].Clear();
 
@@ -100,11 +100,11 @@ int main()
 			break;
 		}
 
-		// flfaCenterFirst ´Â FigureµéÀÇ ¹è¿­ÀÌ±â ¶§¹®¿¡ Layer¿¡ ³Ö±â¸¸ ÇØµµ ¸ğµÎ µå·ÎÀ®ÀÌ °¡´ÉÇÏ´Ù.
-		// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-		// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-		// ¿©±â¼­ 0.25ÀÌ¹Ç·Î ¿¶Àº ¹İÅõ¸í »óÅÂ¶ó°í º¼ ¼ö ÀÖ´Ù.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+		// flfaCenterFirst ëŠ” Figureë“¤ì˜ ë°°ì—´ì´ê¸° ë•Œë¬¸ì— Layerì— ë„£ê¸°ë§Œ í•´ë„ ëª¨ë‘ ë“œë¡œìœ™ì´ ê°€ëŠ¥í•˜ë‹¤.
+		// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+		// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+		// ì—¬ê¸°ì„œ 0.25ì´ë¯€ë¡œ ì˜…ì€ ë°˜íˆ¬ëª… ìƒíƒœë¼ê³  ë³¼ ìˆ˜ ìˆë‹¤.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 		if(IsFail(res = layer[0].DrawFigureImage(&flfaCenterFirst, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
 		{
 			ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
@@ -117,7 +117,7 @@ int main()
 			break;
 		}
 
-		// Á¤º¸°ªÀ» °¢°¢ È®ÀÎÇÏ´Â ÄÚµå // Code to check each information value
+		// ì •ë³´ê°’ì„ ê°ê° í™•ì¸í•˜ëŠ” ì½”ë“œ // Code to check each information value
 		for(int64_t i = 0; i < flfaCenterFirst.GetCount(); ++i)
 		{
 			CFLFigure* pFlf = flfaCenterFirst.GetAt(i);
@@ -154,11 +154,11 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage[0].Invalidate(true);
 		viewImage[1].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

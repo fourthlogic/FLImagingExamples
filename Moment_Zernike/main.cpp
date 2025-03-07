@@ -1,34 +1,34 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage;
 	CResult res;
 
 	do
 	{ 
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Moment/airEdge.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		if(IsFail(res = viewImage.Create(600, 0, 1424, 768)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -37,20 +37,20 @@ int main()
 
 		CResult res = EResult_UnknownError;
 
-		// Moment °´Ã¼ »ı¼º // Create Moment object
+		// Moment ê°ì²´ ìƒì„± // Create Moment object
 		CMoment moment;
 
-		// ROI ¹üÀ§ ¼³Á¤ // Set ROI range
+		// ROI ë²”ìœ„ ì„¤ì • // Set ROI range
 		CFLRect<int32_t> flrROI(15, 150, 420, 280);
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to process
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to process
 		moment.SetSourceImage(fliImage);
-		// Ã³¸®ÇÒ ROI ¼³Á¤ // Set the ROI to be processed
+		// ì²˜ë¦¬í•  ROI ì„¤ì • // Set the ROI to be processed
 		moment.SetSourceROI(flrROI);
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁöÀÇ ÀÌÁøÈ­ÀÌ¹ÌÁö·Î ÆÇ´Ü À¯¹« ¼³Á¤ // Set whether to judge the image to be processed as a binarized image
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ì˜ ì´ì§„í™”ì´ë¯¸ì§€ë¡œ íŒë‹¨ ìœ ë¬´ ì„¤ì • // Set whether to judge the image to be processed as a binarized image
 		moment.EnableBinaryImage(true);
 
-		// °è»ê ´ë»ó¿¡ Àú´ÏÅ° ¸ğ¸àÆ® N, M ÆÄ¶ó¹ÌÅÍ¸¦ Ãß°¡ÇÕ´Ï´Ù. // Add Journey Moment N, M parameters to the calculation target.
+		// ê³„ì‚° ëŒ€ìƒì— ì €ë‹ˆí‚¤ ëª¨ë©˜íŠ¸ N, M íŒŒë¼ë¯¸í„°ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤. // Add Journey Moment N, M parameters to the calculation target.
  		moment.AddZernike(1, -1);
  		moment.AddZernike(1, 1);
  		moment.AddZernike(3, -3);
@@ -58,14 +58,14 @@ int main()
  		moment.AddZernike(3, 1);
  		moment.AddZernike(3, 3);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if(IsFail(res = moment.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute moment.\n");
 			break;
 		}
 
-		// ¸ğ¸àÆ® °á°úµéÀ» °¡Á®¿É´Ï´Ù. // Get the moment results.
+		// ëª¨ë©˜íŠ¸ ê²°ê³¼ë“¤ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the moment results.
 		CMoment::SZernike zernike;
 		int64_t i64ZernikeCount = (int64_t)moment.GetZernikeCount();
 
@@ -79,17 +79,17 @@ int main()
 
 		layer.Clear();
 		
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the ROI area is
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the ROI area is
 		if(IsFail(res = layer.DrawFigureImage(&flrROI, BLUE)))
 		{
 			ErrorPrint(res, "Failed to draw figure\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

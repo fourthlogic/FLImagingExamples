@@ -1,15 +1,15 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliRecognizeImage;
 	CFLImage fliRecognizeImageUnicode;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageRecognize;
 	CGUIViewImageWrap viewImageRecognizeUnicode;
 	CResult res;
@@ -28,40 +28,40 @@ int main()
 			break;
 		}
 
-		// Converted ÀÌ¹ÌÁö ºä »ı¼º
+		// Converted ì´ë¯¸ì§€ ë·° ìƒì„±
 		if((res = viewImageRecognize.Create(200, 0, 712, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Converted ÀÌ¹ÌÁö ºä »ı¼º
+		// Converted ì´ë¯¸ì§€ ë·° ìƒì„±
 		if((res = viewImageRecognizeUnicode.Create(712, 0, 1224, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Converted ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ
+		// Converted ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´
 		if((res = viewImageRecognize.SetImagePtr(&fliRecognizeImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Converted ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ
+		// Converted ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´
 		if((res = viewImageRecognizeUnicode.SetImagePtr(&fliRecognizeImageUnicode)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerRecognize = viewImageRecognize.GetLayer(1);
 		CGUIViewImageLayerWrap layerRecognizeUnicode = viewImageRecognizeUnicode.GetLayer(1);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerRecognize.Clear();
 		layerRecognizeUnicode.Clear();
 
@@ -77,34 +77,34 @@ int main()
 			break;
 		}
 
-		// OpticalCharacterReader °´Ã¼ »ı¼º // Create OpticalCharacterReader object
+		// OpticalCharacterReader ê°ì²´ ìƒì„± // Create OpticalCharacterReader object
 		COCR ocr;
 
-		// ÇĞ½À Á¤º¸ ÆÄÀÏÀ» ·Îµå
+		// í•™ìŠµ ì •ë³´ íŒŒì¼ì„ ë¡œë“œ
 		if(IsFail(res = ocr.Load(L"../../ExampleImages/OCR/OCR_FourthLogic.flocr")))
 		{
 			ErrorPrint(res, L"Failed to load learnt file.");
 			break;
 		}
 
-	    // ¹®ÀÚ¸¦ ÀÎ½ÄÇÒ ÀÌ¹ÌÁö ¼³Á¤
+	    // ë¬¸ìë¥¼ ì¸ì‹í•  ì´ë¯¸ì§€ ì„¤ì •
 		if(IsFail(res = ocr.SetSourceImage(fliRecognizeImage)))
 		{
 			ErrorPrint(res, L"Failed to set Source Image.");
 			break;
 		}
 
-		// ÀÎ½ÄÇÒ ÀÌ¹ÌÁö¿¡¼­ ¹®ÀÚ¸¦ Ã£´Â ±â´ÉÀ» ¼öÇà
+		// ì¸ì‹í•  ì´ë¯¸ì§€ì—ì„œ ë¬¸ìë¥¼ ì°¾ëŠ” ê¸°ëŠ¥ì„ ìˆ˜í–‰
 		if(IsFail(res = ocr.Execute()))
 		{
 			ErrorPrint(res, res.GetString());
 			break;
 		}
 
-		// Ã£Àº ¹®ÀÚÀÇ °³¼ö¸¦ ¹Ş¾Æ¿À´Â ÇÔ¼ö
+		// ì°¾ì€ ë¬¸ìì˜ ê°œìˆ˜ë¥¼ ë°›ì•„ì˜¤ëŠ” í•¨ìˆ˜
 		int64_t i64ResultCount = ocr.GetResultCount();
 
-		// Ã£Àº ¹®ÀÚÀÇ Á¤º¸¸¦ ¹Ş¾Æ¿Ã ÄÁÅ×ÀÌ³Ê
+		// ì°¾ì€ ë¬¸ìì˜ ì •ë³´ë¥¼ ë°›ì•„ì˜¬ ì»¨í…Œì´ë„ˆ
 		COCR::COCRRecognitionCharacterInfo resultChar;
 
 		for(int64_t i = 0; i < i64ResultCount; ++i)
@@ -130,21 +130,21 @@ int main()
 			}
 		}
 
-		// ¹®ÀÚ¸¦ ÀÎ½ÄÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ë¬¸ìë¥¼ ì¸ì‹í•  ì´ë¯¸ì§€ ì„¤ì •
 		if(IsFail(res = ocr.SetSourceImage(fliRecognizeImageUnicode)))
 		{
 			ErrorPrint(res, L"Failed to set Source Image.");
 			break;
 		}
 
-		// ÀÎ½ÄÇÒ ÀÌ¹ÌÁö¿¡¼­ ¹®ÀÚ¸¦ Ã£´Â ±â´ÉÀ» ¼öÇà
+		// ì¸ì‹í•  ì´ë¯¸ì§€ì—ì„œ ë¬¸ìë¥¼ ì°¾ëŠ” ê¸°ëŠ¥ì„ ìˆ˜í–‰
 		if(IsFail(res = ocr.Execute()))
 		{
 			ErrorPrint(res, res.GetString());
 			break;
 		}
 
-		// Ã£Àº ¹®ÀÚÀÇ °³¼ö¸¦ ¹Ş¾Æ¿À´Â ÇÔ¼ö
+		// ì°¾ì€ ë¬¸ìì˜ ê°œìˆ˜ë¥¼ ë°›ì•„ì˜¤ëŠ” í•¨ìˆ˜
 		i64ResultCount = ocr.GetResultCount();
 
 		for(int64_t i = 0; i < i64ResultCount; ++i)
@@ -170,11 +170,11 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageRecognize.Invalidate(true);
 		viewImageRecognizeUnicode.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageRecognize.IsAvailable() && viewImageRecognizeUnicode.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

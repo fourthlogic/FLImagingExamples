@@ -1,107 +1,107 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if((res = fliImage.Load(L"../../ExampleImages/GrayLevelCooccurrenceMatrix/Texture.flif")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the image file.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if((res = viewImage.Create(400, 0, 912, 612)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if((res = viewImage.SetImagePtr(&fliImage)).IsFail())
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.");
 			break;
 		}
 
-		// CGrayLevelCooccurrenceMatrix °´Ã¼ »ı¼º // Create CGrayLevelCooccurrenceMatrix object
+		// CGrayLevelCooccurrenceMatrix ê°ì²´ ìƒì„± // Create CGrayLevelCooccurrenceMatrix object
 		CGrayLevelCooccurrenceMatrix flaGLCM;
 
-		// ROI ¹üÀ§ ¼³Á¤ // Set the ROI value		
+		// ROI ë²”ìœ„ ì„¤ì • // Set the ROI value		
 		CFLRect<double> flfSourceROI(143.508137, 70.054249, 295.117540, 213.562386, 0.000000);
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the Source Image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the Source Image
 		flaGLCM.SetSourceImage(fliImage);
-		// Source ROI ¼³Á¤ // Set the Source ROI
+		// Source ROI ì„¤ì • // Set the Source ROI
 		flaGLCM.SetSourceROI(flfSourceROI);
 
-		// grayLevel ¼³Á¤(2^8 = 256) // Set gray level (2^8 = 256)
+		// grayLevel ì„¤ì •(2^8 = 256) // Set gray level (2^8 = 256)
 		flaGLCM.SetGrayLevel(8);
 
-		// Matrix Direction 0µµ ¼³Á¤ // Set Matrix Direction 0 Degree
+		// Matrix Direction 0ë„ ì„¤ì • // Set Matrix Direction 0 Degree
 		flaGLCM.SetDirection(CGrayLevelCooccurrenceMatrix::EDirection_Degree0);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if((res = flaGLCM.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Gray Level Cooccurrence Matrix.");
 			break;
 		}
 
-		// °á°ú°ªÀ» ¹Ş¾Æ¿Ã CFLArray ÄÁÅ×ÀÌ³Ê »ı¼º // Create the CFLArray object to push the result
+		// ê²°ê³¼ê°’ì„ ë°›ì•„ì˜¬ CFLArray ì»¨í…Œì´ë„ˆ ìƒì„± // Create the CFLArray object to push the result
 		Base::CFLArray<Base::CFLArray<double>> flaEnergy;
 		Base::CFLArray<Base::CFLArray<double>> flaCorrelation;
 		Base::CFLArray<Base::CFLArray<double>> flaHomogeneity;
 		Base::CFLArray<Base::CFLArray<double>> flaContrast;
 
-		// ÀÌ¹ÌÁö ÀüÃ¼(È¤Àº ROI ¿µ¿ª) ÇÈ¼¿°ªÀÇ Energy¸¦ ±¸ÇÏ´Â ÇÔ¼ö // Function that calculate Energy of the image(or the region of ROI)
+		// ì´ë¯¸ì§€ ì „ì²´(í˜¹ì€ ROI ì˜ì—­) í”½ì…€ê°’ì˜ Energyë¥¼ êµ¬í•˜ëŠ” í•¨ìˆ˜ // Function that calculate Energy of the image(or the region of ROI)
 		if((res = flaGLCM.GetResultEnergy(flaEnergy)).IsFail())
 		{
 			ErrorPrint(res, "No Result");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ÀüÃ¼(È¤Àº ROI ¿µ¿ª) ÇÈ¼¿°ªÀÇ Correlation¸¦ ±¸ÇÏ´Â ÇÔ¼ö // Function that calculate Correlation of the image(or the region of ROI)
+		// ì´ë¯¸ì§€ ì „ì²´(í˜¹ì€ ROI ì˜ì—­) í”½ì…€ê°’ì˜ Correlationë¥¼ êµ¬í•˜ëŠ” í•¨ìˆ˜ // Function that calculate Correlation of the image(or the region of ROI)
 		if((res = flaGLCM.GetResultCorrelation(flaCorrelation)).IsFail())
 		{
 			ErrorPrint(res, "No Result");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ÀüÃ¼(È¤Àº ROI ¿µ¿ª) ÇÈ¼¿°ªÀÇ Homogeneity¸¦ ±¸ÇÏ´Â ÇÔ¼ö // Function that calculate Homogeneity of the image(or the region of ROI)
+		// ì´ë¯¸ì§€ ì „ì²´(í˜¹ì€ ROI ì˜ì—­) í”½ì…€ê°’ì˜ Homogeneityë¥¼ êµ¬í•˜ëŠ” í•¨ìˆ˜ // Function that calculate Homogeneity of the image(or the region of ROI)
 		if((res = flaGLCM.GetResultHomogeneity(flaHomogeneity)).IsFail())
 		{
 			ErrorPrint(res, "No Result");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ÀüÃ¼(È¤Àº ROI ¿µ¿ª) ÇÈ¼¿°ªÀÇ Contrast¸¦ ±¸ÇÏ´Â ÇÔ¼ö // Function that calculate Contrast of the image(or the region of ROI)
+		// ì´ë¯¸ì§€ ì „ì²´(í˜¹ì€ ROI ì˜ì—­) í”½ì…€ê°’ì˜ Contrastë¥¼ êµ¬í•˜ëŠ” í•¨ìˆ˜ // Function that calculate Contrast of the image(or the region of ROI)
 		if((res = flaGLCM.GetResultContrast(flaContrast)).IsFail())
 		{
 			ErrorPrint(res, "No Result");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to find out where ROI is
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to find out where ROI is
 		if((res = layer.DrawFigureImage(&flfSourceROI, LIME)).IsFail())
 			ErrorPrint(res, "Failed to draw figure\n");
 
@@ -125,17 +125,17 @@ int main()
 
 		wprintf_s(L"%s\n", strText.GetString());
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if((res = layer.DrawTextCanvas(&CFLPoint<double>(0, 0), strText.GetString(), YELLOW, BLACK, 25)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -7,27 +7,27 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
 	bool bError = false;
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/ShapeMatch/Cross_Dark.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage.Create(400, 0, 912, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -35,7 +35,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -46,38 +46,38 @@ int main()
 		if(bError)
 			break;
 
-		// Shape Match °´Ã¼ »ı¼º // Create Shape Match object
+		// Shape Match ê°ì²´ ìƒì„± // Create Shape Match object
 		CShapeMatchFigure shapeMatch;
 
-		// ÇĞ½ÀÇÒ µµÇü ¼³Á¤ // Set figure to learn
+		// í•™ìŠµí•  ë„í˜• ì„¤ì • // Set figure to learn
 		CFLRegion flrgObject;
 		flrgObject.Load(L"../../ExampleImages/ShapeMatch/Figure Object");
 		
 		shapeMatch.SetFigureObject(flrgObject);
 
-		// µµÇü ÇĞ½À // Learn shape
+		// ë„í˜• í•™ìŠµ // Learn shape
 		if(IsFail(res = shapeMatch.Learn()))
 		{
 			ErrorPrint(res, "Failed to Learn.\n");
 			break;
 		}
 
-		// °ËÃâÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set image to detect
+		// ê²€ì¶œí•  ì´ë¯¸ì§€ ì„¤ì • // Set image to detect
 		shapeMatch.SetSourceImage(fliImage);
-		// °ËÃâ ½Ã »ç¿ëµÉ À¯È¿ º¯°æ Å©±â¹üÀ§¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the effective change size range to be used for detection.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  ìœ íš¨ ë³€ê²½ í¬ê¸°ë²”ìœ„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the effective change size range to be used for detection.
 		shapeMatch.SetScaleRange(0.9, 1.1);
-		// °ËÃâÇÒ °´Ã¼ÀÇ »ö»óÀ» ¼³Á¤ÇÕ´Ï´Ù. // Sets the color of the object to be detected.
+		// ê²€ì¶œí•  ê°ì²´ì˜ ìƒ‰ìƒì„ ì„¤ì •í•©ë‹ˆë‹¤. // Sets the color of the object to be detected.
 		shapeMatch.SetObjectColor(EShapeMatchObjectColor_Bright);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if(IsFail(res = shapeMatch.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 
 		int64_t i64ResultCount = shapeMatch.GetResultCount();
@@ -88,7 +88,7 @@ int main()
 
 			shapeMatch.GetResult(i, matchResult);
 
-			// µµÇü °ËÃâ °á°ú¸¦ ConsoleÃ¢¿¡ Ãâ·ÂÇÕ´Ï´Ù. // Output the shape detection result to the console window.
+			// ë„í˜• ê²€ì¶œ ê²°ê³¼ë¥¼ Consoleì°½ì— ì¶œë ¥í•©ë‹ˆë‹¤. // Output the shape detection result to the console window.
 			printf(" < Instance : %lld >\n", i);
 			printf("  1. Shape Type : Region\n");
 			printf("    Pivot X: %.3lf\n", matchResult.flpPivot.x);
@@ -108,10 +108,10 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -16,18 +16,18 @@ enum EType
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage arrFliImage[ETypeCount];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap arrViewImage[ETypeCount];
 
-	// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+	// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = arrFliImage[EType_Source].Load(L"../../ExampleImages/Threshold/Mountain.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -38,7 +38,7 @@ int main()
 
 		for(int32_t i = EType_Destination1; i < ETypeCount; ++i)
 		{
-			// Destination ÀÌ¹ÌÁö¸¦ Source ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º // Create destination image as same as source image
+			// Destination ì´ë¯¸ì§€ë¥¼ Source ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„± // Create destination image as same as source image
 			if((res = arrFliImage[i].Assign(arrFliImage[EType_Source])).IsFail())
 			{
 				ErrorPrint(res, L"Failed to assign the image file.\n");
@@ -55,7 +55,7 @@ int main()
 			int32_t x = i % 3;
 			int32_t y = i / 3;
 
-			// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+			// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 			if((res = arrViewImage[i].Create(x * 400 + 400, y * 400, x * 400 + 400 + 400, y * 400 + 400)).IsFail())
 			{
 				ErrorPrint(res, L"Failed to create the image view.\n");
@@ -63,7 +63,7 @@ int main()
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 			if((res = arrViewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
 			{
 				ErrorPrint(res, L"Failed to set image object on the image view.\n");
@@ -74,7 +74,7 @@ int main()
 			if(i == EType_Source)
 				continue;
 
-			// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+			// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 			if((res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[i])).IsFail())
 			{
 				ErrorPrint(res, L"Failed to synchronize view\n");
@@ -82,7 +82,7 @@ int main()
 				break;
 			}
 
-			// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+			// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 			if((res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[i])).IsFail())
 			{
 				ErrorPrint(res, L"Failed to synchronize window.\n");
@@ -94,54 +94,54 @@ int main()
 		if(bError)
 			break;
 
-		// ROI ¼³Á¤À» À§ÇÑ CFLRect °´Ã¼ »ı¼º // Create a CFLRect object for setting ROI
+		// ROI ì„¤ì •ì„ ìœ„í•œ CFLRect ê°ì²´ ìƒì„± // Create a CFLRect object for setting ROI
 		CFLRect<int32_t> flrROI(300, 200, 700, 600);
 
-		// auto threshold °´Ã¼ »ı¼º // Create auto threshold object
+		// auto threshold ê°ì²´ ìƒì„± // Create auto threshold object
 		CAutoThreshold AutoThreshold;
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		AutoThreshold.SetSourceImage(arrFliImage[EType_Source]);
-		// Source ROI ¼³Á¤ // Set the source ROI
+		// Source ROI ì„¤ì • // Set the source ROI
 		AutoThreshold.SetSourceROI(flrROI);
 
-		// Destination1 ÀÌ¹ÌÁö ¼³Á¤ // Set the destination1 image
+		// Destination1 ì´ë¯¸ì§€ ì„¤ì • // Set the destination1 image
 		AutoThreshold.SetDestinationImage(arrFliImage[EType_Destination1]);
-		// Destination1 ROI ¼³Á¤ // Set the destination1 ROI
+		// Destination1 ROI ì„¤ì • // Set the destination1 ROI
 		AutoThreshold.SetDestinationROI(flrROI);
 
-		// Sigma °ª ¼³Á¤ // Set the sigma value
+		// Sigma ê°’ ì„¤ì • // Set the sigma value
 		AutoThreshold.SetSigma(2);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = AutoThreshold.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute algorithm.");
 			break;
 		}
 
-		// Result °á°ú °¹¼ö È®ÀÎ // get result count
+		// Result ê²°ê³¼ ê°¯ìˆ˜ í™•ì¸ // get result count
 		int64_t i64IndexCount = AutoThreshold.GetResultBatchCount();
 
-		// Threshold °ª Ç¥±â¸¦ À§ÇÑ String º¯¼ö // string variable to indicate Threshold value
+		// Threshold ê°’ í‘œê¸°ë¥¼ ìœ„í•œ String ë³€ìˆ˜ // string variable to indicate Threshold value
 		CFLArray<CFLString<wchar_t>> flaThresholdStr;
 
-		// AutoThreshold °á°ú°ª // auto threshold result object
+		// AutoThreshold ê²°ê³¼ê°’ // auto threshold result object
 		CFLArray<int32_t> flaResult;
 
 		for(int64_t i = 0; i < i64IndexCount; ++i)
 		{
-			// ÀÌÀü µ¥ÀÌÅÍ »èÁ¦ // data clear
+			// ì´ì „ ë°ì´í„° ì‚­ì œ // data clear
 			flaThresholdStr.Clear();
 
-			// Channel °ª °¡Á®¿À±â // get channel result
+			// Channel ê°’ ê°€ì ¸ì˜¤ê¸° // get channel result
 			int64_t i64ChannelCount = AutoThreshold.GetChannelCount(i);
 
 			for(int j = 0; j < i64ChannelCount; ++j)
 			{
-				// ÀÌÀü µ¥ÀÌÅÍ »èÁ¦ // data clear
+				// ì´ì „ ë°ì´í„° ì‚­ì œ // data clear
 				flaResult.Clear();
 
-				// AutoThreshold °á°ú °ª °¡Á®¿À±â // get auto threshold result
+				// AutoThreshold ê²°ê³¼ ê°’ ê°€ì ¸ì˜¤ê¸° // get auto threshold result
 				if((res = (AutoThreshold.GetResultBatch(i, j, flaResult))).IsFail())
 				{
 					ErrorPrint(res, L"No Result.");
@@ -150,7 +150,7 @@ int main()
 
 				int64_t i64ListCount = flaResult.GetCount();
 
-				// Threshold °ª Ç¥±â¸¦ À§ÇÑ String ÀÓ½Ãº¯¼ö // string variable to indicate threshold temporary value
+				// Threshold ê°’ í‘œê¸°ë¥¼ ìœ„í•œ String ì„ì‹œë³€ìˆ˜ // string variable to indicate threshold temporary value
 				CFLString<wchar_t> strTemp;
 				strTemp.Format(L"Ch%d ", j);
 
@@ -161,41 +161,41 @@ int main()
 			}
 		}
 
-		// Destination2 ÀÌ¹ÌÁö ¼³Á¤ // Set the destination2 image
+		// Destination2 ì´ë¯¸ì§€ ì„¤ì • // Set the destination2 image
 		AutoThreshold.SetDestinationImage(arrFliImage[EType_Destination2]);
-		// Destination2 ROI ¼³Á¤ // Set the destination2 ROI
+		// Destination2 ROI ì„¤ì • // Set the destination2 ROI
 		AutoThreshold.SetDestinationROI(flrROI);
 
-		// auto threshold Ä¿³Î Å©±â ¼³Á¤
+		// auto threshold ì»¤ë„ í¬ê¸° ì„¤ì •
 		AutoThreshold.SetSigma(4);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = AutoThreshold.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute algorithm.");
 			break;
 		}
 		
-		// Result °á°ú °¹¼ö È®ÀÎ // get result count
+		// Result ê²°ê³¼ ê°¯ìˆ˜ í™•ì¸ // get result count
 		i64IndexCount = AutoThreshold.GetResultBatchCount();
 
-		// Threshold °ª Ç¥±â¸¦ À§ÇÑ String º¯¼ö // string variable to indicate Threshold value
+		// Threshold ê°’ í‘œê¸°ë¥¼ ìœ„í•œ String ë³€ìˆ˜ // string variable to indicate Threshold value
 		CFLArray<CFLString<wchar_t>> flaThresholdStr2;
 
 		for(int64_t i = 0; i < i64IndexCount; ++i)
 		{
-			// ÀÌÀü µ¥ÀÌÅÍ »èÁ¦ // data clear
+			// ì´ì „ ë°ì´í„° ì‚­ì œ // data clear
 			flaThresholdStr2.Clear();
 
-			// Channel °ª °¡Á®¿À±â // get channel result
+			// Channel ê°’ ê°€ì ¸ì˜¤ê¸° // get channel result
 			int64_t i64ChannelCount = AutoThreshold.GetChannelCount(i);
 
 			for(int j = 0; j < i64ChannelCount; ++j)
 			{
-				// ÀÌÀü µ¥ÀÌÅÍ »èÁ¦ // data clear
+				// ì´ì „ ë°ì´í„° ì‚­ì œ // data clear
 				flaResult.Clear();
 
-				// AutoThreshold °á°ú °ª °¡Á®¿À±â // get auto threshold result
+				// AutoThreshold ê²°ê³¼ ê°’ ê°€ì ¸ì˜¤ê¸° // get auto threshold result
 				if((res = (AutoThreshold.GetResultBatch(i, j, flaResult))).IsFail())
 				{
 					ErrorPrint(res, L"No Result.");
@@ -204,7 +204,7 @@ int main()
 
 				int64_t i64ListCount = flaResult.GetCount();
 
-				// Threshold °ª Ç¥±â¸¦ À§ÇÑ String ÀÓ½Ãº¯¼ö // string variable to indicate threshold temporary value
+				// Threshold ê°’ í‘œê¸°ë¥¼ ìœ„í•œ String ì„ì‹œë³€ìˆ˜ // string variable to indicate threshold temporary value
 				CFLString<wchar_t> strTemp;
 				strTemp.Format(L"Ch%d ", j);
 
@@ -219,26 +219,26 @@ int main()
 
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-			// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+			// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+			// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 			arrLayer[i] = arrViewImage[i].GetLayer(0);
 
 			arrLayer[i].Clear();
 
-			// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to find out where ROI is
-			// FLImagingÀÇ Figure °´Ã¼µéÀº ¾î¶² µµÇü¸ğ¾çÀÌµç »ó°ü¾øÀÌ ÇÏ³ªÀÇ ÇÔ¼ö·Î µğ½ºÇÃ·¹ÀÌ°¡ °¡´É // FLimaging's Figure objects can be displayed as a function regardless of the shape
-			// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-			// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-			// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+			// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to find out where ROI is
+			// FLImagingì˜ Figure ê°ì²´ë“¤ì€ ì–´ë–¤ ë„í˜•ëª¨ì–‘ì´ë“  ìƒê´€ì—†ì´ í•˜ë‚˜ì˜ í•¨ìˆ˜ë¡œ ë””ìŠ¤í”Œë ˆì´ê°€ ê°€ëŠ¥ // FLimaging's Figure objects can be displayed as a function regardless of the shape
+			// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+			// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+			// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 			if((res = arrLayer[i].DrawFigureImage(&flrROI, LIME)).IsFail())
 				ErrorPrint(res, L"Failed to draw figure\n");
 		}
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 
@@ -274,11 +274,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 			arrViewImage[i].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		bool bAvailable = true;
 		while(bAvailable)
 		{

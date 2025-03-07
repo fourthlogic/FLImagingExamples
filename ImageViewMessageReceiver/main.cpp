@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -8,138 +8,138 @@ class CMessageReceiver : public CFLBase
 {
 public:
 
-	// CMessageReceiver »ı¼ºÀÚ
+	// CMessageReceiver ìƒì„±ì
 	CMessageReceiver(CGUIViewImageWrap* pViewImage) : m_pViewImage(pViewImage)
 	{
-		// ¸Ş¼¼Áö¸¦ Àü´Ş ¹Ş±â À§ÇØ CBroadcastManager ¿¡ ±¸µ¶ µî·Ï
+		// ë©”ì„¸ì§€ë¥¼ ì „ë‹¬ ë°›ê¸° ìœ„í•´ CBroadcastManager ì— êµ¬ë… ë“±ë¡
 		CBroadcastManager::Subscribe(this);
 	}
 
-	// CMessageReceiver ¼Ò¸êÀÚ
+	// CMessageReceiver ì†Œë©¸ì
 	virtual ~CMessageReceiver()
 	{
-		// °´Ã¼°¡ ¼Ò¸êÇÒ¶§ ¸Ş¼¼Áö ¼ö½ÅÀ» Áß´ÜÇÏ±â À§ÇØ ±¸µ¶À» ÇØÁ¦ÇÑ´Ù.
+		// ê°ì²´ê°€ ì†Œë©¸í• ë•Œ ë©”ì„¸ì§€ ìˆ˜ì‹ ì„ ì¤‘ë‹¨í•˜ê¸° ìœ„í•´ êµ¬ë…ì„ í•´ì œí•œë‹¤.
 		CBroadcastManager::Unsubscribe(this);
 	}
 
 	DeclareGetClassType();
 
-	// ¸Ş¼¼Áö°¡ µé¾î¿À¸é È£ÃâµÇ´Â ÇÔ¼ö OnReceiveBroadcast ¿À¹ö¶óÀÌµå ÇÏ¿© ±¸Çö
+	// ë©”ì„¸ì§€ê°€ ë“¤ì–´ì˜¤ë©´ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜ OnReceiveBroadcast ì˜¤ë²„ë¼ì´ë“œ í•˜ì—¬ êµ¬í˜„
 	void OnReceiveBroadcast(const CBroadcastMessage* pMessage) override
 	{
 		do
 		{
-			// pMessage °¡ nullptr ÀÎÁö È®ÀÎ
+			// pMessage ê°€ nullptr ì¸ì§€ í™•ì¸
 			if(pMessage == nullptr)
 				break;
 
-			// ¸Ş¼¼ÁöÀÇ Ã¤³ÎÀ» È®ÀÎ
+			// ë©”ì„¸ì§€ì˜ ì±„ë„ì„ í™•ì¸
 			switch(pMessage->GetChannel())
 			{
 			case EGUIBroadcast_ViewImage_PostMouseMove:
 				{
-					// GetCaller() °¡ µî·ÏÇÑ ÀÌ¹ÌÁöºäÀÎÁö È®ÀÎ
+					// GetCaller() ê°€ ë“±ë¡í•œ ì´ë¯¸ì§€ë·°ì¸ì§€ í™•ì¸
 					if(pMessage->GetCaller() != (const CFLBase*)m_pViewImage->GetMessageCallerPtr())
 						break;
 
-					// pMessage °´Ã¼¸¦ CBroadcastMessage_GUI_ViewImage_MouseEvent ·Î Ä³½ºÆÃ
+					// pMessage ê°ì²´ë¥¼ CBroadcastMessage_GUI_ViewImage_MouseEvent ë¡œ ìºìŠ¤íŒ…
 					CBroadcastMessage_GUI_ViewImage_MouseEvent* pMsgMouseEvent = dynamic_cast<CBroadcastMessage_GUI_ViewImage_MouseEvent*>((CBroadcastMessage*)pMessage);
 
-					// pMsgMouseEvent °¡ nullptr ÀÎÁö È®ÀÎ
+					// pMsgMouseEvent ê°€ nullptr ì¸ì§€ í™•ì¸
 					if(pMsgMouseEvent == nullptr)
 						break;
 
-					// ÀÌ¹ÌÁöºäÀÇ 0¹ø ·¹ÀÌ¾î °¡Á®¿À±â
+					// ì´ë¯¸ì§€ë·°ì˜ 0ë²ˆ ë ˆì´ì–´ ê°€ì ¸ì˜¤ê¸°
 					CGUIViewImageLayerWrap layer = m_pViewImage->GetLayer(0);
 
-					// ±âÁ¸¿¡ Layer ¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦
+					// ê¸°ì¡´ì— Layer ì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ
 					layer.Clear();
 
-					// ¸¶¿ì½º ÁÂÇ¥¸¦ Ç¥½ÃÇÒ ¹®ÀÚ¿­ »ı¼º
+					// ë§ˆìš°ìŠ¤ ì¢Œí‘œë¥¼ í‘œì‹œí•  ë¬¸ìì—´ ìƒì„±
 					CFLString<wchar_t> flsPosition = L"";
 					flsPosition.Format(L"Move X: %d, Y: %d", pMsgMouseEvent->GetCursor()->x, pMsgMouseEvent->GetCursor()->y);
 
-					// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-					// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EColor.TRANSPARENCY À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù.
-					// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-					//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+					// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+					// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EColor.TRANSPARENCY ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤.
+					// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+					//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 					// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 					//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 					layer.DrawTextCanvas(CFLPoint<double>(10, 10), flsPosition, LIME, BLACK);
 
-					// ÀÌ¹ÌÁöºä¸¦ °»½Å
+					// ì´ë¯¸ì§€ë·°ë¥¼ ê°±ì‹ 
 					m_pViewImage->Invalidate();
 				}
 				break;
 
 			case EGUIBroadcast_ViewImage_PostLButtonDown:
 				{
-					// GetCaller() °¡ µî·ÏÇÑ ÀÌ¹ÌÁöºäÀÎÁö È®ÀÎ
+					// GetCaller() ê°€ ë“±ë¡í•œ ì´ë¯¸ì§€ë·°ì¸ì§€ í™•ì¸
 					if(pMessage->GetCaller() != (const CFLBase*)m_pViewImage->GetMessageCallerPtr())
 						break;
 
-					// pMessage °´Ã¼¸¦ CBroadcastMessage_GUI_ViewImage_MouseEvent ·Î Ä³½ºÆÃ
+					// pMessage ê°ì²´ë¥¼ CBroadcastMessage_GUI_ViewImage_MouseEvent ë¡œ ìºìŠ¤íŒ…
 					CBroadcastMessage_GUI_ViewImage_MouseEvent* pMsgMouseEvent = dynamic_cast<CBroadcastMessage_GUI_ViewImage_MouseEvent*>((CBroadcastMessage*)pMessage);
 
-					// pMsgMouseEvent °¡ nullptr ÀÎÁö È®ÀÎ
+					// pMsgMouseEvent ê°€ nullptr ì¸ì§€ í™•ì¸
 					if(pMsgMouseEvent == nullptr)
 						break;
 
-					// ÀÌ¹ÌÁöºäÀÇ 0¹ø ·¹ÀÌ¾î °¡Á®¿À±â
+					// ì´ë¯¸ì§€ë·°ì˜ 0ë²ˆ ë ˆì´ì–´ ê°€ì ¸ì˜¤ê¸°
 					CGUIViewImageLayerWrap layer = m_pViewImage->GetLayer(0);
 
-					// ±âÁ¸¿¡ Layer ¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦
+					// ê¸°ì¡´ì— Layer ì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ
 					layer.Clear();
 
-					// ¸¶¿ì½º ÁÂÇ¥¸¦ Ç¥½ÃÇÒ ¹®ÀÚ¿­ »ı¼º
+					// ë§ˆìš°ìŠ¤ ì¢Œí‘œë¥¼ í‘œì‹œí•  ë¬¸ìì—´ ìƒì„±
 					CFLString<wchar_t> flsPosition = L"";
 					flsPosition.Format(L"LButtonDown X: %d, Y: %d", pMsgMouseEvent->GetCursor()->x, pMsgMouseEvent->GetCursor()->y);
 
-					// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-					// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EColor.TRANSPARENCY À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù.
-					// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-					//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+					// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+					// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EColor.TRANSPARENCY ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤.
+					// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+					//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 					// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 					//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 					layer.DrawTextCanvas(CFLPoint<double>(10, 10), flsPosition, RED, BLACK);
 
-					// ÀÌ¹ÌÁöºä¸¦ °»½Å
+					// ì´ë¯¸ì§€ë·°ë¥¼ ê°±ì‹ 
 					m_pViewImage->Invalidate();
 				}
 				break;
 
 			case EGUIBroadcast_ViewImage_PostLButtonUp:
 				{
-					// GetCaller() °¡ µî·ÏÇÑ ÀÌ¹ÌÁöºäÀÎÁö È®ÀÎ
+					// GetCaller() ê°€ ë“±ë¡í•œ ì´ë¯¸ì§€ë·°ì¸ì§€ í™•ì¸
 					if(pMessage->GetCaller() != (const CFLBase*)m_pViewImage->GetMessageCallerPtr())
 						break;
 
-					// pMessage °´Ã¼¸¦ CBroadcastMessage_GUI_ViewImage_MouseEvent ·Î Ä³½ºÆÃ
+					// pMessage ê°ì²´ë¥¼ CBroadcastMessage_GUI_ViewImage_MouseEvent ë¡œ ìºìŠ¤íŒ…
 					CBroadcastMessage_GUI_ViewImage_MouseEvent* pMsgMouseEvent = dynamic_cast<CBroadcastMessage_GUI_ViewImage_MouseEvent*>((CBroadcastMessage*)pMessage);
 
-					// pMsgMouseEvent °¡ nullptr ÀÎÁö È®ÀÎ
+					// pMsgMouseEvent ê°€ nullptr ì¸ì§€ í™•ì¸
 					if(pMsgMouseEvent == nullptr)
 						break;
 
-					// ÀÌ¹ÌÁöºäÀÇ 0¹ø ·¹ÀÌ¾î °¡Á®¿À±â
+					// ì´ë¯¸ì§€ë·°ì˜ 0ë²ˆ ë ˆì´ì–´ ê°€ì ¸ì˜¤ê¸°
 					CGUIViewImageLayerWrap layer = m_pViewImage->GetLayer(0);
 
-					// ±âÁ¸¿¡ Layer ¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦
+					// ê¸°ì¡´ì— Layer ì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ
 					layer.Clear();
 
-					// ¸¶¿ì½º ÁÂÇ¥¸¦ Ç¥½ÃÇÒ ¹®ÀÚ¿­ »ı¼º
+					// ë§ˆìš°ìŠ¤ ì¢Œí‘œë¥¼ í‘œì‹œí•  ë¬¸ìì—´ ìƒì„±
 					CFLString<wchar_t> flsPosition = L"";
 					flsPosition.Format(L"LButtonUp X: %d, Y: %d", pMsgMouseEvent->GetCursor()->x, pMsgMouseEvent->GetCursor()->y);
 
-					// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-					// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EColor.TRANSPARENCY À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù.
-					// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-					//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+					// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+					// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EColor.TRANSPARENCY ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤.
+					// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+					//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 					// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 					//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 					layer.DrawTextCanvas(CFLPoint<double>(10, 10), flsPosition, BLUE, BLACK);
 
-					// ÀÌ¹ÌÁöºä¸¦ °»½Å
+					// ì´ë¯¸ì§€ë·°ë¥¼ ê°±ì‹ 
 					m_pViewImage->Invalidate();
 				}
 				break;
@@ -154,45 +154,45 @@ public:
 
 int main()
 {
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage[2];
 
-	// ¸Ş¼¼Áö¸¦ Àü´Ş ¹ŞÀ» CMessageReceiver °´Ã¼ »ı¼º // Create ¸Ş¼¼Áö¸¦ Àü´Ş ¹ŞÀ» CMessageReceiver object
+	// ë©”ì„¸ì§€ë¥¼ ì „ë‹¬ ë°›ì„ CMessageReceiver ê°ì²´ ìƒì„± // Create ë©”ì„¸ì§€ë¥¼ ì „ë‹¬ ë°›ì„ CMessageReceiver object
 	CMessageReceiver msgReceiver(&viewImage[0]);
 
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[0].Create(300, 0, 300 + 520, 430)))
 		{
 			ErrorPrint(res,"Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[1].Create(300 + 520, 0, 300 + 520 * 2, 430)))
 		{
 			ErrorPrint(res,"Failed to create the image view.\n");
 			break;
 		}
 
-		// ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù
+		// ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤
 		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
 			ErrorPrint(res,"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
 			ErrorPrint(res,"Failed to synchronize window\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage[0].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

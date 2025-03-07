@@ -1,4 +1,4 @@
-
+ï»¿
 // ImageViewDlg.cpp : implementation file
 //
 
@@ -204,7 +204,7 @@ void CImageViewDlg::UpdateControls()
 		GetDlgItem(IDC_BUTTON_FIGURE_OBJECT_CREATE)->EnableWindow(false);
 		GetDlgItem(IDC_BUTTON_FIGURE_OBJECT_POP_FRONT)->EnableWindow(false);
 	}
-	// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+	// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 	else if(!m_viewImage.IsAvailable())
 	{
 		GetDlgItem(IDC_BUTTON_OPEN_IMAGE_VIEW)->EnableWindow(true);
@@ -229,7 +229,7 @@ void CImageViewDlg::UpdateControls()
 		GetDlgItem(IDC_BUTTON_FIGURE_OBJECT_CREATE)->EnableWindow(true);
 		GetDlgItem(IDC_BUTTON_FIGURE_OBJECT_POP_FRONT)->EnableWindow(true);
 
-		// ÀÌ¹ÌÁö ºäÀÇ ÀÌ¹ÌÁö ¹öÆÛ°¡ Á¸ÀçÇÏ´ÂÁö Ã¼Å©
+		// ì´ë¯¸ì§€ ë·°ì˜ ì´ë¯¸ì§€ ë²„í¼ê°€ ì¡´ì¬í•˜ëŠ”ì§€ ì²´í¬
 		if(!m_viewImage.DoesFLImageBufferExist())
 		{
 			GetDlgItem(IDC_BUTTON_SAVE_IMAGE)->EnableWindow(false);
@@ -244,7 +244,7 @@ void CImageViewDlg::UpdateControls()
 			pComboBoxTemplateType->EnableWindow(false);
 		}
 
-		// ÀÌ¹ÌÁö ºäÀÇ Figure object °³¼ö¸¦ ¾ò¾î¿Â´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ Figure object ê°œìˆ˜ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 		if(!m_viewImage.GetFigureObjectCount())
 		{
 			GetDlgItem(IDC_BUTTON_FIGURE_OBJECT_POP_FRONT)->EnableWindow(false);
@@ -326,11 +326,11 @@ void CImageViewDlg::OnBnClickedButtonOpenImageView()
 	// TODO: Add your control notification handler code here
 	do 
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(m_viewImage.IsAvailable())
 			break;
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		CResult res = m_viewImage.Create(0, 0, 500, 500);
 
 		if(res.IsFail())
@@ -345,11 +345,11 @@ void CImageViewDlg::OnBnClickedButtonTerminateImageView()
 	// TODO: Add your control notification handler code here
 	do 
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
-		// ÀÌ¹ÌÁö ºä¸¦ Á¾·áÇÑ´Ù.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ì¢…ë£Œí•œë‹¤.
 		CResult res = m_viewImage.Destroy();
 
 		if(res.IsFail())
@@ -383,7 +383,7 @@ BOOL CImageViewDlg::DestroyWindow()
 	// TODO: Add your specialized code here and/or call the base class
 	KillTimer(1024);
 
-	// ÀÌ¹ÌÁö ºä¸¦ Á¾·áÇÑ´Ù.
+	// ì´ë¯¸ì§€ ë·°ë¥¼ ì¢…ë£Œí•œë‹¤.
 	m_viewImage.Destroy();
 
 	return CDialogEx::DestroyWindow();
@@ -396,7 +396,7 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 
 	do 
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
@@ -426,13 +426,13 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºäÀÇ Äµ¹ö½º ¿µ¿ªÀ» ¾ò¾î¿Â´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ ìº”ë²„ìŠ¤ ì˜ì—­ì„ ì–»ì–´ì˜¨ë‹¤.
 		CFLRect<int32_t> flrlCanvas = m_viewImage.GetClientRectCanvasRegion();
 
-		// Äµ¹ö½º ¿µ¿ªÀÇ ÁÂÇ¥°è¸¦ ÀÌ¹ÌÁö ¿µ¿ªÀÇ ÁÂÇ¥°è·Î º¯È¯ÇÑ´Ù.
+		// ìº”ë²„ìŠ¤ ì˜ì—­ì˜ ì¢Œí‘œê³„ë¥¼ ì´ë¯¸ì§€ ì˜ì—­ì˜ ì¢Œí‘œê³„ë¡œ ë³€í™˜í•œë‹¤.
 		CFLRect<double> flrdImage = m_viewImage.ConvertCanvasCoordToImageCoord(flrlCanvas);
 
-		// ÀÌ¹ÌÁö ¿µ¿ªÀ» ±âÁØÀ¸·Î »ı¼ºµÉ Figure ÀÇ Å©±â¿Í ¸ğ¾çÀ» »ç°¢ÇüÀ¸·Î ¼³Á¤ÇÑ´Ù.
+		// ì´ë¯¸ì§€ ì˜ì—­ì„ ê¸°ì¤€ìœ¼ë¡œ ìƒì„±ë  Figure ì˜ í¬ê¸°ì™€ ëª¨ì–‘ì„ ì‚¬ê°í˜•ìœ¼ë¡œ ì„¤ì •í•œë‹¤.
 		double f64Width = flrdImage.GetWidth() / 10.;
 		double f64Height = flrdImage.GetHeight() / 10.;
 		double f64Size = __min(f64Width, f64Height);
@@ -442,8 +442,8 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 
 		CFLRect<double> flrdFigureShape(flpdCenter.x - f64Size, flpdCenter.y - f64Size, flpdCenter.x + f64Size, flpdCenter.y + f64Size);
 
-		// ¼±ÅÃÇÑ Decl Type, Template Type À¸·Î Figure ¸¦ »ı¼ºÇÑ´Ù.
-		// CubicSpline, ComplexRegion °°Àº °æ¿ì¿¡´Â Template Type ÀÌ double ÇüÀ¸·Î °íÁ¤ÀÌ´Ù.
+		// ì„ íƒí•œ Decl Type, Template Type ìœ¼ë¡œ Figure ë¥¼ ìƒì„±í•œë‹¤.
+		// CubicSpline, ComplexRegion ê°™ì€ ê²½ìš°ì—ëŠ” Template Type ì´ double í˜•ìœ¼ë¡œ ê³ ì •ì´ë‹¤.
 		switch(SelectedDeclType())
 		{
 		case EFigureDeclType_Point:
@@ -652,21 +652,21 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectCreate()
 		if(!pFlFigure)
 			break;
 
-		// »ı¼ºµÈ Figure ¿¡ »ç°¢ÇüÀ» ¼³Á¤ÇÔÀ¸·Î½á °¢ Çü»ó¿¡ ¸Â°Ô ±¸¼ºÇÑ´Ù.
+		// ìƒì„±ëœ Figure ì— ì‚¬ê°í˜•ì„ ì„¤ì •í•¨ìœ¼ë¡œì¨ ê° í˜•ìƒì— ë§ê²Œ êµ¬ì„±í•œë‹¤.
 		pFlFigure->Set(flrdFigureShape);
 
-		// ÀÌ¹ÌÁö ºä¿¡ Figure object ¸¦ »ı¼ºÇÑ´Ù.
-		// °¡Àå ¸¶Áö¸· ÆÄ¶ó¹ÌÅÍ´Â È°¼ºÈ­ µÇ´Â ¸Ş´ºÀÇ ±¸¼ºÀÌ¸ç, EAvailableFigureContextMenu_All °¡ ±âº» ¸Ş´º¸¦ È°¼ºÈ­ ÇÑ´Ù.
-		// È°¼ºÈ­ ÇÏ°íÀÚ ÇÏ´Â ¸Ş´º¸¦ Ãß°¡ È¤Àº Á¦°Å ÇÏ±â À§ÇØ¼­´Â enum °ªÀ» ºñÆ® ¿¬»êÀ¸·Î ³Ö¾îÁÖ¸é µÈ´Ù.
-		// ex) EAvailableFigureContextMenu_None -> È°¼ºÈ­ µÇ´Â ¸Ş´º ¾øÀ½
-		//     EAvailableFigureContextMenu_All -> ÀüÃ¼ ¸Ş´º È°¼ºÈ­
-		//     EAvailableFigureContextMenu_DeclType | EAvailableFigureContextMenu_TemplateType -> Decl Type, Template Type º¯È¯ ¸Ş´º È°¼ºÈ­
+		// ì´ë¯¸ì§€ ë·°ì— Figure object ë¥¼ ìƒì„±í•œë‹¤.
+		// ê°€ì¥ ë§ˆì§€ë§‰ íŒŒë¼ë¯¸í„°ëŠ” í™œì„±í™” ë˜ëŠ” ë©”ë‰´ì˜ êµ¬ì„±ì´ë©°, EAvailableFigureContextMenu_All ê°€ ê¸°ë³¸ ë©”ë‰´ë¥¼ í™œì„±í™” í•œë‹¤.
+		// í™œì„±í™” í•˜ê³ ì í•˜ëŠ” ë©”ë‰´ë¥¼ ì¶”ê°€ í˜¹ì€ ì œê±° í•˜ê¸° ìœ„í•´ì„œëŠ” enum ê°’ì„ ë¹„íŠ¸ ì—°ì‚°ìœ¼ë¡œ ë„£ì–´ì£¼ë©´ ëœë‹¤.
+		// ex) EAvailableFigureContextMenu_None -> í™œì„±í™” ë˜ëŠ” ë©”ë‰´ ì—†ìŒ
+		//     EAvailableFigureContextMenu_All -> ì „ì²´ ë©”ë‰´ í™œì„±í™”
+		//     EAvailableFigureContextMenu_DeclType | EAvailableFigureContextMenu_TemplateType -> Decl Type, Template Type ë³€í™˜ ë©”ë‰´ í™œì„±í™”
 		m_viewImage.PushBackFigureObject(pFlFigure, EAvailableFigureContextMenu_All);
 	}
 	while (false);
 
-	// »ı¼ºÇÑ Figure °´Ã¼ ÇØÁ¦
-	// C_GUI_CGUIViewImage_PushBackFigureObject() ÇÔ¼ö ³»ºÎ¿¡¼­ Figure º¹»ç°¡ µÇ±â ¶§¹®¿¡ »ı¼ºÇß´ø °´Ã¼¸¦ ÇØÁ¦ÇØ Áà¾ßÇÑ´Ù.
+	// ìƒì„±í•œ Figure ê°ì²´ í•´ì œ
+	// C_GUI_CGUIViewImage_PushBackFigureObject() í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ Figure ë³µì‚¬ê°€ ë˜ê¸° ë•Œë¬¸ì— ìƒì„±í–ˆë˜ ê°ì²´ë¥¼ í•´ì œí•´ ì¤˜ì•¼í•œë‹¤.
 	if(pFlFigure)
 	{
 		delete pFlFigure;
@@ -683,16 +683,16 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectPopFront()
 
 	do 
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
-		// ÀÌ¹ÌÁö ºäÀÇ ¸Ç ¾ÕÀÇ Figure ¸¦ Á¦°ÅÇÏ¸é¼­ ¾ò¾î¿Â´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ ë§¨ ì•ì˜ Figure ë¥¼ ì œê±°í•˜ë©´ì„œ ì–»ì–´ì˜¨ë‹¤.
 		pFlFigure = m_viewImage.PopFrontFigureObject();
 		if(!pFlFigure)
 			break;
 
-		// Figure ¸¦ ¹®ÀÚ¿­·Î ¾ò¾î¿Â´Ù.
+		// Figure ë¥¼ ë¬¸ìì—´ë¡œ ì–»ì–´ì˜¨ë‹¤.
 		CFLString<wchar_t> flStrFigure = CFigureUtilities::ConvertFigureObjectToString(pFlFigure);
 
 		strFigureInfo = flStrFigure;
@@ -701,7 +701,7 @@ void CImageViewDlg::OnBnClickedButtonFigureObjectPopFront()
 
 	GetDlgItem(IDC_EDIT_FIGURE_OBEJCT_INFO)->SetWindowText(strFigureInfo);
 
-	// ¾ò¾î¿Â Figure °´Ã¼ ÇØÁ¦
+	// ì–»ì–´ì˜¨ Figure ê°ì²´ í•´ì œ
 	if(pFlFigure)
 	{
 		delete pFlFigure;
@@ -715,17 +715,17 @@ void CImageViewDlg::OnBnClickedButtonLoadImage()
 	// TODO: Add your control notification handler code here
 	do 
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
 		LockControls(true);
 
-		// ÀÌ¹ÌÁö ÆÄÀÏ ·Îµå ´ÙÀÌ¾ó·Î±×¸¦ È°¼ºÈ­ ½ÃÅ²´Ù.
-		// °¡Àå ¸¶Áö¸· ÆÄ¶ó¹ÌÅÍ·Î ·Îµå ¿É¼ÇÀ» ÁöÁ¤ÇÑ´Ù.
-		// ex) EViewImageLoadOption_Load -> ÀÌ¹ÌÁö ÆÄÀÏ/Æú´õ ·Îµå
-		//     EViewImageLoadOption_OpenDialog | EViewImageLoadOption_DialogTypeFile ÀÌ¹ÌÁö ÆÄÀÏ ·Îµå ´ÙÀÌ¾ó·Î±× È°¼ºÈ­
-		//     EViewImageLoadOption_OpenDialog | EViewImageLoadOption_DialogTypeFolder Æú´õ ·Îµå ´ÙÀÌ¾ó·Î±× È°¼ºÈ­(Æú´õ ³»ºÎÀÇ ÀÌ¹ÌÁö ÆÄÀÏµéÀ» ·Îµå)
+		// ì´ë¯¸ì§€ íŒŒì¼ ë¡œë“œ ë‹¤ì´ì–¼ë¡œê·¸ë¥¼ í™œì„±í™” ì‹œí‚¨ë‹¤.
+		// ê°€ì¥ ë§ˆì§€ë§‰ íŒŒë¼ë¯¸í„°ë¡œ ë¡œë“œ ì˜µì…˜ì„ ì§€ì •í•œë‹¤.
+		// ex) EViewImageLoadOption_Load -> ì´ë¯¸ì§€ íŒŒì¼/í´ë” ë¡œë“œ
+		//     EViewImageLoadOption_OpenDialog | EViewImageLoadOption_DialogTypeFile ì´ë¯¸ì§€ íŒŒì¼ ë¡œë“œ ë‹¤ì´ì–¼ë¡œê·¸ í™œì„±í™”
+		//     EViewImageLoadOption_OpenDialog | EViewImageLoadOption_DialogTypeFolder í´ë” ë¡œë“œ ë‹¤ì´ì–¼ë¡œê·¸ í™œì„±í™”(í´ë” ë‚´ë¶€ì˜ ì´ë¯¸ì§€ íŒŒì¼ë“¤ì„ ë¡œë“œ)
 		m_viewImage.Load(L"", EViewImageLoadOption_Load);
 
 		LockControls(false);
@@ -739,17 +739,17 @@ void CImageViewDlg::OnBnClickedButtonSaveImage()
 	// TODO: Add your control notification handler code here
 	do 
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
-		// ÀÌ¹ÌÁö ºäÀÇ ÀÌ¹ÌÁö ¹öÆÛ°¡ Á¸ÀçÇÏ´ÂÁö Ã¼Å©
+		// ì´ë¯¸ì§€ ë·°ì˜ ì´ë¯¸ì§€ ë²„í¼ê°€ ì¡´ì¬í•˜ëŠ”ì§€ ì²´í¬
 		if(!m_viewImage.DoesFLImageBufferExist())
 			break;
 
 		LockControls(true);
 
-		// ÀÌ¹ÌÁö ÀúÀå ´ÙÀÌ¾ó·Î±×¸¦ È°¼ºÈ­ ½ÃÅ²´Ù.
+		// ì´ë¯¸ì§€ ì €ì¥ ë‹¤ì´ì–¼ë¡œê·¸ë¥¼ í™œì„±í™” ì‹œí‚¨ë‹¤.
 		m_viewImage.Save(L"", false);
 
 		LockControls(false);

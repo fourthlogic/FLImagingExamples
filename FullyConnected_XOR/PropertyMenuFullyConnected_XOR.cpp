@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PropertyMenuFullyConnected_XOR.h"
 
 using namespace FLImaging;
@@ -10,60 +10,60 @@ namespace FLImaging
 {
 	namespace GUI
 	{
-		// º¹ÀâÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ·¹ÀÌ¾Æ¿ôÀÇ row ÀÎµ¦½º
+		// ë³µì¡í•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë ˆì´ì•„ì›ƒì˜ row ì¸ë±ìŠ¤
 		enum class ERowLayout : int32_t
 		{
-			Main = 0,           // Main ·¹ÀÌ¾Æ¿ô
-			Button = 4,         // Button ·¹ÀÌ¾Æ¿ô
-			Details = 0,        // Details ·¹ÀÌ¾Æ¿ô
+			Main = 0,           // Main ë ˆì´ì•„ì›ƒ
+			Button = 4,         // Button ë ˆì´ì•„ì›ƒ
+			Details = 0,        // Details ë ˆì´ì•„ì›ƒ
 
-			Count = 5,          // Çà °³¼ö
+			Count = 5,          // í–‰ ê°œìˆ˜
 		};
 
-		// º¹ÀâÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ·¹ÀÌ¾Æ¿ôÀÇ col ÀÎµ¦½º
+		// ë³µì¡í•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë ˆì´ì•„ì›ƒì˜ col ì¸ë±ìŠ¤
 		enum class EColLayout : int32_t
 		{
-			Main = 0,           // Main ·¹ÀÌ¾Æ¿ô
-			Button = 0,         // Button ·¹ÀÌ¾Æ¿ô
-			Details = 1,        // Details ·¹ÀÌ¾Æ¿ô
+			Main = 0,           // Main ë ˆì´ì•„ì›ƒ
+			Button = 0,         // Button ë ˆì´ì•„ì›ƒ
+			Details = 1,        // Details ë ˆì´ì•„ì›ƒ
 
-			Count = 2,          // ÄÃ·³ °³¼ö
+			Count = 2,          // ì»¬ëŸ¼ ê°œìˆ˜
 		};
 
-		// ´Ü¼øÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ¸ŞÀÎ ±×¸®µå ³»ºÎ ÄÁÆ®·ÑÀÇ row ÀÎµ¦½º
+		// ë‹¨ìˆœí•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë©”ì¸ ê·¸ë¦¬ë“œ ë‚´ë¶€ ì»¨íŠ¸ë¡¤ì˜ row ì¸ë±ìŠ¤
 		enum class ERowMainSimple : int32_t
 		{
-			Message = 0,       // ¸Ş¼¼Áö
-			ProgressCtrl = 2,  // ÇÁ·Î±×·¹½º ¹Ù
-			ElapsedTime = 3,   // ½Ã°£
+			Message = 0,       // ë©”ì„¸ì§€
+			ProgressCtrl = 2,  // í”„ë¡œê·¸ë ˆìŠ¤ ë°”
+			ElapsedTime = 3,   // ì‹œê°„
 
-			Count = 4,         // Çà °³¼ö
+			Count = 4,         // í–‰ ê°œìˆ˜
 		};
 
-		// ´Ü¼øÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ¸ŞÀÎ ±×¸®µå ³»ºÎ ÄÁÆ®·ÑÀÇ col ÀÎµ¦½º
+		// ë‹¨ìˆœí•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë©”ì¸ ê·¸ë¦¬ë“œ ë‚´ë¶€ ì»¨íŠ¸ë¡¤ì˜ col ì¸ë±ìŠ¤
 		enum class EColMainSimple : int32_t
 		{
-			Message = 0,       // ¸Ş¼¼Áö
-			ProgressCtrl = 0,  // ÇÁ·Î±×·¹½º ¹Ù
-			ElapsedTime = 0,   // ½Ã°£
+			Message = 0,       // ë©”ì„¸ì§€
+			ProgressCtrl = 0,  // í”„ë¡œê·¸ë ˆìŠ¤ ë°”
+			ElapsedTime = 0,   // ì‹œê°„
 
-			Count = 1,         // ÄÃ·³ °³¼ö
+			Count = 1,         // ì»¬ëŸ¼ ê°œìˆ˜
 		};
 
-		// ´Ü¼øÇÑ ´ÙÀÌ¾ó·Î±×ÀÇ ¹öÆ° ±×¸®µåÀÇ row ÀÎµ¦½º
+		// ë‹¨ìˆœí•œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë²„íŠ¼ ê·¸ë¦¬ë“œì˜ row ì¸ë±ìŠ¤
 		enum class ERowButtonSimple : int32_t
 		{
-			Stop = 0,          // ÁßÁö ¹öÆ°
+			Stop = 0,          // ì¤‘ì§€ ë²„íŠ¼
 
-			Count = 1,         // Çà °³¼ö
+			Count = 1,         // í–‰ ê°œìˆ˜
 		};
 
-		// ´ÙÀÌ¾ó·Î±×ÀÇ ¹öÆ° ±×¸®µåÀÇ col ÀÎµ¦½º
+		// ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë²„íŠ¼ ê·¸ë¦¬ë“œì˜ col ì¸ë±ìŠ¤
 		enum class EColButton : int32_t
 		{
-			Button = 2,        // ¹öÆ°
+			Button = 2,        // ë²„íŠ¼
 
-			Count = 3,         // ÄÃ·³ °³¼ö
+			Count = 3,         // ì»¬ëŸ¼ ê°œìˆ˜
 		};
 	}
 }
@@ -145,7 +145,7 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuFullyConnectedXOR::T
 		do
 		{
 			CreateSimpleDialog();
-			// ´ÙÀÌ¾ó·Î±× Ã¢ »ı¼º
+			// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ ìƒì„±
 			m_pDlgProgress->OnInitDialog();
 			m_pDlgProgress->SetWindowPos(nullptr, 850, 0, 300, 500, SWP_NOZORDER);
 
@@ -187,7 +187,7 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuFullyConnectedXOR::T
 
 			m_tsrAnswer = tsrY;
 
-			//Layer¿¡ ÇÊ¿äÇÑ Weight Tensor ¼±¾ğ
+			//Layerì— í•„ìš”í•œ Weight Tensor ì„ ì–¸
 			CTensor<float> tsrW1;
 			tsrW1.Create({ 2, 10 });
 			tsrW1.FillHe();
@@ -232,7 +232,7 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuFullyConnectedXOR::T
 			tsrB2.EnableReference(false);
 			tsrB2.SetValueAttribute(EValueAttribute_Variable);
 
-			// XOR Graph Layer »ı¼º
+			// XOR Graph Layer ìƒì„±
 			CCGFNodeVar(gfLayer0, CCGFSigmoid(CCGFAffine(gfPlaceHolderX, tsrW1, tsrB1)));
 			CCGFNodeVar(gfLayerH1, CCGFSigmoid(CCGFAffine(gfLayer0, tsrWH1, tsrBH1)));
 			CCGFNodeVar(gfLayerH2, CCGFSigmoid(CCGFAffine(gfLayerH1, tsrWH2, tsrBH2)));
@@ -243,7 +243,7 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuFullyConnectedXOR::T
 			CLRSConstant<float> lrs;
 			CValidatorForClassifier<float> validator;
 
-			//Optimizer parameter ¼³Á¤
+			//Optimizer parameter ì„¤ì •
 			lrs.SetLearningRate(f32LearningRate);
 
 			m_pGfCost = &gfCost;
@@ -257,17 +257,17 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuFullyConnectedXOR::T
 			optm.Initialize();
 			m_pOpt = &optm;
 
-			// ÀÛ¾÷ ½º·¹µå »ı¼º
+			// ì‘ì—… ìŠ¤ë ˆë“œ ìƒì„±
 			m_pThread = new std::future<void>(std::async(CPropertyMenuFullyConnectedXOR::AlgorithmThreadForSimpleDialog, this, &m_pThread));
 			SetThreadPriority(m_pThread, THREAD_PRIORITY_LOWEST);
 
-			// ½º·¹µå ÆÄ¶ó¹ÌÅÍ ÃÊ±âÈ­
+			// ìŠ¤ë ˆë“œ íŒŒë¼ë¯¸í„° ì´ˆê¸°í™”
 			ResetThreadParams();
 
-			// ÀÛ¾÷ ½º·¹µå¿¡¼­ ¾÷µ¥ÀÌÆ® ÇÑ °ªÀ» ¹İ¿µÇÏ¿© ´ÙÀÌ¾ó·Î±× Ã¢ ¾÷µ¥ÀÌÆ®
+			// ì‘ì—… ìŠ¤ë ˆë“œì—ì„œ ì—…ë°ì´íŠ¸ í•œ ê°’ì„ ë°˜ì˜í•˜ì—¬ ë‹¤ì´ì–¼ë¡œê·¸ ì°½ ì—…ë°ì´íŠ¸
 			UpdateSimpleDialog();
 
-			// ´ÙÀÌ¾ó·Î±× ´İ±â
+			// ë‹¤ì´ì–¼ë¡œê·¸ ë‹«ê¸°
 			CloseProgressDialog();
 
 			res = EResult_OK;
@@ -294,13 +294,13 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::CreateSimpleDialog
 	{
 		CloseProgressDialog();
 
-		// ´ÙÀÌ¾ó·Î±× »ı¼º
+		// ë‹¤ì´ì–¼ë¡œê·¸ ìƒì„±
 		if(!m_pDlgProgress)
 			m_pDlgProgress = CGUIDialogProgress::CreateModelessDialog(AfxGetApp()->m_pMainWnd);
 
 		CFLString<wchar_t> strMessage;
 
-		// ¸Ş½ÃÁö, ÇÁ·Î±×·¹½º ¹Ù, ½Ã°£ µîÀÌ Ç¥½ÃµÇ´Â ¸ŞÀÎ ±×¸®µå ·¹ÀÌ¾Æ¿ô »ı¼º
+		// ë©”ì‹œì§€, í”„ë¡œê·¸ë ˆìŠ¤ ë°”, ì‹œê°„ ë“±ì´ í‘œì‹œë˜ëŠ” ë©”ì¸ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ìƒì„±
 		m_pGridMain = new CGUIGridLayout((int32_t)ERowMainSimple::Count, (int32_t)EColMainSimple::Count);
 		{
 			strMessage.Format
@@ -309,26 +309,26 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::CreateSimpleDialog
 				m_i32Epoch, m_i32MaxEpoch
 			);
 
-			// ¸Ş½ÃÁö¸¦ ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ë©”ì‹œì§€ë¥¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainSimple::Message, (int32_t)EColMainSimple::Message, 2, 1, strMessage);
-			// ÇÁ·Î±×·¹½º ¹Ù¸¦ ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ë¥¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainSimple::ProgressCtrl, (int32_t)EColMainSimple::ProgressCtrl, EControl_ProgressBarFloatingPoint);
-			// ¼Ò¿ä ½Ã°£À» ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ì†Œìš” ì‹œê°„ì„ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridMain->AddCtrl((int32_t)ERowMainSimple::ElapsedTime, (int32_t)EColMainSimple::ElapsedTime, L"Elapsed Time      00 : 00 : 00");
-			// ¼Ò¿ä ½Ã°£ÀÇ ÅØ½ºÆ® Á¤·Ä ¿É¼ÇÀ» ¼öÆò, ¼öÁ÷ ¸ğµÎ Áß°£ Á¤·Ä·Î ¼³Á¤
+			// ì†Œìš” ì‹œê°„ì˜ í…ìŠ¤íŠ¸ ì •ë ¬ ì˜µì…˜ì„ ìˆ˜í‰, ìˆ˜ì§ ëª¨ë‘ ì¤‘ê°„ ì •ë ¬ë¡œ ì„¤ì •
 			m_pGridMain->SetCtrlAlignment((int32_t)ERowMainSimple::ElapsedTime, (int32_t)EColMainSimple::ElapsedTime, EGUIAlignment_CENTER_CENTER);
-			// ¼Ò¿ä ½Ã°£ÀÌ m_pGridMain ·¹ÀÌ¾Æ¿ôÀÇ (int32_t)ERowMainSimple::ElapsedTime, (int32_t)EColMainSimple::ElapsedTime À§Ä¡¿¡ ÀÖ´Ù´Â °ÍÀ» m_pDlgProgress ¿¡ ¾Ë·ÁÁÜ
+			// ì†Œìš” ì‹œê°„ì´ m_pGridMain ë ˆì´ì•„ì›ƒì˜ (int32_t)ERowMainSimple::ElapsedTime, (int32_t)EColMainSimple::ElapsedTime ìœ„ì¹˜ì— ìˆë‹¤ëŠ” ê²ƒì„ m_pDlgProgress ì— ì•Œë ¤ì¤Œ
 			m_pDlgProgress->SetElapsedTimePosition(m_pGridMain, (int32_t)ERowMainSimple::ElapsedTime, (int32_t)EColMainSimple::ElapsedTime);
-			// ÁøÇà·ü ¾÷µ¥ÀÌÆ®¸¦ À§ÇØ ÇÁ·Î±×·¹½º ¹Ù °´Ã¼ Æ÷ÀÎÅÍ¸¦ ¾ò¾î ¿À±â
+			// ì§„í–‰ë¥  ì—…ë°ì´íŠ¸ë¥¼ ìœ„í•´ í”„ë¡œê·¸ë ˆìŠ¤ ë°” ê°ì²´ í¬ì¸í„°ë¥¼ ì–»ì–´ ì˜¤ê¸°
 			m_pProgressCtrlFP = (CGUIProgressCtrlFloatingPoint*)m_pGridMain->GetCtrl((int32_t)ERowMainSimple::ProgressCtrl, (int32_t)EColMainSimple::ProgressCtrl);
 		}
 
-		// ¹öÆ°ÀÌ Ç¥½ÃµÇ´Â ¹öÆ° ±×¸®µå ·¹ÀÌ¾Æ¿ô »ı¼º
+		// ë²„íŠ¼ì´ í‘œì‹œë˜ëŠ” ë²„íŠ¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ìƒì„±
 		m_pGridButtons = new CGUIGridLayout((int32_t)ERowButtonSimple::Count, (int32_t)EColButton::Count);
 		{
-			// ÁßÁö ¹öÆ°À» ±×¸®µå ·¹ÀÌ¾Æ¿ô¿¡ Ãß°¡
+			// ì¤‘ì§€ ë²„íŠ¼ì„ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒì— ì¶”ê°€
 			m_pGridButtons->AddCtrl((int32_t)ERowButtonSimple::Stop, (int32_t)EColButton::Button, EControl_Button, L"Stop");
-			// ÁßÁö ¹öÆ° °´Ã¼ Æ÷ÀÎÅÍ¸¦ ¾ò¾î ¿À±â
+			// ì¤‘ì§€ ë²„íŠ¼ ê°ì²´ í¬ì¸í„°ë¥¼ ì–»ì–´ ì˜¤ê¸°
 			m_pStopButton = (CGUIButton*)m_pGridButtons->GetCtrl((int32_t)ERowButtonSimple::Stop, (int32_t)EColButton::Button);
 		}
 
@@ -345,9 +345,9 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::CreateSimpleDialog
 			}
 		}
 
-		// ´ÙÀÌ¾ó·Î±×¿¡ ¸ŞÀÎ ±×¸®µå ·¹ÀÌ¾Æ¿ô Ãß°¡
+		// ë‹¤ì´ì–¼ë¡œê·¸ì— ë©”ì¸ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ì¶”ê°€
 		m_pDlgProgress->Add(m_pGridMain);
-		// ´ÙÀÌ¾ó·Î±×¿¡ ¹öÆ° ±×¸®µå ·¹ÀÌ¾Æ¿ô Ãß°¡
+		// ë‹¤ì´ì–¼ë¡œê·¸ì— ë²„íŠ¼ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ ì¶”ê°€
 		m_pDlgProgress->Add(m_pGridButtons);
 
 		cr = EResult_OK;
@@ -365,7 +365,7 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::UpdateSimpleDialog
 	{
 		while(true)
 		{
-			// ½º·¹µå°¡ ¿Ï·áµÇ¸é break
+			// ìŠ¤ë ˆë“œê°€ ì™„ë£Œë˜ë©´ break
 			if(m_bThreadDone)
 			{
 				if(m_tsrCost.IsCudaActivated())
@@ -374,7 +374,7 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::UpdateSimpleDialog
 					m_tsrEvaluation.CopyDeviceToHost();
 				}
 
-				// ÁßÁö ¹öÆ° ³» ¹®ÀÚ¿­À» "Continue.." ·Î ¼³Á¤
+				// ì¤‘ì§€ ë²„íŠ¼ ë‚´ ë¬¸ìì—´ì„ "Continue.." ë¡œ ì„¤ì •
 				m_pGridButtons->SetCtrlValue((int32_t)ERowButtonSimple::Stop, (int32_t)EColButton::Button, L"Close");
 
 				if(m_pStopButton->GetClickCount() == 1)
@@ -386,7 +386,7 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::UpdateSimpleDialog
 				const float* pF32Cost = m_tsrCost.GetMemory();
 				const float* pF32Evaluate = m_tsrEvaluation.GetMemory();
 
-				// °¡º¯ ±æÀÌÀÇ ¹®ÀÚ¿­À» ¼³Á¤
+				// ê°€ë³€ ê¸¸ì´ì˜ ë¬¸ìì—´ì„ ì„¤ì •
 				CFLString<wchar_t> strMessage;
 				CFLString<wchar_t> strEpochMessage;
 
@@ -407,47 +407,47 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::UpdateSimpleDialog
 					strMessage, pF32Cost[0], pF32Evaluate[0], pF32Evaluate[1], pF32Evaluate[2], pF32Evaluate[3]
 				);
 
-				// m_pGridMain ÀÇ ERowMainSimple::Message, ERowMainSimple::Message À§Ä¡¿¡ ¹®ÀÚ¿­ °ª ¼³Á¤ÇÏ¿© ´ÙÀÌ¾ó·Î±× »ó¿¡¼­ º¸ÀÌ´Â ¸Ş¼¼Áö ¼³Á¤
+				// m_pGridMain ì˜ ERowMainSimple::Message, ERowMainSimple::Message ìœ„ì¹˜ì— ë¬¸ìì—´ ê°’ ì„¤ì •í•˜ì—¬ ë‹¤ì´ì–¼ë¡œê·¸ ìƒì—ì„œ ë³´ì´ëŠ” ë©”ì„¸ì§€ ì„¤ì •
 				m_pGridMain->SetCtrlValue((int32_t)ERowMainSimple::Message, (int32_t)ERowMainSimple::Message, strMessage);
-				// ÇÁ·Î±×·¹½º ¹Ù°¡ 100% ·Î Ã¤¿öÁöµµ·Ï ¼³Á¤
+				// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ê°€ 100% ë¡œ ì±„ì›Œì§€ë„ë¡ ì„¤ì •
 				m_pProgressCtrlFP->SetPos(1.);
-				// ´ÙÀÌ¾ó·Î±× È­¸é °»½Å
+				// ë‹¤ì´ì–¼ë¡œê·¸ í™”ë©´ ê°±ì‹ 
 				m_pDlgProgress->Invalidate();
-				// ¸Ş½ÃÁö ÆßÇÁ
+				// ë©”ì‹œì§€ íŒí”„
 				CGUIManager::PeekAndPump();
 				Sleep(1);
 				continue;
 			}
 			else
 			{
-				// ÁßÁö ¹öÆ° Å¬¸¯ È½¼ö°¡ º¯°æµÈ °æ¿ì
+				// ì¤‘ì§€ ë²„íŠ¼ í´ë¦­ íšŸìˆ˜ê°€ ë³€ê²½ëœ ê²½ìš°
 				if(m_pStopButton->GetClickCount() != m_i32BtnStopClickCount)
 				{
-					// ÁßÁö ¹öÆ°À» ÇÑ ¹ø Å¬¸¯ÇÑ °æ¿ì
+					// ì¤‘ì§€ ë²„íŠ¼ì„ í•œ ë²ˆ í´ë¦­í•œ ê²½ìš°
 					if(m_pStopButton->GetClickCount() == 1)
 					{
-						// ÁßÁö ¹öÆ° ³» ¹®ÀÚ¿­À» "Close" ·Î ¼³Á¤
+						// ì¤‘ì§€ ë²„íŠ¼ ë‚´ ë¬¸ìì—´ì„ "Close" ë¡œ ì„¤ì •
 						m_pGridButtons->SetCtrlValue((int32_t)ERowButtonSimple::Stop, (int32_t)EColButton::Button, L"Close");
-						// ÇÁ·Î±×·¹½º ¹Ù°¡ 100% ·Î Ã¤¿öÁöµµ·Ï ¼³Á¤
+						// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ê°€ 100% ë¡œ ì±„ì›Œì§€ë„ë¡ ì„¤ì •
 						m_pProgressCtrlFP->SetPos(1.);
-						// ´ÙÀÌ¾ó·Î±× È­¸é °»½Å
+						// ë‹¤ì´ì–¼ë¡œê·¸ í™”ë©´ ê°±ì‹ 
 						m_pDlgProgress->Invalidate();
 					}
-					// ÁßÁö ¹öÆ°À» µÎ ¹ø Å¬¸¯ÇÑ °æ¿ì ("Continue.." ¹öÆ°À» Å¬¸¯ÇÑ °æ¿ì)
+					// ì¤‘ì§€ ë²„íŠ¼ì„ ë‘ ë²ˆ í´ë¦­í•œ ê²½ìš° ("Continue.." ë²„íŠ¼ì„ í´ë¦­í•œ ê²½ìš°)
 					else if(m_pStopButton->GetClickCount() == 2)
 					{
-						// ÁßÁö ¹öÆ° ¼û±â±â
+						// ì¤‘ì§€ ë²„íŠ¼ ìˆ¨ê¸°ê¸°
 						m_pGridButtons->SetCtrlVisible((int32_t)ERowButtonSimple::Stop, (int32_t)EColButton::Button, false);
 					}
 
-					// ÁßÁö ¹öÆ° Å¬¸¯ È½¼ö ¾÷µ¥ÀÌÆ®
+					// ì¤‘ì§€ ë²„íŠ¼ í´ë¦­ íšŸìˆ˜ ì—…ë°ì´íŠ¸
 					m_i32BtnStopClickCount = m_pStopButton->GetClickCount();
 
-					// ´ÙÀÌ¾ó·Î±×ÀÇ ·¹ÀÌ¾Æ¿ô ¾÷µ¥ÀÌÆ®
+					// ë‹¤ì´ì–¼ë¡œê·¸ì˜ ë ˆì´ì•„ì›ƒ ì—…ë°ì´íŠ¸
 					m_pDlgProgress->AdjustLayout();
 				}
 
-				// ÁßÁö ¹öÆ°À» 1È¸ ÀÌ»ó Å¬¸¯ ½Ã break
+				// ì¤‘ì§€ ë²„íŠ¼ì„ 1íšŒ ì´ìƒ í´ë¦­ ì‹œ break
 				if(m_pStopButton->GetClickCount() >= 2)
 					break;
 				else if(m_i32Epoch > 0)
@@ -461,7 +461,7 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::UpdateSimpleDialog
 					const float* pF32Cost = m_tsrCost.GetMemory();
 					const float* pF32Evaluate = m_tsrEvaluation.GetMemory();
 
-					// °¡º¯ ±æÀÌÀÇ ¹®ÀÚ¿­À» ¼³Á¤
+					// ê°€ë³€ ê¸¸ì´ì˜ ë¬¸ìì—´ì„ ì„¤ì •
 					CFLString<wchar_t> strMessage;
 					CFLString<wchar_t> strEpochMessage;
 
@@ -493,20 +493,20 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::UpdateSimpleDialog
 						strMessage, pF32Cost[0], pF32Evaluate[0], pF32Evaluate[1], pF32Evaluate[2], pF32Evaluate[3]
 					);
 
-					// m_pGridMain ÀÇ ERowMainSimple::Message, ERowMainSimple::Message À§Ä¡¿¡ ¹®ÀÚ¿­ °ª ¼³Á¤ÇÏ¿© ´ÙÀÌ¾ó·Î±× »ó¿¡¼­ º¸ÀÌ´Â ¸Ş¼¼Áö ¼³Á¤
+					// m_pGridMain ì˜ ERowMainSimple::Message, ERowMainSimple::Message ìœ„ì¹˜ì— ë¬¸ìì—´ ê°’ ì„¤ì •í•˜ì—¬ ë‹¤ì´ì–¼ë¡œê·¸ ìƒì—ì„œ ë³´ì´ëŠ” ë©”ì„¸ì§€ ì„¤ì •
 					m_pGridMain->SetCtrlValue((int32_t)ERowMainSimple::Message, (int32_t)ERowMainSimple::Message, strMessage);
 
-					// ÇÁ·Î±×·¹½º ¹Ù¿¡ ÁøÇà·ü Ç¥½Ã
+					// í”„ë¡œê·¸ë ˆìŠ¤ ë°”ì— ì§„í–‰ë¥  í‘œì‹œ
 					m_pProgressCtrlFP->SetPos((double)m_i32Epoch / (double)m_i32MaxEpoch);
-					// ´ÙÀÌ¾ó·Î±× Ã¢ Å©±â ¾÷µ¥ÀÌÆ®
+					// ë‹¤ì´ì–¼ë¡œê·¸ ì°½ í¬ê¸° ì—…ë°ì´íŠ¸
 					m_pDlgProgress->AdjustLayout();
 				}
 			}
 
 
-			// ¸Ş½ÃÁö ÆßÇÁ
+			// ë©”ì‹œì§€ íŒí”„
 			CGUIManager::PeekAndPump();
-			// Sleep ½Ã°£À» 1·Î ¼³Á¤
+			// Sleep ì‹œê°„ì„ 1ë¡œ ì„¤ì •
 			Sleep(1);
 		}
 
@@ -538,11 +538,11 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::CloseProgressDialo
 
 void FLImaging::GUI::CPropertyMenuFullyConnectedXOR::AlgorithmThreadForSimpleDialog(CPropertyMenuFullyConnectedXOR* pInstance, std::future<void>** pContext)
 {
-	// ´Ü¼øÇÑ ´ÙÀÌ¾ó·Î±×¿¡¼­ »ç¿ëµÇ´Â ½º·¹µå
+	// ë‹¨ìˆœí•œ ë‹¤ì´ì–¼ë¡œê·¸ì—ì„œ ì‚¬ìš©ë˜ëŠ” ìŠ¤ë ˆë“œ
 
 	if(pInstance && pInstance->m_pDlgProgress)
 	{
-		// ÇĞ½À °á°ú ºñ¿ë°ú °ËÁõ °á°ú ±â·ÏÀ» ¹Ş¾Æ ±×·¡ÇÁ ºä¿¡ Ãâ·Â  
+		// í•™ìŠµ ê²°ê³¼ ë¹„ìš©ê³¼ ê²€ì¦ ê²°ê³¼ ê¸°ë¡ì„ ë°›ì•„ ê·¸ë˜í”„ ë·°ì— ì¶œë ¥  
 		// Get the history of cost and validation and print it at graph view
 		CFLArray<float> flaCosts;
 		CFLArray<float> flaValidationFF;
@@ -565,13 +565,13 @@ void FLImaging::GUI::CPropertyMenuFullyConnectedXOR::AlgorithmThreadForSimpleDia
 			}
 
 			pInstance->m_pViewGraph->LockUpdate();
-			// ÀÌÀü ±×·¡ÇÁÀÇ µ¥ÀÌÅÍ¸¦ »èÁ¦
+			// ì´ì „ ê·¸ë˜í”„ì˜ ë°ì´í„°ë¥¼ ì‚­ì œ
 			pInstance->m_pViewGraph->Clear();
 
 			pInstance->m_tsrCost = pInstance->m_pGfCost->Evaluate();
 			pInstance->m_tsrEvaluation = pInstance->m_pGfEvaluation->Evaluate();
 
-			//cuda ¿¬»êÀÏ °æ¿ì È£½ºÆ® ¸Ş¸ğ¸®·Î µ¥ÀÌÅÍ º¹»ç
+			//cuda ì—°ì‚°ì¼ ê²½ìš° í˜¸ìŠ¤íŠ¸ ë©”ëª¨ë¦¬ë¡œ ë°ì´í„° ë³µì‚¬
 			if(pInstance->m_tsrCost.IsCudaActivated())
 			{
 				pInstance->m_tsrCost.CopyDeviceToHost();
@@ -588,7 +588,7 @@ void FLImaging::GUI::CPropertyMenuFullyConnectedXOR::AlgorithmThreadForSimpleDia
 				flaValidationTT.PushBack(pInstance->m_tsrEvaluation.GetMemory()[3]);
 			}
 
-			// XOR °á°ú¿Í ¿Ïº®ÇÏ°Ô ÀÏÄ¡ÇÏ¸é Á¾·á
+			// XOR ê²°ê³¼ì™€ ì™„ë²½í•˜ê²Œ ì¼ì¹˜í•˜ë©´ ì¢…ë£Œ
 			if(pInstance->m_tsrAnswer.Equals(pInstance->m_tsrEvaluation))
 			{
 				pInstance->m_bThreadDone = true;
@@ -616,7 +616,7 @@ void FLImaging::GUI::CPropertyMenuFullyConnectedXOR::AlgorithmThreadForSimpleDia
 
 void FLImaging::GUI::CPropertyMenuFullyConnectedXOR::ResetThreadParams()
 {
-	// ½º·¹µå ÆÄ¶ó¹ÌÅÍ °ªÀ» ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// ìŠ¤ë ˆë“œ íŒŒë¼ë¯¸í„° ê°’ì„ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	m_bThreadDone = false;
 	m_i32CurrentStopProgress = 0;
 	m_i32CurrentProgress = 0;

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -18,18 +18,18 @@ enum EType
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage arrFliImage[ETypeCount];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap arrViewImage[ETypeCount];
 
-	// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+	// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = arrFliImage[EType_Source].Load(L"../../ExampleImages/WienerDeconvolutionFilter/bird.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -40,7 +40,7 @@ int main()
 
 		for(int32_t i = EType_Destination1; i < ETypeCount; ++i)
 		{
-			// Destination ÀÌ¹ÌÁö¸¦ Source ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º // Create destination image as same as source image
+			// Destination ì´ë¯¸ì§€ë¥¼ Source ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„± // Create destination image as same as source image
 			if((res = arrFliImage[i].Assign(arrFliImage[EType_Source])).IsFail())
 			{
 				ErrorPrint(res, L"Failed to assign the image file.\n");
@@ -57,7 +57,7 @@ int main()
 			int32_t x = i % 3;
 			int32_t y = i / 3;
 
-			// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+			// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 			if((res = arrViewImage[i].Create(x * 400 + 400, y * 400, x * 400 + 400 + 400, y * 400 + 400)).IsFail())
 			{
 				ErrorPrint(res, L"Failed to create the image view.\n");
@@ -65,7 +65,7 @@ int main()
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 			if((res = arrViewImage[i].SetImagePtr(&arrFliImage[i])).IsFail())
 			{
 				ErrorPrint(res, L"Failed to set image object on the image view.\n");
@@ -76,7 +76,7 @@ int main()
 			if(i == EType_Source)
 				continue;
 
-			// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+			// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 			if((res = arrViewImage[EType_Source].SynchronizePointOfView(&arrViewImage[i])).IsFail())
 			{
 				ErrorPrint(res, L"Failed to synchronize view\n");
@@ -84,7 +84,7 @@ int main()
 				break;
 			}
 
-			// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+			// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 			if((res = arrViewImage[EType_Source].SynchronizeWindow(&arrViewImage[i])).IsFail())
 			{
 				ErrorPrint(res, L"Failed to synchronize window.\n");
@@ -96,49 +96,49 @@ int main()
 		if(bError)
 			break;		
 
- 		// WienerDeconvolutionFilter °´Ã¼ »ı¼º // Create WienerDeconvolutionFilter filter object
+ 		// WienerDeconvolutionFilter ê°ì²´ ìƒì„± // Create WienerDeconvolutionFilter filter object
  		CWienerDeconvolutionFilter WienerDeconvolutionFilter;
- 		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+ 		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
  		WienerDeconvolutionFilter.SetSourceImage(arrFliImage[EType_Source]); 
 
- 		// Destination1 ÀÌ¹ÌÁö ¼³Á¤ // Set the destination1 image
+ 		// Destination1 ì´ë¯¸ì§€ ì„¤ì • // Set the destination1 image
  		WienerDeconvolutionFilter.SetDestinationImage(arrFliImage[EType_Destination1]);
 
-		// Destination2 ÀÌ¹ÌÁö ¼³Á¤ // Set the destination2 image
+		// Destination2 ì´ë¯¸ì§€ ì„¤ì • // Set the destination2 image
 		WienerDeconvolutionFilter.SetResultFrequency(arrFliImage[EType_Destination3]);
 
-		// SNR °ª ¼³Á¤ // Set the SNR value
+		// SNR ê°’ ì„¤ì • // Set the SNR value
 		WienerDeconvolutionFilter.SetSNR(0.00001);
 
-		// Length °ª ¼³Á¤ // Set the Length value
+		// Length ê°’ ì„¤ì • // Set the Length value
 		WienerDeconvolutionFilter.SetLength(135);
 
-		// Angle °ª ¼³Á¤ // Set the Angle value
+		// Angle ê°’ ì„¤ì • // Set the Angle value
 		WienerDeconvolutionFilter.SetAngle(45);
 
-		// Motion Blur °ª ¼³Á¤ // Set the Motion Blur value
+		// Motion Blur ê°’ ì„¤ì • // Set the Motion Blur value
 		WienerDeconvolutionFilter.SetOperationType(CWienerDeconvolutionFilter::EOperationType_Convolution);
  
- 		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+ 		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
  		if((res = WienerDeconvolutionFilter.Execute()).IsFail())
  		{
  			ErrorPrint(res, L"Failed to execute algorithm.");
  			break;
  		}
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		WienerDeconvolutionFilter.SetSourceImage(arrFliImage[EType_Destination1]); 
 
-		// Destination2 ÀÌ¹ÌÁö ¼³Á¤ // Set the destination2 image
+		// Destination2 ì´ë¯¸ì§€ ì„¤ì • // Set the destination2 image
 		WienerDeconvolutionFilter.SetDestinationImage(arrFliImage[EType_Destination2]);
 
-		// Destination4 ÀÌ¹ÌÁö ¼³Á¤ // Set the destination2 image
+		// Destination4 ì´ë¯¸ì§€ ì„¤ì • // Set the destination2 image
 		WienerDeconvolutionFilter.SetResultFrequency(arrFliImage[EType_Destination4]);
 
-		// WienerDeconvolutionFilter Motion Blur ¼³Á¤ / Set the Motion Blur value
+		// WienerDeconvolutionFilter Motion Blur ì„¤ì • / Set the Motion Blur value
 		WienerDeconvolutionFilter.SetOperationType(CWienerDeconvolutionFilter::EOperationType_Deconvolution);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = WienerDeconvolutionFilter.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute algorithm.");
@@ -149,18 +149,18 @@ int main()
 
 		for(int32_t i = 0; i < ETypeCount; ++i)
 		{
-			// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-			// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+			// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+			// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 			arrLayer[i] = arrViewImage[i].GetLayer(0);
 
 			arrLayer[i].Clear();
 		}
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((res = arrLayer[EType_Source].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
@@ -193,11 +193,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		for(int32_t i = 0; i < ETypeCount; ++i)
 			arrViewImage[i].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		bool bAvailable = true;
 		while(bAvailable)
 		{

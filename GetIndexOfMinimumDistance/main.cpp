@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,15 +6,15 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage[4];
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[0].Create(400, 0, 812, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -39,7 +39,7 @@ int main()
 			break;
 		}
 
-		// SourceView, DstView ÀÇ 0¹ø ·¹ÀÌ¾î °¡Á®¿À±â // Get Layer 0 of SourceView, DstView
+		// SourceView, DstView ì˜ 0ë²ˆ ë ˆì´ì–´ ê°€ì ¸ì˜¤ê¸° // Get Layer 0 of SourceView, DstView
 		CGUIViewImageLayerWrap Src1Layer0 = viewImage[0].GetLayer(0);
 		CGUIViewImageLayerWrap Dst1Layer0 = viewImage[1].GetLayer(0);
 		CGUIViewImageLayerWrap Src2Layer0 = viewImage[2].GetLayer(0);
@@ -53,21 +53,21 @@ int main()
 		Dst1Layer0.DrawTextCanvas(TPoint<double>(0, 20), L"Index of Minimum Distance", CYAN, BLACK);
 		Dst2Layer0.DrawTextCanvas(TPoint<double>(0, 20), L"Index of Minimum Distance", CYAN, BLACK);
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if(IsFail(res = viewImage[2].SynchronizePointOfView(&viewImage[3])))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		for(int32_t i = 1; i < 4; ++i)
 		{
 			if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[i])))
@@ -77,13 +77,13 @@ int main()
 			}
 		}
 
-		// Figure ¼±¾ğ // Figure declaration
+		// Figure ì„ ì–¸ // Figure declaration
 		CFLPointArray flpaSource1;
 		CFLCircle<double> flcDestination1;
 		CFLFigureArray flfaSource2;
 		CFLFigureArray flfaDestination2;
 
-		// Source Figure ºÒ·¯¿À±â // Load Source figure
+		// Source Figure ë¶ˆëŸ¬ì˜¤ê¸° // Load Source figure
 		if((res = flpaSource1.Load(L"../../ExampleImages/Figure/PointArray1.fig")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the figure file.\n");
@@ -96,7 +96,7 @@ int main()
 			break;
 		}
 
-		// Destination Figure ºÒ·¯¿À±â // Load Destination Figure
+		// Destination Figure ë¶ˆëŸ¬ì˜¤ê¸° // Load Destination Figure
 		if((res = flcDestination1.Load(L"../../ExampleImages/Figure/Circle2.fig")).IsFail())
 		{
 			ErrorPrint(res, "Failed to load the figure file.\n");
@@ -109,7 +109,7 @@ int main()
 			break;
 		}
 
-		// Figure »çÀÌÀÇ ÃÖ¼Ò °Å¸®¸¦ ³ªÅ¸³»´Â ÀÎµ¦½º¸¦ ÃßÃâ // Get the index of representing the minimum distance between figures
+		// Figure ì‚¬ì´ì˜ ìµœì†Œ ê±°ë¦¬ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ì¸ë±ìŠ¤ë¥¼ ì¶”ì¶œ // Get the index of representing the minimum distance between figures
 		CFLFigureArray flfaResultSrc1;
 
 		if((res = flpaSource1.GetIndexOfMinimumDistance(flcDestination1, &flfaResultSrc1)).IsFail())
@@ -127,7 +127,7 @@ int main()
 			break;
 		}
 
-		// SourceView1ÀÇ 0¹ø ·¹ÀÌ¾î¿¡ Source, Destination Figure ±×¸®±â // Draw Source and Destination Figure on Layer 0 of SourceView1
+		// SourceView1ì˜ 0ë²ˆ ë ˆì´ì–´ì— Source, Destination Figure ê·¸ë¦¬ê¸° // Draw Source and Destination Figure on Layer 0 of SourceView1
 		Src1Layer0.DrawFigureImage(flpaSource1, BLACK, 3);
 		Src1Layer0.DrawFigureImage(flpaSource1, LIME);
 		Src1Layer0.DrawFigureImage(flcDestination1, BLACK, 3);
@@ -136,7 +136,7 @@ int main()
 		for(int64_t i = 0; i < flpaSource1.GetCount(); ++i)
 			Src1Layer0.DrawTextImage(flpaSource1.GetAt(i)->GetCenter(), CFLString<wchar_t>().Format(L"%lld", i), CYAN, BLACK, 12, false, 0, EGUIViewImageTextAlignment_CENTER_BOTTOM);
 
-		// DstView1ÀÇ 0¹ø ·¹ÀÌ¾î¿¡ °á°ú ±×¸®±â // Draw the result on layer 0 of DstView1
+		// DstView1ì˜ 0ë²ˆ ë ˆì´ì–´ì— ê²°ê³¼ ê·¸ë¦¬ê¸° // Draw the result on layer 0 of DstView1
 		CFLScalar<int64_t> flvSrc = (CFLScalar<int64_t>)flfaResultSrc1.Front();
 		Dst1Layer0.DrawFigureImage(flpaSource1, BLACK, 3);
 		Dst1Layer0.DrawFigureImage(flpaSource1, LIME);
@@ -146,7 +146,7 @@ int main()
 		Dst1Layer0.DrawTextImage(flpaSource1.GetAt(flvSrc.v)->GetCenter(), CFLString<wchar_t>().Format(L"%lld", flvSrc.v), CYAN, BLACK, 12, false, 0, EGUIViewImageTextAlignment_CENTER_BOTTOM);
 		Dst1Layer0.DrawTextImage(flcDestination1.GetCenter(), CFLString<wchar_t>().Format(L"%lld", flvSrc.v), CYAN, BLACK, 12, false, 0, EGUIViewImageTextAlignment_CENTER_CENTER);
 
-		// SourceView2ÀÇ 0¹ø ·¹ÀÌ¾î¿¡ Source, Destination Figure ±×¸®±â // Draw Source and Destination Figure on Layer 0 of SourceView2
+		// SourceView2ì˜ 0ë²ˆ ë ˆì´ì–´ì— Source, Destination Figure ê·¸ë¦¬ê¸° // Draw Source and Destination Figure on Layer 0 of SourceView2
 		Src2Layer0.DrawFigureImage(flfaSource2, BLACK, 3);
 		Src2Layer0.DrawFigureImage(flfaSource2, LIME);
 		Src2Layer0.DrawFigureImage(flfaDestination2, BLACK, 3);
@@ -168,7 +168,7 @@ int main()
 		for(int64_t i = 0; i < flfaDestination2.GetCount(); ++i)
 			Src2Layer0.DrawTextImage(flfaDestination2.GetAt(i)->GetCenter(), CFLString<wchar_t>().Format(L"%lld", i), CYAN, BLACK, 12, false, 0, EGUIViewImageTextAlignment_CENTER_CENTER);
 
-		// DstView2ÀÇ 0¹ø ·¹ÀÌ¾î¿¡ °á°ú ±×¸®±â // Draw the result on layer 0 of DstView2
+		// DstView2ì˜ 0ë²ˆ ë ˆì´ì–´ì— ê²°ê³¼ ê·¸ë¦¬ê¸° // Draw the result on layer 0 of DstView2
 		Dst2Layer0.DrawFigureImage(flfaSource2, BLACK, 3);
 		Dst2Layer0.DrawFigureImage(flfaSource2, LIME);
 		Dst2Layer0.DrawFigureImage(flfaDestination2, BLACK, 3);
@@ -200,7 +200,7 @@ int main()
 		Dst2Layer0.DrawFigureImage(pFlfDstDepth1, MAGENTA, 1);
 
 
-		// Console Ãâ·Â // Console output
+		// Console ì¶œë ¥ // Console output
 		wprintf(L"Source1 CFLPointArray\n");
 		wprintf(L"%s\n\n", CFigureUtilities::ConvertFigureObjectToString(flpaSource1).GetString());
 
@@ -224,11 +224,11 @@ int main()
 		wprintf(L"Dst Result2 Index of Minimum distance\n");
 		wprintf(L"Depth1 : %lld\n\n", flvDstDepth1.v);
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		for(int32_t i = 0; i < 4; ++i)
 			viewImage[i].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable() && viewImage[2].IsAvailable() && viewImage[3].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h" 
@@ -6,26 +6,26 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliISrcImage;
 	CFLImage fliIDstImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage[2];
 
 	do
 	{
-		// µ¿ÀÛ °á°ú // operation result
+		// ë™ì‘ ê²°ê³¼ // operation result
 		CResult res = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliISrcImage.Load(L"../../ExampleImages/Threshold/Escherichia.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[0].Create(300, 0, 300 + 384, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -38,7 +38,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the image view
 		if(IsFail(res = viewImage[0].SetImagePtr(&fliISrcImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -51,57 +51,57 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views. 
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views. 
 		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
-		// Maximum Entropy Threshold °´Ã¼ »ı¼º // Create Maximum Entropy Threshold object
+		// Maximum Entropy Threshold ê°ì²´ ìƒì„± // Create Maximum Entropy Threshold object
 		CMaximumEntropyThreshold threshold;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set source image 
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set source image 
 		threshold.SetSourceImage(fliISrcImage);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set destination image
 		threshold.SetDestinationImage(fliIDstImage);
 
-		// MultiVar °´Ã¼ »ı¼º // Create MultiVar object
+		// MultiVar ê°ì²´ ìƒì„± // Create MultiVar object
 		CMultiVarL mvCondition;
 		CMultiVar<double> mvThreshold;
 
-		// 1Ã¤³Î ³í¸®Á¶°Ç ÀÔ·Â // 1Channel condition push
+		// 1ì±„ë„ ë…¼ë¦¬ì¡°ê±´ ì…ë ¥ // 1Channel condition push
 		mvCondition.PushBack(ELogicalCondition_Greater);
 
-		// ³í¸® Á¶°Ç ¼³Á¤ // Set condition value
+		// ë…¼ë¦¬ ì¡°ê±´ ì„¤ì • // Set condition value
 		threshold.SetLogicalCondition(mvCondition);
 
-		// °è»êµÈ Threshold °ªÀ» ÃßÃâ // get result threshold value
+		// ê³„ì‚°ëœ Threshold ê°’ì„ ì¶”ì¶œ // get result threshold value
 		mvThreshold = threshold.GetResultThreshold();
 
-		// ConsoleÃ¢¿¡ Threshold °ª Ãâ·Â // Output the threshold value to the console window
+		// Consoleì°½ì— Threshold ê°’ ì¶œë ¥ // Output the threshold value to the console window
 		printf("Result Threshold Value : %d", (int)mvThreshold[0]);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if((res = threshold.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Maximum Entropy Threshold.");
 			break;
 		}
 
-		// Threshold °ª ¹®ÀÚ¿­ »ı¼º // Create threshold value String
+		// Threshold ê°’ ë¬¸ìì—´ ìƒì„± // Create threshold value String
 		Base::CFLString<wchar_t> flStrThresholdValue;
 		flStrThresholdValue.Format(L"%d < threshold", (int)mvThreshold[0]);
 
-		// ·¹ÀÌ¾î´Â µû·Î ÇØÁ¦ÇÏÁö ¾Ê¾Æµµ View°¡ ÇØÁ¦ µÉ ¶§ °°ÀÌ ÇØÁ¦µÈ´Ù. // The layer is released together when View is released without releasing it separately.
+		// ë ˆì´ì–´ëŠ” ë”°ë¡œ í•´ì œí•˜ì§€ ì•Šì•„ë„ Viewê°€ í•´ì œ ë  ë•Œ ê°™ì´ í•´ì œëœë‹¤. // The layer is released together when View is released without releasing it separately.
 		CGUIViewImageLayerWrap layer = viewImage[1].GetLayer(0);
 
 		if(IsFail(res = layer.DrawTextCanvas(&CFLPoint<double>(0, 0), flStrThresholdValue.GetBuffer(), YELLOW, BLACK, 30, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false)))
@@ -110,10 +110,10 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImage[1].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

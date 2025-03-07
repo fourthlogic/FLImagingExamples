@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h" 
@@ -6,26 +6,26 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliISrcImage;
 	CFLImage fliIDstImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage[2];
 
 	do
 	{
-		// µ¿ÀÛ °á°ú // operation result
+		// ë™ì‘ ê²°ê³¼ // operation result
 		CResult res = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliISrcImage.Load(L"../../ExampleImages/Gradation/House.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[0].Create(300, 0, 300 + 384, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -38,7 +38,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the image view
 		if(IsFail(res = viewImage[0].SetImagePtr(&fliISrcImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -51,63 +51,63 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views. 
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views. 
 		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
-		// Gradation °´Ã¼ »ı¼º // Create Gradation object
+		// Gradation ê°ì²´ ìƒì„± // Create Gradation object
 		CGradation Gradation;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set source image 
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set source image 
 		Gradation.SetSourceImage(fliISrcImage);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set destination image
 		Gradation.SetDestinationImage(fliIDstImage);
 
-		// ½ÃÀÛ Alpha °ª ¼³Á¤ // Set start alpha value
+		// ì‹œì‘ Alpha ê°’ ì„¤ì • // Set start alpha value
 		CMultiVar<double> mvStartAlpha(0., 0., 0.);
 		Gradation.SetStartAlpha(mvStartAlpha);
 
-		// ³¡ Alpha °ª ¼³Á¤ // Set end alpha value
+		// ë Alpha ê°’ ì„¤ì • // Set end alpha value
 		CMultiVar<double> mvEndAlpha(0.1, 0.6, 0.9);
 		Gradation.SetEndAlpha(mvEndAlpha);
 
-		// Gradation Start Value ¼³Á¤(3Ch) // Set Gradation Start Value(3Ch)
+		// Gradation Start Value ì„¤ì •(3Ch) // Set Gradation Start Value(3Ch)
 		CMultiVar<double> mvStartValue(255, 0, 0);
 		Gradation.SetStartValue(mvStartValue);
 
-		// Gradation End Value ¼³Á¤(3Ch) // Set Gradation End Value(3Ch)
+		// Gradation End Value ì„¤ì •(3Ch) // Set Gradation End Value(3Ch)
 		CMultiVar<double> mvEndValue(0, 0, 255);
 		Gradation.SetEndValue(mvEndValue);
 
-		// Gradation Vector Figure °´Ã¼ // Gradation Vector Figure object
+		// Gradation Vector Figure ê°ì²´ // Gradation Vector Figure object
 		CFLLine<double> fllVector;
 		fllVector.Load(L"../../ExampleImages/Gradation/Vector.fig");
 
 		Gradation.SetVector(fllVector);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if((res = Gradation.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute Gradation.");
 			break;
 		}
 
-		// ·¹ÀÌ¾î´Â µû·Î ÇØÁ¦ÇÏÁö ¾Ê¾Æµµ View°¡ ÇØÁ¦ µÉ ¶§ °°ÀÌ ÇØÁ¦µÈ´Ù. // The layer is released together when View is released without releasing it separately.
+		// ë ˆì´ì–´ëŠ” ë”°ë¡œ í•´ì œí•˜ì§€ ì•Šì•„ë„ Viewê°€ í•´ì œ ë  ë•Œ ê°™ì´ í•´ì œëœë‹¤. // The layer is released together when View is released without releasing it separately.
 		CGUIViewImageLayerWrap layer1 = viewImage[0].GetLayer(0);
 		CGUIViewImageLayerWrap layer2 = viewImage[1].GetLayer(0);
 
-		// Draw Figure °´Ã¼ // Gradation Vector Figure object
+		// Draw Figure ê°ì²´ // Gradation Vector Figure object
 		CFLFigureArray flfaDrawVector;
 		flfaDrawVector.Load(L"../../ExampleImages/Gradation/DrawVector.fig");
 
@@ -126,7 +126,7 @@ int main()
 			break;
 		}
 
-		// Gradation Vector Ãâ·Â // Draw gradation vector
+		// Gradation Vector ì¶œë ¥ // Draw gradation vector
 		if(IsFail(res = layer1.DrawFigureImage(&flfaDrawVector, BLACK, 5)))
 		{
 			ErrorPrint(res, "Failed to draw text on the image view.\n");
@@ -139,7 +139,7 @@ int main()
 			break;
 		}
 
-		// text¸¦ Ãâ·ÂÇÕ´Ï´Ù. // Display text.
+		// textë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤. // Display text.
 		if(IsFail(res = layer1.DrawTextImage(&fllVector.flpPoints[0], L"Start Value(255, 0, 0)/Start Alpha(0, 0, 0)", YELLOW, BLACK, 15, false, EGUIViewImageTextAlignment_RIGHT)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
@@ -152,7 +152,7 @@ int main()
 			break;
 		}
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display View information.
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display View information.
 		if(IsFail(res = layer1.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
@@ -165,11 +165,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImage[0].Invalidate(true);
 		viewImage[1].Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

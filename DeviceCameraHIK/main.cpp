@@ -1,24 +1,24 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 
 
-// Ä«¸Ş¶ó¿¡¼­ ÀÌ¹ÌÁö Ãëµæ ÀÌº¥Æ®¸¦ ¹Ş±â À§ÇØ CDeviceEventImageBase ¸¦ »ó¼Ó ¹Ş¾Æ¼­ ±¸Çö
+// ì¹´ë©”ë¼ì—ì„œ ì´ë¯¸ì§€ ì·¨ë“ ì´ë²¤íŠ¸ë¥¼ ë°›ê¸° ìœ„í•´ CDeviceEventImageBase ë¥¼ ìƒì† ë°›ì•„ì„œ êµ¬í˜„
 class CDeviceEventImageEx : public CDeviceEventImageBase
 {
 public:
-	// CDeviceEventImageEx »ı¼ºÀÚ
+	// CDeviceEventImageEx ìƒì„±ì
 	CDeviceEventImageEx()
 	{
 		m_pViewImage = nullptr;
-		// ÀÌ¹ÌÁö¸¦ ¹ŞÀ» °´Ã¼ »ı¼º // Create ÀÌ¹ÌÁö¸¦ ¹ŞÀ» object
+		// ì´ë¯¸ì§€ë¥¼ ë°›ì„ ê°ì²´ ìƒì„± // Create ì´ë¯¸ì§€ë¥¼ ë°›ì„ object
 		m_pImage = new CFLImage;
 	}
 
-	// CDeviceEventImageEx ¼Ò¸êÀÚ
+	// CDeviceEventImageEx ì†Œë©¸ì
 	virtual ~CDeviceEventImageEx()
 	{
-		// »ı¼ºÇÑ ÀÌ¹ÌÁö °´Ã¼ ÇØÁ¦
+		// ìƒì„±í•œ ì´ë¯¸ì§€ ê°ì²´ í•´ì œ
 		if(m_pImage)
 		{
 			delete m_pImage;
@@ -26,28 +26,28 @@ public:
 		}
 	}
 
-	// ÃëµæÇÑ ÀÌ¹ÌÁö¸¦ Ç¥½ÃÇÒ ÀÌ¹ÌÁö ºä¸¦ ¼³Á¤ÇÏ´Â ÇÔ¼ö
+	// ì·¨ë“í•œ ì´ë¯¸ì§€ë¥¼ í‘œì‹œí•  ì´ë¯¸ì§€ ë·°ë¥¼ ì„¤ì •í•˜ëŠ” í•¨ìˆ˜
 	void SetViewImage(CGUIViewImageWrap* pViewImage)
 	{
 		if(pViewImage)
 		{
 			m_pViewImage = pViewImage;
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö Æ÷ÀÎÅÍ ¼³Á¤
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ í¬ì¸í„° ì„¤ì •
 			m_pViewImage->SetImagePtr(m_pImage);
 		}
 	}
 
-	// Ä«¸Ş¶ó¿¡¼­ ÀÌ¹ÌÁö Ãëµæ ½Ã È£Ãâ µÇ´Â ÇÔ¼ö
+	// ì¹´ë©”ë¼ì—ì„œ ì´ë¯¸ì§€ ì·¨ë“ ì‹œ í˜¸ì¶œ ë˜ëŠ” í•¨ìˆ˜
 	virtual void OnAcquisition(const CDeviceImageBase* pDeviceImage)
 	{
-		// ÀÌ¹ÌÁö ºäÀÇ À¯È¿¼ºÀ» È®ÀÎÇÑ´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ ìœ íš¨ì„±ì„ í™•ì¸í•œë‹¤.
 		if(m_pViewImage && m_pViewImage->IsAvailable())
 		{
-			// Ä«¸Ş¶ó¿¡¼­ Ãëµæ ÇÑ ÀÌ¹ÌÁö¸¦ ¾ò¾î¿Â´Ù.
+			// ì¹´ë©”ë¼ì—ì„œ ì·¨ë“ í•œ ì´ë¯¸ì§€ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 			pDeviceImage->GetAcquiredImage(m_pImage);
 
-			// ÀÌ¹ÌÁö ºä¸¦ Àç°»½Å ÇÑ´Ù.
+			// ì´ë¯¸ì§€ ë·°ë¥¼ ì¬ê°±ì‹  í•œë‹¤.
 			m_pViewImage->Invalidate();
 		}
 	}
@@ -62,10 +62,10 @@ int main()
 {
 	CResult drReturn = EResult_UnknownError;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
-	// HIK Ä«¸Ş¶ó ¼±¾ğ
+	// HIK ì¹´ë©”ë¼ ì„ ì–¸
 	CDeviceCameraHIK camHik;
 
 	do
@@ -78,7 +78,7 @@ int main()
 		CDeviceGenICamBase::EConnectionMethod eConnectionMethod = CDeviceGenICamBase::EConnectionMethod_SerialNumber;
 		CFLString<wchar_t> flsConnection = L"";
 
-		// ÀåÄ¡ Å¸ÀÔÀ» ¼±ÅÃÇÕ´Ï´Ù.
+		// ì¥ì¹˜ íƒ€ì…ì„ ì„ íƒí•©ë‹ˆë‹¤.
 		while(true)
 		{
 			printf("1. GigE\n");
@@ -123,7 +123,7 @@ int main()
 
 		printf("\n");
 
-		// ÀåÄ¡ Ã£±â ¹æ¹ıÀ» ¼±ÅÃÇÕ´Ï´Ù.
+		// ì¥ì¹˜ ì°¾ê¸° ë°©ë²•ì„ ì„ íƒí•©ë‹ˆë‹¤.
 		while(true)
 		{
 			printf("1. Auto Detect\n");
@@ -162,7 +162,7 @@ int main()
 		{
 			CFLArray<CFLString<wchar_t>> flarrSerialNumbers;
 
-			// ¿¬°áµÇ¾î ÀÖ´Â Ä«¸Ş¶óÀÇ ½Ã¸®¾ó ¹øÈ£¸¦ ¾ò´Â´Ù.
+			// ì—°ê²°ë˜ì–´ ìˆëŠ” ì¹´ë©”ë¼ì˜ ì‹œë¦¬ì–¼ ë²ˆí˜¸ë¥¼ ì–»ëŠ”ë‹¤.
 			switch(eDeviceType)
 			{
 			case CDeviceGenICamBase::EDeviceType_GigE:
@@ -192,7 +192,7 @@ int main()
 				break;
 			}
 
-			// ¿¬°á ÇÒ Ä«¸Ş¶ó¸¦ ¼±ÅÃÇÕ´Ï´Ù.
+			// ì—°ê²° í•  ì¹´ë©”ë¼ë¥¼ ì„ íƒí•©ë‹ˆë‹¤.
 			while(true)
 			{
 				for(int64_t i = 0; i < flarrSerialNumbers.GetCount(); ++i)
@@ -227,7 +227,7 @@ int main()
 		{
 			if(eDeviceType == CDeviceGenICamBase::EDeviceType_GigE)
 			{
-				// ¿¬°á ¹æ¹ıÀ» ¼±ÅÃÇÕ´Ï´Ù.
+				// ì—°ê²° ë°©ë²•ì„ ì„ íƒí•©ë‹ˆë‹¤.
 				while(true)
 				{
 					printf("1. Serial Number\n");
@@ -265,7 +265,7 @@ int main()
 			else
 				eConnectionMethod = CDeviceGenICamBase::EConnectionMethod_SerialNumber;
 
-			// ½Ã¸®¾ó ¹øÈ£ È¤Àº IP ÁÖ¼Ò¸¦ ÀÔ·Â ¹Ş´Â´Ù.
+			// ì‹œë¦¬ì–¼ ë²ˆí˜¸ í˜¹ì€ IP ì£¼ì†Œë¥¼ ì…ë ¥ ë°›ëŠ”ë‹¤.
 			if(eConnectionMethod == CDeviceGenICamBase::EConnectionMethod_SerialNumber)
 				printf("Input Serial Number: ");
 			else
@@ -277,16 +277,16 @@ int main()
 			flsConnection.Replace(L"\n", L"");
 		}
 
-		// ÀÌº¥Æ®¸¦ ¹ŞÀ» °´Ã¼ ¼±¾ğ
+		// ì´ë²¤íŠ¸ë¥¼ ë°›ì„ ê°ì²´ ì„ ì–¸
 		CDeviceEventImageEx eventImage;
 
-		// Ä«¸Ş¶ó¿¡ ÀÌº¥Æ® °´Ã¼ ¼³Á¤
+		// ì¹´ë©”ë¼ì— ì´ë²¤íŠ¸ ê°ì²´ ì„¤ì •
 		camHik.RegisterDeviceEvent(&eventImage);
 
-		// Ä«¸Ş¶ó¿¡ ÀåÄ¡ Å¸ÀÔ ¼³Á¤
+		// ì¹´ë©”ë¼ì— ì¥ì¹˜ íƒ€ì… ì„¤ì •
 		camHik.SetDeviceType(eDeviceType);
 
-		// ÀÎµ¦½º¿¡ ÇØ´çÇÏ´Â Ä«¸Ş¶ó·Î ¿¬°áÀ» ¼³Á¤ÇÑ´Ù.
+		// ì¸ë±ìŠ¤ì— í•´ë‹¹í•˜ëŠ” ì¹´ë©”ë¼ë¡œ ì—°ê²°ì„ ì„¤ì •í•œë‹¤.
 		if(bAutoDetect)
 		{
 			switch(eDeviceType)
@@ -313,18 +313,18 @@ int main()
 		}
 		else
 		{
-			// ÀåÄ¡ ¿¬°á ¹æ¹ıÀ» ¼³Á¤ÇÕ´Ï´Ù.
+			// ì¥ì¹˜ ì—°ê²° ë°©ë²•ì„ ì„¤ì •í•©ë‹ˆë‹¤.
 			camHik.SetConnectionMethod(eConnectionMethod);
 
 			if(eConnectionMethod == CDeviceGenICamBase::EConnectionMethod_SerialNumber)
-				// ½Ã¸®¾ó ¹øÈ£¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+				// ì‹œë¦¬ì–¼ ë²ˆí˜¸ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 				camHik.SetSerialNumber(flsConnection);
 			else
-				// IP ÁÖ¼Ò¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+				// IP ì£¼ì†Œë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 				camHik.SetIPAddress(flsConnection);
 		}
 
-		// Ä«¸Ş¶ó¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+		// ì¹´ë©”ë¼ë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 		drReturn = camHik.Initialize();
 		if(drReturn.IsFail())
 		{
@@ -332,7 +332,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(viewImage.Create(0, 0, 1000, 1000).IsFail())
 		{
 			drReturn = EResult_FailedToCreateObject;
@@ -343,7 +343,7 @@ int main()
 
 		eventImage.SetViewImage(&viewImage);
 
-		// Ä«¸Ş¶ó¸¦ Live ÇÕ´Ï´Ù.
+		// ì¹´ë©”ë¼ë¥¼ Live í•©ë‹ˆë‹¤.
 		drReturn = camHik.Live();
 		if(drReturn.IsFail())
 		{
@@ -351,13 +351,13 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
 
-	// Ä«¸Ş¶óÀÇ ÃÊ±âÈ­¸¦ ÇØÁ¦ÇÕ´Ï´Ù.
+	// ì¹´ë©”ë¼ì˜ ì´ˆê¸°í™”ë¥¼ í•´ì œí•©ë‹ˆë‹¤.
 	camHik.Terminate();
 
 	if(drReturn.IsFail())

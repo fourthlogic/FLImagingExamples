@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -8,13 +8,13 @@ int main()
 {
 	const int32_t i32ViewCount = 4;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage[i32ViewCount];
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[0].Create(400, 0, 912, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -40,14 +40,14 @@ int main()
 
 		for(int32_t i = 1; i < i32ViewCount; ++i)
 		{
-			// ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoint of the image view
+			// ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoint of the image view
 			if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[i])))
 			{
 				ErrorPrint(res, "Failed to synchronize view\n");
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Align the position of the image view window
+			// ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Align the position of the image view window
 			if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[i])))
 			{
 				ErrorPrint(res, "Failed to synchronize window.\n");
@@ -55,13 +55,13 @@ int main()
 			}
 		}
 
-		// SourceView, DstView ÀÇ 0¹ø ·¹ÀÌ¾î °¡Á®¿À±â // Get Layer 0 of SourceView, DstView
+		// SourceView, DstView ì˜ 0ë²ˆ ë ˆì´ì–´ ê°€ì ¸ì˜¤ê¸° // Get Layer 0 of SourceView, DstView
 		CGUIViewImageLayerWrap ViewLayer[i32ViewCount];
 
 		for(int32_t i = 0; i < i32ViewCount; ++i)
 			ViewLayer[i] = viewImage[i].GetLayer(0);
 
-		// Figure »ı¼º // Create Figure
+		// Figure ìƒì„± // Create Figure
 		CFLRect<double> flr(50, 50, 100, 100, 15);
 		CFLQuad<double> flq(200, 50, 360, 50, 400, 160, 150, 110);
 		CFLCircle<double> flc(100., 150., 30., 0, 30, 90, EArcClosingMethod_Center);
@@ -85,22 +85,22 @@ int main()
 
 		wprintf(L"\n");
 
-		// Figure ±×¸®±â // Draw Figure
+		// Figure ê·¸ë¦¬ê¸° // Draw Figure
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
 			ViewLayer[i].DrawFigureImage(flfa, LIME);
 
 		//////////////////////////////// GetCenterElementwise()
-		// Áß½ÉÁ¡ ÁÂÇ¥¸¦ ´ãÀ» FigureArray »ı¼º // Create a FigureArray to hold the coordinates of the center point
+		// ì¤‘ì‹¬ì  ì¢Œí‘œë¥¼ ë‹´ì„ FigureArray ìƒì„± // Create a FigureArray to hold the coordinates of the center point
 		CFLFigureArray flfaCenter;
 
-		// Figure Array °¢ ¿ä¼ÒÀÇ Áß½ÉÁ¡ °è»ê // Calculate the center point of each element of Figure Array
+		// Figure Array ê° ìš”ì†Œì˜ ì¤‘ì‹¬ì  ê³„ì‚° // Calculate the center point of each element of Figure Array
 		flfa.GetCenterElementwise(&flfaCenter);
 
-		// Áß½ÉµéÀ» View0ÀÇ 0¹ø ·¹ÀÌ¾î¿¡ ±×¸®±â // Draw the centers on layer 0 of View0
+		// ì¤‘ì‹¬ë“¤ì„ View0ì˜ 0ë²ˆ ë ˆì´ì–´ì— ê·¸ë¦¬ê¸° // Draw the centers on layer 0 of View0
 		ViewLayer[0].DrawFigureImage(flfaCenter, RED);
 		ViewLayer[0].DrawTextCanvas(TPointD(0, 0), L"GetCenterElementwise() Result", YELLOW, BLACK, 15);
 
-		// ÄÜ¼Ö¿¡ Áß½É ÁÂÇ¥ Ç¥½Ã // Print center coordinates in console
+		// ì½˜ì†”ì— ì¤‘ì‹¬ ì¢Œí‘œ í‘œì‹œ // Print center coordinates in console
 		wprintf(L"Center Point\n");
 
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
@@ -113,13 +113,13 @@ int main()
 
 
 		//////////////////////////////// GetPerimeterElementwise()
-		// °¢ µÑ·¹ÀÇ ±æÀÌ¸¦ ÀúÀåÇÒ CFLFigureArray »ı¼º // Create CFLFigureArray to store the length of each perimeter
+		// ê° ë‘˜ë ˆì˜ ê¸¸ì´ë¥¼ ì €ì¥í•  CFLFigureArray ìƒì„± // Create CFLFigureArray to store the length of each perimeter
 		CFLFigureArray flfaPerimeter;
 
-		// Figure Array °¢ ¿ä¼ÒÀÇ µÑ·¹ °è»ê // Calculate the perimeter of each element of the Figure Array
+		// Figure Array ê° ìš”ì†Œì˜ ë‘˜ë ˆ ê³„ì‚° // Calculate the perimeter of each element of the Figure Array
 		flfa.GetPerimeterElementwise(&flfaPerimeter);
 
-		// Figure Array °¢ ¿ä¼ÒÀÇ µÑ·¹ Ç¥½Ã // Display perimeter of each element of Figure Array
+		// Figure Array ê° ìš”ì†Œì˜ ë‘˜ë ˆ í‘œì‹œ // Display perimeter of each element of Figure Array
 		for(int64_t i = 0; i < flfaPerimeter.GetCount(); ++i)
 		{
 			CFLString<wchar_t> strPerimeter;
@@ -128,7 +128,7 @@ int main()
 		}
 		ViewLayer[1].DrawTextCanvas(TPointD(0, 0), L"GetPerimeterElementwise() Result", YELLOW, BLACK, 15);
 
-		// ÄÜ¼Ö¿¡ ±æÀÌ Ç¥½Ã // Display the length in the console
+		// ì½˜ì†”ì— ê¸¸ì´ í‘œì‹œ // Display the length in the console
 		wprintf(L"Perimeter\n");
 
 		for(int64_t i = 0; i < flfaPerimeter.GetCount(); ++i)
@@ -141,17 +141,17 @@ int main()
 
 
 		//////////////////////////////// GetCenterOfGravityElementwise()
-		// ¹«°ÔÁß½ÉÁ¡ ÁÂÇ¥¸¦ ´ãÀ» FigureArray »ı¼º // Create a FigureArray to contain the coordinates of the center of gravity
+		// ë¬´ê²Œì¤‘ì‹¬ì  ì¢Œí‘œë¥¼ ë‹´ì„ FigureArray ìƒì„± // Create a FigureArray to contain the coordinates of the center of gravity
 		CFLFigureArray flfaCenterOfGravity;
 
-		// Figure Array °¢ ¿ä¼ÒÀÇ ¹«°ÔÁß½ÉÁ¡ °è»ê // Calculate the center of gravity of each element of the Figure Array
+		// Figure Array ê° ìš”ì†Œì˜ ë¬´ê²Œì¤‘ì‹¬ì  ê³„ì‚° // Calculate the center of gravity of each element of the Figure Array
 		flfa.GetCenterOfGravityElementwise(&flfaCenterOfGravity);
 
-		// ¹«°ÔÁß½ÉµéÀ» View0ÀÇ 0¹ø ·¹ÀÌ¾î¿¡ ±×¸®±â // Draw the centers of gravity on Layer 0 of View0
+		// ë¬´ê²Œì¤‘ì‹¬ë“¤ì„ View0ì˜ 0ë²ˆ ë ˆì´ì–´ì— ê·¸ë¦¬ê¸° // Draw the centers of gravity on Layer 0 of View0
 		ViewLayer[2].DrawFigureImage(flfaCenterOfGravity, CYAN);
 		ViewLayer[2].DrawTextCanvas(TPointD(0, 0), L"GetCenterOfGravityElementwise() Result", YELLOW, BLACK, 15);
 
-		// ÄÜ¼Ö¿¡ ¹«°ÔÁß½É ÁÂÇ¥ Ç¥½Ã // Display barycentric coordinates in console
+		// ì½˜ì†”ì— ë¬´ê²Œì¤‘ì‹¬ ì¢Œí‘œ í‘œì‹œ // Display barycentric coordinates in console
 		wprintf(L"Center Of Gravity Point\n");
 
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
@@ -164,17 +164,17 @@ int main()
 
 
 		//////////////////////////////// GetMinimumEnclosingRectangleElementwise()
-		// ÃÖ¼ÒµÑ·¹ Á÷»ç°¢ÇüÀ» ´ãÀ» FigureArray »ı¼º // Create a FigureArray to contain the minimum enclosing rectangle
+		// ìµœì†Œë‘˜ë ˆ ì§ì‚¬ê°í˜•ì„ ë‹´ì„ FigureArray ìƒì„± // Create a FigureArray to contain the minimum enclosing rectangle
 		CFLFigureArray flfaMER;
 
-		// Figure Array °¢ ¿ä¼ÒÀÇ ÃÖ¼ÒµÑ·¹ Á÷»ç°¢ÇüÀ» °è»ê // Calculate the minimum enclosing rectangle of each element of the Figure Array
+		// Figure Array ê° ìš”ì†Œì˜ ìµœì†Œë‘˜ë ˆ ì§ì‚¬ê°í˜•ì„ ê³„ì‚° // Calculate the minimum enclosing rectangle of each element of the Figure Array
 		flfa.GetMinimumEnclosingRectangleElementwise(&flfaMER);
 
-		// ÃÖ¼ÒµÑ·¹ Á÷»ç°¢ÇüµéÀ» View0ÀÇ 0¹ø ·¹ÀÌ¾î¿¡ ±×¸®±â // Draw the minimum enclosing rectangle on Layer 0 of View0
+		// ìµœì†Œë‘˜ë ˆ ì§ì‚¬ê°í˜•ë“¤ì„ View0ì˜ 0ë²ˆ ë ˆì´ì–´ì— ê·¸ë¦¬ê¸° // Draw the minimum enclosing rectangle on Layer 0 of View0
 		ViewLayer[3].DrawFigureImage(flfaMER, BLUE);
 		ViewLayer[3].DrawTextCanvas(TPointD(0, 0), L"GetMinimumEnclosingRectangleElementwise() Result", YELLOW, BLACK, 15);
 
-		// ÄÜ¼Ö¿¡ ÃÖ¼ÒµÑ·¹ Á÷»ç°¢ÇüÀ» Ç¥½Ã // Display the minimum enclosing rectangle in console
+		// ì½˜ì†”ì— ìµœì†Œë‘˜ë ˆ ì§ì‚¬ê°í˜•ì„ í‘œì‹œ // Display the minimum enclosing rectangle in console
 		wprintf(L"Minimum Enclosing Rectangle\n");
 
 		for(int32_t i = 0; i < flfa.GetCount(); ++i)
@@ -185,13 +185,13 @@ int main()
 
 		wprintf(L"\n");
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		for(int32_t i = 0; i < i32ViewCount; ++i)
 		{
 			viewImage[i].Invalidate(true);
 		}
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable() && viewImage[2].IsAvailable() && viewImage[3].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

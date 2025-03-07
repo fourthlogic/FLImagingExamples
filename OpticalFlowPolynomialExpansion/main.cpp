@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -7,32 +7,32 @@ class CMessageReceiver : public CFLBase
 {
 public:
 
-	// CMessageReceiver »ı¼ºÀÚ
+	// CMessageReceiver ìƒì„±ì
 	CMessageReceiver(CGUIViewImageWrap* pViewImageSrc, CGUIViewImageWrap* pViewImageDst) : m_pViewImageSrc(pViewImageSrc), m_pViewImageDst(pViewImageDst), m_bViewImageAvailable(true)
 	{
-		// ¸Ş¼¼Áö¸¦ Àü´Ş ¹Ş±â À§ÇØ CBroadcastManager ¿¡ ±¸µ¶ µî·Ï
+		// ë©”ì„¸ì§€ë¥¼ ì „ë‹¬ ë°›ê¸° ìœ„í•´ CBroadcastManager ì— êµ¬ë… ë“±ë¡
 		CBroadcastManager::Subscribe(this);
 	}
 
-	// CMessageReceiver ¼Ò¸êÀÚ
+	// CMessageReceiver ì†Œë©¸ì
 	virtual ~CMessageReceiver()
 	{
-		// °´Ã¼°¡ ¼Ò¸êÇÒ¶§ ¸Ş¼¼Áö ¼ö½ÅÀ» Áß´ÜÇÏ±â À§ÇØ ±¸µ¶À» ÇØÁ¦ÇÑ´Ù.
+		// ê°ì²´ê°€ ì†Œë©¸í• ë•Œ ë©”ì„¸ì§€ ìˆ˜ì‹ ì„ ì¤‘ë‹¨í•˜ê¸° ìœ„í•´ êµ¬ë…ì„ í•´ì œí•œë‹¤.
 		CBroadcastManager::Unsubscribe(this);
 	}
 
 	DeclareGetClassType();
 
-	// ¸Ş¼¼Áö°¡ µé¾î¿À¸é È£ÃâµÇ´Â ÇÔ¼ö OnReceiveBroadcast ¿À¹ö¶óÀÌµå ÇÏ¿© ±¸Çö
+	// ë©”ì„¸ì§€ê°€ ë“¤ì–´ì˜¤ë©´ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜ OnReceiveBroadcast ì˜¤ë²„ë¼ì´ë“œ í•˜ì—¬ êµ¬í˜„
 	void OnReceiveBroadcast(const CBroadcastMessage* pMessage) override
 	{
 		do
 		{
-			// pMessage °¡ nullptr ÀÎÁö È®ÀÎ
+			// pMessage ê°€ nullptr ì¸ì§€ í™•ì¸
 			if(pMessage == nullptr)
 				break;
 
-			// ¸Ş¼¼ÁöÀÇ Ã¤³ÎÀ» È®ÀÎ
+			// ë©”ì„¸ì§€ì˜ ì±„ë„ì„ í™•ì¸
 			switch(pMessage->GetChannel())
 			{
 			case EGUIBroadcast_ViewImage_PreDestroy:
@@ -40,7 +40,7 @@ public:
 					if(!m_bViewImageAvailable)
 						break;
 
-					// GetCaller() °¡ µî·ÏÇÑ ÀÌ¹ÌÁöºäÀÎÁö È®ÀÎ
+					// GetCaller() ê°€ ë“±ë¡í•œ ì´ë¯¸ì§€ë·°ì¸ì§€ í™•ì¸
 					if(m_pViewImageSrc && pMessage->GetCaller() == (const CFLBase*)m_pViewImageSrc->GetMessageCallerPtr())
 					{
 						m_bViewImageAvailable = false;
@@ -72,122 +72,122 @@ protected:
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSrcImage;
 	CFLImage fliDstImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSrc;
 	CGUIViewImageWrap viewImageDst;
 
-	// ¸Ş¼¼Áö¸¦ Àü´Ş ¹ŞÀ» CMessageReceiver °´Ã¼ »ı¼º // Create ¸Ş¼¼Áö¸¦ Àü´Ş ¹ŞÀ» CMessageReceiver object
+	// ë©”ì„¸ì§€ë¥¼ ì „ë‹¬ ë°›ì„ CMessageReceiver ê°ì²´ ìƒì„± // Create ë©”ì„¸ì§€ë¥¼ ì „ë‹¬ ë°›ì„ CMessageReceiver object
 	CMessageReceiver msgReceiver(&viewImageSrc, &viewImageDst);
 
-	// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+	// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = fliSrcImage.Load(L"../../ExampleImages/OpticalFlowPolynomialExpansion/Highway.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// OpticalFlowPolynomialExpansion °´Ã¼ »ı¼º // Create OpticalFlowPolynomialExpansion object
+		// OpticalFlowPolynomialExpansion ê°ì²´ ìƒì„± // Create OpticalFlowPolynomialExpansion object
 		COpticalFlowPolynomialExpansion OpticalFlowPolynomialExpansion;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		OpticalFlowPolynomialExpansion.SetSourceImage(fliSrcImage);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		OpticalFlowPolynomialExpansion.SetDestinationImage(fliDstImage);
-		// Pyramid Level ¼³Á¤
+		// Pyramid Level ì„¤ì •
 		OpticalFlowPolynomialExpansion.SetPyramidLevel(2);
-		// Iteration ¼³Á¤
+		// Iteration ì„¤ì •
 		OpticalFlowPolynomialExpansion.SetIteration(3);
-		// Window Size ¼³Á¤
+		// Window Size ì„¤ì •
 		OpticalFlowPolynomialExpansion.SetWindowSize(15);
 
 		printf("Processing.....\n");
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = OpticalFlowPolynomialExpansion.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute algorithm.");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create the source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create the source image view
 		if((res = viewImageSrc.Create(400, 0, 1012, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if((res = viewImageDst.Create(1012, 0, 1624, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if((res = viewImageSrc.SetImagePtr(&fliSrcImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if((res = viewImageDst.SetImagePtr(&fliDstImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = viewImageSrc.SynchronizePointOfView(&viewImageDst)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ÆäÀÌÁö¸¦ µ¿±âÈ­ ÇÑ´Ù
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ í˜ì´ì§€ë¥¼ ë™ê¸°í™” í•œë‹¤
 		if((res = viewImageSrc.SynchronizePageIndex(&viewImageDst)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSrc.SynchronizeWindow(&viewImageDst)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if((res = viewImageDst.ZoomFit()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to zoom fit of the image view.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSrc = viewImageSrc.GetLayer(0);
 		CGUIViewImageLayerWrap layerDst = viewImageDst.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSrc.Clear();
 		layerDst.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((res = layerSrc.DrawTextCanvas(&CFLPoint<double>(0, 30), L"Source Image", YELLOW, BLACK, 20)).IsFail())
@@ -202,34 +202,34 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSrc.Invalidate(true);
 		viewImageDst.Invalidate(true);
 
 		Foundation::CFLPoint<double> m_flpStart, m_flpEnd;
 		Foundation::CFLLine<double> m_fllDisplay;
 
-		// Ãâ·ÂÇÒ Optical Flow Vector Å©±â ÃÖ¼Ò°ª ¼³Á¤
+		// ì¶œë ¥í•  Optical Flow Vector í¬ê¸° ìµœì†Œê°’ ì„¤ì •
 		double f64MinVectorSize = 1;
 
 		int32_t i32FlowWidth = (int32_t)fliSrcImage.GetWidth();
 		int32_t i32FlowHeight = (int32_t)fliSrcImage.GetHeight();
 
-		// Optical Flow Vector °£°İ ¼³Á¤
+		// Optical Flow Vector ê°„ê²© ì„¤ì •
 		int32_t i32GridStep = i32FlowWidth > i32FlowHeight ? i32FlowWidth / 50 : i32FlowHeight / 50;
 
-		// ÀÌ¹ÌÁö ÆäÀÌÁö º¯°æÀ¸·Î ÀÎÇÑ Auto Clear Mode ºñÈ°¼ºÈ­
+		// ì´ë¯¸ì§€ í˜ì´ì§€ ë³€ê²½ìœ¼ë¡œ ì¸í•œ Auto Clear Mode ë¹„í™œì„±í™”
 		viewImageSrc.SetLayerAutoClearMode(0, ELayerAutoClearMode_PageChanged, false);
 		viewImageDst.SetLayerAutoClearMode(0, ELayerAutoClearMode_PageChanged, false);
 		viewImageSrc.SetLayerAutoClearMode(1, ELayerAutoClearMode_PageChanged, false);
 
-		// Ã¹¹øÂ° ÀÌ¹ÌÁö ÆäÀÌÁö ¼±ÅÃ
+		// ì²«ë²ˆì§¸ ì´ë¯¸ì§€ í˜ì´ì§€ ì„ íƒ
 		viewImageSrc.MoveToPage(0);
 		viewImageDst.MoveToPage(0);
 
 		viewImageSrc.GetLayer(1).SetLayerDrawingMethod(ELayerDrawingMethod_Manual);
 
-		// ÀÌ¹ÌÁö ºä¿¡ Optical Flow Ãâ·Â
+		// ì´ë¯¸ì§€ ë·°ì— Optical Flow ì¶œë ¥
 		while(msgReceiver.IsViewImageAvailable())
 		{
 			if(fliSrcImage.GetPageCount() - 1 == fliSrcImage.GetSelectedPageIndex())
@@ -245,10 +245,10 @@ int main()
 			{
 				for(int32_t i32Height = 0; i32Height < i32FlowHeight; i32Height += i32GridStep)
 				{
-					// Destination ÀÌ¹ÌÁö Pixel¿¡ Á¢±ÙÇÏ±â À§ÇØ Pointer ¹Ş±â
+					// Destination ì´ë¯¸ì§€ Pixelì— ì ‘ê·¼í•˜ê¸° ìœ„í•´ Pointer ë°›ê¸°
 					float** ppF32FlowPtr = (float**)fliDstImage.GetYOffsetTable();
 
-					// Start -> End Point ¸¸µé±â
+					// Start -> End Point ë§Œë“¤ê¸°
 					m_flpStart.x = i32Width;
 					m_flpStart.y = i32Height;
 
@@ -262,7 +262,7 @@ int main()
 					if(!msgReceiver.IsViewImageAvailable())
 						break;
 
-					// ÀÌ¹ÌÁö ºä¿¡ È­»ìÇ¥(Optical Flow Vector) ±×¸®±â
+					// ì´ë¯¸ì§€ ë·°ì— í™”ì‚´í‘œ(Optical Flow Vector) ê·¸ë¦¬ê¸°
 					if(m_fllDisplay.GetLength() > f64MinVectorSize)
 					{
 						viewImageSrc.GetLayer(1).DrawFigureImage(m_fllDisplay.MakeArrowWithRatio(0.4, true, 30), BLACK, 3);

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,14 +6,14 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage[3];
 
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[0].Create(0, 0, 400, 440)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -32,7 +32,7 @@ int main()
 			break;
 		}
 
-		// 3D Object ÆÄÀÏ ·Îµå // Load 3D Object file
+		// 3D Object íŒŒì¼ ë¡œë“œ // Load 3D Object file
 		CFL3DObject* pObj3D = new CFL3DObject();
 		pObj3D->Load(L"../../ExampleImages/ProjectionUtilities3D/Cylinder.step");
 
@@ -40,10 +40,10 @@ int main()
 		CFLImage fliRes;
 		CFLFigureText<int32_t> figureText;
 
-		// CProjectionUtilities3D °´Ã¼ »ı¼º // Create CProjectionUtilities3D object
+		// CProjectionUtilities3D ê°ì²´ ìƒì„± // Create CProjectionUtilities3D object
 		CProjectionUtilities3D pu;
 
-		// CProjectionUtilities3D °´Ã¼¿¡ 3D Object ¸¦ Ãß°¡ // Add 3D Object to CProjectionUtilities3D object
+		// CProjectionUtilities3D ê°ì²´ì— 3D Object ë¥¼ ì¶”ê°€ // Add 3D Object to CProjectionUtilities3D object
 		pu.PushBack3DObject(pObj3D);
  
  		if(pObj3D)
@@ -52,14 +52,14 @@ int main()
  			pObj3D = nullptr;
  		}
 
-		// °á°ú ÀÌ¹ÌÁö Å©±â ¼³Á¤ // Set result image size
+		// ê²°ê³¼ ì´ë¯¸ì§€ í¬ê¸° ì„¤ì • // Set result image size
 		pu.SetResultImageSize(400, 400);
 
-		// °á°ú ÀÌ¹ÌÁö ¹è°æ »ö»ó ¼³Á¤ // Set background color of result image
+		// ê²°ê³¼ ì´ë¯¸ì§€ ë°°ê²½ ìƒ‰ìƒ ì„¤ì • // Set background color of result image
 		pu.SetBackgroundColorOfResultImage(21, 21, 21);
 
-		// 1-1. Æ¯Á¤ ½ÃÁ¡ÀÇ Åõ¿µ ÀÌ¹ÌÁö ¾ò±â // 1-1. Get projection image from specific viewpoint
-		// Ä«¸Ş¶ó ½ÃÁ¡ ¼³Á¤ // Set camera viewpoint
+		// 1-1. íŠ¹ì • ì‹œì ì˜ íˆ¬ì˜ ì´ë¯¸ì§€ ì–»ê¸° // 1-1. Get projection image from specific viewpoint
+		// ì¹´ë©”ë¼ ì‹œì  ì„¤ì • // Set camera viewpoint
 		CFL3DCamera camSet1;
 		camSet1.SetProjectionType(E3DCameraProjectionType_Perspective);
 		camSet1.SetPosition(CFLPoint3F(-1.41f, -317.67f, 280.92f));
@@ -70,24 +70,24 @@ int main()
 		camSet1.SetNearZ(271.84f);
 		camSet1.SetFarZ(459.30f);
 
-		// Ä«¸Ş¶ó ¼³Á¤ // Set camera
+		// ì¹´ë©”ë¼ ì„¤ì • // Set camera
 		pu.SetCamera(camSet1);
 
-		// ÇÁ·ÎÁ§¼Ç ¼öÇà // Perform projection
+		// í”„ë¡œì ì…˜ ìˆ˜í–‰ // Perform projection
 		res = pu.Execute();
 
-		// °á°ú ÀÌ¹ÌÁö ¾ò±â // Get result image
+		// ê²°ê³¼ ì´ë¯¸ì§€ ì–»ê¸° // Get result image
 		res = pu.GetResult(fliRes);
 
-		// °á°ú ÀÌ¹ÌÁö¿¡ Á¤º¸ ÅØ½ºÆ® Ãß°¡ // Add information text to result image
+		// ê²°ê³¼ ì´ë¯¸ì§€ì— ì •ë³´ í…ìŠ¤íŠ¸ ì¶”ê°€ // Add information text to result image
 		figureText.Set(CFLPoint<int32_t>(10, 10), L"1. Projection(Camera Set 1)", YELLOW, BLACK, 20, false, 0., EFigureTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EFigureTextFontWeight_BOLD, false);
 		fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
 
-		// ÃÖÁ¾ ÀÌ¹ÌÁö¿¡ Åõ¿µ °á°ú ÀÌ¹ÌÁö º¹»ç // Copy projection result image to final image
+		// ìµœì¢… ì´ë¯¸ì§€ì— íˆ¬ì˜ ê²°ê³¼ ì´ë¯¸ì§€ ë³µì‚¬ // Copy projection result image to final image
 		fliFinal0.Assign(fliRes);
 
-		// 1-2. Æ¯Á¤ ½ÃÁ¡ÀÇ Åõ¿µ ÀÌ¹ÌÁö ¾ò±â // 1-2. Get projection image from another specific viewpoint
-		// Ä«¸Ş¶ó ½ÃÁ¡ ¼³Á¤ // Set camera viewpoint
+		// 1-2. íŠ¹ì • ì‹œì ì˜ íˆ¬ì˜ ì´ë¯¸ì§€ ì–»ê¸° // 1-2. Get projection image from another specific viewpoint
+		// ì¹´ë©”ë¼ ì‹œì  ì„¤ì • // Set camera viewpoint
 		CFL3DCamera camSet2;
 		camSet2.SetProjectionType(E3DCameraProjectionType_Perspective);
 		camSet2.SetPosition(CFLPoint3F(-80.38f, 97.35f, 341.92f));
@@ -98,83 +98,83 @@ int main()
 		camSet2.SetNearZ(148.33f);
 		camSet2.SetFarZ(390.77f);
 
-		// Ä«¸Ş¶ó ¼³Á¤ // Set camera
+		// ì¹´ë©”ë¼ ì„¤ì • // Set camera
 		pu.SetCamera(camSet2);
 
-		// ÇÁ·ÎÁ§¼Ç ¼öÇà // Perform projection
+		// í”„ë¡œì ì…˜ ìˆ˜í–‰ // Perform projection
 		res = pu.Execute();
 
-		// °á°ú ÀÌ¹ÌÁö ¾ò±â // Get result image
+		// ê²°ê³¼ ì´ë¯¸ì§€ ì–»ê¸° // Get result image
 		res = pu.GetResult(fliRes);
 
-		// °á°ú ÀÌ¹ÌÁö¿¡ Á¤º¸ ÅØ½ºÆ® Ãß°¡ // Add information text to result image
+		// ê²°ê³¼ ì´ë¯¸ì§€ì— ì •ë³´ í…ìŠ¤íŠ¸ ì¶”ê°€ // Add information text to result image
 		figureText.Set(CFLPoint<int32_t>(10, 10), L"1. Projection(Camera Set 2)", YELLOW, BLACK, 20, false, 0., EFigureTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EFigureTextFontWeight_BOLD, false);
 		fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
 
-		// ÃÖÁ¾ ÀÌ¹ÌÁö¿¡ Åõ¿µ °á°ú ÀÌ¹ÌÁö Ãß°¡ // Add projection result image to final image
+		// ìµœì¢… ì´ë¯¸ì§€ì— íˆ¬ì˜ ê²°ê³¼ ì´ë¯¸ì§€ ì¶”ê°€ // Add projection result image to final image
 		fliFinal0.PushBackPage(fliRes);
-		// °á°ú ÀÌ¹ÌÁö¸¦ ÀÌ¹ÌÁö ºä¿¡ ·Îµå // Load result image into image view		
+		// ê²°ê³¼ ì´ë¯¸ì§€ë¥¼ ì´ë¯¸ì§€ ë·°ì— ë¡œë“œ // Load result image into image view		
 		viewImage[0].GetIntrinsicImage()->Assign(fliFinal0);
 		viewImage[0].SetImagePtr(viewImage[0].GetIntrinsicImage());
 		viewImage[0].SetFixThumbnailView(true);
 
 
-		// 2. Ä«¸Ş¶ó 1°ú Ä«¸Ş¶ó 2 »çÀÌÀÇ ½ÃÁ¡¿¡ ´ëÇÑ ÇÁ·ÎÁ§¼Ç // 2. Projection for viewpoints between Camera 1 and Camera 2		
+		// 2. ì¹´ë©”ë¼ 1ê³¼ ì¹´ë©”ë¼ 2 ì‚¬ì´ì˜ ì‹œì ì— ëŒ€í•œ í”„ë¡œì ì…˜ // 2. Projection for viewpoints between Camera 1 and Camera 2		
 		// Set topology type
 		pu.SetTopologyType(ETopologyType3D_Wireframe);
 
 		for(int32_t i = 0; i <= 10; ++i)
 		{
-			// Ä«¸Ş¶ó ½ÃÁ¡ ¼³Á¤ // Set camera viewpoint
+			// ì¹´ë©”ë¼ ì‹œì  ì„¤ì • // Set camera viewpoint
 			CFL3DCamera camInterpolation;
 			float f32T = (float)i * 0.1f;
 			CFL3DCamera::Interpolate(camSet1, camSet2, f32T, camInterpolation);
 
-			// Ä«¸Ş¶ó ¼³Á¤ // Set camera
+			// ì¹´ë©”ë¼ ì„¤ì • // Set camera
 			pu.SetCamera(camInterpolation);
 
-			// ÇÁ·ÎÁ§¼Ç ¼öÇà // Perform projection
+			// í”„ë¡œì ì…˜ ìˆ˜í–‰ // Perform projection
 			res = pu.Execute();
 
-			// °á°ú ÀÌ¹ÌÁö ¾ò±â // Get result image
+			// ê²°ê³¼ ì´ë¯¸ì§€ ì–»ê¸° // Get result image
 			res = pu.GetResult(fliRes);
 
-			// °á°ú ÀÌ¹ÌÁö¿¡ Á¤º¸ ÅØ½ºÆ® Ãß°¡ // Add information text to result image
+			// ê²°ê³¼ ì´ë¯¸ì§€ì— ì •ë³´ í…ìŠ¤íŠ¸ ì¶”ê°€ // Add information text to result image
 			CFLString<wchar_t> str;
 			str.Format(L"2. Projection(Camera Interpolation T=%.1f)", f32T);
 			figureText.Set(CFLPoint<int32_t>(10, 10), str, YELLOW, BLACK, 15, false, 0., EFigureTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EFigureTextFontWeight_SEMIBOLD, false);
 			fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
 
-			// ÃÖÁ¾ ÀÌ¹ÌÁö¿¡ Åõ¿µ °á°ú ÀÌ¹ÌÁö Ãß°¡ // Add projection result image to final image
+			// ìµœì¢… ì´ë¯¸ì§€ì— íˆ¬ì˜ ê²°ê³¼ ì´ë¯¸ì§€ ì¶”ê°€ // Add projection result image to final image
 			if(i == 0)
 				fliFinal1.Assign(fliRes);
 			else
 				fliFinal1.PushBackPage(fliRes);
 		}
 
-		// °á°ú ÀÌ¹ÌÁö¸¦ ÀÌ¹ÌÁö ºä¿¡ ·Îµå // Load result image into image view		
+		// ê²°ê³¼ ì´ë¯¸ì§€ë¥¼ ì´ë¯¸ì§€ ë·°ì— ë¡œë“œ // Load result image into image view		
 		viewImage[1].GetIntrinsicImage()->Assign(fliFinal1);
 		viewImage[1].SetImagePtr(viewImage[1].GetIntrinsicImage());
 		viewImage[1].SetFixThumbnailView(true);
 
-		// 3. Zoom Fit ½ÃÁ¡ÀÇ ÀÌ¹ÌÁö ¾ò±â // 3. Get image at Zoom Fit viewpoint
+		// 3. Zoom Fit ì‹œì ì˜ ì´ë¯¸ì§€ ì–»ê¸° // 3. Get image at Zoom Fit viewpoint
 		pu.ZoomFitCamera();
 
 		// Set topology type
 		pu.SetTopologyType(ETopologyType3D_PointCloud);
 		pu.SetPointSize(5.f);
 
-		// ÇÁ·ÎÁ§¼Ç ¼öÇà // Perform projection
+		// í”„ë¡œì ì…˜ ìˆ˜í–‰ // Perform projection
 		res = pu.Execute();
 
-		// °á°ú ÀÌ¹ÌÁö ¾ò±â // Get result image
+		// ê²°ê³¼ ì´ë¯¸ì§€ ì–»ê¸° // Get result image
 		res = pu.GetResult(fliFinal2);
 
-		// °á°ú ÀÌ¹ÌÁö¿¡ Á¤º¸ ÅØ½ºÆ® Ãß°¡ // Add information text to result image
+		// ê²°ê³¼ ì´ë¯¸ì§€ì— ì •ë³´ í…ìŠ¤íŠ¸ ì¶”ê°€ // Add information text to result image
 		figureText.Set(CFLPoint<int32_t>(10, 10), L"3. Projection(ZoomFit)", YELLOW, BLACK, 20, false, 0., EFigureTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EFigureTextFontWeight_BOLD, false);
 		fliFinal2.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
 
-		// °á°ú ÀÌ¹ÌÁö¸¦ ÀÌ¹ÌÁö ºä¿¡ ·Îµå // Load result image into image view		
+		// ê²°ê³¼ ì´ë¯¸ì§€ë¥¼ ì´ë¯¸ì§€ ë·°ì— ë¡œë“œ // Load result image into image view		
 		viewImage[2].GetIntrinsicImage()->Assign(fliFinal2);
 		viewImage[2].SetImagePtr(viewImage[2].GetIntrinsicImage());
 		viewImage[2].SetFixThumbnailView(true);

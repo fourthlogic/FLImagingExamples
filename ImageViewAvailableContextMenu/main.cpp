@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,88 +6,88 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage[2];
 
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[0].Create(300, 0, 300 + 520, 430)))
 		{
 			ErrorPrint(res,"Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage[1].Create(300 + 520, 0, 300 + 520 * 2, 430)))
 		{
 			ErrorPrint(res,"Failed to create the image view.\n");
 			break;
 		}
 
-		// ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù.
+		// ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤.
 		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
 			ErrorPrint(res,"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
 			ErrorPrint(res,"Failed to synchronize window\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡¼­ ÀÌ¿ë °¡´ÉÇÑ ÄÁÅØ½ºÆ® ¸Ş´º¸¦ ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAvailableViewImageContextMenu_All ÀÌ ±âº»°ªÀÌ¸ç, ÀÌ °ªÀ¸·Î ¼³Á¤ÇÏ¸é ¸ğµç ¸Ş´º¸¦ »ç¿ë °¡´ÉÇÑ »óÅÂ°¡ µË´Ï´Ù.
-		// ¾Æ·¡¿Í °°ÀÌ EAvailableViewImageContextMenu_None À¸·Î ¼³Á¤ÇÒ °æ¿ì ¸ğµç ¸Ş´º°¡ ºñÈ°¼ºÈ­µË´Ï´Ù.
+		// ì´ë¯¸ì§€ ë·°ì—ì„œ ì´ìš© ê°€ëŠ¥í•œ ì»¨í…ìŠ¤íŠ¸ ë©”ë‰´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAvailableViewImageContextMenu_All ì´ ê¸°ë³¸ê°’ì´ë©°, ì´ ê°’ìœ¼ë¡œ ì„¤ì •í•˜ë©´ ëª¨ë“  ë©”ë‰´ë¥¼ ì‚¬ìš© ê°€ëŠ¥í•œ ìƒíƒœê°€ ë©ë‹ˆë‹¤.
+		// ì•„ë˜ì™€ ê°™ì´ EAvailableViewImageContextMenu_None ìœ¼ë¡œ ì„¤ì •í•  ê²½ìš° ëª¨ë“  ë©”ë‰´ê°€ ë¹„í™œì„±í™”ë©ë‹ˆë‹¤.
 		viewImage[0].SetAvailableViewImageContextMenu(EAvailableViewImageContextMenu_None);
 
-		// ÀÌ¹ÌÁöºäÀÇ 0¹ø ·¹ÀÌ¾î °¡Á®¿À±â
+		// ì´ë¯¸ì§€ë·°ì˜ 0ë²ˆ ë ˆì´ì–´ ê°€ì ¸ì˜¤ê¸°
 		CGUIViewImageLayerWrap layer = viewImage[0].GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer ¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦
+		// ê¸°ì¡´ì— Layer ì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ
 		layer.Clear();
 
-		// ¾È³» ¹®ÀÚ¿­ »ı¼º
+		// ì•ˆë‚´ ë¬¸ìì—´ ìƒì„±
 		CFLString<wchar_t> flsInformation = L"RIGHT BUTTON CLICK ON MOUSE AND SEE THE CONTEXT MENU";
 		CFLString<wchar_t> flsInformation2 = L"Option : EAvailableViewImageContextMenu_None";
 
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EColor.TRANSPARENCY À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EColor.TRANSPARENCY ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		layer.DrawTextCanvas(CFLPoint<double>(10, 10), flsInformation, LIME, BLACK, 15);
 		layer.DrawTextCanvas(CFLPoint<double>(10, 30), flsInformation2, CYAN, BLACK, 15);
 
 
-		// ÀÌ¹ÌÁö ºä¿¡¼­ ÀÌ¿ë °¡´ÉÇÑ ÄÁÅØ½ºÆ® ¸Ş´º¸¦ ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAvailableViewImageContextMenu_All ÀÌ ±âº»°ªÀÌ¸ç, ÀÌ °ªÀ¸·Î ¼³Á¤ÇÏ¸é ¸ğµç ¸Ş´º¸¦ »ç¿ë °¡´ÉÇÑ »óÅÂ°¡ µË´Ï´Ù.
-		// ¾Æ·¡¿Í °°ÀÌ ¿©·¯ Á¶ÇÕÀ» ÀÌ¿ëÇÏ¿© ¼³Á¤ÇÒ ¼ö ÀÖÀ¸¸ç, 
-		// EAvailableViewImageContextMenu_All & ~(EAvailableViewImageContextMenu_Load | EAvailableViewImageContextMenu_ClearFile | EAvailableViewImageContextMenu_Save | EAvailableViewImageContextMenu_CreateImage) À¸·Î ¼³Á¤ÇÒ °æ¿ì 
-		// ÆÄÀÏ ¿­±â, ´İ±â, ÀúÀå, ÀÌ¹ÌÁö »ı¼º ¸Ş´º°¡ ºñÈ°¼ºÈ­µË´Ï´Ù.
+		// ì´ë¯¸ì§€ ë·°ì—ì„œ ì´ìš© ê°€ëŠ¥í•œ ì»¨í…ìŠ¤íŠ¸ ë©”ë‰´ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAvailableViewImageContextMenu_All ì´ ê¸°ë³¸ê°’ì´ë©°, ì´ ê°’ìœ¼ë¡œ ì„¤ì •í•˜ë©´ ëª¨ë“  ë©”ë‰´ë¥¼ ì‚¬ìš© ê°€ëŠ¥í•œ ìƒíƒœê°€ ë©ë‹ˆë‹¤.
+		// ì•„ë˜ì™€ ê°™ì´ ì—¬ëŸ¬ ì¡°í•©ì„ ì´ìš©í•˜ì—¬ ì„¤ì •í•  ìˆ˜ ìˆìœ¼ë©°, 
+		// EAvailableViewImageContextMenu_All & ~(EAvailableViewImageContextMenu_Load | EAvailableViewImageContextMenu_ClearFile | EAvailableViewImageContextMenu_Save | EAvailableViewImageContextMenu_CreateImage) ìœ¼ë¡œ ì„¤ì •í•  ê²½ìš° 
+		// íŒŒì¼ ì—´ê¸°, ë‹«ê¸°, ì €ì¥, ì´ë¯¸ì§€ ìƒì„± ë©”ë‰´ê°€ ë¹„í™œì„±í™”ë©ë‹ˆë‹¤.
 		viewImage[1].SetAvailableViewImageContextMenu(EAvailableViewImageContextMenu_All & ~(EAvailableViewImageContextMenu_Load | EAvailableViewImageContextMenu_ClearFile | EAvailableViewImageContextMenu_Save | EAvailableViewImageContextMenu_CreateImage));
 
 
-		// ÀÌ¹ÌÁöºäÀÇ 0¹ø ·¹ÀÌ¾î °¡Á®¿À±â
+		// ì´ë¯¸ì§€ë·°ì˜ 0ë²ˆ ë ˆì´ì–´ ê°€ì ¸ì˜¤ê¸°
 		layer = viewImage[1].GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer ¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦
+		// ê¸°ì¡´ì— Layer ì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ
 		layer.Clear();
 
-		// ¾È³» ¹®ÀÚ¿­ ÁöÁ¤
+		// ì•ˆë‚´ ë¬¸ìì—´ ì§€ì •
 		flsInformation = L"RIGHT BUTTON CLICK ON MOUSE AND SEE THE CONTEXT MENU";
 		flsInformation2 = L"Option : EAvailableViewImageContextMenu_All & \n           ~(EAvailableViewImageContextMenu_Load | \n              EAvailableViewImageContextMenu_ClearFile | \n              EAvailableViewImageContextMenu_Save | \n              EAvailableViewImageContextMenu_CreateImage)";
 
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EColor.TRANSPARENCY À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EColor.TRANSPARENCY ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		layer.DrawTextCanvas(CFLPoint<double>(10, 10), flsInformation, LIME, BLACK, 15);
@@ -96,7 +96,7 @@ int main()
 		for(int32_t i = 0; i < 2; ++i)
 			viewImage[i].Invalidate();
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage[0].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

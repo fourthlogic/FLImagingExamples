@@ -1,10 +1,10 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIView3DWrap view3DSrc;
 	CGUIView3DWrap view3DDst;
 	CFL3DObject fl3DObjectSrc;
@@ -12,17 +12,17 @@ int main()
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult res = EResult_UnknownError;
 
-		// Source 3D ÀÌ¹ÌÁö ºä »ı¼º // Create the Source 3D image view
+		// Source 3D ì´ë¯¸ì§€ ë·° ìƒì„± // Create the Source 3D image view
 		if((res = view3DSrc.Create(100, 0, 600, 500)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination 3D ÀÌ¹ÌÁö ºä »ı¼º // Create the destination 3D image view
+		// Destination 3D ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination 3D image view
 		if((res = view3DDst.Create(600, 0, 1100, 500)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
@@ -31,43 +31,43 @@ int main()
 
 		fl3DObjectSrc.Load(L"../../ExampleImages/DistanceTransform3D/binary-vertex.ply");
 
-		// Perspective Transform 3D °´Ã¼ »ı¼º // Create Perspective Transform 3D object
+		// Perspective Transform 3D ê°ì²´ ìƒì„± // Create Perspective Transform 3D object
 		CPerspectiveTransform3D PerspectiveTransform3D;
 
 		TPoint3<float> tpPosition = TPoint3<float>(2.0, 0.0f, 1.5f);
 		TPoint3<float> tpDirection = TPoint3<float>(-1.0f, 0.0f, -1.0f);
 		TPoint3<float> tpUpVector = TPoint3<float>(0.0f, 1.0f, 0.0f);
 
-		// Source °´Ã¼ ¼³Á¤ // Set the source object
+		// Source ê°ì²´ ì„¤ì • // Set the source object
 		PerspectiveTransform3D.SetSourceObject(&fl3DObjectSrc);
-		// Destionation °´Ã¼ ¼³Á¤ // Set the Destionation object
+		// Destionation ê°ì²´ ì„¤ì • // Set the Destionation object
 		PerspectiveTransform3D.SetDestinationObject(&fl3DObjectDst);
-		// Ä«¸Ş¶ó À§Ä¡ ¼³Á¤ // Set the camera position
+		// ì¹´ë©”ë¼ ìœ„ì¹˜ ì„¤ì • // Set the camera position
 		PerspectiveTransform3D.SetPosition(tpPosition);
-		// Ä«¸Ş¶ó ¹æÇâ ¼³Á¤ // Set the camera direction
+		// ì¹´ë©”ë¼ ë°©í–¥ ì„¤ì • // Set the camera direction
 		PerspectiveTransform3D.SetDirection(tpDirection);
-		// Ä«¸Ş¶ó ¹æÇâ Å¸ÀÔ ¼³Á¤ // Set the camera direction type
+		// ì¹´ë©”ë¼ ë°©í–¥ íƒ€ì… ì„¤ì • // Set the camera direction type
 		PerspectiveTransform3D.SetDirectionType(CPerspectiveTransform3D::EDirectionType_Decrement);
-		// Ä«¸Ş¶ó ¾÷ º¤ÅÍ ¼³Á¤ // Set the camera up vector
+		// ì¹´ë©”ë¼ ì—… ë²¡í„° ì„¤ì • // Set the camera up vector
 		PerspectiveTransform3D.SetUpVector(tpUpVector);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = PerspectiveTransform3D.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute multiFocus.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIView3DLayerWrap layer3DSrc = view3DSrc.GetLayer(0);
 		CGUIView3DLayerWrap layer3DDst = view3DDst.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer3DSrc.Clear();
 		layer3DDst.Clear();
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		view3DSrc.PushObject(fl3DObjectSrc);
 		view3DSrc.ZoomFit();
 
@@ -86,11 +86,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		view3DSrc.Invalidate(true);
 		view3DDst.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä, 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·°, 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(view3DSrc.IsAvailable() || view3DDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

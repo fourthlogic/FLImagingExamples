@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 namespace FLImaging
 {
@@ -15,46 +15,46 @@ namespace FLImaging
 			virtual const CResult ConfigureMenu() override;
 
 		protected:
-			// °¡»óÀÇ ÀÛ¾÷ ½º·¹µå
+			// ê°€ìƒì˜ ì‘ì—… ìŠ¤ë ˆë“œ
 			static void AlgorithmThreadForComplexDialog(CPropertyMenuDialogProgressExample* pInstance, std::future<void>** pContext);
 
-			// °¡»óÀÇ ÀÛ¾÷ ½º·¹µå
+			// ê°€ìƒì˜ ì‘ì—… ìŠ¤ë ˆë“œ
 			static void AlgorithmThreadForSimpleDialog(CPropertyMenuDialogProgressExample* pInstance, std::future<void>** pContext);
 
-			// °£´ÜÇÑ ÁøÇà·ü Ç¥½Ã Ã¢ ´ÙÀÌ¾ó·Î±× »ı¼º ÇÔ¼ö
+			// ê°„ë‹¨í•œ ì§„í–‰ë¥  í‘œì‹œ ì°½ ë‹¤ì´ì–¼ë¡œê·¸ ìƒì„± í•¨ìˆ˜
 			const CResult CreateSimpleDialog();
 
-			// Resize Pivot µî ¼³Á¤ÀÌ ¹İ¿µµÈ °£´ÜÇÑ ÁøÇà·ü Ç¥½Ã Ã¢ ´ÙÀÌ¾ó·Î±× »ı¼º ÇÔ¼ö
+			// Resize Pivot ë“± ì„¤ì •ì´ ë°˜ì˜ëœ ê°„ë‹¨í•œ ì§„í–‰ë¥  í‘œì‹œ ì°½ ë‹¤ì´ì–¼ë¡œê·¸ ìƒì„± í•¨ìˆ˜
 			const CResult CreateSimpleDialogWithSettings();
 
-			// CFLSheet °¡ Æ÷ÇÔµÈ º¹ÀâÇÑ ÁøÇà·ü Ç¥½Ã Ã¢ ´ÙÀÌ¾ó·Î±× »ı¼º ÇÔ¼ö
+			// CFLSheet ê°€ í¬í•¨ëœ ë³µì¡í•œ ì§„í–‰ë¥  í‘œì‹œ ì°½ ë‹¤ì´ì–¼ë¡œê·¸ ìƒì„± í•¨ìˆ˜
 			const CResult CreateComplexProgressDialogWithSheet(bool bBoxLayout);
 
-			// º¹ÀâÇÑ ÁøÇà·ü Ç¥½Ã Ã¢ ´ÙÀÌ¾ó·Î±× »ı¼º ÇÔ¼ö
+			// ë³µì¡í•œ ì§„í–‰ë¥  í‘œì‹œ ì°½ ë‹¤ì´ì–¼ë¡œê·¸ ìƒì„± í•¨ìˆ˜
 			const CResult CreateComplexProgressDialog();
 
-			// °£´ÜÇÑ ÁøÇà·ü Ç¥½Ã Ã¢ ¾÷µ¥ÀÌÆ® ÇÔ¼ö
+			// ê°„ë‹¨í•œ ì§„í–‰ë¥  í‘œì‹œ ì°½ ì—…ë°ì´íŠ¸ í•¨ìˆ˜
 			const CResult UpdateSimpleDialog();
 
-			// °£´ÜÇÑ ÁøÇà·ü Ç¥½Ã Ã¢ ¾÷µ¥ÀÌÆ® ÇÔ¼ö
+			// ê°„ë‹¨í•œ ì§„í–‰ë¥  í‘œì‹œ ì°½ ì—…ë°ì´íŠ¸ í•¨ìˆ˜
 			const CResult UpdateSimpleDialogWithSettings();
 
-			// º¹ÀâÇÑ ÁøÇà·ü Ç¥½Ã Ã¢ ¾÷µ¥ÀÌÆ® ÇÔ¼ö
+			// ë³µì¡í•œ ì§„í–‰ë¥  í‘œì‹œ ì°½ ì—…ë°ì´íŠ¸ í•¨ìˆ˜
 			const CResult UpdateComplexDialog();
 
-			// CFLSheet °¡ Æ÷ÇÔµÈ º¹ÀâÇÑ ÁøÇà·ü Ç¥½Ã Ã¢ ¾÷µ¥ÀÌÆ® ÇÔ¼ö
+			// CFLSheet ê°€ í¬í•¨ëœ ë³µì¡í•œ ì§„í–‰ë¥  í‘œì‹œ ì°½ ì—…ë°ì´íŠ¸ í•¨ìˆ˜
 			const CResult UpdateComplexDialogWithSheet();
 
-			// ÁøÇà·ü Ç¥½Ã Ã¢ ´ÙÀÌ¾ó·Î±× ´İ±â ÇÔ¼ö
+			// ì§„í–‰ë¥  í‘œì‹œ ì°½ ë‹¤ì´ì–¼ë¡œê·¸ ë‹«ê¸° í•¨ìˆ˜
 			const CResult CloseProgressDialog();
 
-			// Á¤·Ä ¿É¼ÇÀ» ¾ò¾î ¿À´Â ÇÔ¼ö
+			// ì •ë ¬ ì˜µì…˜ì„ ì–»ì–´ ì˜¤ëŠ” í•¨ìˆ˜
 			EGUIAlignment GetAlignment(const Base::CFLString<wchar_t>& strVal) const;
 
-			// ½º·¹µå ÆÄ¶ó¹ÌÅÍ¸¦ ÃÊ±âÈ­ ÇÏ´Â ÇÔ¼ö
+			// ìŠ¤ë ˆë“œ íŒŒë¼ë¯¸í„°ë¥¼ ì´ˆê¸°í™” í•˜ëŠ” í•¨ìˆ˜
 			void ResetThreadParams();
 
-			// ¹öÆ° Å¬¸¯ ÀÌº¥Æ® ÇÚµé·¯
+			// ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
 			CPropertyButtonClickProcedure* ButtonCreateSimpleDialog();
 			CPropertyButtonClickProcedure* ButtonCreateComplexDialog();
 			CPropertyButtonClickProcedure* ButtonCreateComplexDialogWithSheetBoxLayout();
@@ -62,49 +62,49 @@ namespace FLImaging
 			CPropertyButtonClickProcedure* ButtonCreateSimpleDialogWithSettings();
 
 		protected:
-			// ½º·¹µå ¿Ï·á ÇÃ·¡±×
+			// ìŠ¤ë ˆë“œ ì™„ë£Œ í”Œë˜ê·¸
 			volatile bool m_bThreadDone;
 
-			// ÇöÀç ÁøÇà·®
+			// í˜„ì¬ ì§„í–‰ëŸ‰
 			volatile int32_t m_i32CurrentProgress;
 
-			// ÀüÃ¼ ¾ç
+			// ì „ì²´ ì–‘
 			volatile int32_t m_i32TotalProgress;
 
-			// ÁßÁö ÁøÇà ½Ã ÇöÀç ÁøÇà·®
+			// ì¤‘ì§€ ì§„í–‰ ì‹œ í˜„ì¬ ì§„í–‰ëŸ‰
 			volatile int32_t m_i32CurrentStopProgress;
 
-			// ÁßÁö ÁøÇà ½Ã ÀüÃ¼ ¾ç
+			// ì¤‘ì§€ ì§„í–‰ ì‹œ ì „ì²´ ì–‘
 			volatile int32_t m_i32TotalStopProgress;
 
-			// ½º·¹µå Æ÷ÀÎÅÍ
+			// ìŠ¤ë ˆë“œ í¬ì¸í„°
 			std::future<void>* m_pThread;
 
-			// ´ÙÀÌ¾ó·Î±× °´Ã¼ Æ÷ÀÎÅÍ
+			// ë‹¤ì´ì–¼ë¡œê·¸ ê°ì²´ í¬ì¸í„°
 			CGUIDialogProgress* m_pDlgProgress;
 
-			// ÇÁ·Î±×·¹½º ¹Ù °´Ã¼ Æ÷ÀÎÅÍ
+			// í”„ë¡œê·¸ë ˆìŠ¤ ë°” ê°ì²´ í¬ì¸í„°
 			CGUIProgressCtrlFloatingPoint* m_pProgressCtrlFP;
 
-			// ÁßÁö ¹öÆ° °´Ã¼ Æ÷ÀÎÅÍ
+			// ì¤‘ì§€ ë²„íŠ¼ ê°ì²´ í¬ì¸í„°
 			CGUIButton* m_pStopButton;
 
-			// ¿©·¯ ±æÀÌÀÇ ¹®ÀÚ¿­ º¤ÅÍ
+			// ì—¬ëŸ¬ ê¸¸ì´ì˜ ë¬¸ìì—´ ë²¡í„°
 			std::vector<Base::CFLString<wchar_t>> m_vctVariousLengthMessages;
 
-			// ¸Ş¼¼Áö, ÇÁ·Î±×·¹½º ¹Ù, ½Ã°£ µîÀÌ Ç¥½ÃµÇ´Â ±×¸®µå
+			// ë©”ì„¸ì§€, í”„ë¡œê·¸ë ˆìŠ¤ ë°”, ì‹œê°„ ë“±ì´ í‘œì‹œë˜ëŠ” ê·¸ë¦¬ë“œ
 			CGUIGridLayout* m_pGridMain;
 
-			// ¹öÆ°ÀÌ À§Ä¡ÇÑ ±×¸®µå
+			// ë²„íŠ¼ì´ ìœ„ì¹˜í•œ ê·¸ë¦¬ë“œ
 			CGUIGridLayout* m_pGridButtons;
 
-			// »ó¼¼ Ã¢ ±×¸®µå
+			// ìƒì„¸ ì°½ ê·¸ë¦¬ë“œ
 			CGUIGridLayout* m_pGridDetails;
 
-			// CFLSheet °¡ Æ÷ÇÔµÈ ·¹ÀÌ¾Æ¿ô
+			// CFLSheet ê°€ í¬í•¨ëœ ë ˆì´ì•„ì›ƒ
 			CGUILayoutBase* m_pLayoutForSheet;
 
-			// ÁßÁö ¹öÆ° Å¬¸¯ È½¼ö
+			// ì¤‘ì§€ ë²„íŠ¼ í´ë¦­ íšŸìˆ˜
 			int32_t m_i32BtnStopClickCount;
 		};
 	}

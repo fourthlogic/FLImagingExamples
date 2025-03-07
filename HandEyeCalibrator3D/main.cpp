@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 #include <map>
@@ -26,54 +26,54 @@ int main()
 
 	do
 	{
-		// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+		// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 		CResult eResult = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Load the image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load the image
 		if((eResult = fliSource.Load(L"../../ExampleImages/HandEyeCalibrator3D/ChessBoard.flif")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the image.\n");
 			break;
 		}
 
-		// HandEyeCalibrator3D °´Ã¼ »ı¼º // Create HandEyeCalibrator3D object
+		// HandEyeCalibrator3D ê°ì²´ ìƒì„± // Create HandEyeCalibrator3D object
 		CHandEyeCalibrator3D HandEyeCalibrator3D;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì •
 		HandEyeCalibrator3D.SetSourceImage(fliSource);
 
-		// ¿£µå ÀÌÆåÅÍ Æ÷Áî ·Îµå // Load the end effector pose
+		// ì—”ë“œ ì´í™í„° í¬ì¦ˆ ë¡œë“œ // Load the end effector pose
 		if((eResult = HandEyeCalibrator3D.LoadEndEffectorPose(L"../../ExampleImages/HandEyeCalibrator3D/EndEffectorPose.csv")).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to load the file.\n");
 			break;
 		}
 
-		// Camera Matrix ¼³Á¤ // Set the camera matrix
+		// Camera Matrix ì„¤ì • // Set the camera matrix
 		CFLPoint<double> flpFocalLength(428.668823242188, 428.268188476563);
 		CFLPoint<double> flpPrincipalPoint(422.934997558594, 240.188659667969);
 
 		HandEyeCalibrator3D.SetCalibrationCameraMatrix(flpPrincipalPoint, flpFocalLength);
 
-		// ¼¿ °£°İ ¼³Á¤ // Set the board cell pitch
+		// ì…€ ê°„ê²© ì„¤ì • // Set the board cell pitch
 		HandEyeCalibrator3D.SetCalibrationBoardCellPitch(15, 15);
 
-		// Ä¶¸®ºê·¹ÀÌ¼Ç °´Ã¼ Å¸ÀÔ ¼³Á¤ // Set the calibration object type
+		// ìº˜ë¦¬ë¸Œë ˆì´ì…˜ ê°ì²´ íƒ€ì… ì„¤ì • // Set the calibration object type
 		HandEyeCalibrator3D.SetCalibrationObjectType(ECalibrationObjectType_ChessBoard);
 
-		// ÃÖÀûÈ­ ¹æ¹ı ¼³Á¤ // Set the optimization method
+		// ìµœì í™” ë°©ë²• ì„¤ì • // Set the optimization method
 		HandEyeCalibrator3D.SetOptimizationMethod(CHandEyeCalibrator3D::EOptimizationMethod_Nonlinear);
 
-		// È¸Àü Å¸ÀÔ ¼³Á¤ // Set the rotation type
+		// íšŒì „ íƒ€ì… ì„¤ì • // Set the rotation type
 		HandEyeCalibrator3D.SetRotationType(CHandEyeCalibrator3D::ERotationType_Rodrigues);
 
-		// ¿£µå ÀÌÆåÅÍ °¢ ´ÜÀ§ ¼³Á¤ // Set the end effector angle unit
+		// ì—”ë“œ ì´í™í„° ê° ë‹¨ìœ„ ì„¤ì • // Set the end effector angle unit
 		HandEyeCalibrator3D.SetEndEffectorAngleUnit(EAngleUnit_Radian);
 
-		// ¿ÀÀÏ·¯ °¢ ¼ø¼­ ¼³Á¤ // Set the euler sequence
+		// ì˜¤ì¼ëŸ¬ ê° ìˆœì„œ ì„¤ì • // Set the euler sequence
 		HandEyeCalibrator3D.SetEulerSequence(EEulerSequence_Extrinsic_XYZ);
 
-		//¿Ö°î °è¼ö ¼³Á¤ // Set the distortion coefficient
+		//ì™œê³¡ ê³„ìˆ˜ ì„¤ì • // Set the distortion coefficient
 		CFLArray<double> flaDistortionCoefficient;
 
 		flaDistortionCoefficient.PushBack(-0.0538526475429535);
@@ -86,35 +86,35 @@ int main()
 
 		const int32_t i32PageCount = fliSource.GetPageCount();
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(eResult = viewImage.Create(100, 0, 612, 512)))
 		{
 			ErrorPrint(eResult, "Failed to create the Source 3D view.\n");
 			break;
 		}
 
-		// °á°ú 3D ºä »ı¼º // Create result 3D view
+		// ê²°ê³¼ 3D ë·° ìƒì„± // Create result 3D view
 		if(IsFail(eResult = view3D.Create(612, 0, 1124, 512)))
 		{
 			ErrorPrint(eResult, "Failed to create the Source 3D view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö Æ÷ÀÎÅÍ ¼³Á¤ // Set image pointer
+		// ì´ë¯¸ì§€ í¬ì¸í„° ì„¤ì • // Set image pointer
 		viewImage.SetImagePtr(&fliSource);
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately		
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately		
 		CGUIViewImageLayerWrap layerViewSource = viewImage.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerViewSource.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((eResult = layerViewSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
@@ -123,7 +123,7 @@ int main()
 			break;
 		}
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((eResult = HandEyeCalibrator3D.Execute()).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to execute Camera Pose 3D.");
@@ -140,14 +140,14 @@ int main()
 			CFLString<wchar_t> strDisplay;
 			double f64RotationError, f64TranslationError;
 
-			// Ä¶¸®ºê·¹ÀÌ¼Ç °á°ú ¾ò¾î¿À±â // Get the calibration result
+			// ìº˜ë¦¬ë¸Œë ˆì´ì…˜ ê²°ê³¼ ì–»ì–´ì˜¤ê¸° // Get the calibration result
 			HandEyeCalibrator3D.GetResultRotationVector(matResultRotationVector, false);
 			HandEyeCalibrator3D.GetResultTranslationVector(tp3ResultTranslationVector, false);
 			HandEyeCalibrator3D.GetResultEulerAngle(flaResultEulerAngle, false);
 			HandEyeCalibrator3D.GetResultRotationError(f64RotationError);
 			HandEyeCalibrator3D.GetResultTranslationError(f64TranslationError);
 			
-			// 3D ViewÀÇ canvas rect ¿µ¿ª ¾ò¾î¿À±â // Get the canvas rect region
+			// 3D Viewì˜ canvas rect ì˜ì—­ ì–»ì–´ì˜¤ê¸° // Get the canvas rect region
 			CFLRectL flrCanvasRegion = view3D.GetClientRectCanvasRegion();
 
 			CFLPoint<double> flpImageSize(flrCanvasRegion.GetWidth(), flrCanvasRegion.GetHeight());
@@ -207,11 +207,11 @@ int main()
 
 				Base::TPoint3<float> tp3Cam, tp3Board;
 
-				// °á°ú 3D °´Ã¼ ¾ò¾î¿À±â // Get the result 3D object
+				// ê²°ê³¼ 3D ê°ì²´ ì–»ì–´ì˜¤ê¸° // Get the result 3D object
 				
 				if(HandEyeCalibrator3D.GetResultCamera3DObject(i, &fl3DCam, &tp3CamCenter).IsOK())
 				{
-					// Ä«¸Ş¶ó Æ÷Áî ÃßÁ¤¿¡ ½ÇÆĞÇÒ °æ¿ì NOK Ãâ·Â // NOK output if camera pose estimation fails
+					// ì¹´ë©”ë¼ í¬ì¦ˆ ì¶”ì •ì— ì‹¤íŒ¨í•  ê²½ìš° NOK ì¶œë ¥ // NOK output if camera pose estimation fails
 					if((HandEyeCalibrator3D.GetResultReprojectionPoint(i, tp3Cam, tp3Board)).IsFail())
 					{
 						strIdx.Format(L"Cam %d (NOK)", i);
@@ -239,7 +239,7 @@ int main()
 			view3D.ZoomFit();
 		}
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

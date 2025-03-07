@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,24 +6,24 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSorted;
 	CGUIViewImageWrap viewImageRecover;
 
 	do
 	{
 		CResult res = EResult_UnknownError;
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Blob/Ball.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImageSorted.Create(200, 0, 968, 576)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -48,14 +48,14 @@ int main()
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿Í Destination ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù
+		// Source ì´ë¯¸ì§€ ë·°ì™€ Destination ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤
 		if(IsFail(res = viewImageSorted.SynchronizePointOfView(&viewImageRecover)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// Image Å©±â¿¡ ¸Â°Ô viewÀÇ Å©±â¸¦ Á¶Á¤ // Zoom the view to fit the image size
+		// Image í¬ê¸°ì— ë§ê²Œ viewì˜ í¬ê¸°ë¥¼ ì¡°ì • // Zoom the view to fit the image size
 		if(IsFail(res = viewImageSorted.ZoomFit()))
 		{
 			ErrorPrint(res, "Failed to zoom fit\n");
@@ -68,102 +68,102 @@ int main()
 			break;
 		}
 
-		// Blob °´Ã¼ »ı¼º // Create Blob object
+		// Blob ê°ì²´ ìƒì„± // Create Blob object
 		CBlob blob;
 
-		// ROI ¹üÀ§ ¼³Á¤
+		// ROI ë²”ìœ„ ì„¤ì •
 		CFLRect<int32_t> flrROI(450, 425, 1024, 800);
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì •
 		blob.SetSourceImage(fliImage);
-		// Ã³¸®ÇÒ ROI ¼³Á¤
+		// ì²˜ë¦¬í•  ROI ì„¤ì •
 		blob.SetSourceROI(flrROI);
-		// ³í¸® Á¶°Ç ¼³Á¤
+		// ë…¼ë¦¬ ì¡°ê±´ ì„¤ì •
 		blob.SetLogicalCondition(ELogicalCondition_GreaterEqual);
-		// ÀÓ°è°ª ¼³Á¤,  À§ÀÇ Á¶°Ç°ú ¾Æ·¡ÀÇ Á¶°ÇÀÌ ÇÕÃÄÁö¸é 100º¸´Ù °°°Å³ª Å« °´Ã¼¸¦ °ËÃâ
+		// ì„ê³„ê°’ ì„¤ì •,  ìœ„ì˜ ì¡°ê±´ê³¼ ì•„ë˜ì˜ ì¡°ê±´ì´ í•©ì³ì§€ë©´ 100ë³´ë‹¤ ê°™ê±°ë‚˜ í° ê°ì²´ë¥¼ ê²€ì¶œ
 		blob.SetThreshold(100);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = blob.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute Blob.");
 			break;
 		}
 
-		// °á°ú °´Ã¼µé Áß ÇØ´çµÇ´Â Á¶°ÇÀ» °¡Áø °´Ã¼¸¦ Á¦°Å
+		// ê²°ê³¼ ê°ì²´ë“¤ ì¤‘ í•´ë‹¹ë˜ëŠ” ì¡°ê±´ì„ ê°€ì§„ ê°ì²´ë¥¼ ì œê±°
 
-		// 50º¸´Ù °°°Å³ª Å« Àåº¯ ±æÀÌ¸¦ °¡Áø °´Ã¼µéÀ» Á¦°Å
+		// 50ë³´ë‹¤ ê°™ê±°ë‚˜ í° ì¥ë³€ ê¸¸ì´ë¥¼ ê°€ì§„ ê°ì²´ë“¤ì„ ì œê±°
 		if(IsFail(res = blob.Filter(CBlob::EFilterItem_MinimumEnclosingRectangleLongSideLength, 50, ELogicalCondition_GreaterEqual)))
 		{
 			ErrorPrint(res, "Blob filtering algorithm error occurs.");
 			break;
 		}
 
-		// 50º¸´Ù °°°Å³ª Å« ´Üº¯ ±æÀÌ¸¦ °¡Áø °´Ã¼µéÀ» Á¦°Å
+		// 50ë³´ë‹¤ ê°™ê±°ë‚˜ í° ë‹¨ë³€ ê¸¸ì´ë¥¼ ê°€ì§„ ê°ì²´ë“¤ì„ ì œê±°
 		if(IsFail(res = blob.Filter(CBlob::EFilterItem_MinimumEnclosingRectangleShortSideLength, 50, ELogicalCondition_GreaterEqual)))
 		{
 			ErrorPrint(res, "Blob filtering algorithm error occurred.");
 			break;
 		}
 
-		// ¸éÀûÀÌ 50º¸´Ù ÀÛÀº °´Ã¼µéÀ» Á¦°Å
+		// ë©´ì ì´ 50ë³´ë‹¤ ì‘ì€ ê°ì²´ë“¤ì„ ì œê±°
 		if(IsFail(res = blob.Filter(CBlob::EFilterItem_Area, 50, ELogicalCondition_LessEqual)))
 		{
 			ErrorPrint(res, "Blob filtering algorithm error occurred.");
 			break;
 		}
 
-		// Blob °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FigureArray ¼±¾ğ
+		// Blob ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FigureArray ì„ ì–¸
 		CFLFigureArray flfaSortedBoundaryRects;
 		CFLFigureArray flfaRecoverBoundaryRects;
 
 		CFLArray<int32_t> flaItem;
 		CFLArray<int32_t> flaOrder;
 
-		// Ã¹ ¹øÂ° Á¶°ÇÀ» Bound rect center yÁÂÇ¥, ³»¸²Â÷¼ø Á¤·Ä
+		// ì²« ë²ˆì§¸ ì¡°ê±´ì„ Bound rect center yì¢Œí‘œ, ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
 		flaItem.PushBack(CBlob::EFilterItem_BoundaryRectCenterY);
 		flaOrder.PushBack(CBlob::EOrder_Descending);
 
-		// µÎ ¹øÂ° Á¶°ÇÀ» Bound rect center xÁÂÇ¥, ³»¸²Â÷¼ø Á¤·Ä
+		// ë‘ ë²ˆì§¸ ì¡°ê±´ì„ Bound rect center xì¢Œí‘œ, ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
 		flaItem.PushBack(CBlob::EFilterItem_BoundaryRectCenterX);
 		flaOrder.PushBack(CBlob::EOrder_Descending);
 
-		// Blob °á°ú¸¦ Á¤·Ä
+		// Blob ê²°ê³¼ë¥¼ ì •ë ¬
 		if(IsFail(res = blob.Sort(flaItem, flaOrder)))
 		{
 			ErrorPrint(res, "Failed to sort from the Blob object.");
 			break;
 		}
 
-		// Á¤·ÄµÈ Blob °á°úµé Áß Boundary Rectangle À» ¾ò¾î¿È
+		// ì •ë ¬ëœ Blob ê²°ê³¼ë“¤ ì¤‘ Boundary Rectangle ì„ ì–»ì–´ì˜´
 		if(IsFail(res = blob.GetResultBoundaryRects(flfaSortedBoundaryRects)))
 		{
 			ErrorPrint(res, "Failed to get boundary rects from the Blob object.");
 			break;
 		}
 
-		// Blob Á¤·Ä »óÅÂ¸¦ ÃÊ±â »óÅÂ·Î º¹±¸
+		// Blob ì •ë ¬ ìƒíƒœë¥¼ ì´ˆê¸° ìƒíƒœë¡œ ë³µêµ¬
 		if(IsFail(res = blob.Sort(CBlob::EFilterItem_Unselected)))
 		{
 			ErrorPrint(res, "Failed to get boundary rects from the Blob object.");
 			break;
 		}
 
-		// º¹±¸µÈ Blob °á°úµé Áß Boundary Rectangle À» ¾ò¾î¿È
+		// ë³µêµ¬ëœ Blob ê²°ê³¼ë“¤ ì¤‘ Boundary Rectangle ì„ ì–»ì–´ì˜´
 		if(IsFail(res = blob.GetResultBoundaryRects(flfaRecoverBoundaryRects)))
 		{
 			ErrorPrint(res, "Failed to get boundary rects from the Blob object.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 
 		CGUIViewImageLayerWrap layerSorted = viewImageSorted.GetLayer(0);
 
 		CGUIViewImageLayerWrap layerRecover = viewImageRecover.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSorted.Clear();
 		layerRecover.Clear();
 
@@ -179,8 +179,8 @@ int main()
 			break;
 		}
 
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to find out where ROI is
-		// FLImagingÀÇ Figure°´Ã¼µéÀº ¾î¶² µµÇü¸ğ¾çÀÌµç »ó°ü¾øÀÌ ÇÏ³ªÀÇ ÇÔ¼ö·Î µğ½ºÇÃ·¹ÀÌ°¡ °¡´É
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to find out where ROI is
+		// FLImagingì˜ Figureê°ì²´ë“¤ì€ ì–´ë–¤ ë„í˜•ëª¨ì–‘ì´ë“  ìƒê´€ì—†ì´ í•˜ë‚˜ì˜ í•¨ìˆ˜ë¡œ ë””ìŠ¤í”Œë ˆì´ê°€ ê°€ëŠ¥
 		if(IsFail(res = layerSorted.DrawFigureImage(&flrROI, BLUE)))
 		{
 			ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
@@ -193,11 +193,11 @@ int main()
 			break;
 		}
 
-		// flfaOriginBoundaryRects ´Â FigureµéÀÇ ¹è¿­ÀÌ±â ¶§¹®¿¡ Layer¿¡ ³Ö±â¸¸ ÇØµµ ¸ğµÎ µå·ÎÀ®ÀÌ °¡´ÉÇÏ´Ù.
-		// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-		// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-		// ¿©±â¼­ 0.25ÀÌ¹Ç·Î ¿¶Àº ¹İÅõ¸í »óÅÂ¶ó°í º¼ ¼ö ÀÖ´Ù.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+		// flfaOriginBoundaryRects ëŠ” Figureë“¤ì˜ ë°°ì—´ì´ê¸° ë•Œë¬¸ì— Layerì— ë„£ê¸°ë§Œ í•´ë„ ëª¨ë‘ ë“œë¡œìœ™ì´ ê°€ëŠ¥í•˜ë‹¤.
+		// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+		// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+		// ì—¬ê¸°ì„œ 0.25ì´ë¯€ë¡œ ì˜…ì€ ë°˜íˆ¬ëª… ìƒíƒœë¼ê³  ë³¼ ìˆ˜ ìˆë‹¤.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 		if(IsFail(res = layerSorted.DrawFigureImage(&flfaSortedBoundaryRects, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
 		{
 			ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
@@ -210,7 +210,7 @@ int main()
 			break;
 		}
 
-		// Rect Á¤º¸°ªÀ» °¢°¢ È®ÀÎÇÏ´Â ÄÚµå
+		// Rect ì •ë³´ê°’ì„ ê°ê° í™•ì¸í•˜ëŠ” ì½”ë“œ
 		for(int64_t i = 0; i < flfaSortedBoundaryRects.GetCount(); ++i)
 		{
 			CFLRect<int32_t>* pFlrRect = (CFLRect<int32_t>*)flfaSortedBoundaryRects.GetAt(i);
@@ -231,11 +231,11 @@ int main()
 			layerRecover.DrawTextImage(&CFLPoint<double>(pFlrRect->GetCenter()), (wchar_t*)strNumber.GetString(), CYAN);
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSorted.Invalidate(true);
 		viewImageRecover.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSorted.IsAvailable() && viewImageRecover.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

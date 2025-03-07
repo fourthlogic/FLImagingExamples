@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -15,10 +15,10 @@ enum EType
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage arrFliImage[ETypeCount];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap arrViewImage[ETypeCount];
 	bool bError = false;
 
@@ -32,7 +32,7 @@ int main()
 
 			flsFileName.Format(L"../../ExampleImages/Blob/Blob Sort %d.flif", i + 1);
 
-			// ÀÌ¹ÌÁö ·Îµå // Load image
+			// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 			if(IsFail(res = arrFliImage[i].Load(flsFileName)))
 			{
 				ErrorPrint(res, "Failed to load the image file.\n");
@@ -42,7 +42,7 @@ int main()
 			int32_t i32X = i % 2;
 			int32_t i32Y = i / 2;
 
-			// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+			// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 			if(IsFail(res = arrViewImage[i].Create(i32X * 400 + 400, i32Y * 400, i32X * 400 + 400 + 400, i32Y * 400 + 400)))
 			{
 				ErrorPrint(res, "Failed to create the image view.\n");
@@ -50,7 +50,7 @@ int main()
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 			if(IsFail(res = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
 				ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -64,7 +64,7 @@ int main()
 				break;
 			}
 
-			// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+			// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 			if(i != EType_Src0)
 			{
 				if(IsFail(res = arrViewImage[EType_Src0].SynchronizePointOfView(&arrViewImage[i])))
@@ -74,7 +74,7 @@ int main()
 					break;
 				}
 
-				// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+				// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 				if(IsFail(res = arrViewImage[EType_Src0].SynchronizeWindow(&arrViewImage[i])))
 				{
 					ErrorPrint(res, "Failed to synchronize window.\n");
@@ -89,48 +89,48 @@ int main()
 
 		for(int64_t k = 0; k < ETypeCount; ++k)
 		{
-			// Blob °´Ã¼ »ı¼º 
+			// Blob ê°ì²´ ìƒì„± 
 			// Create Blob object
 			CBlobSubsampled blob;
 
-			// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤
+			// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì •
 			blob.SetSourceImage(arrFliImage[k]);
-			// ³í¸® Á¶°Ç ¼³Á¤
+			// ë…¼ë¦¬ ì¡°ê±´ ì„¤ì •
 			blob.SetLogicalCondition(ELogicalCondition_Greater);
-			// ÀÓ°è°ª ¼³Á¤,  À§ÀÇ Á¶°Ç°ú ¾Æ·¡ÀÇ Á¶°ÇÀÌ ÇÕÃÄÁö¸é 100º¸´Ù °°°Å³ª ÀÛÀº °´Ã¼¸¦ °ËÃâ
+			// ì„ê³„ê°’ ì„¤ì •,  ìœ„ì˜ ì¡°ê±´ê³¼ ì•„ë˜ì˜ ì¡°ê±´ì´ í•©ì³ì§€ë©´ 100ë³´ë‹¤ ê°™ê±°ë‚˜ ì‘ì€ ê°ì²´ë¥¼ ê²€ì¶œ
 			blob.SetThreshold(100);
 
-			// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+			// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 			if(IsFail(res = blob.Execute()))
 			{
 				ErrorPrint(res, "Failed to execute Blob.");
 				break;
 			}
 
-			// Blob °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FigureArray ¼±¾ğ
+			// Blob ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FigureArray ì„ ì–¸
 			CFLFigureArray flfaSortClusterModeBoundaryRects;
 
 			//////////////////////////////////////////////////////////////////////////
-			// SortClusterMode ±â´ÉÀ» ÀÌ¿ëÇØ¼­ BlobµÈ °á°ú¿¡ ´ëÇØ Á¤·ÄÀ» ¼öÇà
-			// °´Ã¼ÀÇ CenterÁÂÇ¥¸¦ ¹ÙÅÁÀ¸·Î 1¼øÀ§ Y¿À¸§Â÷¼ø, 2¼øÀ§ X¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÀ» ¼öÇà
+			// SortClusterMode ê¸°ëŠ¥ì„ ì´ìš©í•´ì„œ Blobëœ ê²°ê³¼ì— ëŒ€í•´ ì •ë ¬ì„ ìˆ˜í–‰
+			// ê°ì²´ì˜ Centerì¢Œí‘œë¥¼ ë°”íƒ•ìœ¼ë¡œ 1ìˆœìœ„ Yì˜¤ë¦„ì°¨ìˆœ, 2ìˆœìœ„ Xì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬ì„ ìˆ˜í–‰
 			//////////////////////////////////////////////////////////////////////////
 
-			// SortClusterMode ÇÔ¼ö¸¦ ÅëÇØ ¿µ¿ªÀ» Á¤·Ä (°´Ã¼ÀÇ CenterÁÂÇ¥¸¦ ¹ÙÅÁÀ¸·Î 1¼øÀ§ Y¿À¸§Â÷¼ø, 2¼øÀ§ X¿À¸§Â÷¼ø)
+			// SortClusterMode í•¨ìˆ˜ë¥¼ í†µí•´ ì˜ì—­ì„ ì •ë ¬ (ê°ì²´ì˜ Centerì¢Œí‘œë¥¼ ë°”íƒ•ìœ¼ë¡œ 1ìˆœìœ„ Yì˜¤ë¦„ì°¨ìˆœ, 2ìˆœìœ„ Xì˜¤ë¦„ì°¨ìˆœ)
 			if(IsFail(res = blob.SortClusterMode(CBlob::ESortClusterModeMethod_Center_Y_Asc_X_Asc)))
 			{
 				ErrorPrint(res, "Failed to get sort from the Blob object.");
 				break;
 			}
 
-			// SortClusterModeÇÑ Blob °á°úµé Áß Boundary Rectangle À» ¾ò¾î¿È
+			// SortClusterModeí•œ Blob ê²°ê³¼ë“¤ ì¤‘ Boundary Rectangle ì„ ì–»ì–´ì˜´
 			if(IsFail(res = blob.GetResultBoundaryRects(flfaSortClusterModeBoundaryRects)))
 			{
 				ErrorPrint(res, "Failed to get boundary rects from the Blob object.");
 				break;
 			}
 
-			// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-			// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+			// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+			// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 
 			CGUIViewImageLayerWrap layerSortClusterMode = arrViewImage[k].GetLayer(0);
 
@@ -140,18 +140,18 @@ int main()
 				break;
 			}
 
-			// flfaOriginBoundaryRects ´Â FigureµéÀÇ ¹è¿­ÀÌ±â ¶§¹®¿¡ Layer¿¡ ³Ö±â¸¸ ÇØµµ ¸ğµÎ µå·ÎÀ®ÀÌ °¡´ÉÇÏ´Ù.
-			// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-			// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-			// ¿©±â¼­ 0.25ÀÌ¹Ç·Î ¿¶Àº ¹İÅõ¸í »óÅÂ¶ó°í º¼ ¼ö ÀÖ´Ù.
-			// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)			
+			// flfaOriginBoundaryRects ëŠ” Figureë“¤ì˜ ë°°ì—´ì´ê¸° ë•Œë¬¸ì— Layerì— ë„£ê¸°ë§Œ í•´ë„ ëª¨ë‘ ë“œë¡œìœ™ì´ ê°€ëŠ¥í•˜ë‹¤.
+			// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+			// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+			// ì—¬ê¸°ì„œ 0.25ì´ë¯€ë¡œ ì˜…ì€ ë°˜íˆ¬ëª… ìƒíƒœë¼ê³  ë³¼ ìˆ˜ ìˆë‹¤.
+			// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)			
 			if(IsFail(res = layerSortClusterMode.DrawFigureImage(&flfaSortClusterModeBoundaryRects, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
 			{
 				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				break;
 			}
 
-			// Rect Á¤º¸°ªÀ» °¢°¢ È®ÀÎÇÏ´Â ÄÚµå
+			// Rect ì •ë³´ê°’ì„ ê°ê° í™•ì¸í•˜ëŠ” ì½”ë“œ
 			for(int64_t i = 0; i < flfaSortClusterModeBoundaryRects.GetCount(); ++i)
 			{
 				CFLFigureArray* pFlfa = (CFLFigureArray*)flfaSortClusterModeBoundaryRects[i];
@@ -171,11 +171,11 @@ int main()
 				}
 			}
 
-			// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+			// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 			arrViewImage[k].RedrawWindow();
 		}
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		bool bRun = true;
 
 		while(bRun)

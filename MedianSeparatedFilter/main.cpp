@@ -1,131 +1,131 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include "../CommomHeader/ErrorPrint.h"
 #include <FLImaging.h>
 
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSrcImage;
 	CFLImage fliDstImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSrc;
 	CGUIViewImageWrap viewImageDst;
 
 	do
 	{
-        // ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithmic executation result
+        // ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithmic executation result
 		CResult res = EResult_UnknownError;
 
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 		
-		// DestinationÀÌ¹ÌÁö¸¦ Src ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º
+		// Destinationì´ë¯¸ì§€ë¥¼ Src ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„±
 		if(IsFail(res = fliDstImage.Assign(fliSrcImage)))
 		{
 			ErrorPrint(res, "Failed to assign the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create the source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create the source image view
 		if(IsFail(res = viewImageSrc.Create(400, 0, 912, 612)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if(IsFail(res = viewImageSrc.SetImagePtr(&fliSrcImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if(IsFail(res = viewImageDst.Create(912, 0, 1424, 612)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if(IsFail(res = viewImageDst.SetImagePtr(&fliDstImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// SourceÀÌ¹ÌÁö ºä¿Í Dst ÀÌ¹ÌÁö ºäÀÇ ÃÊÁ¡À» ¸ÂÃã
+		// Sourceì´ë¯¸ì§€ ë·°ì™€ Dst ì´ë¯¸ì§€ ë·°ì˜ ì´ˆì ì„ ë§ì¶¤
 		if(IsFail(res = viewImageSrc.SynchronizePointOfView(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageSrc.SynchronizeWindow(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// Source Image Å©±â¿¡ ¸Â°Ô viewÀÇ Å©±â¸¦ Á¶Á¤
+		// Source Image í¬ê¸°ì— ë§ê²Œ viewì˜ í¬ê¸°ë¥¼ ì¡°ì •
 		if(IsFail(res = viewImageSrc.ZoomFit()))
 		{
 			ErrorPrint(res, "Failed to zoom fit\n");
 			break;
 		}
 
-		// Destination Image Å©±â¿¡ ¸Â°Ô viewÀÇ Å©±â¸¦ Á¶Á¤
+		// Destination Image í¬ê¸°ì— ë§ê²Œ viewì˜ í¬ê¸°ë¥¼ ì¡°ì •
 		if(IsFail(res = viewImageDst.ZoomFit()))
 		{
 			ErrorPrint(res, "Failed to zoom fit\n");
 			break;
 		}
 
-		// MedianSeparatedFilter °´Ã¼ »ı¼º // Create MedianSeparatedFilter object
+		// MedianSeparatedFilter ê°ì²´ ìƒì„± // Create MedianSeparatedFilter object
 		CMedianSeparatedFilter medianSeparateFilter;
 
 		CFLRect<int32_t> flrROI(100, 190, 360, 420);
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		medianSeparateFilter.SetSourceImage(fliSrcImage);
 
-		// Source ROI ¼³Á¤ // Set the source ROI
+		// Source ROI ì„¤ì • // Set the source ROI
 		medianSeparateFilter.SetSourceROI(flrROI);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		medianSeparateFilter.SetDestinationImage(fliDstImage);
 
-		// Destination ROI ¼³Á¤
+		// Destination ROI ì„¤ì •
 		medianSeparateFilter.SetDestinationROI(flrROI);
 
-		// Ã³¸®ÇÒ FilterÀÇ Kernel Size ¼³Á¤ (KernelSize = 11 ÀÏ °æ¿ì, Kernel Size : 11x11, È¦¼ö¸¸ ¼³Á¤°¡´É)
+		// ì²˜ë¦¬í•  Filterì˜ Kernel Size ì„¤ì • (KernelSize = 11 ì¼ ê²½ìš°, Kernel Size : 11x11, í™€ìˆ˜ë§Œ ì„¤ì •ê°€ëŠ¥)
 		medianSeparateFilter.SetKernel(11);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = medianSeparateFilter.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute morphology MedianSeparate.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSrc = viewImageSrc.GetLayer(0);
 		CGUIViewImageLayerWrap layerDst = viewImageDst.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSrc.Clear();
 		layerDst.Clear();
 
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to find out where ROI is
-		// FLImagingÀÇ Figure°´Ã¼µéÀº ¾î¶² µµÇü¸ğ¾çÀÌµç »ó°ü¾øÀÌ ÇÏ³ªÀÇ ÇÔ¼ö·Î µğ½ºÇÃ·¹ÀÌ°¡ °¡´É
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to find out where ROI is
+		// FLImagingì˜ Figureê°ì²´ë“¤ì€ ì–´ë–¤ ë„í˜•ëª¨ì–‘ì´ë“  ìƒê´€ì—†ì´ í•˜ë‚˜ì˜ í•¨ìˆ˜ë¡œ ë””ìŠ¤í”Œë ˆì´ê°€ ê°€ëŠ¥
 		if(IsFail(res = layerSrc.DrawFigureImage(&flrROI, LIME)))
 			ErrorPrint(res, "Failed to draw figure\n");
 
@@ -144,11 +144,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSrc.Invalidate(true);
 		viewImageDst.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSrc.IsAvailable() && viewImageDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h" 
@@ -14,20 +14,20 @@ enum EType
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage arrFliImage[ETypeCount];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap arrViewImage[ETypeCount];
 
 	bool bError = false;
 
 	do
 	{
-		// µ¿ÀÛ °á°ú // operation result
+		// ë™ì‘ ê²°ê³¼ // operation result
 		CResult res = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = arrFliImage[EType_Src].Load(L"../../ExampleImages/Affine/Generator.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
@@ -45,7 +45,7 @@ int main()
 			int32_t i32X = i % ETypeCount;
 			int32_t i32Y = i / ETypeCount;
 
-			// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+			// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 			if(IsFail(res = arrViewImage[i].Create(i32X * 400 + 400, i32Y * 400, i32X * 400 + 400 + 400, i32Y * 400 + 400)))
 			{
 				ErrorPrint(res, "Failed to create the image view.\n");
@@ -53,7 +53,7 @@ int main()
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the image view
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the image view
 			if(IsFail(res = arrViewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
 				ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -63,7 +63,7 @@ int main()
 
 			if(i != EType_Src && i != EType_Dst)
 			{
-				// µÎ°³ÀÇ ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­  // Synchronize the viewpoints of the two image views. 
+				// ë‘ê°œì˜ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™”  // Synchronize the viewpoints of the two image views. 
 				if(IsFail(res = arrViewImage[EType_Src].SynchronizePointOfView(&arrViewImage[i])))
 				{
 					ErrorPrint(res, "Failed to synchronize window.\n");
@@ -71,7 +71,7 @@ int main()
 					break;
 				}
 
-				// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+				// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 				if(IsFail(res = arrViewImage[EType_Src].SynchronizeWindow(&arrViewImage[i])))
 				{
 					ErrorPrint(res, "Failed to synchronize window.\n");
@@ -84,44 +84,44 @@ int main()
 		if(bError)
 			break;
 
-		// ImageInsertion °´Ã¼ »ı¼º // Create ImageInsertion object
+		// ImageInsertion ê°ì²´ ìƒì„± // Create ImageInsertion object
 		CImageInsertion sImageInsertion;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set source image 
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set source image 
 		sImageInsertion.SetSourceImage(arrFliImage[EType_Src]);
 
-		// Operand ÀÌ¹ÌÁö ¼³Á¤ // Set operand image 
+		// Operand ì´ë¯¸ì§€ ì„¤ì • // Set operand image 
 		sImageInsertion.SetOperandImage(arrFliImage[EType_Opr]);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set destination image 
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set destination image 
 		sImageInsertion.SetDestinationImage(arrFliImage[EType_Dst]);
 
-		// Operand ROI ÁöÁ¤ // Create ROI range
+		// Operand ROI ì§€ì • // Create ROI range
 		CFLRect<int32_t> flrROI(arrFliImage[EType_Opr]);
 
 		flrROI.left = (int32_t)(flrROI.GetWidth() * 0.7);
 
-		// Operand ÀÌ¹ÌÁö ¼³Á¤ // Set operand image 
+		// Operand ì´ë¯¸ì§€ ì„¤ì • // Set operand image 
 		sImageInsertion.SetOperandROI(flrROI);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if((res = sImageInsertion.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute sImageInsertion.");
 			break;
 		}
 
-		// Ãâ·ÂÀ» À§ÇÑ ÀÌ¹ÌÁö ·¹ÀÌ¾î¸¦ ¾ò¾î¿É´Ï´Ù. //  Gets the image layer for output.
-		// µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä ¾øÀ½ // No need to release separately
+		// ì¶œë ¥ì„ ìœ„í•œ ì´ë¯¸ì§€ ë ˆì´ì–´ë¥¼ ì–»ì–´ì˜µë‹ˆë‹¤. //  Gets the image layer for output.
+		// ë”°ë¡œ í•´ì œí•  í•„ìš” ì—†ìŒ // No need to release separately
 		CGUIViewImageLayerWrap arrLayer[ETypeCount];
 
 		for(int32_t i = 0; i < ETypeCount; ++i)
 			arrLayer[i] = arrViewImage[i].GetLayer(0);
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display View information.
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù.// The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display View information.
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤.// The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if(IsFail(res = arrLayer[EType_Src].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)))
@@ -142,18 +142,18 @@ int main()
 			break;
 		}
 
-		// ImageInsertion ¿µ¿ª Ç¥±â // ImageInsertion Area draw
+		// ImageInsertion ì˜ì—­ í‘œê¸° // ImageInsertion Area draw
 		if(IsFail(res = arrLayer[EType_Opr].DrawFigureImage(&flrROI, LIME)))
 			ErrorPrint(res, "Failed to draw figure\n");
 
 		for(int32_t i = ETypeCount - 1; i >= 0; --i)
 		{
-			// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+			// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 			arrViewImage[i].ZoomFit();
 			arrViewImage[i].Invalidate(true);
 		}
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		bool bRun = true;
 		while(bRun)
 		{

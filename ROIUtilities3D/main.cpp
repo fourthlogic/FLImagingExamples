@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -7,7 +7,7 @@
 
 int main()
 {
-	// 3D ºä ¼±¾ğ
+	// 3D ë·° ì„ ì–¸
 	// Declaration of the 3D view 
 	CGUIView3DWrap view3DSrc;
 	CGUIView3DWrap view3DInclude;
@@ -21,7 +21,7 @@ int main()
 
 	do
 	{
-		// 3D ºä »ı¼º // Create the 3D view
+		// 3D ë·° ìƒì„± // Create the 3D view
 		view3DInclude.Create(0, 0, 300, 300); // L, T, R, B(Left, Top, Right, Bottom) 
 		view3DSrc.Create(300, 0, 600, 300);
 		view3DExclude.Create(600, 0, 900, 300);
@@ -29,97 +29,97 @@ int main()
 		view3DRemove.Create(300, 300, 600, 600);
 		view3DXOR.Create(600, 300, 900, 600);
 
-		// 3D °´Ã¼ ¼±¾ğ // Declare a 3D object
+		// 3D ê°ì²´ ì„ ì–¸ // Declare a 3D object
 		CFL3DObject fl3DObjLeft, fl3DObjRight;
-		// 3D °´Ã¼ ·Îµå // Load a 3D object
+		// 3D ê°ì²´ ë¡œë“œ // Load a 3D object
 		res = fl3DObjLeft.Load(L"../../ExampleImages/ROIUtilities3D/Left Cam.ply");
 		res = fl3DObjRight.Load(L"../../ExampleImages/ROIUtilities3D/Right Cam.ply");
 		
 		for(int32_t i = 0; i < 6; ++i)
 		{
-			// 3D ºä¿¡ 3D °´Ã¼ Ãß°¡ // Add 3D objects to the 3D view
+			// 3D ë·°ì— 3D ê°ì²´ ì¶”ê°€ // Add 3D objects to the 3D view
 			arrView3D[i]->PushObject(fl3DObjLeft);
 			arrView3D[i]->PushObject(fl3DObjRight);
 
-			// Ãß°¡ÇÑ 3D °´Ã¼°¡ È­¸é ¾È¿¡ µé¾î¿Àµµ·Ï Zoom Fit // Perform Zoom Fit to ensure added 3D objects are within the view
+			// ì¶”ê°€í•œ 3D ê°ì²´ê°€ í™”ë©´ ì•ˆì— ë“¤ì–´ì˜¤ë„ë¡ Zoom Fit // Perform Zoom Fit to ensure added 3D objects are within the view
 			arrView3D[i]->ZoomFit();
 
-			// 3D ºä¾îÀÇ ½ÃÁ¡(Ä«¸Ş¶ó) º¯°æ // Change the viewpoint (camera) of the 3D viewer
+			// 3D ë·°ì–´ì˜ ì‹œì (ì¹´ë©”ë¼) ë³€ê²½ // Change the viewpoint (camera) of the 3D viewer
 			arrView3D[i]->GetCamera()->SetPosition(CFLPoint3F(0.71, 0.02, 10.94));
 			arrView3D[i]->GetCamera()->SetDirectionUp(CFLPoint3F(1., 0., 0.));
 
 			if(i > 0)
 			{
-				// 3D ºä ½ÃÁ¡ µ¿±âÈ­ // Synchronize the viewpoint of the 3D view
+				// 3D ë·° ì‹œì  ë™ê¸°í™” // Synchronize the viewpoint of the 3D view
 				arrView3D[i]->SynchronizePointOfView(arrView3D[i - 1]);
-				// À©µµ¿ì µ¿±âÈ­ // Synchronize the window
+				// ìœˆë„ìš° ë™ê¸°í™” // Synchronize the window
 				arrView3D[i]->SynchronizeWindow(arrView3D[i - 1]);
 			}
 		}
 
-		// ÀıµÎÃ¼ ROI ¼±¾ğ // Declare the frustum ROI
+		// ì ˆë‘ì²´ ROI ì„ ì–¸ // Declare the frustum ROI
 		CFLFrustum<float> flfr;
-		// ÆÄÀÏ¿¡¼­ ÀıµÎÃ¼ ROI ·Îµå // Load the frustum ROI from a file
+		// íŒŒì¼ì—ì„œ ì ˆë‘ì²´ ROI ë¡œë“œ // Load the frustum ROI from a file
 		flfr.Load(L"../../ExampleImages/ROIUtilities3D/frustumROI.fig");
 
-		// 3D ºä¿¡ ROI Ãß°¡ // Add the ROI to the 3D view
+		// 3D ë·°ì— ROI ì¶”ê°€ // Add the ROI to the 3D view
 		for(int32_t i = 1; i < 6; ++i)
 			arrView3D[i]->PushBackROI(&flfr);
 
-		// CROIUtilities3D °´Ã¼ ¼±¾ğ // Declare the CROIUtilities3D object
+		// CROIUtilities3D ê°ì²´ ì„ ì–¸ // Declare the CROIUtilities3D object
 		CROIUtilities3D roiUtil3D;
 
-		// CROIUtilities3D °´Ã¼¿¡ 3D Object Ãß°¡ // Add 3D objects to the CROIUtilities3D object
+		// CROIUtilities3D ê°ì²´ì— 3D Object ì¶”ê°€ // Add 3D objects to the CROIUtilities3D object
 		roiUtil3D.PushBack3DObject(&fl3DObjLeft);
 		roiUtil3D.PushBack3DObject(&fl3DObjRight);
 
-		// CROIUtilities3D °´Ã¼¿¡ ÀıµÎÃ¼ ROI Ãß°¡ // Add the frustum ROI to the CROIUtilities3D object
+		// CROIUtilities3D ê°ì²´ì— ì ˆë‘ì²´ ROI ì¶”ê°€ // Add the frustum ROI to the CROIUtilities3D object
 		roiUtil3D.PushBackROI(flfr);
 
-		// ¼±ÅÃ Å¸ÀÔ ¼³Á¤ : ROI ¾È¿¡ Æ÷ÇÔµÇ´Â Á¤Á¡¸¸ ¼±ÅÃ // Set the selection type to include only vertices inside the ROI
+		// ì„ íƒ íƒ€ì… ì„¤ì • : ROI ì•ˆì— í¬í•¨ë˜ëŠ” ì •ì ë§Œ ì„ íƒ // Set the selection type to include only vertices inside the ROI
 		roiUtil3D.SetSelectionType(CROIUtilities3D::EResultSelectionType_Include);
 
-		// CROIUtilities3D ½ÇÇà // Execute the CROIUtilities3D object
+		// CROIUtilities3D ì‹¤í–‰ // Execute the CROIUtilities3D object
 		if((res = roiUtil3D.Execute()).IsFail())
 			break;
 
-		// CROIUtilities3D ¿¡¼­ °á°ú ¾ò¾î ¿À±â // Retrieve the results from CROIUtilities3D
+		// CROIUtilities3D ì—ì„œ ê²°ê³¼ ì–»ì–´ ì˜¤ê¸° // Retrieve the results from CROIUtilities3D
 		CFLArray<CFLArray<int32_t>> flfaResultROIIndexInclude;
 		if((res = roiUtil3D.GetResult(flfaResultROIIndexInclude)).IsFail())
 			break;
 
-		// EResultSelectionType.Add ¿¬»êÀ» À§ÇØ CROIUtilities3D °´Ã¼ ¼±¾ğ ¹× roiUtil3D ¸¦ º¹»ç »ı¼º. Include ¿¬»êÀ¸·Î ¾òÀº °á°ú°ª±îÁö º¹»çµÊ
+		// EResultSelectionType.Add ì—°ì‚°ì„ ìœ„í•´ CROIUtilities3D ê°ì²´ ì„ ì–¸ ë° roiUtil3D ë¥¼ ë³µì‚¬ ìƒì„±. Include ì—°ì‚°ìœ¼ë¡œ ì–»ì€ ê²°ê³¼ê°’ê¹Œì§€ ë³µì‚¬ë¨
 		// Declare and copy construct a CROIUtilities3D object for the EResultSelectionType.Add operation. 
 		// The results from the Include operation are also copied.
 		CROIUtilities3D roiUtil3DAdd = roiUtil3D;
 
-		// º¹»çÇÑ °´Ã¼¿¡¼­ ROI¸¦ ¸ğµÎ Å¬¸®¾î // Clear all ROIs from the copied object
+		// ë³µì‚¬í•œ ê°ì²´ì—ì„œ ROIë¥¼ ëª¨ë‘ í´ë¦¬ì–´ // Clear all ROIs from the copied object
 		roiUtil3DAdd.ClearROI();
 
 		if(flfaResultROIIndexInclude.GetCount())
 		{
 			int32_t i32ObjectIdx = 0;
 
-			// 3D ºä¾î¿¡ Ãß°¡µÈ 3D °´Ã¼ÀÇ °³¼ö // Number of 3D objects added to the 3D viewer
+			// 3D ë·°ì–´ì— ì¶”ê°€ëœ 3D ê°ì²´ì˜ ê°œìˆ˜ // Number of 3D objects added to the 3D viewer
 			int32_t i32ObjectCount = view3DInclude.GetObjectCount();
 
 			for(int32_t i = 0; i < i32ObjectCount; ++i)
 			{
-				// 3D ºä¾î¿¡ Ãß°¡µÈ i¹øÂ° 3D °´Ã¼ // The i-th 3D object added to the 3D viewer
+				// 3D ë·°ì–´ì— ì¶”ê°€ëœ ië²ˆì§¸ 3D ê°ì²´ // The i-th 3D object added to the 3D viewer
 				CGUIView3DObject* pObj = (CGUIView3DObject*)view3DInclude.GetView3DObject(i);
 
-				// ÇØ´ç °´Ã¼°¡ ¾ø°Å³ª, ÇØ´ç °´Ã¼¿¡ ´ëÇØ ¼±ÅÃÀÌ ºñÈ°¼ºÈ­ µÇ¾î ÀÖ´Ù¸é continue // Skip if the object is null or selection is disabled
+				// í•´ë‹¹ ê°ì²´ê°€ ì—†ê±°ë‚˜, í•´ë‹¹ ê°ì²´ì— ëŒ€í•´ ì„ íƒì´ ë¹„í™œì„±í™” ë˜ì–´ ìˆë‹¤ë©´ continue // Skip if the object is null or selection is disabled
 				if(!pObj || !pObj->IsSelectionEnabled())
 					continue;
 
-				// i¹øÂ° 3D °´Ã¼ÀÇ µ¥ÀÌÅÍ(CFL3DObject) // Data of the i-th 3D object (CFL3DObject)
+				// ië²ˆì§¸ 3D ê°ì²´ì˜ ë°ì´í„°(CFL3DObject) // Data of the i-th 3D object (CFL3DObject)
 				CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
 
-				// ÇØ´ç °´Ã¼°¡ ¾ø´Ù¸é continue // Skip if the object data is null
+				// í•´ë‹¹ ê°ì²´ê°€ ì—†ë‹¤ë©´ continue // Skip if the object data is null
 				if(!pObjData)
 					continue;
 
-				// i¹øÂ° 3D °´Ã¼¿¡ ´ëÇÑ °á°ú°ª ¹è¿­. ÀÌ ¹è¿­Àº i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ, ROI ³»ºÎ¿¡ À§Ä¡ÇÑ Á¤Á¡ÀÇ ÀÎµ¦½º·Î ÀÌ·ç¾îÁü // Result array for the i-th 3D object. Contains indices of vertices within the ROI.
+				// ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•œ ê²°ê³¼ê°’ ë°°ì—´. ì´ ë°°ì—´ì€ ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´, ROI ë‚´ë¶€ì— ìœ„ì¹˜í•œ ì •ì ì˜ ì¸ë±ìŠ¤ë¡œ ì´ë£¨ì–´ì§ // Result array for the i-th 3D object. Contains indices of vertices within the ROI.
 				CFLArray<int32_t>& flaCollisionIndex = flfaResultROIIndexInclude.GetAt(i32ObjectIdx);
 				i32ObjectIdx++;
 
@@ -129,37 +129,37 @@ int main()
 				int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
 				CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)pObjData->GetVertexColors();
 
-				// i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ, ROI ³»ºÎ¿¡ À§Ä¡ÇÑ Á¤Á¡À» »¡°£»öÀ¸·Î Ç¥½Ã // Mark vertices within the ROI of the i-th 3D object in red
+				// ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´, ROI ë‚´ë¶€ì— ìœ„ì¹˜í•œ ì •ì ì„ ë¹¨ê°„ìƒ‰ìœ¼ë¡œ í‘œì‹œ // Mark vertices within the ROI of the i-th 3D object in red
 				for(int32_t j = 0; j < i32CollisionIndexCount; ++j)
 					pFlaVertexColor->SetAt(flaCollisionIndex.GetAt(j), TPoint3<uint8_t>(255, 0, 0)); // RED
 
-				// 3D ºä¾î¿¡ Ãß°¡µÈ i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ ·»´õ¸µ ¾÷µ¥ÀÌÆ® // Update rendering for the i-th 3D object added to the 3D viewer
+				// 3D ë·°ì–´ì— ì¶”ê°€ëœ ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´ ë Œë”ë§ ì—…ë°ì´íŠ¸ // Update rendering for the i-th 3D object added to the 3D viewer
 				pObj->UpdateAll();
 				view3DInclude.UpdateObject(i);
 			}
 
-			// 3D ºä¾î ¾÷µ¥ÀÌÆ® // Update the 3D viewer
+			// 3D ë·°ì–´ ì—…ë°ì´íŠ¸ // Update the 3D viewer
 			view3DInclude.UpdateScreen();
 		}
 
-		// ¼±ÅÃ Å¸ÀÔ ¼³Á¤ : ROI ¹Ù±ùÀÇ Á¤Á¡¸¸ ¼±ÅÃ // Set selection type: Select only vertices outside the ROI
+		// ì„ íƒ íƒ€ì… ì„¤ì • : ROI ë°”ê¹¥ì˜ ì •ì ë§Œ ì„ íƒ // Set selection type: Select only vertices outside the ROI
 		roiUtil3D.SetSelectionType(CROIUtilities3D::EResultSelectionType_Exclude);
 
-		// CROIUtilities3D ½ÇÇà // Execute CROIUtilities3D
+		// CROIUtilities3D ì‹¤í–‰ // Execute CROIUtilities3D
 		if((res = roiUtil3D.Execute()).IsFail())
 			break;
 
-		// CROIUtilities3D ¿¡¼­ °á°ú ¾ò¾î ¿À±â // Retrieve results from CROIUtilities3D
+		// CROIUtilities3D ì—ì„œ ê²°ê³¼ ì–»ì–´ ì˜¤ê¸° // Retrieve results from CROIUtilities3D
 		CFLArray<CFLArray<int32_t>> flfaResultROIIndexExclude;
 		if((res = roiUtil3D.GetResult(flfaResultROIIndexExclude)).IsFail())
 			break;
 
-		// EResultSelectionType.Remove ¿¬»êÀ» À§ÇØ CROIUtilities3D °´Ã¼ ¼±¾ğ ¹× roiUtil3D ¸¦ º¹»ç »ı¼º. Exclude ¿¬»êÀ¸·Î ¾òÀº °á°ú°ª±îÁö º¹»çµÊ // Declare a CROIUtilities3D object for EResultSelectionType.Remove operation and copy roiUtil3D. Results from the Exclude operation are also copied.
+		// EResultSelectionType.Remove ì—°ì‚°ì„ ìœ„í•´ CROIUtilities3D ê°ì²´ ì„ ì–¸ ë° roiUtil3D ë¥¼ ë³µì‚¬ ìƒì„±. Exclude ì—°ì‚°ìœ¼ë¡œ ì–»ì€ ê²°ê³¼ê°’ê¹Œì§€ ë³µì‚¬ë¨ // Declare a CROIUtilities3D object for EResultSelectionType.Remove operation and copy roiUtil3D. Results from the Exclude operation are also copied.
 		CROIUtilities3D roiUtil3DRemove = roiUtil3D;
-		// EResultSelectionType.XOR ¿¬»êÀ» À§ÇØ CROIUtilities3D °´Ã¼ ¼±¾ğ ¹× roiUtil3D ¸¦ º¹»ç »ı¼º. Exclude ¿¬»êÀ¸·Î ¾òÀº °á°ú°ª±îÁö º¹»çµÊ // Declare a CROIUtilities3D object for EResultSelectionType.XOR operation and copy roiUtil3D. Results from the Exclude operation are also copied.
+		// EResultSelectionType.XOR ì—°ì‚°ì„ ìœ„í•´ CROIUtilities3D ê°ì²´ ì„ ì–¸ ë° roiUtil3D ë¥¼ ë³µì‚¬ ìƒì„±. Exclude ì—°ì‚°ìœ¼ë¡œ ì–»ì€ ê²°ê³¼ê°’ê¹Œì§€ ë³µì‚¬ë¨ // Declare a CROIUtilities3D object for EResultSelectionType.XOR operation and copy roiUtil3D. Results from the Exclude operation are also copied.
 		CROIUtilities3D roiUtil3DXOR = roiUtil3D;
 
-		// º¹»çÇÑ °´Ã¼¿¡¼­ ROI¸¦ ¸ğµÎ Å¬¸®¾î // Clear all ROIs from the copied objects
+		// ë³µì‚¬í•œ ê°ì²´ì—ì„œ ROIë¥¼ ëª¨ë‘ í´ë¦¬ì–´ // Clear all ROIs from the copied objects
 		roiUtil3DRemove.ClearROI();
 		roiUtil3DXOR.ClearROI();
 
@@ -167,64 +167,64 @@ int main()
 		{
 			int32_t i32ObjectIdx = 0;
 
-			// 3D ºä¾î¿¡ Ãß°¡µÈ 3D °´Ã¼ÀÇ °³¼ö // Number of 3D objects added to the 3D viewer
+			// 3D ë·°ì–´ì— ì¶”ê°€ëœ 3D ê°ì²´ì˜ ê°œìˆ˜ // Number of 3D objects added to the 3D viewer
 			int32_t i32ObjectCount = view3DExclude.GetObjectCount();
 
 			for(int32_t i = 0; i < i32ObjectCount; ++i)
 			{
-				// 3D ºä¾î¿¡ Ãß°¡µÈ i¹øÂ° 3D °´Ã¼ // The i-th 3D object added to the 3D viewer
+				// 3D ë·°ì–´ì— ì¶”ê°€ëœ ië²ˆì§¸ 3D ê°ì²´ // The i-th 3D object added to the 3D viewer
 				CGUIView3DObject* pObj = (CGUIView3DObject*)view3DExclude.GetView3DObject(i);
 
-				// ÇØ´ç °´Ã¼°¡ ¾ø°Å³ª, ÇØ´ç °´Ã¼¿¡ ´ëÇØ ¼±ÅÃÀÌ ºñÈ°¼ºÈ­ µÇ¾î ÀÖ´Ù¸é continue // Skip if the object is null or selection is disabled
+				// í•´ë‹¹ ê°ì²´ê°€ ì—†ê±°ë‚˜, í•´ë‹¹ ê°ì²´ì— ëŒ€í•´ ì„ íƒì´ ë¹„í™œì„±í™” ë˜ì–´ ìˆë‹¤ë©´ continue // Skip if the object is null or selection is disabled
 				if(!pObj || !pObj->IsSelectionEnabled())
 					continue;
 
-				// i¹øÂ° 3D °´Ã¼ÀÇ µ¥ÀÌÅÍ(CFL3DObject) // Data of the i-th 3D object (CFL3DObject)
+				// ië²ˆì§¸ 3D ê°ì²´ì˜ ë°ì´í„°(CFL3DObject) // Data of the i-th 3D object (CFL3DObject)
 				CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
 
 				if(!pObjData)
 					continue;
 
-				// ÇØ´ç °´Ã¼°¡ ¾ø´Ù¸é continue // Skip if the object data is null
+				// í•´ë‹¹ ê°ì²´ê°€ ì—†ë‹¤ë©´ continue // Skip if the object data is null
 				CFLArray<int32_t>& flaCollisionIndex = flfaResultROIIndexExclude.GetAt(i32ObjectIdx);
 				i32ObjectIdx++;
 
-				// i¹øÂ° 3D °´Ã¼¿¡ ´ëÇÑ °á°ú°ª ¹è¿­. ÀÌ ¹è¿­Àº i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ, ROI ¿ÜºÎ¿¡ À§Ä¡ÇÑ Á¤Á¡ÀÇ ÀÎµ¦½º·Î ÀÌ·ç¾îÁü // Result array for the i-th 3D object. Contains indices of vertices outside the ROI.
+				// ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•œ ê²°ê³¼ê°’ ë°°ì—´. ì´ ë°°ì—´ì€ ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´, ROI ì™¸ë¶€ì— ìœ„ì¹˜í•œ ì •ì ì˜ ì¸ë±ìŠ¤ë¡œ ì´ë£¨ì–´ì§ // Result array for the i-th 3D object. Contains indices of vertices outside the ROI.
 				if(flaCollisionIndex.IsEmpty())
 					continue;
 
 				int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
 				CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)pObjData->GetVertexColors();
 
-				// i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ, ROI ¹Ù±ù¿¡ À§Ä¡ÇÑ Á¤Á¡À» ÆÄ¶õ»öÀ¸·Î Ç¥½Ã // Mark vertices outside the ROI of the i-th 3D object in blue
+				// ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´, ROI ë°”ê¹¥ì— ìœ„ì¹˜í•œ ì •ì ì„ íŒŒë€ìƒ‰ìœ¼ë¡œ í‘œì‹œ // Mark vertices outside the ROI of the i-th 3D object in blue
 				for(int32_t j = 0; j < i32CollisionIndexCount; ++j)
 					pFlaVertexColor->SetAt(flaCollisionIndex.GetAt(j), TPoint3<uint8_t>(0, 0, 255)); // BLUE
 
-				// 3D ºä¾î¿¡ Ãß°¡µÈ i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ ·»´õ¸µ ¾÷µ¥ÀÌÆ® // Update rendering for the i-th 3D object added to the 3D viewer
+				// 3D ë·°ì–´ì— ì¶”ê°€ëœ ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´ ë Œë”ë§ ì—…ë°ì´íŠ¸ // Update rendering for the i-th 3D object added to the 3D viewer
 				pObj->UpdateAll();
 				view3DExclude.UpdateObject(i);
 			}
 
-			// 3D ºä¾î ¾÷µ¥ÀÌÆ® // Update the 3D viewer
+			// 3D ë·°ì–´ ì—…ë°ì´íŠ¸ // Update the 3D viewer
 			view3DExclude.UpdateScreen();
 		}
 
-		// ±âÁ¸ ¼±ÅÃ ¿µ¿ª(À§¿¡¼­ Include·Î ¼±ÅÃÇÑ ¿µ¿ª)¿¡ Ãß°¡·Î ¼±ÅÃÇÒ ¿µ¿ªÀ» ROI·Î ¼³Á¤ // Set an additional ROI to be selected in the existing selection area (previously selected with Include)
+		// ê¸°ì¡´ ì„ íƒ ì˜ì—­(ìœ„ì—ì„œ Includeë¡œ ì„ íƒí•œ ì˜ì—­)ì— ì¶”ê°€ë¡œ ì„ íƒí•  ì˜ì—­ì„ ROIë¡œ ì„¤ì • // Set an additional ROI to be selected in the existing selection area (previously selected with Include)
 		CFLFrustum<float> flfrAdd;
 		flfrAdd.Load(L"../../ExampleImages/ROIUtilities3D/frustumROI_Add.fig");
-		// CROIUtilities3D °´Ã¼¿¡ ÀıµÎÃ¼ ROI Ãß°¡ // Add the frustum ROI to the CROIUtilities3D object
+		// CROIUtilities3D ê°ì²´ì— ì ˆë‘ì²´ ROI ì¶”ê°€ // Add the frustum ROI to the CROIUtilities3D object
 		roiUtil3DAdd.PushBackROI(&flfrAdd);
-		// 3D ºä¿¡ ROI Ãß°¡ // Add the frustum ROI to the 3D view
+		// 3D ë·°ì— ROI ì¶”ê°€ // Add the frustum ROI to the 3D view
 		view3DAdd.PushBackROI(&flfrAdd);
 
-		// ¼±ÅÃ Å¸ÀÔ ¼³Á¤ : ±âÁ¸ °á°ú¿¡ ROI ¾È¿¡ Æ÷ÇÔµÇ´Â Á¤Á¡À» Ãß°¡ // Set selection type: Add vertices within the ROI to the existing results
+		// ì„ íƒ íƒ€ì… ì„¤ì • : ê¸°ì¡´ ê²°ê³¼ì— ROI ì•ˆì— í¬í•¨ë˜ëŠ” ì •ì ì„ ì¶”ê°€ // Set selection type: Add vertices within the ROI to the existing results
 		roiUtil3DAdd.SetSelectionType(CROIUtilities3D::EResultSelectionType_Add);
 
-		// CROIUtilities3D ½ÇÇà // Execute CROIUtilities3D
+		// CROIUtilities3D ì‹¤í–‰ // Execute CROIUtilities3D
 		if((res = roiUtil3DAdd.Execute()).IsFail())
 			break;
 
-		// CROIUtilities3D ¿¡¼­ °á°ú ¾ò¾î ¿À±â // Retrieve results from CROIUtilities3D
+		// CROIUtilities3D ì—ì„œ ê²°ê³¼ ì–»ì–´ ì˜¤ê¸° // Retrieve results from CROIUtilities3D
 		CFLArray<CFLArray<int32_t>> flfaResultROIIndexAdd;
 		if((res = roiUtil3DAdd.GetResult(flfaResultROIIndexAdd)).IsFail())
 			break;
@@ -232,26 +232,26 @@ int main()
 		if(flfaResultROIIndexAdd.GetCount())
 		{
 			int32_t i32ObjectIdx = 0;
-			// 3D ºä¾î¿¡ Ãß°¡µÈ 3D °´Ã¼ÀÇ °³¼ö // Number of 3D objects added to the 3D viewer
+			// 3D ë·°ì–´ì— ì¶”ê°€ëœ 3D ê°ì²´ì˜ ê°œìˆ˜ // Number of 3D objects added to the 3D viewer
 			int32_t i32ObjectCount = view3DAdd.GetObjectCount();
 
 			for(int32_t i = 0; i < i32ObjectCount; ++i)
 			{
-				// 3D ºä¾î¿¡ Ãß°¡µÈ i¹øÂ° 3D °´Ã¼ // The i-th 3D object added to the 3D viewer
+				// 3D ë·°ì–´ì— ì¶”ê°€ëœ ië²ˆì§¸ 3D ê°ì²´ // The i-th 3D object added to the 3D viewer
 				CGUIView3DObject* pObj = (CGUIView3DObject*)view3DAdd.GetView3DObject(i);
 
-				// ÇØ´ç °´Ã¼°¡ ¾ø°Å³ª, ÇØ´ç °´Ã¼¿¡ ´ëÇØ ¼±ÅÃÀÌ ºñÈ°¼ºÈ­ µÇ¾î ÀÖ´Ù¸é continue // Skip if the object is null or selection is disabled
+				// í•´ë‹¹ ê°ì²´ê°€ ì—†ê±°ë‚˜, í•´ë‹¹ ê°ì²´ì— ëŒ€í•´ ì„ íƒì´ ë¹„í™œì„±í™” ë˜ì–´ ìˆë‹¤ë©´ continue // Skip if the object is null or selection is disabled
 				if(!pObj || !pObj->IsSelectionEnabled())
 					continue;
 
-				// i¹øÂ° 3D °´Ã¼ÀÇ µ¥ÀÌÅÍ(CFL3DObject) // Data of the i-th 3D object (CFL3DObject)
+				// ië²ˆì§¸ 3D ê°ì²´ì˜ ë°ì´í„°(CFL3DObject) // Data of the i-th 3D object (CFL3DObject)
 				CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
 
-				// ÇØ´ç °´Ã¼°¡ ¾ø´Ù¸é continue // Skip if the object data is null
+				// í•´ë‹¹ ê°ì²´ê°€ ì—†ë‹¤ë©´ continue // Skip if the object data is null
 				if(!pObjData)
 					continue;
 
-				// i¹øÂ° 3D °´Ã¼¿¡ ´ëÇÑ °á°ú°ª ¹è¿­. // Result array for the i-th 3D object
+				// ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•œ ê²°ê³¼ê°’ ë°°ì—´. // Result array for the i-th 3D object
 				CFLArray<int32_t>& flaCollisionIndex = flfaResultROIIndexAdd.GetAt(i32ObjectIdx);
 				i32ObjectIdx++;
 
@@ -261,38 +261,38 @@ int main()
 				int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
 				CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)pObjData->GetVertexColors();
 
-				// i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ, ROI ³»ºÎ¿¡ À§Ä¡ÇÑ Á¤Á¡À» »¡°£»öÀ¸·Î Ç¥½Ã // Mark vertices within the ROI of the i-th 3D object in red
+				// ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´, ROI ë‚´ë¶€ì— ìœ„ì¹˜í•œ ì •ì ì„ ë¹¨ê°„ìƒ‰ìœ¼ë¡œ í‘œì‹œ // Mark vertices within the ROI of the i-th 3D object in red
 				for(int32_t j = 0; j < i32CollisionIndexCount; ++j)
 					pFlaVertexColor->SetAt(flaCollisionIndex.GetAt(j), TPoint3<uint8_t>(255, 0, 0)); // RED
 
-				// 3D ºä¾î¿¡ Ãß°¡µÈ i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ ·»´õ¸µ ¾÷µ¥ÀÌÆ® // Update rendering for the i-th 3D object added to the 3D viewer
+				// 3D ë·°ì–´ì— ì¶”ê°€ëœ ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´ ë Œë”ë§ ì—…ë°ì´íŠ¸ // Update rendering for the i-th 3D object added to the 3D viewer
 				pObj->UpdateAll();
 				view3DAdd.UpdateObject(i);
 			}
 
-			// 3D ºä¾î ¾÷µ¥ÀÌÆ® // Update the 3D viewer
+			// 3D ë·°ì–´ ì—…ë°ì´íŠ¸ // Update the 3D viewer
 			view3DAdd.UpdateScreen();
 		}
 
-		// ±âÁ¸ ¼±ÅÃ ¿µ¿ª(À§¿¡¼­ Exclude·Î ¼±ÅÃÇÑ ¿µ¿ª)¿¡¼­ Á¦°ÅÇÒ ¿µ¿ªÀ» ROI·Î ¼³Á¤ // Set ROIs to remove areas from the existing selection (previously selected with Exclude)
+		// ê¸°ì¡´ ì„ íƒ ì˜ì—­(ìœ„ì—ì„œ Excludeë¡œ ì„ íƒí•œ ì˜ì—­)ì—ì„œ ì œê±°í•  ì˜ì—­ì„ ROIë¡œ ì„¤ì • // Set ROIs to remove areas from the existing selection (previously selected with Exclude)
 		CFLFrustum<float> flfrRemove1, flfrRemove2;
 		flfrRemove1.Load(L"../../ExampleImages/ROIUtilities3D/frustumROI_Remove1.fig");
 		flfrRemove2.Load(L"../../ExampleImages/ROIUtilities3D/frustumROI_Remove2.fig");
-		// CROIUtilities3D °´Ã¼¿¡ ÀıµÎÃ¼ ROI Ãß°¡ // Add the frustum ROIs to the CROIUtilities3D object
+		// CROIUtilities3D ê°ì²´ì— ì ˆë‘ì²´ ROI ì¶”ê°€ // Add the frustum ROIs to the CROIUtilities3D object
 		roiUtil3DRemove.PushBackROI(flfrRemove1);
 		roiUtil3DRemove.PushBackROI(flfrRemove2);
-		// 3D ºä¿¡ ROI Ãß°¡ // Add the frustum ROIs to the 3D view
+		// 3D ë·°ì— ROI ì¶”ê°€ // Add the frustum ROIs to the 3D view
 		view3DRemove.PushBackROI(&flfrRemove1);
 		view3DRemove.PushBackROI(&flfrRemove2);
 
-		// ¼±ÅÃ Å¸ÀÔ ¼³Á¤ : ±âÁ¸ °á°ú¿¡¼­ ROI ¾ÈÀÇ Á¤Á¡À» Á¦°Å // Set selection type: Remove vertices within the ROI from the existing results
+		// ì„ íƒ íƒ€ì… ì„¤ì • : ê¸°ì¡´ ê²°ê³¼ì—ì„œ ROI ì•ˆì˜ ì •ì ì„ ì œê±° // Set selection type: Remove vertices within the ROI from the existing results
 		roiUtil3DRemove.SetSelectionType(CROIUtilities3D::EResultSelectionType_Remove);
 
-		// CROIUtilities3D ½ÇÇà // Execute CROIUtilities3D
+		// CROIUtilities3D ì‹¤í–‰ // Execute CROIUtilities3D
 		if((res = roiUtil3DRemove.Execute()).IsFail())
 			break;
 
-		// CROIUtilities3D ¿¡¼­ °á°ú ¾ò¾î ¿À±â // Retrieve results from CROIUtilities3D
+		// CROIUtilities3D ì—ì„œ ê²°ê³¼ ì–»ì–´ ì˜¤ê¸° // Retrieve results from CROIUtilities3D
 		CFLArray<CFLArray<int32_t>> flfaResultROIIndexRemove;
 		if((res = roiUtil3DRemove.GetResult(flfaResultROIIndexRemove)).IsFail())
 			break;
@@ -301,26 +301,26 @@ int main()
 		{
 			int32_t i32ObjectIdx = 0;
 
-			// 3D ºä¾î¿¡ Ãß°¡µÈ 3D °´Ã¼ÀÇ °³¼ö // Number of 3D objects added to the 3D viewer
+			// 3D ë·°ì–´ì— ì¶”ê°€ëœ 3D ê°ì²´ì˜ ê°œìˆ˜ // Number of 3D objects added to the 3D viewer
 			int32_t i32ObjectCount = view3DRemove.GetObjectCount();
 
 			for(int32_t i = 0; i < i32ObjectCount; ++i)
 			{
-				// 3D ºä¾î¿¡ Ãß°¡µÈ i¹øÂ° 3D °´Ã¼ // The i-th 3D object added to the 3D viewer
+				// 3D ë·°ì–´ì— ì¶”ê°€ëœ ië²ˆì§¸ 3D ê°ì²´ // The i-th 3D object added to the 3D viewer
 				CGUIView3DObject* pObj = (CGUIView3DObject*)view3DRemove.GetView3DObject(i);
 
-				// ÇØ´ç °´Ã¼°¡ ¾ø°Å³ª, ÇØ´ç °´Ã¼¿¡ ´ëÇØ ¼±ÅÃÀÌ ºñÈ°¼ºÈ­ µÇ¾î ÀÖ´Ù¸é continue // Skip if the object is null or selection is disabled
+				// í•´ë‹¹ ê°ì²´ê°€ ì—†ê±°ë‚˜, í•´ë‹¹ ê°ì²´ì— ëŒ€í•´ ì„ íƒì´ ë¹„í™œì„±í™” ë˜ì–´ ìˆë‹¤ë©´ continue // Skip if the object is null or selection is disabled
 				if(!pObj || !pObj->IsSelectionEnabled())
 					continue;
 
-				// i¹øÂ° 3D °´Ã¼ÀÇ µ¥ÀÌÅÍ(CFL3DObject) // Data of the i-th 3D object (CFL3DObject)
+				// ië²ˆì§¸ 3D ê°ì²´ì˜ ë°ì´í„°(CFL3DObject) // Data of the i-th 3D object (CFL3DObject)
 				CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
 
-				// ÇØ´ç °´Ã¼°¡ ¾ø´Ù¸é continue // Skip if the object data is null
+				// í•´ë‹¹ ê°ì²´ê°€ ì—†ë‹¤ë©´ continue // Skip if the object data is null
 				if(!pObjData)
 					continue;
 
-				// i¹øÂ° 3D °´Ã¼¿¡ ´ëÇÑ °á°ú°ª ¹è¿­. // Result array for the i-th 3D object
+				// ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•œ ê²°ê³¼ê°’ ë°°ì—´. // Result array for the i-th 3D object
 				CFLArray<int32_t>& flaCollisionIndex = flfaResultROIIndexRemove.GetAt(i32ObjectIdx);
 				i32ObjectIdx++;
 
@@ -330,35 +330,35 @@ int main()
 				int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
 				CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)pObjData->GetVertexColors();
 
-				// i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ, ±âÁ¸ °á°ú¿¡¼­ ROI ¾ÈÀÇ Á¤Á¡À» Á¦°Å ÈÄ ¼±ÅÃµÈ Á¤Á¡À» ÆÄ¶õ»öÀ¸·Î Ç¥½Ã // Mark selected vertices after removing vertices within the ROI of the i-th 3D object in blue
+				// ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´, ê¸°ì¡´ ê²°ê³¼ì—ì„œ ROI ì•ˆì˜ ì •ì ì„ ì œê±° í›„ ì„ íƒëœ ì •ì ì„ íŒŒë€ìƒ‰ìœ¼ë¡œ í‘œì‹œ // Mark selected vertices after removing vertices within the ROI of the i-th 3D object in blue
 				for(int32_t j = 0; j < i32CollisionIndexCount; ++j)
 					pFlaVertexColor->SetAt(flaCollisionIndex.GetAt(j), TPoint3<uint8_t>(0, 0, 255)); // BLUE
 
-				// 3D ºä¾î¿¡ Ãß°¡µÈ i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ ·»´õ¸µ ¾÷µ¥ÀÌÆ® // Update rendering for the i-th 3D object added to the 3D viewer
+				// 3D ë·°ì–´ì— ì¶”ê°€ëœ ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´ ë Œë”ë§ ì—…ë°ì´íŠ¸ // Update rendering for the i-th 3D object added to the 3D viewer
 				pObj->UpdateAll();
 				view3DRemove.UpdateObject(i);
 			}
 
-			// 3D ºä¾î ¾÷µ¥ÀÌÆ® // Update the 3D viewer
+			// 3D ë·°ì–´ ì—…ë°ì´íŠ¸ // Update the 3D viewer
 			view3DRemove.UpdateScreen();
 		}
 
-		// ±âÁ¸ ¼±ÅÃ ¿µ¿ª(À§¿¡¼­ Exclude·Î ¼±ÅÃÇÑ ¿µ¿ª)¿¡¼­ XOR ¼±ÅÃÇÒ ¿µ¿ªÀ» ROI·Î ¼³Á¤ // Set an ROI to perform XOR operation on the existing selection (previously selected with Exclude)
+		// ê¸°ì¡´ ì„ íƒ ì˜ì—­(ìœ„ì—ì„œ Excludeë¡œ ì„ íƒí•œ ì˜ì—­)ì—ì„œ XOR ì„ íƒí•  ì˜ì—­ì„ ROIë¡œ ì„¤ì • // Set an ROI to perform XOR operation on the existing selection (previously selected with Exclude)
 		CFLFrustum<float> flfrXOR;
 		flfrXOR.Load(L"../../ExampleImages/ROIUtilities3D/frustumROI_XOR.fig");
-		// CROIUtilities3D °´Ã¼¿¡ ÀıµÎÃ¼ ROI Ãß°¡ // Add the frustum ROI to the CROIUtilities3D object
+		// CROIUtilities3D ê°ì²´ì— ì ˆë‘ì²´ ROI ì¶”ê°€ // Add the frustum ROI to the CROIUtilities3D object
 		roiUtil3DXOR.PushBackROI(&flfrXOR);
-		// 3D ºä¿¡ ROI Ãß°¡ // Add the frustum ROI to the 3D view
+		// 3D ë·°ì— ROI ì¶”ê°€ // Add the frustum ROI to the 3D view
 		view3DXOR.PushBackROI(&flfrXOR);
 
-		// ¼±ÅÃ Å¸ÀÔ ¼³Á¤ : ±âÁ¸ °á°ú¿¡¼­ ROI ¾ÈÀÇ Á¤Á¡À» XOR ¿¬»êÇÏ¿© ¼±ÅÃ // Set selection type: Perform XOR operation with vertices inside the ROI on the existing results
+		// ì„ íƒ íƒ€ì… ì„¤ì • : ê¸°ì¡´ ê²°ê³¼ì—ì„œ ROI ì•ˆì˜ ì •ì ì„ XOR ì—°ì‚°í•˜ì—¬ ì„ íƒ // Set selection type: Perform XOR operation with vertices inside the ROI on the existing results
 		roiUtil3DXOR.SetSelectionType(CROIUtilities3D::EResultSelectionType_XOR);
 
-		// CROIUtilities3D ½ÇÇà // Execute CROIUtilities3D
+		// CROIUtilities3D ì‹¤í–‰ // Execute CROIUtilities3D
 		if((res = roiUtil3DXOR.Execute()).IsFail())
 			break;
 
-		// CROIUtilities3D ¿¡¼­ °á°ú ¾ò¾î ¿À±â // Retrieve results from CROIUtilities3D
+		// CROIUtilities3D ì—ì„œ ê²°ê³¼ ì–»ì–´ ì˜¤ê¸° // Retrieve results from CROIUtilities3D
 		CFLArray<CFLArray<int32_t>> flfaResultROIIndexXOR;
 		if((res = roiUtil3DXOR.GetResult(flfaResultROIIndexXOR)).IsFail())
 			break;
@@ -366,26 +366,26 @@ int main()
 		if(flfaResultROIIndexXOR.GetCount())
 		{
 			int32_t i32ObjectIdx = 0;
-			// 3D ºä¾î¿¡ Ãß°¡µÈ 3D °´Ã¼ÀÇ °³¼ö // Number of 3D objects added to the 3D viewer
+			// 3D ë·°ì–´ì— ì¶”ê°€ëœ 3D ê°ì²´ì˜ ê°œìˆ˜ // Number of 3D objects added to the 3D viewer
 			int32_t i32ObjectCount = view3DXOR.GetObjectCount();
 
 			for(int32_t i = 0; i < i32ObjectCount; ++i)
 			{
-				// 3D ºä¾î¿¡ Ãß°¡µÈ i¹øÂ° 3D °´Ã¼ // The i-th 3D object added to the 3D viewer
+				// 3D ë·°ì–´ì— ì¶”ê°€ëœ ië²ˆì§¸ 3D ê°ì²´ // The i-th 3D object added to the 3D viewer
 				CGUIView3DObject* pObj = (CGUIView3DObject*)view3DXOR.GetView3DObject(i);
 
-				// ÇØ´ç °´Ã¼°¡ ¾ø°Å³ª, ÇØ´ç °´Ã¼¿¡ ´ëÇØ ¼±ÅÃÀÌ ºñÈ°¼ºÈ­ µÇ¾î ÀÖ´Ù¸é continue // Skip if the object is null or selection is disabled
+				// í•´ë‹¹ ê°ì²´ê°€ ì—†ê±°ë‚˜, í•´ë‹¹ ê°ì²´ì— ëŒ€í•´ ì„ íƒì´ ë¹„í™œì„±í™” ë˜ì–´ ìˆë‹¤ë©´ continue // Skip if the object is null or selection is disabled
 				if(!pObj || !pObj->IsSelectionEnabled())
 					continue;
 
-				// i¹øÂ° 3D °´Ã¼ÀÇ µ¥ÀÌÅÍ(CFL3DObject) // Data of the i-th 3D object (CFL3DObject)
+				// ië²ˆì§¸ 3D ê°ì²´ì˜ ë°ì´í„°(CFL3DObject) // Data of the i-th 3D object (CFL3DObject)
 				CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
 
-				// ÇØ´ç °´Ã¼°¡ ¾ø´Ù¸é continue // Skip if the object data is null
+				// í•´ë‹¹ ê°ì²´ê°€ ì—†ë‹¤ë©´ continue // Skip if the object data is null
 				if(!pObjData)
 					continue;
 
-				// i¹øÂ° 3D °´Ã¼¿¡ ´ëÇÑ °á°ú°ª ¹è¿­. // Result array for the i-th 3D object
+				// ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•œ ê²°ê³¼ê°’ ë°°ì—´. // Result array for the i-th 3D object
 				CFLArray<int32_t>& flaCollisionIndex = flfaResultROIIndexXOR.GetAt(i32ObjectIdx);
 				i32ObjectIdx++;
 
@@ -395,23 +395,23 @@ int main()
 				int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
 				CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)pObjData->GetVertexColors();
 
-				// i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ, ±âÁ¸ °á°ú¿¡¼­ ROI ¾ÈÀÇ Á¤Á¡À» XOR ¿¬»êÇÑ °á°ú Á¤Á¡µéÀ» ÆÄ¶õ»öÀ¸·Î Ç¥½Ã // Mark the vertices resulting from XOR operation within the ROI of the i-th 3D object in blue
+				// ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´, ê¸°ì¡´ ê²°ê³¼ì—ì„œ ROI ì•ˆì˜ ì •ì ì„ XOR ì—°ì‚°í•œ ê²°ê³¼ ì •ì ë“¤ì„ íŒŒë€ìƒ‰ìœ¼ë¡œ í‘œì‹œ // Mark the vertices resulting from XOR operation within the ROI of the i-th 3D object in blue
 				for(int32_t j = 0; j < i32CollisionIndexCount; ++j)
 					pFlaVertexColor->SetAt(flaCollisionIndex.GetAt(j), TPoint3<uint8_t>(0, 0, 255)); // BLUE
 
-				// 3D ºä¾î¿¡ Ãß°¡µÈ i¹øÂ° 3D °´Ã¼¿¡ ´ëÇØ ·»´õ¸µ ¾÷µ¥ÀÌÆ® // Update rendering for the i-th 3D object added to the 3D viewer
+				// 3D ë·°ì–´ì— ì¶”ê°€ëœ ië²ˆì§¸ 3D ê°ì²´ì— ëŒ€í•´ ë Œë”ë§ ì—…ë°ì´íŠ¸ // Update rendering for the i-th 3D object added to the 3D viewer
 				pObj->UpdateAll();
 				view3DXOR.UpdateObject(i);
 			}
 
-			// 3D ºä¾î ¾÷µ¥ÀÌÆ® // Update the 3D viewer
+			// 3D ë·°ì–´ ì—…ë°ì´íŠ¸ // Update the 3D viewer
 			view3DXOR.UpdateScreen();
 		}
 
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas()´Â screenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â stringÀ» drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas()ëŠ” screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” stringì„ drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		CFLPoint<double> flp(0, 0);
@@ -451,11 +451,11 @@ int main()
 			break;
 		}
 
-		// 3D ºä¸¦ °»½Å // Update 3D view
+		// 3D ë·°ë¥¼ ê°±ì‹  // Update 3D view
 		for(int32_t i = 0; i < 6; ++i)
 			arrView3D[i]->Invalidate(true);
 
-		// 3D ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the 3D view 
+		// 3D ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the 3D view 
 		while(arrView3D[0]->IsAvailable() && arrView3D[1]->IsAvailable() && arrView3D[2]->IsAvailable() && arrView3D[3]->IsAvailable() && arrView3D[4]->IsAvailable() && arrView3D[5]->IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

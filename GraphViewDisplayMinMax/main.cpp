@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h" 
@@ -6,53 +6,53 @@
 
 int main()
 {
-	// ±×·¡ÇÁ ºä ¼±¾ğ // Declare the graph view
+	// ê·¸ë˜í”„ ë·° ì„ ì–¸ // Declare the graph view
 	CGUIViewGraphWrap arrViewGraph[3];
 
 	do
 	{
-		// µ¿ÀÛ °á°ú // operation result
+		// ë™ì‘ ê²°ê³¼ // operation result
 		CResult res = EResult_UnknownError;
 
-		// Graph ºä »ı¼º // Create graph view
+		// Graph ë·° ìƒì„± // Create graph view
 		if(IsFail(res = arrViewGraph[0].Create(100, 0, 100 + 440, 340)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Graph ºä »ı¼º // Create graph view
+		// Graph ë·° ìƒì„± // Create graph view
 		if(IsFail(res = arrViewGraph[1].Create(100 + 440 * 1, 0, 100 + 440 * 2, 340)))
 		{
 			ErrorPrint(res, " Failed to create the graph view. \n");
 			break;
 		}
 
-		// Graph ºä »ı¼º // Create graph view
+		// Graph ë·° ìƒì„± // Create graph view
 		if(IsFail(res = arrViewGraph[2].Create(100 + 440 * 2, 0, 100 + 440 * 3, 340)))
 		{
 			ErrorPrint(res, " Failed to create the graph view. \n");
 			break;
 		}
 
-		// Graph ºäÀÇ À§Ä¡ µ¿±âÈ­ // / Synchronize the positions of windows
+		// Graph ë·°ì˜ ìœ„ì¹˜ ë™ê¸°í™” // / Synchronize the positions of windows
 		if(IsFail(res = arrViewGraph[0].SynchronizeWindow(&arrViewGraph[1])))
 		{
 			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
-		// Graph ºäÀÇ À§Ä¡ µ¿±âÈ­ // / Synchronize the positions of windows
+		// Graph ë·°ì˜ ìœ„ì¹˜ ë™ê¸°í™” // / Synchronize the positions of windows
 		if(IsFail(res = arrViewGraph[1].SynchronizeWindow(&arrViewGraph[2])))
 		{
 			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
-		// 3 °³ÀÇ Â÷Æ®¸¦ »ı¼ºÇÑ´Ù. // Create 3 charts.
+		// 3 ê°œì˜ ì°¨íŠ¸ë¥¼ ìƒì„±í•œë‹¤. // Create 3 charts.
 		for(size_t k = 0; k < 3; ++k)
 		{
-			// ·£´ıÀ¸·Î 100°³ÀÇ µ¥ÀÌÅÍ¸¦ »ı¼ºÇÑ´Ù. // Create 100 random (x,y) coordinates.
+			// ëœë¤ìœ¼ë¡œ 100ê°œì˜ ë°ì´í„°ë¥¼ ìƒì„±í•œë‹¤. // Create 100 random (x,y) coordinates.
 			const size_t stDataCount = 100;
 			double arrF64DataX[stDataCount] = { 0., };
 			double arrF64DataY[stDataCount] = { 0., };
@@ -76,45 +76,45 @@ int main()
 			CFLString<wchar_t> flstrName;
 			flstrName.Format(L"Chart[%d]", k);
 
-			// ±×·¡ÇÁ¿¡ »ı¼ºÇÑ µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù. // Plot chart on the graph view.
+			// ê·¸ë˜í”„ì— ìƒì„±í•œ ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤. // Plot chart on the graph view.
 			arrViewGraph[0].Plot(arrF64DataX, arrF64DataY, stDataCount, EChartType_Line, ui32Color, flstrName, nullptr);
 			arrViewGraph[1].Plot(arrF64DataX, arrF64DataY, stDataCount, EChartType_Line, ui32Color, flstrName, nullptr);
 			arrViewGraph[2].Plot(arrF64DataX, arrF64DataY, stDataCount, EChartType_Line, ui32Color, flstrName, nullptr);
 			CThreadUtilities::Sleep(1);
 		}
 
-		// ÀüÃ¼ Â÷Æ®¿¡ ´ëÇÑ Y ÃàÀÇ ÃÖ¼Ú°ª°ú Â÷Æ® ÀÌ¸§ Ç¥½Ã // Display the Y-Axis minimum value for the entire charts and name.
+		// ì „ì²´ ì°¨íŠ¸ì— ëŒ€í•œ Y ì¶•ì˜ ìµœì†Ÿê°’ê³¼ ì°¨íŠ¸ ì´ë¦„ í‘œì‹œ // Display the Y-Axis minimum value for the entire charts and name.
 		arrViewGraph[0].IndicateEntireChart(EViewGraphExtrema_MinX, EViewGraphIndicateType_Value | EViewGraphIndicateType_Name);
 
-		// ÀüÃ¼ Â÷Æ®¿¡ ´ëÇÑ Y ÃàÀÇ ÃÖ´ñ°ª°ú ÀÌ¸§ Ç¥½Ã // Display the Y-Axis maximum value for the entire charts and name.
+		// ì „ì²´ ì°¨íŠ¸ì— ëŒ€í•œ Y ì¶•ì˜ ìµœëŒ“ê°’ê³¼ ì´ë¦„ í‘œì‹œ // Display the Y-Axis maximum value for the entire charts and name.
 		arrViewGraph[0].IndicateEntireChart(EViewGraphExtrema_MaxY, EViewGraphIndicateType_Value | EViewGraphIndicateType_Name);
 
 
-		// ¸ğµç Â÷Æ®¿¡ °¢°¢ X ÃàÀÇ ÃÖ´ë, ÃÖ¼Ú°ª°ú Y ÃàÀÇ ÃÖ´ë, ÃÖ¼Ú°ªÀ» Ç¥½Ã // Display the range and label for every individual chart.
+		// ëª¨ë“  ì°¨íŠ¸ì— ê°ê° X ì¶•ì˜ ìµœëŒ€, ìµœì†Ÿê°’ê³¼ Y ì¶•ì˜ ìµœëŒ€, ìµœì†Ÿê°’ì„ í‘œì‹œ // Display the range and label for every individual chart.
 		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphExtrema_MinX, EViewGraphIndicateType_All);
 		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphExtrema_MaxX, EViewGraphIndicateType_All);
 		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphExtrema_MinY, EViewGraphIndicateType_All);
 		arrViewGraph[1].IndicateEveryIndividualChart(EViewGraphExtrema_MaxY, EViewGraphIndicateType_All);
 
 
-		// Æ¯Á¤ Â÷Æ®(2¹øÂ° Â÷Æ®)¿¡ Y ÃàÀÇ ÃÖ´ë/ÃÖ¼Ò°ªÀ» Ç¥½Ã // Display the Y-Axis minimum/maximum value and name for a particular chart(chart index 0).
+		// íŠ¹ì • ì°¨íŠ¸(2ë²ˆì§¸ ì°¨íŠ¸)ì— Y ì¶•ì˜ ìµœëŒ€/ìµœì†Œê°’ì„ í‘œì‹œ // Display the Y-Axis minimum/maximum value and name for a particular chart(chart index 0).
 		int i32ChartIndex = 2;
 		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphExtrema_MinX, EViewGraphIndicateType_None);
 		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphExtrema_MaxX, EViewGraphIndicateType_None);
 		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphExtrema_MinY, EViewGraphIndicateType_All);
 		arrViewGraph[2].Indicate(i32ChartIndex, EViewGraphExtrema_MaxY, EViewGraphIndicateType_All);
 
-		// Graph ºäÀÇ ¸¶¿ì½º Ä¿¼­ À§Ä¡¿¡ ½ÊÀÚ¼± Ç¥½Ã ÇØÁ¦ // Set the crosshair on mouse cursor invisible.
+		// Graph ë·°ì˜ ë§ˆìš°ìŠ¤ ì»¤ì„œ ìœ„ì¹˜ì— ì‹­ìì„  í‘œì‹œ í•´ì œ // Set the crosshair on mouse cursor invisible.
 		arrViewGraph[0].ShowCrosshair(false);
 		arrViewGraph[1].ShowCrosshair(false);
 		arrViewGraph[2].ShowCrosshair(false);
 
-		// Graph ºäÀÇ ½ºÄÉÀÏÀ» Á¶Á¤ // Sets the scales of the graph view.
+		// Graph ë·°ì˜ ìŠ¤ì¼€ì¼ì„ ì¡°ì • // Sets the scales of the graph view.
 		arrViewGraph[0].ZoomFit();
 		arrViewGraph[1].ZoomFit();
 		arrViewGraph[2].ZoomFit();
 
-		// ±×·¡ÇÁ ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ê·¸ë˜í”„ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(arrViewGraph[0].IsAvailable() && arrViewGraph[1].IsAvailable() && arrViewGraph[2].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

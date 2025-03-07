@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 namespace FLImaging
 {
@@ -15,7 +15,7 @@ namespace FLImaging
 			virtual const CResult ConfigureMenu() override;
 
 		protected:
-			// ��ư Ŭ�� �̺�Ʈ �ڵ鷯
+			// 버튼 클릭 이벤트 핸들러
 			CPropertyButtonClickProcedure* TestButton();
 
 		};

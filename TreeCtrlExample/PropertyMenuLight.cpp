@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PropertyMenuLight.h"
 
 FLImaging::GUI::CPropertyMenuLight::CPropertyMenuLight() : CGUIMenuItemBase()
@@ -66,10 +66,10 @@ bool FLImaging::GUI::CPropertyMenuLight::OnRButtonClick()
 		{
 		case ETreeMenuItem_Insert:
 			{
-				// ÇöÀç Æ®¸®¿¡¼­ ¼±ÅÃµÈ ¾ÆÀÌÅÛ
+				// í˜„ìž¬ íŠ¸ë¦¬ì—ì„œ ì„ íƒëœ ì•„ì´í…œ
 				HTREEITEM hItemThis = m_pTree->GetSelectedItem();
 
-				// ÇüÁ¦ ¼ö ±¸ÇÏ±â
+				// í˜•ì œ ìˆ˜ êµ¬í•˜ê¸°
 				int32_t i32SiblingCount = 0;
 				{
 					HTREEITEM hChild = m_pTree->GetChildItem(m_pTree->GetParentItem(hItemThis));
@@ -81,22 +81,22 @@ bool FLImaging::GUI::CPropertyMenuLight::OnRButtonClick()
 					}
 				}
 
-				// »õ ¾ÆÀÌÅÛ Ãß°¡
+				// ìƒˆ ì•„ì´í…œ ì¶”ê°€
 				CPropertyMenuLight* pItem = new CPropertyMenuLight;
 				pItem->SetParentTree(m_pTree);
 				pItem->SetParentDialog(m_pParentDlg);
-				// »õ Æ®¸® ¾ÆÀÌÅÛ °æ·Î
+				// ìƒˆ íŠ¸ë¦¬ ì•„ì´í…œ ê²½ë¡œ
 				pItem->SetPath(GetPath()); 
-				// »õ Æ®¸® ¾ÆÀÌÅÛ ÀÌ¸§
+				// ìƒˆ íŠ¸ë¦¬ ì•„ì´í…œ ì´ë¦„
 				pItem->SetName(CFLString<wchar_t>().Format(L"Light %d", i32SiblingCount)); 
 				m_pParentDlg->AddMenuItem(pItem);
 
 				HTREEITEM hNewItem = m_pTree->InsertItem(
-					pItem->GetName(), // »õ Æ®¸® ¾ÆÀÌÅÛ ÀÌ¸§
-					(int32_t)ETreeItemIcon_Light, // ¾ÆÀÌÄÜ
-					(int32_t)ETreeItemIcon_Light_Selected, // ¼±ÅÃµÈ »óÅÂÀÇ ¾ÆÀÌÄÜ
-					m_pTree->GetParentItem(hItemThis), // »õ Æ®¸® ¾ÆÀÌÅÛÀÇ ºÎ¸ð ¾ÆÀÌÅÛ
-					hItemThis // ÀÌ ¾ÆÀÌÅÛ ¾Æ·¡¿¡ »õ ¾ÆÀÌÅÛÀ» »ðÀÔ
+					pItem->GetName(), // ìƒˆ íŠ¸ë¦¬ ì•„ì´í…œ ì´ë¦„
+					(int32_t)ETreeItemIcon_Light, // ì•„ì´ì½˜
+					(int32_t)ETreeItemIcon_Light_Selected, // ì„ íƒëœ ìƒíƒœì˜ ì•„ì´ì½˜
+					m_pTree->GetParentItem(hItemThis), // ìƒˆ íŠ¸ë¦¬ ì•„ì´í…œì˜ ë¶€ëª¨ ì•„ì´í…œ
+					hItemThis // ì´ ì•„ì´í…œ ì•„ëž˜ì— ìƒˆ ì•„ì´í…œì„ ì‚½ìž…
 				);
 
 				if(hNewItem)
@@ -109,11 +109,11 @@ bool FLImaging::GUI::CPropertyMenuLight::OnRButtonClick()
 
 				if(u32Answer == IDYES)
 				{
-					// Æ®¸®¿¡¼­ Æ®¸®¾ÆÀÌÅÛ Á¦°Å
+					// íŠ¸ë¦¬ì—ì„œ íŠ¸ë¦¬ì•„ì´í…œ ì œê±°
 					if(m_pTree)
 						m_pTree->DeleteItem(m_pTree->GetSelectedItem());
 
-					// ÇöÀç °´Ã¼(this) ¸¦ CTreeCtrlExampleDlg ÀÇ m_vctItems ¿¡¼­ Á¦°Å ¹× °´Ã¼ ¼Ò¸ê
+					// í˜„ìž¬ ê°ì²´(this) ë¥¼ CTreeCtrlExampleDlg ì˜ m_vctItems ì—ì„œ ì œê±° ë° ê°ì²´ ì†Œë©¸
 					if(m_pParentDlg)
 						m_pParentDlg->PostMessage(ETreeCtrlExampleMessage_DeleteMenuItem, 0, (LPARAM)this);
 				}

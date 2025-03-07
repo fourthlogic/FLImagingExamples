@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,13 +6,13 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö µå·ÎÀ× °´Ã¼ ¼±¾ğ // Declare image drawing object
+	// ì´ë¯¸ì§€ ë“œë¡œì‰ ê°ì²´ ì„ ì–¸ // Declare image drawing object
 	CFLImageDrawingWrap fliImageDrawing;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSrc;
 	CGUIViewImageWrap viewImageDst;
 
@@ -20,121 +20,121 @@ int main()
 	{
 		CResult res = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Blob/AlignBall.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Drawing ÀÌ¹ÌÁö¸¦ Src ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º
+		// Drawing ì´ë¯¸ì§€ë¥¼ Src ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„±
 		if(IsFail(res = fliImageDrawing.Assign(fliImage)))
 		{
 			ErrorPrint(res, "Failed to assign the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImageSrc.Create(400, 0, 800, 400)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImageDst.Create(800, 0, 1200, 400)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù. // Synchronize the viewpoints of the two image views.
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤. // Synchronize the viewpoints of the two image views.
 		if(IsFail(res = viewImageSrc.SynchronizePointOfView(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageSrc.SynchronizeWindow(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if(IsFail(res = viewImageSrc.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Blob °´Ã¼ »ı¼º // Create Blob object
+		// Blob ê°ì²´ ìƒì„± // Create Blob object
 		CBlob blob;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì •
 		blob.SetSourceImage(fliImage);
-		// ³í¸® Á¶°Ç ¼³Á¤
+		// ë…¼ë¦¬ ì¡°ê±´ ì„¤ì •
 		blob.SetLogicalCondition(ELogicalCondition_Less);
-		// ÀÓ°è°ª ¼³Á¤,  À§ÀÇ Á¶°Ç°ú ¾Æ·¡ÀÇ Á¶°ÇÀÌ ÇÕÃÄÁö¸é 127º¸´Ù ÀÛÀº °´Ã¼¸¦ °ËÃâ
+		// ì„ê³„ê°’ ì„¤ì •,  ìœ„ì˜ ì¡°ê±´ê³¼ ì•„ë˜ì˜ ì¡°ê±´ì´ í•©ì³ì§€ë©´ 127ë³´ë‹¤ ì‘ì€ ê°ì²´ë¥¼ ê²€ì¶œ
 		blob.SetThreshold(127);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res = blob.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute Blob.");
 			break;
 		}
 
-		// °á°ú °´Ã¼µé Áß ÇØ´çµÇ´Â Á¶°ÇÀ» °¡Áø °´Ã¼¸¦ Á¦°Å
+		// ê²°ê³¼ ê°ì²´ë“¤ ì¤‘ í•´ë‹¹ë˜ëŠ” ì¡°ê±´ì„ ê°€ì§„ ê°ì²´ë¥¼ ì œê±°
 
-		// ¸éÀûÀÌ 500º¸´Ù ÀÛÀº °´Ã¼µéÀ» Á¦°Å
+		// ë©´ì ì´ 500ë³´ë‹¤ ì‘ì€ ê°ì²´ë“¤ì„ ì œê±°
 		if(IsFail(res = blob.Filter(CBlob::EFilterItem_Area, 500, ELogicalCondition_LessEqual)))
 		{
 			ErrorPrint(res, "Blob filtering algorithm error occurred.");
 			break;
 		}
 
-		// Blob °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FigureArray ¼±¾ğ
+		// Blob ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FigureArray ì„ ì–¸
 		CFLFigureArray flfaBoundaryRects;
 
-		// Blob °á°úµé Áß Boundary Rectangle À» ¾ò¾î¿È
+		// Blob ê²°ê³¼ë“¤ ì¤‘ Boundary Rectangle ì„ ì–»ì–´ì˜´
 		if(IsFail(res = blob.GetResultBoundaryRects(flfaBoundaryRects)))
 		{
 			ErrorPrint(res, "Failed to get boundary rects from the Blob object.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î¸¦ ¾ò¾î¿È // Obtain layer from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ë¥¼ ì–»ì–´ì˜´ // Obtain layer from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer1 = viewImageSrc.GetLayer(0);
 		CGUIViewImageLayerWrap layer2 = viewImageSrc.GetLayer(1);
 		CGUIViewImageLayerWrap layer3 = viewImageSrc.GetLayer(2);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer1.Clear();
 		layer2.Clear();
 		layer3.Clear();
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if(IsFail(res = layer3.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		// flfaBoundaryRects ´Â FigureµéÀÇ ¹è¿­ÀÌ±â ¶§¹®¿¡ Layer¿¡ ³Ö±â¸¸ ÇØµµ ¸ğµÎ µå·ÎÀ®ÀÌ °¡´ÉÇÏ´Ù.
-		// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-		// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-		// ¿©±â¼­ 0.25ÀÌ¹Ç·Î ¿¶Àº ¹İÅõ¸í »óÅÂ¶ó°í º¼ ¼ö ÀÖ´Ù.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+		// flfaBoundaryRects ëŠ” Figureë“¤ì˜ ë°°ì—´ì´ê¸° ë•Œë¬¸ì— Layerì— ë„£ê¸°ë§Œ í•´ë„ ëª¨ë‘ ë“œë¡œìœ™ì´ ê°€ëŠ¥í•˜ë‹¤.
+		// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+		// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+		// ì—¬ê¸°ì„œ 0.25ì´ë¯€ë¡œ ì˜…ì€ ë°˜íˆ¬ëª… ìƒíƒœë¼ê³  ë³¼ ìˆ˜ ìˆë‹¤.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 		if(IsFail(res = layer1.DrawFigureImage(&flfaBoundaryRects, RED, 1, RED, EGUIViewImagePenStyle_Solid, 1, 0.25)))
 		{
 			ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 			break;
 		}
 
-		// Rect Á¤º¸°ªÀ» °¢°¢ È®ÀÎÇÏ´Â ÄÚµå
+		// Rect ì •ë³´ê°’ì„ ê°ê° í™•ì¸í•˜ëŠ” ì½”ë“œ
 		for(int64_t i = 0; i < flfaBoundaryRects.GetCount(); ++i)
 		{
 			CFLRect<int32_t>* pFlrRect = (CFLRect<int32_t>*)flfaBoundaryRects.GetAt(i);
@@ -156,8 +156,8 @@ int main()
 				strRightBottom.Format(L"(%d, %d)", pFlrRect->right, pFlrRect->bottom);
 				strInfo.Format(L"Width : %.lf\nHeight : %.lf\nCenter : (%.1lf, %.1lf)", pFlrRect->GetWidth(), pFlrRect->GetHeight(), pFlrRect->GetCenter().x, pFlrRect->GetCenter().y);
 
-				// ¾Æ·¡ ÇÔ¼ö DrawTextImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Text¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÑ´Ù.
-				// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ¹®ÀÚ¿­ ÁÂÇ¥ -> ¹®ÀÚ¿­ ÁöÁ¤ -> ¹®ÀÚ¿­ »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â·Î ±×¸±ÁöÀÇ ¿©ºÎ -> °¢µµ -> ¹®ÀÚ¿­ÀÇ À§Ä¡ ±âÁØ
+				// ì•„ë˜ í•¨ìˆ˜ DrawTextImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Textë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•œë‹¤.
+				// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ë¬¸ìì—´ ì¢Œí‘œ -> ë¬¸ìì—´ ì§€ì • -> ë¬¸ìì—´ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸°ë¡œ ê·¸ë¦´ì§€ì˜ ì—¬ë¶€ -> ê°ë„ -> ë¬¸ìì—´ì˜ ìœ„ì¹˜ ê¸°ì¤€
 				layer2.DrawTextImage(&CFLPoint<double>(pFlrRect->GetCenter()), strNumber, CYAN, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_CENTER_CENTER);
 				layer2.DrawTextImage(&CFLPoint<double>(pFlrRect->left, pFlrRect->top), strLeftTop, YELLOW, BLACK, 12, false, 0., FLImaging::GUI::EGUIViewImageTextAlignment_RIGHT_BOTTOM);
 				layer2.DrawTextImage(&CFLPoint<double>(pFlrRect->right, pFlrRect->bottom), strRightBottom, YELLOW, BLACK);
@@ -165,13 +165,13 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö¿¡ Ãâ·ÂÇÏ±â À§ÇØ ÀÌ¹ÌÁö µå·ÎÀ× °´Ã¤¿¡¼­ ·¹ÀÌ¾î¸¦ ¾ò¾î¿È // Gets layers from image drawing object for output to image
+		// ì´ë¯¸ì§€ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ ì´ë¯¸ì§€ ë“œë¡œì‰ ê°ì±„ì—ì„œ ë ˆì´ì–´ë¥¼ ì–»ì–´ì˜´ // Gets layers from image drawing object for output to image
 		CGUIViewImageLayerWrap layer = fliImageDrawing.GetLayer();
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 
-		// ±âÁ¸ ·¹ÀÌ¾î¿¡ µå·ÎÀ×µÈ ¿ø¼ÒµéÀ» ÇØ´ç ·¹ÀÌ¾î µÚÂÊ¿¡ Ãß°¡ÇÕ´Ï´Ù. // Add elements drawn from an existing layer to the back of that layer.
+		// ê¸°ì¡´ ë ˆì´ì–´ì— ë“œë¡œì‰ëœ ì›ì†Œë“¤ì„ í•´ë‹¹ ë ˆì´ì–´ ë’¤ìª½ì— ì¶”ê°€í•©ë‹ˆë‹¤. // Add elements drawn from an existing layer to the back of that layer.
 		if(IsFail(res = layer.PushBack(layer1)))
 		{
 			ErrorPrint(res, "Failed to push back.\n");
@@ -184,32 +184,32 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if(IsFail(res = layer.DrawTextImage(&CFLPoint<double>(0, 0), L"Destination Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö¿¡ ±×¸³´Ï´Ù. // Draw in the image.
+		// ì´ë¯¸ì§€ì— ê·¸ë¦½ë‹ˆë‹¤. // Draw in the image.
 		if(IsFail(res = fliImageDrawing.Draw()))
 		{
 			ErrorPrint(res, "Failed to draw.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if(IsFail(res = viewImageDst.SetImagePtr(&fliImageDrawing)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSrc.Invalidate();
 		viewImageDst.Invalidate();
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSrc.IsAvailable() || viewImageDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

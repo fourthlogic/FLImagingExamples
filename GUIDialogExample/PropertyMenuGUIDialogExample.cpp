@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PropertyMenuGUIDialogExample.h"
 
 using namespace FLImaging;
@@ -204,7 +204,7 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuGUIDialogExample::Ma
 			CGUIGridLayout* pGridLayoutGeometric = new CGUIGridLayout(1, 2, true);
 			{
 				pGridLayoutGeometric->AddCtrl(0, 0, EControl_StaticText, L"Mode");
-				pGridLayoutGeometric->AddCtrl(0, 1, EControl_ComboBox, L"Auto"); // L"Auto" ´Â ÇØ´ç ComboBox ÀÇ default value
+				pGridLayoutGeometric->AddCtrl(0, 1, EControl_ComboBox, L"Auto"); // L"Auto" ëŠ” í•´ë‹¹ ComboBox ì˜ default value
 				pGridLayoutGeometric->AddComboBoxItem(0, 1, L"Auto");
 				pGridLayoutGeometric->AddComboBoxItem(0, 1, L"Absolute");
 				pGridLayoutGeometric->AddComboBoxItem(0, 1, L"Relative (%)");
@@ -217,12 +217,12 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuGUIDialogExample::Ma
 			CGUIGridLayout* m_pGridLayout1 = new CGUIGridLayout(2, 2, true, L"Preview Mode");
 			{
 				m_pGridLayout1->AddCtrl(0, 0, L"Above or on threshold");
-				m_pGridLayout1->AddCtrl(0, 1, EControl_ComboBox, L"White"); // L"White" ´Â ÇØ´ç ComboBox ÀÇ default value
+				m_pGridLayout1->AddCtrl(0, 1, EControl_ComboBox, L"White"); // L"White" ëŠ” í•´ë‹¹ ComboBox ì˜ default value
 				m_pGridLayout1->AddComboBoxItem(0, 1, L"White");
 				m_pGridLayout1->AddComboBoxItem(0, 1, L"Reddish");
 				m_pGridLayout1->AddComboBoxItem(0, 1, L"Gray");
 				m_pGridLayout1->AddCtrl(1, 0, L"Below threshold");
-				m_pGridLayout1->AddCtrl(1, 1, EControl_ComboBox, L"Black"); // L"Black" Àº ÇØ´ç ComboBox ÀÇ default value
+				m_pGridLayout1->AddCtrl(1, 1, EControl_ComboBox, L"Black"); // L"Black" ì€ í•´ë‹¹ ComboBox ì˜ default value
 				m_pGridLayout1->AddComboBoxItem(1, 1, L"Black");
 				m_pGridLayout1->AddComboBoxItem(1, 1, L"Blush");
 				m_pGridLayout1->AddComboBoxItem(1, 1, L"Gray");
@@ -264,7 +264,7 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuGUIDialogExample::Ma
 
 			m_pModelessDlg->SetTitle(L"Slider Test");
 
-			// ½Ç¼öÇü ½½¶óÀÌ´õ
+			// ì‹¤ìˆ˜í˜• ìŠ¬ë¼ì´ë”
 			GUI::CGUIGridLayout* pGrid = new CGUIGridLayout(2, 3, true, L"test");
 
 			pGrid->AddCtrl(0, 0, L"test");
@@ -273,8 +273,8 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuGUIDialogExample::Ma
 			CGUISliderFloatingPoint* pSliderFloatingPoint = new CGUISliderFloatingPoint;
 
 			pSliderFloatingPoint->SetRange(0., 1.);
-			pSliderFloatingPoint->SetUnit(0.01); // SliderFloatingPoint 1Æ½´ç Áõ°¡·®
-			pSliderFloatingPoint->SetDecimalPlace(2); // ¼Ò¼öÁ¡ ÀÚ¸® Ç¥½Ã
+			pSliderFloatingPoint->SetUnit(0.01); // SliderFloatingPoint 1í‹±ë‹¹ ì¦ê°€ëŸ‰
+			pSliderFloatingPoint->SetDecimalPlace(2); // ì†Œìˆ˜ì  ìžë¦¬ í‘œì‹œ
 
 
 			pGrid->AddCtrl(1, 0, L"Val=  ");

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PropertyMenuBarUserDefinedInfoExample.h"
 
 using namespace FLImaging;
@@ -167,11 +167,11 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 
 			pMenuBar->ClearUserDefinedInfo();
 
-			// °´Ã¼ »ı¼º ¹× ¹®ÀÚ¿­, ¹è°æ»ö ¼³Á¤ 
+			// ê°ì²´ ìƒì„± ë° ë¬¸ìì—´, ë°°ê²½ìƒ‰ ì„¤ì • 
 			// Creating an object and setting background color and string
 			CGUIMenuBarUserDefinedInfo udi(L"Stopped", RGB(128, 0, 0));
 
-			// Current model name »ç°¢ÇüÀÇ ¿ŞÂÊ ¹æÇâÀ¸·Î ÇÏ³ª¾¿ Ãß°¡µË´Ï´Ù.
+			// Current model name ì‚¬ê°í˜•ì˜ ì™¼ìª½ ë°©í–¥ìœ¼ë¡œ í•˜ë‚˜ì”© ì¶”ê°€ë©ë‹ˆë‹¤.
 			// Object is added in the left direction of the current model name rectangle.
 			pMenuBar->PushBackUserDefinedInfo(udi);
 
@@ -206,17 +206,17 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 			if(!pMenuBar)
 				break;
 
-			// 0¹ø ÀÎµ¦½ºÀÇ ¾ÆÀÌÅÛÀ» ¾ò¾î ¿À±â
+			// 0ë²ˆ ì¸ë±ìŠ¤ì˜ ì•„ì´í…œì„ ì–»ì–´ ì˜¤ê¸°
 			// Get the item at 0
 			CGUIMenuBarUserDefinedInfo* pUDI = pMenuBar->GetUserDefinedInfoAt(0);
 
 			if(pUDI && pUDI->GetText() == L"Stopped")
 			{
-				// ¹®ÀÚ¿­ º¯°æ
+				// ë¬¸ìì—´ ë³€ê²½
 				// Modify text
 				pUDI->SetText(L"Running..");
 
-				// ¹è°æ »ö»ó º¯°æ
+				// ë°°ê²½ ìƒ‰ìƒ ë³€ê²½
 				// Modify background color
 				pUDI->SetBackgroundColor(RGB(0, 128, 0));
 			}
@@ -252,17 +252,17 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 			if(!pMenuBar)
 				break;
 
-			// 0¹ø ÀÎµ¦½ºÀÇ ¾ÆÀÌÅÛÀ» ¾ò¾î ¿À±â
+			// 0ë²ˆ ì¸ë±ìŠ¤ì˜ ì•„ì´í…œì„ ì–»ì–´ ì˜¤ê¸°
 			// Get the item at 0
 			CGUIMenuBarUserDefinedInfo* pUDI = pMenuBar->GetUserDefinedInfoAt(0);
 
 			if(pUDI && pUDI->GetText() == L"Running..")
 			{
-				// ¹®ÀÚ¿­ º¯°æ
+				// ë¬¸ìì—´ ë³€ê²½
 				// Modify text
 				pUDI->SetText(L"Stopped");
 
-				// ¹è°æ »ö»ó º¯°æ
+				// ë°°ê²½ ìƒ‰ìƒ ë³€ê²½
 				// Modify background color
 				pUDI->SetBackgroundColor(RGB(128, 0, 0));
 			}
@@ -307,22 +307,22 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 			EGUIStringTrimming eStringTrimming;
 			int32_t i32Index;
 
-			// "Add" Ä«Å×°í¸® ÇÏÀ§ ÇÁ·ÎÆÛÆ¼¿¡¼­ ÀÔ·ÂÇÑ °ª ¾ò¾î ¿À±â
+			// "Add" ì¹´í…Œê³ ë¦¬ í•˜ìœ„ í”„ë¡œí¼í‹°ì—ì„œ ì…ë ¥í•œ ê°’ ì–»ì–´ ì˜¤ê¸°
 			// Obtain parameters from the properties under "Add" category
 			GetParameters(L"Add", i32Index, str, clrBackground, clrText, bShow, eAlign, eStringTrimming);
 
-			// ¾ò¾î¿Â °ªÀ¸·Î CGUIMenuBarUserDefinedInfo °´Ã¼ »ı¼º
+			// ì–»ì–´ì˜¨ ê°’ìœ¼ë¡œ CGUIMenuBarUserDefinedInfo ê°ì²´ ìƒì„±
 			// Create CGUIMenuBarUserDefinedInfo object with obtained value
 			CGUIMenuBarUserDefinedInfo udi(str, clrBackground, clrText, bShow, eAlign, eStringTrimming);
 
 			CFLString<wchar_t> strPos = pPIDD->GetValue();
 
 			if(strPos == L"PushBack")
-				pMenuBar->PushBackUserDefinedInfo(udi); // ¸Ç µÚ¿¡ Ãß°¡ // Add to the back
+				pMenuBar->PushBackUserDefinedInfo(udi); // ë§¨ ë’¤ì— ì¶”ê°€ // Add to the back
 			else if(strPos == L"PushFront")
-				pMenuBar->PushFrontUserDefinedInfo(udi); // ¸Ç ¾Õ¿¡ Ãß°¡ // Add to the front
+				pMenuBar->PushFrontUserDefinedInfo(udi); // ë§¨ ì•ì— ì¶”ê°€ // Add to the front
 			else if(strPos == L"InsertAt")
-				pMenuBar->InsertUserDefinedInfoAt(i32Index, udi); // ¼³Á¤ÇÑ ÀÎµ¦½º À§Ä¡¿¡ »ğÀÔ // Insert in the index you set
+				pMenuBar->InsertUserDefinedInfoAt(i32Index, udi); // ì„¤ì •í•œ ì¸ë±ìŠ¤ ìœ„ì¹˜ì— ì‚½ì… // Insert in the index you set
 
 			pMenuBar->Invalidate();
 		}
@@ -363,7 +363,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 			EGUIStringTrimming eStringTrimming;
 			int32_t i32Index;
 
-			// "Remove" Ä«Å×°í¸® ÇÏÀ§ ÇÁ·ÎÆÛÆ¼¿¡¼­ ÀÔ·ÂÇÑ °ª ¾ò¾î ¿À±â
+			// "Remove" ì¹´í…Œê³ ë¦¬ í•˜ìœ„ í”„ë¡œí¼í‹°ì—ì„œ ì…ë ¥í•œ ê°’ ì–»ì–´ ì˜¤ê¸°
 			// Obtain parameters from the properties under "Remove" category
 			GetParameters(L"Remove", i32Index, str, clrBackground, clrText, bShow, eAlign, eStringTrimming);
 
@@ -371,11 +371,11 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 
 			if(strPos == L"PopBack")
 			{
-				// ¸Ç µÚÀÇ °´Ã¼ Á¦°ÅÇÏ¸ç ¾ò¾î ¿À±â
+				// ë§¨ ë’¤ì˜ ê°ì²´ ì œê±°í•˜ë©° ì–»ì–´ ì˜¤ê¸°
 				// Obtain the last object by PopBack
 				CGUIMenuBarUserDefinedInfo* pUdiReturn = pMenuBar->PopBackUserDefinedInfo(); 
 
-				// ¸Ş¸ğ¸® ´©¼ö¸¦ ¹æÁöÇÏ±â À§ÇØ ¾ò¾î¿Â °´Ã¼ Á¦°Å
+				// ë©”ëª¨ë¦¬ ëˆ„ìˆ˜ë¥¼ ë°©ì§€í•˜ê¸° ìœ„í•´ ì–»ì–´ì˜¨ ê°ì²´ ì œê±°
 				// Destroy the object to prevent memory leakage
 				if(pUdiReturn)
 				{
@@ -385,11 +385,11 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 			}
 			else if(strPos == L"PopFront")
 			{
-				// ¸Ç ¾ÕÀÇ °´Ã¼ Á¦°ÅÇÏ¸ç ¾ò¾î ¿À±â
+				// ë§¨ ì•ì˜ ê°ì²´ ì œê±°í•˜ë©° ì–»ì–´ ì˜¤ê¸°
 				// Obtain the first object by PopFront
 				CGUIMenuBarUserDefinedInfo* pUdiReturn = pMenuBar->PopFrontUserDefinedInfo(); 
 
-				// ¸Ş¸ğ¸® ´©¼ö¸¦ ¹æÁöÇÏ±â À§ÇØ ¾ò¾î¿Â °´Ã¼ Á¦°Å
+				// ë©”ëª¨ë¦¬ ëˆ„ìˆ˜ë¥¼ ë°©ì§€í•˜ê¸° ìœ„í•´ ì–»ì–´ì˜¨ ê°ì²´ ì œê±°
 				// Destroy the object to prevent memory leakage
 				if(pUdiReturn)
 				{
@@ -398,7 +398,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 				}
 			}
 			else if(strPos == L"RemoveAt")
-				pMenuBar->RemoveUserDefinedInfoAt(i32Index); // ¼³Á¤ÇÑ ÀÎµ¦½º À§Ä¡ÀÇ °´Ã¼ Á¦°Å // Remove objects at the index you set
+				pMenuBar->RemoveUserDefinedInfoAt(i32Index); // ì„¤ì •í•œ ì¸ë±ìŠ¤ ìœ„ì¹˜ì˜ ê°ì²´ ì œê±° // Remove objects at the index you set
 
 			pMenuBar->Invalidate();
 		}
@@ -434,18 +434,18 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 			EGUIStringTrimming eStringTrimming;
 			int32_t i32Index;
 
-			// "Set" Ä«Å×°í¸® ÇÏÀ§ ÇÁ·ÎÆÛÆ¼¿¡¼­ ÀÔ·ÂÇÑ °ª ¾ò¾î ¿À±â
+			// "Set" ì¹´í…Œê³ ë¦¬ í•˜ìœ„ í”„ë¡œí¼í‹°ì—ì„œ ì…ë ¥í•œ ê°’ ì–»ì–´ ì˜¤ê¸°
 			// Obtain parameters from the properties under "Set" category
 			GetParameters(L"Set", i32Index, str, clrBackground, clrText, bShow, eAlign, eStringTrimming);
 
-			// i32Index ÀÎµ¦½ºÀÇ CGUIMenuBarUserDefinedInfo °´Ã¼ Æ÷ÀÎÅÍ ¾ò¾î ¿À±â
+			// i32Index ì¸ë±ìŠ¤ì˜ CGUIMenuBarUserDefinedInfo ê°ì²´ í¬ì¸í„° ì–»ì–´ ì˜¤ê¸°
 			// Obtain CGUIMenuBarUserDefinedInfo object pointer from i32Index index
 			CGUIMenuBarUserDefinedInfo* pUdi = pMenuBar->GetUserDefinedInfoAt(i32Index);
 
 			if(!pUdi)
 				break;
 
-			// ÇÁ·ÎÆÛÆ¼¿¡ ÀÔ·ÂÇÑ °ªÀ» ¾ò¾î¿Â °´Ã¼¿¡ ¼³Á¤
+			// í”„ë¡œí¼í‹°ì— ì…ë ¥í•œ ê°’ì„ ì–»ì–´ì˜¨ ê°ì²´ì— ì„¤ì •
 			// Set the value entered in the property to the object
 			pUdi->Set(str, clrBackground, clrText, bShow, eAlign, eStringTrimming);
 
@@ -494,26 +494,26 @@ const CResult FLImaging::GUI::CPropertyMenuBarUserDefinedInfoExample::AddItemFor
 		pPIDD->AddListItem(L"CENTER_BOTTOM");
 		pPIDD->AddListItem(L"RIGHT_BOTTOM");
 		pPIDD->SetDefaultValue(L"CENTER_CENTER");
-		pPIDD->SetDescription(L"¹®ÀÚ¿­ÀÇ Á¤·Ä ¿É¼Ç");
+		pPIDD->SetDescription(L"ë¬¸ìì—´ì˜ ì •ë ¬ ì˜µì…˜");
 		AddItem(pPIDD);
 
 		pPIDD = new CGUIPropertyItemDropdownList;
 		pPIDD->SetPath(strPath);
 		pPIDD->SetName(L"String Trimming");
 		pPIDD->AddListItem(L"None");
-		pPIDD->AddItemDescription(0, L"Trimming ÇÏÁö ¾ÊÀ½");
+		pPIDD->AddItemDescription(0, L"Trimming í•˜ì§€ ì•ŠìŒ");
 		pPIDD->AddListItem(L"Character");
-		pPIDD->AddItemDescription(1, L"¹®ÀÚ¿­ÀÌ ·¹ÀÌ¾Æ¿ô »ç°¢Çü ³»¿¡ ÀÖ´Â ¸¶Áö¸· ¹®ÀÚÀÇ °æ°è¿¡¼­ ²÷¾îÁö°Ô µÇµµ·Ï ÁöÁ¤ÇÕ´Ï´Ù.");
+		pPIDD->AddItemDescription(1, L"ë¬¸ìì—´ì´ ë ˆì´ì•„ì›ƒ ì‚¬ê°í˜• ë‚´ì— ìˆëŠ” ë§ˆì§€ë§‰ ë¬¸ìì˜ ê²½ê³„ì—ì„œ ëŠì–´ì§€ê²Œ ë˜ë„ë¡ ì§€ì •í•©ë‹ˆë‹¤.");
 		pPIDD->AddListItem(L"Word");
-		pPIDD->AddItemDescription(2, L"¹®ÀÚ¿­ÀÌ ·¹ÀÌ¾Æ¿ô »ç°¢Çü ³»¿¡ ÀÖ´Â ¸¶Áö¸· ´Ü¾îÀÇ °æ°è¿¡¼­ ²÷¾îÁö°Ô µÇµµ·Ï ÁöÁ¤ÇÕ´Ï´Ù.");
+		pPIDD->AddItemDescription(2, L"ë¬¸ìì—´ì´ ë ˆì´ì•„ì›ƒ ì‚¬ê°í˜• ë‚´ì— ìˆëŠ” ë§ˆì§€ë§‰ ë‹¨ì–´ì˜ ê²½ê³„ì—ì„œ ëŠì–´ì§€ê²Œ ë˜ë„ë¡ ì§€ì •í•©ë‹ˆë‹¤.");
 		pPIDD->AddListItem(L"EllipsisCharacter");
-		pPIDD->AddItemDescription(3, L"¹®ÀÚ¿­ÀÌ ·¹ÀÌ¾Æ¿ô »ç°¢Çü ³»¿¡ ÀÖ´Â ¸¶Áö¸· ¹®ÀÚÀÇ °æ°è¿¡¼­ ²÷¾îÁö°í ¹®ÀÚ µÚ¿¡ ÁÙÀÓÇ¥(...)°¡ »ğÀÔµÇµµ·Ï ÁöÁ¤ÇÕ´Ï´Ù.");
+		pPIDD->AddItemDescription(3, L"ë¬¸ìì—´ì´ ë ˆì´ì•„ì›ƒ ì‚¬ê°í˜• ë‚´ì— ìˆëŠ” ë§ˆì§€ë§‰ ë¬¸ìì˜ ê²½ê³„ì—ì„œ ëŠì–´ì§€ê³  ë¬¸ì ë’¤ì— ì¤„ì„í‘œ(...)ê°€ ì‚½ì…ë˜ë„ë¡ ì§€ì •í•©ë‹ˆë‹¤.");
 		pPIDD->AddListItem(L"EllipsisWord");
-		pPIDD->AddItemDescription(4, L"¹®ÀÚ¿­ÀÌ ·¹ÀÌ¾Æ¿ô »ç°¢Çü ¾È¿¡ ÀÖ´Â ¸¶Áö¸· ´Ü¾îÀÇ °æ°è¿¡¼­ ²÷¾îÁö°í ´Ü¾î µÚ¿¡ ÁÙÀÓÇ¥(...)°¡ »ğÀÔµÇµµ·Ï ÁöÁ¤ÇÕ´Ï´Ù.");
+		pPIDD->AddItemDescription(4, L"ë¬¸ìì—´ì´ ë ˆì´ì•„ì›ƒ ì‚¬ê°í˜• ì•ˆì— ìˆëŠ” ë§ˆì§€ë§‰ ë‹¨ì–´ì˜ ê²½ê³„ì—ì„œ ëŠì–´ì§€ê³  ë‹¨ì–´ ë’¤ì— ì¤„ì„í‘œ(...)ê°€ ì‚½ì…ë˜ë„ë¡ ì§€ì •í•©ë‹ˆë‹¤.");
 		pPIDD->AddListItem(L"EllipsisPath");
-		pPIDD->AddItemDescription(5, L"°¡¿îµ¥°¡ ¹®ÀÚ¿­¿¡¼­ Á¦°ÅµÇ°í ÁÙÀÓÇ¥·Î ´ëÃ¼µÇµµ·Ï ÁöÁ¤ÇÕ´Ï´Ù. ¾Ë°í¸®ÁòÀº ¹®ÀÚ¿­ÀÇ ¸¶Áö¸· ºÎºĞÀ» ÃÖ´ëÇÑ ¸¹ÀÌ À¯ÁöÇÕ´Ï´Ù.");
+		pPIDD->AddItemDescription(5, L"ê°€ìš´ë°ê°€ ë¬¸ìì—´ì—ì„œ ì œê±°ë˜ê³  ì¤„ì„í‘œë¡œ ëŒ€ì²´ë˜ë„ë¡ ì§€ì •í•©ë‹ˆë‹¤. ì•Œê³ ë¦¬ì¦˜ì€ ë¬¸ìì—´ì˜ ë§ˆì§€ë§‰ ë¶€ë¶„ì„ ìµœëŒ€í•œ ë§ì´ ìœ ì§€í•©ë‹ˆë‹¤.");
 		pPIDD->SetDefaultValue(L"EllipsisCharacter");
-		pPIDD->SetDescription(L"¹®ÀÚ¿­ÀÌ ·¹ÀÌ¾Æ¿ô »ç°¢ÇüÀ» ¹ş¾î³¯ °æ¿ì ÀÚ¸£±â ¿É¼Ç");
+		pPIDD->SetDescription(L"ë¬¸ìì—´ì´ ë ˆì´ì•„ì›ƒ ì‚¬ê°í˜•ì„ ë²—ì–´ë‚  ê²½ìš° ìë¥´ê¸° ì˜µì…˜");
 		AddItem(pPIDD);
 
 		pPIColor = new CGUIPropertyItemColor;

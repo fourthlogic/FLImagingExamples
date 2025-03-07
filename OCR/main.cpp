@@ -1,22 +1,22 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 	CFLImage fliRecognizeImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 	CGUIViewImageWrap viewImageRecognize;
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if((res = fliImage.Load(L"../../ExampleImages/OCR/OCR_Learn.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -29,54 +29,54 @@ int main()
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if((res = viewImage.Create(200, 0, 712, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Converted ÀÌ¹ÌÁö ºä »ı¼º
+		// Converted ì´ë¯¸ì§€ ë·° ìƒì„±
 		if((res = viewImageRecognize.Create(712, 0, 1224, 512)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if((res = viewImage.SetImagePtr(&fliImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Converted ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ
+		// Converted ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´
 		if((res = viewImageRecognize.SetImagePtr(&fliRecognizeImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ ¸ÂÃã // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë§ì¶¤ // Synchronize the positions of the two image view windows
 		if((res = viewImage.SynchronizeWindow(&viewImageRecognize)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = viewImage.SynchronizePointOfView(&viewImageRecognize)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 		CGUIViewImageLayerWrap layerRecognize = viewImageRecognize.GetLayer(1);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 		layerRecognize.Clear();
 
@@ -92,28 +92,28 @@ int main()
 			break;
 		}
 
-		// OpticalCharacterReader °´Ã¼ »ı¼º // Create OpticalCharacterReader object
+		// OpticalCharacterReader ê°ì²´ ìƒì„± // Create OpticalCharacterReader object
 		COCR ocr;
 
-		// ¹®ÀÚ¸¦ ÇĞ½ÀÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ë¬¸ìë¥¼ í•™ìŠµí•  ì´ë¯¸ì§€ ì„¤ì •
 		if(IsFail(res = ocr.SetLearnImage(fliImage)))
 		{
 			ErrorPrint(res, L"Failed to set Source Image.");
 			break;
 		}
 
-		// ÇĞ½ÀÇÒ ÀÌ¹ÌÁö¿¡ ÀúÀåµÇ¾îÀÖ´Â Figure ÇĞ½À
+		// í•™ìŠµí•  ì´ë¯¸ì§€ì— ì €ì¥ë˜ì–´ìˆëŠ” Figure í•™ìŠµ
 		if(IsFail(res = ocr.Learn()))
 		{
 			ErrorPrint(res, L"Failed to train.");
 			break;
 		}
 
-		// ÇĞ½ÀÇÑ ¹®ÀÚÀÇ °³¼ö¸¦ ¹Ş¾Æ¿À´Â ÇÔ¼ö
+		// í•™ìŠµí•œ ë¬¸ìì˜ ê°œìˆ˜ë¥¼ ë°›ì•„ì˜¤ëŠ” í•¨ìˆ˜
 		int64_t i64LearnedCount = ocr.GetLearnedDataCount();
 		CFLFigureArray flfaLearned;
 
-		// ÇĞ½ÀÇÑ ¹®ÀÚÀÇ ¸ğ¾ç¸¦ ¹Ş¾Æ¿À´Â ÇÔ¼ö
+		// í•™ìŠµí•œ ë¬¸ìì˜ ëª¨ì–‘ë¥¼ ë°›ì•„ì˜¤ëŠ” í•¨ìˆ˜
 		ocr.GetLearnedCharacter(flfaLearned);
 
 		for(int64_t i = 0; i < i64LearnedCount; ++i)
@@ -137,52 +137,52 @@ int main()
 			}
 		}
 
-	   // ¹®ÀÚ¸¦ ÀÎ½ÄÇÒ ÀÌ¹ÌÁö ¼³Á¤
+	   // ë¬¸ìë¥¼ ì¸ì‹í•  ì´ë¯¸ì§€ ì„¤ì •
 		if(IsFail(res = ocr.SetSourceImage(fliRecognizeImage)))
 		{
 			ErrorPrint(res, L"Failed to set Source Image.");
 			break;
 		}
 
-		// ÀÎ½ÄÇÒ ¹®ÀÚÀÇ °¢µµ ¹üÀ§¸¦ ¼³Á¤
+		// ì¸ì‹í•  ë¬¸ìì˜ ê°ë„ ë²”ìœ„ë¥¼ ì„¤ì •
 		if(IsFail(res = ocr.SetRecognizingAngleTolerance(10.)))
 		{
 			ErrorPrint(res, L"Failed to set recognizing angle tolerance.");
 			break;
 		}
 
-		// ÀÎ½ÄÇÒ ¹®ÀÚÀÇ »ö»óÀ» ¼³Á¤
+		// ì¸ì‹í•  ë¬¸ìì˜ ìƒ‰ìƒì„ ì„¤ì •
 		if(IsFail(res = ocr.SetRecognizingCharacterColorType(ECharacterColorType_All)))
 		{
 			ErrorPrint(res, L"Failed to set recognizing character color.");
 			break;
 		}
 
-		// ÀÎ½ÄÇÒ ÃÖ¼Ò Á¡¼ö¸¦ ¼³Á¤
+		// ì¸ì‹í•  ìµœì†Œ ì ìˆ˜ë¥¼ ì„¤ì •
 		if(IsFail(res = ocr.SetRecognizingMinimumScore(0.7)))
 		{
 			ErrorPrint(res, L"Failed to set minimum score.");
 			break;
 		}
 
-		// ÀÎ½ÄÇÒ ÃÖ´ë °³¼ö¸¦ ¼³Á¤
+		// ì¸ì‹í•  ìµœëŒ€ ê°œìˆ˜ë¥¼ ì„¤ì •
 		if(IsFail(res = ocr.SetRecognizingMaximumCharacterCount(12)))
 		{
 			ErrorPrint(res, L"Failed to set maximum character count.");
 			break;
 		}
 
-		// ÀÎ½ÄÇÒ ÀÌ¹ÌÁö¿¡¼­ ¹®ÀÚ¸¦ Ã£´Â ±â´ÉÀ» ¼öÇà
+		// ì¸ì‹í•  ì´ë¯¸ì§€ì—ì„œ ë¬¸ìë¥¼ ì°¾ëŠ” ê¸°ëŠ¥ì„ ìˆ˜í–‰
 		if(IsFail(res = ocr.Execute()))
 		{
 			ErrorPrint(res, res.GetString());
 			break;
 		}
 
-		// Ã£Àº ¹®ÀÚÀÇ °³¼ö¸¦ ¹Ş¾Æ¿À´Â ÇÔ¼ö
+		// ì°¾ì€ ë¬¸ìì˜ ê°œìˆ˜ë¥¼ ë°›ì•„ì˜¤ëŠ” í•¨ìˆ˜
 		int64_t i64ResultCount = ocr.GetResultCount();
 
-		// Ã£Àº ¹®ÀÚÀÇ Á¤º¸¸¦ ¹Ş¾Æ¿Ã ÄÁÅ×ÀÌ³Ê
+		// ì°¾ì€ ë¬¸ìì˜ ì •ë³´ë¥¼ ë°›ì•„ì˜¬ ì»¨í…Œì´ë„ˆ
 		COCR::COCRRecognitionCharacterInfo resultChar;
 
 		for(int64_t i = 0; i < i64ResultCount; ++i)
@@ -208,11 +208,11 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage.Invalidate(true);
 		viewImageRecognize.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable() && viewImageRecognize.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

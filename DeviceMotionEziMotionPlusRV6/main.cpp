@@ -1,10 +1,10 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 
 #include "../CommomHeader/ErrorPrint.h" 
 
-// ¸ğ¼Ç Å¸ÀÔ enum // motion type enum
+// ëª¨ì…˜ íƒ€ì… enum // motion type enum
 enum EMotion
 {
 	EMotion_SearchOriginPosition = 0,
@@ -17,7 +17,7 @@ int main()
 {
 	CResult res = EResult_UnknownError;
 
-	// Ezi Motion Plus R V6 ¼±¾ğ // Declare Ezi Motion Plus R V6
+	// Ezi Motion Plus R V6 ì„ ì–¸ // Declare Ezi Motion Plus R V6
 	CDeviceMotionEziMotionPlusRV6 motionEziMotionPluse;
 
 	do
@@ -34,26 +34,26 @@ int main()
 		EMotion eMotionType = EMotion_SearchOriginPosition;
 		CFLString<wchar_t> flsInput = L"";
 
-		// ÀåÄ¡°¡ ¿¬°áµÈ Æ÷Æ® ¹øÈ£¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Connected devices port number.
+		// ì¥ì¹˜ê°€ ì—°ê²°ëœ í¬íŠ¸ ë²ˆí˜¸ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Connected devices port number.
 		printf("Port Number : ");
 		fgetws(arrInput, 4096, stdin);
 		flsInput = arrInput;
 		i32PortNumber = flsInput.ToInt32();
 
-		// Æ÷Æ® ¹øÈ£¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set Port Number.
+		// í¬íŠ¸ ë²ˆí˜¸ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set Port Number.
 		motionEziMotionPluse.SetPortNo(i32PortNumber);
 
-		// ¿¬°áÇÒ Ãà °¹¼ö // connected axis Count
+		// ì—°ê²°í•  ì¶• ê°¯ìˆ˜ // connected axis Count
 		motionEziMotionPluse.SetAxisCount(1);
 
-		// ÀåÄ¡ ÃÊ±âÈ­ // devices initialize
+		// ì¥ì¹˜ ì´ˆê¸°í™” // devices initialize
 		if(IsFail(res = motionEziMotionPluse.Initialize()))
 		{
 			ErrorPrint(res, "Failed to initialize the motion.\n");
 			break;
 		}
 
-		// ¸ğ¼Ç Ãà °´Ã¼ // motion axis object
+		// ëª¨ì…˜ ì¶• ê°ì²´ // motion axis object
 		CDeviceMotionAxisEziMotionPlusRV6* pDMAxis = (CDeviceMotionAxisEziMotionPlusRV6*)motionEziMotionPluse.GetMotionAxis(i32AxisNumber);
 
 		if(!pDMAxis)
@@ -62,7 +62,7 @@ int main()
 			break;
 		}
 
-		// ¼­º¸ On // Servo On
+		// ì„œë³´ On // Servo On
 		if(IsFail(res = pDMAxis->SetServoOn(true)))
 		{
 			ErrorPrint(res, "Failed to servo on.\n");
@@ -75,7 +75,7 @@ int main()
 		}
 		while(!pDMAxis->IsServoOn());
 
-		// Axis resolutionÀ» ÀÔ·ÂÇÕ´Ï´Ù. // Set axis resolution value.
+		// Axis resolutionì„ ì…ë ¥í•©ë‹ˆë‹¤. // Set axis resolution value.
 		printf("Enter axis resolution(mm/pulse) : ");
 		fgetws(arrInput, 4096, stdin);
 		flsInput = arrInput;
@@ -132,14 +132,14 @@ int main()
 
 			if(eMotionType == EMotion_SearchOriginPosition)
 			{
-				// ¿øÁ¡ º¹±Í ¿îÀüÀ» ÁøÇàÇÕ´Ï´Ù. // 
+				// ì›ì  ë³µê·€ ìš´ì „ì„ ì§„í–‰í•©ë‹ˆë‹¤. // 
 				if(IsFail(res = pDMAxis->SearchOriginPosition()))
 				{
 					ErrorPrint(res, "Failed to search origin position.\n");
 					break;
 				}
 
-				// ¸ğ¼ÇÀÌ Á¤Áö µÉ¶§±îÁö ´ë±â // Wait until motion stops/
+				// ëª¨ì…˜ì´ ì •ì§€ ë ë•Œê¹Œì§€ ëŒ€ê¸° // Wait until motion stops/
 				do
 				{
 					Sleep(100);
@@ -153,19 +153,19 @@ int main()
 			}
 			else
 			{
-				// ÀÌµ¿ ¼Óµµ¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Set axis speed.
+				// ì´ë™ ì†ë„ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Set axis speed.
 				printf("Enter Axis Speed(mm/s): ");
 				fgetws(arrInput, 4096, stdin);
 				flsInput = arrInput;
 				f64MoveSpeed = flsInput.ToDouble();
 
-				// °¡°¨¼ÓÀ» ÀÔ·ÂÇÕ´Ï´Ù. // Set axis acceleation.
+				// ê°€ê°ì†ì„ ì…ë ¥í•©ë‹ˆë‹¤. // Set axis acceleation.
 				printf("Enter Axis Acceleation(mm/s2): ");
 				fgetws(arrInput, 4096, stdin);
 				flsInput = arrInput;
 				f64AccDecSpeed = flsInput.ToDouble();
 
-				// ÀÌµ¿°Å¸®³ª Àı´ëÀ§Ä¡¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Set incremental or absolute position.
+				// ì´ë™ê±°ë¦¬ë‚˜ ì ˆëŒ€ìœ„ì¹˜ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Set incremental or absolute position.
 				printf("Enter Axis Position(mm): ");
 				fgetws(arrInput, 4096, stdin);
 				flsInput = arrInput;
@@ -173,14 +173,14 @@ int main()
 
 				if(eMotionType == EMotion_MoveAbsolutePosition)
 				{
-					// Àı´ë ÁÂÇ¥·Î ÀÌµ¿ // move absolute position
+					// ì ˆëŒ€ ì¢Œí‘œë¡œ ì´ë™ // move absolute position
 					if(IsFail(res = pDMAxis->MovePosition(f64Position, f64MoveSpeed, f64AccDecSpeed, f64AccDecSpeed, false)))
 					{
 						ErrorPrint(res, "Failed to initialize the camera.\n");
 						break;
 					}
 
-					// ¸ğ¼ÇÀÌ Á¤Áö µÉ¶§±îÁö ´ë±â // Wait until motion stops/
+					// ëª¨ì…˜ì´ ì •ì§€ ë ë•Œê¹Œì§€ ëŒ€ê¸° // Wait until motion stops/
 					do
 					{
 						Sleep(100);
@@ -200,7 +200,7 @@ int main()
 						break;
 					}
 
-					// ¸ğ¼ÇÀÌ Á¤Áö µÉ¶§±îÁö ´ë±â // Wait until motion stops/
+					// ëª¨ì…˜ì´ ì •ì§€ ë ë•Œê¹Œì§€ ëŒ€ê¸° // Wait until motion stops/
 					do
 					{
 						Sleep(100);
@@ -218,7 +218,7 @@ int main()
 	}
 	while(false);
 
-	// Motion °´Ã¼¿¡ ¿¬°áÀ» Á¾·á ÇÕ´Ï´Ù. // Terminate the connection to the motion object.
+	// Motion ê°ì²´ì— ì—°ê²°ì„ ì¢…ë£Œ í•©ë‹ˆë‹¤. // Terminate the connection to the motion object.
 	if(IsFail(res = motionEziMotionPluse.Terminate()))
 	{
 		ErrorPrint(res, "Failed to terminate the motion.\n");

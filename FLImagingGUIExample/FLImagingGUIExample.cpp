@@ -1,5 +1,5 @@
-
-// FLImagingGUIExample.cpp : ÀÀ¿ë ÇÁ·Î±×·¥¿¡ ´ëÇÑ Å¬·¡½º µ¿ÀÛÀ» Á¤ÀÇÇÕ´Ï´Ù.
+ï»¿
+// FLImagingGUIExample.cpp : ì‘ìš© í”„ë¡œê·¸ë¨ì— ëŒ€í•œ í´ë˜ìŠ¤ ë™ì‘ì„ ì •ì˜í•©ë‹ˆë‹¤.
 //
 
 #include "stdafx.h"
@@ -19,37 +19,37 @@ BEGIN_MESSAGE_MAP(CFLImagingGUIExampleApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-// CFLImagingGUIExampleApp »ı¼º
+// CFLImagingGUIExampleApp ìƒì„±
 
 CFLImagingGUIExampleApp::CFLImagingGUIExampleApp()
 {
-	// TODO: ¿©±â¿¡ »ı¼º ÄÚµå¸¦ Ãß°¡ÇÕ´Ï´Ù.
-	// InitInstance¿¡ ¸ğµç Áß¿äÇÑ ÃÊ±âÈ­ ÀÛ¾÷À» ¹èÄ¡ÇÕ´Ï´Ù.
+	// TODO: ì—¬ê¸°ì— ìƒì„± ì½”ë“œë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
+	// InitInstanceì— ëª¨ë“  ì¤‘ìš”í•œ ì´ˆê¸°í™” ì‘ì—…ì„ ë°°ì¹˜í•©ë‹ˆë‹¤.
 }
 
 
-// À¯ÀÏÇÑ CFLImagingGUIExampleApp °³Ã¼ÀÔ´Ï´Ù.
+// ìœ ì¼í•œ CFLImagingGUIExampleApp ê°œì²´ì…ë‹ˆë‹¤.
 
 CFLImagingGUIExampleApp theApp;
 
 
-// CFLImagingGUIExampleApp ÃÊ±âÈ­
+// CFLImagingGUIExampleApp ì´ˆê¸°í™”
 
 BOOL CFLImagingGUIExampleApp::InitInstance()
 {
 	CWinAppEx::InitInstance();
 	SetRegistryKey(_T("FLImagingGUIExample examples"));
 
-	// GUI Manager ÃÊ±âÈ­ ÀüÃ³¸®¸¦ ¼öÇàÇÕ´Ï´Ù.
+	// GUI Manager ì´ˆê¸°í™” ì „ì²˜ë¦¬ë¥¼ ìˆ˜í–‰í•©ë‹ˆë‹¤.
 	CGUIManager::PreInitialize();
 
-	// ÀÌ¹ÌÁö ºä »ı¼º ¸Ş´º¸¦ Ãß°¡ÇÕ´Ï´Ù.
+	// ì´ë¯¸ì§€ ë·° ìƒì„± ë©”ë‰´ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
 	CGUIManager::AddMenuItem(new CGUIMenuItemCreateViewImage);
 
-	// ¿¹Á¦ ÇÁ·ÎÆÛÆ¼ ¸Ş´º¸¦ µî·ÏÇÕ´Ï´Ù.
+	// ì˜ˆì œ í”„ë¡œí¼í‹° ë©”ë‰´ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤.
 	CGUIManager::RegisterMenu(CPropertyMenuExample(), L"Example", L"Menu", false);
 
-	// »ı¼ºÇÑ Dialog ¸Ş´º¸¦ µî·ÏÇÕ´Ï´Ù.
+	// ìƒì„±í•œ Dialog ë©”ë‰´ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤.
 	CGUIMenuItemPaneDialogCustomEmbedded* pItemCustomPane = new CGUIMenuItemPaneDialogCustomEmbedded;
 	pItemCustomPane->SetPath(L"Menu");
 	pItemCustomPane->SetName(L"Dialog");
@@ -59,7 +59,7 @@ BOOL CFLImagingGUIExampleApp::InitInstance()
 
 	
 
-	// GUI »ó¿¡¼­ »ç¿ëµÉ ºä¸¦ »ı¼ºÇÕ´Ï´Ù.
+	// GUI ìƒì—ì„œ ì‚¬ìš©ë  ë·°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 	std::vector<CGUIFixedViewDeclaration*> vctFixedViewDecl;
 
 	for(int32_t i = 0; i < 4; ++i)
@@ -71,7 +71,7 @@ BOOL CFLImagingGUIExampleApp::InitInstance()
 		vctFixedViewDecl.push_back(pDeclarationCam);
 	}
 
-	// GUI »ó¿¡¼­ ºäÀÇ ¹è¿­À» ¼³Á¤ÇÕ´Ï´Ù.
+	// GUI ìƒì—ì„œ ë·°ì˜ ë°°ì—´ì„ ì„¤ì •í•©ë‹ˆë‹¤.
 	CGUIFixedViewPlacement fvp;
 
 	CGUIFixedViewPlacementSet fvpSet1(false);
@@ -145,18 +145,18 @@ BOOL CFLImagingGUIExampleApp::InitInstance()
 	CGUIManagerView::AddFixedViewPlacementSet(fvpSet3);
 	CGUIManagerView::AddFixedViewPlacementSet(fvpSet4);
 
-	// ÀÎµ¦½º¿¡ ÇØ´çÇÏ´Â ºäÀÇ ¼³Á¤À¸·Î ¼±ÅÃÇÕ´Ï´Ù.
+	// ì¸ë±ìŠ¤ì— í•´ë‹¹í•˜ëŠ” ë·°ì˜ ì„¤ì •ìœ¼ë¡œ ì„ íƒí•©ë‹ˆë‹¤.
 	CGUIManagerView::SelectFixedViewPlacementSet(0);
 
 	CGUIManager::PreInitializePaneVisibility(true, false, false, false, false);
 
-	// ¸ğµ¨ °ü¸®ÀÚ¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// ëª¨ë¸ ê´€ë¦¬ìë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	CGUIManagerModel::Initialize();
 
-	// GUI °ü¸®ÀÚ¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// GUI ê´€ë¦¬ìë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	CGUIManager::Initialize();
 
-	// Main Frame À§Ä¡¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+	// Main Frame ìœ„ì¹˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 	CGUIMainFrame* pMF = nullptr;
 
 	if(AfxGetApp() && AfxGetApp()->m_pMainWnd)
@@ -177,10 +177,10 @@ BOOL CFLImagingGUIExampleApp::InitInstance()
 		pMF->SetWindowPos(NULL, 0, 0, 1280, 1024, NULL);
 	}
 
-	// "Example" ÀÌ¶ó´Â ÀÌ¸§ÀÇ ¸Ş´º ¾ÆÀÌÅÛ Ã£±â
+	// "Example" ì´ë¼ëŠ” ì´ë¦„ì˜ ë©”ë‰´ ì•„ì´í…œ ì°¾ê¸°
 	CPropertyMenuExample* pPropertyMenu = dynamic_cast<CPropertyMenuExample*>(CGUIManager::GetMenuItem(L"Example", L"Menu"));
 
-	// "Example" ÀÌ¶ó´Â ÀÌ¸§ÀÇ ¸Ş´º ¾ÆÀÌÅÛÀÌ ÀÖÀ» °æ¿ì, ÇÁ·ÎÆÛÆ¼ Ã¢ ¿­±â
+	// "Example" ì´ë¼ëŠ” ì´ë¦„ì˜ ë©”ë‰´ ì•„ì´í…œì´ ìˆì„ ê²½ìš°, í”„ë¡œí¼í‹° ì°½ ì—´ê¸°
 	if(pPropertyMenu)
 	{
 		if(!pPropertyMenu->OnLButtonDoubleClick())

@@ -1,70 +1,70 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage[2];
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult cResult;
 
 	do
 	{
-		// Source Figures View »ı¼º // Create the Source Figures View
+		// Source Figures View ìƒì„± // Create the Source Figures View
 		if(IsFail(cResult = viewImage[0].Create(200, 0, 700, 500)))
 		{
 			ErrorPrint(cResult, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Warp Result View »ı¼º // Create the Warp Result View
+		// Warp Result View ìƒì„± // Create the Warp Result View
 		if(IsFail(cResult = viewImage[1].Create(700, 0, 1200, 500)))
 		{
 			ErrorPrint(cResult, "Failed to create the image view.\n");
 			break;
 		}
 
-		// °¢ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù. // Synchronize the viewpoint of each image view.
+		// ê° ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤. // Synchronize the viewpoint of each image view.
 		if(IsFail(cResult = viewImage[0].SynchronizePointOfView(&viewImage[1])))
 		{
 			ErrorPrint(cResult, "Failed to synchronize view\n");
 			break;
 		}
 
-		// °¢ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù. // Synchronize the position of each image view window.
+		// ê° ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤. // Synchronize the position of each image view window.
 		if(IsFail(cResult = viewImage[0].SynchronizeWindow(&viewImage[1])))
 		{
 			ErrorPrint(cResult, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// È­¸é»ó¿¡ Àß º¸ÀÌµµ·Ï ÁÂÇ¥ 0.5¹èÀ²À» Àû¿ë // Apply 0.5 magnification to the coordinates so that they can be seen clearly on the screen
+		// í™”ë©´ìƒì— ì˜ ë³´ì´ë„ë¡ ì¢Œí‘œ 0.5ë°°ìœ¨ì„ ì ìš© // Apply 0.5 magnification to the coordinates so that they can be seen clearly on the screen
 		double f64Scale = 0.5;
-		// È­¸é»ó¿¡ Àß º¸ÀÌµµ·Ï ½ÃÁ¡ Offset Á¶Á¤ // Adjust the viewpoint offset so that it can be seen clearly on the screen
+		// í™”ë©´ìƒì— ì˜ ë³´ì´ë„ë¡ ì‹œì  Offset ì¡°ì • // Adjust the viewpoint offset so that it can be seen clearly on the screen
 		double f64CenterCoordX = 737.5;
 		double f64CenterCoordY = 524.5;
 		viewImage[0].SetViewCenterAndScale(CFLPoint<double>(f64CenterCoordX, f64CenterCoordY), f64Scale);
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer[2];
 
 		for(int32_t i = 0; i < 2; ++i)
 			layer[i] = viewImage[i].GetLayer(0);
 
-		// È­¸é»ó ÁÂÇ¥(°íÁ¤ ÁÂÇ¥)¿¡ Source Figure View ÀÓÀ» Ç¥½Ã // Displays Source Figure View in on-screen coordinates (fixed coordinates)
+		// í™”ë©´ìƒ ì¢Œí‘œ(ê³ ì • ì¢Œí‘œ)ì— Source Figure View ì„ì„ í‘œì‹œ // Displays Source Figure View in on-screen coordinates (fixed coordinates)
 		layer[0].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Source Figures", YELLOW, BLACK, 30);
-		// È­¸é»ó ÁÂÇ¥(°íÁ¤ ÁÂÇ¥)¿¡ Warp Result View ÀÓÀ» Ç¥½Ã // Display of Warp Result View in on-screen coordinates (fixed coordinates)
+		// í™”ë©´ìƒ ì¢Œí‘œ(ê³ ì • ì¢Œí‘œ)ì— Warp Result View ì„ì„ í‘œì‹œ // Display of Warp Result View in on-screen coordinates (fixed coordinates)
 		layer[1].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Warp Result", YELLOW, BLACK, 30);
 
-		// WarpÀ» µ¿ÀÛÇÏ±â À§ÇÑ Source FigureµéÀÌ ´ã±ä FigureArray¸¦ ·ÎµåÇÕ´Ï´Ù. (´Ù¸¥ Figureµéµµ µ¿ÀÛ °¡´ÉÇÕ´Ï´Ù.)
+		// Warpì„ ë™ì‘í•˜ê¸° ìœ„í•œ Source Figureë“¤ì´ ë‹´ê¸´ FigureArrayë¥¼ ë¡œë“œí•©ë‹ˆë‹¤. (ë‹¤ë¥¸ Figureë“¤ë„ ë™ì‘ ê°€ëŠ¥í•©ë‹ˆë‹¤.)
 		// Loads a FigureArray containing the source figures for running the warp. (Other figures are also available.)
 		CFLFigureArray flfaSource;
 
-		// Source Figure ºÒ·¯¿À±â // Load Source Figure
+		// Source Figure ë¶ˆëŸ¬ì˜¤ê¸° // Load Source Figure
 		if(IsFail(cResult = flfaSource.Load(L"../../ExampleImages/Figure/DistortedCoordinates.fig")))
 		{
 			ErrorPrint(cResult, "Failed to load the figure file.\n");
@@ -72,20 +72,20 @@ int main()
 		}
 		
 
-		// Source FigureÀÇ °¢ ²ÀÁöÁ¡À» SourceRegion Quad·Î »ı¼º
+		// Source Figureì˜ ê° ê¼­ì§€ì ì„ SourceRegion Quadë¡œ ìƒì„±
 		// Each vertex of the source figure is created as a SourceRegion Quad
 		CFLQuad<double> flqSourceRegion(CFLPoint<double>(397.5, 227.0), CFLPoint<double>(1065.0, 292.0), CFLPoint<double>(1063.5, 739.5), CFLPoint<double>(395.0, 822.5));
-		// SourceRegion Quad¸¦ Á÷»ç°¢ÇüÀÇ ÇüÅÂ·Î ÆîÄ£ Quad·Î TargetRegion Quad¸¦ »ı¼º
+		// SourceRegion Quadë¥¼ ì§ì‚¬ê°í˜•ì˜ í˜•íƒœë¡œ í¼ì¹œ Quadë¡œ TargetRegion Quadë¥¼ ìƒì„±
 		// Create a TargetRegion Quad with a Quad that spreads the SourceRegion Quad in the form of a rectangle
 		CFLQuad<double> flqTargetRegion(CFLPoint<double>(397.5, 227.0), CFLPoint<double>(1065.0, 227.0), CFLPoint<double>(1065.5, 822.5), CFLPoint<double>(397.5, 822.5));
 
 		wprintf(L"Source Quad Region : %s\n", CFigureUtilities::ConvertFigureObjectToString(flqSourceRegion).GetString());
 		wprintf(L"Target Quad Region : %s\n\n", CFigureUtilities::ConvertFigureObjectToString(flqTargetRegion).GetString());
 
-		// Warp °á°ú¸¦ ¹Ş¾Æ¿Ã FigureArray // FigureArray to receive the warp result
+		// Warp ê²°ê³¼ë¥¼ ë°›ì•„ì˜¬ FigureArray // FigureArray to receive the warp result
 		CFLFigureArray flfaResult;
 
-		// Perspective TypeÀ¸·Î Warp ÇÔ¼ö µ¿ÀÛ (Perspective, Bilinear µÎ Å¸ÀÔÀ¸·Î ÇÔ¼ö µ¿ÀÛ °¡´É)
+		// Perspective Typeìœ¼ë¡œ Warp í•¨ìˆ˜ ë™ì‘ (Perspective, Bilinear ë‘ íƒ€ì…ìœ¼ë¡œ í•¨ìˆ˜ ë™ì‘ ê°€ëŠ¥)
 		// Warp function works with perspective type (function can be operated with two types, perspective and bilinear)
 		if(IsFail(cResult = flfaSource.Warp(flqSourceRegion, flqTargetRegion, flfaResult, EWarpingType_Perspective)))
 		{
@@ -93,35 +93,35 @@ int main()
 			break;
 		}
 
-		// Source Figure ±×¸®±â // Draw the Source Figure
+		// Source Figure ê·¸ë¦¬ê¸° // Draw the Source Figure
 		if(IsFail(cResult = layer[0].DrawFigureImage(&flfaSource, YELLOW, 3)))
 		{
 			ErrorPrint(cResult, "Failed to draw figure objects on the image view.\n");
 			break;
 		}
 
-		// Warp Result Figure ±×¸®±â // Draw Warp Result Figure
+		// Warp Result Figure ê·¸ë¦¬ê¸° // Draw Warp Result Figure
 		if(IsFail(cResult = layer[1].DrawFigureImage(&flfaResult, LIME, 3)))
 		{
 			ErrorPrint(cResult, "Failed to draw figure objects on the image view.\n");
 			break;
 		}
 
-		// SourceRegion Quad ±×¸®±â // Draw SourceRegion Quad
+		// SourceRegion Quad ê·¸ë¦¬ê¸° // Draw SourceRegion Quad
 		if(IsFail(cResult = layer[0].DrawFigureImage(&flqSourceRegion, RED, 1)))
 		{
 			ErrorPrint(cResult, "Failed to draw figure objects on the image view.\n");
 			break;
 		}
 
-		// TargetRegion Quad ±×¸®±â // Draw TargetRegion Quad
+		// TargetRegion Quad ê·¸ë¦¬ê¸° // Draw TargetRegion Quad
 		if(IsFail(cResult = layer[1].DrawFigureImage(&flqTargetRegion, BLUE, 1)))
 		{
 			ErrorPrint(cResult, "Failed to draw figure objects on the image view.\n");
 			break;
 		}
 
-		// Source¿Í Warp Result Point¸¦ Console Ã¢¿¡ Ãâ·Â // Output the Source and Warp Result Point to the console window
+		// Sourceì™€ Warp Result Pointë¥¼ Console ì°½ì— ì¶œë ¥ // Output the Source and Warp Result Point to the console window
 		for(int i = 0 ; i < flfaSource.GetCount(); ++i)
 		{
 			CFLFigure* pFlfSource = flfaSource.GetAt(i);
@@ -134,12 +134,12 @@ int main()
 				printf("Source (%.1lf, %.1lf) -> Warp Result (%.1lf, %.1lf)\n", pFlpSource->x, pFlpSource->y, pFlpTarget->x, pFlpTarget->y);
 		}
 
-		// ÀÌ¹ÌÁö ºäµéÀ» °»½Å ÇÕ´Ï´Ù. // Update the image views.
+		// ì´ë¯¸ì§€ ë·°ë“¤ì„ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image views.
 		for(int32_t i = 0; i < 2; ++i)
 			viewImage[i].Invalidate(true);
 
 
-		// ÀÌ¹ÌÁö ºä°¡ µÑÁß¿¡ ÇÏ³ª¶óµµ ²¨Áö¸é Á¾·á·Î °£ÁÖ // If either one of the imageviews is turned off, it is considered to be closed.
+		// ì´ë¯¸ì§€ ë·°ê°€ ë‘˜ì¤‘ì— í•˜ë‚˜ë¼ë„ êº¼ì§€ë©´ ì¢…ë£Œë¡œ ê°„ì£¼ // If either one of the imageviews is turned off, it is considered to be closed.
 		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

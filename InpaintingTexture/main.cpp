@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,234 +6,234 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSrcImage;
 	CFLImage fliSrcImage2;
 	CFLImage fliDstImage;
 	CFLImage fliDstImage2;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSrc;
 	CGUIViewImageWrap viewImageSrc2;
 	CGUIViewImageWrap viewImageDst;
 	CGUIViewImageWrap viewImageDst2;
 
-	// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+	// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if((res = fliSrcImage.Load(L"../../ExampleImages/InpaintingTexture/Seville.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö 2 ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ 2 ë¡œë“œ // Load the source image
 		if((res = fliSrcImage2.Load(L"../../ExampleImages/InpaintingTexture/Wood.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö¸¦ Source ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º // Create destination image as same as source image
+		// Destination ì´ë¯¸ì§€ë¥¼ Source ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„± // Create destination image as same as source image
 		if((res = fliDstImage.Assign(fliSrcImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to assign the image file.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö¸¦ Source ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º // Create destination image as same as source image
+		// Destination ì´ë¯¸ì§€ë¥¼ Source ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„± // Create destination image as same as source image
 		if((res = fliDstImage2.Assign(fliSrcImage2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create the source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create the source image view
 		if((res = viewImageSrc.Create(400, 0, 800, 400)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä 2 »ı¼º // Create the source image view 2
+		// Source ì´ë¯¸ì§€ ë·° 2 ìƒì„± // Create the source image view 2
 		if((res = viewImageSrc2.Create(400, 400, 800, 800)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if((res = viewImageSrc.SetImagePtr(&fliSrcImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä 2¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·° 2ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if((res = viewImageSrc2.SetImagePtr(&fliSrcImage2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if((res = viewImageDst.Create(800, 0, 1200, 400)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if((res = viewImageDst2.Create(800, 400, 1200, 800)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if((res = viewImageDst.SetImagePtr(&fliDstImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if((res = viewImageDst2.SetImagePtr(&fliDstImage2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = viewImageSrc.SynchronizePointOfView(&viewImageDst)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSrc.SynchronizeWindow(&viewImageDst)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 		if((res = viewImageSrc2.SynchronizePointOfView(&viewImageDst2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSrc2.SynchronizeWindow(&viewImageDst2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageSrc.SynchronizeWindow(&viewImageSrc2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// InpaintingTexture °´Ã¼ »ı¼º // Create InpaintingTexture object
+		// InpaintingTexture ê°ì²´ ìƒì„± // Create InpaintingTexture object
 		CInpaintingTexture InpaintingTexture;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		InpaintingTexture.SetSourceImage(fliSrcImage);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		InpaintingTexture.SetDestinationImage(fliDstImage);
-		// PatchingÀ» ÁøÇàÇÒ MaskÀÇ Å©±â ¼³Á¤ // Set the size of the mask for patching
+		// Patchingì„ ì§„í–‰í•  Maskì˜ í¬ê¸° ì„¤ì • // Set the size of the mask for patching
 		InpaintingTexture.SetMaskSize(13);
-		// PatchingÀÇ Source°¡ µÇ´Â Mask¸¦ Ã£±â À§ÇÑ °Ë»ö ¿µ¿ªÀÇ Å©±â ¼³Á¤ // Set the size of the search area to find the mask that is the source of the patching
+		// Patchingì˜ Sourceê°€ ë˜ëŠ” Maskë¥¼ ì°¾ê¸° ìœ„í•œ ê²€ìƒ‰ ì˜ì—­ì˜ í¬ê¸° ì„¤ì • // Set the size of the search area to find the mask that is the source of the patching
 		InpaintingTexture.SetSearchSize(100);
-		// Search step size ¼³Á¤ // Set the search step size
+		// Search step size ì„¤ì • // Set the search step size
 		InpaintingTexture.SetSearchStepSize(1);
-		// ¸ÅÄ¡¸¦ À§ÇÑ Gradient Value °ö °è¼ö ¼³Á¤ // Set a coefficient multiplied by gradient value for match
+		// ë§¤ì¹˜ë¥¼ ìœ„í•œ Gradient Value ê³± ê³„ìˆ˜ ì„¤ì • // Set a coefficient multiplied by gradient value for match
 		InpaintingTexture.SetAnisotropy(1);
 
 		CFLFigureArray flfaPaintingRegion;
 
-		// ¹Ì¸® ±×·ÁµĞ Painting region Figure Array ºÒ·¯¿À±â // Load Pre-drawn Painting Region Figure Array
+		// ë¯¸ë¦¬ ê·¸ë ¤ë‘” Painting region Figure Array ë¶ˆëŸ¬ì˜¤ê¸° // Load Pre-drawn Painting Region Figure Array
 		if((res = flfaPaintingRegion.Load(L"../../ExampleImages/InpaintingTexture/PaintingRegion.fig")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the figure file.");
 			break;
 		}
 
-		// InpaintingÀ» À§ÇÑ Painting region ¼³Á¤ // Set painting region for Inpainting
+		// Inpaintingì„ ìœ„í•œ Painting region ì„¤ì • // Set painting region for Inpainting
 		InpaintingTexture.SetPaintingRegion(&flfaPaintingRegion);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = InpaintingTexture.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute InpaintingTexture.");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		InpaintingTexture.SetSourceImage(fliSrcImage2);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		InpaintingTexture.SetDestinationImage(fliDstImage2);
-		// PatchingÀ» ÁøÇàÇÒ MaskÀÇ Å©±â ¼³Á¤ // Set the size of the mask for patching
+		// Patchingì„ ì§„í–‰í•  Maskì˜ í¬ê¸° ì„¤ì • // Set the size of the mask for patching
 		InpaintingTexture.SetMaskSize(15);
-		// PatchingÀÇ Source°¡ µÇ´Â Mask¸¦ Ã£±â À§ÇÑ °Ë»ö ¿µ¿ªÀÇ Å©±â ¼³Á¤ // Set the size of the search area to find the mask that is the source of the patching
+		// Patchingì˜ Sourceê°€ ë˜ëŠ” Maskë¥¼ ì°¾ê¸° ìœ„í•œ ê²€ìƒ‰ ì˜ì—­ì˜ í¬ê¸° ì„¤ì • // Set the size of the search area to find the mask that is the source of the patching
 		InpaintingTexture.SetSearchSize(-1);
-		// Search step size ¼³Á¤ // Set the search step size
+		// Search step size ì„¤ì • // Set the search step size
 		InpaintingTexture.SetSearchStepSize(1);
-		// ¸ÅÄ¡¸¦ À§ÇÑ Gradient Value °ö °è¼ö ¼³Á¤ // Set a coefficient multiplied by gradient value for match
+		// ë§¤ì¹˜ë¥¼ ìœ„í•œ Gradient Value ê³± ê³„ìˆ˜ ì„¤ì • // Set a coefficient multiplied by gradient value for match
 		InpaintingTexture.SetAnisotropy(0);
 
 		CFLFigureArray flfaPaintingRegion2;
 
-		// ¹Ì¸® ±×·ÁµĞ Painting region Figure Array ºÒ·¯¿À±â // Load Pre-drawn Painting Region Figure Array
+		// ë¯¸ë¦¬ ê·¸ë ¤ë‘” Painting region Figure Array ë¶ˆëŸ¬ì˜¤ê¸° // Load Pre-drawn Painting Region Figure Array
 		if((res = flfaPaintingRegion2.Load(L"../../ExampleImages/InpaintingTexture/PaintingRegion2.fig")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the figure file.");
 			break;
 		}
 
-		// InpaintingÀ» À§ÇÑ Painting region ¼³Á¤ // Set painting region for Inpainting
+		// Inpaintingì„ ìœ„í•œ Painting region ì„¤ì • // Set painting region for Inpainting
 		InpaintingTexture.SetPaintingRegion(&flfaPaintingRegion2);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if((res = InpaintingTexture.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute InpaintingTexture.");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if((res = viewImageDst2.ZoomFit()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to zoom fit of the image view.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSrc = viewImageSrc.GetLayer(0);
 		CGUIViewImageLayerWrap layerSrc2 = viewImageSrc2.GetLayer(0);
 		CGUIViewImageLayerWrap layerDst = viewImageDst.GetLayer(0);
 		CGUIViewImageLayerWrap layerDst2 = viewImageDst2.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSrc.Clear();
 		layerSrc2.Clear();
 		layerDst.Clear();
 		layerDst2.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if((res = layerSrc.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)).IsFail())
@@ -260,27 +260,27 @@ int main()
 			break;
 		}
 
-		// Painting regionÀ» source image¿¡ µğ½ºÇÃ·¹ÀÌ // Display painting region on the source image
+		// Painting regionì„ source imageì— ë””ìŠ¤í”Œë ˆì´ // Display painting region on the source image
 		if(fliSrcImage.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flfaPaintingRegion)) == -1)
 		{
 			ErrorPrint(res, L"Failed to push figure on image\n");
 			break;
 		}
 
-		// Painting regionÀ» source image¿¡ µğ½ºÇÃ·¹ÀÌ // Display painting region on the source image
+		// Painting regionì„ source imageì— ë””ìŠ¤í”Œë ˆì´ // Display painting region on the source image
 		if(fliSrcImage2.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(flfaPaintingRegion2)) == -1)
 		{
 			ErrorPrint(res, L"Failed to push figure on image\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSrc.Invalidate(true);
 		viewImageDst.Invalidate(true);
 		viewImageSrc2.Invalidate(true);
 		viewImageDst2.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSrc.IsAvailable() && viewImageDst.IsAvailable() && viewImageSrc2.IsAvailable() && viewImageDst2.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

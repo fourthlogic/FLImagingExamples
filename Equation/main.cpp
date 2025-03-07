@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <locale.h>
 
 #include <FLImaging.h>
@@ -27,18 +27,18 @@ int main()
 			printf("    7.2*x^3 + 3.8*x^2 + 10*x + 2.4\n\n");
 			printf("Input: ");
 
-			// °è¼ö ¹®ÀÚ¿­À» ÀÔ·Â ¹Ş´Â´Ù. // Receive the count string.
+			// ê³„ìˆ˜ ë¬¸ìì—´ì„ ì…ë ¥ ë°›ëŠ”ë‹¤. // Receive the count string.
 			fgets(arrInput, 4096, stdin);
 
 			CFLString<char> flstrInput(arrInput);
 			if(flstrInput.IsEmpty())
 				break;
 
-			// °è¼ö °ªÀ» ´ã±âÀ§ÇØ CFLArray<std::complex<double>> »ı¼º // Create CFLArray<std::complex<double>> to hold coefficient values
+			// ê³„ìˆ˜ ê°’ì„ ë‹´ê¸°ìœ„í•´ CFLArray<std::complex<double>> ìƒì„± // Create CFLArray<std::complex<double>> to hold coefficient values
 			CFLArray<std::complex<double>> flaCoef;
 			int64_t i64TokenIdx = 0;
 
-			// ÀÔ·Â ¹ŞÀº ¹®ÀÚ¿­À» ',' À¸·Î ±¸ºĞÇÏ¿© double °ªÀ¸·Î º¯È¯ÇÑ´Ù. // Separate the input string with ',' and convert it to a double value.
+			// ì…ë ¥ ë°›ì€ ë¬¸ìì—´ì„ ',' ìœ¼ë¡œ êµ¬ë¶„í•˜ì—¬ double ê°’ìœ¼ë¡œ ë³€í™˜í•œë‹¤. // Separate the input string with ',' and convert it to a double value.
 			while(true)
 			{
 				CFLString<char> flstrToken = flstrInput.Tokenize(",", i64TokenIdx);
@@ -51,7 +51,7 @@ int main()
 				flaCoef.PushBack(flstrToken.ToDouble());
 			}
 
-			// ÃÖ»óÀ§ °è¼ö°¡ 0 ÀÌ¸é Á¦°ÅÇØÁØ´Ù. // If the top coefficient is 0, remove it.
+			// ìµœìƒìœ„ ê³„ìˆ˜ê°€ 0 ì´ë©´ ì œê±°í•´ì¤€ë‹¤. // If the top coefficient is 0, remove it.
 			while(flaCoef.GetCount())
 			{
 				double f64Coef = flaCoef.GetAt(0).real();
@@ -61,7 +61,7 @@ int main()
 				flaCoef.PopFront();
 			}
 
-			// ÀÔ·Â ¹ŞÀº °è¼ö·Î ¼ö½ÄÀ» ¸¸µé¾î¼­ Ç¥½ÃÇÑ´Ù. // Create and display a formula with the entered coefficients.
+			// ì…ë ¥ ë°›ì€ ê³„ìˆ˜ë¡œ ìˆ˜ì‹ì„ ë§Œë“¤ì–´ì„œ í‘œì‹œí•œë‹¤. // Create and display a formula with the entered coefficients.
 			CFLString<char> flstrEquation = "";
 
 			int64_t i64Count = flaCoef.GetCount();
@@ -107,13 +107,13 @@ int main()
 			printf(flstrEquation);
 			printf("\n\n");
 
-			// ¹æÁ¤½ÄÀÇ ÇØ¸¦ ¾ò±âÀ§ÇØ CFLArray<std::complex<double>> »ı¼º // Create CFLArray<std::complex<double>> to get solution of equation
+			// ë°©ì •ì‹ì˜ í•´ë¥¼ ì–»ê¸°ìœ„í•´ CFLArray<std::complex<double>> ìƒì„± // Create CFLArray<std::complex<double>> to get solution of equation
 			CFLArray<std::complex<double>> flaEquationResult;
 
-			// ¹æÁ¤½ÄÀÇ ÇØ¸¦ ¾ò¾î¿Â´Ù. // Get the solution of the equation.
+			// ë°©ì •ì‹ì˜ í•´ë¥¼ ì–»ì–´ì˜¨ë‹¤. // Get the solution of the equation.
 			CEquation::Solve(flaCoef, &flaEquationResult);
 
-			// ¹æÁ¤½ÄÀÇ ÇØ¸¦ Ç¥½ÃÇÑ´Ù. // Display the solution of the equation.
+			// ë°©ì •ì‹ì˜ í•´ë¥¼ í‘œì‹œí•œë‹¤. // Display the solution of the equation.
 			flstrResult = "Result \n";
 
 			for(int64_t i = 0; i < flaEquationResult.GetCount(); ++i)

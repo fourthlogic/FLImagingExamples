@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -70,23 +70,23 @@ int main()
 		30.,
 	};
 
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImage[i32ExampleCount];
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Gauge/Ellipse.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		for(int32_t i = 0; i < i32ExampleCount; ++i)
 		{
 			int32_t i32X = 300 * (i % 4);
@@ -98,14 +98,14 @@ int main()
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+			// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 			if(IsFail(res = viewImage[i].SetImagePtr(&fliImage)))
 			{
 				ErrorPrint(res, "Failed to set image object on the image view.\n");
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the all image views. 
+			// ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the all image views. 
 			if(i)
 			{
 				if(IsFail(res = viewImage[i].SynchronizePointOfView(&viewImage[0])))
@@ -118,53 +118,53 @@ int main()
 
 		CResult res = EResult_UnknownError;
 
-		// Ellipse Gauge °´Ã¼ »ı¼º // Create Ellipse Gauge object
+		// Ellipse Gauge ê°ì²´ ìƒì„± // Create Ellipse Gauge object
 		CEllipseGauge ellipseGauge;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to process
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to process
 		ellipseGauge.SetSourceImage(fliImage);
 
 		CFLEllipse<double> measureRegion(240., 280., 96., 150., 22.);
 
-		// ÃßÃâÇÏ±âÀ§ÇÑ ÆÄ¶ó¹ÌÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set parameters for extraction.		
-		// Å¸¿øÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ÀÇ º¯È­ ÀÓ°è°ª¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the threshold change of the boundary point to be extracted to estimate the ellipse.
+		// ì¶”ì¶œí•˜ê¸°ìœ„í•œ íŒŒë¼ë¯¸í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set parameters for extraction.		
+		// íƒ€ì›ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ì˜ ë³€í™” ì„ê³„ê°’ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the threshold change of the boundary point to be extracted to estimate the ellipse.
 		ellipseGauge.SetThreshold(20);
-		// Å¸¿øÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ÀÇ º¯È­ ÀÓ°è°ª¿¡ º¸Á¤°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the correction value to the threshold change of the boundary point to be extracted to estimate the ellipse.
+		// íƒ€ì›ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ì˜ ë³€í™” ì„ê³„ê°’ì— ë³´ì •ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the correction value to the threshold change of the boundary point to be extracted to estimate the ellipse.
 		ellipseGauge.SetMinimumAmplitude(10); 
-		// Å¸¿øÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ´ëÇ¥°ª Ç¥º» °³¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the number of representative sample values ??of the boundary points to be extracted to estimate the ellipse.
+		// íƒ€ì›ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ëŒ€í‘œê°’ í‘œë³¸ ê°œìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the number of representative sample values ??of the boundary points to be extracted to estimate the ellipse.
 		ellipseGauge.SetThickness(3);
-		// Å¸¿øÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÃßÃâ °£°İÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the extraction interval of boundary points to be extracted to estimate the ellipse.
+		// íƒ€ì›ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì¶”ì¶œ ê°„ê²©ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the extraction interval of boundary points to be extracted to estimate the ellipse.
 		ellipseGauge.SetSamplingStep(1.); 
-		// Å¸¿øÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÀÌ»óÄ¡ Á¶Á¤À» À§ÇÑ ÀÓ°è°ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the threshold value for outlier adjustment of the boundary points to be extracted to estimate the ellipse.
+		// íƒ€ì›ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì´ìƒì¹˜ ì¡°ì •ì„ ìœ„í•œ ì„ê³„ê°’ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the threshold value for outlier adjustment of the boundary points to be extracted to estimate the ellipse.
 		ellipseGauge.SetOutliersThreshold(3.);
-		// Å¸¿øÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡µéÀÇ ÀÌ»óÄ¡ Á¶Á¤ È½¼öÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the number of outlier adjustments for boundary points to be extracted to estimate the ellipse.
+		// íƒ€ì›ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì ë“¤ì˜ ì´ìƒì¹˜ ì¡°ì • íšŸìˆ˜ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the number of outlier adjustments for boundary points to be extracted to estimate the ellipse.
 		ellipseGauge.SetOutliersThresholdCount(3);
 
 		for(int32_t i = 0; i < i32ExampleCount; ++i)
 		{
-			// ÃøÁ¤ÇÒ ¿µ¿ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the area to measure.
+			// ì¸¡ì •í•  ì˜ì—­ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the area to measure.
 			ellipseGauge.SetMeasurementRegion(measureRegion, arrTolerance[i]);
-			// Å¸¿øÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÒ °æ°èÁ¡ º¯È­ ¹æÇâ¿¡ ´ëÇØ ¼³Á¤ÇÕ´Ï´Ù. // Set the boundary point change direction to extract to estimate the ellipse.
+			// íƒ€ì›ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•  ê²½ê³„ì  ë³€í™” ë°©í–¥ì— ëŒ€í•´ ì„¤ì •í•©ë‹ˆë‹¤. // Set the boundary point change direction to extract to estimate the ellipse.
 			ellipseGauge.SetTransitionType(arrTransitionType[i]);
-			// Å¸¿øÀ» ÃßÁ¤ÇÏ±âÀ§ÇØ ÃßÃâÇÑ °æ°èÁ¡ Áß »ç¿ëÇÒ °æ°èÁ¡ À¯ÇüÀ» ¼±ÅÃÇÕ´Ï´Ù. // Select the boundary point type to use among the boundary points extracted to estimate the ellipse.
+			// íƒ€ì›ì„ ì¶”ì •í•˜ê¸°ìœ„í•´ ì¶”ì¶œí•œ ê²½ê³„ì  ì¤‘ ì‚¬ìš©í•  ê²½ê³„ì  ìœ í˜•ì„ ì„ íƒí•©ë‹ˆë‹¤. // Select the boundary point type to use among the boundary points extracted to estimate the ellipse.
 			ellipseGauge.SetTransitionChoice(arrTransitionChoice[i]);
-			// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+			// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 			if(IsFail(res = ellipseGauge.Execute()))
 			{
 				ErrorPrint(res, "Failed to execute Ellipse gauge.\n");
 				break;
 			}
 
-			// ½ÇÇà °á°ú¸¦ °¡Á®¿É´Ï´Ù. // Get the execution result.
+			// ì‹¤í–‰ ê²°ê³¼ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the execution result.
 			CFLEllipse<double> flres;
 			CFLFigureArray flfaResultsValid, flfaResultsInvalid;
 
-			// indexÀÇ °æ¿ì TransitionChoiceÀÇ Begin, End¿¡¼­¸¸ À¯È¿ÇÕ´Ï´Ù. //Index works only at Begin and End of TransitionChoice
-			// ÃßÁ¤µÈ Å¸¿øÀ» °¡Á®¿É´Ï´Ù. // Get the estimated ellipse.
+			// indexì˜ ê²½ìš° TransitionChoiceì˜ Begin, Endì—ì„œë§Œ ìœ íš¨í•©ë‹ˆë‹¤. //Index works only at Begin and End of TransitionChoice
+			// ì¶”ì •ëœ íƒ€ì›ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the estimated ellipse.
 			res = ellipseGauge.GetMeasuredObject(flres, i % 4);
-			// ÃßÁ¤µÈ Å¸¿øÀ» ÃßÃâ¿¡ »ç¿ëµÈ À¯È¿ °æ°èÁ¡À» °¡Á®¿É´Ï´Ù. // Get the valid boundary point used to extract the estimated ellipse.
+			// ì¶”ì •ëœ íƒ€ì›ì„ ì¶”ì¶œì— ì‚¬ìš©ëœ ìœ íš¨ ê²½ê³„ì ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the valid boundary point used to extract the estimated ellipse.
 			ellipseGauge.GetMeasuredValidPoints(flfaResultsValid, i % 4);
-			// ÃßÁ¤µÈ Å¸¿øÀ» ÃßÃâ¿¡ »ç¿ëµÇÁö ¸øÇÑ À¯È¿ÇÏÁö ¾ÊÀº °æ°èÁ¡À» °¡Á®¿É´Ï´Ù. // Get an invalid boundary point that is not used to extract the estimated ellipse.
+			// ì¶”ì •ëœ íƒ€ì›ì„ ì¶”ì¶œì— ì‚¬ìš©ë˜ì§€ ëª»í•œ ìœ íš¨í•˜ì§€ ì•Šì€ ê²½ê³„ì ì„ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get an invalid boundary point that is not used to extract the estimated ellipse.
 			ellipseGauge.GetMeasuredInvalidPoints(flfaResultsInvalid);
 
 			CGUIViewImageLayerWrap layer = viewImage[i].GetLayer(0);
@@ -177,7 +177,7 @@ int main()
 				break;
 			}
 
-			// ÃøÁ¤ ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the measurement area is
+			// ì¸¡ì • ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the measurement area is
 			double f64Tolerance;
 
 			CFLEllipse<double> fleRegion = ellipseGauge.GetMeasurementRegion();
@@ -194,7 +194,7 @@ int main()
 			double f64Radius1Tolerance = fleRegion.radius1 >= fleRegion.radius2 ? f64Tolerance : f64Tolerance * (fleRegion.radius1 / fleRegion.radius2);
 			double f64Radius2Tolerance = fleRegion.radius1 >= fleRegion.radius2 ? f64Tolerance * (fleRegion.radius2 / fleRegion.radius1) : f64Tolerance;
 
-			// ¼³Á¤µÈ ROI¿¡ ´ëÇØ ³»ºÎ ¹× ¿ÜºÎ ÃøÁ¤¿µ¿ªÀ» µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display the inner and outer measurement areas for the set ROI.
+			// ì„¤ì •ëœ ROIì— ëŒ€í•´ ë‚´ë¶€ ë° ì™¸ë¶€ ì¸¡ì •ì˜ì—­ì„ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display the inner and outer measurement areas for the set ROI.
 			if(f64Radius1 < f64Radius1Tolerance || f64Radius2 < f64Radius2Tolerance)
 				fleInner.Set((float)fleInner.GetCenter().x, (float)fleInner.GetCenter().y, 0.1f, 0.1f);
 			else
@@ -220,7 +220,7 @@ int main()
 
 			if(IsOK(res))
 			{
-				// ÃßÁ¤µÈ Å¸¿øÀ» µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display the estimated ellipse.
+				// ì¶”ì •ëœ íƒ€ì›ì„ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display the estimated ellipse.
 				if(IsFail(res = layer.DrawFigureImage(&flres, BLACK, 5)))
 				{
 					ErrorPrint(res, "Failed to draw figure\n");
@@ -233,17 +233,17 @@ int main()
 					break;
 				}
 
-				// Å¸¿øÀÇ Á¤º¸¸¦ ConsoleÃ¢¿¡ Ãâ·ÂÇÕ´Ï´Ù. // Output the information of the ellipse to the console window.
+				// íƒ€ì›ì˜ ì •ë³´ë¥¼ Consoleì°½ì— ì¶œë ¥í•©ë‹ˆë‹¤. // Output the information of the ellipse to the console window.
 				double f64RadiusResult1, f64RadiusResult2, f64Anglres;
 				flres.GetRadius1(&f64RadiusResult1);
 				flres.GetRadius2(&f64RadiusResult2);
 				f64Anglres = flres.GetAngle();
 				CFLPoint<double> flpLineCenter = flres.GetCenter();
-				printf("Ellipse Center : (%.2lf, %.2lf)\nRadius X : %.2lf pixels\nRadius Y : %.2lf pixels\nAngle : %.2lf¢ª\n",
+				printf("Ellipse Center : (%.2lf, %.2lf)\nRadius X : %.2lf pixels\nRadius Y : %.2lf pixels\nAngle : %.2lfËš\n",
 					   flpLineCenter.x, flpLineCenter.y, f64RadiusResult1, f64RadiusResult2, f64Anglres);
 			}
 
-			// ÃßÃâµÈ À¯È¿Á¡ÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the extracted valid point is
+			// ì¶”ì¶œëœ ìœ íš¨ì ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the extracted valid point is
 			for(int32_t i32Index = 0; i32Index < (int32_t)flfaResultsValid.GetCount(); ++i32Index)
 			{
 				if(flfaResultsValid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
@@ -260,7 +260,7 @@ int main()
 				}
 			}
 
-			// ÃßÃâµÈ À¯È¿ÇÏÁö ¾ÊÀº Á¡ÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to see where the extracted invalid points are
+			// ì¶”ì¶œëœ ìœ íš¨í•˜ì§€ ì•Šì€ ì ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to see where the extracted invalid points are
 			for(int32_t i32Index = 0; i32Index < (int32_t)flfaResultsInvalid.GetCount(); ++i32Index)
 			{
 				if(flfaResultsInvalid.GetAt(i32Index)->GetDeclType() != EFigureDeclType_Point)
@@ -277,19 +277,19 @@ int main()
 				}
 			}
 
-			// ÃøÁ¤ ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to know where the measurement area is
+			// ì¸¡ì • ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to know where the measurement area is
 			if(IsFail(res = layer.DrawFigureImage(&measureRegion, BLUE)))
 			{
 				ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 				break;
 			}
 
-			// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+			// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 			viewImage[i].Invalidate(true);
 		}
 
 		bool bTerminated = false;
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(!bTerminated)
 		{
 			for(int32_t i = 0; i < i32ExampleCount; ++i)

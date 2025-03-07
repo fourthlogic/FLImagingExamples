@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
@@ -20,7 +20,7 @@ CResult DrawGridPoints(SGridDisplay& sGridDisplay, CGUIViewImageLayerWrap pLayer
 			break;
 		}
 
-		// ±×¸®±â »ö»ó ¼³Á¤ // Set drawing color
+		// ê·¸ë¦¬ê¸° ìƒ‰ìƒ ì„¤ì • // Set drawing color
 		uint32_t colorPool[3] = { RED, LIME, CYAN };
 
 		int64_t i64GridRow = sGridDisplay.sGridData.i64Rows;
@@ -30,7 +30,7 @@ CResult DrawGridPoints(SGridDisplay& sGridDisplay, CGUIViewImageLayerWrap pLayer
 		double f64Angle = flqBoardRegion.flpPoints[0].GetAngle(flqBoardRegion.flpPoints[1]);
 		double f64Width = flqBoardRegion.flpPoints[0].GetDistance(flqBoardRegion.flpPoints[1]);
 
-		// Grid ±×¸®±â // Draw grid
+		// Grid ê·¸ë¦¬ê¸° // Draw grid
 		for(int64_t i64Row = 0; i64Row < i64GridRow; ++i64Row)
 		{
 			for(int64_t i64Col = 0; i64Col < i64GridCol - 1; ++i64Col)
@@ -58,7 +58,7 @@ CResult DrawGridPoints(SGridDisplay& sGridDisplay, CGUIViewImageLayerWrap pLayer
 		double f64Dx = 0.;
 		double f64Dy = 0.;
 
-		// Grid Point ÀÎµ¦½Ì // Index Grid Point
+		// Grid Point ì¸ë±ì‹± // Index Grid Point
 		for(int64_t i64Row = 0; i64Row < i64GridRow; ++i64Row)
 		{
 			CFLPoint<double> flpGridPoint1 = (sGridDisplay.sGridData.arrGridData[i64Row][0]);
@@ -109,7 +109,7 @@ CResult DrawGridPoints(SGridDisplay& sGridDisplay, CGUIViewImageLayerWrap pLayer
 			}
 		}
 
-		// Board Region ±×¸®±â // Draw Board Region
+		// Board Region ê·¸ë¦¬ê¸° // Draw Board Region
 		CFLString<wchar_t> wstringData = CFLString<wchar_t>().Format(L"(%d X %d)", (int32_t)i64GridCol, (int32_t)i64GridRow);
 		pLayer.DrawFigureImage(flqBoardRegion, BLACK, 3);
 		pLayer.DrawFigureImage(flqBoardRegion, YELLOW, 1);
@@ -126,44 +126,44 @@ class CMessageReceiver : public CFLBase
 {
 public:
 
-	// CMessageReceiver »ı¼ºÀÚ
+	// CMessageReceiver ìƒì„±ì
 	CMessageReceiver(CGUIViewImageWrap* pViewImage) : m_pViewImage(pViewImage)
 	{
-		// ¸Ş¼¼Áö¸¦ Àü´Ş ¹Ş±â À§ÇØ CBroadcastManager ¿¡ ±¸µ¶ µî·Ï //Subscribe to CBroadcast Manager to receive messages
+		// ë©”ì„¸ì§€ë¥¼ ì „ë‹¬ ë°›ê¸° ìœ„í•´ CBroadcastManager ì— êµ¬ë… ë“±ë¡ //Subscribe to CBroadcast Manager to receive messages
 		CBroadcastManager::Subscribe(this);
 	}
 
-	// CMessageReceiver ¼Ò¸êÀÚ
+	// CMessageReceiver ì†Œë©¸ì
 	virtual ~CMessageReceiver()
 	{
-		// °´Ã¼°¡ ¼Ò¸êÇÒ¶§ ¸Ş¼¼Áö ¼ö½ÅÀ» Áß´ÜÇÏ±â À§ÇØ ±¸µ¶À» ÇØÁ¦ÇÑ´Ù. // Unsubscribe to stop receiving messages when the object disappears.
+		// ê°ì²´ê°€ ì†Œë©¸í• ë•Œ ë©”ì„¸ì§€ ìˆ˜ì‹ ì„ ì¤‘ë‹¨í•˜ê¸° ìœ„í•´ êµ¬ë…ì„ í•´ì œí•œë‹¤. // Unsubscribe to stop receiving messages when the object disappears.
 		CBroadcastManager::Unsubscribe(this);
 	}
 
 	DeclareGetClassType();
 
-	// ¸Ş¼¼Áö°¡ µé¾î¿À¸é È£ÃâµÇ´Â ÇÔ¼ö OnReceiveBroadcast ¿À¹ö¶óÀÌµå ÇÏ¿© ±¸Çö
+	// ë©”ì„¸ì§€ê°€ ë“¤ì–´ì˜¤ë©´ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜ OnReceiveBroadcast ì˜¤ë²„ë¼ì´ë“œ í•˜ì—¬ êµ¬í˜„
 	void OnReceiveBroadcast(const CBroadcastMessage* pMessage) override
 	{
 		do
 		{
-			// pMessage °¡ nullptr ÀÎÁö È®ÀÎ // Verify message is nullptr
+			// pMessage ê°€ nullptr ì¸ì§€ í™•ì¸ // Verify message is nullptr
 			if(pMessage == nullptr)
 				break;
 
-			// ¸Ş¼¼ÁöÀÇ Ã¤³ÎÀ» È®ÀÎ
+			// ë©”ì„¸ì§€ì˜ ì±„ë„ì„ í™•ì¸
 			switch(pMessage->GetChannel())
 			{
 			case EGUIBroadcast_ViewImage_PostPageChange:
 				{
-			        // GetCaller() °¡ µî·ÏÇÑ ÀÌ¹ÌÁöºäÀÎÁö È®ÀÎ // Verify that GetCaller() is a registered image view
+			        // GetCaller() ê°€ ë“±ë¡í•œ ì´ë¯¸ì§€ë·°ì¸ì§€ í™•ì¸ // Verify that GetCaller() is a registered image view
 					if(pMessage->GetCaller() != (const CFLBase*)m_pViewImage->GetMessageCallerPtr())
 						break;
 
 					CFLImage* pFliLearnImage = (CFLImage*)m_pViewImage->GetImagePtr();
 					int64_t i64CurPage = pFliLearnImage->GetSelectedPageIndex();
 
-					// ÀÌ¹ÌÁöºäÀÇ 0¹ø ·¹ÀÌ¾î °¡Á®¿À±â // Get layer 0th of image view
+					// ì´ë¯¸ì§€ë·°ì˜ 0ë²ˆ ë ˆì´ì–´ ê°€ì ¸ì˜¤ê¸° // Get layer 0th of image view
 					CGUIViewImageLayerWrap pLayer = m_pViewImage->GetLayer((int32_t)(i64CurPage % 10));
 
 					for(int64_t i = 0; i < 10; ++i)
@@ -175,7 +175,7 @@ public:
 							DrawGridPoints(m_vctGridDisplay[(int32_t)i64Idx], pLayer);
 					}
 
-					// ÀÌ¹ÌÁöºä¸¦ °»½Å // Update the image view.
+					// ì´ë¯¸ì§€ë·°ë¥¼ ê°±ì‹  // Update the image view.
 					m_pViewImage->Invalidate();
 				}
 				break;
@@ -194,40 +194,40 @@ bool Calibration(CStereoCalibrator3D& sSC, CFLImage& fliLearnImage, CFLImage& fl
 {
 	bool bResult = false;
 
-	// °á°ú enum ¼±¾ğ // Declare the result enum
+	// ê²°ê³¼ enum ì„ ì–¸ // Declare the result enum
 	CResult res;
 
 	do
 	{
-		// Learn ÀÌ¹ÌÁö ¼³Á¤ // Declare the learn image
+		// Learn ì´ë¯¸ì§€ ì„¤ì • // Declare the learn image
 		if((res = sSC.SetLearnImage(&fliLearnImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image.\n");
 			break;
 		}
 
-		// Learn ÀÌ¹ÌÁö 2 ¼³Á¤ // Declare the learn image
+		// Learn ì´ë¯¸ì§€ 2 ì„¤ì • // Declare the learn image
 		if((res = sSC.SetLearnImage2(&fliLearnImage2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image.\n");
 			break;
 		}
 
-		// Optimal solution accuracy ¼³Á¤ // Set optimal solution accuracy
+		// Optimal solution accuracy ì„¤ì • // Set optimal solution accuracy
 		if((res = sSC.SetOptimalSoutionAcccuracy(1e-5)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set Optimal Solution Accuracy.\n");
 			break;
 		}
 
-		// Grid Type ¼³Á¤ // Set grid type
+		// Grid Type ì„¤ì • // Set grid type
 		if((res = sSC.SetGridType(CStereoCalibrator3D::EGridType_ChessBoard)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set Grid Type.\n");
 			break;
 		}
 
-		// Calibration ½ÇÇà // Execute Calibration
+		// Calibration ì‹¤í–‰ // Execute Calibration
 		if((res = sSC.Calibrate()).IsFail())
 		{
 			ErrorPrint(res, L"Calibration failed.\n");
@@ -245,47 +245,47 @@ bool Undistortion(CStereoCalibrator3D& sSC, CFLImage& fliSourceImage, CFLImage& 
 {
 	bool bResult = false;
 
-	// °á°ú enum ¼±¾ğ
+	// ê²°ê³¼ enum ì„ ì–¸
 	CResult res;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set source image
 		if((res = sSC.SetSourceImage(&fliSourceImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to Loads image.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö 2 ¼³Á¤ // Set source image 2
+		// Source ì´ë¯¸ì§€ 2 ì„¤ì • // Set source image 2
 		if((res = sSC.SetSourceImage2(&fliSourceImage2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to Loads image.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set destination image 
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set destination image 
 		if((res = sSC.SetDestinationImage(&fliDestinationImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to Loads image.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö 2 ¼³Á¤ // Set destination image 2
+		// Destination ì´ë¯¸ì§€ 2 ì„¤ì • // Set destination image 2
 		if((res = sSC.SetDestinationImage2(&fliDestinationImage2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to Loads image.\n");
 			break;
 		}
 
-		// Interpolation ¸Ş¼Òµå ¼³Á¤ // Set interpolation method
+		// Interpolation ë©”ì†Œë“œ ì„¤ì • // Set interpolation method
 		if((res = sSC.SetInterpolationMethod(ImageProcessing::EInterpolationMethod_Bilinear)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set interpolation method.\n");
 			break;
 		}
 
-		// Undistortion ½ÇÇà // Execute undistortion
+		// Undistortion ì‹¤í–‰ // Execute undistortion
 		if((res = sSC.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Undistortion failed.\n");
@@ -301,34 +301,34 @@ bool Undistortion(CStereoCalibrator3D& sSC, CFLImage& fliSourceImage, CFLImage& 
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliLearnImage, fliSourceImage, fliDestinationImage;
 	CFLImage fliLearnImage2, fliSourceImage2, fliDestinationImage2;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageLearn, viewImageDestination;
 	CGUIViewImageWrap viewImageLearn2, viewImageDestination2;
 
-	// ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithm execution result
+	// ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithm execution result
 	CResult res = EResult_UnknownError;
 
-	// Message Reciever °´Ã¼ »ı¼º // Create Message Reciever object
+	// Message Reciever ê°ì²´ ìƒì„± // Create Message Reciever object
 	CMessageReceiver msgReceiver(&viewImageLearn);
 	CMessageReceiver msgReceiver2(&viewImageLearn2);
 
-	// Stereo Calibrator °´Ã¼ »ı¼º // Create Camera Calibrator object
+	// Stereo Calibrator ê°ì²´ ìƒì„± // Create Camera Calibrator object
 	CStereoCalibrator3D sSC;
 
 	do
 	{
-		// Learn ÀÌ¹ÌÁö ·Îµå  // Load learn image
+		// Learn ì´ë¯¸ì§€ ë¡œë“œ  // Load learn image
 		if((res = fliLearnImage.Load(L"../../ExampleImages/StereoCalibrator3D/Left.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
 		}
 
-		// Learn ÀÌ¹ÌÁö 2 ·Îµå // Load learn image 2
+		// Learn ì´ë¯¸ì§€ 2 ë¡œë“œ // Load learn image 2
 		if((res = fliLearnImage2.Load(L"../../ExampleImages/StereoCalibrator3D/Right.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
@@ -337,25 +337,25 @@ int main()
 
 		printf("Processing.....\n");
 
-		// Page 0 ¼±ÅÃ // Select page 0
+		// Page 0 ì„ íƒ // Select page 0
 		fliLearnImage.SelectPage(0);
 		fliLearnImage2.SelectPage(0);
 
-		// Stereo calibration ¼öÇà // Execute stereo calibration
+		// Stereo calibration ìˆ˜í–‰ // Execute stereo calibration
 		if(!Calibration(sSC, fliLearnImage, fliLearnImage2))
 			break;
 
-		// Source ÀÌ¹ÌÁö¿¡ Learn ÀÌ¹ÌÁö¸¦ º¹»ç (¾èÀº º¹»ç) // Copy the learn image to source image (Shallow Copy)
+		// Source ì´ë¯¸ì§€ì— Learn ì´ë¯¸ì§€ë¥¼ ë³µì‚¬ (ì–•ì€ ë³µì‚¬) // Copy the learn image to source image (Shallow Copy)
 		fliSourceImage.Assign(fliLearnImage, false);
 
-		// Source ÀÌ¹ÌÁö 2¿¡ Learn ÀÌ¹ÌÁö 2¸¦ º¹»ç (¾èÀº º¹»ç) // Copy the learn image 2 to source image 2 (Shallow Copy)
+		// Source ì´ë¯¸ì§€ 2ì— Learn ì´ë¯¸ì§€ 2ë¥¼ ë³µì‚¬ (ì–•ì€ ë³µì‚¬) // Copy the learn image 2 to source image 2 (Shallow Copy)
 		fliSourceImage2.Assign(fliLearnImage2, false);
 
-		// Undistortion ¼öÇà // Execute undistortion
+		// Undistortion ìˆ˜í–‰ // Execute undistortion
 		if(!Undistortion(sSC, fliSourceImage, fliSourceImage2, fliDestinationImage, fliDestinationImage2))
 			break;
 
-		// È­¸é¿¡ °İÀÚ Å½Áö °á°ú Ãâ·Â // Display the res of grid detection
+		// í™”ë©´ì— ê²©ì íƒì§€ ê²°ê³¼ ì¶œë ¥ // Display the res of grid detection
 		SGridDisplay sArrGridDisplay[5];
 
 		for(int64_t i64ImgIdx = 0; i64ImgIdx < (int64_t)fliLearnImage.GetPageCount(); ++i64ImgIdx)
@@ -377,114 +377,114 @@ int main()
 		msgReceiver.m_vctGridDisplay = sArrGridDisplay;
 		msgReceiver2.m_vctGridDisplay = sArrGridDisplay2;
 
-		// Learn ÀÌ¹ÌÁö ºä »ı¼º // Create the learn image view
+		// Learn ì´ë¯¸ì§€ ë·° ìƒì„± // Create the learn image view
 		if((res = viewImageLearn.Create(300, 0, 300 + 480 * 1, 360)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Learn ÀÌ¹ÌÁö 2 ºä »ı¼º // Create the learn image 2 view
+		// Learn ì´ë¯¸ì§€ 2 ë·° ìƒì„± // Create the learn image 2 view
 		if((res = viewImageLearn2.Create(300 + 480, 0, 300 + 480 * 2, 360)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Learn ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the learn image in the image view
+		// Learn ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the learn image in the image view
 		if((res = viewImageLearn.SetImagePtr(&fliLearnImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Learn ÀÌ¹ÌÁö 2 ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the learn image 2 in the image view
+		// Learn ì´ë¯¸ì§€ 2 ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the learn image 2 in the image view
 		if((res = viewImageLearn2.SetImagePtr(&fliLearnImage2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Get the layer 0 number from image view for display
-		// ·¹ÀÌ¾î´Â µû·Î ÇØÁ¦ÇÏÁö ¾Ê¾Æµµ View°¡ ÇØÁ¦ µÉ ¶§ °°ÀÌ ÇØÁ¦µÈ´Ù. // The layer is released together when View is released without releasing it separately.
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Get the layer 0 number from image view for display
+		// ë ˆì´ì–´ëŠ” ë”°ë¡œ í•´ì œí•˜ì§€ ì•Šì•„ë„ Viewê°€ í•´ì œ ë  ë•Œ ê°™ì´ í•´ì œëœë‹¤. // The layer is released together when View is released without releasing it separately.
 		CGUIViewImageLayerWrap layerLearn = viewImageLearn.GetLayer(0);
 		CGUIViewImageLayerWrap layerLearn2 = viewImageLearn2.GetLayer(0);
 
-		// Chess Board Grid Ãâ·Â // Display chess board grid
+		// Chess Board Grid ì¶œë ¥ // Display chess board grid
 		DrawGridPoints(sArrGridDisplay[0], layerLearn);
 		DrawGridPoints(sArrGridDisplay2[0], layerLearn2);
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if((res = viewImageDestination.Create(300, 360, 780, 720)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination image view
 		if((res = viewImageDestination2.Create(780, 360, 1260, 720)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the source image in the image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the source image in the image view
 		if((res = viewImageDestination.SetImagePtr(&fliDestinationImage)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the destination image in the image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the destination image in the image view
 		if((res = viewImageDestination2.SetImagePtr(&fliDestinationImage2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views. 
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views. 
 		if((res = viewImageLearn.SynchronizePointOfView(&viewImageLearn2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù. // Synchronize the viewpoints of the two image views. 
+		// ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤. // Synchronize the viewpoints of the two image views. 
 		if((res = viewImageDestination.SynchronizePointOfView(&viewImageDestination2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageLearn.SynchronizeWindow(&viewImageLearn2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageLearn.SynchronizeWindow(&viewImageDestination)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if((res = viewImageLearn.SynchronizeWindow(&viewImageDestination2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ ÆäÀÌÁö ÀÎµ¦½º¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the page index of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ í˜ì´ì§€ ì¸ë±ìŠ¤ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the page index of the two image view windows
 		if((res = viewImageLearn.SynchronizePageIndex(&viewImageLearn2)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to synchronize view.\n");
 			break;
 		}
 
-		// Calibration data Ãâ·Â // Display the calibration data
+		// Calibration data ì¶œë ¥ // Display the calibration data
 		CStereoCalibrator3D::SIntrinsicParameters sIntrinsicParam = sSC.GetResultIntrinsicParameters();
 		CStereoCalibrator3D::SDistortionCoefficients sDistortCoeef = sSC.GetResultDistortionCoefficients();
 
@@ -610,7 +610,7 @@ int main()
 		wprintf(L"Translation parameters 2 : %s\n\n", strTranslVal2.GetString());
 		wprintf(L"Re-Projection Error : %.8lf", f64ReprojError);
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ¼öÆò¼±À» ±×¸³´Ï´Ù. // Draw horizontal line at the image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ìˆ˜í‰ì„ ì„ ê·¸ë¦½ë‹ˆë‹¤. // Draw horizontal line at the image view
 		int64_t i64Height = fliDestinationImage.GetHeight();
 		int64_t i64Width = fliDestinationImage.GetWidth();
 
@@ -625,13 +625,13 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImageLearn.Invalidate(true);
 		viewImageLearn2.Invalidate(true);
 		viewImageDestination.Invalidate(true);
 		viewImageDestination2.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageLearn.IsAvailable() && viewImageLearn2.IsAvailable() && viewImageDestination.IsAvailable() && viewImageDestination2.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

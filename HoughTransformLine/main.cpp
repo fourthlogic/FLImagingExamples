@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h" 
@@ -6,88 +6,88 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliSourceImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageSource;
 
 	do
 	{
-		// µ¿ÀÛ °á°ú // operation result
+		// ë™ì‘ ê²°ê³¼ // operation result
 		CResult res = EResult_UnknownError;
 
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/HoughTransform/Sudoku.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImageSource.Create(100, 0, 100 + 440, 340)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the image view
 		if(IsFail(res = viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// HoughTransform  °´Ã¼ »ı¼º // Create HoughTransform object
+		// HoughTransform  ê°ì²´ ìƒì„± // Create HoughTransform object
 		CHoughTransform HoughTransform;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set source image
 		HoughTransform.SetSourceImage(fliSourceImage);
 
-		// HoughTransform Line º¯È¯ ¼±ÅÃ // Set houghTransform line transform
+		// HoughTransform Line ë³€í™˜ ì„ íƒ // Set houghTransform line transform
 		HoughTransform.SetHoughShape(CHoughTransform::EHoughShape_Line);
 
-		// ¿¬»ê ¹æ½Ä ¼³Á¤ // Set calculation method
+		// ì—°ì‚° ë°©ì‹ ì„¤ì • // Set calculation method
 		HoughTransform.SetExecuteMode(CHoughTransform::EExecuteMode_Image);
 
-		// Threshold °ª ¼³Á¤ // set threshold value
+		// Threshold ê°’ ì„¤ì • // set threshold value
 		HoughTransform.SetPixelThreshold(10);
 
-		// Á¶°Ç Å¸ÀÔ ¼³Á¤ Less (Threshold °ª ÀÌÇÏÀÇ ÇÈ¼¿) // set logical condition(pixels below the threshold value)
+		// ì¡°ê±´ íƒ€ì… ì„¤ì • Less (Threshold ê°’ ì´í•˜ì˜ í”½ì…€) // set logical condition(pixels below the threshold value)
 		HoughTransform.SetLogicalCondition(ELogicalCondition_Less);
 
-		// ÃÖ¼Ò ÇÈ¼¿ Ä«¿îÅÍ ¼ö (ÇÈ¼¿ Ä«¿îÅÍ ±âÁØº¸´Ù ³·À» °æ¿ì ÇÊÅÍ¸µ) // Minimum number of pixel counters (Filter if lower than pixel counter criteria)
+		// ìµœì†Œ í”½ì…€ ì¹´ìš´í„° ìˆ˜ (í”½ì…€ ì¹´ìš´í„° ê¸°ì¤€ë³´ë‹¤ ë‚®ì„ ê²½ìš° í•„í„°ë§) // Minimum number of pixel counters (Filter if lower than pixel counter criteria)
 		HoughTransform.SetMinPixelCount(200);
 
-		// ÀÎÁ¢ °Å¸® ÇÊÅÍ¸µ ¼³Á¤ (°Å¸® +-5, °¢µµ +-5 ±âÁØ °¡Àå Ä«¿îÆÃÀÌ ¸¹ÀÌµÈ ÇÈ¼¿ °ªÀ» LineÀ¸·Î ¼±Á¤) 
+		// ì¸ì ‘ ê±°ë¦¬ í•„í„°ë§ ì„¤ì • (ê±°ë¦¬ +-5, ê°ë„ +-5 ê¸°ì¤€ ê°€ì¥ ì¹´ìš´íŒ…ì´ ë§ì´ëœ í”½ì…€ ê°’ì„ Lineìœ¼ë¡œ ì„ ì •) 
 		// Neighbor Distance Filtering Settings(Based on distance +-5, angle +-5, the most counted pixel value is selected as a line)
 		HoughTransform.SetNearbyLineFilter(5);
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if((res = HoughTransform.Execute()).IsFail())
 		{
 			ErrorPrint(res, "Failed to execute HoughTransform .");
 			break;
 		}
 
-		// Ãâ·ÂÀ» À§ÇÑ ÀÌ¹ÌÁö ·¹ÀÌ¾î¸¦ ¾ò¾î¿É´Ï´Ù. //  Gets the image layer for output.
-		// µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä ¾øÀ½ // No need to release separately
+		// ì¶œë ¥ì„ ìœ„í•œ ì´ë¯¸ì§€ ë ˆì´ì–´ë¥¼ ì–»ì–´ì˜µë‹ˆë‹¤. //  Gets the image layer for output.
+		// ë”°ë¡œ í•´ì œí•  í•„ìš” ì—†ìŒ // No need to release separately
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Delete the shapes drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Delete the shapes drawn on the existing layer
 		layerSource.Clear();
 
-		// Result °¹¼ö °¡Á®¿À±â // get result count
+		// Result ê°¯ìˆ˜ ê°€ì ¸ì˜¤ê¸° // get result count
 		int64_t i64ResultCount = HoughTransform.GetResultLinesCount();
 
-		for(int64_t i = 0; i < i64ResultCount; i++) // Ãâ·Â
+		for(int64_t i = 0; i < i64ResultCount; i++) // ì¶œë ¥
 		{
 			CFLLine<double> fllLine;
 
-			// line °á°ú °¡Á®¿À±â // get result line
+			// line ê²°ê³¼ ê°€ì ¸ì˜¤ê¸° // get result line
 			HoughTransform.GetResultLine(i, fllLine);
 
-			// line Ãâ·Â // display line
+			// line ì¶œë ¥ // display line
 			if(IsFail(res = layerSource.DrawFigureImage(fllLine, LIGHTGREEN, 1)))
 			{
 				ErrorPrint(res, "Failed to draw Figure\n");
@@ -95,10 +95,10 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImageSource.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä / ±×·¡ÇÁ ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸²
+		// ì´ë¯¸ì§€ ë·° / ê·¸ë˜í”„ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼
 		while(viewImageSource.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

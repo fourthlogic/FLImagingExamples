@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -22,27 +22,27 @@ unsigned int __stdcall LearnThread(void* pParam)
 
 int main()
 {
-				// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+				// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliLearnImage;
 	CFLImage fliValidationImage;
 	CFLImage fliResultLabelFigureImage;
 
-	/// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	/// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageLearn;
 	CGUIViewImageWrap viewImageValidation;
 	CGUIViewImageWrap viewImagesLabelFigure;
 
-	// ±×·¡ÇÁ ºä ¼±¾ğ // Declare the graph view
+	// ê·¸ë˜í”„ ë·° ì„ ì–¸ // Declare the graph view
 	CGUIViewGraphWrap viewGraph;
 
 	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// ¶óÀÌºê·¯¸®°¡ ¿ÏÀüÈ÷ ·Îµå µÉ ¶§±îÁö ±â´Ù¸² // Wait for the library to fully load
+		// ë¼ì´ë¸ŒëŸ¬ë¦¬ê°€ ì™„ì „íˆ ë¡œë“œ ë  ë•Œê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the library to fully load
 		CThreadUtilities::Sleep(1000);
 
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/AnomalyDetection/AnomalyDetectionTrainData.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
@@ -55,7 +55,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates image view
 		if(IsFail(res = viewImageLearn.Create(100, 0, 600, 500)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -82,7 +82,7 @@ int main()
 
 		viewGraph.SetDarkMode();
 
-		// ´Ù¼¸ °³ÀÇ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the four image view windows
+		// ë‹¤ì„¯ ê°œì˜ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the four image view windows
 		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImageValidation)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
@@ -95,7 +95,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 		if(IsFail(res = viewImageLearn.SetImagePtr(&fliLearnImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -117,21 +117,21 @@ int main()
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerLearn = viewImageLearn.GetLayer(0);
 		CGUIViewImageLayerWrap layerInference = viewImageValidation.GetLayer(0);
 		CGUIViewImageLayerWrap layerResultLabelFigure = viewImagesLabelFigure.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerLearn.Clear();
 		layerInference.Clear();
 		layerResultLabelFigure.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display View information.
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù.// The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display View information.
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤.// The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if(IsFail(res = layerLearn.DrawTextCanvas(&CFLPoint<double>(0, 0), L"LEARN", YELLOW, BLACK, 30)))
@@ -152,37 +152,37 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  // Update the image view.
 		viewImageLearn.RedrawWindow();
 		viewImageValidation.RedrawWindow();
 		viewImagesLabelFigure.RedrawWindow();
 
-		// AnomalyDetection °´Ã¼ »ı¼º // Create AnomalyDetection object
+		// AnomalyDetection ê°ì²´ ìƒì„± // Create AnomalyDetection object
 		CAnomalyDetectionDL AnomalyDetection;
 
-		// OptimizerSpec °´Ã¼ »ı¼º // Create OptimizerSpec object
+		// OptimizerSpec ê°ì²´ ìƒì„± // Create OptimizerSpec object
 		COptimizerSpecAdamGradientDescent optSpec;
 
-		// ÇĞ½ÀÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to learn
+		// í•™ìŠµí•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to learn
 		AnomalyDetection.SetLearningImage(fliLearnImage);
-		// °ËÁõÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to Validation
+		// ê²€ì¦í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to Validation
 		AnomalyDetection.SetLearningValidationImage(fliValidationImage);
-		// ÇĞ½ÀÇÒ AnomalyDetection ¸ğµ¨ ¼³Á¤ // Set up AnomalyDetection model to learn
+		// í•™ìŠµí•  AnomalyDetection ëª¨ë¸ ì„¤ì • // Set up AnomalyDetection model to learn
 		AnomalyDetection.SetModel(CAnomalyDetectionDL::EModel_FLDefNet);
-		// ÇĞ½ÀÇÒ AnomalyDetection ¸ğµ¨ÀÇ ¹öÀü ¼³Á¤ // Set up AnomalyDetection model version to learn
+		// í•™ìŠµí•  AnomalyDetection ëª¨ë¸ì˜ ë²„ì „ ì„¤ì • // Set up AnomalyDetection model version to learn
 		AnomalyDetection.SetModelVersion(CAnomalyDetectionDL::EModelVersion_FLDefNet_V1_64);
-		// ÇĞ½À epoch °ªÀ» ¼³Á¤ // Set the learn epoch value 
+		// í•™ìŠµ epoch ê°’ì„ ì„¤ì • // Set the learn epoch value 
 		AnomalyDetection.SetLearningEpoch(1000);
-		// ÇĞ½À ÀÌ¹ÌÁö Interpolation ¹æ½Ä ¼³Á¤ // Set Interpolation method of learn image
+		// í•™ìŠµ ì´ë¯¸ì§€ Interpolation ë°©ì‹ ì„¤ì • // Set Interpolation method of learn image
 		AnomalyDetection.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 
-		// OptimizerÀÇ ÇĞ½À·ü ¼³Á¤ // Set learning rate of Optimizer
+		// Optimizerì˜ í•™ìŠµë¥  ì„¤ì • // Set learning rate of Optimizer
 		optSpec.SetLearningRate(1e-3f);
 
-		// ¼³Á¤ÇÑ Optimizer¸¦ AnomalyDetection¿¡ Àû¿ë // Apply the Optimizer that we set up to AnomalyDetection
+		// ì„¤ì •í•œ Optimizerë¥¼ AnomalyDetectionì— ì ìš© // Apply the Optimizer that we set up to AnomalyDetection
 		AnomalyDetection.SetLearningOptimizerSpec(optSpec);
 
-		// AugmentationSpec ¼³Á¤ // Set the AugmentationSpec
+		// AugmentationSpec ì„¤ì • // Set the AugmentationSpec
 		CAugmentationSpec augSpec;
 
 		augSpec.EnableAugmentation(true);
@@ -201,28 +201,28 @@ int main()
 
 		AnomalyDetection.SetLearningAugmentationSpec(&augSpec);
 
-		// ÇĞ½ÀÀ» Á¾·áÇÒ Á¶°Ç½Ä ¼³Á¤. cost°¡ 0.1 ÀÌÇÏÀÌ°í accuracy°ªÀÌ 0.9 ÀÌ»óÀÎ °æ¿ì ÇĞ½À Á¾·áÇÑ´Ù.
+		// í•™ìŠµì„ ì¢…ë£Œí•  ì¡°ê±´ì‹ ì„¤ì •. costê°€ 0.1 ì´í•˜ì´ê³  accuracyê°’ì´ 0.9 ì´ìƒì¸ ê²½ìš° í•™ìŠµ ì¢…ë£Œí•œë‹¤.
 		// Set Conditional Expression to End Learning. If cost is 0.1 or less and the accumulation value is 0.9 or more, end learning.
 		AnomalyDetection.SetLearningStopCondition(L"cost <= 0.1 & accuracy >= 0.98");
 
-		// ÀÚµ¿ ÀúÀå ¿É¼Ç ¼³Á¤ // Set Auto-Save Options
+		// ìë™ ì €ì¥ ì˜µì…˜ ì„¤ì • // Set Auto-Save Options
 		CAutoSaveSpec autoSaveSpec;
 
-		// ÀÚµ¿ ÀúÀå È°¼ºÈ­ // Enable Auto-Save
+		// ìë™ ì €ì¥ í™œì„±í™” // Enable Auto-Save
 		autoSaveSpec.EnableAutoSave(true);
-		// ÀúÀåÇÒ ¸ğµ¨ °æ·Î ¼³Á¤ // Set Model path to save
+		// ì €ì¥í•  ëª¨ë¸ ê²½ë¡œ ì„¤ì • // Set Model path to save
 		autoSaveSpec.SetAutoSavePath(L"model.flad");
-		// ÀÚµ¿ ÀúÀå Á¶°Ç½Ä ¼³Á¤. ÇöÀç cost°ªÀÌ ÃÖ¼ÒÀÌ°í accuracy°ªÀÌ ÃÖ´ë °ªÀÎ °æ¿ì ÀúÀå È°¼ºÈ­
+		// ìë™ ì €ì¥ ì¡°ê±´ì‹ ì„¤ì •. í˜„ì¬ costê°’ì´ ìµœì†Œì´ê³  accuracyê°’ì´ ìµœëŒ€ ê°’ì¸ ê²½ìš° ì €ì¥ í™œì„±í™”
 		// Set auto-save conditional expressions. Enable save if the current cost value is minimum and the accumulation value is maximum
 		autoSaveSpec.SetAutoSaveCondition(L"cost < min('cost') & accuracy > max('accuracy')");
 
-		// ÀÚµ¿ ÀúÀå ¿É¼Ç ¼³Á¤ // Set Auto-Save Options
+		// ìë™ ì €ì¥ ì˜µì…˜ ì„¤ì • // Set Auto-Save Options
 		AnomalyDetection.SetLearningAutoSaveSpec(autoSaveSpec);
 
-		// Learn µ¿ÀÛÀ» ÇÏ´Â ÇÚµé °´Ã¼ ¼±¾ğ // Declare HANDLE object execute learn function
+		// Learn ë™ì‘ì„ í•˜ëŠ” í•¸ë“¤ ê°ì²´ ì„ ì–¸ // Declare HANDLE object execute learn function
 		HANDLE hThread;
 
-		// AnomalyDetection learn functionÀ» ÁøÇàÇÏ´Â ½º·¹µå »ı¼º // Create the AnomalyDetection Learn function thread
+		// AnomalyDetection learn functionì„ ì§„í–‰í•˜ëŠ” ìŠ¤ë ˆë“œ ìƒì„± // Create the AnomalyDetection Learn function thread
 		hThread = (HANDLE)_beginthreadex(NULL, 0, LearnThread, (void*)&AnomalyDetection, 0, nullptr);
 
 		while(!AnomalyDetection.IsRunning() && !g_bTerminated)
@@ -237,26 +237,26 @@ int main()
 		{
 			CThreadUtilities::Sleep(1);
 
-			// ¸¶Áö¸· ¹Ì´Ï ¹èÄ¡ ÃÖ´ë ¹İº¹ È½¼ö ¹Ş±â // Get the last maximum number of iterations of the last mini batch 
+			// ë§ˆì§€ë§‰ ë¯¸ë‹ˆ ë°°ì¹˜ ìµœëŒ€ ë°˜ë³µ íšŸìˆ˜ ë°›ê¸° // Get the last maximum number of iterations of the last mini batch 
 			int32_t i32MaxIteration = AnomalyDetection.GetActualMiniBatchCount();
-			// ¸¶Áö¸· ¹Ì´Ï ¹èÄ¡ ¹İº¹ È½¼ö ¹Ş±â // Get the last number of mini batch iterations
+			// ë§ˆì§€ë§‰ ë¯¸ë‹ˆ ë°°ì¹˜ ë°˜ë³µ íšŸìˆ˜ ë°›ê¸° // Get the last number of mini batch iterations
 			int32_t i32Iteration = AnomalyDetection.GetLearningResultCurrentIteration();
-			// ¸¶Áö¸· ÇĞ½À È½¼ö ¹Ş±â // Get the last epoch learning
+			// ë§ˆì§€ë§‰ í•™ìŠµ íšŸìˆ˜ ë°›ê¸° // Get the last epoch learning
 			int32_t i32Epoch = AnomalyDetection.GetLastEpoch();
 
-			// ¹Ì´Ï ¹èÄ¡ ¹İº¹ÀÌ ¿Ï·áµÇ¸é cost¿Í validation °ªÀ» µğ½ºÇÃ·¹ÀÌ 
+			// ë¯¸ë‹ˆ ë°°ì¹˜ ë°˜ë³µì´ ì™„ë£Œë˜ë©´ costì™€ validation ê°’ì„ ë””ìŠ¤í”Œë ˆì´ 
 			// Display cost and validation value if iterations of the mini batch is completed 
 			if(i32Epoch != i32PrevEpoch && i32Iteration == i32MaxIteration && i32Epoch > 0)
 			{
-				// ¸¶Áö¸· ÇĞ½À °á°ú ºñ¿ë ¹Ş±â // Get the last cost of the learning result
+				// ë§ˆì§€ë§‰ í•™ìŠµ ê²°ê³¼ ë¹„ìš© ë°›ê¸° // Get the last cost of the learning result
 				float f32CurrCost = AnomalyDetection.GetLearningResultLastCost();
-				// ¸¶Áö¸· °ËÁõ °á°ú ¹Ş±â // Get the last validation result
+				// ë§ˆì§€ë§‰ ê²€ì¦ ê²°ê³¼ ë°›ê¸° // Get the last validation result
 				float f32ValidationPa = AnomalyDetection.GetLearningResultLastAccuracy();
 
-				// ÇØ´ç epochÀÇ ºñ¿ë°ú °ËÁõ °á°ú °ª Ãâ·Â // Print cost and validation value for the relevant epoch
+				// í•´ë‹¹ epochì˜ ë¹„ìš©ê³¼ ê²€ì¦ ê²°ê³¼ ê°’ ì¶œë ¥ // Print cost and validation value for the relevant epoch
 				printf("Cost : %.6f Accuracy : %.6f Epoch %d / %d\n", f32CurrCost, f32ValidationPa, i32Epoch, i32MaxEpoch);
 
-				// ÇĞ½À °á°ú ºñ¿ë°ú °ËÁõ °á°ú ±â·ÏÀ» ¹Ş¾Æ ±×·¡ÇÁ ºä¿¡ Ãâ·Â  
+				// í•™ìŠµ ê²°ê³¼ ë¹„ìš©ê³¼ ê²€ì¦ ê²°ê³¼ ê¸°ë¡ì„ ë°›ì•„ ê·¸ë˜í”„ ë·°ì— ì¶œë ¥  
 				// Get the history of cost and validation and print it at graph view
 				CFLArray<float> flaCostHistory;
 				CFLArray<float> flaValidationHistory;
@@ -264,7 +264,7 @@ int main()
 
 				AnomalyDetection.GetLearningResultAllHistory(&flaCostHistory, &flaValidationHistory, &vctValidationEpoch);
 
-				// ºñ¿ë ±â·ÏÀÌ³ª °ËÁõ °á°ú ±â·ÏÀÌ ÀÖ´Ù¸é Ãâ·Â // Print results if cost or validation history exists
+				// ë¹„ìš© ê¸°ë¡ì´ë‚˜ ê²€ì¦ ê²°ê³¼ ê¸°ë¡ì´ ìˆë‹¤ë©´ ì¶œë ¥ // Print results if cost or validation history exists
 				if((flaCostHistory.GetCount() && i32PrevCostCount != (int32_t)flaCostHistory.GetCount()) || (flaValidationHistory.GetCount() && i32PrevValidationCount != (int32_t)flaValidationHistory.GetCount()))
 				{
 					int32_t i32Step = AnomalyDetection.GetLearningValidationStep();
@@ -275,13 +275,13 @@ int main()
 
 					flaX.PushBack((float)(flaCostHistory.GetCount() - 1));
 
-					// ÀÌÀü ±×·¡ÇÁÀÇ µ¥ÀÌÅÍ¸¦ »èÁ¦ // Clear previous grpah data
+					// ì´ì „ ê·¸ë˜í”„ì˜ ë°ì´í„°ë¥¼ ì‚­ì œ // Clear previous grpah data
 					viewGraph.LockUpdate();
 					viewGraph.Clear();
-					// Graph View µ¥ÀÌÅÍ ÀÔ·Â // Input Graph View Data
+					// Graph View ë°ì´í„° ì…ë ¥ // Input Graph View Data
 					viewGraph.Plot(flaCostHistory, EChartType_Line, RED, L"Cost");
 
-					// Graph View µ¥ÀÌÅÍ ÀÔ·Â // Input Graph View Data
+					// Graph View ë°ì´í„° ì…ë ¥ // Input Graph View Data
 					viewGraph.Plot(flaX, flaValidationHistory, EChartType_Line, BLUE, L"Accuracy");
 					viewGraph.UnlockUpdate();
 
@@ -290,7 +290,7 @@ int main()
 					viewGraph.RedrawWindow();
 				}
 
-				// °ËÁõ °á°ú°¡ 1.0ÀÏ °æ¿ì ÇĞ½ÀÀ» Áß´ÜÇÏ°í ºĞ·ù ÁøÇà 
+				// ê²€ì¦ ê²°ê³¼ê°€ 1.0ì¼ ê²½ìš° í•™ìŠµì„ ì¤‘ë‹¨í•˜ê³  ë¶„ë¥˜ ì§„í–‰ 
 				// If the validation result is 1.0, stop learning and classify images 
 				if(f32ValidationPa == 1.f || GetAsyncKeyState(VK_ESCAPE))
 					AnomalyDetection.Stop();
@@ -299,43 +299,43 @@ int main()
 				i32PrevCostCount = (int32_t)flaCostHistory.GetCount();
 				i32PrevValidationCount = (int32_t)flaValidationHistory.GetCount();
 			}
-			// epoch¸¸Å­ ÇĞ½ÀÀÌ ¿Ï·áµÇ¸é Á¾·á // End when learning progresses as much as epoch
+			// epochë§Œí¼ í•™ìŠµì´ ì™„ë£Œë˜ë©´ ì¢…ë£Œ // End when learning progresses as much as epoch
 			if(!AnomalyDetection.IsRunning() && g_bTerminated)
 			{
-				// learn µ¿ÀÛ ½º·¹µå°¡ ¿ÏÀüÈ÷ Á¾·áµÉ ±îÁö ´ë±â // Wait until learning is completely terminated
+				// learn ë™ì‘ ìŠ¤ë ˆë“œê°€ ì™„ì „íˆ ì¢…ë£Œë  ê¹Œì§€ ëŒ€ê¸° // Wait until learning is completely terminated
 				WaitForSingleObject(hThread, INFINITE);
-				// ½º·¹µå ÇÚµé Á¾·á // Close thread handle
+				// ìŠ¤ë ˆë“œ í•¸ë“¤ ì¢…ë£Œ // Close thread handle
 				CloseHandle(hThread);
 				break;
 			}
 		}
 
-		// Result Label Image¿¡ ÇÇ°Ü¸¦ Æ÷ÇÔÇÏÁö ¾Ê´Â Execute
-		// ºĞ·ùÇÒ ÀÌ¹ÌÁö ¼³Á¤ // Set the image to classify
+		// Result Label Imageì— í”¼ê²¨ë¥¼ í¬í•¨í•˜ì§€ ì•ŠëŠ” Execute
+		// ë¶„ë¥˜í•  ì´ë¯¸ì§€ ì„¤ì • // Set the image to classify
 		AnomalyDetection.SetInferenceImage(fliValidationImage);
-		// Ãß·Ğ °á°ú ÀÌ¹ÌÁö ¼³Á¤ // Set the inference result Image
+		// ì¶”ë¡  ê²°ê³¼ ì´ë¯¸ì§€ ì„¤ì • // Set the inference result Image
 		AnomalyDetection.SetInferenceResultImage(fliResultLabelFigureImage);
-		// Ãß·Ğ °á°ú ¿É¼Ç ¼³Á¤ // Set the inference result options;
-		// ºñÁ¤»ó °á°ú ºñ±³ Threshold ¼³Á¤ // Set Anomaly Threshold
+		// ì¶”ë¡  ê²°ê³¼ ì˜µì…˜ ì„¤ì • // Set the inference result options;
+		// ë¹„ì •ìƒ ê²°ê³¼ ë¹„êµ Threshold ì„¤ì • // Set Anomaly Threshold
 		AnomalyDetection.SetInferenceAnomalyThreshold(0.6f);
-		// ºñÁ¤»ó ÃÖ¼Ò Å©±â ¼³Á¤ // Set Minimum Anomaly Area
+		// ë¹„ì •ìƒ ìµœì†Œ í¬ê¸° ì„¤ì • // Set Minimum Anomaly Area
 		AnomalyDetection.SetInferenceMinimumAnomalyArea(4);
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if(IsFail(res = AnomalyDetection.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  // Update the image view.
 		viewImageLearn.RedrawWindow();
 		viewImageValidation.RedrawWindow();
 		viewImagesLabelFigure.RedrawWindow();
 
-		// ±×·¡ÇÁ ºä¸¦ °»½Å // Update the Graph view.
+		// ê·¸ë˜í”„ ë·°ë¥¼ ê°±ì‹  // Update the Graph view.
 		viewGraph.RedrawWindow();
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageLearn.IsAvailable() && viewImageValidation.IsAvailable() && viewImagesLabelFigure.IsAvailable() && viewGraph.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

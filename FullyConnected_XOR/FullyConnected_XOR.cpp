@@ -1,5 +1,5 @@
-
-// DialogProgressExample.cpp : ÀÀ¿ë ÇÁ·Î±×·¥¿¡ ´ëÇÑ Å¬·¡½º µ¿ÀÛÀ» Á¤ÀÇÇÕ´Ï´Ù.
+ï»¿
+// DialogProgressExample.cpp : ì‘ìš© í”„ë¡œê·¸ëž¨ì— ëŒ€í•œ í´ëž˜ìŠ¤ ë™ìž‘ì„ ì •ì˜í•©ë‹ˆë‹¤.
 //
 
 #include "stdafx.h"
@@ -18,46 +18,46 @@ BEGIN_MESSAGE_MAP(CFullyConnectedXORApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-// CFullyConnectedXORApp »ý¼º
+// CFullyConnectedXORApp ìƒì„±
 
 CFullyConnectedXORApp::CFullyConnectedXORApp()
 {
-	// TODO: ¿©±â¿¡ »ý¼º ÄÚµå¸¦ Ãß°¡ÇÕ´Ï´Ù.
-	// InitInstance¿¡ ¸ðµç Áß¿äÇÑ ÃÊ±âÈ­ ÀÛ¾÷À» ¹èÄ¡ÇÕ´Ï´Ù.
+	// TODO: ì—¬ê¸°ì— ìƒì„± ì½”ë“œë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
+	// InitInstanceì— ëª¨ë“  ì¤‘ìš”í•œ ì´ˆê¸°í™” ìž‘ì—…ì„ ë°°ì¹˜í•©ë‹ˆë‹¤.
 }
 
 
-// À¯ÀÏÇÑ CFullyConnectedXORApp °³Ã¼ÀÔ´Ï´Ù.
+// ìœ ì¼í•œ CFullyConnectedXORApp ê°œì²´ìž…ë‹ˆë‹¤.
 
 CFullyConnectedXORApp theApp;
 
 
-// CFullyConnectedXORApp ÃÊ±âÈ­
+// CFullyConnectedXORApp ì´ˆê¸°í™”
 
 BOOL CFullyConnectedXORApp::InitInstance()
 {
 	CWinAppEx::InitInstance();
 	SetRegistryKey(_T("FullyConnectedXOR examples"));
 
-	// GUI Manager ÃÊ±âÈ­ ÀüÃ³¸®¸¦ ¼öÇàÇÕ´Ï´Ù.
+	// GUI Manager ì´ˆê¸°í™” ì „ì²˜ë¦¬ë¥¼ ìˆ˜í–‰í•©ë‹ˆë‹¤.
 	CGUIManager::PreInitialize();
 
-	// ¿¹Á¦ ÇÁ·ÎÆÛÆ¼ ¸Þ´º¸¦ µî·ÏÇÕ´Ï´Ù.
+	// ì˜ˆì œ í”„ë¡œí¼í‹° ë©”ë‰´ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤.
 	CGUIManager::RegisterMenu(CPropertyMenuFullyConnectedXOR(), L"Fully-Connected XOR Example", L"Menu", false);
 
-	// ÀÌ¹ÌÁö ºä »ý¼º ¸Þ´º¸¦ Ãß°¡ÇÕ´Ï´Ù.
+	// ì´ë¯¸ì§€ ë·° ìƒì„± ë©”ë‰´ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
 	CGUIManager::ModifyPaneCreationOnInitialize(EPaneType_None, EPaneType_ViewGraph);
 
-	// ÀÎµ¦½º¿¡ ÇØ´çÇÏ´Â ºäÀÇ ¼³Á¤À¸·Î ¼±ÅÃÇÕ´Ï´Ù.
+	// ì¸ë±ìŠ¤ì— í•´ë‹¹í•˜ëŠ” ë·°ì˜ ì„¤ì •ìœ¼ë¡œ ì„ íƒí•©ë‹ˆë‹¤.
 	CGUIManager::PreInitializePaneVisibility(true, false, false, false, false, true);
 
-	// ¸ðµ¨ °ü¸®ÀÚ¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// ëª¨ë¸ ê´€ë¦¬ìžë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	CGUIManagerModel::Initialize();
 
-	// GUI °ü¸®ÀÚ¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù.
+	// GUI ê´€ë¦¬ìžë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.
 	CGUIManager::Initialize();
 
-	// Main Frame À§Ä¡¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+	// Main Frame ìœ„ì¹˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
 	CGUIMainFrame* pMF = nullptr;
 
 	if(AfxGetApp() && AfxGetApp()->m_pMainWnd)

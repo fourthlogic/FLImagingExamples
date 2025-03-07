@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
@@ -6,107 +6,107 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
-	// ¼öÇà °á°ú °´Ã¼ ¼±¾ğ // Declare the execution result object
+	// ìˆ˜í–‰ ê²°ê³¼ ê°ì²´ ì„ ì–¸ // Declare the execution result object
 	CResult res;
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/ScaleInvariantFeatureTransform/Chip.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage.Create(400, 0, 1168, 540)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 
-		// SIFT °´Ã¼ »ı¼º // Create SIFT object
+		// SIFT ê°ì²´ ìƒì„± // Create SIFT object
 		CScaleInvariantFeatureTransform SIFT;
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì •
 		if(IsFail(res = SIFT.SetSourceImage(fliImage)))
 		{
 			ErrorPrint(res, "Failed to set Source Image.");
 			break;
 		}
 
-		// Æ¯Â¡Á¡À» ÃßÃâÇÒ Octave Layer ¼ö¸¦ ¼³Á¤
+		// íŠ¹ì§•ì ì„ ì¶”ì¶œí•  Octave Layer ìˆ˜ë¥¼ ì„¤ì •
 		if(IsFail(res = SIFT.SetOctaveLayers(3)))
 		{
 			ErrorPrint(res, "Failed to set octave layers.");
 			break;
 		}
 
-		// ÃßÃâÇÒ Æ¯Â¡Á¡ÀÇ ´ëºñ ÀÓ°è°ª ¼³Á¤
+		// ì¶”ì¶œí•  íŠ¹ì§•ì ì˜ ëŒ€ë¹„ ì„ê³„ê°’ ì„¤ì •
 		if(IsFail(res = SIFT.SetContrastThreshold(0.04f)))
 		{
 			ErrorPrint(res, "Failed to set contrast threshold.");
 			break;
 		}
 
-		// ÃßÃâÇÒ Æ¯Â¡Á¡ÀÇ ¿¡Áö ÀÓ°è°ª ¼³Á¤
+		// ì¶”ì¶œí•  íŠ¹ì§•ì ì˜ ì—ì§€ ì„ê³„ê°’ ì„¤ì •
 		if(IsFail(res = SIFT.SetEdgeThreshold(10.f)))
 		{
 			ErrorPrint(res, "Failed to set edge threshold.");
 			break;
 		}
 
-		// SIFTÀÇ ÆÄ¶ó¹ÌÅÍ Sigma ¼³Á¤
+		// SIFTì˜ íŒŒë¼ë¯¸í„° Sigma ì„¤ì •
 		if(IsFail(res = SIFT.SetSigma(1.6f)))
 		{
 			ErrorPrint(res, "Failed to set param sigma.");
 			break;
 		}
 
-		// SIFT ½ÇÇà ÇÔ¼ö
+		// SIFT ì‹¤í–‰ í•¨ìˆ˜
 		if(IsFail(res = SIFT.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute.");
 			break;
 		}
 
-		// ½ÇÇà °á°ú¸¦ ¹Ş¾Æ¿À±â À§ÇÑ ÄÁÅ×ÀÌ³Ê
+		// ì‹¤í–‰ ê²°ê³¼ë¥¼ ë°›ì•„ì˜¤ê¸° ìœ„í•œ ì»¨í…Œì´ë„ˆ
 		Foundation::CFLPointArray flfaResultPoints;
 
-		// Å° Æ÷ÀÎÆ® Á¡À» °ËÃâ
+		// í‚¤ í¬ì¸íŠ¸ ì ì„ ê²€ì¶œ
 		if(IsFail(res = SIFT.GetResultPoints(&flfaResultPoints)))
 		{
 			ErrorPrint(res, "Failed to get result.");
 			break;
 		}
 
-		// °ËÃâµÈ Á¡À» Ãâ·Â
+		// ê²€ì¶œëœ ì ì„ ì¶œë ¥
 		layer.DrawFigureImage(flfaResultPoints, RED, 1);
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

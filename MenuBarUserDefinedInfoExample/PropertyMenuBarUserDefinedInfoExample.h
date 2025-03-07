@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 
 namespace FLImaging
 {
 	namespace GUI
 	{
-		// ÇÁ·ÎÆÛÆ¼ ¸Ş´º Å¬·¡½º
+		// í”„ë¡œí¼í‹° ë©”ë‰´ í´ë˜ìŠ¤
 		class CPropertyMenuBarUserDefinedInfoExample : public CGUIPropertyMenuBase
 		{
 			SupportToDuplicateObject(CPropertyMenuBarUserDefinedInfoExample);
@@ -13,41 +13,41 @@ namespace FLImaging
 			CPropertyMenuBarUserDefinedInfoExample();
 			virtual ~CPropertyMenuBarUserDefinedInfoExample();
 
-			// ÇÁ·ÎÆÛÆ¼ ¸Ş´º ¾ÆÀÌÅÛ ±¸¼º
+			// í”„ë¡œí¼í‹° ë©”ë‰´ ì•„ì´í…œ êµ¬ì„±
 			virtual const CResult ConfigureMenu() override;
 
 			DeclareGetClassType();
 
 		protected:
-			// ÃÊ±âÈ­ ÇÁ·Î½ÃÀú
+			// ì´ˆê¸°í™” í”„ë¡œì‹œì €
 			CPropertyButtonClickProcedure* Initialize();
-			// Run ¹öÆ° Å¬¸¯ ÇÁ·Î½ÃÀú
+			// Run ë²„íŠ¼ í´ë¦­ í”„ë¡œì‹œì €
 			CPropertyButtonClickProcedure* Run();
-			// Stop ¹öÆ° Å¬¸¯ ÇÁ·Î½ÃÀú
+			// Stop ë²„íŠ¼ í´ë¦­ í”„ë¡œì‹œì €
 			CPropertyButtonClickProcedure* Stop();
-			// Add ¹öÆ° Å¬¸¯ ÇÁ·Î½ÃÀú
+			// Add ë²„íŠ¼ í´ë¦­ í”„ë¡œì‹œì €
 			CPropertyItemButtonClickProcedure* Add();
-			// Remove ¹öÆ° Å¬¸¯ ÇÁ·Î½ÃÀú
+			// Remove ë²„íŠ¼ í´ë¦­ í”„ë¡œì‹œì €
 			CPropertyItemButtonClickProcedure* Remove();
-			// Set ¹öÆ° Å¬¸¯ ÇÁ·Î½ÃÀú
+			// Set ë²„íŠ¼ í´ë¦­ í”„ë¡œì‹œì €
 			CPropertyItemButtonClickProcedure* Set();
 
 
 			/* Utilities */
-			// ÇÁ·ÎÆÛÆ¼ ¾ÆÀÌÅÛÀ» Ãß°¡ÇÏ±â À§ÇÑ ÇÔ¼ö
+			// í”„ë¡œí¼í‹° ì•„ì´í…œì„ ì¶”ê°€í•˜ê¸° ìœ„í•œ í•¨ìˆ˜
 			const CResult AddItemForUserDefinedInfo(const Base::CFLString<wchar_t>& strPath);
-			// ÇÁ·ÎÆÛÆ¼ ¾ÆÀÌÅÛÀ¸·ÎºÎÅÍ °ªÀ» ¾ò¾î ¿À´Â ÇÔ¼ö
+			// í”„ë¡œí¼í‹° ì•„ì´í…œìœ¼ë¡œë¶€í„° ê°’ì„ ì–»ì–´ ì˜¤ëŠ” í•¨ìˆ˜
 			const CResult GetParameters(const Base::CFLString<wchar_t>& strPath, int32_t& i32Index, Base::CFLString<wchar_t>& str, COLORREF& clrBackground, COLORREF& clrText, bool& bShow, EGUIAlignment& eAlign, EGUIStringTrimming& eStringTrimming);
-			// "Set" Ä«Å×°í¸® ³» ¾ÆÀÌÅÛµé¿¡ ´ëÇØ, 
-			// ¼±ÅÃÇÑ ÀÎµ¦½º(i32Index)ÀÇ UserDefinedInfo ·Î ÇÁ·ÎÆÛÆ¼ °ªÀ» ¾÷µ¥ÀÌÆ® ÇÏ´Â ÇÔ¼ö
+			// "Set" ì¹´í…Œê³ ë¦¬ ë‚´ ì•„ì´í…œë“¤ì— ëŒ€í•´, 
+			// ì„ íƒí•œ ì¸ë±ìŠ¤(i32Index)ì˜ UserDefinedInfo ë¡œ í”„ë¡œí¼í‹° ê°’ì„ ì—…ë°ì´íŠ¸ í•˜ëŠ” í•¨ìˆ˜
 			const CResult UpdateSetParameters(int32_t i32Index);
-			// ¹®ÀÚ¿­À» EGUIAlignment ·Î º¯È¯ÇÏ´Â ÇÔ¼ö
+			// ë¬¸ìì—´ì„ EGUIAlignment ë¡œ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜
 			EGUIAlignment GetAlignment(const Base::CFLString<wchar_t>& strVal) const;
-			// EGUIAlignment ¸¦ ¹®ÀÚ¿­·Î º¯È¯ÇÏ´Â ÇÔ¼ö
+			// EGUIAlignment ë¥¼ ë¬¸ìì—´ë¡œ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜
 			Base::CFLString<wchar_t> GetAlignmentText(EGUIAlignment eAlign) const;
-			// ¹®ÀÚ¿­À» EGUIStringTrimming ·Î º¯È¯ÇÏ´Â ÇÔ¼ö
+			// ë¬¸ìì—´ì„ EGUIStringTrimming ë¡œ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜
 			EGUIStringTrimming GetStringTrimming(const Base::CFLString<wchar_t>& strVal) const;
-			// EGUIStringTrimming ¸¦ ¹®ÀÚ¿­·Î º¯È¯ÇÏ´Â ÇÔ¼ö
+			// EGUIStringTrimming ë¥¼ ë¬¸ìì—´ë¡œ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜
 			Base::CFLString<wchar_t> GetStringTrimmingText(EGUIStringTrimming eStringTrimming) const;
 
 		protected:

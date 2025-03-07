@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include "../CommomHeader/ErrorPrint.h"
 
 #include <FLImaging.h>
@@ -6,167 +6,167 @@
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSourceImage;
 	CFLImage fliOperandImage;
 	CFLImage fliDestinationImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSource;
 	CGUIViewImageWrap viewImageOperand;
 	CGUIViewImageWrap viewImageDestination;
 
 	do
 	{
-        // ¾Ë°í¸®Áò µ¿ÀÛ °á°ú // Algorithmic executation result
+        // ì•Œê³ ë¦¬ì¦˜ ë™ì‘ ê²°ê³¼ // Algorithmic executation result
 		CResult res = EResult_UnknownError;
 
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if(IsFail(res =fliSourceImage.Load(L"../../ExampleImages/OperationDifference/siamesecat3ch.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Operand ÀÌ¹ÌÁö ·Îµå // Loads the operand image
+		// Operand ì´ë¯¸ì§€ ë¡œë“œ // Loads the operand image
 		if(IsFail(res =fliOperandImage.Load(L"../../ExampleImages/OperationDifference/space3ch.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ·Îµå // Load the destination image
+		// Destination ì´ë¯¸ì§€ ë¡œë“œ // Load the destination image
 		if(IsFail(res =fliDestinationImage.Load(L"../../ExampleImages/OperationDifference/sea3ch.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create Source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create Source image view
 		if(IsFail(res =viewImageSource.Create(100, 0, 612, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Operand ÀÌ¹ÌÁö ºä »ı¼º // Creates operand image view
+		// Operand ì´ë¯¸ì§€ ë·° ìƒì„± // Creates operand image view
 		if(IsFail(res =viewImageOperand.Create(612, 0, 1124, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create destination image view
 		if(IsFail(res =viewImageDestination.Create(1124, 0,1636, 512)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿Í Operand ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù
+		// Source ì´ë¯¸ì§€ ë·°ì™€ Operand ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤
 		if(IsFail(res =viewImageSource.SynchronizePointOfView(&viewImageOperand)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿Í Destination ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù
+		// Source ì´ë¯¸ì§€ ë·°ì™€ Destination ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤
 		if(IsFail(res =viewImageSource.SynchronizePointOfView(&viewImageDestination)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if(IsFail(res =viewImageSource.SetImagePtr(&fliSourceImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Operand ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ
+		// Operand ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´
 		if(IsFail(res =viewImageOperand.SetImagePtr(&fliOperandImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if(IsFail(res =viewImageDestination.SetImagePtr(&fliDestinationImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res =viewImageSource.SynchronizeWindow(&viewImageOperand)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res =viewImageSource.SynchronizeWindow(&viewImageDestination)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
 			break;
 		}
 
-		// Operation Difference °´Ã¼ »ı¼º // Create Operation Difference object
+		// Operation Difference ê°ì²´ ìƒì„± // Create Operation Difference object
 		COperationDifference difference;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		difference.SetSourceImage(fliSourceImage);
 
-		// Source ÀÌ¹ÌÁöÀÇ ROI ¹üÀ§ ¼³Á¤
+		// Source ì´ë¯¸ì§€ì˜ ROI ë²”ìœ„ ì„¤ì •
 		CFLCircle<int32_t> flcSourceROI(258, 258, 174, 0, 0, 360, EArcClosingMethod_EachOther);
 
-		// Source ÀÌ¹ÌÁöÀÇ ROI ÁöÁ¤
+		// Source ì´ë¯¸ì§€ì˜ ROI ì§€ì •
 		difference.SetSourceROI(flcSourceROI);
 
-		// Operand ÀÌ¹ÌÁö ¼³Á¤ // Set the operand image
+		// Operand ì´ë¯¸ì§€ ì„¤ì • // Set the operand image
 		difference.SetOperandImage(fliOperandImage);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		difference.SetDestinationImage(fliDestinationImage);
 
-		// Destination ÀÌ¹ÌÁö Pivot ÁÂÇ¥ ¼³Á¤
+		// Destination ì´ë¯¸ì§€ Pivot ì¢Œí‘œ ì„¤ì •
 		CFLPoint<int32_t> flpDestinationPivot(174, 169);
 
-		// Destination ÀÌ¹ÌÁö Pivot ÁöÁ¤
+		// Destination ì´ë¯¸ì§€ Pivot ì§€ì •
 		difference.SetDestinationPivot(flpDestinationPivot);
 
-		// Image Operation ¸ğµå·Î ¼³Á¤ // Set operation mode to image
+		// Image Operation ëª¨ë“œë¡œ ì„¤ì • // Set operation mode to image
 		difference.SetOperationSource(EOperationSource_Image);
 
-		// °ø¹é »ö»ó Ä¥ÇÏ±â ¸ğµå ÇØÁ¦
-		// °á°ú ÀÌ¹ÌÁö°¡ ÀÌ¹Ì Á¸ÀçÇÒ °æ¿ì ¿¬»êµÇÁö ¾ÊÀº ¿µ¿ªÀ» °ø¹é »ö»óÀ¸·Î Ä¥ÇÏÁö ¾Ê°í ¿øº» ±×´ë·Î µĞ´Ù.
+		// ê³µë°± ìƒ‰ìƒ ì¹ í•˜ê¸° ëª¨ë“œ í•´ì œ
+		// ê²°ê³¼ ì´ë¯¸ì§€ê°€ ì´ë¯¸ ì¡´ì¬í•  ê²½ìš° ì—°ì‚°ë˜ì§€ ì•Šì€ ì˜ì—­ì„ ê³µë°± ìƒ‰ìƒìœ¼ë¡œ ì¹ í•˜ì§€ ì•Šê³  ì›ë³¸ ê·¸ëŒ€ë¡œ ë‘”ë‹¤.
 		difference.EnableFillBlankColorMode(false);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(res =res = difference.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute operation difference.\n");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
 		CGUIViewImageLayerWrap layerOperand = viewImageOperand.GetLayer(0);
 		CGUIViewImageLayerWrap layerDestination = viewImageDestination.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSource.Clear();
 		layerOperand.Clear();
 		layerDestination.Clear();
 
-		// FLImagingÀÇ Figure°´Ã¼µéÀº ¾î¶² µµÇü¸ğ¾çÀÌµç »ó°ü¾øÀÌ ÇÏ³ªÀÇ ÇÔ¼ö·Î µğ½ºÇÃ·¹ÀÌ°¡ °¡´É
-		// Source ROI ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù
+		// FLImagingì˜ Figureê°ì²´ë“¤ì€ ì–´ë–¤ ë„í˜•ëª¨ì–‘ì´ë“  ìƒê´€ì—†ì´ í•˜ë‚˜ì˜ í•¨ìˆ˜ë¡œ ë””ìŠ¤í”Œë ˆì´ê°€ ê°€ëŠ¥
+		// Source ROI ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤
 		if(IsFail(res =layerSource.DrawFigureImage(&flcSourceROI, LIME)))
 			ErrorPrint(res, "Failed to draw figure\n");
 
-		// Destination Pivot ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù
+		// Destination Pivot ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤
 		CFLFigureArray flfaDestinationPivotCrossHair = flpDestinationPivot.MakeCrossHair(20, true);
 
 		if(IsFail(res =layerDestination.DrawFigureImage(&flfaDestinationPivotCrossHair, BLACK, 3)))
@@ -175,7 +175,7 @@ int main()
 		if(IsFail(res =layerDestination.DrawFigureImage(&flfaDestinationPivotCrossHair, LIME)))
 			ErrorPrint(res, "Failed to draw figure\n");
 
-		// ÀÌ¹ÌÁö ºä Á¤º¸ Ç¥½Ã // Display image view information
+		// ì´ë¯¸ì§€ ë·° ì •ë³´ í‘œì‹œ // Display image view information
 		if(IsFail(res =layerSource.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
@@ -194,12 +194,12 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  // Update image view
 		viewImageSource.Invalidate(true);
 		viewImageOperand.Invalidate(true);
 		viewImageDestination.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSource.IsAvailable() && viewImageOperand.IsAvailable() && viewImageDestination.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

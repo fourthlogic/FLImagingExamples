@@ -1,4 +1,4 @@
-
+ï»¿
 // ImageViewIntoDialogDlg.cpp : implementation file
 //
 
@@ -107,7 +107,7 @@ BOOL CImageViewIntoDialogDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 
-	// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+	// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 	CResult res = m_viewImage.CreateAndFitParent((size_t)GetDlgItem(IDC_STATIC_IMAGE_VIEW)->GetSafeHwnd());
 
 	if(res.IsFail())
@@ -175,11 +175,11 @@ void CImageViewIntoDialogDlg::UpdateControls()
 
 	do
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
-		// ÀÌ¹ÌÁö ºäÀÇ Figure object °³¼ö¸¦ ¾ò¾î¿Â´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ Figure object ê°œìˆ˜ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 		if(!m_viewImage.GetFigureObjectCount())
 			break;
 
@@ -214,7 +214,7 @@ BOOL CImageViewIntoDialogDlg::DestroyWindow()
 	// TODO: Add your specialized code here and/or call the base class
 	KillTimer(1024);
 
-	// ÀÌ¹ÌÁö ºä¸¦ Á¾·áÇÑ´Ù.
+	// ì´ë¯¸ì§€ ë·°ë¥¼ ì¢…ë£Œí•œë‹¤.
 	m_viewImage.Destroy();
 
 	return CDialogEx::DestroyWindow();
@@ -226,17 +226,17 @@ void CImageViewIntoDialogDlg::OnBnClickedButtonFigureObjectCreate()
 
 	do
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
-		// ÀÌ¹ÌÁö ºäÀÇ Äµ¹ö½º ¿µ¿ªÀ» ¾ò¾î¿Â´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ ìº”ë²„ìŠ¤ ì˜ì—­ì„ ì–»ì–´ì˜¨ë‹¤.
 		CFLRect<int32_t> flrlCanvas = m_viewImage.GetClientRectCanvasRegion();
 
-		// Äµ¹ö½º ¿µ¿ªÀÇ ÁÂÇ¥°è¸¦ ÀÌ¹ÌÁö ¿µ¿ªÀÇ ÁÂÇ¥°è·Î º¯È¯ÇÑ´Ù.
+		// ìº”ë²„ìŠ¤ ì˜ì—­ì˜ ì¢Œí‘œê³„ë¥¼ ì´ë¯¸ì§€ ì˜ì—­ì˜ ì¢Œí‘œê³„ë¡œ ë³€í™˜í•œë‹¤.
 		CFLRect<double> flrdImage = m_viewImage.ConvertCanvasCoordToImageCoord(flrlCanvas);
 
-		// ÀÌ¹ÌÁö ¿µ¿ªÀ» ±âÁØÀ¸·Î »ı¼ºµÉ Figure ÀÇ Å©±â¿Í ¸ğ¾çÀ» »ç°¢ÇüÀ¸·Î ¼³Á¤ÇÑ´Ù.
+		// ì´ë¯¸ì§€ ì˜ì—­ì„ ê¸°ì¤€ìœ¼ë¡œ ìƒì„±ë  Figure ì˜ í¬ê¸°ì™€ ëª¨ì–‘ì„ ì‚¬ê°í˜•ìœ¼ë¡œ ì„¤ì •í•œë‹¤.
 		double f64Width = flrdImage.GetWidth() / 10.;
 		double f64Height = flrdImage.GetHeight() / 10.;
 		double f64Size = __min(f64Width, f64Height);
@@ -246,12 +246,12 @@ void CImageViewIntoDialogDlg::OnBnClickedButtonFigureObjectCreate()
 
 		CFLRect<double> flrdFigure(flpdCenter.x - f64Size, flpdCenter.y - f64Size, flpdCenter.x + f64Size, flpdCenter.y + f64Size);
 
-		// ÀÌ¹ÌÁö ºä¿¡ Figure object ¸¦ »ı¼ºÇÑ´Ù.
-		// °¡Àå ¸¶Áö¸· ÆÄ¶ó¹ÌÅÍ´Â È°¼ºÈ­ µÇ´Â ¸Ş´ºÀÇ ±¸¼ºÀÌ¸ç, EAvailableFigureContextMenu_All °¡ ±âº» ¸Ş´º¸¦ È°¼ºÈ­ ÇÑ´Ù.
-		// È°¼ºÈ­ ÇÏ°íÀÚ ÇÏ´Â ¸Ş´º¸¦ Ãß°¡ È¤Àº Á¦°Å ÇÏ±â À§ÇØ¼­´Â enum °ªÀ» ºñÆ® ¿¬»êÀ¸·Î ³Ö¾îÁÖ¸é µÈ´Ù.
-		// ex) EAvailableFigureContextMenu_None -> È°¼ºÈ­ µÇ´Â ¸Ş´º ¾øÀ½
-		//     EAvailableFigureContextMenu_All -> ÀüÃ¼ ¸Ş´º È°¼ºÈ­
-		//     EAvailableFigureContextMenu_DeclType | EAvailableFigureContextMenu_TemplateType -> Decl Type, Template Type º¯È¯ ¸Ş´º È°¼ºÈ­
+		// ì´ë¯¸ì§€ ë·°ì— Figure object ë¥¼ ìƒì„±í•œë‹¤.
+		// ê°€ì¥ ë§ˆì§€ë§‰ íŒŒë¼ë¯¸í„°ëŠ” í™œì„±í™” ë˜ëŠ” ë©”ë‰´ì˜ êµ¬ì„±ì´ë©°, EAvailableFigureContextMenu_All ê°€ ê¸°ë³¸ ë©”ë‰´ë¥¼ í™œì„±í™” í•œë‹¤.
+		// í™œì„±í™” í•˜ê³ ì í•˜ëŠ” ë©”ë‰´ë¥¼ ì¶”ê°€ í˜¹ì€ ì œê±° í•˜ê¸° ìœ„í•´ì„œëŠ” enum ê°’ì„ ë¹„íŠ¸ ì—°ì‚°ìœ¼ë¡œ ë„£ì–´ì£¼ë©´ ëœë‹¤.
+		// ex) EAvailableFigureContextMenu_None -> í™œì„±í™” ë˜ëŠ” ë©”ë‰´ ì—†ìŒ
+		//     EAvailableFigureContextMenu_All -> ì „ì²´ ë©”ë‰´ í™œì„±í™”
+		//     EAvailableFigureContextMenu_DeclType | EAvailableFigureContextMenu_TemplateType -> Decl Type, Template Type ë³€í™˜ ë©”ë‰´ í™œì„±í™”
 		m_viewImage.PushBackFigureObject(&flrdFigure, EAvailableFigureContextMenu_All);
 	}
 	while(false);
@@ -266,16 +266,16 @@ void CImageViewIntoDialogDlg::OnBnClickedButtonFigureObjectPopFront()
 
 	do
 	{
-		// ÀÌ¹ÌÁö ºä À¯È¿¼º Ã¼Å©
+		// ì´ë¯¸ì§€ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewImage.IsAvailable())
 			break;
 
-		// ÀÌ¹ÌÁö ºäÀÇ ¸Ç ¾ÕÀÇ Figure ¸¦ Á¦°ÅÇÏ¸é¼­ ¾ò¾î¿Â´Ù.
+		// ì´ë¯¸ì§€ ë·°ì˜ ë§¨ ì•ì˜ Figure ë¥¼ ì œê±°í•˜ë©´ì„œ ì–»ì–´ì˜¨ë‹¤.
 		pFlFigure = m_viewImage.PopFrontFigureObject();
 		if(!pFlFigure)
 			break;
 
-		// Figure ¸¦ ¹®ÀÚ¿­·Î ¾ò¾î¿Â´Ù.
+		// Figure ë¥¼ ë¬¸ìì—´ë¡œ ì–»ì–´ì˜¨ë‹¤.
 		CFLString<wchar_t> flStrFigure = CFigureUtilities::ConvertFigureObjectToString(pFlFigure);
 
 		strFigureInfo = flStrFigure;
@@ -284,7 +284,7 @@ void CImageViewIntoDialogDlg::OnBnClickedButtonFigureObjectPopFront()
 
 	GetDlgItem(IDC_EDIT_FIGURE_OBEJCT_INFO)->SetWindowText(strFigureInfo);
 
-	// ¾ò¾î¿Â Figure °´Ã¼ ÇØÁ¦
+	// ì–»ì–´ì˜¨ Figure ê°ì²´ í•´ì œ
 	if(pFlFigure)
 	{
 		delete pFlFigure;

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "PropertyLogInExample.h"
 
 using namespace FLImaging;
@@ -27,8 +27,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"None1 (1.0)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(1.);
-		// ¹öÆ°À» ½ÇÇàÇÏ±â À§ÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_None ÀÌ¹Ç·Î ´©±¸³ª ÀÌ ¹öÆ°À» ½ÇÇàÇÒ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_None ì´ë¯€ë¡œ ëˆ„êµ¬ë‚˜ ì´ ë²„íŠ¼ì„ ì‹¤í–‰í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_None, EPermission_Modify_Execute);
 		AddButton(pBtn);
 
@@ -36,8 +36,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"User1 (1.0)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(1.);
-		// ¹öÆ°À» ½ÇÇàÇÏ±â À§ÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_User ÀÌ¹Ç·Î User ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ ¹öÆ°À» ½ÇÇàÇÒ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_User ì´ë¯€ë¡œ User ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ ë²„íŠ¼ì„ ì‹¤í–‰í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_User, EPermission_Modify_Execute);
 		AddButton(pBtn);
 
@@ -45,8 +45,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"Power User1 (1.0)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(1.);
-		// ¹öÆ°À» ½ÇÇàÇÏ±â À§ÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_PowerUser ÀÌ¹Ç·Î PowerUser ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ ¹öÆ°À» ½ÇÇàÇÒ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_PowerUser ì´ë¯€ë¡œ PowerUser ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ ë²„íŠ¼ì„ ì‹¤í–‰í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_PowerUser, EPermission_Modify_Execute);
 		AddButton(pBtn);
 
@@ -54,8 +54,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"Administrator1 (1.0)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(1.);
-		// ¹öÆ°À» ½ÇÇàÇÏ±â À§ÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_Administrator ÀÌ¹Ç·Î Administrator ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ ¹öÆ°À» ½ÇÇàÇÒ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_Administrator ì´ë¯€ë¡œ Administrator ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ ë²„íŠ¼ì„ ì‹¤í–‰í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_Administrator, EPermission_Modify_Execute);
 		AddButton(pBtn);
 
@@ -63,8 +63,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"Developer1 (1.0)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(1.);
-		// ¹öÆ°À» ½ÇÇàÇÏ±â À§ÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_Developer ÀÌ¹Ç·Î Developer ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ ¹öÆ°À» ½ÇÇàÇÒ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_Developer ì´ë¯€ë¡œ Developer ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ ë²„íŠ¼ì„ ì‹¤í–‰í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_Developer, EPermission_Modify_Execute);
 		AddButton(pBtn);
 
@@ -72,8 +72,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"Root1 (1.0)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(1.);
-		// ¹öÆ°À» ½ÇÇàÇÏ±â À§ÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_Root ÀÌ¹Ç·Î Root ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ ¹öÆ°À» ½ÇÇàÇÒ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_Root ì´ë¯€ë¡œ Root ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ ë²„íŠ¼ì„ ì‹¤í–‰í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_Root, EPermission_Modify_Execute);
 		AddButton(pBtn);
 
@@ -81,8 +81,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"None2 (0.3)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(0.3);
-		// ¹öÆ°À» º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_None ÀÌ¹Ç·Î ¸ðµç »ç¿ëÀÚ°¡ ÀÌ ¹öÆ°À» º¼ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_None ì´ë¯€ë¡œ ëª¨ë“  ì‚¬ìš©ìžê°€ ì´ ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_None, EPermission_View);
 		AddButton(pBtn);
 
@@ -90,8 +90,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"User2 (0.3)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(0.3);
-		// ¹öÆ°À» º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_User ÀÌ¹Ç·Î User ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ ¹öÆ°À» º¼ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_User ì´ë¯€ë¡œ User ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_User, EPermission_View);
 		AddButton(pBtn);
 
@@ -99,8 +99,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"Power User2 (0.4)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(0.4);
-		// ¹öÆ°À» º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_PowerUser ÀÌ¹Ç·Î PowerUser ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ ¹öÆ°À» º¼ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_PowerUser ì´ë¯€ë¡œ PowerUser ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_PowerUser, EPermission_View);
 		AddButton(pBtn);
 
@@ -108,8 +108,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"Administrator2 (0.3)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(0.3);
-		// ¹öÆ°À» º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_Administrator ÀÌ¹Ç·Î Administrator ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ ¹öÆ°À» º¼ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_Administrator ì´ë¯€ë¡œ Administrator ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_Administrator, EPermission_View);
 		AddButton(pBtn);
 
@@ -117,8 +117,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"Developer2 (0.3)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(0.3);
-		// ¹öÆ°À» º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_Developer ÀÌ¹Ç·Î Developer ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ ¹öÆ°À» º¼ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_Developer ì´ë¯€ë¡œ Developer ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_Developer, EPermission_View);
 		AddButton(pBtn);
 
@@ -126,8 +126,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 		pBtn->SetName(L"Root2 (0.3)");
 		pBtn->SetPropertyButtonClickProcedure(TestButton());
 		pBtn->SetButtonWidthRatio(0.3);
-		// ¹öÆ°À» º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_Root ÀÌ¹Ç·Î Root ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ ¹öÆ°À» º¼ ¼ö ÀÖ½À´Ï´Ù.
+		// ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_Root ì´ë¯€ë¡œ Root ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ ë²„íŠ¼ì„ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 		pBtn->SetMinimalAuthorityLevel(EAuthorityLevel_Root, EPermission_View);
 		AddButton(pBtn);
 
@@ -183,8 +183,8 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 			pIVL = new CGUIPropertyItemViewImageList;
 			pIVL->SetName(L"None View");
 			pIVL->SetPath(L"Category");
-			// Image View List ¸¦ »ç¿ë °¡´ÉÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_None ÀÌ¹Ç·Î ¸ðµç »ç¿ëÀÚ°¡ ÀÌ Image View List ¸¦ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
+			// Image View List ë¥¼ ì‚¬ìš© ê°€ëŠ¥í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_None ì´ë¯€ë¡œ ëª¨ë“  ì‚¬ìš©ìžê°€ ì´ Image View List ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 			pIVL->SetMinimalAuthorityLevel(EAuthorityLevel_None, EPermission_Modify_Execute);
 			AddItem(pIVL);
 
@@ -192,16 +192,16 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 			pIVR->SetName(L"None Figure");
 			pIVR->SetPath(L"Category");
 			pIVR->SetViewImageList(pIVL);
-			// Image View Figure ¸¦ º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_None ÀÌ¹Ç·Î ¸ðµç »ç¿ëÀÚ°¡ ÀÌ Image View Figure ¸¦ º¼ ¼ö ÀÖ½À´Ï´Ù.
+			// Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_None ì´ë¯€ë¡œ ëª¨ë“  ì‚¬ìš©ìžê°€ ì´ Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 			pIVR->SetMinimalAuthorityLevel(EAuthorityLevel_None, EPermission_View);
 			AddItem(pIVR);
 
 			pIVL = new CGUIPropertyItemViewImageList;
 			pIVL->SetName(L"User View");
 			pIVL->SetPath(L"Category");
-			// Image View List ¸¦ »ç¿ë °¡´ÉÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_User ÀÌ¹Ç·Î Root ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ Image View List ¸¦ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
+			// Image View List ë¥¼ ì‚¬ìš© ê°€ëŠ¥í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_User ì´ë¯€ë¡œ Root ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ Image View List ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 			pIVL->SetMinimalAuthorityLevel(EAuthorityLevel_User, EPermission_Modify_Execute);
 			AddItem(pIVL);
 
@@ -209,17 +209,17 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 			pIVR->SetName(L"User Figure");
 			pIVR->SetPath(L"Category");
 			pIVR->SetViewImageList(pIVL);
-			// Image View Figure ¸¦ º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_User ÀÌ¹Ç·Î User ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ Image View Figure ¸¦ º¼ ¼ö ÀÖ½À´Ï´Ù.
-			// User ·¹º§ ¹Ì¸¸ÀÎ »ç¿ëÀÚ´Â ÀÌ Image View Figure ¸¦ º¼ ¼ö ¾ø½À´Ï´Ù.
+			// Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_User ì´ë¯€ë¡œ User ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+			// User ë ˆë²¨ ë¯¸ë§Œì¸ ì‚¬ìš©ìžëŠ” ì´ Image View Figure ë¥¼ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
 			pIVR->SetMinimalAuthorityLevel(EAuthorityLevel_User, EPermission_View);
 			AddItem(pIVR);
 
 			pIVL = new CGUIPropertyItemViewImageList;
 			pIVL->SetName(L"Power User View");
 			pIVL->SetPath(L"Category");
-			// Image View List ¸¦ »ç¿ë °¡´ÉÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_PowerUser ÀÌ¹Ç·Î PowerUser ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ Image View List ¸¦ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
+			// Image View List ë¥¼ ì‚¬ìš© ê°€ëŠ¥í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_PowerUser ì´ë¯€ë¡œ PowerUser ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ Image View List ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 			pIVL->SetMinimalAuthorityLevel(EAuthorityLevel_PowerUser, EPermission_Modify_Execute);
 			AddItem(pIVL);
 
@@ -227,17 +227,17 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 			pIVR->SetName(L"Power User Figure");
 			pIVR->SetPath(L"Category");
 			pIVR->SetViewImageList(pIVL);
-			// Image View Figure ¸¦ º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_PowerUser ÀÌ¹Ç·Î PowerUser ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ Image View Figure ¸¦ º¼ ¼ö ÀÖ½À´Ï´Ù.
-			// PowerUser ·¹º§ ¹Ì¸¸ÀÎ »ç¿ëÀÚ´Â ÀÌ Image View Figure ¸¦ º¼ ¼ö ¾ø½À´Ï´Ù.
+			// Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_PowerUser ì´ë¯€ë¡œ PowerUser ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+			// PowerUser ë ˆë²¨ ë¯¸ë§Œì¸ ì‚¬ìš©ìžëŠ” ì´ Image View Figure ë¥¼ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
 			pIVR->SetMinimalAuthorityLevel(EAuthorityLevel_PowerUser, EPermission_View);
 			AddItem(pIVR);
 
 			pIVL = new CGUIPropertyItemViewImageList;
 			pIVL->SetName(L"Administrator View");
 			pIVL->SetPath(L"Category");
-			// Image View List ¸¦ »ç¿ë °¡´ÉÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_Administrator ÀÌ¹Ç·Î Administrator ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ Image View List ¸¦ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
+			// Image View List ë¥¼ ì‚¬ìš© ê°€ëŠ¥í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_Administrator ì´ë¯€ë¡œ Administrator ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ Image View List ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 			pIVL->SetMinimalAuthorityLevel(EAuthorityLevel_Administrator, EPermission_Modify_Execute);
 			AddItem(pIVL);
 
@@ -245,17 +245,17 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 			pIVR->SetName(L"Administrator Figure");
 			pIVR->SetPath(L"Category");
 			pIVR->SetViewImageList(pIVL);
-			// Image View Figure ¸¦ º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_Administrator ÀÌ¹Ç·Î Administrator ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ Image View Figure ¸¦ º¼ ¼ö ÀÖ½À´Ï´Ù.
-			// Administrator ·¹º§ ¹Ì¸¸ÀÎ »ç¿ëÀÚ´Â ÀÌ Image View Figure ¸¦ º¼ ¼ö ¾ø½À´Ï´Ù.
+			// Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_Administrator ì´ë¯€ë¡œ Administrator ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+			// Administrator ë ˆë²¨ ë¯¸ë§Œì¸ ì‚¬ìš©ìžëŠ” ì´ Image View Figure ë¥¼ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
 			pIVR->SetMinimalAuthorityLevel(EAuthorityLevel_Administrator, EPermission_View);
 			AddItem(pIVR);
 
 			pIVL = new CGUIPropertyItemViewImageList;
 			pIVL->SetName(L"Developer View");
 			pIVL->SetPath(L"Category");
-			// Image View List ¸¦ »ç¿ë °¡´ÉÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_Developer ÀÌ¹Ç·Î Developer ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ Image View List ¸¦ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
+			// Image View List ë¥¼ ì‚¬ìš© ê°€ëŠ¥í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_Developer ì´ë¯€ë¡œ Developer ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ Image View List ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 			pIVL->SetMinimalAuthorityLevel(EAuthorityLevel_Developer, EPermission_Modify_Execute);
 			AddItem(pIVL);
 
@@ -263,17 +263,17 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 			pIVR->SetName(L"Developer Figure");
 			pIVR->SetPath(L"Category");
 			pIVR->SetViewImageList(pIVL);
-			// Image View Figure ¸¦ º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_Developer ÀÌ¹Ç·Î Developer ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ Image View Figure ¸¦ º¼ ¼ö ÀÖ½À´Ï´Ù.
-			// Developer ·¹º§ ¹Ì¸¸ÀÎ »ç¿ëÀÚ´Â ÀÌ Image View Figure ¸¦ º¼ ¼ö ¾ø½À´Ï´Ù.
+			// Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_Developer ì´ë¯€ë¡œ Developer ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+			// Developer ë ˆë²¨ ë¯¸ë§Œì¸ ì‚¬ìš©ìžëŠ” ì´ Image View Figure ë¥¼ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
 			pIVR->SetMinimalAuthorityLevel(EAuthorityLevel_Developer, EPermission_View);
 			AddItem(pIVR);
 
 			pIVL = new CGUIPropertyItemViewImageList;
 			pIVL->SetName(L"Root View");
 			pIVL->SetPath(L"Category");
-			// Image View List ¸¦ »ç¿ë °¡´ÉÇÑ ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_Root ÀÌ¹Ç·Î Root ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ Image View List ¸¦ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
+			// Image View List ë¥¼ ì‚¬ìš© ê°€ëŠ¥í•œ ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_Root ì´ë¯€ë¡œ Root ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ Image View List ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 			pIVL->SetMinimalAuthorityLevel(EAuthorityLevel_Root, EPermission_Modify_Execute);
 			AddItem(pIVL);
 
@@ -281,18 +281,18 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 			pIVR->SetName(L"Root Figure");
 			pIVR->SetPath(L"Category");
 			pIVR->SetViewImageList(pIVL);
-			// Image View Figure ¸¦ º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-			// EAuthorityLevel_Root ÀÌ¹Ç·Î Root ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ Image View Figure ¸¦ º¼ ¼ö ÀÖ½À´Ï´Ù.
-			// Root ·¹º§ ¹Ì¸¸ÀÎ »ç¿ëÀÚ´Â ÀÌ Image View Figure ¸¦ º¼ ¼ö ¾ø½À´Ï´Ù.
+			// Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+			// EAuthorityLevel_Root ì´ë¯€ë¡œ Root ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ Image View Figure ë¥¼ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+			// Root ë ˆë²¨ ë¯¸ë§Œì¸ ì‚¬ìš©ìžëŠ” ì´ Image View Figure ë¥¼ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
 			pIVR->SetMinimalAuthorityLevel(EAuthorityLevel_Root, EPermission_View);
 			AddItem(pIVR);
 		}
 
 		pCat = new CGUIPropertyItemCategory;
 		pCat->SetName(L"View Category");
-		// Category ¹× ÇÏÀ§ ¾ÆÀÌÅÛµéÀ» º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀ» ¼³Á¤ÇÕ´Ï´Ù. 
-		// EAuthorityLevel_Administrator ÀÌ¹Ç·Î Administrator ·¹º§ ÀÌ»óÀÎ »ç¿ëÀÚ°¡ ÀÌ Category ¹× ÇÏÀ§ ¾ÆÀÌÅÛµéÀ» º¼ ¼ö ÀÖ½À´Ï´Ù.
-		// Administrator ·¹º§ ¹Ì¸¸ÀÎ »ç¿ëÀÚ´Â ÀÌ Category ¹× ÇÏÀ§ ¾ÆÀÌÅÛµéÀ» º¼ ¼ö ¾ø½À´Ï´Ù.
+		// Category ë° í•˜ìœ„ ì•„ì´í…œë“¤ì„ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì„ ì„¤ì •í•©ë‹ˆë‹¤. 
+		// EAuthorityLevel_Administrator ì´ë¯€ë¡œ Administrator ë ˆë²¨ ì´ìƒì¸ ì‚¬ìš©ìžê°€ ì´ Category ë° í•˜ìœ„ ì•„ì´í…œë“¤ì„ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+		// Administrator ë ˆë²¨ ë¯¸ë§Œì¸ ì‚¬ìš©ìžëŠ” ì´ Category ë° í•˜ìœ„ ì•„ì´í…œë“¤ì„ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
 		pCat->SetMinimalAuthorityLevel(EAuthorityLevel_Administrator, EPermission_View);
 		AddItem(pCat);
 		{
@@ -301,11 +301,11 @@ const CResult FLImaging::GUI::CPropertyLogInExample::ConfigureMenu()
 			pText = new CGUIPropertyItemText;
 			pText->SetName(L"User Text");
 			pText->SetPath(L"View Category");
-			// ÀÌ Text ¾ÆÀÌÅÛÀ» º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀº EAuthorityLevel_User ÀÌÁö¸¸, 
-			// user ·Î ·Î±×ÀÎ ÇßÀ» ¶§ º¼ ¼ö ¾ø½À´Ï´Ù.
-			// ÀÌ Text ¾ÆÀÌÅÛÀÇ »óÀ§ Ä«Å×°í¸®¸¦ º¼ ¼ö ÀÖ´Â ÃÖ¼Ò ±ÇÇÑÀÌ EAuthorityLevel_Administrator ÀÌ¹Ç·Î
-			// user ·Î ·Î±×ÀÎÇÏ¸é ºÎ¸ð Ä«Å×°í¸®°¡ invisible »óÅÂ°¡ µÇ¾î
-			// ÀÌ ¾ÆÀÌÅÛÀ» º¼ ¼ö ¾ø½À´Ï´Ù.
+			// ì´ Text ì•„ì´í…œì„ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì€ EAuthorityLevel_User ì´ì§€ë§Œ, 
+			// user ë¡œ ë¡œê·¸ì¸ í–ˆì„ ë•Œ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
+			// ì´ Text ì•„ì´í…œì˜ ìƒìœ„ ì¹´í…Œê³ ë¦¬ë¥¼ ë³¼ ìˆ˜ ìžˆëŠ” ìµœì†Œ ê¶Œí•œì´ EAuthorityLevel_Administrator ì´ë¯€ë¡œ
+			// user ë¡œ ë¡œê·¸ì¸í•˜ë©´ ë¶€ëª¨ ì¹´í…Œê³ ë¦¬ê°€ invisible ìƒíƒœê°€ ë˜ì–´
+			// ì´ ì•„ì´í…œì„ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
 			pText->SetMinimalAuthorityLevel(EAuthorityLevel_User, EPermission_View);
 			AddItem(pText);
 

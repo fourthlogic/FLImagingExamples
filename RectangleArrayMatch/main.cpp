@@ -1,15 +1,15 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h"
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare the image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare the image object
 	CFLImage fliLearnImage;
 	CFLImage fliFindImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare the image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare the image view
 	CGUIViewImageWrap viewImageLearn;
 	CGUIViewImageWrap viewImageFind;
 
@@ -17,7 +17,7 @@ int main()
 
 	do
 	{
-		// ÀÌ¹ÌÁö ·Îµå // Loads image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Loads image
 		if(IsFail(res = fliLearnImage.Load(L"../../ExampleImages/Matching/Rectangle Array_0.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
@@ -30,7 +30,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Creates imageview
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Creates imageview
 		if(IsFail(res = viewImageLearn.Create(400, 0, 912, 384)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -43,7 +43,7 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the imageview
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the imageview
 		if(IsFail(res = viewImageLearn.SetImagePtr(&fliLearnImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -56,7 +56,7 @@ int main()
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(res = viewImageLearn.SynchronizeWindow(&viewImageFind)))
 		{
 			ErrorPrint(res, "Failed to synchronize window.\n");
@@ -81,10 +81,10 @@ int main()
 			break;
 		}
 
-		// Rectangle Array Match °´Ã¼ »ı¼º // Create a Rectangle Array Match object
+		// Rectangle Array Match ê°ì²´ ìƒì„± // Create a Rectangle Array Match object
 		CRectangleArrayMatch arrayMatch;
 
-		// ÇĞ½ÀÇÒ ¿µ¿ªÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the area to learn.
+		// í•™ìŠµí•  ì˜ì—­ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the area to learn.
 		CFLFigureArray flfaMeasurement;
 		CFLRect<double> flrRect00(587.479194, 364.452004, 929.550836, 616.575019);
 		CFLRect<double> flrRect01(583.464651, 1215.493013, 924.560595, 1467.566788);
@@ -98,36 +98,36 @@ int main()
 
 		CFLPoint<double> flpCameraPivot(0., 0.);
 
-		// °ËÃâ ½Ã »ç¿ëµÉ ÆÄ¶ó¹ÌÅÍ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the parameters to be used for detection.
-		// Å½»öÇÒ ÀÌ¹ÌÁö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the image to browse.
+		// ê²€ì¶œ ì‹œ ì‚¬ìš©ë  íŒŒë¼ë¯¸í„°ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the parameters to be used for detection.
+		// íƒìƒ‰í•  ì´ë¯¸ì§€ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the image to browse.
 		arrayMatch.SetSourceImage(fliFindImage);
-		// ÃøÁ¤ ¹è¿­À» ¼³Á¤ÇÕ´Ï´Ù. // Set up the measurement array.
+		// ì¸¡ì • ë°°ì—´ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set up the measurement array.
 		arrayMatch.SetArray(flfaMeasurement); 
-		// Å½»ö ½Ã, MeasurementArrayÀÇ ±âº» °¢µµ¸¦ ¼³Á¤ÇÕ´Ï´Ù. // On navigation, set the default angle of the MeasurementArray.
+		// íƒìƒ‰ ì‹œ, MeasurementArrayì˜ ê¸°ë³¸ ê°ë„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // On navigation, set the default angle of the MeasurementArray.
 		arrayMatch.SetBaseAngle(0.);
-		// Áß½ÉÀÇ ÃÊ±â°ªÀ» ÀÌ¹ÌÁö Áß½ÉÀ¸·Î ÇÒÁö ¼³Á¤ÇÕ´Ï´Ù. // Set whether the initial value of the center is the center of the image.
+		// ì¤‘ì‹¬ì˜ ì´ˆê¸°ê°’ì„ ì´ë¯¸ì§€ ì¤‘ì‹¬ìœ¼ë¡œ í• ì§€ ì„¤ì •í•©ë‹ˆë‹¤. // Set whether the initial value of the center is the center of the image.
 		arrayMatch.EnablePivotImageCenter(true);
-		// Áß½É ¿ÀÇÁ¼ÂÀ» ¼³Á¤ÇÕ´Ï´Ù. // Set the center offset.
+		// ì¤‘ì‹¬ ì˜¤í”„ì…‹ì„ ì„¤ì •í•©ë‹ˆë‹¤. // Set the center offset.
 		arrayMatch.SetPivotOffset(flpCameraPivot);
-		// ÃÖ¼Ò ½ºÄÚ¾î Á¡¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Set the minimum score score.
+		// ìµœì†Œ ìŠ¤ì½”ì–´ ì ìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Set the minimum score score.
 		arrayMatch.SetMinScore(0.5);
-		// Å½»ö ½Ã, °¢µµ Å½»ö ¹üÀ§¸¦ ¼³Á¤ÇÕ´Ï´Ù. // When searching, set the angle search range.
+		// íƒìƒ‰ ì‹œ, ê°ë„ íƒìƒ‰ ë²”ìœ„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // When searching, set the angle search range.
 		arrayMatch.SetObjectAngleTolerance(180);
-		// Å½»ö ½Ã, Fitting Enable/DisableÀ» ¼³Á¤ÇÕ´Ï´Ù. // When searching, set Fitting Enable/Disable.
+		// íƒìƒ‰ ì‹œ, Fitting Enable/Disableì„ ì„¤ì •í•©ë‹ˆë‹¤. // When searching, set Fitting Enable/Disable.
 		arrayMatch.SetFitting();
-		// Å½»ö ½Ã, Çã¿ë ÀÌµ¿·® ¹üÀ§¸¦ ¼³Á¤ÇÕ´Ï´Ù. // When searching, set the allowable movement range.
+		// íƒìƒ‰ ì‹œ, í—ˆìš© ì´ë™ëŸ‰ ë²”ìœ„ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // When searching, set the allowable movement range.
 		arrayMatch.SetAllowingObjectDistanceError();
 		
 
 
-		// ¹è¿­ ÃøÁ¤ ¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to see where the array measurement area is
+		// ë°°ì—´ ì¸¡ì • ì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to see where the array measurement area is
 		if((res = layerLearn.DrawFigureImage(flfaMeasurement, BLUE, 3, BLUE, GUI::EGUIViewImagePenStyle_Solid, 0.25, 0.25)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw figure\n");
 			break;
 		}
 
-		// ¾Ë°í¸®Áò ¼öÇà // Execute the algorithm
+		// ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute the algorithm
 		if(IsFail(res = arrayMatch.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute.\n");
@@ -135,39 +135,39 @@ int main()
 		}
 
 
-		// °ËÃâ °á°ú ¹è¿­ÀÇ °³¼ö¸¦ °¡Á®¿É´Ï´Ù. // Get the number of detection result arrays.
+		// ê²€ì¶œ ê²°ê³¼ ë°°ì—´ì˜ ê°œìˆ˜ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the number of detection result arrays.
 		int64_t i64ResultCount = arrayMatch.GetResultCount();
 		double f64Score, f64Angle;
-		// °ËÃâ °á°ú ¹è¿­ÀÇ Á¡¼ö¸¦ °¡Á®¿É´Ï´Ù. // Get the score of the detection result array.
+		// ê²€ì¶œ ê²°ê³¼ ë°°ì—´ì˜ ì ìˆ˜ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the score of the detection result array.
 		arrayMatch.GetResultForArrayScore(f64Score);
-		// °ËÃâ °á°ú ¹è¿­ÀÇ °¢µµ¸¦ °¡Á®¿É´Ï´Ù. // Get the angle of the detection result array.
+		// ê²€ì¶œ ê²°ê³¼ ë°°ì—´ì˜ ê°ë„ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get the angle of the detection result array.
 		arrayMatch.GetResultForArrayAngle(f64Angle);
 
 		for(int32_t i = 0; i < i64ResultCount; ++i)
 		{
 			CRectangleArrayMatch::SResult sResult;
 
-			// °ËÃâ °á°ú Áß ¹è¿­ ÇÏ³ª¸¦ °¡Á®¿É´Ï´Ù. // Get an array of detection results.
+			// ê²€ì¶œ ê²°ê³¼ ì¤‘ ë°°ì—´ í•˜ë‚˜ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤. // Get an array of detection results.
 			arrayMatch.GetResult(i, sResult);
 			CFLPoint<double> flpRegionCenter = sResult.flrMeasuredRegion.GetCenter();
 			CFLString<wchar_t> strDisplayResult;
 			strDisplayResult.Format(L"Array Element ID : %lld\n Score : %.3lf\n Angle : %.3lf", sResult.i64Index, sResult.f64Score, sResult.f64Angle);
 
-			// °ËÃâ °á°ú Áß ¹è¿­ ÇÏ³ªÀÇ °á°ú¸¦ µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display the result of one array among the detection results.
+			// ê²€ì¶œ ê²°ê³¼ ì¤‘ ë°°ì—´ í•˜ë‚˜ì˜ ê²°ê³¼ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display the result of one array among the detection results.
 			if((res = layerFind.DrawFigureImage(sResult.flrMeasuredRegion, BLACK, 3)).IsFail())
 			{
 				ErrorPrint(res, "Failed to draw figure\n");
 				break;
 			}
 
-			// °ËÃâ °á°ú Áß ¹è¿­ ÇÏ³ªÀÇ °á°ú¸¦ µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display the result of one array among the detection results.
+			// ê²€ì¶œ ê²°ê³¼ ì¤‘ ë°°ì—´ í•˜ë‚˜ì˜ ê²°ê³¼ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display the result of one array among the detection results.
 			if((res = layerFind.DrawFigureImage(sResult.flrMeasuredRegion, CYAN, 1)).IsFail())
 			{
 				ErrorPrint(res, "Failed to draw figure\n");
 				break;
 			}
 
-			// °ËÃâ °á°ú Áß ¹è¿­ ÇÏ³ªÀÇ °á°úÀÇ Áß½ÉÁ¡À» µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display the center point of the result of one of the detection results.
+			// ê²€ì¶œ ê²°ê³¼ ì¤‘ ë°°ì—´ í•˜ë‚˜ì˜ ê²°ê³¼ì˜ ì¤‘ì‹¬ì ì„ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display the center point of the result of one of the detection results.
 			if((res = layerFind.DrawTextImage(flpRegionCenter, strDisplayResult, YELLOW, BLACK, 11)).IsFail())
 			{
 				ErrorPrint(res, "Failed to draw text\n");
@@ -204,7 +204,7 @@ int main()
 
 				CFLPoint<double> flpArrayResult(f64MaxX, f64MaxY - 10);
 
-			    // °ËÃâ °á°ú Áß ¹è¿­ ÇÏ³ªÀÇ °á°úÀÇ Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÕ´Ï´Ù. // Display the information of the result of one of the detection results.
+			    // ê²€ì¶œ ê²°ê³¼ ì¤‘ ë°°ì—´ í•˜ë‚˜ì˜ ê²°ê³¼ì˜ ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•©ë‹ˆë‹¤. // Display the information of the result of one of the detection results.
 				if((res = layerFind.DrawTextImage(flpArrayResult, strDisplayResult, GOLD, BLACK, 14)).IsFail())
 				{
 					ErrorPrint(res, "Failed to draw text\n");
@@ -217,11 +217,11 @@ int main()
 			wprintf(L" - %s\n", strDisplayResultElement.GetString());
 		}
 				
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update the image view.
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update the image view.
 		viewImageLearn.Invalidate(true);
 		viewImageFind.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageLearn.IsAvailable() && viewImageFind.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

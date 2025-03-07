@@ -1,4 +1,4 @@
-
+ï»¿
 // GraphViewIntoDialogDlg.cpp : implementation file
 //
 
@@ -105,7 +105,7 @@ BOOL CGraphViewIntoDialogDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 
-	// ±×·¡ÇÁ ºä »ı¼º
+	// ê·¸ë˜í”„ ë·° ìƒì„±
 	CResult res = m_viewGraph.CreateAndFitParent((size_t)GetDlgItem(IDC_STATIC_GRAPH_VIEW)->GetSafeHwnd());
 
 	if(res.IsFail())
@@ -194,10 +194,10 @@ HCURSOR CGraphViewIntoDialogDlg::OnQueryDragIcon()
 
 void CGraphViewIntoDialogDlg::UpdateControls()
 {
-	// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+	// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 	GetDlgItem(IDC_BUTTON_GRAPH_ADD)->EnableWindow(m_viewGraph.IsAvailable());
 
-	// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©, ±×·¡ÇÁ ºä µ¥ÀÌÅÍ Á¸Àç ¿©ºÎ Ã¼Å©
+	// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬, ê·¸ë˜í”„ ë·° ë°ì´í„° ì¡´ì¬ ì—¬ë¶€ ì²´í¬
 	GetDlgItem(IDC_BUTTON_GRAPH_CLEAR)->EnableWindow(m_viewGraph.IsAvailable() && m_viewGraph.DoesGraphExist());
 }
 
@@ -225,7 +225,7 @@ BOOL CGraphViewIntoDialogDlg::DestroyWindow()
 	// TODO: Add your specialized code here and/or call the base class
 	KillTimer(1024);
 
-	// ±×·¡ÇÁ ºä¸¦ Á¾·áÇÑ´Ù.
+	// ê·¸ë˜í”„ ë·°ë¥¼ ì¢…ë£Œí•œë‹¤.
 	m_viewGraph.Destroy();
 
 	return CDialogEx::DestroyWindow();
@@ -241,7 +241,7 @@ void CGraphViewIntoDialogDlg::OnBnClickedButtonGraphAdd()
 
 	do 
 	{
-		// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+		// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewGraph.IsAvailable())
 			break;
 
@@ -302,10 +302,10 @@ void CGraphViewIntoDialogDlg::OnBnClickedButtonGraphAdd()
 		if(flstrEquation.IsEmpty())
 			break;
 
-		// ¹æÁ¤½ÄÀÇ ÇØ¸¦ ¾ò¾î¿Ã °´Ã¼ »ı¼º // Create ¹æÁ¤½ÄÀÇ ÇØ¸¦ ¾ò¾î¿Ã object
+		// ë°©ì •ì‹ì˜ í•´ë¥¼ ì–»ì–´ì˜¬ ê°ì²´ ìƒì„± // Create ë°©ì •ì‹ì˜ í•´ë¥¼ ì–»ì–´ì˜¬ object
 		CFLArray<std::complex<double>> flaEquationResult;
 
-		// 4Â÷ ¹æÁ¤½ÄÀÇ ÇØ¸¦ ¾ò¾î¿Â´Ù.
+		// 4ì°¨ ë°©ì •ì‹ì˜ í•´ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 		if(IsOK(CEquation::Quartic(arrF64Coef[0], arrF64Coef[1], arrF64Coef[2], arrF64Coef[3], arrF64Coef[4], &flaEquationResult)))
 		{
 			for(int64_t i = 0; i < flaEquationResult.GetCount(); ++i)
@@ -323,15 +323,15 @@ void CGraphViewIntoDialogDlg::OnBnClickedButtonGraphAdd()
 			}
 		}
 
-		// ¼ö½Ä °´Ã¼ »ı¼º // Create ¼ö½Ä object
+		// ìˆ˜ì‹ ê°ì²´ ìƒì„± // Create ìˆ˜ì‹ object
 		CExpression exp;
-		// ¼ö½Ä ¹®ÀÚ¿­À» ¼³Á¤ÇÑ´Ù
+		// ìˆ˜ì‹ ë¬¸ìì—´ì„ ì„¤ì •í•œë‹¤
 		exp.SetExpression(flstrEquation);
 
-		// ±×·¡ÇÁ ºä¿¡ ¼ö½Ä µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù
+		// ê·¸ë˜í”„ ë·°ì— ìˆ˜ì‹ ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤
 		m_viewGraph.Plot(&exp, COLOR(rand()%256, rand()%256, rand()%256));
 
-		// ±×·¡ÇÁ ºä¸¦ °»½ÅÇÑ´Ù
+		// ê·¸ë˜í”„ ë·°ë¥¼ ê°±ì‹ í•œë‹¤
 		m_viewGraph.Invalidate();
 	}
 	while(false);
@@ -345,14 +345,14 @@ void CGraphViewIntoDialogDlg::OnBnClickedButtonGraphClear()
 	// TODO: Add your control notification handler code here
 	do 
 	{
-		// ±×·¡ÇÁ ºä À¯È¿¼º Ã¼Å©
+		// ê·¸ë˜í”„ ë·° ìœ íš¨ì„± ì²´í¬
 		if(!m_viewGraph.IsAvailable())
 			break;
 
-		// ±×·¡ÇÁ ºäÀÇ µ¥ÀÌÅÍ¸¦ ÃÊ±âÈ­ÇÑ´Ù
+		// ê·¸ë˜í”„ ë·°ì˜ ë°ì´í„°ë¥¼ ì´ˆê¸°í™”í•œë‹¤
 		m_viewGraph.Clear();
 
-		// ±×·¡ÇÁ ºä¸¦ °»½ÅÇÑ´Ù
+		// ê·¸ë˜í”„ ë·°ë¥¼ ê°±ì‹ í•œë‹¤
 		m_viewGraph.Invalidate();
 	}
 	while(false);

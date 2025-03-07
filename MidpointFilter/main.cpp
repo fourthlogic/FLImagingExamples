@@ -1,118 +1,118 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliSrcImage;
 	CFLImage fliDstImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImageSrc;
 	CGUIViewImageWrap viewImageDst;
 
 	do
 	{
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if(IsFail(fliSrcImage.Load(L"../../ExampleImages/NoiseImage/NoiseImage1.flif")))
 		{
 			printf("Failed to load the image file.\n");
 			break;
 		}
 		
-		// DestinationÀÌ¹ÌÁö¸¦ Src ÀÌ¹ÌÁö¿Í µ¿ÀÏÇÑ ÀÌ¹ÌÁö·Î »ı¼º
+		// Destinationì´ë¯¸ì§€ë¥¼ Src ì´ë¯¸ì§€ì™€ ë™ì¼í•œ ì´ë¯¸ì§€ë¡œ ìƒì„±
 		if(IsFail(fliDstImage.Assign(fliSrcImage)))
 		{
 			printf("Failed to assign the image file.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä »ı¼º // Create the source image view
+		// Source ì´ë¯¸ì§€ ë·° ìƒì„± // Create the source image view
 		if(IsFail(viewImageSrc.Create(400, 0, 912, 612)))
 		{
 			printf("Failed to create the image view.\n");
 			break;
 		}
 
-		// Source ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the source image view
+		// Source ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the source image view
 		if(IsFail(viewImageSrc.SetImagePtr(&fliSrcImage)))
 		{
 			printf("Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä »ı¼º // Create the destination image view
+		// Destination ì´ë¯¸ì§€ ë·° ìƒì„± // Create the destination image view
 		if(IsFail(viewImageDst.Create(912, 0, 1424, 612)))
 		{
 			printf("Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the destination image view
+		// Destination ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the destination image view
 		if(IsFail(viewImageDst.SetImagePtr(&fliDstImage)))
 		{
 			printf("Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// SourceÀÌ¹ÌÁö ºä¿Í Dst ÀÌ¹ÌÁö ºäÀÇ ÃÊÁ¡À» ¸ÂÃã
+		// Sourceì´ë¯¸ì§€ ë·°ì™€ Dst ì´ë¯¸ì§€ ë·°ì˜ ì´ˆì ì„ ë§ì¶¤
 		if(IsFail(viewImageSrc.SynchronizePointOfView(&viewImageDst)))
 		{
 			printf("Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+		// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 		if(IsFail(viewImageSrc.SynchronizeWindow(&viewImageDst)))
 		{
 			printf("Failed to synchronize window.\n");
 			break;
 		}
 
-		// Source Image Å©±â¿¡ ¸Â°Ô viewÀÇ Å©±â¸¦ Á¶Á¤
+		// Source Image í¬ê¸°ì— ë§ê²Œ viewì˜ í¬ê¸°ë¥¼ ì¡°ì •
 		if(IsFail(viewImageSrc.ZoomFit()))
 		{
 			printf("Failed to zoom fit\n");
 			break;
 		}
 
-		// Destination Image Å©±â¿¡ ¸Â°Ô viewÀÇ Å©±â¸¦ Á¶Á¤
+		// Destination Image í¬ê¸°ì— ë§ê²Œ viewì˜ í¬ê¸°ë¥¼ ì¡°ì •
 		if(IsFail(viewImageDst.ZoomFit()))
 		{
 			printf("Failed to zoom fit\n");
 			break;
 		}
 
-		// MidpointFilter °´Ã¼ »ı¼º // Create MidpointFilter object
+		// MidpointFilter ê°ì²´ ìƒì„± // Create MidpointFilter object
 		CMidpointFilter midpointFilter;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		midpointFilter.SetSourceImage(fliSrcImage);
 
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		midpointFilter.SetDestinationImage(fliDstImage);
 
-		// Ã³¸®ÇÒ FilterÀÇ Kernel Size ¼³Á¤ (KernelSize = 5 ÀÏ °æ¿ì)
+		// ì²˜ë¦¬í•  Filterì˜ Kernel Size ì„¤ì • (KernelSize = 5 ì¼ ê²½ìš°)
 		midpointFilter.SetKernel(5);
 
-		// Ä¿³Î Å©±âº¸´Ù ÀÛÀº ¿µ¿ª Ã³¸® ¹æ½Ä ¼³Á¤
+		// ì»¤ë„ í¬ê¸°ë³´ë‹¤ ì‘ì€ ì˜ì—­ ì²˜ë¦¬ ë°©ì‹ ì„¤ì •
 		midpointFilter.SetPaddingMethod(EPaddingMethod_DecreasingKernel);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(midpointFilter.Execute()))
 		{
 			printf("Failed to execute midpoint filter.");
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSrc = viewImageSrc.GetLayer(0);
 		CGUIViewImageLayerWrap layerDst = viewImageDst.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSrc.Clear();
 		layerDst.Clear();
 
@@ -128,11 +128,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImageSrc.Invalidate(true);
 		viewImageDst.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImageSrc.IsAvailable() && viewImageDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

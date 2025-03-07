@@ -1,14 +1,14 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage arrFliImage[4];
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap arrViewImage[4];
 
 	do
@@ -18,7 +18,7 @@ int main()
 		int32_t arrRight[4] = {912, 1424, 912, 1424};
 		int32_t arrBottom[4] = {500, 500, 1000, 1000};
 
-		// Source ÀÌ¹ÌÁö ·Îµå // Load the source image
+		// Source ì´ë¯¸ì§€ ë¡œë“œ // Load the source image
 		if(IsFail(arrFliImage[0].Load(L"../../ExampleImages/BilinearSplineWarping/chess.flif")))
 		{
 			printf("Failed to load the image file.\n");
@@ -29,13 +29,13 @@ int main()
 		
 		for(; i < 4; ++i)
 		{
-			// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+			// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 			if(IsFail(arrViewImage[i].Create(arrLeft[i], arrTop[i], arrRight[i], arrBottom[i])))
 			{
 				printf("Failed to create the image view.\n");
 				break;
 			}
-			//ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display the image in the image view
+			//ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display the image in the image view
 			if(IsFail(arrViewImage[i].SetImagePtr(&arrFliImage[i])))
 			{
 				printf("Failed to create the image view.\n");
@@ -50,14 +50,14 @@ int main()
 
 		for(; i < 4; i += 2)
 		{
-		    // µÎ ÀÌ¹ÌÁö ºäÀÇ ½ÃÁ¡À» µ¿±âÈ­ ÇÑ´Ù // Synchronize the viewpoints of the two image views
+		    // ë‘ ì´ë¯¸ì§€ ë·°ì˜ ì‹œì ì„ ë™ê¸°í™” í•œë‹¤ // Synchronize the viewpoints of the two image views
 			if(IsFail(arrViewImage[i].SynchronizePointOfView(&arrViewImage[i + 1])))
 			{
 				printf("Failed to synchronize view\n");
 				break;
 			}
 
-			// µÎ ÀÌ¹ÌÁö ºä À©µµ¿ìÀÇ À§Ä¡¸¦ µ¿±âÈ­ ÇÑ´Ù // Synchronize the positions of the two image view windows
+			// ë‘ ì´ë¯¸ì§€ ë·° ìœˆë„ìš°ì˜ ìœ„ì¹˜ë¥¼ ë™ê¸°í™” í•œë‹¤ // Synchronize the positions of the two image view windows
 			if(IsFail(arrViewImage[i].SynchronizeWindow(&arrViewImage[i + 1])))
 			{
 				printf("Failed to synchronize window.\n");
@@ -68,17 +68,17 @@ int main()
 		if(i < 4)
 			break;
 	
-		// BilinearSplineWarping °´Ã¼ »ı¼º // Create BilinearSplineWarping object
+		// BilinearSplineWarping ê°ì²´ ìƒì„± // Create BilinearSplineWarping object
 		CBilinearSplineWarping BilinearSplineWarping;
 
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		BilinearSplineWarping.SetSourceImage(arrFliImage[0]);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		BilinearSplineWarping.SetDestinationImage(arrFliImage[1]);
-		// Interpolation Method ¼³Á¤ // Set the interpolation method
+		// Interpolation Method ì„¤ì • // Set the interpolation method
 		BilinearSplineWarping.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 
-		// ±×¸®µå¸¦ (5,5)·Î ÃÊ±âÈ­ // Initialize the grid to (5,5)
+		// ê·¸ë¦¬ë“œë¥¼ (5,5)ë¡œ ì´ˆê¸°í™” // Initialize the grid to (5,5)
 		CFLPoint<int32_t> flpGridSize(5, 5);
 
 		CFLPoint<int32_t> flpGridIndex;
@@ -96,14 +96,14 @@ int main()
 			{
 				flpGridIndex.x = x;
 
-				// Grid Index¿Í °°Àº ÁÂÇ¥·Î Source ÁÂÇ¥¸¦ ¼³Á¤ // Set Source coordinates to the same coordinates as Grid Index
+				// Grid Indexì™€ ê°™ì€ ì¢Œí‘œë¡œ Source ì¢Œí‘œë¥¼ ì„¤ì • // Set Source coordinates to the same coordinates as Grid Index
 				CFLPoint<double> flpSource(flpGridIndex.x * f64ScaleX, flpGridIndex.y * f64ScaleY);
 
 
 				double f64RandomX = CRandomGenerator::Double(-0.2, 0.2);
 				double f64RandomY = CRandomGenerator::Double(-0.2, 0.2);
 
-				// ¿Ü°ûÀÇ ÁÂÇ¥´Â ¾ÈÂÊÀ¸·Î º¯Çü µÇµµ·Ï ¼³Á¤ // Set the outer coordinates to be transformed inward
+				// ì™¸ê³½ì˜ ì¢Œí‘œëŠ” ì•ˆìª½ìœ¼ë¡œ ë³€í˜• ë˜ë„ë¡ ì„¤ì • // Set the outer coordinates to be transformed inward
 				if(y == 0)
 					f64RandomY = f64RandomY < 0 ? -f64RandomY : f64RandomY;
 
@@ -116,7 +116,7 @@ int main()
 				if(x == flpGridSize.x - 1)
 					f64RandomX = f64RandomX > 0 ? -f64RandomX : f64RandomX;
 
-	           // Grid Index¿Í °°Àº ÁÂÇ¥¿¡¼­ ¹Ì¼¼ÇÑ ·£´ı °ªÀ» ºÎ¿©ÇØ¼­ ÁÂÇ¥¸¦ ¿Ö°î // Distort coordinates by giving fine random values at the same coordinates as Grid Index 
+	           // Grid Indexì™€ ê°™ì€ ì¢Œí‘œì—ì„œ ë¯¸ì„¸í•œ ëœë¤ ê°’ì„ ë¶€ì—¬í•´ì„œ ì¢Œí‘œë¥¼ ì™œê³¡ // Distort coordinates by giving fine random values at the same coordinates as Grid Index 
 				CFLPoint<double> flpDistortion = new CFLPoint<double>((flpGridIndex.x + f64RandomX) * f64ScaleX, (flpGridIndex.y + f64RandomY) * f64ScaleY);
 
 				flpaSourcePoints.PushBack(flpSource);
@@ -124,56 +124,56 @@ int main()
 			}
 		}
 
-		// À§¿¡¼­ ¼³Á¤ÇÑ ÁÂÇ¥µéÀ» ¹ÙÅÁÀ¸·Î BilinearSplineWarping Å¬·¡½º¿¡ Point ¹è¿­ ¼³Á¤ // Set the Point array in the BilinearSplineWarping class based on the coordinates set above
+		// ìœ„ì—ì„œ ì„¤ì •í•œ ì¢Œí‘œë“¤ì„ ë°”íƒ•ìœ¼ë¡œ BilinearSplineWarping í´ë˜ìŠ¤ì— Point ë°°ì—´ ì„¤ì • // Set the Point array in the BilinearSplineWarping class based on the coordinates set above
 		BilinearSplineWarping.SetCalibrationPointArray(flpaSourcePoints, flpaTargetPoints);
 
-		// ¾Õ¼­ ¼³Á¤µÈ Source Image, Calibration Point Array¸¦ ±â¹İÀ¸·Î Calibrate ¼öÇà // Calibrate based on the previously set Source Image and Calibration Point Array
+		// ì•ì„œ ì„¤ì •ëœ Source Image, Calibration Point Arrayë¥¼ ê¸°ë°˜ìœ¼ë¡œ Calibrate ìˆ˜í–‰ // Calibrate based on the previously set Source Image and Calibration Point Array
 		if(IsFail(BilinearSplineWarping.Calibrate()))
 		{
 			printf("Failed to execute BilinearSplineWarping.");
 			break;
 		}
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(BilinearSplineWarping.Execute()))
 		{
 			printf("Failed to execute BilinearSplineWarping.");
 			break;
 		}
 
-		// Destination ÀÌ¹ÌÁö°¡ »õ·Î »ı¼ºµÊÀ¸·Î Zoom fit À» ÅëÇØ µğ½ºÇÃ·¹ÀÌ µÇ´Â ÀÌ¹ÌÁö ¹èÀ²À» È­¸é¿¡ ¸ÂÃçÁØ´Ù. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
+		// Destination ì´ë¯¸ì§€ê°€ ìƒˆë¡œ ìƒì„±ë¨ìœ¼ë¡œ Zoom fit ì„ í†µí•´ ë””ìŠ¤í”Œë ˆì´ ë˜ëŠ” ì´ë¯¸ì§€ ë°°ìœ¨ì„ í™”ë©´ì— ë§ì¶°ì¤€ë‹¤. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
 		if(IsFail(arrViewImage[1].ZoomFit()))
 		{
 			printf("Failed to zoom fit of the image view.\n");
 			break;
 		}
 
-		//º¯È¯ °á°ú¸¦ ¿ø·¡´ë·Î º¯È¯ÇÏ´Â °úÁ¤ ¼öÇà // Perform the process of converting the conversion result back to its original state
+		//ë³€í™˜ ê²°ê³¼ë¥¼ ì›ë˜ëŒ€ë¡œ ë³€í™˜í•˜ëŠ” ê³¼ì • ìˆ˜í–‰ // Perform the process of converting the conversion result back to its original state
 		arrFliImage[2].Assign(arrFliImage[1]);
-		// ÄÁÆ®·Ñ Æ÷ÀÎÆ® ¼³Á¤ // Set control points
+		// ì»¨íŠ¸ë¡¤ í¬ì¸íŠ¸ ì„¤ì • // Set control points
 		BilinearSplineWarping.SetCalibrationPointArray(flpaTargetPoints, flpaSourcePoints);
-		// Source ÀÌ¹ÌÁö ¼³Á¤ // Set the source image
+		// Source ì´ë¯¸ì§€ ì„¤ì • // Set the source image
 		BilinearSplineWarping.SetSourceImage(arrFliImage[2]);
-		// Destination ÀÌ¹ÌÁö ¼³Á¤ // Set the destination image
+		// Destination ì´ë¯¸ì§€ ì„¤ì • // Set the destination image
 		BilinearSplineWarping.SetDestinationImage(arrFliImage[3]);
-		// Interpolation Method ¼³Á¤ // Set the interpolation method
+		// Interpolation Method ì„¤ì • // Set the interpolation method
 		BilinearSplineWarping.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 
-		// ¾Õ¼­ ¼³Á¤µÈ Source Image, Calibration Point Array¸¦ ±â¹İÀ¸·Î Calibrate ¼öÇà
+		// ì•ì„œ ì„¤ì •ëœ Source Image, Calibration Point Arrayë¥¼ ê¸°ë°˜ìœ¼ë¡œ Calibrate ìˆ˜í–‰
 		if(IsFail(BilinearSplineWarping.Calibrate()))
 		{
 			printf("Failed to execute BilinearSplineWarping.");
 			break;
 		}
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 		if(IsFail(BilinearSplineWarping.Execute()))
 		{
 			printf("Failed to execute BilinearSplineWarping.");
 			break;
 		}
 
-		// BilinearSplineWarping Å¬·¡½º¿¡ ¼³Á¤µÈ Vertex Á¤º¸¸¦ È­¸é¿¡ Display // Display the vertex information set in the BilinearSplineWarping class on the screen
+		// BilinearSplineWarping í´ë˜ìŠ¤ì— ì„¤ì •ëœ Vertex ì •ë³´ë¥¼ í™”ë©´ì— Display // Display the vertex information set in the BilinearSplineWarping class on the screen
 
 		CGUIViewImageLayerWrap layer;
 		CGUIViewImageLayerWrap layer2;
@@ -189,7 +189,7 @@ int main()
 			CFLLine<double> fllDrawLine(flpSource, flpTarget);
 			CFLFigureArray flfaArrow = fllDrawLine.MakeArrowWithRatio(0.25, true, 20);
 
-			// Source Vertex¸¦ ÁÂ/¿ìÃø View Layer¿¡ Drawing // Drawing the source vertex on the left/right view layer
+			// Source Vertexë¥¼ ì¢Œ/ìš°ì¸¡ View Layerì— Drawing // Drawing the source vertex on the left/right view layer
 			if(IsFail(layer.DrawFigureImage(&flpSource, RED, 1)))
 			{
 				printf("Failed to draw figure objects on the image view.\n");
@@ -211,7 +211,7 @@ int main()
 			fllDrawLine = CFLLine<double>(flpTarget, flpSource);
 			flfaArrow = fllDrawLine.MakeArrowWithRatio(0.25, true, 20);
 
-			// Source Vertex¸¦ ÁÂ/¿ìÃø View Layer¿¡ Drawing // Drawing the source vertex on the left/right view layer
+			// Source Vertexë¥¼ ì¢Œ/ìš°ì¸¡ View Layerì— Drawing // Drawing the source vertex on the left/right view layer
 			if(IsFail(layer2.DrawFigureImage(&flpSource, RED, 1)))
 			{
 				printf("Failed to draw figure objects on the image view.\n");
@@ -231,23 +231,23 @@ int main()
 			}
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layerSrc = arrViewImage[0].GetLayer(1);
 		CGUIViewImageLayerWrap layerDst = arrViewImage[1].GetLayer(1);
 
 		CGUIViewImageLayerWrap layerSrc2 = arrViewImage[2].GetLayer(1);
 		CGUIViewImageLayerWrap layerDst2 = arrViewImage[3].GetLayer(1);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layerSrc.Clear();
 		layerDst.Clear();
 
-		// View Á¤º¸¸¦ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù. // Display view information
-		// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-		//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+		// View ì •ë³´ë¥¼ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤. // Display view information
+		// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+		// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+		//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 		if(IsFail(layerSrc.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Image", YELLOW, BLACK, 20)))
@@ -274,11 +274,11 @@ int main()
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		for(int32_t i = 0; i < 4; ++i)
 			arrViewImage[i].Invalidate(true);
 	
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(arrViewImage[0].IsAvailable() && arrViewImage[1].IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

@@ -1,9 +1,9 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
 #include "../CommomHeader/ErrorPrint.h" 
 
-// ¸ğ¼Ç ±â´É enum // motion feature enum
+// ëª¨ì…˜ ê¸°ëŠ¥ enum // motion feature enum
 enum EMotionFeature
 {
 	EMotionFeature_SearchOriginPosition = 0,
@@ -15,7 +15,7 @@ int main()
 {
 	CResult res = EResult_UnknownError;
 
-	// Axl Motion ÀåÄ¡¸¦ ¼±¾ğ // Declare Axl Motion device
+	// Axl Motion ì¥ì¹˜ë¥¼ ì„ ì–¸ // Declare Axl Motion device
 	CDeviceMotionAxl devMotion;
 
 	do
@@ -23,7 +23,7 @@ int main()
 		wchar_t arrInput[4096] = { 0, };
 		CFLString<wchar_t> flsInput = L"";
 
-		// ¸ğ¼Ç ÆÄÀÏÀÇ ÀüÃ¼ °æ·Î¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Enter the full path of the motion file.
+		// ëª¨ì…˜ íŒŒì¼ì˜ ì „ì²´ ê²½ë¡œë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the full path of the motion file.
 		printf("Enter motion file full path (e.g. C:/Motion/Any.mot): ");
 		fgetws(arrInput, 4096, stdin);
 
@@ -31,28 +31,28 @@ int main()
 		flsMotionPath.Replace(L"\r", L"");
 		flsMotionPath.Replace(L"\n", L"");
 
-		// ¸ğ¼Ç ÆÄÀÏÀÇ °æ·Î¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Sets the path to the motion file.
+		// ëª¨ì…˜ íŒŒì¼ì˜ ê²½ë¡œë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Sets the path to the motion file.
 		if((res = devMotion.SetMotionFilePath(flsMotionPath)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set motion file path.");
 			break;
 		}
 
-		// ¿¬°áÇÒ Ãà °³¼ö¸¦ ¼³Á¤ÇÕ´Ï´Ù. // Sets the number of axes to connect to.
+		// ì—°ê²°í•  ì¶• ê°œìˆ˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤. // Sets the number of axes to connect to.
 		if((res = devMotion.SetAxisCount(1)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set axis count.");
 			break;
 		}
 
-		// ¸ğ¼Ç ÀåÄ¡¸¦ ÃÊ±âÈ­ ÇÕ´Ï´Ù. // Initialize the motion device.
+		// ëª¨ì…˜ ì¥ì¹˜ë¥¼ ì´ˆê¸°í™” í•©ë‹ˆë‹¤. // Initialize the motion device.
 		if((res = devMotion.Initialize()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to initialize the device.");
 			break;
 		}
 
-		// ¸ğ¼Ç Ãà °´Ã¼¸¦ ¾ò¾î¿É´Ï´Ù. // Obtain motion axis objects.
+		// ëª¨ì…˜ ì¶• ê°ì²´ë¥¼ ì–»ì–´ì˜µë‹ˆë‹¤. // Obtain motion axis objects.
 		const CDeviceMotionAxlAxis* pMotionAxis = dynamic_cast<const CDeviceMotionAxlAxis*>(devMotion.GetMotionAxis(0));
 
 		if(!pMotionAxis)
@@ -61,7 +61,7 @@ int main()
 			break;
 		}
 
-		// ¼­º¸¸¦ ÄÕ´Ï´Ù. // Turn on the servo.
+		// ì„œë³´ë¥¼ ì¼­ë‹ˆë‹¤. // Turn on the servo.
 		if((res = pMotionAxis->SetServoOn(true)).IsFail())
 		{
 			ErrorPrint(res, "Failed to servo on.\n");
@@ -81,7 +81,7 @@ int main()
 
 			while(true)
 			{
-				// »ç¿ëÇÒ ¸ğ¼Ç ±â´ÉÀ» ¼±ÅÃÇÕ´Ï´Ù. // Select the motion feature you want to use.
+				// ì‚¬ìš©í•  ëª¨ì…˜ ê¸°ëŠ¥ì„ ì„ íƒí•©ë‹ˆë‹¤. // Select the motion feature you want to use.
 				printf("\n");
 				printf("1. Search Origin Position\n");
 				printf("2. Move Absolute Position\n");
@@ -126,14 +126,14 @@ int main()
 
 			if(eMotionFeature == EMotionFeature_SearchOriginPosition)
 			{
-				// ¿øÁ¡ º¹±Í µ¿ÀÛÀ» ÁøÇàÇÕ´Ï´Ù. // Proceed with the return-to-origin action.
+				// ì›ì  ë³µê·€ ë™ì‘ì„ ì§„í–‰í•©ë‹ˆë‹¤. // Proceed with the return-to-origin action.
 				if((res = pMotionAxis->SearchOriginPosition()).IsFail())
 				{
 					ErrorPrint(res, "Failed to search origin position.\n");
 					break;
 				}
 
-				// ¿øÁ¡ º¹±Í µ¿ÀÛÀÌ ¿Ï·á µÉ¶§±îÁö ´ë±âÇÕ´Ï´Ù. // Wait until the return to origin action is complete.
+				// ì›ì  ë³µê·€ ë™ì‘ì´ ì™„ë£Œ ë ë•Œê¹Œì§€ ëŒ€ê¸°í•©ë‹ˆë‹¤. // Wait until the return to origin action is complete.
 				do
 				{
 					CThreadUtilities::Sleep(100);
@@ -151,19 +151,19 @@ int main()
 				double f64MoveAccelAndDecel = 0.;
 				double f64MovePosition = 0.;
 
-				// ÀÌµ¿ ¼Óµµ¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Enter the velocity of movement.
+				// ì´ë™ ì†ë„ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the velocity of movement.
 				printf("Enter Axis Velocity(mm/s): ");
 				fgetws(arrInput, 4096, stdin);
 				flsInput = arrInput;
 				f64MoveVelocity = flsInput.ToDouble();
 
-				// °¡°¨¼ÓÀ» ÀÔ·ÂÇÕ´Ï´Ù. // Enter acceleration and deceleration.
+				// ê°€ê°ì†ì„ ì…ë ¥í•©ë‹ˆë‹¤. // Enter acceleration and deceleration.
 				printf("Enter Axis Acceleration(mm/s^2): ");
 				fgetws(arrInput, 4096, stdin);
 				flsInput = arrInput;
 				f64MoveAccelAndDecel = flsInput.ToDouble();
 
-				// ÀÌµ¿°Å¸®³ª Àı´ëÀ§Ä¡¸¦ ÀÔ·ÂÇÕ´Ï´Ù. // Enter the distance or absolute position.
+				// ì´ë™ê±°ë¦¬ë‚˜ ì ˆëŒ€ìœ„ì¹˜ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤. // Enter the distance or absolute position.
 				printf("Enter Axis Position(mm): ");
 				fgetws(arrInput, 4096, stdin);
 				flsInput = arrInput;
@@ -171,14 +171,14 @@ int main()
 
 				if(eMotionFeature == EMotionFeature_MoveAbsolutePosition)
 				{
-					// Àı´ë ÁÂÇ¥·Î ÀÌµ¿ÇÕ´Ï´Ù. // Move to absolute coordinates.
+					// ì ˆëŒ€ ì¢Œí‘œë¡œ ì´ë™í•©ë‹ˆë‹¤. // Move to absolute coordinates.
 					if((res = pMotionAxis->MovePosition(f64MovePosition, f64MoveVelocity, f64MoveAccelAndDecel, f64MoveAccelAndDecel, false)).IsFail())
 					{
 						ErrorPrint(res, "Failed to move position.\n");
 						break;
 					}
 
-					// ¸ğ¼ÇÀÌ Á¤Áö µÉ¶§±îÁö ´ë±âÇÕ´Ï´Ù. // Wait until motion stops.
+					// ëª¨ì…˜ì´ ì •ì§€ ë ë•Œê¹Œì§€ ëŒ€ê¸°í•©ë‹ˆë‹¤. // Wait until motion stops.
 					do
 					{
 						CThreadUtilities::Sleep(100);
@@ -187,14 +187,14 @@ int main()
 				}
 				else if(eMotionFeature == EMotionFeature_MoveIncrementalPosition)
 				{
-					// »ó´ë ÁÂÇ¥·Î ÀÌµ¿ÇÕ´Ï´Ù. // Move to relative coordinates.
+					// ìƒëŒ€ ì¢Œí‘œë¡œ ì´ë™í•©ë‹ˆë‹¤. // Move to relative coordinates.
 					if((res = pMotionAxis->MoveDistance(f64MovePosition, f64MoveVelocity, f64MoveAccelAndDecel, f64MoveAccelAndDecel, false)).IsFail())
 					{
 						ErrorPrint(res, "Failed to move distance.\n");
 						break;
 					}
 
-					// ¸ğ¼ÇÀÌ Á¤Áö µÉ¶§±îÁö ´ë±âÇÕ´Ï´Ù. // Wait until motion stops.
+					// ëª¨ì…˜ì´ ì •ì§€ ë ë•Œê¹Œì§€ ëŒ€ê¸°í•©ë‹ˆë‹¤. // Wait until motion stops.
 					do
 					{
 						CThreadUtilities::Sleep(100);
@@ -206,7 +206,7 @@ int main()
 	}
 	while(false);
 
-	// Motion ÀåÄ¡ÀÇ ÃÊ±âÈ­¸¦ ÇØÁ¦ÇÕ´Ï´Ù. // Terminate the Motion device.
+	// Motion ì¥ì¹˜ì˜ ì´ˆê¸°í™”ë¥¼ í•´ì œí•©ë‹ˆë‹¤. // Terminate the Motion device.
 	devMotion.Terminate();
 
 	if(res.IsFail())
