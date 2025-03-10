@@ -168,6 +168,15 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 			// Creating an object and setting background color and string
 			CGUIMenuBarUserDefinedInfo udi(L"Stopped", RGB(128, 0, 0));
 
+			// LButton Double Click 이벤트 시 동작하는 콜백 함수 설정
+			// Set the callback function that executes on the LButton Double Click event
+			CMenuBarButtonCallback* pCallback = new CMenuBarButtonCallback;
+			*pCallback = MakeMenuBarButtonCallback
+			{
+				CGUIMessageBox::DoModal(L"LButtonDblClk : " + pItem->m_strText);
+			};
+			udi.SetLButtonDblClkCallback(pCallback);
+
 			// Current model name 사각형의 왼쪽 방향으로 하나씩 추가됩니다.
 			// Object is added in the left direction of the current model name rectangle.
 			CGUIManagerMainFrameMenuBar::PushBackUserDefinedInfo(udi);
