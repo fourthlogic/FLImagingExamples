@@ -173,9 +173,45 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 			CMenuBarButtonCallback* pCallback = new CMenuBarButtonCallback;
 			*pCallback = MakeMenuBarButtonCallback
 			{
-				CGUIMessageBox::DoModal(L"LButtonUp: " + pItem->m_strText);
+				CGUIMessageBox::DoModal(L"[" + pItem->GetText() + L"]  LButton Up");
 			};
 			udi.SetLButtonUpCallback(pCallback);
+
+			// LButtonDblClk 이벤트 시 동작하는 콜백 함수 설정
+			// Set the callback function that executes on the LButtonDblClk event
+			CMenuBarButtonCallback* pCallbackLBtnDblClk = new CMenuBarButtonCallback;
+			*pCallbackLBtnDblClk = MakeMenuBarButtonCallback
+			{
+				CGUIMessageBox::DoModal(L"[" + pItem->GetText() + L"]  LButton DblClk");
+			};
+			udi.SetLButtonDblClkCallback(pCallbackLBtnDblClk);
+
+			// LButtonUp 이벤트 시 동작하는 콜백 함수 설정
+			// Set the callback function that executes on the LButtonUp event
+			CMenuBarButtonCallback* pCallbackLBtnUp = new CMenuBarButtonCallback;
+			*pCallbackLBtnUp = MakeMenuBarButtonCallback
+			{
+				CGUIMessageBox::DoModal(L"[" + pItem->GetText() + L"]  LButton Up");
+			};
+			udi.SetLButtonUpCallback(pCallbackLBtnUp);
+			
+			// RButtonUp 이벤트 시 동작하는 콜백 함수 설정
+			// Set the callback function that executes on the RButtonUp event
+			CMenuBarButtonCallback* pCallbackRBtnUp = new CMenuBarButtonCallback;
+			*pCallbackRBtnUp = MakeMenuBarButtonCallback
+			{
+				CGUIMessageBox::DoModal(L"[" + pItem->GetText() + L"]  RButton Up");
+			};
+			udi.SetRButtonUpCallback(pCallbackRBtnUp);
+			
+			// MButtonUp 이벤트 시 동작하는 콜백 함수 설정
+			// Set the callback function that executes on the MButtonUp event
+			CMenuBarButtonCallback* pCallbackMBtnUp = new CMenuBarButtonCallback;
+			*pCallbackMBtnUp = MakeMenuBarButtonCallback
+			{
+				CGUIMessageBox::DoModal(L"[" + pItem->GetText() + L"]  MButton Up");
+			};
+			udi.SetMButtonUpCallback(pCallbackMBtnUp);
 
 			// Current model name 사각형의 왼쪽 방향으로 하나씩 추가됩니다.
 			// Object is added in the left direction of the current model name rectangle.
@@ -752,7 +788,7 @@ void FLImaging::GUI::CPropertyMenuBarUserDefinedInfoExample::OnReceiveBroadcast(
 			if(pHitUDI)
 				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PreLButtonDblClk");
 
-			if(pMsg)
+			if(pMsg && !pHitUDI->GetLButtonDblClkCallback())
 				pMsg->SetAcceptance(false); // LButtonDblClk 에 대한 기본 처리(MainFrame 창 최대화, Restore 등)를  하지 않고 break 하는 기능
 		}
 		break;
