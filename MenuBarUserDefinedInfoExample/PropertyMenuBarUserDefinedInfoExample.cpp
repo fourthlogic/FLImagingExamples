@@ -105,14 +105,19 @@ const CResult FLImaging::GUI::CPropertyMenuBarUserDefinedInfoExample::ConfigureM
 			pCallback = new CPropertyCallback;
 			*pCallback = MakePropertyCallback
 			{
-				CGUIPropertyItemText * pPITextIndex = (CGUIPropertyItemText*)FindItemByFullPath(L"Remove@Index");
+				CGUIPropertyItemText* pPITextIndex = (CGUIPropertyItemText*)FindItemByFullPath(L"Remove@Index");
 				pPITextIndex->SetVisible(strValue == L"RemoveAt");
 				pPITextIndex->GetParentWndList()->AdjustLayout();
 			};
 			pPIDD->SetPropertyCallback(pCallback);
 			AddItem(pPIDD);
 
-			AddItemForUserDefinedInfo(L"Remove");
+			CGUIPropertyItemText* pPIText = new CGUIPropertyItemText;
+			pPIText->SetPath(L"Remove");
+			pPIText->SetName(L"Index");
+			pPIText->SetInputType(CGUIEditBase::EInputType_Number);
+			pPIText->SetDefaultValue(L"0");
+			AddItem(pPIText);
 		}
 
 		pCat = new CGUIPropertyItemCategory;
@@ -155,17 +160,9 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 	{
 		do
 		{
-			CGUIMainFrame* pMF = AfxGetApp() && AfxGetApp()->m_pMainWnd ? dynamic_cast<CGUIMainFrame*>(AfxGetApp()->m_pMainWnd) : nullptr;
-
-			if(!pMF)
-				break;
-
-			CGUIMenuBar* pMenuBar = pMF->GetMenuBar();
-
-			if(!pMenuBar)
-				break;
-
-			pMenuBar->ClearUserDefinedInfo();
+			// 모든 사용자 정의 정보를 제거합니다.
+			// Clears all user-defined info items.
+			CGUIManagerMainFrameMenuBar::ClearUserDefinedInfo();
 
 			// 객체 생성 및 문자열, 배경색 설정 
 			// Creating an object and setting background color and string
@@ -173,9 +170,10 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 
 			// Current model name 사각형의 왼쪽 방향으로 하나씩 추가됩니다.
 			// Object is added in the left direction of the current model name rectangle.
-			pMenuBar->PushBackUserDefinedInfo(udi);
+			CGUIManagerMainFrameMenuBar::PushBackUserDefinedInfo(udi);
 
-			pMenuBar->Invalidate();
+			if(CGUIMenuBar* pMenuBar = CGUIManagerMainFrameMenuBar::GetMenuBar())
+				pMenuBar->Invalidate();
 		}
 		while(false);
 	};
@@ -196,19 +194,9 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 			pBtnRun->Enable(false);
 			pBtnStop->Enable(true);
 
-			CGUIMainFrame* pMF = AfxGetApp() && AfxGetApp()->m_pMainWnd ? dynamic_cast<CGUIMainFrame*>(AfxGetApp()->m_pMainWnd) : nullptr;
-
-			if(!pMF)
-				break;
-
-			CGUIMenuBar* pMenuBar = pMF->GetMenuBar();
-
-			if(!pMenuBar)
-				break;
-
 			// 0번 인덱스의 아이템을 얻어 오기
 			// Get the item at 0
-			CGUIMenuBarUserDefinedInfo* pUDI = pMenuBar->GetUserDefinedInfoAt(0);
+			CGUIMenuBarUserDefinedInfo* pUDI = CGUIManagerMainFrameMenuBar::GetUserDefinedInfoAt(0);
 
 			if(pUDI && pUDI->GetText() == L"Stopped")
 			{
@@ -221,7 +209,8 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 				pUDI->SetBackgroundColor(RGB(0, 128, 0));
 			}
 
-			pMenuBar->Invalidate();
+			if(CGUIMenuBar* pMenuBar = CGUIManagerMainFrameMenuBar::GetMenuBar())
+				pMenuBar->Invalidate();
 		}
 		while(false);
 	};
@@ -242,19 +231,9 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 			pBtnRun->Enable(true);
 			pBtnStop->Enable(false);
 
-			CGUIMainFrame* pMF = AfxGetApp() && AfxGetApp()->m_pMainWnd ? dynamic_cast<CGUIMainFrame*>(AfxGetApp()->m_pMainWnd) : nullptr;
-
-			if(!pMF)
-				break;
-
-			CGUIMenuBar* pMenuBar = pMF->GetMenuBar();
-
-			if(!pMenuBar)
-				break;
-
 			// 0번 인덱스의 아이템을 얻어 오기
 			// Get the item at 0
-			CGUIMenuBarUserDefinedInfo* pUDI = pMenuBar->GetUserDefinedInfoAt(0);
+			CGUIMenuBarUserDefinedInfo* pUDI = CGUIManagerMainFrameMenuBar::GetUserDefinedInfoAt(0);
 
 			if(pUDI && pUDI->GetText() == L"Running..")
 			{
@@ -267,7 +246,8 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 				pUDI->SetBackgroundColor(RGB(128, 0, 0));
 			}
 
-			pMenuBar->Invalidate();
+			if(CGUIMenuBar* pMenuBar = CGUIManagerMainFrameMenuBar::GetMenuBar())
+				pMenuBar->Invalidate();
 		}
 		while(false);
 	};
@@ -284,16 +264,6 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 	{
 		do
 		{
-			CGUIMainFrame* pMF = AfxGetApp() && AfxGetApp()->m_pMainWnd ? dynamic_cast<CGUIMainFrame*>(AfxGetApp()->m_pMainWnd) : nullptr;
-
-			if(!pMF)
-				break;
-
-			CGUIMenuBar* pMenuBar = pMF->GetMenuBar();
-
-			if(!pMenuBar)
-				break;
-
 			CGUIPropertyItemDropdownList* pPIDD = (CGUIPropertyItemDropdownList*)FindItemByFullPath(L"Add@Position");
 
 			if(!pPIDD)
@@ -318,13 +288,14 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 			CFLString<wchar_t> strPos = pPIDD->GetValue();
 
 			if(strPos == L"PushBack")
-				pMenuBar->PushBackUserDefinedInfo(udi); // 맨 뒤에 추가 // Add to the back
+				CGUIManagerMainFrameMenuBar::PushBackUserDefinedInfo(udi); // 맨 뒤에 추가 // Add to the back
 			else if(strPos == L"PushFront")
-				pMenuBar->PushFrontUserDefinedInfo(udi); // 맨 앞에 추가 // Add to the front
+				CGUIManagerMainFrameMenuBar::PushFrontUserDefinedInfo(udi); // 맨 앞에 추가 // Add to the front
 			else if(strPos == L"InsertAt")
-				pMenuBar->InsertUserDefinedInfoAt(i32Index, udi); // 설정한 인덱스 위치에 삽입 // Insert in the index you set
+				CGUIManagerMainFrameMenuBar::InsertUserDefinedInfoAt(i32Index, udi); // 설정한 인덱스 위치에 삽입 // Insert in the index you set
 
-			pMenuBar->Invalidate();
+			if(CGUIMenuBar* pMenuBar = CGUIManagerMainFrameMenuBar::GetMenuBar())
+				pMenuBar->Invalidate();
 		}
 		while(false);
 	};
@@ -340,16 +311,6 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 	{
 		do
 		{
-			CGUIMainFrame* pMF = AfxGetApp() && AfxGetApp()->m_pMainWnd ? dynamic_cast<CGUIMainFrame*>(AfxGetApp()->m_pMainWnd) : nullptr;
-
-			if(!pMF)
-				break;
-
-			CGUIMenuBar* pMenuBar = pMF->GetMenuBar();
-
-			if(!pMenuBar)
-				break;
-
 			CGUIPropertyItemDropdownList* pPIDD = (CGUIPropertyItemDropdownList*)FindItemByFullPath(L"Remove@Position");
 
 			if(!pPIDD)
@@ -373,7 +334,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 			{
 				// 맨 뒤의 객체 제거하며 얻어 오기
 				// Obtain the last object by PopBack
-				CGUIMenuBarUserDefinedInfo* pUdiReturn = pMenuBar->PopBackUserDefinedInfo(); 
+				CGUIMenuBarUserDefinedInfo* pUdiReturn = CGUIManagerMainFrameMenuBar::PopBackUserDefinedInfo();
 
 				// 메모리 누수를 방지하기 위해 얻어온 객체 제거
 				// Destroy the object to prevent memory leakage
@@ -387,7 +348,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 			{
 				// 맨 앞의 객체 제거하며 얻어 오기
 				// Obtain the first object by PopFront
-				CGUIMenuBarUserDefinedInfo* pUdiReturn = pMenuBar->PopFrontUserDefinedInfo(); 
+				CGUIMenuBarUserDefinedInfo* pUdiReturn = CGUIManagerMainFrameMenuBar::PopFrontUserDefinedInfo();
 
 				// 메모리 누수를 방지하기 위해 얻어온 객체 제거
 				// Destroy the object to prevent memory leakage
@@ -398,9 +359,10 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 				}
 			}
 			else if(strPos == L"RemoveAt")
-				pMenuBar->RemoveUserDefinedInfoAt(i32Index); // 설정한 인덱스 위치의 객체 제거 // Remove objects at the index you set
+				CGUIManagerMainFrameMenuBar::RemoveUserDefinedInfoAt(i32Index); // 설정한 인덱스 위치의 객체 제거 // Remove objects at the index you set
 
-			pMenuBar->Invalidate();
+			if(CGUIMenuBar* pMenuBar = CGUIManagerMainFrameMenuBar::GetMenuBar())
+				pMenuBar->Invalidate();
 		}
 		while(false);
 	};
@@ -416,16 +378,6 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 	{
 		do
 		{
-			CGUIMainFrame* pMF = AfxGetApp() && AfxGetApp()->m_pMainWnd ? dynamic_cast<CGUIMainFrame*>(AfxGetApp()->m_pMainWnd) : nullptr;
-
-			if(!pMF)
-				break;
-
-			CGUIMenuBar* pMenuBar = pMF->GetMenuBar();
-
-			if(!pMenuBar)
-				break;
-
 			Base::CFLString<wchar_t> str;
 			COLORREF clrBackground;
 			COLORREF clrText;
@@ -440,7 +392,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 
 			// i32Index 인덱스의 CGUIMenuBarUserDefinedInfo 객체 포인터 얻어 오기
 			// Obtain CGUIMenuBarUserDefinedInfo object pointer from i32Index index
-			CGUIMenuBarUserDefinedInfo* pUdi = pMenuBar->GetUserDefinedInfoAt(i32Index);
+			CGUIMenuBarUserDefinedInfo* pUdi = CGUIManagerMainFrameMenuBar::GetUserDefinedInfoAt(i32Index);
 
 			if(!pUdi)
 				break;
@@ -449,7 +401,8 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedIn
 			// Set the value entered in the property to the object
 			pUdi->Set(str, clrBackground, clrText, bShow, eAlign, eStringTrimming);
 
-			pMenuBar->Invalidate();
+			if(CGUIMenuBar* pMenuBar = CGUIManagerMainFrameMenuBar::GetMenuBar())
+				pMenuBar->Invalidate();
 		}
 		while(false);
 	};
@@ -589,16 +542,6 @@ const CResult FLImaging::GUI::CPropertyMenuBarUserDefinedInfoExample::UpdateSetP
 
 	do
 	{
-		CGUIMainFrame* pMF = AfxGetApp() && AfxGetApp()->m_pMainWnd ? dynamic_cast<CGUIMainFrame*>(AfxGetApp()->m_pMainWnd) : nullptr;
-
-		if(!pMF)
-			break;
-
-		CGUIMenuBar* pMenuBar = pMF->GetMenuBar();
-
-		if(!pMenuBar)
-			break;
-
 		CGUIPropertyItemDropdownList* pPIDDTA = (CGUIPropertyItemDropdownList*)FindItemByFullPath(L"Set@Text Alignment");
 		CGUIPropertyItemDropdownList* pPIDDST = (CGUIPropertyItemDropdownList*)FindItemByFullPath(L"Set@String Trimming");
 		CGUIPropertyItemText* pPITextIndex = (CGUIPropertyItemText*)FindItemByFullPath(L"Set@Index");
@@ -607,7 +550,7 @@ const CResult FLImaging::GUI::CPropertyMenuBarUserDefinedInfoExample::UpdateSetP
 		CGUIPropertyItemColor* pPIColorText = (CGUIPropertyItemColor*)FindItemByFullPath(L"Set@Text Color");
 		CGUIPropertyItemCheckBox* pPICB = (CGUIPropertyItemCheckBox*)FindItemByFullPath(L"Set@Show");
 
-		CGUIMenuBarUserDefinedInfo* pUdi = pMenuBar->GetUserDefinedInfoAt(i32Index);
+		CGUIMenuBarUserDefinedInfo* pUdi = CGUIManagerMainFrameMenuBar::GetUserDefinedInfoAt(i32Index);
 
 		if(!pUdi)
 		{
