@@ -98,6 +98,8 @@ int main()
 		LaserTriangulation.SetAngleOfLaser(60);
 		// 레이저 밝기 설정 // Set laser brightness threshold
 		LaserTriangulation.SetLaserThreshold(64);
+		// 평균 Window의 pixel 길이 설정 // Set Average Window Pixel Length
+		LaserTriangulation.SetAverageWindowLength(5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = LaserTriangulation.Execute()).IsFail())
