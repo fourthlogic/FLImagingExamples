@@ -105,7 +105,7 @@ const CResult FLImaging::GUI::CPropertyMenuBarUserDefinedInfoExample::ConfigureM
 			pCallback = new CPropertyCallback;
 			*pCallback = MakePropertyCallback
 			{
-				CGUIPropertyItemText* pPITextIndex = (CGUIPropertyItemText*)FindItemByFullPath(L"Remove@Index");
+				CGUIPropertyItemText * pPITextIndex = (CGUIPropertyItemText*)FindItemByFullPath(L"Remove@Index");
 				pPITextIndex->SetVisible(strValue == L"RemoveAt");
 				pPITextIndex->GetParentWndList()->AdjustLayout();
 			};
@@ -168,14 +168,14 @@ CPropertyButtonClickProcedure* FLImaging::GUI::CPropertyMenuBarUserDefinedInfoEx
 			// Creating an object and setting background color and string
 			CGUIMenuBarUserDefinedInfo udi(L"Stopped", RGB(128, 0, 0));
 
-			// LButton Double Click 이벤트 시 동작하는 콜백 함수 설정
-			// Set the callback function that executes on the LButton Double Click event
+			// LButton Up 이벤트 시 동작하는 콜백 함수 설정
+			// Set the callback function that executes on the LButton Up event
 			CMenuBarButtonCallback* pCallback = new CMenuBarButtonCallback;
 			*pCallback = MakeMenuBarButtonCallback
 			{
-				CGUIMessageBox::DoModal(L"LButtonDblClk : " + pItem->m_strText);
+				CGUIMessageBox::DoModal(L"LButtonUp: " + pItem->m_strText);
 			};
-			udi.SetLButtonDblClkCallback(pCallback);
+			udi.SetLButtonUpCallback(pCallback);
 
 			// Current model name 사각형의 왼쪽 방향으로 하나씩 추가됩니다.
 			// Object is added in the left direction of the current model name rectangle.
@@ -733,4 +733,108 @@ Base::CFLString<wchar_t> FLImaging::GUI::CPropertyMenuBarUserDefinedInfoExample:
 	while(false);
 
 	return strReturn;
+}
+
+
+void FLImaging::GUI::CPropertyMenuBarUserDefinedInfoExample::OnReceiveBroadcast(const Base::CBroadcastMessage* pMessage)
+{
+	if(!pMessage || (pMessage->GetChannel() & 0xf0000000) != EGUIBroadcast_Mask)
+		return;
+
+	CBroadcastMessage_GUI_MenuBar_MouseEvent* pMsg = dynamic_cast<CBroadcastMessage_GUI_MenuBar_MouseEvent*>((CBroadcastMessage*)pMessage);
+	CGUIMenuBar* pCallerMenuBar = (CGUIMenuBar*)pMessage->GetCaller();
+	CGUIMenuBarUserDefinedInfo* pHitUDI = pMsg ? pCallerMenuBar->GetHitUserDefinedInfo(CPoint(pMsg->GetCursor()->x, pMsg->GetCursor()->y)) : nullptr;
+
+	switch(pMessage->GetChannel())
+	{
+	case EGUIBroadcast_MenuBar_PreLButtonDblClk:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PreLButtonDblClk");
+
+			if(pMsg)
+				pMsg->SetAcceptance(false); // LButtonDblClk 에 대한 기본 처리(MainFrame 창 최대화, Restore 등)를  하지 않고 break 하는 기능
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PostLButtonDblClk:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PostLButtonDblClk");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PreMouseMove:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PreMouseMove");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PostMouseMove:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PostMouseMove");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PreMouseLeave:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PreMouseLeave");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PostMouseLeave:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PostMouseLeave");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PreLButtonDown:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PreLButtonDown");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PostLButtonDown:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PostLButtonDown");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PreLButtonUp:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PreLButtonUp");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PostLButtonUp:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PostLButtonUp");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PreMButtonUp:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PreMButtonUp");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PostMButtonUp:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PostMButtonUp");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PreRButtonUp:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PreRButtonUp");
+		}
+		break;
+	case EGUIBroadcast_MenuBar_PostRButtonUp:
+		{
+			if(pHitUDI)
+				CLog::Write(L"From Broadcast : [" + pHitUDI->GetText() + L"]   PostRButtonUp");
+		}
+		break;
+	default:
+		break;
+	}
 }
