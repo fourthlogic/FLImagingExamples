@@ -50,6 +50,8 @@ int main()
 
 		CPerspectiveMerge3D algoObject;
 
+		algoObject.SetEulerSequence(EEulerSequence_Intrinsic_ZXY);
+
 		TPoint3<float> tpPosition = TPoint3<float>(-0.152f, 0.0f, 0.0f);
 		TPoint3<float> tpRotation = TPoint3<float>(-8.0f, 29.0f, 90.0f);
 		TPoint3<float> tpPosition2 = TPoint3<float>(0.152f, 0.0f, 0.0f);
