@@ -53,9 +53,9 @@ int main()
 		algoObject.SetEulerSequence(EEulerSequence_Intrinsic_ZXY);
 
 		TPoint3<float> tpPosition = TPoint3<float>(-0.152f, 0.0f, 0.0f);
-		TPoint3<float> tpRotation = TPoint3<float>(-8.0f, 29.0f, 90.0f);
+		TPoint3<float> tpRotation = TPoint3<float>(90.0f, -8.0f, 29.0f);
 		TPoint3<float> tpPosition2 = TPoint3<float>(0.152f, 0.0f, 0.0f);
-		TPoint3<float> tpRotation2 = TPoint3<float>(-8.0f, -29.0f, 90.0f);
+		TPoint3<float> tpRotation2 = TPoint3<float>(90.0f, -8.0f, -29.0f);
 
 		// 카메라 1, 2의 Source 객체 설정 // Set the source object of camera 1, 2
 		algoObject.AddSourceObject(&fl3DObjectSrc, tpPosition, tpRotation);
@@ -120,7 +120,7 @@ int main()
 		viewTestDescription.Invalidate(true);
 
 		// 이미지 뷰, 3D 뷰가 종료될 때 까지 기다림 // Wait for the image and 3D view to close
-		while(view3DSrc.IsAvailable() || view3DSrc2.IsAvailable() || view3DDst.IsAvailable() || viewTestDescription.IsAvailable())
+		while(view3DSrc.IsAvailable() && view3DSrc2.IsAvailable() && view3DDst.IsAvailable() && viewTestDescription.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
