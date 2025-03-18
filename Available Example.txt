@@ -313,6 +313,14 @@
         - Example of an algorithm that explores the shape of a set rectangle within an image.
         - 설정한 사각형의 형태를 이미지 내에서 탐색하는 알고리즘 예제.
         
+      - Shape Match Cross
+        - Example of an algorithm that explores the shape of a set cross within an image.
+        - 설정한 십자의 형태를 이미지 내에서 탐색하는 알고리즘 예제.
+        
+      - Shape Match Figure
+        - Example of an algorithm that explores the shape of a set figure within an image.
+        - 설정한 도형을 이미지 내에서 탐색하는 알고리즘 예제.
+        
   - [Object]
 
     - [Blob]
