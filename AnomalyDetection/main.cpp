@@ -186,7 +186,7 @@ int main()
 		CAugmentationSpec augSpec;
 
 		augSpec.EnableAugmentation(true);
-		augSpec.SetCommonActivationRatio(0.700000);
+		augSpec.SetCommonActivationRate(0.700000);
 		augSpec.SetCommonIoUThreshold(0.000000);
 		augSpec.SetCommonInterpolationMethod(EInterpolationMethod_Bilinear);
 
