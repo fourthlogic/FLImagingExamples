@@ -1520,11 +1520,14 @@
     - [Hough]
 
       - Hough Transform Circle
-        - The example of HoughTransform Circle Algorithm.
+        - The example of Hough Transform Circle Algorithm.
         - HoughTransform 을 사용한 원 검출 알고리즘 예제
       - Hough Transform Line
-        - The example of HoughTransform Line Algorithm.
+        - The example of Hough Transform Line Algorithm.
         - HoughTransform 을 사용한 선 검출 알고리즘 예제
+      - Generalized Hough Transform
+        - The example of Generalized Hough Transform Algorithm.
+        - Hough Transform 을 사용한 일반화 된 검출 알고리즘 예제
         
     - [Fourier]
 
