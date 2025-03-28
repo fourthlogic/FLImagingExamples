@@ -7,18 +7,31 @@ int main()
 {
 	std::map<Foundation::EEulerSequence, std::wstring> mapEulerString;
 
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_XYZ] = L"XYZ";
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_XZY] = L"XZY";
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_YZX] = L"YZX";
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_YXZ] = L"YXZ";
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_ZXY] = L"ZXY";
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_ZYX] = L"ZYX";
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_XYX] = L"XYX";
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_XZX] = L"XZX";
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_YZY] = L"YZY";
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_YXY] = L"YXY";
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_ZYZ] = L"ZYZ";
-	mapEulerString[Foundation::EEulerSequence_Extrinsic_ZXZ] = L"ZXZ";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_XYZ] = L"Ext_XYZ";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_XZY] = L"Ext_XZY";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_YZX] = L"Ext_YZX";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_YXZ] = L"Ext_YXZ";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_ZXY] = L"Ext_ZXY";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_ZYX] = L"Ext_ZYX";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_XYX] = L"Ext_XYX";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_XZX] = L"Ext_XZX";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_YZY] = L"Ext_YZY";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_YXY] = L"Ext_YXY";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_ZYZ] = L"Ext_ZYZ";
+	mapEulerString[Foundation::EEulerSequence_Extrinsic_ZXZ] = L"Ext_ZXZ";
+
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_XYZ] = L"Int_XYZ";
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_XZY] = L"Int_XZY";
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_YZX] = L"Int_YZX";
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_YXZ] = L"Int_YXZ";
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_ZXY] = L"Int_ZXY";
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_ZYX] = L"Int_ZYX";
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_XYX] = L"Int_XYX";
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_XZX] = L"Int_XZX";
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_YZY] = L"Int_YZY";
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_YXY] = L"Int_YXY";
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_ZYZ] = L"Int_ZYZ";
+	mapEulerString[Foundation::EEulerSequence_Intrinsic_ZXZ] = L"Int_ZXZ";
 
 	CFLImage fliSource;
 	CGUIView3DWrap view3D;
