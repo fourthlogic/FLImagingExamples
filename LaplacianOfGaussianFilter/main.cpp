@@ -30,7 +30,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if((res = arrFliImage[EType_Source].Load(L"../../ExampleImages/EdgeDetection/Alphabat.flif")).IsFail())
+		if((res = arrFliImage[EType_Source].Load(L"../../ExampleImages/EdgeDetection/AlphabatColor.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
@@ -97,7 +97,7 @@ int main()
 			break;		
 
 		// ROI 설정을 위한 CFLRect 객체 생성 // Create a CFLRect object for setting ROI
-		CFLRect<int32_t> flrROI(200, 200, 500, 500);
+		CFLRect<int32_t> flrROI(150, 150, 300, 300);
 
  		// Laplacian Of Gaussian filter 객체 생성 // Create Laplacian Of Gaussian filter object
  		CLaplacianOfGaussianFilter LaplacianOfGaussianFilter;
@@ -147,7 +147,7 @@ int main()
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = LaplacianOfGaussianFilter.Execute()).IsFail())
 		{
-			ErrorPrint(res, L"Failed to execute gauss filter.");
+			ErrorPrint(res, L"Failed to execute algorithm.");
 			break;
 		}
 
