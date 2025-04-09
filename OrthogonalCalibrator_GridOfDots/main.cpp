@@ -7,7 +7,7 @@ struct SGridDisplay
 {
 	int64_t i64ImageIdx;
 	int64_t i64ObjectIdx;
-	AdvancedFunctions::COrthogonalCalibrator::SGridResult sGridData;
+	AdvancedFunctions::CCameraCalibrator::CCalibratorGridResult sGridData;
 };
  
 bool Calibration(COrthogonalCalibrator& sCC, CFLImage& fliLearnImage)
@@ -182,11 +182,9 @@ int main()
 			for(int64_t i64Col = 0; i64Col < i64GridCol - 1; ++i64Col)
 			{
 				int64_t i64GridIdx = i64Row * i64GridCol + i64Col;
-				TPointD* pFlpGridPoint1 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][i64Col]);
-				TPointD* pFlpGridPoint2 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][i64Col + 1]);
-				CFLPoint<double> flpGridPoint1(pFlpGridPoint1->x, pFlpGridPoint1->y);
-				CFLPoint<double> flpGridPoint2(pFlpGridPoint2->x, pFlpGridPoint2->y);
-				CFLLine<double> fllDrawLine(flpGridPoint1, flpGridPoint2);
+				CFLPoint<double>* pFlpGridPoint1 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[i64Row])[i64Col]));
+				CFLPoint<double>* pFlpGridPoint2 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[i64Row])[i64Col + 1]));
+				CFLLine<double> fllDrawLine(pFlpGridPoint1, pFlpGridPoint2);
 
 				if(IsFail(res = layerLearn.DrawFigureImage(fllDrawLine, BLACK, 5)))
 				{
@@ -203,11 +201,9 @@ int main()
 
 				if(i64Row < i64GridRow - 1)
 				{
-					TPointD* pFlpGridPoint1 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][i64GridCol - 1]);
-					TPointD* pFlpGridPoint2 = &(sArrGridDisplay.sGridData.arrGridData[(i64Row + 1)][0]);
-					CFLPoint<double> flpGridPoint1(pFlpGridPoint1->x, pFlpGridPoint1->y);
-					CFLPoint<double> flpGridPoint2(pFlpGridPoint2->x, pFlpGridPoint2->y);
-					CFLLine<double> fllDrawLine(flpGridPoint1, flpGridPoint2);
+					CFLPoint<double>* pFlpGridPoint1 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[i64Row])[i64GridCol - 1]));
+					CFLPoint<double>* pFlpGridPoint2 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[(i64Row + 1)])[0]));
+					CFLLine<double> fllDrawLine(pFlpGridPoint1, pFlpGridPoint2);
 
 					if(IsFail(res = layerLearn.DrawFigureImage(fllDrawLine, BLACK, 5)))
 					{
@@ -232,11 +228,9 @@ int main()
 
 		for(int64_t i64Row = 0; i64Row < i64GridRow; ++i64Row)
 		{
-			TPointD* pFlpGridPoint1 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][0]);
-			TPointD* pFlpGridPoint2 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][1]);
-			CFLPoint<double> flpGridPoint1(pFlpGridPoint1->x, pFlpGridPoint1->y);
-			CFLPoint<double> flpGridPoint2(pFlpGridPoint2->x, pFlpGridPoint2->y);
-			double f64Angle = flpGridPoint1.GetAngle(flpGridPoint2);
+			CFLPoint<double>* pFlpGridPoint1 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[i64Row])[0]));
+			CFLPoint<double>* pFlpGridPoint2 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[i64Row])[1]));
+			double f64Angle = pFlpGridPoint1->GetAngle(pFlpGridPoint2);
 
 			for(int64_t i64Col = 0; i64Col < i64GridCol; ++i64Col)
 			{
@@ -244,8 +238,8 @@ int main()
 
 				if(i64Col < i64GridCol - 1)
 				{
-					pFlpGridPoint1 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][i64Col]);
-					pFlpGridPoint2 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][i64Col + 1]);
+					pFlpGridPoint1 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[i64Row])[i64Col]));
+					pFlpGridPoint2 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[i64Row])[i64Col + 1]));
 
 					f64Dx = pFlpGridPoint2->x - pFlpGridPoint1->x;
 					f64Dy = pFlpGridPoint2->y - pFlpGridPoint1->y;
@@ -254,8 +248,8 @@ int main()
 
 				if(i64Row)
 				{
-					pFlpGridPoint1 = &(sArrGridDisplay.sGridData.arrGridData[i64Row][i64Col]);
-					pFlpGridPoint2 = &(sArrGridDisplay.sGridData.arrGridData[i64Row - 1][i64Col]);
+					pFlpGridPoint1 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[i64Row])[i64Col]));
+					pFlpGridPoint2 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[i64Row - 1])[i64Col]));
 
 					f64Dx = pFlpGridPoint2->x - pFlpGridPoint1->x;
 					f64Dy = pFlpGridPoint2->y - pFlpGridPoint1->y;
@@ -263,8 +257,8 @@ int main()
 				}
 				else
 				{
-					pFlpGridPoint1 = &(sArrGridDisplay.sGridData.arrGridData[0][i64Col]);
-					pFlpGridPoint2 = &(sArrGridDisplay.sGridData.arrGridData[1][i64Col]);
+					pFlpGridPoint1 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[0])[i64Col]));
+					pFlpGridPoint2 = ((CFLPoint<double>*)((*(CFLFigureArray*)sArrGridDisplay.sGridData.flfaGridData[1])[i64Col]));
 
 					f64Dx = pFlpGridPoint2->x - pFlpGridPoint1->x;
 					f64Dy = pFlpGridPoint2->y - pFlpGridPoint1->y;
@@ -363,8 +357,8 @@ int main()
 
 		// calibration data 출력 // Output calibration data  // Output calibration data
 		CGUIViewImageLayerWrap layerSource = viewImageSource.GetLayer(0);
-		COrthogonalCalibrator::SIntrinsicParameters sIntrinsicParam = sCC.GetResultIntrinsicParameters();
-		COrthogonalCalibrator::SDistortionCoefficients sDistortCoeef = sCC.GetResultDistortionCoefficients();
+		COrthogonalCalibrator::CCalibratorIntrinsicParameters sIntrinsicParam = sCC.GetResultIntrinsicParameters();
+		COrthogonalCalibrator::CCalibratorDistortionCoefficients sDistortCoeef = sCC.GetResultDistortionCoefficients();
 
 		CFLString<wchar_t> strMatrix, strDistVal;
 

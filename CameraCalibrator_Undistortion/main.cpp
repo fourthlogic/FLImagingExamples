@@ -151,14 +151,14 @@ int main()
 		double arrF64Intrinc[9] = { 605.9413643192689, 0, 325.9133439121233, 0, 605.3834974915350, 234.0647625697701, 0, 0, 1 };
 		double arrF64Dist[5] = { 0.1748895907714, -1.4909467274276, -0.0070404809103, 0.0017880490098, 5.9363069879613 };
 
-		CCameraCalibrator::SIntrinsicParameters sIntrinc;
+		CCameraCalibrator::CCalibratorIntrinsicParameters sIntrinc;
 		sIntrinc.f64FocalLengthX = arrF64Intrinc[0];
 		sIntrinc.f64Skew = arrF64Intrinc[1];
 		sIntrinc.f64PrincipalPointX = arrF64Intrinc[2];
 		sIntrinc.f64FocalLengthY = arrF64Intrinc[4];
 		sIntrinc.f64PrincipalPointY = arrF64Intrinc[5];
 		
-		CCameraCalibrator::SDistortionCoefficients sDist;
+		CCameraCalibrator::CCalibratorDistortionCoefficients sDist;
 		sDist.f64K1 = arrF64Dist[0];
 		sDist.f64K2 = arrF64Dist[1];
 		sDist.f64P1 = arrF64Dist[2];
