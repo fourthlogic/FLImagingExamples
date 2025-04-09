@@ -209,16 +209,16 @@ int main()
 		//	top of BoundaryRect                                    : BoundaryRect.top or top
 		//	right of BoundaryRect                                  : BoundaryRect.right or right
 		//	bottom of BoundaryRect                                 : BoundaryRect.bottom or bottom
-		//	Area of ​​minimum enclosing rectangle                    : MinimumEnclosingRectangleArea or MerArea
-		//	perimeter of ​​minimum enclosing rectangle               : MinimumEnclosingRectanglePerimeter or MerPerimeter
-		//	width of ​​minimum enclosing rectangle                   : MinimumEnclosingRectangleWidth or MerWidth
-		//	height of ​​minimum enclosing rectangle                  : MinimumEnclosingRectangleHeight or MerHeight
-		//	long side length of ​​minimum enclosing rectangle        : MinimumEnclosingRectangleLongSideLength or MerLongSideLength
-		//	short side length of ​​minimum enclosing rectangle       : MinimumEnclosingRectangleShortSideLength or MerShortSideLength
-		//	short/long ratio of ​​minimum enclosing rectangle        : MinimumEnclosingRectangleShortLongRatio or MerShortLongRatio
-		//	angle of ​​minimum enclosing rectangle                   : MinimumEnclosingRectangleAngle or MerAngle
-		//	x-coordinate of center of ​​minimum enclosing rectangle  : MinimumEnclosingRectangleCenter.x or MerCenter.x
-		//	y-coordinate of center of ​​minimum enclosing rectangle  : MinimumEnclosingRectangleCenter.y or MerCenter.y
+		//	Area of minimum enclosing rectangle                    : MinimumEnclosingRectangleArea or MerArea
+		//	perimeter of minimum enclosing rectangle               : MinimumEnclosingRectanglePerimeter or MerPerimeter
+		//	width of minimum enclosing rectangle                   : MinimumEnclosingRectangleWidth or MerWidth
+		//	height of minimum enclosing rectangle                  : MinimumEnclosingRectangleHeight or MerHeight
+		//	long side length of minimum enclosing rectangle        : MinimumEnclosingRectangleLongSideLength or MerLongSideLength
+		//	short side length of minimum enclosing rectangle       : MinimumEnclosingRectangleShortSideLength or MerShortSideLength
+		//	short/long ratio of minimum enclosing rectangle        : MinimumEnclosingRectangleShortLongRatio or MerShortLongRatio
+		//	angle of minimum enclosing rectangle                   : MinimumEnclosingRectangleAngle or MerAngle
+		//	x-coordinate of center of minimum enclosing rectangle  : MinimumEnclosingRectangleCenter.x or MerCenter.x
+		//	y-coordinate of center of minimum enclosing rectangle  : MinimumEnclosingRectangleCenter.y or MerCenter.y
 		//	x-coordinate of point0 of minimum enclosing rectangle  : MinimumEnclosingRectangle.point0.x or MER.point0.x
 		//	y-coordinate of point0 of minimum enclosing rectangle  : MinimumEnclosingRectangle.point0.y or MER.point0.y
 		//	x-coordinate of point1 of minimum enclosing rectangle  : MinimumEnclosingRectangle.point1.x or MER.point1.x

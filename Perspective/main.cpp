@@ -73,10 +73,10 @@ int main()
 		// Source 이미지 설정 // Set the source image
 		perspective.SetSourceImage(fliSourceImage);
 
-		// Source 이미지의 투영 영역 범위 설정 // Set the range of the projection area of ​​the Source image
+		// Source 이미지의 투영 영역 범위 설정 // Set the range of the projection area of the Source image
 		CFLQuad<double> flqSourceProjection(290.87, 65.73, 531.69, 192.5, 169.68, 406.66, 34.59, 170.22);
 
-		// Source 이미지의 투영 영역 지정 // Set the projection area of ​​the Source image
+		// Source 이미지의 투영 영역 지정 // Set the projection area of the Source image
 		perspective.SetSourceProjection(flqSourceProjection);
 
 		// Destination 이미지 설정 // Set the destination image
@@ -85,13 +85,13 @@ int main()
 		// Destination 이미지의 출력 대상 영역 범위 설정 // Set the output destination area range of Destination image
 		CFLCircle<int32_t> flcDestinationROI(243, 261, 188, 0, 0, 360, EArcClosingMethod_EachOther);
 
-		// Destination 이미지의 출력 대상 영역 지정 // Destination Specify the output target area of ​​the image
+		// Destination 이미지의 출력 대상 영역 지정 // Destination Specify the output target area of the image
 		perspective.SetDestinationROI(flcDestinationROI);
 
-		// Destination 이미지의 투영 영역 범위 설정 // Set the range of the projection area of ​​the destination image
+		// Destination 이미지의 투영 영역 범위 설정 // Set the range of the projection area of the destination image
 		CFLRect<int32_t> flrDestinationProjection(192, 208, 332, 346);
 
-		// Destination 이미지의 투영 영역 지정 // Set the projection area of ​​the destination image
+		// Destination 이미지의 투영 영역 지정 // Set the projection area of the destination image
 		perspective.SetDestinationProjection(flrDestinationProjection);
 
 		// 보간법 설정 (Bicubic / Bilinear / NearestNeighbor) // Set interpolation method (Bicubic / Bilinear / NearestNeighbor)

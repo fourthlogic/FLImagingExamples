@@ -113,7 +113,7 @@ int main()
 			break;
 		}
 
-		// 이미지 뷰의 값 표현 방식 설정 // Set how values ​​are expressed in image view
+		// 이미지 뷰의 값 표현 방식 설정 // Set how values are expressed in image view
 		viewImageSrc.SetPixelNumberMode(EPixelNumberMode_Decimal);
 		viewImageDst0.SetPixelNumberMode(EPixelNumberMode_Decimal);
 		viewImageDst1.SetPixelNumberMode(EPixelNumberMode_Decimal);

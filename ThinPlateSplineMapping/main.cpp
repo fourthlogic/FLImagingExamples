@@ -107,7 +107,7 @@ int main()
 
 					// Grid Index와 같은 좌표로 Source 좌표를 설정 // Set the source coordinates to the same coordinates as the Grid Index
 					CFLPoint<double> flpSource(flpGridIndex.x, flpGridIndex.y);
-					// Grid Index와 같은 좌표에서 미세한 랜덤 값을 부여해서 좌표를 왜곡 // Distort the coordinates by giving fine random values ​​at the same coordinates as the Grid Index
+					// Grid Index와 같은 좌표에서 미세한 랜덤 값을 부여해서 좌표를 왜곡 // Distort the coordinates by giving fine random values at the same coordinates as the Grid Index
 					CFLPoint<double> flpDistortion(flpGridIndex.x + CRandomGenerator::Double(-.15, .15), flpGridIndex.y + CRandomGenerator::Double(-.15, .15));
 
 					// 위에서 설정한 좌표들을 바탕으로 ThinPlateSplineMapping 클래스에 하나의 Control Point를 설정

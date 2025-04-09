@@ -104,10 +104,10 @@ BOOL CSNAPViewIntoDialogDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 
-	// ½º³À ºä »ý¼º // Create SNAP view
+	// 스냅 뷰 생성 // Create SNAP view
 	CResult res = m_viewSNAP.CreateAndFitParent((size_t)GetSafeHwnd());
 
-	// ½º³À ÆÄÀÏ ·Îµå // Load SNAP file
+	// 스냅 파일 로드 // Load SNAP file
 	res = m_viewSNAP.Load(L"C:\\Users\\Public\\Documents\\FLImaging\\ExamplesSNAP\\Advanced Functions\\Object\\Blob.flsf");
 
 	m_viewSNAP.ZoomFit();
@@ -171,7 +171,7 @@ BOOL CSNAPViewIntoDialogDlg::DestroyWindow()
 {
 	// TODO: Add your specialized code here and/or call the base class
 
-	// ½º³À ºä¸¦ Á¾·áÇÑ´Ù.
+	// 스냅 뷰를 종료한다.
 	m_viewSNAP.Destroy();
 
 	return CDialogEx::DestroyWindow();

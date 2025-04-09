@@ -76,7 +76,7 @@ int main()
 		HoughTransform.SetMaxCount(100);
 
 		// Canny Edge 적용유무 설정 (true 로 설정할 경우, SetPixelThreshold와 SetLogicalCondition로 설정한 값은 활용하지 않음)
-		// Setting whether to apply Canny Edge (if set to true, the values ​​set by SetPixelThreshold and SetLogicalCondition are not used)
+		// Setting whether to apply Canny Edge (if set to true, the values set by SetPixelThreshold and SetLogicalCondition are not used)
 		HoughTransform.EnableCannyEdgeAppliance(false);
 
 		// 인접하게 검출된 원을 필터링하는 옵션 // Option to filter adjacent detected circles
