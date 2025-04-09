@@ -1,4 +1,4 @@
-======= 
+ï»¿======= 
 5.11.16.1
 ======= 
 
@@ -9,12 +9,12 @@
     - [Surface]
       - Surface Match
         - The example of an algorithm that estimate pose matrix for a given point clouds.
-        - ÁÖ¾îÁø Æ÷ÀÎÆ® Å¬¶ó¿ìµå¿¡ ´ëÇØ Æ÷Áî Çà·ÄÀ» ÃßÁ¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼ì–´ì§„ í¬ì¸íŠ¸ í´ë¼ìš°ë“œì— ëŒ€í•´ í¬ì¦ˆ í–‰ë ¬ì„ ì¶”ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Vertex]
       - Vertex Match
         - The example of an algorithm that estimate pose matrix for a given point clouds.
-        - ÁÖ¾îÁø Æ÷ÀÎÆ® Å¬¶ó¿ìµå¿¡ ´ëÇØ Æ÷Áî Çà·ÄÀ» ÃßÁ¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼ì–´ì§„ í¬ì¸íŠ¸ í´ë¼ìš°ë“œì— ëŒ€í•´ í¬ì¦ˆ í–‰ë ¬ì„ ì¶”ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
 
   - [Feature Extraction]
@@ -22,85 +22,85 @@
     - [Edge Detector 3D]
       - EdgeDetector3D
         - The example of an algorithm that detect the edge of a given point clouds.
-        - ÁÖ¾îÁø Æ÷ÀÎÆ® Å¬¶ó¿ìµåÀÇ ¿§Áö¸¦ °ËÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼ì–´ì§„ í¬ì¸íŠ¸ í´ë¼ìš°ë“œì˜ ì—£ì§€ë¥¼ ê²€ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Reconstruction]
 
     - [Laser Triangulation]
       - LaserTriangulation_Image
         - The example of an algorithm that reconstructs 3D objects projected by line laser into 3D image using laser triangulation from the source of 'Image' type.
-        - ·¹ÀÌÀú·Î Åõ»çµÈ 3Â÷¿ø ¹°Ã¼¸¦ ·¹ÀÌÀú »ï°¢Ãø·®¹ıÀ» ÀÌ¿ëÇÏ¿© 3Â÷¿ø ÀÌ¹ÌÁö·Î Àç±¸¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦. (Source Type : Image)
+        - ë ˆì´ì €ë¡œ íˆ¬ì‚¬ëœ 3ì°¨ì› ë¬¼ì²´ë¥¼ ë ˆì´ì € ì‚¼ê°ì¸¡ëŸ‰ë²•ì„ ì´ìš©í•˜ì—¬ 3ì°¨ì› ì´ë¯¸ì§€ë¡œ ì¬êµ¬ì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ. (Source Type : Image)
       - LaserTriangulation_Profile
         - The example of an algorithm that reconstructs 3D objects projected by line laser into 3D image using laser triangulation from the source of 'Profile' type.
-        - ·¹ÀÌÀú·Î Åõ»çµÈ 3Â÷¿ø ¹°Ã¼¸¦ ·¹ÀÌÀú »ï°¢Ãø·®¹ıÀ» ÀÌ¿ëÇÏ¿© 3Â÷¿ø ÀÌ¹ÌÁö·Î Àç±¸¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦. (Source Type : Profile)
+        - ë ˆì´ì €ë¡œ íˆ¬ì‚¬ëœ 3ì°¨ì› ë¬¼ì²´ë¥¼ ë ˆì´ì € ì‚¼ê°ì¸¡ëŸ‰ë²•ì„ ì´ìš©í•˜ì—¬ 3ì°¨ì› ì´ë¯¸ì§€ë¡œ ì¬êµ¬ì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ. (Source Type : Profile)
 
     - [Moire 3D]
     
       - Moire3D
         - The example of an algorithm that creates a height map of an object by analyzing the Fringe Pattern projected onto the object.
-        - ¹°Ã¼¿¡ Åõ¿µµÈ ÇÁ¸°Áö ÆĞÅÏ(Fringe Pattern)À» ºĞ¼®ÇÏ¿© ¹°Ã¼ÀÇ Height Map À» ¸¸µå´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ë¬¼ì²´ì— íˆ¬ì˜ëœ í”„ë¦°ì§€ íŒ¨í„´(Fringe Pattern)ì„ ë¶„ì„í•˜ì—¬ ë¬¼ì²´ì˜ Height Map ì„ ë§Œë“œëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Multi Focus Derivative Based 3D]
 
       - MultiFocusDerivativeBased3D
         - The example of an algorithm that converts multiple images with different focus into a 3D image with integrated focus.
-        - °¢°¢ ÃÊÁ¡ÀÌ ´Ù¸¥ ¿©·¯ÀåÀÇ ÀÌ¹ÌÁö¸¦ Ã³¸®ÇØ ¸ğµç ÃÊÁ¡À» °¡Áö´Â ÇÑÀåÀÇ 3D ÀÌ¹ÌÁö·Î ¸¸µå´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ê°ê° ì´ˆì ì´ ë‹¤ë¥¸ ì—¬ëŸ¬ì¥ì˜ ì´ë¯¸ì§€ë¥¼ ì²˜ë¦¬í•´ ëª¨ë“  ì´ˆì ì„ ê°€ì§€ëŠ” í•œì¥ì˜ 3D ì´ë¯¸ì§€ë¡œ ë§Œë“œëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
   
     - [Multi Focus MAP Based 3D]
 
       - MultiFocusMAPBased3D
         - The example of an algorithm that converts multiple images with different focus into a 3D image with integrated focus.
-        - °¢°¢ ÃÊÁ¡ÀÌ ´Ù¸¥ ¿©·¯ÀåÀÇ ÀÌ¹ÌÁö¸¦ Ã³¸®ÇØ ¸ğµç ÃÊÁ¡À» °¡Áö´Â ÇÑÀåÀÇ 3D ÀÌ¹ÌÁö·Î ¸¸µå´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ê°ê° ì´ˆì ì´ ë‹¤ë¥¸ ì—¬ëŸ¬ì¥ì˜ ì´ë¯¸ì§€ë¥¼ ì²˜ë¦¬í•´ ëª¨ë“  ì´ˆì ì„ ê°€ì§€ëŠ” í•œì¥ì˜ 3D ì´ë¯¸ì§€ë¡œ ë§Œë“œëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
   
     - [Photometric Stereo]
 
       - PhotometricStereo
         - The example of an algorithm that performs getting the height map from a images with different light source positions.
-        - ±¤¿øÀÇ À§Ä¡¸¸ ´Ù¸¥ ¿©·¯ ÀÌ¹ÌÁöµé·ÎºÎÅÍ Height MapÀ» ±¸ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ê´‘ì›ì˜ ìœ„ì¹˜ë§Œ ë‹¤ë¥¸ ì—¬ëŸ¬ ì´ë¯¸ì§€ë“¤ë¡œë¶€í„° Height Mapì„ êµ¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 	  - PhotometricStereo_Calibration
         - The example of an algorithm that performs getting the height map from a images with different light source positions using sphere calibration.
-        - Sphere CalibrationÀ» »ç¿ëÇÏ¿© ±¤¿øÀÇ À§Ä¡¸¸ ´Ù¸¥ ¿©·¯ ÀÌ¹ÌÁöµé·ÎºÎÅÍ Height MapÀ» ±¸ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - Sphere Calibrationì„ ì‚¬ìš©í•˜ì—¬ ê´‘ì›ì˜ ìœ„ì¹˜ë§Œ ë‹¤ë¥¸ ì—¬ëŸ¬ ì´ë¯¸ì§€ë“¤ë¡œë¶€í„° Height Mapì„ êµ¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Stereo]
     
       - StereoCalibrator
         - The example of an algorithm that perform stereo calibration and image pair Rectification.
-        - ½ºÅ×·¹¿À Ä¶¸®ºê·¹ÀÌ¼Ç°ú ÀÌ¹ÌÁö ½Ö RectificationÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ìŠ¤í…Œë ˆì˜¤ ìº˜ë¦¬ë¸Œë ˆì´ì…˜ê³¼ ì´ë¯¸ì§€ ìŒ Rectificationì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - StereoDisparity
         - The example of an algorithm that performs getting disparity map from a pair of stereo calibrator output images.
-        - ½ºÅ×·¹¿À Ä¶¸®ºê·¹ÀÌÅÍÀÇ Rectification °á°ú ÀÌ¹ÌÁö ½ÖÀ¸·ÎºÎÅÍ ½ºÅ×·¹¿À Disparity MapÀ» ±¸ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ìŠ¤í…Œë ˆì˜¤ ìº˜ë¦¬ë¸Œë ˆì´í„°ì˜ Rectification ê²°ê³¼ ì´ë¯¸ì§€ ìŒìœ¼ë¡œë¶€í„° ìŠ¤í…Œë ˆì˜¤ Disparity Mapì„ êµ¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Transform]
     
     - [Distance Transform]
       - DistanceTransform3D
         - The example of an algorithm that measures the distance to a given vertex based on the camera's position and the direction the camera is looking.
-        - ÁÖ¾îÁø Á¤Á¡¿¡ ´ëÇÏ¿© Ä«¸Ş¶óÀÇ À§Ä¡¿Í Ä«¸Ş¶ó°¡ ¹Ù¶óº¸´Â ¹æÇâÀ» ¹ÙÅÁÀ¸·Î °Å¸®¸¦ ÃøÁ¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼ì–´ì§„ ì •ì ì— ëŒ€í•˜ì—¬ ì¹´ë©”ë¼ì˜ ìœ„ì¹˜ì™€ ì¹´ë©”ë¼ê°€ ë°”ë¼ë³´ëŠ” ë°©í–¥ì„ ë°”íƒ•ìœ¼ë¡œ ê±°ë¦¬ë¥¼ ì¸¡ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Perspective Merge]
       - PerspectiveMerge3D
         - The example an algorithm that merge vertices created by the positions and angles of two cameras on both sides of a reference position into one information.
-        - ±âÁØ À§Ä¡¿¡ ´ëÇØ ¾ç ¿·À¸·Î µÎ°³ÀÇ Ä«¸Ş¶óÀÇ À§Ä¡ ¹× °¢µµ¿¡ ÀÇÇØ »ı¼ºµÈ Á¤Á¡µéÀ» ÇÏ³ªÀÇ Á¤º¸·Î ÇÕÄ¡´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ê¸°ì¤€ ìœ„ì¹˜ì— ëŒ€í•´ ì–‘ ì˜†ìœ¼ë¡œ ë‘ê°œì˜ ì¹´ë©”ë¼ì˜ ìœ„ì¹˜ ë° ê°ë„ì— ì˜í•´ ìƒì„±ëœ ì •ì ë“¤ì„ í•˜ë‚˜ì˜ ì •ë³´ë¡œ í•©ì¹˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Perspective Transform]
       - PerspectiveTransform3D
         - The example of an algorithm that performs projection transformation to a given vertex based on the camera's position and the direction the camera is looking.
-        - ÁÖ¾îÁø Á¤Á¡¿¡ ´ëÇÏ¿© Ä«¸Ş¶óÀÇ À§Ä¡¿Í Ä«¸Ş¶ó°¡ ¹Ù¶óº¸´Â ¹æÇâÀ» ¹ÙÅÁÀ¸·Î Åõ¿µº¯È¯À» ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼ì–´ì§„ ì •ì ì— ëŒ€í•˜ì—¬ ì¹´ë©”ë¼ì˜ ìœ„ì¹˜ì™€ ì¹´ë©”ë¼ê°€ ë°”ë¼ë³´ëŠ” ë°©í–¥ì„ ë°”íƒ•ìœ¼ë¡œ íˆ¬ì˜ë³€í™˜ì„ í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Utilities]
     
     - [Residual Evaluator]
       - Residual Evaluator3D
         - The example of an algorithm that measures the residuals of two given objects.
-        - ÁÖ¾îÁø µÎ ¿ÀºêÁ§Æ®ÀÇ ÀÜÂ÷¸¦ ÃøÁ¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼ì–´ì§„ ë‘ ì˜¤ë¸Œì íŠ¸ì˜ ì”ì°¨ë¥¼ ì¸¡ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - [Projection]
       - Projection 3D
         - An example of an algorithm that projects a 3D object into an image.
-        - 3D °´Ã¼¸¦ ÀÌ¹ÌÁö·Î Åõ¿µÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - 3D ê°ì²´ë¥¼ ì´ë¯¸ì§€ë¡œ íˆ¬ì˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - [Convex Hull]
       - Convex Hull 3D
         - An example of an algorithm that calucalates the convex hull of a point cloud.
-        - 3D Æ÷ÀÎÆ® Å¬¶ó¿ìµåÀÇ º¼·Ï²®ÁúÀ» ±¸ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - 3D í¬ì¸íŠ¸ í´ë¼ìš°ë“œì˜ ë³¼ë¡ê»ì§ˆì„ êµ¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
 
 - [Advanced Functions]
@@ -111,22 +111,22 @@
 
       - CameraCalibrator_Chessboard
         - The example of extracting camera distortion information from a chessboard image.
-        - Ã¼½ºº¸µå ÀÌ¹ÌÁö·Î Ä«¸Ş¶óÀÇ ¿Ö°î Á¤º¸ ÃßÃâÇÏ´Â ¿¹Á¦.
+        - ì²´ìŠ¤ë³´ë“œ ì´ë¯¸ì§€ë¡œ ì¹´ë©”ë¼ì˜ ì™œê³¡ ì •ë³´ ì¶”ì¶œí•˜ëŠ” ì˜ˆì œ.
       - CameraCalibrator_GridOfDots 
         - The example of extracting camera distortion information from a grid of dots image.
-        - Á¡ °İÀÚÆÇ ÀÌ¹ÌÁö·Î Ä«¸Ş¶óÀÇ ¿Ö°î Á¤º¸ ÃßÃâÇÏ´Â ¿¹Á¦.
+        - ì  ê²©ìíŒ ì´ë¯¸ì§€ë¡œ ì¹´ë©”ë¼ì˜ ì™œê³¡ ì •ë³´ ì¶”ì¶œí•˜ëŠ” ì˜ˆì œ.
       - CameraCalibrator_Undistortion 
         - An example of correcting the lens distortion of a camera with the distortion information calculated based on the calibration.
-        - Ä¶¸®ºê·¹ÀÌ¼ÇÀ» ¹ÙÅÁÀ¸·Î °è»êµÈ ¿Ö°î Á¤º¸·Î Ä«¸Ş¶óÀÇ ·»Áî ¿Ö°îÀ» º¸Á¤ÇÏ´Â ¿¹Á¦.
+        - ìº˜ë¦¬ë¸Œë ˆì´ì…˜ì„ ë°”íƒ•ìœ¼ë¡œ ê³„ì‚°ëœ ì™œê³¡ ì •ë³´ë¡œ ì¹´ë©”ë¼ì˜ ë Œì¦ˆ ì™œê³¡ì„ ë³´ì •í•˜ëŠ” ì˜ˆì œ.
 
     - [Orthogonal Calibrator]
 
       - OrthogonalCalibrator_Chessboard 
         - The example of extracting camera distortion information and converting it to the front direction as a chessboard image.
-        - Ã¼½ºº¸µå ÀÌ¹ÌÁö·Î Ä«¸Ş¶óÀÇ ¿Ö°î Á¤º¸ ÃßÃâÇÏ´Â ¿¹Á¦.
+        - ì²´ìŠ¤ë³´ë“œ ì´ë¯¸ì§€ë¡œ ì¹´ë©”ë¼ì˜ ì™œê³¡ ì •ë³´ ì¶”ì¶œí•˜ëŠ” ì˜ˆì œ.
       - OrthogonalCalibrator_GridOfDots 
         - The example of extracting camera distortion information and converting it to the front direction as a grid of dots image.
-        - Á¡ °İÀÚÆÇ ÀÌ¹ÌÁö·Î Ä«¸Ş¶óÀÇ ¿Ö°î Á¤º¸ ÃßÃâÇÏ´Â ¿¹Á¦.
+        - ì  ê²©ìíŒ ì´ë¯¸ì§€ë¡œ ì¹´ë©”ë¼ì˜ ì™œê³¡ ì •ë³´ ì¶”ì¶œí•˜ëŠ” ì˜ˆì œ.
 
   - [Data Code]
 
@@ -134,61 +134,61 @@
     
       - BarcodeDecoder
         - The example of an algorithm that detects and decodes barcode in an image.
-        - ÀÌ¹ÌÁö ³»ÀÇ ¹ÙÄÚµå¸¦ °ËÃâ ¹× µğÄÚµùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ ë‚´ì˜ ë°”ì½”ë“œë¥¼ ê²€ì¶œ ë° ë””ì½”ë”©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - BarcodeEncoder
         - The example of an algorithm that encodes the input string into a set barcode type.
-        - ÀÔ·ÂÇÑ ¹®ÀÚ¿­À» ¼³Á¤ÇÑ ¹ÙÄÚµå Å¸ÀÔÀ¸·Î ÀÎÄÚµùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì…ë ¥í•œ ë¬¸ìì—´ì„ ì„¤ì •í•œ ë°”ì½”ë“œ íƒ€ì…ìœ¼ë¡œ ì¸ì½”ë”©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Data Matrix]
     
       - DataMatrixDecoder
         - The example of an algorithm that detects and decodes datamatrix in an image.
-        - ÀÌ¹ÌÁö ³»ÀÇ µ¥ÀÌÅÍ ¸ÅÆ®¸¯½º¸¦ °ËÃâ ¹× µğÄÚµùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ ë‚´ì˜ ë°ì´í„° ë§¤íŠ¸ë¦­ìŠ¤ë¥¼ ê²€ì¶œ ë° ë””ì½”ë”©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - DataMatrixDecoder_CountAll
         - The example of an algorithm that detects and decodes all datamatrix in an image.
-        - ÀÌ¹ÌÁö ³»ÀÇ ¸ğµç µ¥ÀÌÅÍ ¸ÅÆ®¸¯½º¸¦ °ËÃâ ¹× µğÄÚµùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ ë‚´ì˜ ëª¨ë“  ë°ì´í„° ë§¤íŠ¸ë¦­ìŠ¤ë¥¼ ê²€ì¶œ ë° ë””ì½”ë”©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - DataMatrixEncoder
         - The example of an algorithm that encodes the input string into a datamatrix.
-        - ÀÔ·ÂÇÑ ¹®ÀÚ¿­À» µ¥ÀÌÅÍ ¸ÅÆ®¸¯½º·Î ÀÎÄÚµùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì…ë ¥í•œ ë¬¸ìì—´ì„ ë°ì´í„° ë§¤íŠ¸ë¦­ìŠ¤ë¡œ ì¸ì½”ë”©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [QR Code]
     
       - QRCodeDecoder
         - The example of an algorithm that detects and decodes QR code in an image.
-        - ÀÌ¹ÌÁö ³»ÀÇ QR ÄÚµå¸¦ °ËÃâ ¹× µğÄÚµùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ ë‚´ì˜ QR ì½”ë“œë¥¼ ê²€ì¶œ ë° ë””ì½”ë”©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - QRCodeEncoder
         - The example of an algorithm that encodes the input string into a QR code.
-        - ÀÔ·ÂÇÑ ¹®ÀÚ¿­À» QR ÄÚµå·Î ÀÎÄÚµùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì…ë ¥í•œ ë¬¸ìì—´ì„ QR ì½”ë“œë¡œ ì¸ì½”ë”©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         
     - [Micro QR Code]
     
       - MicroQRCodeDecoder
         - The example of an algorithm that detects and decodes Micro QR code in an image.
-        - ÀÌ¹ÌÁö ³»ÀÇ Micro QR ÄÚµå¸¦ °ËÃâ ¹× µğÄÚµùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ ë‚´ì˜ Micro QR ì½”ë“œë¥¼ ê²€ì¶œ ë° ë””ì½”ë”©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - MicroQRCodeEncoder
         - The example of an algorithm that encodes the input string into a Micro QR code.
-        - ÀÔ·ÂÇÑ ¹®ÀÚ¿­À» Micro QR ÄÚµå·Î ÀÎÄÚµùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì…ë ¥í•œ ë¬¸ìì—´ì„ Micro QR ì½”ë“œë¡œ ì¸ì½”ë”©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         
     - [Unified Data Code]
     
       - UnifiedDataCodeDecoder
         - The example of an algorithm that detect and decode all types of data code in an image.
-        - ÀÌ¹ÌÁö ³»ÀÇ ¸ğµç Å¸ÀÔÀÇ µ¥ÀÌÅÍ ÄÚµå¸¦ °ËÃâ ¹× µğÄÚµùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ ë‚´ì˜ ëª¨ë“  íƒ€ì…ì˜ ë°ì´í„° ì½”ë“œë¥¼ ê²€ì¶œ ë° ë””ì½”ë”©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Detector]
 
     - ChessboardDetector
       - The example of extracting information from a chessboard image.
-      - Ã¼½ºº¸µå ÀÌ¹ÌÁö·Î Á¤º¸¸¦ ÃßÃâÇÏ´Â ¿¹Á¦.
+      - ì²´ìŠ¤ë³´ë“œ ì´ë¯¸ì§€ë¡œ ì •ë³´ë¥¼ ì¶”ì¶œí•˜ëŠ” ì˜ˆì œ.
     - GridOfDotsDetector
       - The example of extracting information from a grid of dots image.
-      - Á¡ °İÀÚ ÀÌ¹ÌÁö·Î Á¤º¸¸¦ ÃßÃâÇÏ´Â ¿¹Á¦.
+      - ì  ê²©ì ì´ë¯¸ì§€ë¡œ ì •ë³´ë¥¼ ì¶”ì¶œí•˜ëŠ” ì˜ˆì œ.
     - GridOfCrossDetector
       - The example of extracting information from a grid of cross image.
-      - ½ÊÀÚ°¡ °İÀÚ ÀÌ¹ÌÁö·Î Á¤º¸¸¦ ÃßÃâÇÏ´Â ¿¹Á¦.
+      - ì‹­ìê°€ ê²©ì ì´ë¯¸ì§€ë¡œ ì •ë³´ë¥¼ ì¶”ì¶œí•˜ëŠ” ì˜ˆì œ.
     - GridOfRectangleDetector
       - The example of extracting information from a grid of rectangle image.
-      - »ç°¢Çü °İÀÚ ÀÌ¹ÌÁö·Î Á¤º¸¸¦ ÃßÃâÇÏ´Â ¿¹Á¦.
+      - ì‚¬ê°í˜• ê²©ì ì´ë¯¸ì§€ë¡œ ì •ë³´ë¥¼ ì¶”ì¶œí•˜ëŠ” ì˜ˆì œ.
 
   - [Measurement]
 
@@ -196,33 +196,33 @@
 
       - CircleGauge 
         - The algorithm example for estimating a circle within a measurement area of an image.
-        - ÀÌ¹ÌÁöÀÇ ÃøÁ¤¿µ¿ª ³»¿¡¼­ ¿øÀ» ÃøÁ¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ ì¸¡ì •ì˜ì—­ ë‚´ì—ì„œ ì›ì„ ì¸¡ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - EllipseGauge
         - The algorithm example for estimating a ellipse within a measurement area of an image.
-        - ÀÌ¹ÌÁöÀÇ ÃøÁ¤¿µ¿ª ³»¿¡¼­ Å¸¿øÀ» ÃøÁ¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ ì¸¡ì •ì˜ì—­ ë‚´ì—ì„œ íƒ€ì›ì„ ì¸¡ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - LineGauge 
         - The algorithm example for estimating a line within a measurement area of an image.
-        - ÀÌ¹ÌÁöÀÇ ÃøÁ¤¿µ¿ª ³»¿¡¼­ ¼±À» ÃøÁ¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ ì¸¡ì •ì˜ì—­ ë‚´ì—ì„œ ì„ ì„ ì¸¡ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - PointGauge 
         - The algorithm example for estimating boundary points within a measurement area of an image.
-        - ÀÌ¹ÌÁöÀÇ ÃøÁ¤¿µ¿ª ³»¿¡¼­ °æ°èÁ¡À» ÃøÁ¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ ì¸¡ì •ì˜ì—­ ë‚´ì—ì„œ ê²½ê³„ì ì„ ì¸¡ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - RectangleGauge 
         - The algorithm example for estimating a rectangle within a measurement area of an image.
-        - ÀÌ¹ÌÁöÀÇ ÃøÁ¤¿µ¿ª ³»¿¡¼­ Á÷»ç°¢ÇüÀ» ÃøÁ¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ ì¸¡ì •ì˜ì—­ ë‚´ì—ì„œ ì§ì‚¬ê°í˜•ì„ ì¸¡ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - CrossGauge 
         - The algorithm example for estimating a cross within a measurement area of an image.
-        - ÀÌ¹ÌÁöÀÇ ÃøÁ¤¿µ¿ª ³»¿¡¼­ ½ÊÀÚÇüÀ» ÃøÁ¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ ì¸¡ì •ì˜ì—­ ë‚´ì—ì„œ ì‹­ìí˜•ì„ ì¸¡ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - CornerGauge 
         - The algorithm example for estimating a corner within a measurement area of an image.
-        - ÀÌ¹ÌÁöÀÇ ÃøÁ¤¿µ¿ª ³»¿¡¼­ ÄÚ³Ê¸¦ ÃøÁ¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ ì¸¡ì •ì˜ì—­ ë‚´ì—ì„œ ì½”ë„ˆë¥¼ ì¸¡ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - ModulationTransferFunction 
         - The algorithm example to calculate the Modulation Transfer Function(MTF) of an image.
-        - ÀÌ¹ÌÁöÀÇ Modulation Transfer Function(MTF)¸¦ ±¸ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ Modulation Transfer Function(MTF)ë¥¼ êµ¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - PeripheralLuminance 
         - The algorithm example to calculate the luminance difference between the measurement area and the surrounding area as a ratio of an image.
-        - ÀÌ¹ÌÁöÀÇ ÃøÁ¤ ¿µ¿ª°ú ÁÖº¯ ¿µ¿ªÀÇ ÈÖµµÀÇ Â÷ÀÌ¿¡ ´ëÇÑ ºñÀ² ±¸ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ ì¸¡ì • ì˜ì—­ê³¼ ì£¼ë³€ ì˜ì—­ì˜ íœ˜ë„ì˜ ì°¨ì´ì— ëŒ€í•œ ë¹„ìœ¨ êµ¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
 
   - [Match]
@@ -231,95 +231,95 @@
     
       - DrawingMatch_UsingFigure
         - The algorithm example that learns geometric information within drawing figure and searches for matching geometric patterns in a dectected image.
-        - ÇÏ³ªÀÇ µµ¸é ±âÇÏÇĞÀû Á¤º¸¸¦ ÇĞ½ÀÇÏ¿©, °ËÃâ ÀÌ¹ÌÁö¿¡¼­ ÀÏÄ¡ÇÏ´Â ±âÇÏÇĞÀû ÆĞÅÏÀ» Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - í•˜ë‚˜ì˜ ë„ë©´ ê¸°í•˜í•™ì  ì •ë³´ë¥¼ í•™ìŠµí•˜ì—¬, ê²€ì¶œ ì´ë¯¸ì§€ì—ì„œ ì¼ì¹˜í•˜ëŠ” ê¸°í•˜í•™ì  íŒ¨í„´ì„ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - DrawingMatch_UsingGerber
         - The algorithm example that learns geometric information within drawing gerber and searches for matching geometric patterns in a dectected image.
-        - ÇÏ³ªÀÇ °Å¹ö ÆÄÀÏÀÇ µµ¸é ±âÇÏÇĞÀû Á¤º¸¸¦ ÇĞ½ÀÇÏ¿©, °ËÃâ ÀÌ¹ÌÁö¿¡¼­ ÀÏÄ¡ÇÏ´Â ±âÇÏÇĞÀû ÆĞÅÏÀ» Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - í•˜ë‚˜ì˜ ê±°ë²„ íŒŒì¼ì˜ ë„ë©´ ê¸°í•˜í•™ì  ì •ë³´ë¥¼ í•™ìŠµí•˜ì—¬, ê²€ì¶œ ì´ë¯¸ì§€ì—ì„œ ì¼ì¹˜í•˜ëŠ” ê¸°í•˜í•™ì  íŒ¨í„´ì„ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         
     - [Geometric Match]
     
       - GeometricMatch
         - The algorithm example that learns geometric information within a region of interest in an image and searches for matching geometric patterns in a dectected image.
-        - ÇÏ³ªÀÇ ÀÌ¹ÌÁö °ü½É¿µ¿ª ³»¿¡¼­ ±âÇÏÇĞÀû Á¤º¸¸¦ ÇĞ½ÀÇÏ¿©, °ËÃâ ÀÌ¹ÌÁö¿¡¼­ ÀÏÄ¡ÇÏ´Â ±âÇÏÇĞÀû ÆĞÅÏÀ» Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - í•˜ë‚˜ì˜ ì´ë¯¸ì§€ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ ê¸°í•˜í•™ì  ì •ë³´ë¥¼ í•™ìŠµí•˜ì—¬, ê²€ì¶œ ì´ë¯¸ì§€ì—ì„œ ì¼ì¹˜í•˜ëŠ” ê¸°í•˜í•™ì  íŒ¨í„´ì„ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - GeometricMatch_SaveLoad
         - The algorithm example of save and load algorithm for geometric match
-        - ±âÇÏÇĞÀû ½Ì±Û¸ÅÄªÀÇ ÀúÀå ¹× ·Îµå ¿¹Á¦.
+        - ê¸°í•˜í•™ì  ì‹±ê¸€ë§¤ì¹­ì˜ ì €ì¥ ë° ë¡œë“œ ì˜ˆì œ.
 
     - [Geometric Match Multi]
     
       - GeometricMatchMulti
         - The algorithm example that learns geometrical information within one or more different image regions of interest, assigns a unique class name   and searches for matching geometrical patterns in a detected image for the learned class and classifies the class.
-        - ÇÏ³ª ÀÌ»óÀÇ ¼­·Î ´Ù¸¥ ÀÌ¹ÌÁö °ü½É¿µ¿ª ³»¿¡¼­ ±âÇÏÇĞÀû Á¤º¸¸¦ ÇĞ½À ¹× °íÀ¯ÀÇ Å¬·¡½º ÀÌ¸§À» ºÎ¿©ÇÏ°í ÇĞ½ÀµÈ Å¬·¡½º¿¡ ´ëÇØ °ËÃâ ÀÌ¹ÌÁö¿¡¼­ ÀÏÄ¡ÇÏ´Â ±âÇĞÀû ÆĞÅÏÀ» Å½»ö ¹× Å¬·¡½º¸¦ ºĞ·ùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - í•˜ë‚˜ ì´ìƒì˜ ì„œë¡œ ë‹¤ë¥¸ ì´ë¯¸ì§€ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ ê¸°í•˜í•™ì  ì •ë³´ë¥¼ í•™ìŠµ ë° ê³ ìœ ì˜ í´ë˜ìŠ¤ ì´ë¦„ì„ ë¶€ì—¬í•˜ê³  í•™ìŠµëœ í´ë˜ìŠ¤ì— ëŒ€í•´ ê²€ì¶œ ì´ë¯¸ì§€ì—ì„œ ì¼ì¹˜í•˜ëŠ” ê¸°í•™ì  íŒ¨í„´ì„ íƒìƒ‰ ë° í´ë˜ìŠ¤ë¥¼ ë¶„ë¥˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - GeometricMatchMulti_SaveLoad
         - The algorithm example of save and load algorithm for geometric multi match
-        - ±âÇÏÇĞÀû ¸ÖÆ¼¸ÅÄªÀÇ ÀúÀå ¹× ·Îµå ¿¹Á¦.
+        - ê¸°í•˜í•™ì  ë©€í‹°ë§¤ì¹­ì˜ ì €ì¥ ë° ë¡œë“œ ì˜ˆì œ.
         
     - [Pattern Match]
     
       - PatternMatch
         - The algorithm example that learns pattern information within a region of interest in an image and searches for matching patterns in a dectectedimage.
-        - ÇÏ³ªÀÇ ÀÌ¹ÌÁö °ü½É¿µ¿ª ³»¿¡¼­ ÆĞÅÏ Á¤º¸¸¦ ÇĞ½ÀÇÏ¿©, °ËÃâ ÀÌ¹ÌÁö¿¡¼­ ÀÏÄ¡ÇÏ´Â ÆĞÅÏÀ» Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - í•˜ë‚˜ì˜ ì´ë¯¸ì§€ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ íŒ¨í„´ ì •ë³´ë¥¼ í•™ìŠµí•˜ì—¬, ê²€ì¶œ ì´ë¯¸ì§€ì—ì„œ ì¼ì¹˜í•˜ëŠ” íŒ¨í„´ì„ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - PatternMatch_SaveLoad
         - The algorithm example of save and load algorithm for pattern match
-        - ÆĞÅÏ ½Ì±Û¸ÅÄªÀÇ ÀúÀå ¹× ·Îµå ¿¹Á¦.
+        - íŒ¨í„´ ì‹±ê¸€ë§¤ì¹­ì˜ ì €ì¥ ë° ë¡œë“œ ì˜ˆì œ.
         
     - [Pattern Match Sparse]
     
       - PatternMatchSparse
         - The algorithm example that learns pattern information sampled with a certain standard within a region of interest in an image and searches for matching patterns in a dectectedimage.
-        - ÇÏ³ªÀÇ ÀÌ¹ÌÁö °ü½É¿µ¿ª ³»¿¡¼­ ÀÏÁ¤ÇÑ ±âÁØÀ¸·Î »ùÇÃ¸µµÈ Á¤º¸¸¦ ÇĞ½ÀÇÏ¿©, °ËÃâ ÀÌ¹ÌÁö¿¡¼­ ÀÏÄ¡ÇÏ´Â ÆĞÅÏÀ» Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - í•˜ë‚˜ì˜ ì´ë¯¸ì§€ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ ì¼ì •í•œ ê¸°ì¤€ìœ¼ë¡œ ìƒ˜í”Œë§ëœ ì •ë³´ë¥¼ í•™ìŠµí•˜ì—¬, ê²€ì¶œ ì´ë¯¸ì§€ì—ì„œ ì¼ì¹˜í•˜ëŠ” íŒ¨í„´ì„ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - PatternMatchSparse_SaveLoad
         - The algorithm example of save and load algorithm for pattern match sparse
-        - ÆĞÅÏ ½Ì±Û¸ÅÄªÀÇ ÀúÀå ¹× ·Îµå ¿¹Á¦.
+        - íŒ¨í„´ ì‹±ê¸€ë§¤ì¹­ì˜ ì €ì¥ ë° ë¡œë“œ ì˜ˆì œ.
 
     - [Pattern Match Multi]
     
       - PatternMatchMulti
         - The algorithm example that learns pattern information within one or more different image regions of interest, assigns a unique class name   andsearches for matching patterns in a detected image for the learned class and classifies the class.
-        - ÇÏ³ª ÀÌ»óÀÇ ¼­·Î ´Ù¸¥ ÀÌ¹ÌÁö °ü½É¿µ¿ª ³»¿¡¼­ ÆĞÅÏ Á¤º¸¸¦ ÇĞ½À ¹× °íÀ¯ÀÇ Å¬·¡½º ÀÌ¸§À» ºÎ¿©ÇÏ°í ÇĞ½ÀµÈ Å¬·¡½º¿¡ ´ëÇØ °ËÃâ ÀÌ¹ÌÁö¿¡¼­ ÀÏÄ¡ÇÏ´Â ÆĞÅÏ  À»Å½»ö ¹× Å¬·¡½º¸¦ ºĞ·ùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - í•˜ë‚˜ ì´ìƒì˜ ì„œë¡œ ë‹¤ë¥¸ ì´ë¯¸ì§€ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ íŒ¨í„´ ì •ë³´ë¥¼ í•™ìŠµ ë° ê³ ìœ ì˜ í´ë˜ìŠ¤ ì´ë¦„ì„ ë¶€ì—¬í•˜ê³  í•™ìŠµëœ í´ë˜ìŠ¤ì— ëŒ€í•´ ê²€ì¶œ ì´ë¯¸ì§€ì—ì„œ ì¼ì¹˜í•˜ëŠ” íŒ¨í„´  ì„íƒìƒ‰ ë° í´ë˜ìŠ¤ë¥¼ ë¶„ë¥˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - PatternMatchMulti_SaveLoad
         - The algorithm example of save and load algorithm for pattern multi match
-        - ÆĞÅÏ ¸ÖÆ¼¸ÅÄªÀÇ ÀúÀå ¹× ·Îµå ¿¹Á¦.
+        - íŒ¨í„´ ë©€í‹°ë§¤ì¹­ì˜ ì €ì¥ ë° ë¡œë“œ ì˜ˆì œ.
 
         
     - [Pattern Match Multi Sparse]
     
       - PatternMatchMultiSparse
         - The algorithm example that learns pattern information sampled with a certain standard within a region of interest in one or more different image and searches for matching patterns in a dectectedimage.
-        - ÇÏ³ª ÀÌ»óÀÇ ¼­·Î ´Ù¸¥ ÀÌ¹ÌÁö °ü½É¿µ¿ª ³»¿¡¼­ ÀÏÁ¤ÇÑ ±âÁØÀ¸·Î »ùÇÃ¸µµÈ Á¤º¸¸¦ ÇĞ½ÀÇÏ¿©, °ËÃâ ÀÌ¹ÌÁö¿¡¼­ ÀÏÄ¡ÇÏ´Â ÆĞÅÏÀ» Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - í•˜ë‚˜ ì´ìƒì˜ ì„œë¡œ ë‹¤ë¥¸ ì´ë¯¸ì§€ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ ì¼ì •í•œ ê¸°ì¤€ìœ¼ë¡œ ìƒ˜í”Œë§ëœ ì •ë³´ë¥¼ í•™ìŠµí•˜ì—¬, ê²€ì¶œ ì´ë¯¸ì§€ì—ì„œ ì¼ì¹˜í•˜ëŠ” íŒ¨í„´ì„ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - PatternMatchMultiSparse_SaveLoad
         - The algorithm example of save and load algorithm for pattern match multi sparse
-        - ÆĞÅÏ ¸ÖÆ¼¸ÅÄªÀÇ ÀúÀå ¹× ·Îµå ¿¹Á¦.
+        - íŒ¨í„´ ë©€í‹°ë§¤ì¹­ì˜ ì €ì¥ ë° ë¡œë“œ ì˜ˆì œ.
 
     - RectangleArrayMatch
       - The algorithm example that searchs for matching pattern array in detection image through pattern information on ROI array
-      - °ü½É¿µ¿ª ¹è¿­¿¡ ´ëÇÑ ÆĞÅÏ Á¤º¸¸¦ ÅëÇØ, °ËÃâ ÀÌ¹ÌÁö¿¡¼­ ÀÏÄ¡ÇÏ´Â ÆĞÅÏ ¹è¿­À» Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.     
+      - ê´€ì‹¬ì˜ì—­ ë°°ì—´ì— ëŒ€í•œ íŒ¨í„´ ì •ë³´ë¥¼ í†µí•´, ê²€ì¶œ ì´ë¯¸ì§€ì—ì„œ ì¼ì¹˜í•˜ëŠ” íŒ¨í„´ ë°°ì—´ì„ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.     
       
     - [Shape Match]
     
       - Shape Match Circle
         - Example of an algorithm that explores the shape of a set circle within an image.
-        - ¼³Á¤ÇÑ ¿øÀÇ ÇüÅÂ¸¦ ÀÌ¹ÌÁö ³»¿¡¼­ Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì„¤ì •í•œ ì›ì˜ í˜•íƒœë¥¼ ì´ë¯¸ì§€ ë‚´ì—ì„œ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         
       - Shape Match Ellipse
         - Example of an algorithm that explores the shape of a set ellipse within an image.
-        - ¼³Á¤ÇÑ Å¸¿øÀÇ ÇüÅÂ¸¦ ÀÌ¹ÌÁö ³»¿¡¼­ Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì„¤ì •í•œ íƒ€ì›ì˜ í˜•íƒœë¥¼ ì´ë¯¸ì§€ ë‚´ì—ì„œ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         
       - Shape Match Line
         - Example of an algorithm that explores the shape of a set line within an image.
-        - ¼³Á¤ÇÑ ¼±ÀÇ ÇüÅÂ¸¦ ÀÌ¹ÌÁö ³»¿¡¼­ Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì„¤ì •í•œ ì„ ì˜ í˜•íƒœë¥¼ ì´ë¯¸ì§€ ë‚´ì—ì„œ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         
       - Shape Match Rectangle
         - Example of an algorithm that explores the shape of a set rectangle within an image.
-        - ¼³Á¤ÇÑ »ç°¢ÇüÀÇ ÇüÅÂ¸¦ ÀÌ¹ÌÁö ³»¿¡¼­ Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì„¤ì •í•œ ì‚¬ê°í˜•ì˜ í˜•íƒœë¥¼ ì´ë¯¸ì§€ ë‚´ì—ì„œ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         
       - Shape Match Cross
         - Example of an algorithm that explores the shape of a set cross within an image.
-        - ¼³Á¤ÇÑ ½ÊÀÚÀÇ ÇüÅÂ¸¦ ÀÌ¹ÌÁö ³»¿¡¼­ Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì„¤ì •í•œ ì‹­ìì˜ í˜•íƒœë¥¼ ì´ë¯¸ì§€ ë‚´ì—ì„œ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         
       - Shape Match Figure
         - Example of an algorithm that explores the shape of a set figure within an image.
-        - ¼³Á¤ÇÑ µµÇüÀ» ÀÌ¹ÌÁö ³»¿¡¼­ Å½»öÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì„¤ì •í•œ ë„í˜•ì„ ì´ë¯¸ì§€ ë‚´ì—ì„œ íƒìƒ‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         
   - [Object]
 
@@ -327,112 +327,112 @@
     
       - Blob_Area
         - The example of a Blob algorithm that outputs area results.
-        - ¸éÀû Å©±â °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦. 
+        - ë©´ì  í¬ê¸° ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ. 
       - Blob_BoundaryRect
         - The example of Blob algorithm that output in the form of a boundary box.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ »ç°¢ °æ°è ¹Ú½º ÇüÅÂ·Î Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ ì‚¬ê° ê²½ê³„ ë°•ìŠ¤ í˜•íƒœë¡œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
       - Blob_BoundaryRect_ResultInfo
         - The example of Blob algorithm that output in the form of a boundary box and result information.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ »ç°¢ °æ°è ¹Ú½º ÇüÅÂ·Î Ãâ·ÂÇÏ°í °á°ú Á¤º¸¸¦ Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ ì‚¬ê° ê²½ê³„ ë°•ìŠ¤ í˜•íƒœë¡œ ì¶œë ¥í•˜ê³  ê²°ê³¼ ì •ë³´ë¥¼ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
       - Blob_Circularity
         - The example of a Blob algorithm that outputs circularity results.
-        - circularity °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦. 
+        - circularity ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ. 
       - Blob_Contour
         - The example of Blob algorithm that output in the form of a contour.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ À±°û¼± ÇüÅÂ·Î Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ ìœ¤ê³½ì„  í˜•íƒœë¡œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
       - Blob_Contour_Perforated
         - The example of Blob algorithm that output in the form of a perforated contour.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ ±¸¸Û ¶Õ¸° À±°û¼± ÇüÅÂ·Î Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ êµ¬ë© ëš«ë¦° ìœ¤ê³½ì„  í˜•íƒœë¡œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
       - Blob_ContourLength
         - The example of a Blob algorithm that outputs contour length results.
-        - À±°û¼± ±æÀÌ °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦. 
+        - ìœ¤ê³½ì„  ê¸¸ì´ ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ. 
       - Blob_GravityCenter
         - The example of a Blob algorithm that outputs gravity center results.
-        - ¹«°ÔÁß½É °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦. 
+        - ë¬´ê²Œì¤‘ì‹¬ ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ. 
       - Blob_Mean_Variance_StandardDeviation
         - The example of a Blob algorithm that outputs mean, variance, standard deviation results.
-        - Æò±Õ, ºĞ»ê, Ç¥ÁØ ÆíÂ÷ °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦
+        - í‰ê· , ë¶„ì‚°, í‘œì¤€ í¸ì°¨ ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ
       - Blob_Median_Quartile
         - The example of a Blob algorithm that outputs median, 25 quartile and 75 quartile results.
-        - Áß°£°ª, 25»çºĞÀ§¼ö, 75»çºĞÀ§¼ö °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦
+        - ì¤‘ê°„ê°’, 25ì‚¬ë¶„ìœ„ìˆ˜, 75ì‚¬ë¶„ìœ„ìˆ˜ ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ
       - Blob_Min_Max
         - The example of a Blob algorithm that outputs min, max results.
-        - ÃÖ¼Ò°ª, ÃÖ´ë°ª °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦
+        - ìµœì†Œê°’, ìµœëŒ€ê°’ ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ
       - Blob_Sort
         - The example of Blob algorithm that sorts and output the results.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ °á°ú¸¦ Á¤·ÄÇÏ¿© Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ ê²°ê³¼ë¥¼ ì •ë ¬í•˜ì—¬ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
       - Blob_SortClusterMode
         - The example of outputting the result of the connection element detection algorithm as an alignment state based on human judgment in a twodimensional plane.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ °á°ú¸¦ 2Â÷¿ø Æò¸é¿¡¼­ ÀÎ°£ÀÇ ÆÇ´Ü±âÁØ¿¡¼­ÀÇ Á¤·Ä »óÅÂ·Î Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ ê²°ê³¼ë¥¼ 2ì°¨ì› í‰ë©´ì—ì„œ ì¸ê°„ì˜ íŒë‹¨ê¸°ì¤€ì—ì„œì˜ ì •ë ¬ ìƒíƒœë¡œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
         
     - [BlobSubsampled]
     
       - BlobSubsampled_Area
         - The example of a Blob algorithm that outputs area results.
-        - ¸éÀû Å©±â °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦. 
+        - ë©´ì  í¬ê¸° ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ. 
       - BlobSubsampled_BoundaryRect
         - The example of Blob algorithm that output in the form of a boundary box.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ »ç°¢ °æ°è ¹Ú½º ÇüÅÂ·Î Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ ì‚¬ê° ê²½ê³„ ë°•ìŠ¤ í˜•íƒœë¡œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
       - BoundaryRect_ResultInfo
         - The example of Blob algorithm that output in the form of a boundary box and result information.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ »ç°¢ °æ°è ¹Ú½º ÇüÅÂ·Î Ãâ·ÂÇÏ°í °á°ú Á¤º¸¸¦ Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ ì‚¬ê° ê²½ê³„ ë°•ìŠ¤ í˜•íƒœë¡œ ì¶œë ¥í•˜ê³  ê²°ê³¼ ì •ë³´ë¥¼ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
       - BlobSubsampled_Circularity
         - The example of a Blob algorithm that outputs circularity results.
-        - circularity °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦. 
+        - circularity ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ. 
       - BlobSubsampled_Contour
         - The example of Blob algorithm that output in the form of a contour.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ À±°û¼± ÇüÅÂ·Î Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ ìœ¤ê³½ì„  í˜•íƒœë¡œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
       - BlobSubsampled_Contour_Perforated
         - The example of Blob algorithm that output in the form of a perforated contour.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ ±¸¸Û ¶Õ¸° À±°û¼± ÇüÅÂ·Î Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ êµ¬ë© ëš«ë¦° ìœ¤ê³½ì„  í˜•íƒœë¡œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
       - BlobSubsampled_ContourLength
         - The example of a Blob algorithm that outputs contour length results.
-        - À±°û¼± ±æÀÌ °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦. 
+        - ìœ¤ê³½ì„  ê¸¸ì´ ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ. 
       - BlobSubsampled_GravityCenter
         - The example of a Blob algorithm that outputs gravity center results.
-        - ¹«°ÔÁß½É °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦. 
+        - ë¬´ê²Œì¤‘ì‹¬ ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ. 
       - BlobSubsampled_Mean_Variance_StandardDeviation
         - The example of a Blob algorithm that outputs mean, variance, standard deviation results.
-        - Æò±Õ, ºĞ»ê, Ç¥ÁØ ÆíÂ÷ °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦
+        - í‰ê· , ë¶„ì‚°, í‘œì¤€ í¸ì°¨ ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ
       - BlobSubsampled_Median_Quartile
         - The example of a Blob algorithm that outputs median, 25 quartile and 75 quartile results.
-        - Áß°£°ª, 25»çºĞÀ§¼ö, 75»çºĞÀ§¼ö °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦
+        - ì¤‘ê°„ê°’, 25ì‚¬ë¶„ìœ„ìˆ˜, 75ì‚¬ë¶„ìœ„ìˆ˜ ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ
       - BlobSubsampled_Min_Max
         - The example of a Blob algorithm that outputs min, max results.
-        - ÃÖ¼Ò°ª, ÃÖ´ë°ª °á°ú¸¦ Ãâ·ÂÇÏ´Â Blob ¾Ë°í¸®ÁòÀÇ ¿¹Á¦
+        - ìµœì†Œê°’, ìµœëŒ€ê°’ ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” Blob ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ
       - BlobSubsampled_Sort
         - The example of Blob algorithm that sorts and output the results.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ °á°ú¸¦ Á¤·ÄÇÏ¿© Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ ê²°ê³¼ë¥¼ ì •ë ¬í•˜ì—¬ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
       - BlobSubsampled_SortClusterMode
         - The example of outputting the result of the connection element detection algorithm as an alignment state based on human judgment in a twodimensional plane.
-        - ¿¬°á ¿ä¼Ò °ËÃâ ¾Ë°í¸®ÁòÀÇ °á°ú¸¦ 2Â÷¿ø Æò¸é¿¡¼­ ÀÎ°£ÀÇ ÆÇ´Ü±âÁØ¿¡¼­ÀÇ Á¤·Ä »óÅÂ·Î Ãâ·ÂÇÏ´Â ¿¹Á¦.
+        - ì—°ê²° ìš”ì†Œ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ì˜ ê²°ê³¼ë¥¼ 2ì°¨ì› í‰ë©´ì—ì„œ ì¸ê°„ì˜ íŒë‹¨ê¸°ì¤€ì—ì„œì˜ ì •ë ¬ ìƒíƒœë¡œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ.
 
     - [Mura]
 
       - Mura_Line
         - The algorithm example that detects line mura defects.
-        - ¼± Mura¸¦ °ËÃâÇÏ´Â Mura ¾Ë°í¸®ÁòÀÇ ¿¹Á¦.
+        - ì„  Muraë¥¼ ê²€ì¶œí•˜ëŠ” Mura ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ.
       - Mura_Region
         - The algorithm example that detects region mura defects.
-        - ¿µ¿ª Mura¸¦ °ËÃâÇÏ´Â Mura ¾Ë°í¸®ÁòÀÇ ¿¹Á¦.
+        - ì˜ì—­ Muraë¥¼ ê²€ì¶œí•˜ëŠ” Mura ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ.
       - Mura_Spot
         - The algorithm example that detects spot mura defects.
-        - Á¡ Mura¸¦ °ËÃâÇÏ´Â Mura ¾Ë°í¸®ÁòÀÇ ¿¹Á¦.
+        - ì  Muraë¥¼ ê²€ì¶œí•˜ëŠ” Mura ì•Œê³ ë¦¬ì¦˜ì˜ ì˜ˆì œ.
 
   - [Optical Character]
 
     - OpticalCharacterRecognition
       - The example of an algorithm that recognizes character in an image.
-      - ÀÌ¹ÌÁö ³»ÀÇ ¹®ÀÚ¸¦ ÀÎ½ÄÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ ë‚´ì˜ ë¬¸ìë¥¼ ì¸ì‹í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OpticalCharacterVerification
       - The example of an algorithm that verifies character in an image.
-      - ÀÌ¹ÌÁö ³»ÀÇ ¹®ÀÚ¸¦ °ËÁõÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ ë‚´ì˜ ë¬¸ìë¥¼ ê²€ì¦í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       
   - [Optical Flow]
     
     - OpticalFlow Polynomial Expansion     
       - The example of an algorithm that computes optical flow from an image set based on polynomial expansion.
-      - ´ÙÇ×½Ä Àü°³ ±â¹İÀ¸·Î ÀÌ¹ÌÁö ÁıÇÕÀÇ ±¤ÇĞÀû Èå¸§À» °è»êÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë‹¤í•­ì‹ ì „ê°œ ê¸°ë°˜ìœ¼ë¡œ ì´ë¯¸ì§€ ì§‘í•©ì˜ ê´‘í•™ì  íë¦„ì„ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
 - [AI]
 
@@ -440,69 +440,69 @@
    
     - AnomalyDetection
        - Example of an algorithm for AnomalyDetection validation images using models learned through Check Anomal for training images with figures.
-       - Á¤»ó ÀÌ¹ÌÁö¿¡ ´ëÇØ AnomalyDetectionÀ» ÅëÇÏ¿© ÇĞ½ÀÇÑ ¸ğµ¨À» »ç¿ëÇÏ¿© ÀÌ¹ÌÁöÀÇ Á¤»ó/ºñÁ¤»óÀ» ºĞ·ùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+       - ì •ìƒ ì´ë¯¸ì§€ì— ëŒ€í•´ AnomalyDetectionì„ í†µí•˜ì—¬ í•™ìŠµí•œ ëª¨ë¸ì„ ì‚¬ìš©í•˜ì—¬ ì´ë¯¸ì§€ì˜ ì •ìƒ/ë¹„ì •ìƒì„ ë¶„ë¥˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
        - Examples of algorithms that operate and classify learning/reasoning images by Tiling
 
     - Classifier_PageNameLabel
        - Example of algorithms that classifies validation images using a model learned through training images labeled by page names.
-       - ÆäÀÌÁö ÀÌ¸§À¸·Î ¶óº§¸µµÈ ÇĞ½À ÀÌ¹ÌÁöµé¿¡ ´ëÇØ classifier¸¦ ÅëÇÏ¿© ÇĞ½ÀÇÑ ¸ğµ¨À» »ç¿ëÇÏ¿© °ËÁõ ÀÌ¹ÌÁö¸¦ ºĞ·ùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+       - í˜ì´ì§€ ì´ë¦„ìœ¼ë¡œ ë¼ë²¨ë§ëœ í•™ìŠµ ì´ë¯¸ì§€ë“¤ì— ëŒ€í•´ classifierë¥¼ í†µí•˜ì—¬ í•™ìŠµí•œ ëª¨ë¸ì„ ì‚¬ìš©í•˜ì—¬ ê²€ì¦ ì´ë¯¸ì§€ë¥¼ ë¶„ë¥˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - Classifier_FigureLabel
        - Example of an algorithm for classifying validation images with figures using models learned through classifier for training images with figures.
-       - Figure°¡ ÀÖ´Â ÇĞ½À ÀÌ¹ÌÁöµé¿¡ ´ëÇØ classifier¸¦ ÅëÇÏ¿© ÇĞ½ÀÇÑ ¸ğµ¨À» »ç¿ëÇÏ¿© Figure°¡ ÀÖ´Â °ËÁõ ÀÌ¹ÌÁö¸¦ ºĞ·ùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+       - Figureê°€ ìˆëŠ” í•™ìŠµ ì´ë¯¸ì§€ë“¤ì— ëŒ€í•´ classifierë¥¼ í†µí•˜ì—¬ í•™ìŠµí•œ ëª¨ë¸ì„ ì‚¬ìš©í•˜ì—¬ Figureê°€ ìˆëŠ” ê²€ì¦ ì´ë¯¸ì§€ë¥¼ ë¶„ë¥˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - FullyConnected_XOR
        - Example of training a model with XOR results using CComputationalGraph Operation layer.
-       - CComputationalGraph ¿¬»ê layerµéÀ» »ç¿ëÇÏ¿© XOR¿Í °°Àº °á°ú ³ª¿À´Â ¸ğµ¨À» ÇĞ½ÀÇÏ´Â ¿¹Á¦.
+       - CComputationalGraph ì—°ì‚° layerë“¤ì„ ì‚¬ìš©í•˜ì—¬ XORì™€ ê°™ì€ ê²°ê³¼ ë‚˜ì˜¤ëŠ” ëª¨ë¸ì„ í•™ìŠµí•˜ëŠ” ì˜ˆì œ.
 
     - SemanticSegmentation
        - Example of an algorithm for SemanticSegmentation validation images with figures using models learned through SemanticSegmentation for training images with figures.
-       - Figure°¡ ÀÖ´Â ÇĞ½À ÀÌ¹ÌÁöµé¿¡ ´ëÇØ SemanticSegmentationÀ» ÅëÇÏ¿© ÇĞ½ÀÇÑ ¸ğµ¨À» »ç¿ëÇÏ¿© Figure°¡ ÀÖ´Â °ËÁõ ÀÌ¹ÌÁö¸¦ ºĞ·ùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+       - Figureê°€ ìˆëŠ” í•™ìŠµ ì´ë¯¸ì§€ë“¤ì— ëŒ€í•´ SemanticSegmentationì„ í†µí•˜ì—¬ í•™ìŠµí•œ ëª¨ë¸ì„ ì‚¬ìš©í•˜ì—¬ Figureê°€ ìˆëŠ” ê²€ì¦ ì´ë¯¸ì§€ë¥¼ ë¶„ë¥˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
        - Examples of algorithms that operate and classify learning/reasoning images by Tiling
-       - ÇĞ½À/Ãß·Ğ ÀÌ¹ÌÁö¸¦ Tiling Ã³¸®ÇÏ¿© µ¿ÀÛÇÏ¿© ºĞ·ùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+       - í•™ìŠµ/ì¶”ë¡  ì´ë¯¸ì§€ë¥¼ Tiling ì²˜ë¦¬í•˜ì—¬ ë™ì‘í•˜ì—¬ ë¶„ë¥˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       
     - SuperResolution
        - Example of an algorithm for SuperResolution validation images using models learned through high resolution for training images with figures.
-       - SuperResolutionÀ» ÅëÇÏ¿© ÇĞ½ÀÇÑ ¸ğµ¨À» »ç¿ëÇÏ¿© °íÈ­Áú ÀÌ¹ÌÁö¸¦ ¸¸´Ù´Â ¾Ë°í¸®Áò ¿¹Á¦.
+       - SuperResolutionì„ í†µí•˜ì—¬ í•™ìŠµí•œ ëª¨ë¸ì„ ì‚¬ìš©í•˜ì—¬ ê³ í™”ì§ˆ ì´ë¯¸ì§€ë¥¼ ë§Œë‹¤ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
  
     - OCR
        - Examples of optical character recognition algorithms based on deep learning.
-       - µö·¯´× ±â¹İÀÇ ±¤ÇĞ ¹®ÀÚ ÀÎ½Ä ¾Ë°í¸®Áò ¿¹Á¦.
+       - ë”¥ëŸ¬ë‹ ê¸°ë°˜ì˜ ê´‘í•™ ë¬¸ì ì¸ì‹ ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - ObjectDetection
        - Example of finding a desired object using a Bounding Box based on deep learning
-       - µö·¯´× ±â¹İÀÇ ¿øÇÏ´Â °´Ã¼¸¦ Bounding Box·Î Ã£´Â ¾Ë°í¸®Áò ¿¹Á¦
+       - ë”¥ëŸ¬ë‹ ê¸°ë°˜ì˜ ì›í•˜ëŠ” ê°ì²´ë¥¼ Bounding Boxë¡œ ì°¾ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
 
     - InstanceSegmentation
        - Example algorithm for classifying normal/abnormal images using models learned through Animal Detection.
-       - Figure°¡ ÀÖ´Â ÇĞ½À ÀÌ¹ÌÁöµé¿¡ ´ëÇØ InstanceSegmentationÀ» ÅëÇÏ¿© ÇĞ½ÀÇÑ ¸ğµ¨À» »ç¿ëÇÏ¿© Figure°¡ ÀÖ´Â °ËÁõ ÀÌ¹ÌÁö¸¦ ºĞ·ùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+       - Figureê°€ ìˆëŠ” í•™ìŠµ ì´ë¯¸ì§€ë“¤ì— ëŒ€í•´ InstanceSegmentationì„ í†µí•˜ì—¬ í•™ìŠµí•œ ëª¨ë¸ì„ ì‚¬ìš©í•˜ì—¬ Figureê°€ ìˆëŠ” ê²€ì¦ ì´ë¯¸ì§€ë¥¼ ë¶„ë¥˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Utilites]
     
     - AutoLabeler
        - Algorithm example that performs Auto Labeling using learned SemanticSegmenation objects
-       - ÇĞ½ÀµÈ SemanticSegmenation °´Ã¼¸¦ ÀÌ¿ëÇÏ¿© Auto Labeling ÀÛ¾÷À» ÇØÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦
+       - í•™ìŠµëœ SemanticSegmenation ê°ì²´ë¥¼ ì´ìš©í•˜ì—¬ Auto Labeling ì‘ì—…ì„ í•´ì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
 
     - LabelRenamer
        - Algorithm example that replace specific label names in a dataset with user-defined names.
-       - ÀÔ·Â¹ŞÀº ÀÌ¹ÌÁöÀÇ Æ¯Á¤ÇÑ ÀÌ¸§À» °¡Áø ¶óº§µéÀ» »ç¿ëÀÚ°¡ ¼³Á¤ÇÑ ÀÌ¸§À¸·Î Ä¡È¯ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+       - ì…ë ¥ë°›ì€ ì´ë¯¸ì§€ì˜ íŠ¹ì •í•œ ì´ë¦„ì„ ê°€ì§„ ë¼ë²¨ë“¤ì„ ì‚¬ìš©ìê°€ ì„¤ì •í•œ ì´ë¦„ìœ¼ë¡œ ì¹˜í™˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
 
     - UnnamedLabelRemover
        - Algorithm example that removes labels (figures) without names in an image.
-       - ÀÌ¹ÌÁöÀÇ ÀÌ¸§ÀÌ ¾ø´Â ¶óº§(ÇÇ°Ü)À» Á¦°ÅÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+       - ì´ë¯¸ì§€ì˜ ì´ë¦„ì´ ì—†ëŠ” ë¼ë²¨(í”¼ê²¨)ì„ ì œê±°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
 
     - ValidationImageExtractor
        - Algorithm example that classifies source images into Train Set and Validation Set at a fixed ratio.
-       - Source Image¸¦ Á¤ÇØÁø ºñÀ²·Î Train Set°ú Validation SetÀ¸·Î ºĞ·ùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+       - Source Imageë¥¼ ì •í•´ì§„ ë¹„ìœ¨ë¡œ Train Setê³¼ Validation Setìœ¼ë¡œ ë¶„ë¥˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
 
 - [Applications]
 
   - Mask_withBlob 
      - The algorithm example for masking the pixel values of an image to set value with Blob result.
-     - Blob °á°ú¸¦ °ü½É ¿µ¿ªÀ¸·Î ¼³Á¤ÇÏ¿© ÀÌ¹ÌÁöÀÇ ÇÈ¼¿°ªÀ» ¿øÇÏ´Â °ªÀ¸·Î º¯°æÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+     - Blob ê²°ê³¼ë¥¼ ê´€ì‹¬ ì˜ì—­ìœ¼ë¡œ ì„¤ì •í•˜ì—¬ ì´ë¯¸ì§€ì˜ í”½ì…€ê°’ì„ ì›í•˜ëŠ” ê°’ìœ¼ë¡œ ë³€ê²½í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
   - Paste_withBlob 
      - The example of an algorithm that pastes a ROI from a source image to a destination image with Blob.
-     - ¼Ò½º ÀÌ¹ÌÁö¿¡¼­ °ü½É ¿µ¿ªÀ» Blob °á°ú·Î ¼³Á¤ÇÏ°í ´ë»ó ÀÌ¹ÌÁö¿¡ ºÙ¿©³Ö´Â ¾Ë°í¸®Áò ¿¹Á¦.
+     - ì†ŒìŠ¤ ì´ë¯¸ì§€ì—ì„œ ê´€ì‹¬ ì˜ì—­ì„ Blob ê²°ê³¼ë¡œ ì„¤ì •í•˜ê³  ëŒ€ìƒ ì´ë¯¸ì§€ì— ë¶™ì—¬ë„£ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
 - [Devices]
 
@@ -510,70 +510,70 @@
 
     - DeviceCameraCrevis 
       - Example of connecting and operating Crevis Camera.
-      - Crevis Camera ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - Crevis Camera ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
     - DeviceCameraHIK 
       - Example of connecting and operating HIK Camera.
-      - HIK Camera ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - HIK Camera ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
 	- DeviceCameraiRAYPLE 
       - Example of connecting and operating iRAYPLE Camera.
-      - iRAYPLE Camera ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - iRAYPLE Camera ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
 	- DeviceCameraJai 
       - Example of connecting and operating Jai Camera.
-      - Jai Camera ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - Jai Camera ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
     - DeviceCameraMatrox 
       - Example of connecting and operating Matrox Camera.
-      - Matrox Camera ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - Matrox Camera ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
 	- DeviceCameraPhotoneo 
       - Example of connecting and operating Photoneo Camera.
-      - Photoneo Camera ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - Photoneo Camera ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
 	- DeviceCameraProntoCam
 	  - Example of connecting and operating ProntoCam Camera.
-      - ProntoCam Camera ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - ProntoCam Camera ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
 	- DeviceCameraPylon 
       - Example of connecting and operating Pylon Camera.
-      - Pylon Camera ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - Pylon Camera ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
     - DeviceCameraRealSense 
       - Example of connecting and operating Real Sense Camera.
-      - Real Sense Camera ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - Real Sense Camera ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
 
   - [DIO]
     
     - DeviceDIOAxl
       - Example of connecting and operating Axl DIO.
-      - Axl DIO ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - Axl DIO ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
 
   - [FrameGrabber]
 
     - DeviceCameraEGrabber
 	  - Example of connecting and operating eGrabber.
-      - eGrabber ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - eGrabber ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
 	- DeviceCameraMulticam
 	  - Example of connecting and operating Multicam.
-      - Multicam ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦.
+      - Multicam ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ.
 
   - [Motion]
 
     - DeviceMotionAxl
       - Example of connecting and operating Axl Motion. (Search Origin, Move Absolute Position, Move Incremental Position)
-      - Axl Motion ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦. (Search Origin, Move Absolute Position, Move Incremental Position)
+      - Axl Motion ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ. (Search Origin, Move Absolute Position, Move Incremental Position)
     - DeviceMotionEziMotionPlusRV6
 	  - Example of connecting and operating Ezi Motion Plus R V6. (Search Origin, Move Absolute Position, Move Incremental Position)
-      - Ezi Motion Plus R V6 ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦. (Search Origin, Move Absolute Position, Move Incremental Position)
+      - Ezi Motion Plus R V6 ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ. (Search Origin, Move Absolute Position, Move Incremental Position)
     - DeviceMotionXMC
 	  - Example of connecting and operating XMC. (Search Origin, Move Absolute Position, Move Incremental Position)
-      - XMC ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦. (Search Origin, Move Absolute Position, Move Incremental Position)
+      - XMC ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ. (Search Origin, Move Absolute Position, Move Incremental Position)
 
   - [Sensor]
 
     - DeviceLaserDisplacementSensorKeyence
       - Example of connecting and operating Keyence Laser Displacement Sensor.
-      - Keyence ·¹ÀÌÀú º¯À§ ¼¾¼­ ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦. 
+      - Keyence ë ˆì´ì € ë³€ìœ„ ì„¼ì„œ ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ. 
 
   - [Trigger]
 
     - DeviceTriggerAxl
       - Example of connecting and operating Axl Trigger.
-      - Axl Trigger ¿¬°á ¹× ±¸µ¿ÇÏ´Â ¿¹Á¦. 
+      - Axl Trigger ì—°ê²° ë° êµ¬ë™í•˜ëŠ” ì˜ˆì œ. 
 
 - [GUI, Figures]
 
@@ -581,173 +581,173 @@
 
     - View3D
       - The example of using 3D view.
-      - 3D ºä »ç¿ë¿¡ °üÇÑ ¿¹Á¦.
+      - 3D ë·° ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œ.
     - View3DIntoDialog 
       - The example of inserting an 3D view into a dialog and using it.
-      - 3D ºä¸¦ ´ÙÀÌ¾ó·Î±×¿¡ »ğÀÔÇØ¼­ »ç¿ëÇÏ´Â ¿¹Á¦.
+      - 3D ë·°ë¥¼ ë‹¤ì´ì–¼ë¡œê·¸ì— ì‚½ì…í•´ì„œ ì‚¬ìš©í•˜ëŠ” ì˜ˆì œ.
     - ROIUtilities3D
       - Example of using ROIUtilities3D. This example demonstrates setting the ROI area for a 3D object and obtaining the parts included in the ROI.
-      - ROIUtilities3D »ç¿ë¿¡ °üÇÑ ¿¹Á¦. 3D °´Ã¼¿¡ ´ëÇØ ROI ¿µ¿ªÀ» ¼³Á¤ÇÏ°í, ROI ¿¡ Æ÷ÇÔµÇ´Â ºÎºĞÀ» ¾ò¾î ¿À´Â ¿¹Á¦ÀÔ´Ï´Ù.
+      - ROIUtilities3D ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œ. 3D ê°ì²´ì— ëŒ€í•´ ROI ì˜ì—­ì„ ì„¤ì •í•˜ê³ , ROI ì— í¬í•¨ë˜ëŠ” ë¶€ë¶„ì„ ì–»ì–´ ì˜¤ëŠ” ì˜ˆì œì…ë‹ˆë‹¤.
       
   - [Controls]
 
     - TreeCtrlExample
       - The example of using tree control(CGUITreeCtrl). Available in Visual Studio 2015 (vc14.0) later versions.
-      - Æ®¸® ÄÁÆ®·Ñ(CGUITreeCtrl) »ç¿ë¿¡ °üÇÑ ¿¹Á¦. Visual Studio 2015 (vc14.0) ÀÌ»óÀÇ ¹öÀü¿¡¼­ ½ÇÇà °¡´ÉÇÕ´Ï´Ù.
+      - íŠ¸ë¦¬ ì»¨íŠ¸ë¡¤(CGUITreeCtrl) ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œ. Visual Studio 2015 (vc14.0) ì´ìƒì˜ ë²„ì „ì—ì„œ ì‹¤í–‰ ê°€ëŠ¥í•©ë‹ˆë‹¤.
 
   - [Figure]
   
     - ArrayOperation
       - The example of figure array operation.
-      - Figure array Operation ¿¡ °üÇÑ ¿¹Á¦.
+      - Figure array Operation ì— ê´€í•œ ì˜ˆì œ.
     - ConvertImageFiguresToFigureArrayWithExpression
       - The example of the function to get figures in an image into FigureArray using a conditional expression.
-      - Image¿¡ ÀÖ´Â FigureµéÀ» Á¶°Ç½ÄÀ¸·Î FigureArray¿¡ ¹Ş¾Æ¿À´Â ±â´É¿¡ °üÇÑ ¿¹Á¦.
+      - Imageì— ìˆëŠ” Figureë“¤ì„ ì¡°ê±´ì‹ìœ¼ë¡œ FigureArrayì— ë°›ì•„ì˜¤ëŠ” ê¸°ëŠ¥ì— ê´€í•œ ì˜ˆì œ.
     - Figure_Close
       - The example of Close operation in Figure Morphology.
-      - Figure Morphology Áß Close µ¿ÀÛ¿¡ °üÇÑ ¿¹Á¦.
+      - Figure Morphology ì¤‘ Close ë™ì‘ì— ê´€í•œ ì˜ˆì œ.
     - Figure_Dilate
       - The example of Dilate operation in Figure Morphology.
-      - Figure Morphology Áß Dilate µ¿ÀÛ¿¡ °üÇÑ ¿¹Á¦.
+      - Figure Morphology ì¤‘ Dilate ë™ì‘ì— ê´€í•œ ì˜ˆì œ.
     - Figure_Erode
       - The example of Erode operation in Figure Morphology.
-      - Figure Morphology Áß Erode µ¿ÀÛ¿¡ °üÇÑ ¿¹Á¦.
+      - Figure Morphology ì¤‘ Erode ë™ì‘ì— ê´€í•œ ì˜ˆì œ.
     - Figure_Open
       - The example of Open operation in Figure Morphology.
-      - Figure Morphology Áß Open µ¿ÀÛ¿¡ °üÇÑ ¿¹Á¦.
+      - Figure Morphology ì¤‘ Open ë™ì‘ì— ê´€í•œ ì˜ˆì œ.
     - FigureOperation
       - The example of figure operation.
-      - Figure Operation ¿¡ °üÇÑ ¿¹Á¦.
+      - Figure Operation ì— ê´€í•œ ì˜ˆì œ.
     - FigureSaveLoad
       - The example of saving and loading figure files(.fig).
-      - Figure File(.fig) ÀúÀå, ºÒ·¯¿À±â¿¡ °üÇÑ ¿¹Á¦.
+      - Figure File(.fig) ì €ì¥, ë¶ˆëŸ¬ì˜¤ê¸°ì— ê´€í•œ ì˜ˆì œ.
     - FigureSort
       - The example of Sort, a function that allows you to sort by setting the sort order up to 3 ranks based on features such as Area and Perimeter of FigureArray.
-      - FigureArrayÀÇ Area, Perimeter µîÀÇ feature¸¦ ±âÁØÀ¸·Î 3¼øÀ§±îÁö Á¤·Ä ¼ø¼­¸¦ ¼³Á¤ÇÏ¿© Á¤·ÄÇÒ ¼ö ÀÖ´Â ±â´ÉÀÎ Sort¿¡ °üÇÑ ¿¹Á¦.
+      - FigureArrayì˜ Area, Perimeter ë“±ì˜ featureë¥¼ ê¸°ì¤€ìœ¼ë¡œ 3ìˆœìœ„ê¹Œì§€ ì •ë ¬ ìˆœì„œë¥¼ ì„¤ì •í•˜ì—¬ ì •ë ¬í•  ìˆ˜ ìˆëŠ” ê¸°ëŠ¥ì¸ Sortì— ê´€í•œ ì˜ˆì œ.
     - FigureSort2DClusterMode
       - The example of Sort2DClusterMode, a function that sorts by forming clusters based on the sort coefficient of FigureArray.
-      - FigureArrayÀÇ Á¤·Ä°è¼ö¸¦ ¹ÙÅÁÀ¸·Î ±ºÁıÀ» Çü¼ºÇÏ¿© Á¤·ÄÇØÁÖ´Â ±â´ÉÀÎ Sort2DClusterMode¿¡ °üÇÑ ¿¹Á¦.
+      - FigureArrayì˜ ì •ë ¬ê³„ìˆ˜ë¥¼ ë°”íƒ•ìœ¼ë¡œ êµ°ì§‘ì„ í˜•ì„±í•˜ì—¬ ì •ë ¬í•´ì£¼ëŠ” ê¸°ëŠ¥ì¸ Sort2DClusterModeì— ê´€í•œ ì˜ˆì œ.
     - FigureWarp
       - The example of Warp, a function that warps a figure with perspective or bilinear transformation.
-      - Figure¸¦ Perspective³ª Bilinear º¯È¯À¸·Î ÈÖ°Ô ¸¸µå´Â ±â´ÉÀÎ Warp¿¡ °üÇÑ ¿¹Á¦.
+      - Figureë¥¼ Perspectiveë‚˜ Bilinear ë³€í™˜ìœ¼ë¡œ íœ˜ê²Œ ë§Œë“œëŠ” ê¸°ëŠ¥ì¸ Warpì— ê´€í•œ ì˜ˆì œ.
     - Fit_Circle
       - The example of Fit, a function that set the closest circle to a set of points.
-      - Á¡µéÀÇ ÁıÇÕÀ¸·Î °¡Àå °¡±î¿î ¿øÀ» ¼³Á¤ÇÏ´Â ±â´ÉÀÎ Fit¿¡ °üÇÑ ¿¹Á¦.
+      - ì ë“¤ì˜ ì§‘í•©ìœ¼ë¡œ ê°€ì¥ ê°€ê¹Œìš´ ì›ì„ ì„¤ì •í•˜ëŠ” ê¸°ëŠ¥ì¸ Fitì— ê´€í•œ ì˜ˆì œ.
     - Fit_Ellipse
       - The example of Fit, a function that set the closest ellipse to a set of points.
-      - Á¡µéÀÇ ÁıÇÕÀ¸·Î °¡Àå °¡±î¿î Å¸¿øÀ» ¼³Á¤ÇÏ´Â ±â´ÉÀÎ Fit¿¡ °üÇÑ ¿¹Á¦.
+      - ì ë“¤ì˜ ì§‘í•©ìœ¼ë¡œ ê°€ì¥ ê°€ê¹Œìš´ íƒ€ì›ì„ ì„¤ì •í•˜ëŠ” ê¸°ëŠ¥ì¸ Fitì— ê´€í•œ ì˜ˆì œ.
     - Fit_Line
       - The example of Fit, a function that set the closest line to a set of points.
-      - Á¡µéÀÇ ÁıÇÕÀ¸·Î °¡Àå °¡±î¿î ¼±À» ¼³Á¤ÇÏ´Â ±â´ÉÀÎ Fit¿¡ °üÇÑ ¿¹Á¦.
+      - ì ë“¤ì˜ ì§‘í•©ìœ¼ë¡œ ê°€ì¥ ê°€ê¹Œìš´ ì„ ì„ ì„¤ì •í•˜ëŠ” ê¸°ëŠ¥ì¸ Fitì— ê´€í•œ ì˜ˆì œ.
     - GetFigure
       - The example of GetFigure, a function that obtains figures that satisfies the conditions.
-      - Á¶°Ç¿¡ ¸Â´Â Figure¸¦ ¾ò¾î¿À´Â ±â´ÉÀÎ GetFigure¿¡ °üÇÑ ¿¹Á¦.
+      - ì¡°ê±´ì— ë§ëŠ” Figureë¥¼ ì–»ì–´ì˜¤ëŠ” ê¸°ëŠ¥ì¸ GetFigureì— ê´€í•œ ì˜ˆì œ.
     - GetFigureWithinRegion
       - The example of GetFigureWithinRegion, a function that obtains figures within the interference region with the parameter figure as a result.
-      - ¸Å°³º¯¼ö Figure¿ÍÀÇ °£¼·¿µ¿ª ³»ÀÇ °´Ã¼¸¦ °á°ú·Î ÃßÃâÇÏ´Â ±â´ÉÀÎ GetFigureWithinRegion¿¡ °üÇÑ ¿¹Á¦.
+      - ë§¤ê°œë³€ìˆ˜ Figureì™€ì˜ ê°„ì„­ì˜ì—­ ë‚´ì˜ ê°ì²´ë¥¼ ê²°ê³¼ë¡œ ì¶”ì¶œí•˜ëŠ” ê¸°ëŠ¥ì¸ GetFigureWithinRegionì— ê´€í•œ ì˜ˆì œ.
     - GetIndexOfMaximumDistance
       - The example of GetIndexOfMaximumDistance, a function that returns the index where the distance between two figures is maximum.
-      - µÎ Figure »çÀÌ °Å¸®°¡ ÃÖ´ë°¡ µÇ´Â ÀÎµ¦½º¸¦ ¹İÈ¯ÇÏ´Â ±â´ÉÀÎ GetIndexOfMaximumDistance¿¡ °üÇÑ ¿¹Á¦.
+      - ë‘ Figure ì‚¬ì´ ê±°ë¦¬ê°€ ìµœëŒ€ê°€ ë˜ëŠ” ì¸ë±ìŠ¤ë¥¼ ë°˜í™˜í•˜ëŠ” ê¸°ëŠ¥ì¸ GetIndexOfMaximumDistanceì— ê´€í•œ ì˜ˆì œ.
     - GetIndexOfMinimumDistance
       - The example of GetIndexOfMinimumDistance, a function that returns the index where the distance between two figures is minimum.
-      - µÎ Figure »çÀÌ °Å¸®°¡ ÃÖ¼Ò°¡ µÇ´Â ÀÎµ¦½º¸¦ ¹İÈ¯ÇÏ´Â ±â´ÉÀÎ GetIndexOfMinimumDistance¿¡ °üÇÑ ¿¹Á¦.
+      - ë‘ Figure ì‚¬ì´ ê±°ë¦¬ê°€ ìµœì†Œê°€ ë˜ëŠ” ì¸ë±ìŠ¤ë¥¼ ë°˜í™˜í•˜ëŠ” ê¸°ëŠ¥ì¸ GetIndexOfMinimumDistanceì— ê´€í•œ ì˜ˆì œ.
     - GetPointsOfMaximumDistance
       - The example of GetPointsOfMaximumDistance, a function that returns the point at which the distance between two figures is maximal.
-      - µÎ Figure »çÀÌ °Å¸®°¡ ÃÖ´ë°¡ µÇ´Â Á¡À» ¹İÈ¯ÇÏ´Â ±â´ÉÀÎ GetPointsOfMaximumDistance¿¡ °üÇÑ ¿¹Á¦.
+      - ë‘ Figure ì‚¬ì´ ê±°ë¦¬ê°€ ìµœëŒ€ê°€ ë˜ëŠ” ì ì„ ë°˜í™˜í•˜ëŠ” ê¸°ëŠ¥ì¸ GetPointsOfMaximumDistanceì— ê´€í•œ ì˜ˆì œ.
     - GetPointsOfMinimumDistance
       - The example of GetPointsOfMinimumDistance, a function that returns the point at which the distance between two figures is minimal.
-      - µÎ Figure »çÀÌ °Å¸®°¡ ÃÖ¼Ò°¡ µÇ´Â Á¡À» ¹İÈ¯ÇÏ´Â ±â´ÉÀÎ GetPointsOfMinimumDistance¿¡ °üÇÑ ¿¹Á¦.
+      - ë‘ Figure ì‚¬ì´ ê±°ë¦¬ê°€ ìµœì†Œê°€ ë˜ëŠ” ì ì„ ë°˜í™˜í•˜ëŠ” ê¸°ëŠ¥ì¸ GetPointsOfMinimumDistanceì— ê´€í•œ ì˜ˆì œ.
     - Reduce
       - The example of Reduce, a function that smoothly reduces the number of vertices.
-      - Á¤Á¡ÀÇ ¼ö¸¦ ºÎµå·´°Ô Ãà¼ÒÇÏ´Â ±â´ÉÀÎ Reduce¿¡ °üÇÑ ¿¹Á¦.
+      - ì •ì ì˜ ìˆ˜ë¥¼ ë¶€ë“œëŸ½ê²Œ ì¶•ì†Œí•˜ëŠ” ê¸°ëŠ¥ì¸ Reduceì— ê´€í•œ ì˜ˆì œ.
     - RemoveFigure
       - The example of GetFigure, a function that removes figures that satisfies the conditions.
-      - Á¶°Ç¿¡ ¸Â´Â Figure¸¦ Á¦°ÅÇÏ´Â ±â´ÉÀÎ RemoveFigure¿¡ °üÇÑ ¿¹Á¦.
+      - ì¡°ê±´ì— ë§ëŠ” Figureë¥¼ ì œê±°í•˜ëŠ” ê¸°ëŠ¥ì¸ RemoveFigureì— ê´€í•œ ì˜ˆì œ.
     - RemoveFigureWithinRegion
       - The example of RemoveFigureWithinRegion, a function that removes objects within the interference region with the parameter figure from FigureArray.
-      - ¸Å°³º¯¼ö Figure¿ÍÀÇ °£¼·¿µ¿ª ³»ÀÇ °´Ã¼¸¦ FigureArray¿¡¼­ Á¦°ÅÇÏ´Â ±â´ÉÀÎ RemoveFigureWithinRegion¿¡ °üÇÑ ¿¹Á¦.
+      - ë§¤ê°œë³€ìˆ˜ Figureì™€ì˜ ê°„ì„­ì˜ì—­ ë‚´ì˜ ê°ì²´ë¥¼ FigureArrayì—ì„œ ì œê±°í•˜ëŠ” ê¸°ëŠ¥ì¸ RemoveFigureWithinRegionì— ê´€í•œ ì˜ˆì œ.
 
   - [GraphView]
 
     - GraphLeastSquares 
       - The example of using least squares graph view.
-      - ÃÖ¼ÒÀÚ½Â¹ı ±×·¡ÇÁ ºä »ç¿ë¿¡ °üÇÑ ¿¹Á¦.
+      - ìµœì†ŒììŠ¹ë²• ê·¸ë˜í”„ ë·° ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œ.
     - GraphView 
       - The example of using graph view.
-      - ±×·¡ÇÁ ºä »ç¿ë¿¡ °üÇÑ ¿¹Á¦.
+      - ê·¸ë˜í”„ ë·° ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œ.
     - GraphViewIntoDialog 
       - The example of inserting an graph view into a dialog and using it.
-      - ±×·¡ÇÁ ºä¸¦ ´ÙÀÌ¾ó·Î±×¿¡ »ğÀÔÇØ¼­ »ç¿ëÇÏ´Â ¿¹Á¦.
+      - ê·¸ë˜í”„ ë·°ë¥¼ ë‹¤ì´ì–¼ë¡œê·¸ì— ì‚½ì…í•´ì„œ ì‚¬ìš©í•˜ëŠ” ì˜ˆì œ.
     - GraphViewTheme
       - The example of setting graph view theme.
-      - ±×·¡ÇÁ ºä Å×¸¶ ¼³Á¤¿¡ °üÇÑ ¿¹Á¦.
+      - ê·¸ë˜í”„ ë·° í…Œë§ˆ ì„¤ì •ì— ê´€í•œ ì˜ˆì œ.
     - GraphViewDisplayMinMax
       - The example of displaying minimum and maximum value of the graph view.
-      - ±×·¡ÇÁ ºäÀÇ ÃÖ´ë/ÃÖ¼Ú°ª Ç¥½Ã¿¡ °üÇÑ ¿¹Á¦.
+      - ê·¸ë˜í”„ ë·°ì˜ ìµœëŒ€/ìµœì†Ÿê°’ í‘œì‹œì— ê´€í•œ ì˜ˆì œ.
     - GraphViewContextMenu
       - The example of customizing the context menu of the graph view.
-      - ±×·¡ÇÁ ºäÀÇ ÄÁÅØ½ºÆ® ¸Ş´º¸¦ Ä¿½ºÅÍ¸¶ÀÌÂ¡ÇÏ´Â ¿¹Á¦.
+      - ê·¸ë˜í”„ ë·°ì˜ ì»¨í…ìŠ¤íŠ¸ ë©”ë‰´ë¥¼ ì»¤ìŠ¤í„°ë§ˆì´ì§•í•˜ëŠ” ì˜ˆì œ.
 
   - [ImageView]
 
     - ImageView 
       - The example of using image views.
-      - ÀÌ¹ÌÁö ºä »ç¿ë¿¡ °üÇÑ ¿¹Á¦.
+      - ì´ë¯¸ì§€ ë·° ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œ.
     - ImageViewAvailableContextMenu
       - The Example of setting available context menu in image view.
-      - ÀÌ¹ÌÁö ºä¿¡¼­ ÀÌ¿ë °¡´ÉÇÑ ÄÁÅØ½ºÆ® ¸Ş´º ÁöÁ¤¿¡ °üÇÑ ¿¹Á¦.
+      - ì´ë¯¸ì§€ ë·°ì—ì„œ ì´ìš© ê°€ëŠ¥í•œ ì»¨í…ìŠ¤íŠ¸ ë©”ë‰´ ì§€ì •ì— ê´€í•œ ì˜ˆì œ.
     - ImageViewIntoDialog 
       - The example of inserting an image view into a dialog and using it.
-      - ÀÌ¹ÌÁö ºä¸¦ ´ÙÀÌ¾ó·Î±×¿¡ »ğÀÔÇØ¼­ »ç¿ëÇÏ´Â ¿¹Á¦.
+      - ì´ë¯¸ì§€ ë·°ë¥¼ ë‹¤ì´ì–¼ë¡œê·¸ì— ì‚½ì…í•´ì„œ ì‚¬ìš©í•˜ëŠ” ì˜ˆì œ.
     - ImageViewMessageReceiver
       - The Example of image view using message receiver.
-      - ÀÌ¹ÌÁö ºäÀÇ ¸Ş¼¼Áö ¸®½Ã¹ö »ç¿ë¿¡ °üÇÑ ¿¹Á¦.
+      - ì´ë¯¸ì§€ ë·°ì˜ ë©”ì„¸ì§€ ë¦¬ì‹œë²„ ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œ.
     - ImageViewMouseHitTest
       - The Example of obtaining an area where the mouse on the image view is located.
-      - ÀÌ¹ÌÁö ºä À§ÀÇ ¸¶¿ì½º°¡ À§Ä¡ÇÑ ¿µ¿ªÀ» ¾ò´Â ¿¹Á¦.
+      - ì´ë¯¸ì§€ ë·° ìœ„ì˜ ë§ˆìš°ìŠ¤ê°€ ìœ„ì¹˜í•œ ì˜ì—­ì„ ì–»ëŠ” ì˜ˆì œ.
 
   - [MainFrame]
   
     - DialogProgressExampleApp
       - The example of progress dialog. Available in Visual Studio 2015 (vc14.0) later versions.
-      - ÁøÇà·ü Ã¢ ´ÙÀÌ¾ó·Î±× »ç¿ë¿¡ °üÇÑ ¿¹Á¦. Visual Studio 2015 (vc14.0) ÀÌ»óÀÇ ¹öÀü¿¡¼­ ½ÇÇà °¡´ÉÇÕ´Ï´Ù.
+      - ì§„í–‰ë¥  ì°½ ë‹¤ì´ì–¼ë¡œê·¸ ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œ. Visual Studio 2015 (vc14.0) ì´ìƒì˜ ë²„ì „ì—ì„œ ì‹¤í–‰ ê°€ëŠ¥í•©ë‹ˆë‹¤.
       
     - FLImagingGUIExample
       - The example of using main frame. Available in Visual Studio 2015 (vc14.0) later versions.
-      - ¸ŞÀÎ ÇÁ·¹ÀÓ »ç¿ë¿¡ °üÇÑ ¿¹Á¦. Visual Studio 2015 (vc14.0) ÀÌ»óÀÇ ¹öÀü¿¡¼­ ½ÇÇà °¡´ÉÇÕ´Ï´Ù.
+      - ë©”ì¸ í”„ë ˆì„ ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œ. Visual Studio 2015 (vc14.0) ì´ìƒì˜ ë²„ì „ì—ì„œ ì‹¤í–‰ ê°€ëŠ¥í•©ë‹ˆë‹¤.
  
     - GUIDialogExample
       - The example of dialog(CGUIDialog class). Available in Visual Studio 2015 (vc14.0) later versions.
-      - ´ÙÀÌ¾ó·Î±×(CGUIDialog Å¬·¡½º) »ç¿ë¿¡ °üÇÑ ¿¹Á¦. Visual Studio 2015 (vc14.0) ÀÌ»óÀÇ ¹öÀü¿¡¼­ ½ÇÇà °¡´ÉÇÕ´Ï´Ù.
+      - ë‹¤ì´ì–¼ë¡œê·¸(CGUIDialog í´ë˜ìŠ¤) ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œ. Visual Studio 2015 (vc14.0) ì´ìƒì˜ ë²„ì „ì—ì„œ ì‹¤í–‰ ê°€ëŠ¥í•©ë‹ˆë‹¤.
       
     - MenuBarUserDefinedInfoExample
       - The example of progress displaying user-defined information in the menu bar of the mainframe. Available in Visual Studio 2015 (vc14.0) later versions.
-      - ¸ŞÀÎÇÁ·¹ÀÓÀÇ ¸Ş´º ¹Ù¿¡ »ç¿ëÀÚ°¡ Á¤ÀÇÇÑ Á¤º¸¸¦ Ç¥½ÃÇÏ´Â ¿¹Á¦. Visual Studio 2015 (vc14.0) ÀÌ»óÀÇ ¹öÀü¿¡¼­ ½ÇÇà °¡´ÉÇÕ´Ï´Ù.
+      - ë©”ì¸í”„ë ˆì„ì˜ ë©”ë‰´ ë°”ì— ì‚¬ìš©ìê°€ ì •ì˜í•œ ì •ë³´ë¥¼ í‘œì‹œí•˜ëŠ” ì˜ˆì œ. Visual Studio 2015 (vc14.0) ì´ìƒì˜ ë²„ì „ì—ì„œ ì‹¤í–‰ ê°€ëŠ¥í•©ë‹ˆë‹¤.
       
     - MenuBarMenuItem
       - An example of adding, inserting, deleting, and editing user-defined menu items in the main frame's menu bar. Compatible with Visual Studio 2015 (vc14.0) or later.
-      - ¸ŞÀÎÇÁ·¹ÀÓÀÇ ¸Ş´º ¹Ù¿¡ »ç¿ëÀÚ°¡ Á¤ÀÇÇÑ ¸Ş´º ¾ÆÀÌÅÛÀ» Ãß°¡, »ğÀÔ, »èÁ¦, ÆíÁıÇÏ´Â ¿¹Á¦. Visual Studio 2015 (vc14.0) ÀÌ»óÀÇ ¹öÀü¿¡¼­ ½ÇÇà °¡´ÉÇÕ´Ï´Ù.
+      - ë©”ì¸í”„ë ˆì„ì˜ ë©”ë‰´ ë°”ì— ì‚¬ìš©ìê°€ ì •ì˜í•œ ë©”ë‰´ ì•„ì´í…œì„ ì¶”ê°€, ì‚½ì…, ì‚­ì œ, í¸ì§‘í•˜ëŠ” ì˜ˆì œ. Visual Studio 2015 (vc14.0) ì´ìƒì˜ ë²„ì „ì—ì„œ ì‹¤í–‰ ê°€ëŠ¥í•©ë‹ˆë‹¤.
       
     - LogInExample
       - The example of setting the availability and visibility of a property item based on login permissions. Available in Visual Studio 2015 (vc14.0) later versions.
-      - ·Î±×ÀÎ ±ÇÇÑ¿¡ µû¶ó ÇÁ·ÎÆÛÆ¼ ¾ÆÀÌÅÛÀÇ »ç¿ë °¡´É ¿©ºÎ ¹× °¡½Ã¼º ¿©ºÎ¸¦ ¼³Á¤ÇÏ´Â ¿¹Á¦. Visual Studio 2015 (vc14.0) ÀÌ»óÀÇ ¹öÀü¿¡¼­ ½ÇÇà °¡´ÉÇÕ´Ï´Ù.
+      - ë¡œê·¸ì¸ ê¶Œí•œì— ë”°ë¼ í”„ë¡œí¼í‹° ì•„ì´í…œì˜ ì‚¬ìš© ê°€ëŠ¥ ì—¬ë¶€ ë° ê°€ì‹œì„± ì—¬ë¶€ë¥¼ ì„¤ì •í•˜ëŠ” ì˜ˆì œ. Visual Studio 2015 (vc14.0) ì´ìƒì˜ ë²„ì „ì—ì„œ ì‹¤í–‰ ê°€ëŠ¥í•©ë‹ˆë‹¤.
       
     - PropertyPaneTimerExample
       - The example of setting up a timer handler in a properties window. Available in Visual Studio 2015 (vc14.0) later versions.
-      - ÇÁ·ÎÆÛÆ¼ Ã¢¿¡ Å¸ÀÌ¸Ó ÇÚµé·¯¸¦ ¼³Á¤ÇÏ´Â ¿¹Á¦. Visual Studio 2015 (vc14.0) ÀÌ»óÀÇ ¹öÀü¿¡¼­ ½ÇÇà °¡´ÉÇÕ´Ï´Ù.
+      - í”„ë¡œí¼í‹° ì°½ì— íƒ€ì´ë¨¸ í•¸ë“¤ëŸ¬ë¥¼ ì„¤ì •í•˜ëŠ” ì˜ˆì œ. Visual Studio 2015 (vc14.0) ì´ìƒì˜ ë²„ì „ì—ì„œ ì‹¤í–‰ ê°€ëŠ¥í•©ë‹ˆë‹¤.
       
     - View3DExamples
       - A collection of various examples related to 3D View. Available in Visual Studio 2015 (vc14.0) later versions.
-      - 3D View °ü·Ã ¿©·¯ °¡Áö ¿¹Á¦ ¸ğÀ½. Visual Studio 2015 (vc14.0) ÀÌ»óÀÇ ¹öÀü¿¡¼­ ½ÇÇà °¡´ÉÇÕ´Ï´Ù.
+      - 3D View ê´€ë ¨ ì—¬ëŸ¬ ê°€ì§€ ì˜ˆì œ ëª¨ìŒ. Visual Studio 2015 (vc14.0) ì´ìƒì˜ ë²„ì „ì—ì„œ ì‹¤í–‰ ê°€ëŠ¥í•©ë‹ˆë‹¤.
 
   - [SNAPView]
 
 	- SNAPView
 	  - The example of using snap views.
-      - ½º³À ºä »ç¿ë¿¡ °üÇÑ ¿¹Á¦.
+      - ìŠ¤ëƒ… ë·° ì‚¬ìš©ì— ê´€í•œ ì˜ˆì œ.
 	- SNAPViewIntoDialog
 	  - The example of inserting an snap view into a dialog and using it.
-      - ½º³À ºä¸¦ ´ÙÀÌ¾ó·Î±×¿¡ »ğÀÔÇØ¼­ »ç¿ëÇÏ´Â ¿¹Á¦.
+      - ìŠ¤ëƒ… ë·°ë¥¼ ë‹¤ì´ì–¼ë¡œê·¸ì— ì‚½ì…í•´ì„œ ì‚¬ìš©í•˜ëŠ” ì˜ˆì œ.
       
 
 - [ImageProcessing]
@@ -756,19 +756,19 @@
     
     - Contrast
       - The algorithm example for adjusting image contrast.
-      - ÀÌ¹ÌÁö ´ëºñ¸¦ Á¶Á¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ ëŒ€ë¹„ë¥¼ ì¡°ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - GainOffset
       - The algorithm that transforms image by applying gain and offset.
-      - Gain, OffsetÀ» Àû¿ëÇÏ¿© ÀÌ¹ÌÁö º¯È¯À» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - Gain, Offsetì„ ì ìš©í•˜ì—¬ ì´ë¯¸ì§€ ë³€í™˜ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
 
     - OffsetGain
       - The algorithm that transforms image by applying offset and gain.
-      - Offset, GainÀ» Àû¿ëÇÏ¿© ÀÌ¹ÌÁö º¯È¯À» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - Offset, Gainì„ ì ìš©í•˜ì—¬ ì´ë¯¸ì§€ ë³€í™˜ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
 
     - IntensityClamping
       - algorithm that clips the image values to a specific range.
-      - ÀÌ¹ÌÁöÀÇ °ªÀ» Æ¯Á¤ ¹üÀ§ °ªÀ¸·Î Àß¶ó³»´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì˜ ê°’ì„ íŠ¹ì • ë²”ìœ„ ê°’ìœ¼ë¡œ ì˜ë¼ë‚´ëŠ” ì•Œê³ ë¦¬ì¦˜
 
   - [Analysis]
 
@@ -776,307 +776,307 @@
 
       - Statistics_Covariance_CorrelationCoefficient 
         - The algorithm example for calculating covariance and correlationCoefficient value of pixel values in an image.
-        - ÀÌ¹ÌÁöÀÇ ÇÈ¼¿°ªµéÀÇ Ã¤³Î°£ °øºĞ»ê ¹× »ó°ü°è¼ö¸¦ °è»êÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ í”½ì…€ê°’ë“¤ì˜ ì±„ë„ê°„ ê³µë¶„ì‚° ë° ìƒê´€ê³„ìˆ˜ë¥¼ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - Statistics_Mean_Variance_StandardDeviation_CoefficientOfVariance 
         - The algorithm example for calculating mean, variance, standard deviation and coefficient of variance value of pixel values in an image.
-        - ÀÌ¹ÌÁöÀÇ ÇÈ¼¿°ªµéÀÇ Æò±Õ, Ç¥ÁØÆíÂ÷, ºĞ»ê, º¯µ¿ °è¼ö¸¦ °è»êÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.(Trimming Àû¿ë Àü, ÈÄ)
+        - ì´ë¯¸ì§€ì˜ í”½ì…€ê°’ë“¤ì˜ í‰ê· , í‘œì¤€í¸ì°¨, ë¶„ì‚°, ë³€ë™ ê³„ìˆ˜ë¥¼ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.(Trimming ì ìš© ì „, í›„)
       - Statistics_Median_Quartile 
         - The algorithm example for calculating median, 25 quartile and 75 quartile value of pixel values in an image.
-        - ÀÌ¹ÌÁöÀÇ ÇÈ¼¿°ªµéÀÇ Áß°£°ª, 25»çºĞÀ§¼ö, 75»çºĞÀ§¼ö¸¦ °è»êÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.(Trimming Àû¿ë Àü, ÈÄ)
+        - ì´ë¯¸ì§€ì˜ í”½ì…€ê°’ë“¤ì˜ ì¤‘ê°„ê°’, 25ì‚¬ë¶„ìœ„ìˆ˜, 75ì‚¬ë¶„ìœ„ìˆ˜ë¥¼ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.(Trimming ì ìš© ì „, í›„)
       - Statistics_MinMax 
         - The algorithm example for calculating min and max value of pixel values in an image.
-        - ÀÌ¹ÌÁöÀÇ ÇÈ¼¿°ªµéÀÇ ÃÖ¼Ò, ÃÖ´ë°ªÀ» °è»êÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.(Trimming Àû¿ë Àü, ÈÄ)
+        - ì´ë¯¸ì§€ì˜ í”½ì…€ê°’ë“¤ì˜ ìµœì†Œ, ìµœëŒ€ê°’ì„ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.(Trimming ì ìš© ì „, í›„)
       - Statistics_Sum_SumOfSquare 
         - The algorithm example for calculating sum and sum of squares value of pixel values in an image.
-        - ÀÌ¹ÌÁöÀÇ ÇÈ¼¿°ªµéÀ» ÇÕ°ú Á¦°öÇÕÀÇ °è»êÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.(Trimming Àû¿ë Àü, ÈÄ)
+        - ì´ë¯¸ì§€ì˜ í”½ì…€ê°’ë“¤ì„ í•©ê³¼ ì œê³±í•©ì˜ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.(Trimming ì ìš© ì „, í›„)
 
     - FuzzyEntropy 
       - The algorithm example to get the fuzzy entropy of an image.
-      - ÀÌ¹ÌÁöÀÇ fuzzy entropy ¸¦ ±¸ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì˜ fuzzy entropy ë¥¼ êµ¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - GrayLevelCooccurrenceMatrix
       - The example of an algorithm for calculating a Gray-Level Cooccurrence Matrix(GLCM) from an image.(Energy, Correlation, Homogeneity, Contrast)
-      - ÀÌ¹ÌÁö¿¡¼­ Gray-Level Cooccurrence Matrix(GLCM)À» °è»êÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.(Energy, Correlation, Homogeneity, Contrast)
+      - ì´ë¯¸ì§€ì—ì„œ Gray-Level Cooccurrence Matrix(GLCM)ì„ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.(Energy, Correlation, Homogeneity, Contrast)
 
     - Histogram
       - The example of an algorithm for calculating a histogram from an image.
-      - ÀÌ¹ÌÁö¿¡¼­ HistogramÀ» °è»êÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì—ì„œ Histogramì„ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - Histograms of Oriented Gradients(HOG)
       - The example of an algorithm for calculating a Histograms of Oriented Gradients(HOG) of an image. Supports Peak Vector and Prediction Image for result visualization.
-      - ÀÌ¹ÌÁö¿¡¼­ Histograms of Oriented Gradients(HOG)À» °è»êÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦. ºñÁÖ¾óÈ­ Ãâ·ÂÀ¸·Î Peak Vector¿Í Prediction Image¸¦ Áö¿ø.
+      - ì´ë¯¸ì§€ì—ì„œ Histograms of Oriented Gradients(HOG)ì„ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ. ë¹„ì£¼ì–¼í™” ì¶œë ¥ìœ¼ë¡œ Peak Vectorì™€ Prediction Imageë¥¼ ì§€ì›.
 
     - Projection 
       - The algorithm example to get the cumulative sum of rows or columns of an image.
-      - ÀÌ¹ÌÁöÀÇ Çà ¶Ç´Â ¿­ÀÇ ´©ÀûÇÕÀ» ±¸ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì˜ í–‰ ë˜ëŠ” ì—´ì˜ ëˆ„ì í•©ì„ êµ¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Calibration]
 
     - ShadingCalibrator
       - The example of an algorithm that perform light state calibration and correction of an image.
-      - Á¶¸í »óÅÂ Ä¶¸®ºê·¹ÀÌ¼Ç ¹× º¸Á¤À» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì¡°ëª… ìƒíƒœ ìº˜ë¦¬ë¸Œë ˆì´ì…˜ ë° ë³´ì •ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Channel]
 
     - ChannelExtraction
       - The example of an algorithm that extracts a specific channel from a multichannel image and make it an image.
-      - ´ÙÃ¤³Î ÀÌ¹ÌÁö¿¡¼­ Æ¯Á¤ ÇÏ³ªÀÇ Ã¤³ÎÀ» ÃßÃâÇÏ¿© ÀÌ¹ÌÁöÈ­ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë‹¤ì±„ë„ ì´ë¯¸ì§€ì—ì„œ íŠ¹ì • í•˜ë‚˜ì˜ ì±„ë„ì„ ì¶”ì¶œí•˜ì—¬ ì´ë¯¸ì§€í™”í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ChannelCombination
       - The example of an algorithm that combines channels selected from multiple images.
-      - ¿©·¯ ÀÌ¹ÌÁö¿¡¼­ ¼±ÅÃµÈ Ã¤³ÎµéÀ» °áÇÕÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì—¬ëŸ¬ ì´ë¯¸ì§€ì—ì„œ ì„ íƒëœ ì±„ë„ë“¤ì„ ê²°í•©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ChannelL1Norm
       - The example of an algorithm that extracts L1 norm value of each pixel from a multichannel image.
-      - ´ÙÃ¤³Î ÀÌ¹ÌÁö¿¡¼­ °¢ ÇÈ¼¿ÀÇ L1 Norm À» ÃßÃâÇÏ¿© ÀÌ¹ÌÁöÈ­ ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë‹¤ì±„ë„ ì´ë¯¸ì§€ì—ì„œ ê° í”½ì…€ì˜ L1 Norm ì„ ì¶”ì¶œí•˜ì—¬ ì´ë¯¸ì§€í™” í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ChannelMax
       - The example of an algorithm that extracts maximum value of each pixel from a multichannel image.
-      - ´ÙÃ¤³Î ÀÌ¹ÌÁö¿¡¼­ °¢ ÇÈ¼¿ÀÇ ÃÖ´ë°ªÀ» ÃßÃâÇÏ¿© ÀÌ¹ÌÁöÈ­ ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë‹¤ì±„ë„ ì´ë¯¸ì§€ì—ì„œ ê° í”½ì…€ì˜ ìµœëŒ€ê°’ì„ ì¶”ì¶œí•˜ì—¬ ì´ë¯¸ì§€í™” í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ChannelMean
       - The example of an algorithm that extracts mean value of each pixel from a multichannel image.
-      - ´ÙÃ¤³Î ÀÌ¹ÌÁö¿¡¼­ °¢ ÇÈ¼¿ÀÇ Æò±Õ°ªÀ» ÃßÃâÇÏ¿© ÀÌ¹ÌÁöÈ­ ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë‹¤ì±„ë„ ì´ë¯¸ì§€ì—ì„œ ê° í”½ì…€ì˜ í‰ê· ê°’ì„ ì¶”ì¶œí•˜ì—¬ ì´ë¯¸ì§€í™” í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ChannelMedian
       - The example of an algorithm that extracts median value of each pixel from a multichannel image.
-      - ´ÙÃ¤³Î ÀÌ¹ÌÁö¿¡¼­ °¢ ÇÈ¼¿ÀÇ Áß¾Ó°ªÀ» ÃßÃâÇÏ¿© ÀÌ¹ÌÁöÈ­ ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë‹¤ì±„ë„ ì´ë¯¸ì§€ì—ì„œ ê° í”½ì…€ì˜ ì¤‘ì•™ê°’ì„ ì¶”ì¶œí•˜ì—¬ ì´ë¯¸ì§€í™” í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ChannelMin
       - The example of an algorithm that extracts minimum value of each pixel from a multichannel image.
-      - ´ÙÃ¤³Î ÀÌ¹ÌÁö¿¡¼­ °¢ ÇÈ¼¿ÀÇ ÃÖ¼Ò°ªÀ» ÃßÃâÇÏ¿© ÀÌ¹ÌÁöÈ­ ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë‹¤ì±„ë„ ì´ë¯¸ì§€ì—ì„œ ê° í”½ì…€ì˜ ìµœì†Œê°’ì„ ì¶”ì¶œí•˜ì—¬ ì´ë¯¸ì§€í™” í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ChannelStdev
       - The example of an algorithm that extracts standard deviation value of each pixel from a multichannel image.
-      - ´ÙÃ¤³Î ÀÌ¹ÌÁö¿¡¼­ °¢ ÇÈ¼¿ÀÇ Ç¥ÁØÆíÂ÷°ªÀ» ÃßÃâÇÏ¿© ÀÌ¹ÌÁöÈ­ ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë‹¤ì±„ë„ ì´ë¯¸ì§€ì—ì„œ ê° í”½ì…€ì˜ í‘œì¤€í¸ì°¨ê°’ì„ ì¶”ì¶œí•˜ì—¬ ì´ë¯¸ì§€í™” í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ChannelSum
       - The example of an algorithm that extracts sum value of each pixel from a multichannel image.
-      - ´ÙÃ¤³Î ÀÌ¹ÌÁö¿¡¼­ °¢ ÇÈ¼¿ÀÇ ÃÑÇÕÀ» ÃßÃâÇÏ¿© ÀÌ¹ÌÁöÈ­ ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë‹¤ì±„ë„ ì´ë¯¸ì§€ì—ì„œ ê° í”½ì…€ì˜ ì´í•©ì„ ì¶”ì¶œí•˜ì—¬ ì´ë¯¸ì§€í™” í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ChannelSwap
       - The example of an algorithm that swaps two channels selected from a multichannel image.
-      - ´ÙÃ¤³Î ÀÌ¹ÌÁö¿¡¼­ µÎ°³ÀÇ Ã¤³ÎÀ» ±³È¯ÇÏ¿© ÀÌ¹ÌÁöÈ­ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë‹¤ì±„ë„ ì´ë¯¸ì§€ì—ì„œ ë‘ê°œì˜ ì±„ë„ì„ êµí™˜í•˜ì—¬ ì´ë¯¸ì§€í™”í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ChannelVariance
       - The example of an algorithm that extracts variance value of each pixel from a multichannel image.
-      - ´ÙÃ¤³Î ÀÌ¹ÌÁö¿¡¼­ °¢ ÇÈ¼¿ÀÇ ºĞ»ê°ªÀ» ÃßÃâÇÏ¿© ÀÌ¹ÌÁöÈ­ ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë‹¤ì±„ë„ ì´ë¯¸ì§€ì—ì„œ ê° í”½ì…€ì˜ ë¶„ì‚°ê°’ì„ ì¶”ì¶œí•˜ì—¬ ì´ë¯¸ì§€í™” í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
 
   - [Feature Extraction]
     - CannyEdgeDetector
       - The example of Canny Edge Detection Algorithm.
-      - Ä³´Ï ¿§Áö °ËÃâ ¾Ë°í¸®Áò ¿¹Á¦
+      - ìºë‹ˆ ì—£ì§€ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
     - ShenCastanEdgeDetector
       - The example of Shen-Castan Edge Detection Algorithm.
-      - Shen-Castan ¿§Áö °ËÃâ ¾Ë°í¸®Áò ¿¹Á¦
+      - Shen-Castan ì—£ì§€ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
     - LanserEdgeDetector
       - The example of Lanser Edge Detection Algorithm.
-      - ·£¼­ ¿§Áö °ËÃâ ¾Ë°í¸®Áò ¿¹Á¦
+      - ëœì„œ ì—£ì§€ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
     - DericheEdgeDetector
       - The example of Deriche Edge Detection Algorithm.
-      - µ¥¸®Ã¼ ¿§Áö °ËÃâ ¾Ë°í¸®Áò ¿¹Á¦
+      - ë°ë¦¬ì²´ ì—£ì§€ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
     - NonMaximumSuppression
       - The example of Non Maximum Suppression Algorithm.
-      - ºñÃÖ´ë ¾ïÁ¦ ¾Ë°í¸®Áò ¿¹Á¦
+      - ë¹„ìµœëŒ€ ì–µì œ ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
     - HarrisCornerDetector
       - The example of Harris Corner Detection Algorithm.
-      - ÇØ¸®½º ÄÚ³Ê °ËÃâ ¾Ë°í¸®Áò ¿¹Á¦
+      - í•´ë¦¬ìŠ¤ ì½”ë„ˆ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
     - Skeleton
       - The example of an algorithm that extracts the skeleton of an image.
-      - ÀÌ¹ÌÁöÀÇ »À´ë¸¦ ÃßÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+      - ì´ë¯¸ì§€ì˜ ë¼ˆëŒ€ë¥¼ ì¶”ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
     - SaliencyMap
       - The example of an algorithms that emphasize areas where people's eyes focus first.
-      - »ç¶÷µéÀÇ ´«ÀÌ ¸ÕÀú ÃÊÁ¡À» ¸ÂÃß´Â ¿µ¿ªÀ» °­Á¶ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+      - ì‚¬ëŒë“¤ì˜ ëˆˆì´ ë¨¼ì € ì´ˆì ì„ ë§ì¶”ëŠ” ì˜ì—­ì„ ê°•ì¡°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
     - ScaleInvariantFeatureTransform
       - The example of an algorithms that extracting feature points of an image.
-      - ÀÌ¹ÌÁöÀÇ Æ¯Â¡Á¡À» ÃßÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+      - ì´ë¯¸ì§€ì˜ íŠ¹ì§•ì ì„ ì¶”ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
     - OrientedFASTandRotatedBRIEF
       - The example of an algorithms that extracting feature points of an image.
-      - ÀÌ¹ÌÁöÀÇ Æ¯Â¡Á¡À» ÃßÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+      - ì´ë¯¸ì§€ì˜ íŠ¹ì§•ì ì„ ì¶”ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
    
   - [Filter]
 
     - [Analysis]
       - EntropyFilter	   
         - The example of an algorithm that show entropy distribution.
-        - ÀÌ¹ÌÁöÀÇ Entropy ºĞÆ÷¸¦ ³ªÅ¸³»´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ì´ë¯¸ì§€ì˜ Entropy ë¶„í¬ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - GaborFilter
         - The example of an algorithm that processes a gabor filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ Gabor ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ Gabor í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - SymmetryFilter	   
         - The example of an algorithm that show symmetry distribution.
-        - ÀÌ¹ÌÁöÀÇ ´ëÄª¼º ºĞÆ÷¸¦ ³ªÅ¸³»´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ì´ë¯¸ì§€ì˜ ëŒ€ì¹­ì„± ë¶„í¬ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - TextureFilter	   
         - The example of an algorithm that show symmetry distribution.
-        - ÀÌ¹ÌÁö¿¡ Æ¯Á¤ÇÑ ÅØ½ºÃÄ º¯È¯ ¹ıÄ¢À» Àû¿ëÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ì´ë¯¸ì§€ì— íŠ¹ì •í•œ í…ìŠ¤ì³ ë³€í™˜ ë²•ì¹™ì„ ì ìš©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
 
     - [Convolution]
      - ConvolutionFilter
         - The example of an algorithm that processes a user-defined filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ »ç¿ëÀÚ ÁöÁ¤ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ ì‚¬ìš©ì ì§€ì • í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Deconvolution]
       - WienerDeconvolutionFilter
         - The example of an algorithm that restores an image applied blur.
-        - ºí·¯°¡ Àû¿ëµÈ ÀÌ¹ÌÁö¸¦ º¹¿øÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ë¸”ëŸ¬ê°€ ì ìš©ëœ ì´ë¯¸ì§€ë¥¼ ë³µì›í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
 
     - [Denoising]
       - AnisotropicDiffusion
         - The example of an algorithm that diffuse the pixel value nonlinearly along the boundary of an image.
-        - ÀÌ¹ÌÁöÀÇ °æ°è¸¦ µû¶ó ºñ¼±ÇüÀûÀ¸·Î °ªÀ» È®»ê½ÃÅ°´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ì´ë¯¸ì§€ì˜ ê²½ê³„ë¥¼ ë”°ë¼ ë¹„ì„ í˜•ì ìœ¼ë¡œ ê°’ì„ í™•ì‚°ì‹œí‚¤ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - BilateralFilter
         - The example of an algorithm that processes a bilateral filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ bilateral ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ì´ë¯¸ì§€ì—ì„œ bilateral í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - BilateralFilterGrid
         - The example of an algorithm that processes a bilateral filter to an image using Bilateral Grid data structure.
-        - Bilateral Grid ÀÚ·á±¸Á¶¸¦ »ç¿ëÇÏ¿© ÀÌ¹ÌÁö¿¡¼­ bilateral ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - Bilateral Grid ìë£Œêµ¬ì¡°ë¥¼ ì‚¬ìš©í•˜ì—¬ ì´ë¯¸ì§€ì—ì„œ bilateral í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - BilateralFilterSubSampled
         - The example of an algorithm that processes a bilateral filter And Applies the sampling method to an image.
-        - »ùÇÃ¸µÀ» Àû¿ëÇÏ¿© ÀÌ¹ÌÁö¿¡¼­ bilateral ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ìƒ˜í”Œë§ì„ ì ìš©í•˜ì—¬ ì´ë¯¸ì§€ì—ì„œ bilateral í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - ContraharmonicMeanFilter
         - The example of an algorithm that processes a contraharmonic mean filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ contraharmonic mean ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ì´ë¯¸ì§€ì—ì„œ contraharmonic mean í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - FL Denoising Type 1
         - An example of the denoising algorithm type 1 proposed by 'FLImaging'.
-        - FLImaging ³ëÀÌÁî Á¦°Å ¾Ë°í¸®Áò Å¸ÀÔ 1 ¿¹Á¦.
+        - FLImaging ë…¸ì´ì¦ˆ ì œê±° ì•Œê³ ë¦¬ì¦˜ íƒ€ì… 1 ì˜ˆì œ.
       - FastGuidedFilter
         - The example of an algorithm that processes a fast guided filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ fast guided ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ fast guided í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - GuidedFilter
         - The example of an algorithm that processes a guided filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ guided ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ guided í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - HybridMedianFilter
         - The example of an algorithm that processes a hybrid median filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ ÇÏÀÌºê¸®µå Áß¾Ó°ª ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ í•˜ì´ë¸Œë¦¬ë“œ ì¤‘ì•™ê°’ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - KuwaharaFilter
         - The example of an algorithm that processes a Kuwahara filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ Kuwahara ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦	
+        - ì´ë¯¸ì§€ì—ì„œ Kuwahara í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ	
       - MeanCurvatureFlow
         - The example of an algorithm that applies mean curvature flow to an image.
-        - ÀÌ¹ÌÁö¿¡ Mean Curvature Flow(Æò±Õ °î·ü Èå¸§)¸¦ Àû¿ëÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì— Mean Curvature Flow(í‰ê·  ê³¡ë¥  íë¦„)ë¥¼ ì ìš©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - MeanCurvatureFlowWeighted
         - The example of an algorithm that applies mean curvature flow to an image. (Edge preservation method of mean curvature flow algorithm)
-        - ÀÌ¹ÌÁö¿¡ Mean Curvature Flow Weighted(Æò±Õ °î·ü Èå¸§)¸¦ Àû¿ëÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦. (Mean Curvature FlowÀÇ ¿§Áö º¸Á¸ ¹æ½Ä)
+        - ì´ë¯¸ì§€ì— Mean Curvature Flow Weighted(í‰ê·  ê³¡ë¥  íë¦„)ë¥¼ ì ìš©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ. (Mean Curvature Flowì˜ ì—£ì§€ ë³´ì¡´ ë°©ì‹)
       - MeanShiftFilter
         - The example of an algorithm that processes a mean shift filter to an image.
-        - ÀÌ¹ÌÁö¿¡ Mean Shift ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì— Mean Shift í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - MedianFilter
         - The example of an algorithm that processes a median filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ Áß¾Ó°ª ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ ì¤‘ì•™ê°’ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - MedianSeparatedFilter
         - The example of an algorithm that processes a median separate filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ ºĞ¸®µÈ Áß¾Ó°ª ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ ë¶„ë¦¬ëœ ì¤‘ì•™ê°’ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - MedianWeightedFilter
         - The example of an algorithm that processes a median weighted filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ °¡ÁßÀ» ÀÌ¿ëÇÑ Áß¾Ó°ª ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ ê°€ì¤‘ì„ ì´ìš©í•œ ì¤‘ì•™ê°’ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - SymmetricNearestNeighborFilter
         - The example of an algorithm that processes a Symmetric Nearest Neighbor filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ Symmetric Nearest Neighbor ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦	
+        - ì´ë¯¸ì§€ì—ì„œ Symmetric Nearest Neighbor í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ	
       - Total Variation Denoising
         - An example of an algorithm that removes noise by reducing total variation in an image.
-        - ÀÌ¹ÌÁö ÀüÃ¼ º¯µ¿À» °¨¼ÒÇÏ¿© ³ëÀÌÁî¸¦ Á¦°ÅÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ ì „ì²´ ë³€ë™ì„ ê°ì†Œí•˜ì—¬ ë…¸ì´ì¦ˆë¥¼ ì œê±°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - WeightedGuidedFilter
         - The example of an algorithm that processes a weighted guided filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ weighted guided ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ weighted guided í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Edge Detection]
       - Deviation Filter
         - The example of an algorithm that detects image edges.
-        - ÀÌ¹ÌÁö °æ°è¸¦ °ËÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ ê²½ê³„ë¥¼ ê²€ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - DifferenceOfGaussianFilter
         - The example of an algorithm that detects image edges usigng Difference Of Gaussian functions.
-        - Difference Of Gaussian functions¸¦ »ç¿ëÇÏ¿© ÀÌ¹ÌÁö °æ°è¸¦ °ËÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - Difference Of Gaussian functionsë¥¼ ì‚¬ìš©í•˜ì—¬ ì´ë¯¸ì§€ ê²½ê³„ë¥¼ ê²€ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - FreiFilter
         - The example of an algorithm that detects image edges.
-        - ÀÌ¹ÌÁö °æ°è¸¦ °ËÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ ê²½ê³„ë¥¼ ê²€ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - GradientFilter
         - The example of an algorithm that processes a gradient differential filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ °æ»ç ¹ÌºĞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ ê²½ì‚¬ ë¯¸ë¶„ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - GradientFilter_Prewitt_Sobel
         - The example of an algorithm that processes a gradient, prewitt and sobel differential filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ °æ»ç, ÇÁ¸®À­, ¼Òº§ ¹ÌºĞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ ê²½ì‚¬, í”„ë¦¬ìœ—, ì†Œë²¨ ë¯¸ë¶„ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - KirschFilter
         - The example of an algorithm that detects image edges
-        - Kirsch Operator¸¦ »ç¿ëÇÏ¿© ÀÌ¹ÌÁö °æ°è¸¦ °ËÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - Kirsch Operatorë¥¼ ì‚¬ìš©í•˜ì—¬ ì´ë¯¸ì§€ ê²½ê³„ë¥¼ ê²€ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - LaplacianFilter
         - The example of an algorithm that processes a laplacian differential filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ laplacian ¹ÌºĞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ laplacian ë¯¸ë¶„ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - LaplacianOfGaussianFilter
         - The example of an algorithm that detects image edges.
-        - Laplacian Of Gaussian Operator¸¦ »ç¿ëÇÏ¿© ÀÌ¹ÌÁö °æ°è¸¦ °ËÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - Laplacian Of Gaussian Operatorë¥¼ ì‚¬ìš©í•˜ì—¬ ì´ë¯¸ì§€ ê²½ê³„ë¥¼ ê²€ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - PrewittFilter
         - The example of an algorithm that processes a prewitt differential filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ ÇÁ¸®À­ ¹ÌºĞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ í”„ë¦¬ìœ— ë¯¸ë¶„ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - RangeFilter
         - The example of an algorithm that detects image edges through difference between maximum and minimum value.
-        - ÃÖ´ñ°ª°ú ÃÖ¼Ú°ªÀÇ Â÷¸¦ ÅëÇØ ÀÌ¹ÌÁö °æ°è¸¦ °ËÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ìµœëŒ“ê°’ê³¼ ìµœì†Ÿê°’ì˜ ì°¨ë¥¼ í†µí•´ ì´ë¯¸ì§€ ê²½ê³„ë¥¼ ê²€ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - RobertsFilter
         - The example of an algorithm that processes a roberts differential filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ roberts ¹ÌºĞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ roberts ë¯¸ë¶„ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - RobinsonFilter
         - The example of an algorithm that detects image edges
-        - Robinson Operator¸¦ »ç¿ëÇÏ¿© ÀÌ¹ÌÁö °æ°è¸¦ °ËÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - Robinson Operatorë¥¼ ì‚¬ìš©í•˜ì—¬ ì´ë¯¸ì§€ ê²½ê³„ë¥¼ ê²€ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - ScharrFilter
         - The example of an algorithm that processes a scharr differential filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ scharr ¹ÌºĞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ scharr ë¯¸ë¶„ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - SobelFilter
         - The example of an algorithm that processes a sobel differential filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ ¼Òº§ ¹ÌºĞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ ì†Œë²¨ ë¯¸ë¶„ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Enhancement]
       - Coherence Enhancing Diffusion
         - The example of an algorithm that performs diffusion in a consistent direction of an image.
-        - ÀÌ¹ÌÁöÀÇ ÀÏ°üµÈ ¹æÇâÀ¸·Î È®»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ ì¼ê´€ëœ ë°©í–¥ìœ¼ë¡œ í™•ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - Coherence Enhancing Diffusion NonNeg
         - The example of an algorithm that performs diffusion in a consistent direction of an image.
-        - ÀÌ¹ÌÁöÀÇ ÀÏ°üµÈ ¹æÇâÀ¸·Î È®»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ ì¼ê´€ëœ ë°©í–¥ìœ¼ë¡œ í™•ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - EdgeEnhancement
         - The example of an algorithm that minimizes noise and enhances the edge of an image.
-        - ³ëÀÌÁî¸¦ ÃÖ¼ÒÈ­ÇÏ¸é¼­ ÀÌ¹ÌÁöÀÇ °æ°è¸¦ °­Á¶½ÃÄÑÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ë…¸ì´ì¦ˆë¥¼ ìµœì†Œí™”í•˜ë©´ì„œ ì´ë¯¸ì§€ì˜ ê²½ê³„ë¥¼ ê°•ì¡°ì‹œì¼œì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - EmphasizeFilter	   
         - The example of an algorithm that enhances contrast of the image.
-        - ÀÌ¹ÌÁö¿¡ ¸í¾Ïºñ¸¦ Çâ»ó½ÃÅ°´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ì´ë¯¸ì§€ì— ëª…ì•”ë¹„ë¥¼ í–¥ìƒì‹œí‚¤ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - HighpassFilter
         - The example of an algorithm that processes a highpass differential filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ highpass ¹ÌºĞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ highpass ë¯¸ë¶„ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - IlluminateFilter
         - The example of an algorithm that enhance contrast by applying Illuminate filtering to image
-        - ÀÌ¹ÌÁö¿¡ Illuminate ÇÊÅÍ¸µÀ» Àû¿ëÇÏ¿© ÀÌ¹ÌÁöÀÇ ¸í¾Ï ´ëºñ¸¦ °­È­ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦	 
+        - ì´ë¯¸ì§€ì— Illuminate í•„í„°ë§ì„ ì ìš©í•˜ì—¬ ì´ë¯¸ì§€ì˜ ëª…ì•” ëŒ€ë¹„ë¥¼ ê°•í™”í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ	 
       - MultiFocus
         - The example of an algorithm that processes multiple images with different focus points and creates a single image with all focus points.
-        - °¢°¢ ÃÊÁ¡ÀÌ ´Ù¸¥ ¿©·¯ ÀåÀÇ ÀÌ¹ÌÁö¸¦ Ã³¸®ÇØ ¸ğµç ÃÊÁ¡À» °¡Áö´Â ÇÑÀåÀÇ ÀÌ¹ÌÁö·Î ¸¸µå´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ê°ê° ì´ˆì ì´ ë‹¤ë¥¸ ì—¬ëŸ¬ ì¥ì˜ ì´ë¯¸ì§€ë¥¼ ì²˜ë¦¬í•´ ëª¨ë“  ì´ˆì ì„ ê°€ì§€ëŠ” í•œì¥ì˜ ì´ë¯¸ì§€ë¡œ ë§Œë“œëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - MultiFocus_WithAlignment
         - The example of an algorithm that processes multiple images that are different and unaligned, each with a different focus, making them a single aligned image with all the focus.
-        - °¢°¢ ÃÊÁ¡ÀÌ ´Ù¸£°í Á¤·ÄµÇÁö ¾ÊÀº ¿©·¯ ÀåÀÇ ÀÌ¹ÌÁö¸¦ Ã³¸®ÇØ ¸ğµç ÃÊÁ¡À» °¡Áö°í Á¤·ÄµÈ ÇÑÀåÀÇ ÀÌ¹ÌÁö·Î ¸¸µå´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ê°ê° ì´ˆì ì´ ë‹¤ë¥´ê³  ì •ë ¬ë˜ì§€ ì•Šì€ ì—¬ëŸ¬ ì¥ì˜ ì´ë¯¸ì§€ë¥¼ ì²˜ë¦¬í•´ ëª¨ë“  ì´ˆì ì„ ê°€ì§€ê³  ì •ë ¬ëœ í•œì¥ì˜ ì´ë¯¸ì§€ë¡œ ë§Œë“œëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - ShockFilter
         - The example of an algorithm that reconstructs a blurred edge into a sharp edge.
-        - Èå¸´ÇÑ ÀÌ¹ÌÁöÀÇ °æ°è¸¦ ¶Ñ·ÇÇÏ°Ô º¹¿øÇØÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - íë¦¿í•œ ì´ë¯¸ì§€ì˜ ê²½ê³„ë¥¼ ëšœë ·í•˜ê²Œ ë³µì›í•´ì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Smoothing]
       - BinomialFilter
         - The example of an algorithm that performs smoothing by applying filter filtering to image
-        - ÀÌ¹ÌÁö¿¡ Binomial ÇÊÅÍ¸µÀ» Àû¿ëÇÏ¿© ½º¹«µùÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ì´ë¯¸ì§€ì— Binomial í•„í„°ë§ì„ ì ìš©í•˜ì—¬ ìŠ¤ë¬´ë”©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - GaussFilter
         - The example of an algorithm that performs image smoothing usign gaussian functions
-        - Gauss FunctionsÀ» ÀÌ¿ëÇÏ¿© ÀÌ¹ÌÁö ½º¹«µùÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - Gauss Functionsì„ ì´ìš©í•˜ì—¬ ì´ë¯¸ì§€ ìŠ¤ë¬´ë”©ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - GaussianFilter
         - The example of an algorithm that processes a gaussian differential filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ gaussian ¹ÌºĞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ gaussian ë¯¸ë¶„ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - GeometricMeanFilter
         - The example of an algorithm that processes a geometric mean filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ ±âÇÏ Æò±Õ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ ê¸°í•˜ í‰ê·  í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - HarmonicMeanFilter
         - The example of an algorithm that processes a harmonic mean filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ Á¶È­ Æò±Õ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ ì¡°í™” í‰ê·  í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - InfiniteSymmetricExponentialFilter
         - The example of an algorithm that performs image smoothing usign Infinite Symmetric Exponential function
-        - Infinite Symmetric Exponential FunctionÀ» ÀÌ¿ëÇÏ¿© ÀÌ¹ÌÁö ½º¹«µùÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - Infinite Symmetric Exponential Functionì„ ì´ìš©í•˜ì—¬ ì´ë¯¸ì§€ ìŠ¤ë¬´ë”©ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - LowpassFilter
         - The example of an algorithm that processes a lowpass differential filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ lowpass ¹ÌºĞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ lowpass ë¯¸ë¶„ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - MidpointFilter
         - The example of an algorithm that processes midpoint filtering to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ midpoint ÇÊÅÍ¸µÀ» Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ì´ë¯¸ì§€ì—ì„œ midpoint í•„í„°ë§ì„ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - SigmaFilter
         - The example of an algorithm that executes non-linear image smoothing.
-        - ºñ¼±Çü ÀÌ¹ÌÁö¸¦ ½º¹«µùÇØÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦. 
+        - ë¹„ì„ í˜• ì´ë¯¸ì§€ë¥¼ ìŠ¤ë¬´ë”©í•´ì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ. 
       - StackBlurFilter
         - The example of an algorithm that processes a stack blur filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ stack blur ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ stack blur í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - UniformFilter
         - The example of an algorithm that processes a uniform differential filter to an image.
-        - ÀÌ¹ÌÁö¿¡¼­ uniform ¹ÌºĞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì—ì„œ uniform ë¯¸ë¶„ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Frequency Domain]
   
@@ -1084,31 +1084,31 @@
       
       - FilterGeneratorBandpassFD
         - The example of an algorithm that generate a Bandpass filter in a frequency domain.
-        - ÁÖÆÄ¼ö ¿µ¿ª¿¡¼­ »ç¿ëµÇ´Â Bandpass ÇÊÅÍ¸¦ »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼íŒŒìˆ˜ ì˜ì—­ì—ì„œ ì‚¬ìš©ë˜ëŠ” Bandpass í•„í„°ë¥¼ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - FilterGeneratorBandrejectFD
         - The example of an algorithm that generate a Bandreject filter in a frequency domain.
-        - ÁÖÆÄ¼ö ¿µ¿ª¿¡¼­ »ç¿ëµÇ´Â Bandreject ÇÊÅÍ¸¦ »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼íŒŒìˆ˜ ì˜ì—­ì—ì„œ ì‚¬ìš©ë˜ëŠ” Bandreject í•„í„°ë¥¼ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - FilterGeneratorButterworthFD
         - The example of an algorithm that generate a Butterworth filter in a frequency domain.
-        - ÁÖÆÄ¼ö ¿µ¿ª¿¡¼­ »ç¿ëµÇ´Â ¹öÅÍ¿ö½º ÇÊÅÍ¸¦ »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼íŒŒìˆ˜ ì˜ì—­ì—ì„œ ì‚¬ìš©ë˜ëŠ” ë²„í„°ì›ŒìŠ¤ í•„í„°ë¥¼ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - FilterGeneratorGaussFD
         - The example of an algorithm that generate a Gaussian filter in a frequency domain.
-        - ÁÖÆÄ¼ö ¿µ¿ª¿¡¼­ »ç¿ëµÇ´Â Gauss ÇÊÅÍ¸¦ »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼íŒŒìˆ˜ ì˜ì—­ì—ì„œ ì‚¬ìš©ë˜ëŠ” Gauss í•„í„°ë¥¼ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - FilterGeneratorIdealFD
         - The example of an algorithm that generate a Ideal filter in a frequency domain.
-        - ÁÖÆÄ¼ö ¿µ¿ª¿¡¼­ »ç¿ëµÇ´Â Ideal ÇÊÅÍ¸¦ »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼íŒŒìˆ˜ ì˜ì—­ì—ì„œ ì‚¬ìš©ë˜ëŠ” Ideal í•„í„°ë¥¼ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - FilterGeneratorMeanFD
         - The example of an algorithm that generate a Mean filter in a frequency domain.
-        - ÁÖÆÄ¼ö ¿µ¿ª¿¡¼­ »ç¿ëµÇ´Â Æò±Õ ÇÊÅÍ¸¦ »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì£¼íŒŒìˆ˜ ì˜ì—­ì—ì„œ ì‚¬ìš©ë˜ëŠ” í‰ê·  í•„í„°ë¥¼ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Correlation]
 
       - AutoCorrelationFD  
         - Example of an algorithm for correlation computation of the original image.
-        - ¿øº» ÀÌ¹ÌÁö¸¦ Correlation ¿¬»êÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì›ë³¸ ì´ë¯¸ì§€ë¥¼ Correlation ì—°ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - CrossCorrelationFD
         - Example of an algorithm for cross-correlation computation of the original image and the image to be computed.
-        - ¿øº» ÀÌ¹ÌÁö¿Í ¿¬»êÇÒ ÀÌ¹ÌÁö¸¦ Cross Correlation ¿¬»êÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì›ë³¸ ì´ë¯¸ì§€ì™€ ì—°ì‚°í•  ì´ë¯¸ì§€ë¥¼ Cross Correlation ì—°ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Image Enhancement]
 
@@ -1116,347 +1116,347 @@
 
       - Normalization_CDF
         - The example of an algorithm that processes a normalize(CDF Method).
-        - ÀÌ¹ÌÁö¿¡¼­ Á¤±ÔÈ­ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦(CDF ¹æ½Ä).
+        - ì´ë¯¸ì§€ì—ì„œ ì •ê·œí™” ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ(CDF ë°©ì‹).
       - Normalization_MaxElement
         - The example of an algorithm that processes a normalize(Max Element Method).
-        - ÀÌ¹ÌÁö¿¡¼­ Á¤±ÔÈ­ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦(Max Element ¹æ½Ä).
+        - ì´ë¯¸ì§€ì—ì„œ ì •ê·œí™” ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ(Max Element ë°©ì‹).
       - Normalization_MinMax
         - The example of an algorithm that processes a normalize(MinMax Method).
-        - ÀÌ¹ÌÁö¿¡¼­ Á¤±ÔÈ­ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦(MinMax ¹æ½Ä).
+        - ì´ë¯¸ì§€ì—ì„œ ì •ê·œí™” ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ(MinMax ë°©ì‹).
       - Normalization_Trimming
         - The example of an algorithm that processes a normalize(MinMax Method ,Trimming Apply).
-        - ÀÌ¹ÌÁö¿¡¼­ Á¤±ÔÈ­ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦(Trimming Àû¿ë).
+        - ì´ë¯¸ì§€ì—ì„œ ì •ê·œí™” ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ(Trimming ì ìš©).
 
     - AdaptiveEqualization
       - Algorithm that processes images through values of local equalization.
-      - Áö¿ª ±ÕÀÏÈ­ °ªÀ» ÅëÇØ ÀÌ¹ÌÁö¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì§€ì—­ ê· ì¼í™” ê°’ì„ í†µí•´ ì´ë¯¸ì§€ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - AutoShadingCorrection
       - The example of an algorithm that processes a shading correction.
-      - ºÒ±ÕÀÏÇÑ Á¶¸íÀ» º¸Á¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë¶ˆê· ì¼í•œ ì¡°ëª…ì„ ë³´ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Demoire
       - Algorithm that remove moire pattern.
-      - Moire ÆĞÅÏÀ» Á¦°ÅÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - Moire íŒ¨í„´ì„ ì œê±°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Equalization
       - The example of an algorithm that processes a equalize.
-      - ÀÌ¹ÌÁö¿¡¼­ ±ÕÀÏÈ­ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì—ì„œ ê· ì¼í™” ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - HighDynamicRange
       - The example of an algorithm that converts multiple exposure images with different exposure into a single image of even brightness.
-      - ³ëÃâ Á¤µµ°¡ ´Ù¸¥ ´ÙÁß ³ëÃâ ÀÌ¹ÌÁöµéÀ» ÇÑÀåÀÇ ¹à±â°¡ °í¸¥ ÀÌ¹ÌÁö·Î ¸¸µå´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë…¸ì¶œ ì •ë„ê°€ ë‹¤ë¥¸ ë‹¤ì¤‘ ë…¸ì¶œ ì´ë¯¸ì§€ë“¤ì„ í•œì¥ì˜ ë°ê¸°ê°€ ê³ ë¥¸ ì´ë¯¸ì§€ë¡œ ë§Œë“œëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - LowLuminanceCorrectionType1
       - The example of an algorithm that processes a low luminance correction.
-      - ÀúÈÖµµ ÀÌ¹ÌÁö¸¦ º¸Á¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì €íœ˜ë„ ì´ë¯¸ì§€ë¥¼ ë³´ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ColorBoosting
       - The example of the RGB color contrast boosting.
-      - »ö»ó ´ëºñ¸¦ °­È­ÇØ ÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ìƒ‰ìƒ ëŒ€ë¹„ë¥¼ ê°•í™”í•´ ì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ContrastEnhancement
       - The example of an algorithm that enhances the contrast of the image using iterative method.
-      - ¹İº¹ ¿¬»êÀ» ÅëÇØ ÀÌ¹ÌÁöÀÇ ´ëºñ¸¦ °­Á¶ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ë°˜ë³µ ì—°ì‚°ì„ í†µí•´ ì´ë¯¸ì§€ì˜ ëŒ€ë¹„ë¥¼ ê°•ì¡°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Image Operation]
   
     - OperationAbsolute 
       - The algorithm that performs absolute operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ Àı´ñ°ª ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— ì ˆëŒ“ê°’ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationAdd 
       - The algorithm that performs addition operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í µ¡¼À ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ë§ì…ˆ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationAtan2 
       - The algorithm that performs Atan2 operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í Atan2 ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ Atan2 ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationBinaryComplement
       - Algorithm for performing binary complement operations on an image by scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í binary complement ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ binary complement ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationBit Rolling Left
       - The algorithm that performs bit rolling left operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í bit rolling left ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ bit rolling left ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationBit Rolling Right
       - The algorithm that performs bit rolling right operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í bit rolling right ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ bit rolling right ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationBitShift 
       - The algorithm that performs shift operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í shift ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ shift ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationBitwiseAnd
       - Algorithm for performing Bitwise And operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Bitwise And ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Bitwise And ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationBitwiseNand
       - Algorithm for performing Bitwise Nand operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Bitwise Nand ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Bitwise Nand ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationBitwiseNot
       - Algorithm for performing Bitwise Not operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Bitwise Not ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Bitwise Not ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationBitwiseOr
       - Algorithm for performing Bitwise Or operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Bitwise Or ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Bitwise Or ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationBitwiseNor
       - Algorithm for performing Bitwise Nor operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Bitwise Nor ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Bitwise Nor ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationBitwiseXor
       - Algorithm for performing Bitwise Xor operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Bitwise Xor ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Bitwise Xor ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationBitwiseXnor
       - Algorithm for performing Bitwise Xnor operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Bitwise Xnor ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Bitwise Xnor ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationBlend 
       - The algorithm that performs blend operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í ºí·»µå ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ë¸”ë Œë“œ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationCompare
       - The algorithm that performs compare operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í ºñ±³ ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ë¹„êµ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationComplexDivide
       - The algorithm that performs Complex Divide operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ Complex Divide ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Complex Divide ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationComplexMultiply
       - The algorithm that performs Complex Multiply operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ Complex Multiply ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Complex Multiply ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationCosecant
       - The algorithm that performs Cosecant operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ Cosecant ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Cosecant ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationCosine 
       - The algorithm that performs Cosine operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ Cosine ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Cosine ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationCosineH 
       - The algorithm that performs CosineH operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ CosineH ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— CosineH ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationCubeRoot
       - The algorithm that performs Cube Root operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ ¼¼Á¦°ö±Ù ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ì— ì„¸ì œê³±ê·¼ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationDifference 
       - The algorithm that compares an image with scalar or another image and outputs the absolute value of the difference.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í ºñ±³ÇÏ¿© Â÷ÀÌÀÇ Àı´ë °ªÀ» Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ë¹„êµí•˜ì—¬ ì°¨ì´ì˜ ì ˆëŒ€ ê°’ì„ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationDivide 
       - The algorithm that performs divide operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í ³ª´°¼À ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ë‚˜ëˆ—ì…ˆ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationFourthRoot
       - The algorithm that performs Fourth Root operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ ³×Á¦°ö±Ù ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ì— ë„¤ì œê³±ê·¼ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationGreater
       - The algorithm that performs Greater operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í Greater ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ Greater ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationGreatestCommonDivisor
       - The algorithm that performs GCD operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í GCD ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ GCD ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationHardShrinkage
       - Algorithm that outputs the function value or differential value of the hard shrinkage function to the image.
-      - ÀÌ¹ÌÁö¿¡ Hard Shrinkage ÇÔ¼öÀÇ ÇÔ¼ı°ª ¶Ç´Â ¹ÌºĞ°ªÀ» Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Hard Shrinkage í•¨ìˆ˜ì˜ í•¨ìˆ«ê°’ ë˜ëŠ” ë¯¸ë¶„ê°’ì„ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationHypotenuse
       - The algorithm that performs Hypotenuse operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í Hypotenuse ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ Hypotenuse ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationInvertIntensity
       - The algorithm that performs Invert Intensity operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ Invert Intensity ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Invert Intensity ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationLeadingOnes
       - The algorithm that performs the calculation of leading ones from the source image.
-      - ÀÌ¹ÌÁö¿¡ Leading Ones ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Leading Ones ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationLeadingZeros
       - The algorithm that performs calculation of leading zeros from the source image.
-      - ÀÌ¹ÌÁö¿¡ Leading Zeros ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Leading Zeros ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationLeastCommonMultiple
       - The algorithm that performs LCM operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í LCM ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ LCM ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationLesser
       - The algorithm that performs Lesser operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í Lesser ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ Lesser ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationLinear
       - Algorithm for performing Linear operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Linear ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Linear ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationLog
       - Algorithm for performing Log operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Log ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Log ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationLogicalAnd
       - Algorithm for performing Logical And operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Logical And ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Logical And ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationLogicalNand
       - Algorithm for performing Logical Nand operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Logical Nand ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Logical Nand ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationLogicalNot
       - Algorithm for performing Logical Not operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Logical Not ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Logical Not ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationLogicalOr
       - Algorithm for performing Logical Or operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Logical Or ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Logical Or ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationLogicalNor
       - Algorithm for performing Logical Nor operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Logical Nor ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Logical Nor ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationLogicalXnor
       - Algorithm for performing Logical Xnor operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Logical Xnor ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.    
+      - ì´ë¯¸ì§€ë¥¼ Logical Xnor ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.    
     - OperationLogicalXor
       - Algorithm for performing Logical Xor operations on an image.
-      - ÀÌ¹ÌÁö¸¦ Logical Xor ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ Logical Xor ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - OperationMaximum 
       - The algorithm that compares an image with a scalar or other image to output a max value.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í ºñ±³ÇÏ¿© Å« °ªÀ» Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ë¹„êµí•˜ì—¬ í° ê°’ì„ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationMean
       - The algorithm that performs Mean operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í Mean ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ Mean ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationMinimum 
       - The algorithm that compares an image with a scalar or other image to output a min value.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í ºñ±³ÇÏ¿© ÀÛÀº °ªÀ» Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ë¹„êµí•˜ì—¬ ì‘ì€ ê°’ì„ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationMish
       - Algorithm that outputs the function value or differential value of the mish function to the image.
-      - ÀÌ¹ÌÁö¿¡ Mish ÇÔ¼öÀÇ ÇÔ¼ı°ª ¶Ç´Â ¹ÌºĞ°ªÀ» Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Mish í•¨ìˆ˜ì˜ í•¨ìˆ«ê°’ ë˜ëŠ” ë¯¸ë¶„ê°’ì„ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationModulo 
       - The algorithm that performs modulo operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í ³ª¸ÓÁö ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ë‚˜ë¨¸ì§€ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationMultiply 
       - The algorithm that performs multiply operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í °ö¼À ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ê³±ì…ˆ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationOverlay 
       - The algorithm that performs overlay operations on an image with other image.
-      - ÀÌ¹ÌÁö¸¦ ´Ù¸¥ ÀÌ¹ÌÁö¿Í °ãÄ§ ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ê²¹ì¹¨ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationPopcount
       - The algorithm that performs the calculation of popcount from the source image.
-      - ÀÌ¹ÌÁö¿¡ Popcount ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Popcount ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationPower
       - The algorithm that performs power operations on an image with scalar or other image as exponent.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¸¦ Áö¼ö·Î ÇÏ¿© °ÅµìÁ¦°ö ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ë¥¼ ì§€ìˆ˜ë¡œ í•˜ì—¬ ê±°ë“­ì œê³± ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationPReLU
       - Algorithm that outputs the function value or differential value of the PReLU function to the image.
-      - ÀÌ¹ÌÁö¿¡ PReLU ÇÔ¼öÀÇ ÇÔ¼ı°ª ¶Ç´Â ¹ÌºĞ°ªÀ» Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— PReLU í•¨ìˆ˜ì˜ í•¨ìˆ«ê°’ ë˜ëŠ” ë¯¸ë¶„ê°’ì„ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationReLU
       - Algorithm that outputs the function value or differential value of the ReLU function to the image.
-      - ÀÌ¹ÌÁö¿¡ ReLU ÇÔ¼öÀÇ ÇÔ¼ı°ª ¶Ç´Â ¹ÌºĞ°ªÀ» Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— ReLU í•¨ìˆ˜ì˜ í•¨ìˆ«ê°’ ë˜ëŠ” ë¯¸ë¶„ê°’ì„ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationScaledDivide
       - The algorithm that performs a Scaled Divide operation with an image or scalar value.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í ½ºÄÉÀÏ ³ª´°¼À ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ìŠ¤ì¼€ì¼ ë‚˜ëˆ—ì…ˆ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationScaledMultiply
       - The algorithm that perform Scaled Multiply operation an image with scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í ½ºÄÉÀÏ °ö¼À ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ìŠ¤ì¼€ì¼ ê³±ì…ˆ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationScaledSubtract
       - The algorithm that perform Scaled Subtract operation an image with scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í ½ºÄÉÀÏ »¬¼À ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ìŠ¤ì¼€ì¼ ëº„ì…ˆ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationSine 
       - The algorithm that performs Sine operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ Sine ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Sine ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationSineH
       - The algorithm that performs SineH operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ SineH ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— SineH ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationSigmoid
       - Algorithm that outputs the function value or differential value of the sigmoid function to the image.
-      - ÀÌ¹ÌÁö¿¡ Sigmoid ÇÔ¼öÀÇ ÇÔ¼ı°ª ¶Ç´Â ¹ÌºĞ°ªÀ» Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Sigmoid í•¨ìˆ˜ì˜ í•¨ìˆ«ê°’ ë˜ëŠ” ë¯¸ë¶„ê°’ì„ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationSoftplus
       - Algorithm that outputs the function value or differential value of the softplus function to the image.
-      - ÀÌ¹ÌÁö¿¡ Softplus ÇÔ¼öÀÇ ÇÔ¼ı°ª ¶Ç´Â ¹ÌºĞ°ªÀ» Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Softplus í•¨ìˆ˜ì˜ í•¨ìˆ«ê°’ ë˜ëŠ” ë¯¸ë¶„ê°’ì„ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationSoftShrinkage
       - Algorithm that outputs the function value or differential value of the soft shrinkage function to the image.
-      - ÀÌ¹ÌÁö¿¡ Soft Shrinkage ÇÔ¼öÀÇ ÇÔ¼ı°ª ¶Ç´Â ¹ÌºĞ°ªÀ» Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Soft Shrinkage í•¨ìˆ˜ì˜ í•¨ìˆ«ê°’ ë˜ëŠ” ë¯¸ë¶„ê°’ì„ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationSquare
       - The algorithm that performs Square operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ Á¦°ö ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ì— ì œê³± ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationSquareRoot
       - The algorithm that performs Square Root operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ Á¦°ö±Ù ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ì— ì œê³±ê·¼ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationSwish
       - Algorithm that outputs the function value or differential value of the swish function to the image.
-      - ÀÌ¹ÌÁö¿¡ Swish ÇÔ¼öÀÇ ÇÔ¼ı°ª ¶Ç´Â ¹ÌºĞ°ªÀ» Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Swish í•¨ìˆ˜ì˜ í•¨ìˆ«ê°’ ë˜ëŠ” ë¯¸ë¶„ê°’ì„ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationTangentH
       - The algorithm that performs TangentH operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ TangentH ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— TangentH ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationSubtract 
       - The algorithm that performs subtraction operations on an image scalar or other image.
-      - ÀÌ¹ÌÁö¸¦ ½ºÄ®¶ó ¶Ç´Â ´Ù¸¥ ÀÌ¹ÌÁö¿Í »¬¼À ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò.
+      - ì´ë¯¸ì§€ë¥¼ ìŠ¤ì¹¼ë¼ ë˜ëŠ” ë‹¤ë¥¸ ì´ë¯¸ì§€ì™€ ëº„ì…ˆ ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OperationTangent
       - The algorithm that performs Tangent operation on the source image.
-      - ÀÌ¹ÌÁö¿¡ Tangent ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Tangent ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationTrailingOnes
       - The algorithm that performs the calculation of trailing ones from the source image.
-      - ÀÌ¹ÌÁö¿¡ Trailing Ones ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Trailing Ones ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - OperationTrailingZeros
       - The algorithm that performs the calculation of trailing zeros from the source image.
-      - ÀÌ¹ÌÁö¿¡ Trailing Zeros ¿¬»êÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò
+      - ì´ë¯¸ì§€ì— Trailing Zeros ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
 
 
   - [Inpainting]
     
     - InpaintingCoherenceTransport
       - The example of an algorithm that performs inpainting using Coherence Diffusion Method
-      - Coherence Diffusion MethodÀ» ÀÌ¿ëÇÏ¿© ÀÎÆäÀÎÆÃÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - Coherence Diffusion Methodì„ ì´ìš©í•˜ì—¬ ì¸í˜ì¸íŒ…ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - InpaintingFastMarchingMethod
       - The example of an algorithm that performs inpainting using Fast Marching Method
-      - Fast Marching Method À» ÀÌ¿ëÇÏ¿© ÀÎÆäÀÎÆÃÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - Fast Marching Method ì„ ì´ìš©í•˜ì—¬ ì¸í˜ì¸íŒ…ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - InpaintingNavierStokes
       - The example of an algorithm that performs inpainting using Navier Stokes Equations
-      - Navier Stokes EquationsÀ» ÀÌ¿ëÇÏ¿© ÀÎÆäÀÎÆÃÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - Navier Stokes Equationsì„ ì´ìš©í•˜ì—¬ ì¸í˜ì¸íŒ…ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - InpaintingTexture
       - The example of an algorithm that performs an inpainting by texture propagation and structure propagation.
-      - Texture Propagation°ú Structure PropagationÀ» ÀÌ¿ëÇÏ¿© ÀÎÆäÀÎÆÃÀ» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - Texture Propagationê³¼ Structure Propagationì„ ì´ìš©í•˜ì—¬ ì¸í˜ì¸íŒ…ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Moment]
 
     - Moment_Invariant
       - The algorithm example for obtaining Geometric Moment, Centroid Moment, Central Moment, Normalized Central Moment, Invariant Moment(or Hu moment)information about pixel intensity within image region of interest.
-      - ÀÌ¹ÌÁöÀÇ °ü½É¿µ¿ª ³»¿¡¼­ ÇÈ¼¿ °­µµ¿¡ ´ëÇÑ ±âÇÏÇĞÀû ¸ğ¸àÆ®, µµ½É ¸ğ¸àÆ®, Áß½É ¸ğ¸àÆ®, Á¤±ÔÈ­µÈ Áß½É ¸ğ¸àÆ®, ºÒº¯ ¸ğ¸àÆ® Á¤º¸¸¦ ¾ò´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì˜ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ í”½ì…€ ê°•ë„ì— ëŒ€í•œ ê¸°í•˜í•™ì  ëª¨ë©˜íŠ¸, ë„ì‹¬ ëª¨ë©˜íŠ¸, ì¤‘ì‹¬ ëª¨ë©˜íŠ¸, ì •ê·œí™”ëœ ì¤‘ì‹¬ ëª¨ë©˜íŠ¸, ë¶ˆë³€ ëª¨ë©˜íŠ¸ ì •ë³´ë¥¼ ì–»ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Moment_Zernike
       - The algorithm example to get Zernike moment information about pixel intensity within image region of interest.
-      - ÀÌ¹ÌÁöÀÇ °ü½É¿µ¿ª ³»¿¡¼­ ÇÈ¼¿ °­µµ¿¡ ´ëÇÑ Àú´ÏÅ° ¸ğ¸àÆ® Á¤º¸¸¦ ¾ò´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì˜ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ í”½ì…€ ê°•ë„ì— ëŒ€í•œ ì €ë‹ˆí‚¤ ëª¨ë©˜íŠ¸ ì •ë³´ë¥¼ ì–»ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Morphology]
 
     - MorphologyClose
       - The example of an algorithm that processes a close filter to an image.
-      - ÀÌ¹ÌÁö¿¡¼­ ´İ±â ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì—ì„œ ë‹«ê¸° í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - MorphologyDilate
       - The example of an algorithm that processes a dilate filter to an image.
-      - ÀÌ¹ÌÁö¿¡¼­ ÆØÃ¢ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì—ì„œ íŒ½ì°½ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - MorphologyErode
       - The example of an algorithm that processes a erode filter to an image.
-      - ÀÌ¹ÌÁö¿¡¼­ Ä§½Ä ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì—ì„œ ì¹¨ì‹ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - MorphologyGradient
       - The example of an algorithm that processes a gradient filter to an image.
-      - ÀÌ¹ÌÁö¿¡¼­ ±â¿ï±â ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì—ì„œ ê¸°ìš¸ê¸° í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - MorphologyHitOrMiss
       - The example of an algorithm that processes a Hit or Miss transform to an image.
-      - ÀÌ¹ÌÁö¿¡¼­ ÀûÁß°ú ºñÀûÁß º¯È¯À» Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì—ì„œ ì ì¤‘ê³¼ ë¹„ì ì¤‘ ë³€í™˜ì„ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - MorphologyOpen
       - The example of an algorithm that processes a open filter to an image.
-      - ÀÌ¹ÌÁö¿¡¼­ ¿­±â ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì—ì„œ ì—´ê¸° í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - MorphologyTopHat
       - The example of an algorithm that processes a top hat filter to an image.
-      - ÀÌ¹ÌÁö¿¡¼­ Å¾ÇŞ ÇÊÅÍ¸¦ Ã³¸®ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì—ì„œ íƒ‘í–‡ í•„í„°ë¥¼ ì²˜ë¦¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Page]
   
     - [Morphology]	 
       - PagePooling_Max
         - The example of an algorithm that outputs the maximum value among the input images as the result image.
-        - ÀÔ·ÂµÈ ÀÌ¹ÌÁö °¡¿îµ¥ ÃÖ´ë °ªÀ» °á°ú ÀÌ¹ÌÁö·Î Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì…ë ¥ëœ ì´ë¯¸ì§€ ê°€ìš´ë° ìµœëŒ€ ê°’ì„ ê²°ê³¼ ì´ë¯¸ì§€ë¡œ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - PagePooling_MaxGaussian
         - The example of an algorithm that outputs the Gaussian value for the maximum value located at the front of the input image as the result image.
-        - ÀÔ·ÂµÈ ÀÌ¹ÌÁö °¡¿îµ¥ °¡Àå ¾Õ¿¡ À§Ä¡ÇÑ ÃÖ´ë °ª¿¡ ´ëÇÑ °¡¿ì½Ã¾È °ªÀ» °á°ú ÀÌ¹ÌÁö·Î Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì…ë ¥ëœ ì´ë¯¸ì§€ ê°€ìš´ë° ê°€ì¥ ì•ì— ìœ„ì¹˜í•œ ìµœëŒ€ ê°’ì— ëŒ€í•œ ê°€ìš°ì‹œì•ˆ ê°’ì„ ê²°ê³¼ ì´ë¯¸ì§€ë¡œ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - PagePooling_Mean
         - The example of an algorithm that outputs the average value of the entire input image as the result image.
-        - ÀÔ·ÂµÈ ÀÌ¹ÌÁö °¡¿îµ¥ ÀüÃ¼ÀÇ Æò±Õ °ªÀ» °á°ú ÀÌ¹ÌÁö·Î Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì…ë ¥ëœ ì´ë¯¸ì§€ ê°€ìš´ë° ì „ì²´ì˜ í‰ê·  ê°’ì„ ê²°ê³¼ ì´ë¯¸ì§€ë¡œ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - PagePooling_Min
         - The example of an algorithm that outputs the minimum value among the input images as the result image.
-        - ÀÔ·ÂµÈ ÀÌ¹ÌÁö °¡¿îµ¥ ÃÖ¼Ú °ªÀ» °á°ú ÀÌ¹ÌÁö·Î Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì…ë ¥ëœ ì´ë¯¸ì§€ ê°€ìš´ë° ìµœì†Ÿ ê°’ì„ ê²°ê³¼ ì´ë¯¸ì§€ë¡œ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
       - PagePooling_MinGaussian
         - The example of an algorithm that outputs the Gaussian value for the minimum value located at the front of the input image as the result image.
-        - ÀÔ·ÂµÈ ÀÌ¹ÌÁö °¡¿îµ¥ °¡Àå ¾Õ¿¡ À§Ä¡ÇÑ ÃÖ¼Ò °ª¿¡ ´ëÇÑ °¡¿ì½Ã¾È °ªÀ» °á°ú ÀÌ¹ÌÁö·Î Ãâ·ÂÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì…ë ¥ëœ ì´ë¯¸ì§€ ê°€ìš´ë° ê°€ì¥ ì•ì— ìœ„ì¹˜í•œ ìµœì†Œ ê°’ì— ëŒ€í•œ ê°€ìš°ì‹œì•ˆ ê°’ì„ ê²°ê³¼ ì´ë¯¸ì§€ë¡œ ì¶œë ¥í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - PagePixelPicker
       - The example of an algorithm that extract pixels corresponding to the index map image from multiple images.
-      - º¹¼öÀÇ ÀÌ¹ÌÁö¿¡¼­ ÀÎµ¦½º ¸Ê ÀÌ¹ÌÁö¿¡ ÇØ´çÇÏ´Â ÇÈ¼¿À» ÃßÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.	   
+      - ë³µìˆ˜ì˜ ì´ë¯¸ì§€ì—ì„œ ì¸ë±ìŠ¤ ë§µ ì´ë¯¸ì§€ì— í•´ë‹¹í•˜ëŠ” í”½ì…€ì„ ì¶”ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.	   
 
   - [RegionInterpolation]
   
     - Bicubic Region Interpolation 
       - The algorithm example that compensates and fills the value of the specified area with the values of the valid area with Bicubic.
-      - À¯È¿ÇÑ ¿µ¿ªÀÇ °ªµé·Î ÁöÁ¤ÇÑ ¿µ¿ªÀÇ °ªÀ» BicubicÀ¸·Î º¸Á¤ÇÏ¿© Ã¤¿öÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ìœ íš¨í•œ ì˜ì—­ì˜ ê°’ë“¤ë¡œ ì§€ì •í•œ ì˜ì—­ì˜ ê°’ì„ Bicubicìœ¼ë¡œ ë³´ì •í•˜ì—¬ ì±„ì›Œì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Bilinear Region Interpolation 
       - The algorithm example that compensates and fills the value of the specified area with the values of the valid area with Bilinear.
-      - À¯È¿ÇÑ ¿µ¿ªÀÇ °ªµé·Î ÁöÁ¤ÇÑ ¿µ¿ªÀÇ °ªÀ» Bilinear·Î º¸Á¤ÇÏ¿© Ã¤¿öÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ìœ íš¨í•œ ì˜ì—­ì˜ ê°’ë“¤ë¡œ ì§€ì •í•œ ì˜ì—­ì˜ ê°’ì„ Bilinearë¡œ ë³´ì •í•˜ì—¬ ì±„ì›Œì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Harmonic Interpolation 
       - The algorithm example that compensates and fills the value of the specified area with the values of the valid area with Harmonic.
-      - À¯È¿ÇÑ ¿µ¿ªÀÇ °ªµé·Î ÁöÁ¤ÇÑ ¿µ¿ªÀÇ °ªÀ» HarmonicÀ¸·Î º¸Á¤ÇÏ¿© Ã¤¿öÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦.	   
+      - ìœ íš¨í•œ ì˜ì—­ì˜ ê°’ë“¤ë¡œ ì§€ì •í•œ ì˜ì—­ì˜ ê°’ì„ Harmonicìœ¼ë¡œ ë³´ì •í•˜ì—¬ ì±„ì›Œì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.	   
 
   - [Restoration]
 
     - Camera Motion Deblurring
       - The algorithm example that restores an image by minimizing motion blur caused by camera shaking.
-      - Ä«¸Ş¶óÀÇ Èçµé¸²À¸·Î ÀÎÇÑ ¸ğ¼Ç ºí·¯¸¦ ÃÖ¼ÒÈ­ ÇÏ¿© ÀÌ¹ÌÁö¸¦ º¹¿øÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì¹´ë©”ë¼ì˜ í”ë“¤ë¦¼ìœ¼ë¡œ ì¸í•œ ëª¨ì…˜ ë¸”ëŸ¬ë¥¼ ìµœì†Œí™” í•˜ì—¬ ì´ë¯¸ì§€ë¥¼ ë³µì›í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
    - Out Focus Deblurring
       - The algorithm example that restores an image by minimizing blur caused by out-of-focus.
-      - ¾Æ¿ô Æ÷Ä¿½º·Î ÀÎÇÑ ºí·¯¸¦ ÃÖ¼ÒÈ­ ÇÏ¿© ÀÌ¹ÌÁö¸¦ º¹¿øÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì•„ì›ƒ í¬ì»¤ìŠ¤ë¡œ ì¸í•œ ë¸”ëŸ¬ë¥¼ ìµœì†Œí™” í•˜ì—¬ ì´ë¯¸ì§€ë¥¼ ë³µì›í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Threshold]
   
@@ -1464,44 +1464,44 @@
 
       - AbsoluteThreshold_Dual 
         - The algorithm that binarizes an image through two thresholds.
-        - µÎ°³ÀÇ ÀÓ°è°ªÀ» ÅëÇØ ÀÌ¹ÌÁö¸¦ ÀÌÁøÈ­ÇÏ´Â ¾Ë°í¸®Áò.
+        - ë‘ê°œì˜ ì„ê³„ê°’ì„ í†µí•´ ì´ë¯¸ì§€ë¥¼ ì´ì§„í™”í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
       - AbsoluteThreshold_Single 
         - The algorithm that binarizes an image through a single threshold.
-        - ÇÑ°³ÀÇ ÀÓ°è°ªÀ» ÅëÇØ ÀÌ¹ÌÁö¸¦ ÀÌÁøÈ­ÇÏ´Â ¾Ë°í¸®Áò.
+        - í•œê°œì˜ ì„ê³„ê°’ì„ í†µí•´ ì´ë¯¸ì§€ë¥¼ ì´ì§„í™”í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
 
     - AdaptiveThreshold
       - Algorithm that binarizes images through regional thresholds.
-      - Áö¿ª ÀÓ°è°ªÀ» ÅëÇØ ÀÌ¹ÌÁö¸¦ ÀÌÁøÈ­ÇÏ´Â ¾Ë°í¸®Áò.
+      - ì§€ì—­ ì„ê³„ê°’ì„ í†µí•´ ì´ë¯¸ì§€ë¥¼ ì´ì§„í™”í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - AdaptiveThresholdGaussian
       - Algorithm that binarizes images through regional thresholds using Gaussian Filter.
-      - °¡¿ì½Ã¾È ÇÊÅÍ¸¦ »ç¿ëÇÑ Áö¿ª ÀÓ°è°ªÀ» ÅëÇØ ÀÌ¹ÌÁö¸¦ ÀÌÁøÈ­ÇÏ´Â ¾Ë°í¸®Áò.
+      - ê°€ìš°ì‹œì•ˆ í•„í„°ë¥¼ ì‚¬ìš©í•œ ì§€ì—­ ì„ê³„ê°’ì„ í†µí•´ ì´ë¯¸ì§€ë¥¼ ì´ì§„í™”í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - AutoThreshold
       - Algorithm that binarizes images through histogram and gaussian function.
-      - È÷½ºÅä±×·¥°ú °¡¿ì½º ÇÔ¼ö¸¦ ÅëÇØ ÀÌ¹ÌÁö¸¦ ÀÌÁøÈ­ÇÏ´Â ¾Ë°í¸®Áò.
+      - íˆìŠ¤í† ê·¸ë¨ê³¼ ê°€ìš°ìŠ¤ í•¨ìˆ˜ë¥¼ í†µí•´ ì´ë¯¸ì§€ë¥¼ ì´ì§„í™”í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - HysteresisThreshold
       - An algorithm that binarizes an image using global dual thresholds and local connectivity.
-      - Àü¿ª ÀÌÁß ÀÓ°è°ª°ú Áö¿ª ¿¬°á¼ºÀ» ÅëÇØ ÀÌ¹ÌÁö¸¦ ÀÌÁøÈ­ÇÏ´Â ¾Ë°í¸®Áò
+      - ì „ì—­ ì´ì¤‘ ì„ê³„ê°’ê³¼ ì§€ì—­ ì—°ê²°ì„±ì„ í†µí•´ ì´ë¯¸ì§€ë¥¼ ì´ì§„í™”í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
     - IsoDataThreshold
       - Algorithm to calculate global image thresholds using the ISO Data method.
-      - Iso Data ¹æ¹ıÀ» »ç¿ëÇÏ¿© Àü¿ª ÀÌ¹ÌÁö ÀÓ°è°ªÀ» °è»êÇÏ´Â ¾Ë°í¸®Áò.
+      - Iso Data ë°©ë²•ì„ ì‚¬ìš©í•˜ì—¬ ì „ì—­ ì´ë¯¸ì§€ ì„ê³„ê°’ì„ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - MaximumEntropyThreshold
       - Algorithm that calculates global image thresholds through maximum entropy values.
-      - ÃÖ´ë ¿£Æ®·ÎÇÇ°ªÀ» ÅëÇØ Àü¿ª ÀÌ¹ÌÁö ÀÓ°è°ªÀ» °è»êÇÏ´Â ¾Ë°í¸®Áò.
+      - ìµœëŒ€ ì—”íŠ¸ë¡œí”¼ê°’ì„ í†µí•´ ì „ì—­ ì´ë¯¸ì§€ ì„ê³„ê°’ì„ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - OtsuThreshold
       - Algorithm to calculate global image thresholds using the Otsu method.
-      - Otsu ¹æ¹ıÀ» »ç¿ëÇÏ¿© Àü¿ª ÀÌ¹ÌÁö ÀÓ°è°ªÀ» °è»êÇÏ´Â ¾Ë°í¸®Áò.
+      - Otsu ë°©ë²•ì„ ì‚¬ìš©í•˜ì—¬ ì „ì—­ ì´ë¯¸ì§€ ì„ê³„ê°’ì„ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - TopographicThreshold
       - Algorithm that calculates first and second directional derivatives from image estimated by the bicubic facet model to classify 11 categories by pixel.
-      - Bicubic facet modelÀ» ÅëÇØ ÃßÁ¤µÈ ÀÌ¹ÌÁö¿¡¼­ ÀÏÂ÷, ÀÌÂ÷ ¹æÇâµµÇÔ¼ö¸¦ °è»êÇÏ¿© ÇÈ¼¿º° 11°¡Áö Ä«Å×°í¸® ºĞ·ù¸¦ ÇÏ´Â ¾Ë°í¸®Áò.
+      - Bicubic facet modelì„ í†µí•´ ì¶”ì •ëœ ì´ë¯¸ì§€ì—ì„œ ì¼ì°¨, ì´ì°¨ ë°©í–¥ë„í•¨ìˆ˜ë¥¼ ê³„ì‚°í•˜ì—¬ í”½ì…€ë³„ 11ê°€ì§€ ì¹´í…Œê³ ë¦¬ ë¶„ë¥˜ë¥¼ í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - VarianceThreshold
       - Algorithm that binarizes images through regional thresholds.
-      - Áö¿ª ÀÓ°è°ªÀ» ÅëÇØ ÀÌ¹ÌÁö¸¦ ÀÌÁøÈ­ÇÏ´Â ¾Ë°í¸®Áò.
+      - ì§€ì—­ ì„ê³„ê°’ì„ í†µí•´ ì´ë¯¸ì§€ë¥¼ ì´ì§„í™”í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - WatershedsThreshold
       - Algorithm for image segmentation using Watershed method.
-      - Watershed ¹æ¹ıÀ» »ç¿ëÇÏ¿© ÀÌ¹ÌÁö ºĞÇÒÀ» ÇÏ´Â ¾Ë°í¸®Áò.
+      - Watershed ë°©ë²•ì„ ì‚¬ìš©í•˜ì—¬ ì´ë¯¸ì§€ ë¶„í• ì„ í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     - WatershedsThresholdMarker
       - Algorithm for image segmentation using marker generated by Otsu Threshold.
-      - Otsu Threshold·Î »ı¼ºÇÑ Marker¸¦ ÅëÇØ ÀÌ¹ÌÁö¸¦ ºĞÇÒÇÏ´Â ¾Ë°í¸®Áò.
+      - Otsu Thresholdë¡œ ìƒì„±í•œ Markerë¥¼ í†µí•´ ì´ë¯¸ì§€ë¥¼ ë¶„í• í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
     
   - [Transforms]
   
@@ -1509,53 +1509,53 @@
 
       - Move
         - The example of image move transforms.
-        - ÀÌ¹ÌÁö ÀÌµ¿ º¯È¯ÀÇ ¿¹Á¦.
+        - ì´ë¯¸ì§€ ì´ë™ ë³€í™˜ì˜ ì˜ˆì œ.
       - Rotation
         - The example of image rotation transforms.
-        - ÀÌ¹ÌÁö È¸Àü º¯È¯ÀÇ ¿¹Á¦.
+        - ì´ë¯¸ì§€ íšŒì „ ë³€í™˜ì˜ ì˜ˆì œ.
       - Scale
         - The example of image scale transforms.
-        - ÀÌ¹ÌÁö ½ºÄÉÀÏ º¯È¯ÀÇ ¿¹Á¦.
+        - ì´ë¯¸ì§€ ìŠ¤ì¼€ì¼ ë³€í™˜ì˜ ì˜ˆì œ.
       - Scale Rotation
         - The example of image scale and rotation transforms.
-        - ÀÌ¹ÌÁö ½ºÄÉÀÏ ¹× È¸Àü º¯È¯ÀÇ ¿¹Á¦.
+        - ì´ë¯¸ì§€ ìŠ¤ì¼€ì¼ ë° íšŒì „ ë³€í™˜ì˜ ì˜ˆì œ.
 
     - [Hough]
 
       - Hough Transform Circle
         - The example of Hough Transform Circle Algorithm.
-        - HoughTransform À» »ç¿ëÇÑ ¿ø °ËÃâ ¾Ë°í¸®Áò ¿¹Á¦
+        - HoughTransform ì„ ì‚¬ìš©í•œ ì› ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - Hough Transform Line
         - The example of Hough Transform Line Algorithm.
-        - HoughTransform À» »ç¿ëÇÑ ¼± °ËÃâ ¾Ë°í¸®Áò ¿¹Á¦
+        - HoughTransform ì„ ì‚¬ìš©í•œ ì„  ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - Generalized Hough Transform
         - The example of Generalized Hough Transform Algorithm.
-        - Hough Transform À» »ç¿ëÇÑ ÀÏ¹İÈ­ µÈ °ËÃâ ¾Ë°í¸®Áò ¿¹Á¦
+        - Hough Transform ì„ ì‚¬ìš©í•œ ì¼ë°˜í™” ëœ ê²€ì¶œ ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
         
     - [Fourier]
 
       - Fouier Transform
         - The algorithm that transforms images into Fourier transforms.
-        - ÀÌ¹ÌÁö¸¦ Çª¸®¿¡ º¯È¯À» ÇÏ´Â ¾Ë°í¸®Áò.
+        - ì´ë¯¸ì§€ë¥¼ í‘¸ë¦¬ì— ë³€í™˜ì„ í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
 
     - Discrete Cosine Transform
       - The example of an algorithm that transforms images into discrete cosine transforms.
-      - ÀÌ¹ÌÁö¸¦ ÀÌ»ê ÄÚ»çÀÎ º¯È¯À» ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ ì´ì‚° ì½”ì‚¬ì¸ ë³€í™˜ì„ í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Discrete Wavelet Transform
       - The example of an algorithm that transforms images into discrete wavelet transforms.
-      - ÀÌ¹ÌÁö¸¦ ÀÌ»ê ¿şÀÌºí¸´ º¯È¯À» ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ë¥¼ ì´ì‚° ì›¨ì´ë¸”ë¦¿ ë³€í™˜ì„ í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Distance Transform
       - The example of an algorithm that measure distance with pixel which value if 0.
-      - °ªÀÌ 0ÀÎ ÇÈ¼¿·Î ºÎÅÍ °Å¸®¸¦ ³ªÅ¸³»´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ê°’ì´ 0ì¸ í”½ì…€ë¡œ ë¶€í„° ê±°ë¦¬ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Perspective
       - The example of an algorithm that performs projection transformation of an image by a Linear Equation.
-      - ¼±Çü ¹æÁ¤½Ä¿¡ ÀÇÇÑ ÀÌ¹ÌÁöÀÇ Åõ¿µ º¯È¯À» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì„ í˜• ë°©ì •ì‹ì— ì˜í•œ ì´ë¯¸ì§€ì˜ íˆ¬ì˜ ë³€í™˜ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Homography
       - The example of an algorithm that performs projection transformation of images using multiple feature point pairs.
-      - ¿©·¯°³ÀÇ Æ¯Â¡Á¡ ½Ö¿¡ ÀÇÇÑ ÀÌ¹ÌÁöÀÇ Åõ¿µ º¯È¯À» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì—¬ëŸ¬ê°œì˜ íŠ¹ì§•ì  ìŒì— ì˜í•œ ì´ë¯¸ì§€ì˜ íˆ¬ì˜ ë³€í™˜ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Census Transform
       - The example of an algorithm that performs the census transformation of images.
-      - ÀÌ¹ÌÁöÀÇ Census Transform º¯È¯À» ¼öÇàÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì˜ Census Transform ë³€í™˜ì„ ìˆ˜í–‰í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
   - [Utilities]
   
@@ -1563,20 +1563,20 @@
 
       - ConditionalExtractor_Image_Dual
         - The example of an algorithm that extract image using two conditions to compare images.
-        - µÎ °³ÀÇ Á¶°ÇÀ» ÀÌ¿ëÇØ ÀÌ¹ÌÁö¸¦ ºñ±³ÇÏ¿© Á¶°Ç¿¡ ¸Â´Â ÀÌ¹ÌÁö¸¦ ÃßÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ë‘ ê°œì˜ ì¡°ê±´ì„ ì´ìš©í•´ ì´ë¯¸ì§€ë¥¼ ë¹„êµí•˜ì—¬ ì¡°ê±´ì— ë§ëŠ” ì´ë¯¸ì§€ë¥¼ ì¶”ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - ConditionalExtractor_Image_Single
         - The example of an algorithm that extract image using one condition to compare images.
-        - ÇÑ °³ÀÇ Á¶°ÇÀ» ÀÌ¿ëÇØ ÀÌ¹ÌÁö¸¦ ºñ±³ÇÏ¿© Á¶°Ç¿¡ ¸Â´Â ÀÌ¹ÌÁö¸¦ ÃßÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - í•œ ê°œì˜ ì¡°ê±´ì„ ì´ìš©í•´ ì´ë¯¸ì§€ë¥¼ ë¹„êµí•˜ì—¬ ì¡°ê±´ì— ë§ëŠ” ì´ë¯¸ì§€ë¥¼ ì¶”ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - ConditionalExtractor_Scalar_Dual
         - The example of an algorithm that extract image using two conditions to compare image and scalar value.
-        - µÎ °³ÀÇ Á¶°ÇÀ» ÀÌ¿ëÇØ ÀÌ¹ÌÁö¿Í ½ºÄ®¶ó °ªÀ» ºñ±³ÇÏ¿© Á¶°Ç¿¡ ¸Â´Â ÀÌ¹ÌÁö¸¦ ÃßÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - ë‘ ê°œì˜ ì¡°ê±´ì„ ì´ìš©í•´ ì´ë¯¸ì§€ì™€ ìŠ¤ì¹¼ë¼ ê°’ì„ ë¹„êµí•˜ì—¬ ì¡°ê±´ì— ë§ëŠ” ì´ë¯¸ì§€ë¥¼ ì¶”ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
       - ConditionalExtractor_Scalar_Single
         - The example of an algorithm that extract image using one condition to compare image and scalar value.
-        - ÇÑ °³ÀÇ Á¶°ÇÀ» ÀÌ¿ëÇØ ÀÌ¹ÌÁö¿Í ½ºÄ®¶ó °ªÀ» ºñ±³ÇÏ¿© Á¶°Ç¿¡ ¸Â´Â ÀÌ¹ÌÁö¸¦ ÃßÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+        - í•œ ê°œì˜ ì¡°ê±´ì„ ì´ìš©í•´ ì´ë¯¸ì§€ì™€ ìŠ¤ì¹¼ë¼ ê°’ì„ ë¹„êµí•˜ì—¬ ì¡°ê±´ì— ë§ëŠ” ì´ë¯¸ì§€ë¥¼ ì¶”ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
 
     - [Conditional Replacer]
       - The example of an algorithm that replace image using condition.
-      - Á¶°ÇÀ» ÀÌ¿ëÇØ Á¶°Ç¿¡ ¸Â´Â ÀÌ¹ÌÁö¸¦ º¯°æÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦
+      - ì¡°ê±´ì„ ì´ìš©í•´ ì¡°ê±´ì— ë§ëŠ” ì´ë¯¸ì§€ë¥¼ ë³€ê²½í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
 
     - [Generator]
 
@@ -1584,164 +1584,164 @@
       
         - NoiseGenerator_Gaussian
           - The algorithm example for generating Gaussian noise within image region of interest.
-          - ÀÌ¹ÌÁöÀÇ °ü½É¿µ¿ª ³»¿¡¼­ °¡¿ì½Ã¾È ÀâÀ½À» »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+          - ì´ë¯¸ì§€ì˜ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ ê°€ìš°ì‹œì•ˆ ì¡ìŒì„ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         - NoiseGenerator_Photon
           - The algorithm example for generating Photon noise within image region of interest.
-          - ÀÌ¹ÌÁöÀÇ °ü½É¿µ¿ª ³»¿¡¼­ ±¤ÀÚ¾ç ÀâÀ½À» »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+          - ì´ë¯¸ì§€ì˜ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ ê´‘ìì–‘ ì¡ìŒì„ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         - NoiseGenerator_SaltPepper
           - The algorithm example for generating Salt And Pepper noise within image region of interest.
-          - ÀÌ¹ÌÁöÀÇ °ü½É¿µ¿ª ³»¿¡¼­ ¼Ò±İ ÈÄÃßÀâÀ½À» »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+          - ì´ë¯¸ì§€ì˜ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ ì†Œê¸ˆ í›„ì¶”ì¡ìŒì„ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         - NoiseGenerator_Speckle
           - The algorithm example for generating Speckle noise within image region of interest.
-          - ÀÌ¹ÌÁöÀÇ °ü½É¿µ¿ª ³»¿¡¼­ °£¼· ÀâÀ½À» »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+          - ì´ë¯¸ì§€ì˜ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ ê°„ì„­ ì¡ìŒì„ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         - NoiseGenerator_Uniform
           - The algorithm example for generating Uniform noise within image region of interest.
-          - ÀÌ¹ÌÁöÀÇ °ü½É¿µ¿ª ³»¿¡¼­ ±Õµî ÀâÀ½À» »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+          - ì´ë¯¸ì§€ì˜ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ ê· ë“± ì¡ìŒì„ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
           
       - Gradation 
         - An example of an algorithm for applying gradation to an image.
-        - ÀÌ¹ÌÁö¿¡ ±×¶óµ¥ÀÌ¼ÇÀ» Àû¿ëÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì— ê·¸ë¼ë°ì´ì…˜ì„ ì ìš©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
         
       - RadialGradation 
         - An example of an algorithm for applying radial gradation to an image.
-        - ÀÌ¹ÌÁö¿¡ ¹æ»çÇü ±×¶óµ¥ÀÌ¼ÇÀ» Àû¿ëÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì— ë°©ì‚¬í˜• ê·¸ë¼ë°ì´ì…˜ì„ ì ìš©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
       - RandomImageGenerator 
         - An example of an algorithm to generate Random values using SHA256 within the region of interest in an image.
-        - ÀÌ¹ÌÁöÀÇ °ü½É¿µ¿ª ³»¿¡¼­ SHA256À» ÀÌ¿ëÇÏ¿© Random °ªÀ» »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+        - ì´ë¯¸ì§€ì˜ ê´€ì‹¬ì˜ì—­ ë‚´ì—ì„œ SHA256ì„ ì´ìš©í•˜ì—¬ Random ê°’ì„ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
 
     - [Integral]
 
       - Integral_Polynomial
         - The algorithm example for generating an integral image.(Polynomial Mode y = aX^2 + bX + C)
-        - ÀûºĞÇÕ ÀÌ¹ÌÁö¸¦ »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.(Polynomial Mode y = aX^2 + bX + C)
+        - ì ë¶„í•© ì´ë¯¸ì§€ë¥¼ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.(Polynomial Mode y = aX^2 + bX + C)
       - Integral_SquareSum	     
         - The algorithm example for generating an integral image.(SquareSum Mode y = aX^2)
-        - ÀûºĞÇÕ ÀÌ¹ÌÁö¸¦ »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.(SquareSum Mode y = aX^2)
+        - ì ë¶„í•© ì´ë¯¸ì§€ë¥¼ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.(SquareSum Mode y = aX^2)
       - Integral_Sum	     
         - The algorithm example for generating an integral image.(Sum Mode y = bX)
-        - ÀûºĞÇÕ ÀÌ¹ÌÁö¸¦ »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.(Sum Mode y = bX)
+        - ì ë¶„í•© ì´ë¯¸ì§€ë¥¼ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.(Sum Mode y = bX)
       - Integral_SumAndSquareSum	     
         - The algorithm example for generating an integral image.(SumAndSquareSum Mode y = aX^2 + bX)
-        - ÀûºĞÇÕ ÀÌ¹ÌÁö¸¦ »ı¼ºÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.(SumAndSquareSum Mode y = aX^2 + bX)
+        - ì ë¶„í•© ì´ë¯¸ì§€ë¥¼ ìƒì„±í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.(SumAndSquareSum Mode y = aX^2 + bX)
         
     - [PixelCounter]
 
       - PixelCounter_Dual 
         - Algorithm for calculating the number of valid pixels through two thresholds.
-        - µÎ°³ÀÇ ÀÓ°è°ªÀ» ÅëÇØ À¯È¿ÇÑ ÇÈ¼¿ °¹¼ö¸¦ °è»êÇÏ´Â ¾Ë°í¸®Áò.
+        - ë‘ê°œì˜ ì„ê³„ê°’ì„ í†µí•´ ìœ íš¨í•œ í”½ì…€ ê°¯ìˆ˜ë¥¼ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
       - PixelCounter_Single 
         - Algorithm for calculating the number of valid pixels through one thresholds.
-        - ÇÑ°³ÀÇ ÀÓ°è°ªÀ» ÅëÇØ À¯È¿ÇÑ ÇÈ¼¿ °¹¼ö¸¦ °è»êÇÏ´Â ¾Ë°í¸®Áò.
+        - í•œê°œì˜ ì„ê³„ê°’ì„ í†µí•´ ìœ íš¨í•œ í”½ì…€ ê°¯ìˆ˜ë¥¼ ê³„ì‚°í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜.
 
     - ActiveContour
       - An example algorithm for guiding a figure to form a contour along the detected edges.
-      - °¨ÁöµÈ ¿§ÁöµéÀ» µû¶ó Figure °¡ contour ¸¦ Çü¼ºÇÏµµ·Ï À¯µµÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ê°ì§€ëœ ì—£ì§€ë“¤ì„ ë”°ë¼ Figure ê°€ contour ë¥¼ í˜•ì„±í•˜ë„ë¡ ìœ ë„í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - AlignmentTiling 
       - The algorithm example for merging multiple images into one image.
-      - ¿©·¯ÀåÀÇ ÀÌ¹ÌÁö¸¦ ÇÏ³ªÀÇ ÀÌ¹ÌÁö·Î º´ÇÕÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì—¬ëŸ¬ì¥ì˜ ì´ë¯¸ì§€ë¥¼ í•˜ë‚˜ì˜ ì´ë¯¸ì§€ë¡œ ë³‘í•©í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ColorAdjustment
       - The algorithm example for adjusting color space.
-      - »ö°ø°£À» Á¶Á¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ìƒ‰ê³µê°„ì„ ì¡°ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ColorConverter 
       - The example of an algorithm that converts color space of an color image.
-      - ÄÃ·¯ ÀÌ¹ÌÁöÀÇ »ö°ø°£À» ¹Ù²Ù´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì»¬ëŸ¬ ì´ë¯¸ì§€ì˜ ìƒ‰ê³µê°„ì„ ë°”ê¾¸ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ColorFilterArrayConverter
       - The algorithm example for interpolating the colors of CCD Bayer Pattern images.
-      - CCD Bayer Pattern ÀÌ¹ÌÁöÀÇ »öÀ» º¸°£ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - CCD Bayer Pattern ì´ë¯¸ì§€ì˜ ìƒ‰ì„ ë³´ê°„í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ColorSequenceConverter 
       - The example of an algorithm that converts color sequence of an image.
-      - ÀÌ¹ÌÁöÀÇ ÄÃ·¯ ½ÃÄö½º¸¦ ¹Ù²Ù´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì˜ ì»¬ëŸ¬ ì‹œí€€ìŠ¤ë¥¼ ë°”ê¾¸ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Crop 
       - The example of an algorithm that cuts an image to fit the ROI area.
-      - ÀÌ¹ÌÁö¸¦ ROI ¿µ¿ª¿¡ ¸Â°Ô Àß¶ó³»´Â ¾Ë°í¸®Áò ¿¹Á¦.	 
+      - ì´ë¯¸ì§€ë¥¼ ROI ì˜ì—­ì— ë§ê²Œ ì˜ë¼ë‚´ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.	 
     - Decolorization
       - Example of preserving the color contrast of an image and converting it to a grayscale image.
-      - ÀÌ¹ÌÁöÀÇ »ö´ëºñ¸¦ º¸Á¸ÇÏ¸é¼­ È¸»öÁ¶ ÀÌ¹ÌÁö·Î º¯È¯ÇÏ´Â ¿¹Á¦.
+      - ì´ë¯¸ì§€ì˜ ìƒ‰ëŒ€ë¹„ë¥¼ ë³´ì¡´í•˜ë©´ì„œ íšŒìƒ‰ì¡° ì´ë¯¸ì§€ë¡œ ë³€í™˜í•˜ëŠ” ì˜ˆì œ.
     - Flip 
       - The example of an algorithm that flip source image.
-      - ¼Ò½º ÀÌ¹ÌÁö¸¦ µÚÁı¾î ³Ö¾îÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦. 
+      - ì†ŒìŠ¤ ì´ë¯¸ì§€ë¥¼ ë’¤ì§‘ì–´ ë„£ì–´ì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ. 
     - FormatConverter
       - The algorithm example for converting a pixelformat in an image.
-      - ÀÌ¹ÌÁöÀÇ Æ÷¸ËÀ» º¯È¯ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì˜ í¬ë§·ì„ ë³€í™˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - GammaCorrection
       - Algorithm example for correcting the Luminance of an image.
-      - ÀÌ¹ÌÁöÀÇ ¹à±â¸¦ º¸Á¤ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì˜ ë°ê¸°ë¥¼ ë³´ì •í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Mask 
       - The algorithm example for masking the pixel values of an image to set value.
-      - ÀÌ¹ÌÁöÀÇ ÇÈ¼¿°ªÀ» ¿øÇÏ´Â °ªÀ¸·Î º¯°æÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì´ë¯¸ì§€ì˜ í”½ì…€ê°’ì„ ì›í•˜ëŠ” ê°’ìœ¼ë¡œ ë³€ê²½í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Paste 
       - The example of an algorithm that pastes a ROI from a source image to a destination image.
-      - ¼Ò½º ÀÌ¹ÌÁö¿¡¼­ °ü½É ¿µ¿ªÀ» ´ë»ó ÀÌ¹ÌÁö¿¡ ºÙ¿©³Ö´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì†ŒìŠ¤ ì´ë¯¸ì§€ì—ì„œ ê´€ì‹¬ ì˜ì—­ì„ ëŒ€ìƒ ì´ë¯¸ì§€ì— ë¶™ì—¬ë„£ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Quilting 
       - The example of an algorithm that that creates a texture image similar to the test image.
-      - Å×½ºÆ® ÀÌ¹ÌÁö¿Í À¯»çÇÑ ÅØ½ºÃ³ ÀÌ¹ÌÁö¸¦ ¸¸µé¾î ÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - í…ŒìŠ¤íŠ¸ ì´ë¯¸ì§€ì™€ ìœ ì‚¬í•œ í…ìŠ¤ì²˜ ì´ë¯¸ì§€ë¥¼ ë§Œë“¤ì–´ ì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - Stitching
       - The example of an algorithm that align an unordered source image.
-      - ¼Ò½º ÀÌ¹ÌÁö¸¦ ¼ø¼­¿¡ »ó°ü ¾øÀÌ Á¤·Ä ÇØÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦
+      - ì†ŒìŠ¤ ì´ë¯¸ì§€ë¥¼ ìˆœì„œì— ìƒê´€ ì—†ì´ ì •ë ¬ í•´ì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ
     - Tiling 
       - The example of an algorithm that match the ROI of the source images to the destination ROI.
-      - ¼Ò½º ÀÌ¹ÌÁöµéÀÇ ROI¸¦ Destination ROI¿¡ Tiling ÇØÁÖ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì†ŒìŠ¤ ì´ë¯¸ì§€ë“¤ì˜ ROIë¥¼ Destination ROIì— Tiling í•´ì£¼ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ImageInsertion 
       - Example of an algorithm that inserts the ROI of the operand image from the source image into the destination image.
-      - ¼Ò½º ÀÌ¹ÌÁö¿¡¼­ ÇÇ¿¬»ê ÀÌ¹ÌÁöÀÇ °ü½É ¿µ¿ªÀ» ´ë»ó ÀÌ¹ÌÁö¿¡ »ğÀÔÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì†ŒìŠ¤ ì´ë¯¸ì§€ì—ì„œ í”¼ì—°ì‚° ì´ë¯¸ì§€ì˜ ê´€ì‹¬ ì˜ì—­ì„ ëŒ€ìƒ ì´ë¯¸ì§€ì— ì‚½ì…í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - RegionExtractor
       - Example of an algorithm to extract the intersection of the set Figure and the region of interest from the source image.
-      - ¼Ò½º ÀÌ¹ÌÁö¿¡¼­ ¼³Á¤µÈ Figure¿Í °ü½É ¿µ¿ªÀÇ ±³ÁıÇÕÀ» ÃßÃâÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì†ŒìŠ¤ ì´ë¯¸ì§€ì—ì„œ ì„¤ì •ëœ Figureì™€ ê´€ì‹¬ ì˜ì—­ì˜ êµì§‘í•©ì„ ì¶”ì¶œí•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - HoleFilling
       - Example of an algorithm that extracts a figure of a hole region from the source image and interpolates inside that region.
-      - ¼Ò½º ÀÌ¹ÌÁö¿¡¼­ Hole region ÀÇ Figure ¸¦ ÃßÃâÇÏ°í ±× ¿µ¿ª ³»ºÎ¸¦ º¸°£ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì†ŒìŠ¤ ì´ë¯¸ì§€ì—ì„œ Hole region ì˜ Figure ë¥¼ ì¶”ì¶œí•˜ê³  ê·¸ ì˜ì—­ ë‚´ë¶€ë¥¼ ë³´ê°„í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - WhiteBalance
       - An example of correcting the white balance of an image.
-      - ÀÌ¹ÌÁöÀÇ È­ÀÌÆ® ¹ë·±½º¸¦ º¸Á¤ÇÏ´Â ¿¹Á¦.
+      - ì´ë¯¸ì§€ì˜ í™”ì´íŠ¸ ë°¸ëŸ°ìŠ¤ë¥¼ ë³´ì •í•˜ëŠ” ì˜ˆì œ.
 
   - [Warping]
   
     - BicubicSplineWarping
       - The example of an algorithm that transforms images based on Bicubic Spline Interpolation functions.
-      - Bicubic Spline Interpolation ¹æ½ÄÀ» ¹ÙÅÁÀ¸·Î ÀÌ¹ÌÁö¸¦ º¯È¯ÇÏ´Â ¿¹Á¦.
+      - Bicubic Spline Interpolation ë°©ì‹ì„ ë°”íƒ•ìœ¼ë¡œ ì´ë¯¸ì§€ë¥¼ ë³€í™˜í•˜ëŠ” ì˜ˆì œ.
     - BilinearSplineWarping
       - The example of an algorithm that transforms images based on Bi-linear Spline model.
-      - Bi-linear ¸ğµ¨ ½ÄÀ» ¹ÙÅÁÀ¸·Î ÀÌ¹ÌÁö¸¦ º¯È¯ÇÏ´Â ¿¹Á¦.
+      - Bi-linear ëª¨ë¸ ì‹ì„ ë°”íƒ•ìœ¼ë¡œ ì´ë¯¸ì§€ë¥¼ ë³€í™˜í•˜ëŠ” ì˜ˆì œ.
     - LanczosWarping
       - The example of an algorithm that transforms images based on Lanczos Resampling functions.
-      - Lanczos Resampling ¹æ½ÄÀ» ¹ÙÅÁÀ¸·Î ÀÌ¹ÌÁö¸¦ º¯È¯ÇÏ´Â ¿¹Á¦.
+      - Lanczos Resampling ë°©ì‹ì„ ë°”íƒ•ìœ¼ë¡œ ì´ë¯¸ì§€ë¥¼ ë³€í™˜í•˜ëŠ” ì˜ˆì œ.
     - RingWarping
       - The example of an algorithm that converts circular space to linear space.
-      - ¿øÇü °ø°£À» ¼±Çü °ø°£À¸·Î º¯È¯ÇÏ´Â ¾Ë°í¸®Áò ¿¹Á¦.
+      - ì›í˜• ê³µê°„ì„ ì„ í˜• ê³µê°„ìœ¼ë¡œ ë³€í™˜í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì˜ˆì œ.
     - ThinPlateSplineWarping
       - The example of an algorithm that transforms images based on Thin Plate Spline model functions.
-      - Thin Plate Spline ¸ğµ¨ ÇÔ¼ö¸¦ ¹ÙÅÁÀ¸·Î ÀÌ¹ÌÁö¸¦ º¯È¯ÇÏ´Â ¿¹Á¦.
+      - Thin Plate Spline ëª¨ë¸ í•¨ìˆ˜ë¥¼ ë°”íƒ•ìœ¼ë¡œ ì´ë¯¸ì§€ë¥¼ ë³€í™˜í•˜ëŠ” ì˜ˆì œ.
 
 - [Mapping]
 
   - BicubicSplineMapping
     - The example of performing two types of interpolation calculations, bilinear and bicubic, based on the input corresponding points.
-    - ÀÔ·ÂµÈ ´ëÀÀ Á¡µéÀ» ¹ÙÅÁÀ¸·Î ¾ç¼±Çü°ú ¾çÀÔ¹æ µÎ °¡Áö ¹æ½ÄÀÇ º¸°£ °è»êÀ» ¼öÇàÇÏ´Â ¿¹Á¦.
+    - ì…ë ¥ëœ ëŒ€ì‘ ì ë“¤ì„ ë°”íƒ•ìœ¼ë¡œ ì–‘ì„ í˜•ê³¼ ì–‘ì…ë°© ë‘ ê°€ì§€ ë°©ì‹ì˜ ë³´ê°„ ê³„ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì˜ˆì œ.
   - LanczosMapping
     - The example of performing the interpolation calculation of the Lanczos method based on the input corresponding points.
-    - ÀÔ·ÂµÈ ´ëÀÀ Á¡µéÀ» ¹ÙÅÁÀ¸·Î Lanczos ¹æ½ÄÀÇ º¸°£ °è»êÀ» ¼öÇàÇÏ´Â ¿¹Á¦.
+    - ì…ë ¥ëœ ëŒ€ì‘ ì ë“¤ì„ ë°”íƒ•ìœ¼ë¡œ Lanczos ë°©ì‹ì˜ ë³´ê°„ ê³„ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì˜ˆì œ.
   - ThinPlateSplineMapping
     - The example of performing the interpolation calculation of the thin plate spline method based on the input corresponding points.
-    - ÀÔ·ÂµÈ ´ëÀÀ Á¡µéÀ» ¹ÙÅÁÀ¸·Î ¹ÚÆÇ ½ºÇÃ¶óÀÎ ¹æ½ÄÀÇ º¸°£ °è»êÀ» ¼öÇàÇÏ´Â ¿¹Á¦.
+    - ì…ë ¥ëœ ëŒ€ì‘ ì ë“¤ì„ ë°”íƒ•ìœ¼ë¡œ ë°•íŒ ìŠ¤í”Œë¼ì¸ ë°©ì‹ì˜ ë³´ê°„ ê³„ì‚°ì„ ìˆ˜í–‰í•˜ëŠ” ì˜ˆì œ.
 
 - [Mathematics]
 
   - Combination
     - The example of combination.
-    - Á¶ÇÕ °è»êÀÇ ¿¹Á¦.
+    - ì¡°í•© ê³„ì‚°ì˜ ì˜ˆì œ.
   - Equation
     - The example of calculate equation.
-    - ¹æÁ¤½Ä °è»êÀÇ ¿¹Á¦.
+    - ë°©ì •ì‹ ê³„ì‚°ì˜ ì˜ˆì œ.
   - GetSimilarity
     - The example of calculating a transformation matrix that minimizes the sum of the distance differences between the source and destination points.
-    - Source Á¡°ú Destination Á¡ÀÇ °Å¸® Â÷ÀÌÀÇ ÇÕÀÌ ÃÖ¼Ò°¡ µÇµµ·Ï ÇÏ´Â º¯È¯Çà·ÄÀ» ±¸ÇÏ´Â ¿¹Á¦.
+    - Source ì ê³¼ Destination ì ì˜ ê±°ë¦¬ ì°¨ì´ì˜ í•©ì´ ìµœì†Œê°€ ë˜ë„ë¡ í•˜ëŠ” ë³€í™˜í–‰ë ¬ì„ êµ¬í•˜ëŠ” ì˜ˆì œ.
   - LeastSquares
     - The example of calculate least squares.
-    - ÃÖ¼ÒÀÚ½Â¹ı °è»êÀÇ ¿¹Á¦.
+    - ìµœì†ŒììŠ¹ë²• ê³„ì‚°ì˜ ì˜ˆì œ.
   - Permutation
     - The example of permutation.
-    - ¼ø¿­ °è»êÀÇ ¿¹Á¦.
+    - ìˆœì—´ ê³„ì‚°ì˜ ì˜ˆì œ.
 
 - [Misc]
 
@@ -1749,17 +1749,17 @@
     
 	- SNAPBuild
       - The example of loading and running a snap file.
-      - ½º³À ÆÄÀÏ ·Îµå ¹× ½ÇÇà ¿¹Á¦.
+      - ìŠ¤ëƒ… íŒŒì¼ ë¡œë“œ ë° ì‹¤í–‰ ì˜ˆì œ.
 
   - ImageDrawing
     - The example of a class that draws shapes and strings on an image.
-    - ÀÌ¹ÌÁö¿¡ µµÇü ¹× ¹®ÀÚ¿­À» ±×¸®´Â Å¬·¡½º ¿¹Á¦.
+    - ì´ë¯¸ì§€ì— ë„í˜• ë° ë¬¸ìì—´ì„ ê·¸ë¦¬ëŠ” í´ë˜ìŠ¤ ì˜ˆì œ.
   - ImageDrawing2
     - The example of a class that draws blob results on an image.
-    - ÀÌ¹ÌÁö¿¡ blob °á°ú¸¦ ±×¸®´Â Å¬·¡½º ¿¹Á¦.
+    - ì´ë¯¸ì§€ì— blob ê²°ê³¼ë¥¼ ê·¸ë¦¬ëŠ” í´ë˜ìŠ¤ ì˜ˆì œ.
   - Stencil
     - The example of a stencil class that converts a string to a figure shaped by the selected font.
-    - ÀÔ·ÂµÈ ¹®ÀÚ¿­À» ¼³Á¤ÇÑ ÆùÆ® ¸ğ¾çÀÇ µµÇüÀ¸·Î º¯È¯ÇÏ´Â ½ºÅÙ½Ç Å¬·¡½º ¿¹Á¦.
+    - ì…ë ¥ëœ ë¬¸ìì—´ì„ ì„¤ì •í•œ í°íŠ¸ ëª¨ì–‘ì˜ ë„í˜•ìœ¼ë¡œ ë³€í™˜í•˜ëŠ” ìŠ¤í…ì‹¤ í´ë˜ìŠ¤ ì˜ˆì œ.
   - StepReaderConvertTo3DObject
     - Example of loading and tessellating a STEP file to convert it into a CFL3DObject.
-    - Step ÆÄÀÏÀ» ·Îµå ¹× Å×¼¿·¹ÀÌ¼ÇÇÏ¿© CFL3DOjbect ·Î º¯È¯ÇÏ´Â ¿¹Á¦
+    - Step íŒŒì¼ì„ ë¡œë“œ ë° í…Œì…€ë ˆì´ì…˜í•˜ì—¬ CFL3DOjbect ë¡œ ë³€í™˜í•˜ëŠ” ì˜ˆì œ
