@@ -159,9 +159,9 @@ int main()
 		ocrdl.SetLearningValidationImage(fliSourceImage);
 
 		// 학습할 StringBasedOCR 모델 설정 // Set up StringBasedOCR model to learn
-		ocrdl.SetModel(CStringBasedOCRDL::EModel_FLNet);
+		ocrdl.SetModel(CStringBasedOCRDL::EModel_FLOcrNet_S);
 		// 학습할 StringBasedOCR 모델 설정 // Set up StringBasedOCR model to learn
-		ocrdl.SetModelVersion(CStringBasedOCRDL::EModelVersion_FLNet_V1_32_256_B2);
+		ocrdl.SetModelVersion(CStringBasedOCRDL::EModelVersion_FLOcrNet_S_V1_32_256_B2);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
 		ocrdl.SetLearningEpoch(500);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
