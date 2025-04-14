@@ -1652,9 +1652,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataMatrixVerifier", "DataM
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QRCodeVerifier", "QRCodeVerifier\QRCodeVerifier.vcxproj", "{5FD556D7-471D-47F9-B38A-20B19EA683DE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceCameraPhotoneo", "DeviceCameraPhotoneo\DeviceCameraPhotoneo.vcxproj", "{A05F1465-9103-4978-A32B-51ED11605C7F}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InstanceSegmentationGroupLabeling", "InstanceSegmentationGroupLabeling\InstanceSegmentationGroupLabeling.vcxproj", "{56270379-CC39-4FC8-8473-C10DA1968397}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceCameraPhoXi", "DeviceCameraPhoXi\DeviceCameraPhoXi.vcxproj", "{A05F1465-9103-4978-A32B-51ED11605C7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -6056,6 +6056,12 @@ Global
 		{5FD556D7-471D-47F9-B38A-20B19EA683DE}.Release|Win32.Build.0 = Release|Win32
 		{5FD556D7-471D-47F9-B38A-20B19EA683DE}.Release|x64.ActiveCfg = Release|x64
 		{5FD556D7-471D-47F9-B38A-20B19EA683DE}.Release|x64.Build.0 = Release|x64
+		{56270379-CC39-4FC8-8473-C10DA1968397}.Debug|Win32.ActiveCfg = Debug|x64
+		{56270379-CC39-4FC8-8473-C10DA1968397}.Debug|x64.ActiveCfg = Debug|x64
+		{56270379-CC39-4FC8-8473-C10DA1968397}.Debug|x64.Build.0 = Debug|x64
+		{56270379-CC39-4FC8-8473-C10DA1968397}.Release|Win32.ActiveCfg = Release|x64
+		{56270379-CC39-4FC8-8473-C10DA1968397}.Release|x64.ActiveCfg = Release|x64
+		{56270379-CC39-4FC8-8473-C10DA1968397}.Release|x64.Build.0 = Release|x64
 		{A05F1465-9103-4978-A32B-51ED11605C7F}.Debug|Win32.ActiveCfg = Debug|Win32
 		{A05F1465-9103-4978-A32B-51ED11605C7F}.Debug|Win32.Build.0 = Debug|Win32
 		{A05F1465-9103-4978-A32B-51ED11605C7F}.Debug|x64.ActiveCfg = Debug|x64
@@ -6064,12 +6070,6 @@ Global
 		{A05F1465-9103-4978-A32B-51ED11605C7F}.Release|Win32.Build.0 = Release|Win32
 		{A05F1465-9103-4978-A32B-51ED11605C7F}.Release|x64.ActiveCfg = Release|x64
 		{A05F1465-9103-4978-A32B-51ED11605C7F}.Release|x64.Build.0 = Release|x64
-		{56270379-CC39-4FC8-8473-C10DA1968397}.Debug|Win32.ActiveCfg = Debug|x64
-		{56270379-CC39-4FC8-8473-C10DA1968397}.Debug|x64.ActiveCfg = Debug|x64
-		{56270379-CC39-4FC8-8473-C10DA1968397}.Debug|x64.Build.0 = Debug|x64
-		{56270379-CC39-4FC8-8473-C10DA1968397}.Release|Win32.ActiveCfg = Release|x64
-		{56270379-CC39-4FC8-8473-C10DA1968397}.Release|x64.ActiveCfg = Release|x64
-		{56270379-CC39-4FC8-8473-C10DA1968397}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -6892,7 +6892,7 @@ Global
 		{809EBB98-7B9E-41D3-87E5-470B21B5C85B} = {A042DBD9-50E3-4E8E-B11F-103374583852}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
+		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 	EndGlobalSection
 EndGlobal
