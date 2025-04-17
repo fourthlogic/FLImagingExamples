@@ -19,7 +19,7 @@ bool Calibration(COrthogonalCalibrator& sCC, CFLImage& fliLearnImage)
 	do
 	{ 
 		// Learn 이미지 설정 // Learn image settings
-		if(IsFail(res = sCC.SetLearnImageForCameraCalibration(&fliLearnImage)))
+		if(IsFail(res = sCC.SetCalibrationImage(&fliLearnImage)))
 		{
 			ErrorPrint(res, L"Failed to set image\n");
 			break;
@@ -29,7 +29,7 @@ bool Calibration(COrthogonalCalibrator& sCC, CFLImage& fliLearnImage)
 		sCC.SetGridTypeForCameraCalibration(COrthogonalCalibrator::EGridType_ChessBoard);
 
 		// 직교 보정 계산을 할 Learn 이미지 설정 // Learn image settings for orthogonal correction
-		if(IsFail(res = sCC.SetLearnImageForOrthogonalCorrection(&fliLearnImage)))
+		if(IsFail(res = sCC.SetOrthogonalCorrectionImage(&fliLearnImage)))
 		{
 			ErrorPrint(res, L"Failed to set image\n");
 			break;

@@ -19,7 +19,7 @@ bool Calibration(CCameraCalibrator& sCC, CFLImage& fliLearnImage)
 	do
 	{
 		// Learn 이미지 설정 // Learn image settings
-		if(IsFail(res = sCC.SetLearnImageForCameraCalibration(&fliLearnImage)))
+		if(IsFail(res = sCC.SetCalibrationImage(&fliLearnImage)))
 		{
 			ErrorPrint(res, L"Failed to set image\n");
 			break;
