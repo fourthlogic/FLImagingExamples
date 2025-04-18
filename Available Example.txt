@@ -856,6 +856,15 @@
       - The example of an algorithm that extracts variance value of each pixel from a multichannel image.
       - 다채널 이미지에서 각 픽셀의 분산값을 추출하여 이미지화 하는 알고리즘 예제.
 
+  - [Dimension]
+    - [Reduce]
+      - [2D to 1D]
+        - ReduceDimensionMax2Dto1D
+          - The example of an algorithm that reduces dimension of an image bazsed on the maximum value.
+          - 최댓값을 기반으로 이미지의 차원을 축소하는 알고리즘 예제.
+        - ReduceDimensionMin2Dto1D
+          - The example of an algorithm that reduces dimension of an image bazsed on the minimum value.
+          - 최솟값을 기반으로 이미지의 차원을 축소하는 알고리즘 예제.
 
   - [Feature Extraction]
     - CannyEdgeDetector
