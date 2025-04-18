@@ -63,7 +63,7 @@ int main()
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((eResult = EdgeDetector3D.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute Surface Match 3D.");
+			ErrorPrint(eResult, L"Failed to execute Edge Detector 3D.");
 			break;
 		}
 
