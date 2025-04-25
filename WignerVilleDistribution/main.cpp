@@ -65,7 +65,7 @@ int main()
 			break;
 		}
 
-		// Non Maximum Suppression 객체 생성 // Create Non Maximum Suppression object
+		// Wigner Ville Distribution 객체 생성 // Create Wigner Ville Distribution object
 		CWignerVilleDistribution wvd;
 
 		// Source 이미지 설정 // Set source image 

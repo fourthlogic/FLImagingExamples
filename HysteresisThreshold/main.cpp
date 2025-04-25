@@ -65,7 +65,7 @@ int main()
 			break;
 		}
 
-		// Non Maximum Suppression 객체 생성 // Create Non Maximum Suppression object
+		// Hysteresis Threshold 객체 생성 // Create Hysteresis Threshold object
 		CHysteresisThreshold ht;
 
 		// Source 이미지 설정 // Set source image 
