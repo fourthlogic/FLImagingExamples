@@ -22,7 +22,7 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/ReduceDimensionMax2Dto1D/Source.flif")))
+		if(IsFail(res = fliSourceImage.Load(L"../../ExampleImages/ReduceDimensionMean2Dto1D/Source.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -79,37 +79,37 @@ int main()
 			break;
 		}
 
-		// Reduce Dimension Max 2D to 1D 객체 생성 // Create Reduce Dimension Max 2D to 1D object
-		CReduceDimensionMax2Dto1D reduceDimensionMax2Dto1D;
+		// Reduce Dimension Mean 2D to 1D 객체 생성 // Create Reduce Dimension Mean 2D to 1D object
+		CReduceDimensionMean2Dto1D reduceDimensionMean2Dto1D;
 
 		// Source 이미지 설정 // Set source image 
-		reduceDimensionMax2Dto1D.SetSourceImage(fliSourceImage);
+		reduceDimensionMean2Dto1D.SetSourceImage(fliSourceImage);
 
 		// Destination 이미지 설정 // Set destination image
-		reduceDimensionMax2Dto1D.SetDestinationImage(fliDestinationImageX);
+		reduceDimensionMean2Dto1D.SetDestinationImage(fliDestinationImageX);
 
 		// 축소 차원 설정 // Set reduction dimension
-		reduceDimensionMax2Dto1D.SetReductionDimension(CReduceDimensionMax2Dto1D::EReductionDimension_X);
+		reduceDimensionMean2Dto1D.SetReductionDimension(CReduceDimensionMean2Dto1D::EReductionDimension_X);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = reduceDimensionMax2Dto1D.Execute()).IsFail())
+		if((res = reduceDimensionMean2Dto1D.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute Reduce Dimension Max 2D to 1D.\n");
+			ErrorPrint(res, "Failed to execute Reduce Dimension Mean 2D to 1D.\n");
 
 			ErrorPrint(res, "\n");
 			break;
 		}
 
 		// Destination 이미지 설정 // Set destination image
-		reduceDimensionMax2Dto1D.SetDestinationImage(fliDestinationImageY);
+		reduceDimensionMean2Dto1D.SetDestinationImage(fliDestinationImageY);
 
 		// 축소 차원 설정 // Set reduction dimension
-		reduceDimensionMax2Dto1D.SetReductionDimension(CReduceDimensionMax2Dto1D::EReductionDimension_Y);
+		reduceDimensionMean2Dto1D.SetReductionDimension(CReduceDimensionMean2Dto1D::EReductionDimension_Y);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = reduceDimensionMax2Dto1D.Execute()).IsFail())
+		if((res = reduceDimensionMean2Dto1D.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute Reduce Dimension Max 2D to 1D.\n");
+			ErrorPrint(res, "Failed to execute Reduce Dimension Mean 2D to 1D.\n");
 
 			ErrorPrint(res, "\n");
 			break;
