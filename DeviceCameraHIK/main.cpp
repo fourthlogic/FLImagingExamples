@@ -359,6 +359,7 @@ int main()
 
 	// 카메라의 초기화를 해제합니다.
 	camHik.Terminate();
+	camHik.ClearDeviceEvents();
 
 	if(drReturn.IsFail())
 		getchar();

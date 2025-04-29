@@ -246,7 +246,6 @@ int main()
 	camArena3D.Terminate();
 	camArena3D.ClearDeviceEvents();
 
-
 	if(drReturn.IsFail())
 		getchar();
 

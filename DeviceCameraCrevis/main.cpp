@@ -333,6 +333,7 @@ int main()
 
 	// 카메라의 초기화를 해제합니다.
 	camCrevis.Terminate();
+	camCrevis.ClearDeviceEvents();
 
 	if(drReturn.IsFail())
 		getchar();
