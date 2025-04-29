@@ -103,7 +103,7 @@ int main()
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = wvd.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute Hysteresis Threshold.");
+			ErrorPrint(res, "Failed to execute Wigner Ville Distribution.");
 
 			break;
 		}
@@ -133,6 +133,9 @@ int main()
 			ErrorPrint(res, "Failed to draw text on the image view.\n");
 			break;
 		}
+
+		viewImage[0].ZoomFit();
+		viewImage[1].ZoomFit();
 
 		// 이미지 뷰를 갱신 합니다. // Update the image view.
 		viewImage[0].Invalidate(true);
