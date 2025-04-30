@@ -57,7 +57,7 @@ BOOL CFLImagingGUIExampleApp::InitInstance()
 	pItemCustomPane->SetCustomDialog(new CFLImagingGUIExampleDlg);
 	CGUIManager::AddMenuItem(pItemCustomPane);
 
-	
+
 
 	// GUI 상에서 사용될 뷰를 생성합니다.
 	std::vector<CGUIFixedViewDeclaration*> vctFixedViewDecl;
@@ -93,7 +93,7 @@ BOOL CFLImagingGUIExampleApp::InitInstance()
 			CGUIFixedViewDeclaration* pDeclarationCam = vctFixedViewDecl[i32Index];
 			fvp.SetFixedViewDeclaration(pDeclarationCam);
 
-			switch (i32Index)
+			switch(i32Index)
 			{
 			case 0:
 				{
@@ -172,7 +172,7 @@ BOOL CFLImagingGUIExampleApp::InitInstance()
 				pPaneMenu->SetAutoHideMode(TRUE, CBRS_ALIGN_LEFT);
 		}
 
- 		pMF->ShowWindow(SW_SHOWMAXIMIZED);
+		pMF->ShowWindow(SW_SHOWMAXIMIZED);
 		pMF->ModifyStyle(WS_MAXIMIZEBOX, 0, 0);
 		pMF->SetWindowPos(NULL, 0, 0, 1280, 1024, NULL);
 	}
@@ -198,12 +198,53 @@ BOOL CFLImagingGUIExampleApp::InitInstance()
 	if(AfxGetApp() && AfxGetApp()->m_pMainWnd)
 		AfxGetApp()->m_pMainWnd->GetClientRect(rtMainWnd);
 
-	pItemCustomPane->InitializePane();
-	pItemCustomPane->GetPane()->SetControlBarStyle(pItemCustomPane->GetPane()->GetControlBarStyle() & ~(AFX_CBRS_FLOAT | AFX_CBRS_AUTOHIDE | AFX_CBRS_CLOSE));
-	pItemCustomPane->GetPane()->SetWindowPos(nullptr, 0, 0, rtMainWnd.Width(), 300, SWP_NOMOVE | SWP_NOZORDER);
-	pItemCustomPane->GetPane()->DockToFrameWindow(CBRS_ALIGN_BOTTOM, nullptr, DT_DOCK_LAST, nullptr, -1, true);
-	pItemCustomPane->GetPane()->EnableDocking(CBRS_ALIGN_ANY);
-	pItemCustomPane->SetDockDone(true);
+	do
+	{
+		if(!pItemCustomPane)
+			break;
+
+		pItemCustomPane->InitializePane();
+
+		CGUIPaneDialogCustomEmbedded* pPane = pItemCustomPane->GetPane();
+
+		if(!pPane)
+			break;
+
+		if(pPane->IsDocked())
+		{
+			if(pPane->IsTabbed())
+			{
+				CMFCBaseTabCtrl* pParentTab = DYNAMIC_DOWNCAST(CMFCBaseTabCtrl, pPane->GetParent());
+
+				if(pParentTab != NULL)
+				{
+					for(int i = 0; i < pParentTab->GetTabsNum(); i++)
+					{
+						CWnd* pTabWnd = pParentTab->GetTabWnd(i);
+
+						if(pTabWnd != pPane)
+							continue;
+
+						pParentTab->DetachTab(DM_UNKNOWN, i, TRUE);
+						break;
+					}
+				}
+			}
+			else
+			{
+				pPane->FloatPane(pPane->m_recentDockInfo.m_rectRecentFloatingRect, DM_UNKNOWN, false);
+				CDockingManager* pDockManager = afxGlobalUtils.GetDockingManager(pPane->GetDockSiteFrameWnd());
+				afxGlobalUtils.ForceAdjustLayout(pDockManager);
+			}
+		}
+
+		pPane->SetControlBarStyle(pPane->GetControlBarStyle() & ~(AFX_CBRS_FLOAT | AFX_CBRS_AUTOHIDE | AFX_CBRS_CLOSE));
+		pPane->SetWindowPos(nullptr, 0, 0, rtMainWnd.Width(), 300, SWP_NOMOVE | SWP_NOZORDER);
+		pPane->DockToFrameWindow(CBRS_ALIGN_BOTTOM, nullptr, DT_DOCK_LAST, nullptr, -1, true);
+		pPane->EnableDocking(CBRS_ALIGN_ANY);
+		pItemCustomPane->SetDockDone(true);
+	}
+	while(false);
 
 	return TRUE;
 }
