@@ -300,7 +300,7 @@ int main()
 		}
  
 		// AutoLabelerDL 알고리즘 수행 // Execute the AutoLabelerDL algorithm
-		if(IsFail(res = CAutoLabelerDL::Execute(&fliResultAutoLabelImage, &semanticSegmentation, true, true, CAutoLabelerDL::ELabelOptions_RegionType_Contour, 50.0f, 50000.0f, 0.5f)))
+		if(IsFail(res = CAutoLabelerDL::Execute(&fliResultAutoLabelImage, &semanticSegmentation, true, true, true, CAutoLabelerDL::ELabelOptions_RegionType_Contour, 50.0f, 50000.0f, 0.5f)))
 		{
 			ErrorPrint(res, "Failed to execute.\n");
 			break;
