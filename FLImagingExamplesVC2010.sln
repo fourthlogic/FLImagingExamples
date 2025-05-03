@@ -187,11 +187,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationBitwiseXor_Image",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationBitwiseXor_Scalar", "OperationBitwiseXor_Scalar\OperationBitwiseXor_Scalar.vcxproj", "{F190E54A-8BAD-4F77-8891-3D4F42928220}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphView", "GraphView", "{59330CAA-3CBA-4D78-9EC7-4247FEF64C4E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graph View", "Graph View", "{59330CAA-3CBA-4D78-9EC7-4247FEF64C4E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphView", "GraphView\GraphView.vcxproj", "{1C0A7145-A868-491D-B36F-89A7B046746E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageView", "ImageView", "{99F439AF-1246-45CB-AC92-C98E65395C03}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image View", "Image View", "{99F439AF-1246-45CB-AC92-C98E65395C03}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mapping", "Mapping", "{D839F59F-7175-4135-8BB3-087D22C924CE}"
 EndProject
@@ -470,7 +470,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Flip", "Flip\Flip.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ThinPlateSplineMapping", "ThinPlateSplineMapping\ThinPlateSplineMapping.vcxproj", "{16B48874-D423-4247-A598-00CBF897D372}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3DView", "3DView", "{9DC2CFA8-FAEB-41D4-A097-4C9995F44856}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3D View", "3D View", "{9DC2CFA8-FAEB-41D4-A097-4C9995F44856}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "View3D", "View3D\View3D.vcxproj", "{5F3F09DE-D991-4D3F-A059-460648E2E0D5}"
 EndProject
@@ -646,7 +646,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SigmaFilter", "SigmaFilter\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Warping", "Warping", "{F5C320C3-D278-4070-83A0-098AB6FFC82E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AnisotropicDiffusion", "AnisotropicDiffusion", "{6646DD30-E2A8-4A73-BF1F-2323CF0241E9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Anisotropic Diffusion", "Anisotropic Diffusion", "{6646DD30-E2A8-4A73-BF1F-2323CF0241E9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AnisotropicDiffusion", "AnisotropicDiffusion\AnisotropicDiffusion.vcxproj", "{108EDBCB-A474-40A0-8015-590FA3B40A65}"
 EndProject
@@ -668,13 +668,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LanczosWarping", "LanczosWa
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BicubicSplineWarping", "BicubicSplineWarping\BicubicSplineWarping.vcxproj", "{E33AA351-9115-4E7F-B200-43503B210160}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MorphologyClose", "MorphologyClose", "{969F45CD-3996-4D4C-9978-02BE4EA22819}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Morphology Close", "Morphology Close", "{969F45CD-3996-4D4C-9978-02BE4EA22819}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MorphologyOpen", "MorphologyOpen", "{D0C3521A-8920-4EE1-93FA-51FECBD83EA7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Morphology Open", "Morphology Open", "{D0C3521A-8920-4EE1-93FA-51FECBD83EA7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MorphologyDilate", "MorphologyDilate", "{F2E9C682-A919-4DDB-B4B9-F1D9B3AA34D6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Morphology Dilate", "Morphology Dilate", "{F2E9C682-A919-4DDB-B4B9-F1D9B3AA34D6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MorphologyErode", "MorphologyErode", "{F027946F-1483-443B-A032-95B0FB524A33}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Morphology Erode", "Morphology Erode", "{F027946F-1483-443B-A032-95B0FB524A33}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inpainting", "Inpainting", "{90F9F03C-CFD8-452B-B296-0FB38CC09733}"
 EndProject
@@ -686,11 +686,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Stencil", "Stencil\Stencil.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceCameraMulticam", "DeviceCameraMulticam\DeviceCameraMulticam.vcxproj", "{2DC29749-FEAD-43D1-9FCD-96671527EBA6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MainFrame", "MainFrame", "{D0EDFB19-7591-4DAE-869F-079732764327}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mainframe", "Mainframe", "{D0EDFB19-7591-4DAE-869F-079732764327}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FLImagingGUIExample", "FLImagingGUIExample\FLImagingGUIExample.vcxproj", "{93DE9020-F598-4DA9-8035-3E1ACA317571}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrameGrabber", "FrameGrabber", "{12D2C003-F138-4176-8634-5E19EF95B502}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frame Grabber", "Frame Grabber", "{12D2C003-F138-4176-8634-5E19EF95B502}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mean", "Mean", "{34B71E28-3197-4ECC-8291-DB8C5CE2256D}"
 EndProject
@@ -702,9 +702,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GetPointsOfMinimumDistance"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GetPointsOfMaximumDistance", "GetPointsOfMaximumDistance\GetPointsOfMaximumDistance.vcxproj", "{707055FE-1392-4821-AFBA-933C5E152A13}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MorphologyGradient", "MorphologyGradient", "{EFC5696E-EE42-4F54-9169-DC0218AFA7A0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Morphology Gradient", "Morphology Gradient", "{EFC5696E-EE42-4F54-9169-DC0218AFA7A0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MorphologyTopHat", "MorphologyTopHat", "{2C4A0394-1C07-43E9-AE05-96DE6BFE7D79}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Morphology TopHat", "Morphology TopHat", "{2C4A0394-1C07-43E9-AE05-96DE6BFE7D79}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyGradient_Region", "Morphology_Gradient_Region\Morphology_Gradient_Region.vcxproj", "{BA00CDB2-CD72-44A6-A17F-08970EA38EF8}"
 EndProject
@@ -894,13 +894,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bilateral Filter SubSampled
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BilateralFilterSubSampled_Image", "BilateralFilterSubSampled_Image\BilateralFilterSubSampled_Image.vcxproj", "{4C87218D-78DA-4FA1-9DEF-9093BFFA121C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InpaintingFastMarchingMethod", "InpaintingFastMarchingMethod", "{C1A584C4-A185-4F88-90FD-78423BDD1285}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inpainting Fast Marching Method", "Inpainting Fast Marching Method", "{C1A584C4-A185-4F88-90FD-78423BDD1285}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InpaintingTexture", "InpaintingTexture", "{329F2B19-1EC7-4D68-86AC-CDCFBAB1B4B6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inpainting Texture", "Inpainting Texture", "{329F2B19-1EC7-4D68-86AC-CDCFBAB1B4B6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InpaintingCoherenceTransport", "InpaintingCoherenceTransport\InpaintingCoherenceTransport.vcxproj", "{4CD28E18-D46D-41DB-96CB-800AD6DFEB3B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InpaintingCoherenceTransport", "InpaintingCoherenceTransport", "{F95625CA-945F-439B-925C-FCA5BF7EDCDF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inpainting Coherence Transport", "Inpainting Coherence Transport", "{F95625CA-945F-439B-925C-FCA5BF7EDCDF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Correlation", "Correlation", "{8D391E8A-432A-42B3-A5EC-9BBA44373390}"
 EndProject
@@ -910,7 +910,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gabor Filter", "Gabor Filte
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GaborFilter", "GaborFilter\GaborFilter.vcxproj", "{F4DAFE51-F0B5-4D3C-8FCB-45E3A300369F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InpaintingNavierStokes", "InpaintingNavierStokes", "{9CD5D1F3-1B2A-4C51-86A8-2BF122C7666F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inpainting Navier Stokes", "Inpainting Navier Stokes", "{9CD5D1F3-1B2A-4C51-86A8-2BF122C7666F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InpaintingNavierStokes", "InpaintingNavierStokes\InpaintingNavierStokes.vcxproj", "{F5EADEBF-4988-4654-B96B-8C5ECD6193DC}"
 EndProject
@@ -970,7 +970,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Absolute", "Absolute", "{9D
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationAbsolute", "OperationAbsolute\OperationAbsolute.vcxproj", "{AB9BF64D-8E2B-452D-8323-03237D15C637}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScaledMultiply", "ScaledMultiply", "{9DF827EF-55FB-4F9B-8E45-F06954CBD5DC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scaled Multiply", "Scaled Multiply", "{9DF827EF-55FB-4F9B-8E45-F06954CBD5DC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationScaledMultiply_Image", "OperationScaledMultiply_Image\OperationScaledMultiply_Image.vcxproj", "{C71E7C8D-D109-4A18-AA6A-34E3A78AAD1F}"
 EndProject
@@ -1054,7 +1054,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationComplexDivide_Imag
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationComplexDivide_Scalar", "OperationComplexDivide_Scalar\OperationComplexDivide_Scalar.vcxproj", "{02ABDBDA-3E6E-4C36-A523-EBAE2F129885}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScaledDivide", "ScaledDivide", "{01FB2011-2C94-45A5-BBC8-53656CA46842}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scaled Divide", "Scaled Divide", "{01FB2011-2C94-45A5-BBC8-53656CA46842}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationScaledDivide_Image", "OperationScaledDivide_Image\OperationScaledDivide_Image.vcxproj", "{9CB3C0F4-F1B7-4CC2-B8AB-2358339AB1F5}"
 EndProject
@@ -1068,7 +1068,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DrawingMatch_UsingFigure", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DrawingMatch_UsingGerber", "DrawingMatch_UsingGerber\DrawingMatch_UsingGerber.vcxproj", "{09604926-A6E5-4E88-B046-B5F533749926}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScaledSubtract", "ScaledSubtract", "{9D961940-476F-465C-85AE-6F71CCDE6F31}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scaled Subtract", "Scaled Subtract", "{9D961940-476F-465C-85AE-6F71CCDE6F31}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationScaledSubtract_Image", "OperationScaledSubtract_Image\OperationScaledSubtract_Image.vcxproj", "{B7AFBDBF-F3A5-4CE9-93A7-2A59912A0F78}"
 EndProject
@@ -1078,7 +1078,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RandomImageGenerator", "Ran
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fast Guided Filter", "Fast Guided Filter", "{335D1E66-35C1-4C60-A084-360BDE538539}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GreatestCommonDivisor", "GreatestCommonDivisor", "{8199769D-C744-4E78-A612-51A688F4DEBE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Greatest Common Divisor", "Greatest Common Divisor", "{8199769D-C744-4E78-A612-51A688F4DEBE}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationGreatestCommonDivisor_Scalar", "OperationGreatestCommonDivisor_Scalar\OperationGreatestCommonDivisor_Scalar.vcxproj", "{B29ACF5F-A6BB-4A66-AAAF-A43A954768FE}"
 EndProject
@@ -1240,7 +1240,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bilateral Filter Grid", "Bi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BilateralFilterGrid", "BilateralFilterGrid\BilateralFilterGrid.vcxproj", "{FBCC13B6-4601-4BB8-B743-76068A907473}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MorphologyHitOrMiss", "MorphologyHitOrMiss", "{3433FC56-DD4C-4FFE-844F-539D2CD8B3CF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Morphology Hit or Miss", "Morphology Hit or Miss", "{3433FC56-DD4C-4FFE-844F-539D2CD8B3CF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyHitOrMiss", "Morphology_HitOrMiss\Morphology_HitOrMiss.vcxproj", "{5F238616-86F9-4EBD-AF95-E505C94810B6}"
 EndProject
@@ -1398,11 +1398,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lowpass Filter", "Lowpass F
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LowpassFilter", "LowpassFilter\LowpassFilter.vcxproj", "{099ABD39-8D95-40AE-922F-294F7AFBFE59}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LaplasianOfGaussianFilter", "LaplasianOfGaussianFilter", "{087FF545-F6AD-47FE-A695-9F39106ECB74}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Laplasian of Gaussian Filter", "Laplasian of Gaussian Filter", "{087FF545-F6AD-47FE-A695-9F39106ECB74}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LaplacianOfGaussianFilter", "LaplacianOfGaussianFilter\LaplacianOfGaussianFilter.vcxproj", "{5C720DF3-643F-46BF-9BB6-790CD1DF5F2C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DifferenceOfGaussianFilter", "DifferenceOfGaussianFilter", "{328AF3D7-FE1D-406A-AD11-A5B0B751B5F6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Difference of Gaussian Filter", "Difference of Gaussian Filter", "{328AF3D7-FE1D-406A-AD11-A5B0B751B5F6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DifferenceOfGaussianFilter", "DifferenceOfGaussianFilter\DifferenceOfGaussianFilter.vcxproj", "{E187FF0C-589D-417C-9BAA-D4AB75B84011}"
 EndProject
@@ -1458,7 +1458,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceLaserDisplacementSens
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HistogramsOfOrientedGradients_PeakVector", "HistogramsOfOrientedGradients_PeakVector\HistogramsOfOrientedGradients_PeakVector.vcxproj", "{34BFE06B-96F2-4A08-AAFD-D718BA8DB2C7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HistogramsOfOrientedGradients", "HistogramsOfOrientedGradients", "{E2A069AB-5C96-4A32-92A9-306CD98AE45F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Histograms of Oriented Gradients", "Histograms of Oriented Gradients", "{E2A069AB-5C96-4A32-92A9-306CD98AE45F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HistogramsOfOrientedGradients_PredictionImage", "HistogramsOfOrientedGradients_PredictionImage\HistogramsOfOrientedGradients_PredictionImage.vcxproj", "{83672FEB-D5AE-4FD4-938E-D2C8776F698E}"
 EndProject
@@ -1620,7 +1620,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShapeMatchCross", "ShapeMat
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShapeMatchFigure", "ShapeMatchFigure\ShapeMatchFigure.vcxproj", "{331F648B-FA89-4C8D-A161-3522E9234EC0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SNAPView", "SNAPView", "{00098E70-9D8C-44CF-AA0A-3C50AD9F5831}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SNAP View", "SNAP View", "{00098E70-9D8C-44CF-AA0A-3C50AD9F5831}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HysteresisThreshold", "HysteresisThreshold\HysteresisThreshold.vcxproj", "{90E959F6-31F2-48A3-85B4-5916C79D90EB}"
 EndProject
@@ -1672,7 +1672,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReduceDimensionMin2Dto1D", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReduceDimensionMax2Dto1D", "ReduceDimensionMax2Dto1D\ReduceDimensionMax2Dto1D.vcxproj", "{169C11EF-F672-49A7-BA3C-8496EEB7E17D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignedSquareDifference", "SignedSquareDifference", "{39068B5C-3AF6-4891-982E-7E7C1159BD4B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Signed Square Difference", "Signed Square Difference", "{39068B5C-3AF6-4891-982E-7E7C1159BD4B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationSignedSquareDifference_Image", "OperationSignedSquareDifference_Image\OperationSignedSquareDifference_Image.vcxproj", "{7699928C-A6E5-41E3-BDE7-AF2363A9503F}"
 EndProject
@@ -7014,10 +7014,10 @@ Global
 		{6278C4E0-C1E1-4082-B817-1FDAB13437A0} = {08FE15E4-18EA-4717-928C-E2D01E683FCB}
 		{3D20052A-9562-4F70-BA27-83BFCB5313DC} = {6278C4E0-C1E1-4082-B817-1FDAB13437A0}
 		{169C11EF-F672-49A7-BA3C-8496EEB7E17D} = {6278C4E0-C1E1-4082-B817-1FDAB13437A0}
-		{7699928C-A6E5-41E3-BDE7-AF2363A9503F} = {39068B5C-3AF6-4891-982E-7E7C1159BD4B}
-		{956E154F-86A8-4636-A49E-A0C291FA4DE9} = {39068B5C-3AF6-4891-982E-7E7C1159BD4B}
 		{45D0FDA7-B666-4521-8A63-F306EDFA6744} = {6278C4E0-C1E1-4082-B817-1FDAB13437A0}
 		{37B4A5EE-57EE-47F8-9501-ED07703CF527} = {6278C4E0-C1E1-4082-B817-1FDAB13437A0}
+		{7699928C-A6E5-41E3-BDE7-AF2363A9503F} = {39068B5C-3AF6-4891-982E-7E7C1159BD4B}
+		{956E154F-86A8-4636-A49E-A0C291FA4DE9} = {39068B5C-3AF6-4891-982E-7E7C1159BD4B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
