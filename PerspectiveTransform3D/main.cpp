@@ -47,7 +47,7 @@ int main()
 		// 카메라 방향 설정 // Set the camera direction
 		PerspectiveTransform3D.SetDirection(tpDirection);
 		// 카메라 방향 타입 설정 // Set the camera direction type
-		PerspectiveTransform3D.SetDirectionType(CPerspectiveTransform3D::EDirectionType_Decrement);
+		PerspectiveTransform3D.SetDirectionType(EDirectionType_Decrement);
 		// 카메라 업 벡터 설정 // Set the camera up vector
 		PerspectiveTransform3D.SetUpVector(tpUpVector);
 
