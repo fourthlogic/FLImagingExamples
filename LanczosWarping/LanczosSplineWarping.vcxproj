@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6CD523AF-0B99-4432-9F47-F80F734AC865}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>LanczosWarping</RootNamespace>
-    <ProjectName>LanczosWarping</ProjectName>
+    <RootNamespace>LanczosSplineWarping</RootNamespace>
+    <ProjectName>LanczosSplineWarping</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
