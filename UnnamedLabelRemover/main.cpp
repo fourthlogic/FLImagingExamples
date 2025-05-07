@@ -98,8 +98,14 @@ int main()
 		viewImageSource.RedrawWindow();
 		viewImagesResult.RedrawWindow();
 
+		CUnnamedLabelRemoverDL unnamedLabelRemoverDL;
+
+		//파라미터 설정 // Parameters Setting
+		unnamedLabelRemoverDL.SetSourceImage(&fliSourceImage);
+		unnamedLabelRemoverDL.SetDestinationImage(&fliResultImage);
+
 		// UnnamedLabelRemover 실행 // UnnamedLabelRemover Execute 
-		if(IsFail(res = CUnnamedLabelRemoverDL::Execute(&fliSourceImage, &fliResultImage)))
+		if(IsFail(res = unnamedLabelRemoverDL.Execute()))
 		{
 			ErrorPrint(res, "Failed to Process\n");
 			break;

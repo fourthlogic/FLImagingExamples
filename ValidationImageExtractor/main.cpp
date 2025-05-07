@@ -124,16 +124,24 @@ int main()
 		viewImageSource.RedrawWindow();
 		viewImagesLearn.RedrawWindow();
 		viewImagesValidation.RedrawWindow();
-		
+	
+		CValidationImageExtractorDL validationImageExtractorDL;
+
+		// 소스이미지 설정 // Set the source image
+		validationImageExtractorDL.SetSourceImage(fliSourceImage);
+		// 결과 학습 이미지 설정 // Set the result learning image
+		validationImageExtractorDL.SetResultLearningImage(fliResultLearnImage);
+		// 결과 검증 이미지 설정 // Set the result validation image
+		validationImageExtractorDL.SetResultValidationImage(fliResultValidationImage);
+		// 데이터 셋 타입 설정 // Set the dataset type
+		validationImageExtractorDL.SetDatasetType(CValidationImageExtractorDL::EDatasetType_SemanticSegmentation);
 		// Validation Image 비율 설정 // Set ratio of validation image
-		float f32Ratio = 0.4f;
-		// Dataset type 설정 // Set the data set type
-		CValidationImageExtractorDL::EDatasetType eDatasetType = CValidationImageExtractorDL::EDatasetType_SemanticSegmentation;
+		validationImageExtractorDL.SetValidationRatio(0.4f);
 		// Validation Set에 최소한 몇 개의 클래스가 1개 이상 씩 포함될 것인지 설정 // Set how many classes each will be included in the Validation Set
-		int64_t i64MinimumClassIncluded = 2;
+		validationImageExtractorDL.SetMinimumClassesIncluded(2);
 
 		// Validation Extractor 실행 // Validation Extractor Execute 
-		if(IsFail(res = CValidationImageExtractorDL::Extract(&fliSourceImage, f32Ratio, eDatasetType, &fliResultLearnImage, &fliResultValidationImage, i64MinimumClassIncluded)))
+		if(IsFail(res = validationImageExtractorDL.Execute()))
 		{
 			ErrorPrint(res, "Failed to Process\n");
 			break;
