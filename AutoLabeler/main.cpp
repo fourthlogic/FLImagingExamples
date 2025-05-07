@@ -190,7 +190,7 @@ int main()
 
 		// 설정한 Optimizer를 SemanticSegmentation에 적용 // Apply the Optimizer that we set up to SemanticSegmentation
 		semanticSegmentation.SetLearningOptimizerSpec(optSpec);
-
+		
 		// AugmentationSpec 설정 // Set the AugmentationSpec
 		CAugmentationSpec augSpec;
 
@@ -299,8 +299,23 @@ int main()
 			}
 		}
  
+		CAutoLabelerDL autoLabelerDL;
+		
+		// 오토라벨러에 모델을 로드 // Load model into autolabeler
+		if(IsFail(res = autoLabelerDL.Load(&semanticSegmentation)))
+			break;
+		
+		// 파라미터 설정 // Parameter settings
+		autoLabelerDL.SetSourceImage(&fliResultAutoLabelImage);
+		autoLabelerDL.EnableOverwriting(true);
+		autoLabelerDL.EnableBatchProcessing(true);
+		autoLabelerDL.SetLabelOptions(CAutoLabelerDL::ELabelOptions_RegionType_Contour);
+		autoLabelerDL.SetMinimumScore(0.5f);
+		autoLabelerDL.SetMinimumArea(50.0f);
+		autoLabelerDL.SetMaximumArea(50000.0f);
+
 		// AutoLabelerDL 알고리즘 수행 // Execute the AutoLabelerDL algorithm
-		if(IsFail(res = CAutoLabelerDL::Execute(&fliResultAutoLabelImage, &semanticSegmentation, true, true, true, CAutoLabelerDL::ELabelOptions_RegionType_Contour, 50.0f, 50000.0f, 0.5f)))
+		if(IsFail(res = autoLabelerDL.Execute()))
 		{
 			ErrorPrint(res, "Failed to execute.\n");
 			break;
