@@ -83,7 +83,7 @@ int main()
 
 		CFLPoint<int32_t> flpGridIndex;
 		CFLPointArray flpaSourcePoints;
-		CFLPointArray flpaTargetPoints;
+		CFLPointArray flpaDestinationPoints;
 
 		double f64ScaleX = fliSrcImage.GetWidth() / 4.;
 		double f64ScaleY = fliSrcImage.GetHeight() / 4.;
@@ -98,16 +98,16 @@ int main()
 
 				// Grid Index와 같은 좌표로 Source 좌표를 설정 // Set source vertex same as the grid index
 				CFLPoint<double> flpSource(flpGridIndex.x * f64ScaleX, flpGridIndex.y * f64ScaleY);
-				// Grid Index와 같은 좌표에서 미세한 랜덤 값을 부여해서 왜곡된 Target 좌표 설정 // Set distorted target coordinates by giving fine random values in coordinates such as Grid Index
+				// Grid Index와 같은 좌표에서 미세한 랜덤 값을 부여해서 왜곡된 Destination 좌표 설정 // Set distorted destination coordinates by giving fine random values in coordinates such as Grid Index
 				CFLPoint<double> flpDistortion((flpGridIndex.x + CRandomGenerator::Double(-.2, .2)) * f64ScaleX, (flpGridIndex.y + CRandomGenerator::Double(-.2, .2)) * f64ScaleY);
 
 				// 위에서 설정한 좌표들을 바탕으로 Calibration Point Array에 Point 추가 // Add points to the calibration point array based on the coordinates set above
 				flpaSourcePoints.PushBack(flpSource);
-				flpaTargetPoints.PushBack(flpDistortion);
+				flpaDestinationPoints.PushBack(flpDistortion);
 			}
 		}
 
-		ThinPlateSplineWarping.SetCalibrationPointArray(flpaSourcePoints, flpaTargetPoints);
+		ThinPlateSplineWarping.SetCalibrationPointArray(flpaSourcePoints, flpaDestinationPoints);
 
 		// Calibration Point Array를 화면에 Display // Display calibration point array
 
@@ -118,10 +118,10 @@ int main()
 		for(int64_t i = 0; i < flpaSourcePoints.GetCount(); ++i)
 		{
 			CFLPoint<double> flpSource = flpaSourcePoints.GetAt(i);
-			CFLPoint<double> flpTarget = flpaTargetPoints.GetAt(i);
+			CFLPoint<double> flpDestination = flpaDestinationPoints.GetAt(i);
 
 			// Source Vertex를 Source 이미지 뷰 Layer에 그리기 // Draw the source vertex on the source image view layer
-			CFLLine<double> fllDrawLine(flpSource, flpTarget);
+			CFLLine<double> fllDrawLine(flpSource, flpDestination);
 			// 선분을 화살표로 변경 // Change a line to an arrow
 			CFLFigureArray flfaArrow = fllDrawLine.MakeArrowWithRatio(0.25, true, 20);
 
@@ -131,7 +131,7 @@ int main()
 				break;
 			}
 
-			if((res = layer.DrawFigureImage(&flpTarget, BLUE, 1)).IsFail())
+			if((res = layer.DrawFigureImage(&flpDestination, BLUE, 1)).IsFail())
 			{
 				ErrorPrint(res, L"Failed to draw figure objects on the image view.\n");
 				break;

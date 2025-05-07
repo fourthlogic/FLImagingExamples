@@ -86,7 +86,7 @@ int main()
 
 		CFLPoint<int32_t> flpGridIndex;
 		CFLPointArray flpaSourcePoints;
-		CFLPointArray flpaTargetPoints;
+		CFLPointArray flpaDestinationPoints;
 
 		double f64ScaleX = arrFliImage[0].GetWidth() / 4.;
 		double f64ScaleY = arrFliImage[0].GetHeight() / 4.;
@@ -123,11 +123,11 @@ int main()
 				CFLPoint<double> flpDistortion = new CFLPoint<double>((flpGridIndex.x + f64RandomX) * f64ScaleX, (flpGridIndex.y + f64RandomY) * f64ScaleY);
 
 				flpaSourcePoints.PushBack(flpSource);
-				flpaTargetPoints.PushBack(flpDistortion);
+				flpaDestinationPoints.PushBack(flpDistortion);
 			}
 		}
 
-		LanczosWarping.SetCalibrationPointArray(flpaSourcePoints, flpaTargetPoints);
+		LanczosWarping.SetCalibrationPointArray(flpaSourcePoints, flpaDestinationPoints);
 
 		// 앞서 설정된 Source Image, Calibration Point Array를 기반으로 Calibrate 수행 // Calibrate based on the previously set Source Image and Calibration Point Array
 		if(IsFail(res = LanczosWarping.Calibrate()))
@@ -153,7 +153,7 @@ int main()
 		//변환 결과를 원래대로 변환하는 과정 수행 // Perform the process of converting the conversion result back to its original state
 		arrFliImage[2].Assign(arrFliImage[1]);
 		// 컨트롤 포인트 설정 // Set control points
-		LanczosWarping.SetCalibrationPointArray(flpaTargetPoints, flpaSourcePoints);
+		LanczosWarping.SetCalibrationPointArray(flpaDestinationPoints, flpaSourcePoints);
 		// Source 이미지 설정 // Set the source image
 		LanczosWarping.SetSourceImage(arrFliImage[2]);
 		// Destination 이미지 설정 // Set the destination image
@@ -186,9 +186,9 @@ int main()
 		for(int64_t i = 0; i < flpaSourcePoints.GetCount(); ++i)
 		{
 			CFLPoint<double> flpSource = flpaSourcePoints.GetAt(i);
-			CFLPoint<double> flpTarget = flpaTargetPoints.GetAt(i);
+			CFLPoint<double> flpDestination = flpaDestinationPoints.GetAt(i);
 
-			CFLLine<double> fllDrawLine(flpSource, flpTarget);
+			CFLLine<double> fllDrawLine(flpSource, flpDestination);
 			CFLFigureArray flfaArrow = fllDrawLine.MakeArrowWithRatio(0.25, true, 20);
 
 			// Source Vertex를 좌/우측 View Layer에 Drawing // Drawing the source vertex on the left/right view layer
@@ -198,7 +198,7 @@ int main()
 				break;
 			}
 
-			if(IsFail(res = layer.DrawFigureImage(&flpTarget, BLUE, 1)))
+			if(IsFail(res = layer.DrawFigureImage(&flpDestination, BLUE, 1)))
 			{
 				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				break;
@@ -210,7 +210,7 @@ int main()
 				break;
 			}
 
-			fllDrawLine = CFLLine<double>(flpTarget, flpSource);
+			fllDrawLine = CFLLine<double>(flpDestination, flpSource);
 			flfaArrow = fllDrawLine.MakeArrowWithRatio(0.25, true, 20);
 
 			// Source Vertex를 좌/우측 View Layer에 Drawing // Drawing the source vertex on the left/right view layer
@@ -220,7 +220,7 @@ int main()
 				break;
 			}
 
-			if(IsFail(res = layer2.DrawFigureImage(&flpTarget, BLUE, 1)))
+			if(IsFail(res = layer2.DrawFigureImage(&flpDestination, BLUE, 1)))
 			{
 				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				break;
