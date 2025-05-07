@@ -309,7 +309,7 @@ int main()
 		autoLabelerDL.SetSourceImage(&fliResultAutoLabelImage);
 		autoLabelerDL.EnableOverwriting(true);
 		autoLabelerDL.EnableBatchProcessing(true);
-		autoLabelerDL.SetLabelOptions(CAutoLabelerDL::ELabelOptions_RegionType_Contour);
+		autoLabelerDL.SetLabelOptions(CAutoLabelerDL::ELabelOptions_RegionType_BoundaryRect);
 		autoLabelerDL.SetMinimumScore(0.5f);
 		autoLabelerDL.SetMinimumArea(50.0f);
 		autoLabelerDL.SetMaximumArea(50000.0f);
