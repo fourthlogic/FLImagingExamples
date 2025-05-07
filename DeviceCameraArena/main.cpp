@@ -122,7 +122,7 @@ int main()
 			CFLArray<CFLString<wchar_t>> flarrSerialNumbers;
 
 			// 연결되어 있는 카메라의 시리얼 번호를 얻는다.
-			drReturn = camArena.GetAutoDetectCamera(flarrSerialNumbers);
+			drReturn = camArena.GetAutoDetectCameraSerialNumbers(flarrSerialNumbers);
 			
 			if(drReturn.IsFail() || !flarrSerialNumbers.GetCount())
 			{
