@@ -722,8 +722,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationHypotenuse_Scalar"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FuzzyEntropy", "FuzzyEntropy\FuzzyEntropy.vcxproj", "{04BBC445-179B-49F4-BC20-88BBB1F1E034}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LanczosMapping", "LanczosMapping\LanczosMapping.vcxproj", "{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AutoThreshold", "AutoThreshold\AutoThreshold.vcxproj", "{4029EB31-B23E-4A41-A7B1-429C84A5E648}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Moire 3D", "Moire 3D", "{3CA893E7-26EC-4BE6-A5A9-C6C25FD9880D}"
@@ -1687,6 +1685,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceCameraArena", "DeviceCameraArena\DeviceCameraArena.vcxproj", "{80F90BB8-E267-4A50-8C01-1B56E978123A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceCameraArena3D", "DeviceCameraArena3D\DeviceCameraArena3D.vcxproj", "{B634243A-7DFA-4280-A3A2-ECBBFA24D0EB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LanczosSplineMapping", "LanczosSplineMapping\LanczosSplineMapping.vcxproj", "{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -3608,14 +3608,6 @@ Global
 		{04BBC445-179B-49F4-BC20-88BBB1F1E034}.Release|Win32.Build.0 = Release|Win32
 		{04BBC445-179B-49F4-BC20-88BBB1F1E034}.Release|x64.ActiveCfg = Release|x64
 		{04BBC445-179B-49F4-BC20-88BBB1F1E034}.Release|x64.Build.0 = Release|x64
-		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Debug|Win32.ActiveCfg = Debug|Win32
-		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Debug|Win32.Build.0 = Debug|Win32
-		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Debug|x64.ActiveCfg = Debug|x64
-		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Debug|x64.Build.0 = Debug|x64
-		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Release|Win32.ActiveCfg = Release|Win32
-		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Release|Win32.Build.0 = Release|Win32
-		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Release|x64.ActiveCfg = Release|x64
-		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Release|x64.Build.0 = Release|x64
 		{4029EB31-B23E-4A41-A7B1-429C84A5E648}.Debug|Win32.ActiveCfg = Debug|Win32
 		{4029EB31-B23E-4A41-A7B1-429C84A5E648}.Debug|Win32.Build.0 = Debug|Win32
 		{4029EB31-B23E-4A41-A7B1-429C84A5E648}.Debug|x64.ActiveCfg = Debug|x64
@@ -6182,6 +6174,14 @@ Global
 		{B634243A-7DFA-4280-A3A2-ECBBFA24D0EB}.Release|Win32.Build.0 = Release|Win32
 		{B634243A-7DFA-4280-A3A2-ECBBFA24D0EB}.Release|x64.ActiveCfg = Release|x64
 		{B634243A-7DFA-4280-A3A2-ECBBFA24D0EB}.Release|x64.Build.0 = Release|x64
+		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Debug|Win32.Build.0 = Debug|Win32
+		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Debug|x64.ActiveCfg = Debug|x64
+		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Debug|x64.Build.0 = Debug|x64
+		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Release|Win32.ActiveCfg = Release|Win32
+		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Release|Win32.Build.0 = Release|Win32
+		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Release|x64.ActiveCfg = Release|x64
+		{A4B34FEC-59E6-4835-B32E-EB51E0E6B26D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -7020,7 +7020,7 @@ Global
 		{956E154F-86A8-4636-A49E-A0C291FA4DE9} = {39068B5C-3AF6-4891-982E-7E7C1159BD4B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
 		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
+		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
 	EndGlobalSection
 EndGlobal

@@ -86,7 +86,7 @@ int main()
 		layer[2].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Restore Coordinate (from Destination)", YELLOW, BLACK, 30);
 
 		// 좌표 매핑용 클래스 선언 // Class declaration for coordinate mapping
-		CLanczosMapping lczm;
+		CLanczosSplineMapping lczm;
 
 		// 만약 기존 저장된 매핑 데이터가 있다면 해당 데이터를 로드합니다.
 		// 두번째 실행부터는 파일이 생성될 것이기 때문에 아래 세팅과정을 수행하지 않고 지나가게 됩니다.
@@ -120,8 +120,8 @@ int main()
 					// Grid Index와 같은 좌표에서 미세한 랜덤 값을 부여해서 좌표를 왜곡 // Distort the coordinates by giving fine random values at the same coordinates as the Grid Index
 					CFLPoint<double> flpDistortion((flpGridIndex.x + CRandomGenerator::Double(-.1, .1)), (flpGridIndex.y + CRandomGenerator::Double(-.1, .1)));
 					
-					// 위에서 설정한 좌표들을 바탕으로 LanczosMapping 클래스에 하나의 Vertex를 설정
-					// Set one vertex in the LanczosMapping class based on the coordinates set above
+					// 위에서 설정한 좌표들을 바탕으로 LanczosSplineMapping 클래스에 하나의 Vertex를 설정
+					// Set one vertex in the LanczosSplineMapping class based on the coordinates set above
 					lczm.SetControlPoint(flpGridIndex, flpSource, flpDistortion);
 				}
 			}
@@ -147,16 +147,16 @@ int main()
 			}
 		}
 
-		// 세팅이 완료된 LanczosMapping 클래스를 이용해 변환을 하는 단계입니다.
-		// This step is to convert using the LanczosMapping class that has been set.
+		// 세팅이 완료된 LanczosSplineMapping 클래스를 이용해 변환을 하는 단계입니다.
+		// This step is to convert using the LanczosSplineMapping class that has been set.
 
-		// LanczosMapping 클래스에 설정된 Vertex 정보를 화면에 Display
-		// Display the vertex information set in the LanczosMapping class on the screen
+		// LanczosSplineMapping 클래스에 설정된 Vertex 정보를 화면에 Display
+		// Display the vertex information set in the LanczosSplineMapping class on the screen
 		for(int32_t y = 0; y < lczm.GetRow(); ++y)
 		{
 			for(int32_t x = 0; x < lczm.GetColumn(); ++x)
 			{
-				const CLanczosMapping::CLanczosMappingVertexInfo* pVertex = lczm.GetControlPoint(CFLPoint<int32_t>(x, y));
+				const CLanczosSplineMapping::CLanczosSplineMappingVertexInfo* pVertex = lczm.GetControlPoint(CFLPoint<int32_t>(x, y));
 
 				// 유효한 좌표가 아닌 경우 nullptr이 리턴된다. // If not valid coordinates, nullptr is returned.
 				if(pVertex)
