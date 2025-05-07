@@ -78,12 +78,12 @@ int main()
 		// 화면상 좌표(고정 좌표)에 Source 좌표 View 임을 표시
 		// Indicate that the source coordinates are View at the coordinates (fixed coordinates) on the screen
 		layer[0].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Source Coordinate", YELLOW, BLACK, 30);
-		// 화면상 좌표(고정 좌표)에 Target 좌표 View 임을 표시
-		// Indicate that it is the target coordinate view on the screen coordinates (fixed coordinates)
-		layer[1].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Target Coordinate", YELLOW, BLACK, 30);
+		// 화면상 좌표(고정 좌표)에 Destination 좌표 View 임을 표시
+		// Indicate that it is the destination coordinate view on the screen coordinates (fixed coordinates)
+		layer[1].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Destination Coordinate", YELLOW, BLACK, 30);
 		// 화면상 좌표(고정 좌표)에 Restore 좌표 View 임을 표시
 		// Indicate Restore Coordinates View on the screen coordinates (fixed coordinates)
-		layer[2].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Restore Coordinate (from Target)", YELLOW, BLACK, 30);
+		layer[2].DrawTextCanvas(&CFLPoint<int32_t>(0, 0), L"Restore Coordinate (from Destination)", YELLOW, BLACK, 30);
 
 		// 좌표 매핑용 클래스 선언 // Class declaration for coordinate mapping
 		CThinPlateSplineMapping tps;
@@ -145,14 +145,14 @@ int main()
 		for(int64_t i = 0; i < tps.GetControlPointCount(); ++i)
 		{
 			CFLPoint<double> flpSource;
-			CFLPoint<double> flpTarget;
+			CFLPoint<double> flpDestination;
 
-			tps.GetControlPoint(i, &flpSource, &flpTarget);
+			tps.GetControlPoint(i, &flpSource, &flpDestination);
 
 			for(int32_t i = 0; i < 3; ++i)
 			{
-				// Target Vertex를 각 View Layer에 Drawing // Drawing the target vertex to each view layer
-				if(IsFail(res = layer[i].DrawFigureImage(&flpTarget, BLUE, 3)))
+				// Destination Vertex를 각 View Layer에 Drawing // Drawing the destination vertex to each view layer
+				if(IsFail(res = layer[i].DrawFigureImage(&flpDestination, BLUE, 3)))
 				{
 					ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 					break;
@@ -167,7 +167,7 @@ int main()
 			}
 
 			printf("Source Vertex : (%.03lf,%.03lf)\n", flpSource.x, flpSource.y);
-			printf("Target Vertex : (%.03lf,%.03lf)\n", flpTarget.x, flpTarget.y);
+			printf("Destination Vertex : (%.03lf,%.03lf)\n", flpDestination.x, flpDestination.y);
 		}
 
 
@@ -176,8 +176,8 @@ int main()
 		double f64Slice = 10;
 
 		CFLPoint<double> flpSource; // Source 좌표 // Source coordinates
-		CFLPoint<double> flpTarget; // Target 좌표 // Target coordinates
-		CFLPoint<double> flpConvertedSource; // Target 좌표를 다시 Source로 변환, 검증 용도의 좌표 // Convert target coordinates back to source, coordinates for verification purposes
+		CFLPoint<double> flpDestination; // Destination 좌표 // Destination coordinates
+		CFLPoint<double> flpConvertedSource; // Destination 좌표를 다시 Source로 변환, 검증 용도의 좌표 // Convert destination coordinates back to source, coordinates for verification purposes
 
 		for(int y = 0; y <= (flpGridSize.y - 1) * f64Slice; ++y)
 		{
@@ -194,21 +194,21 @@ int main()
 					break;
 				}
 
-				// Source 좌표의 공간을 Target 좌표 공간으로 변환 // Convert the space of source coordinates to target coordinate space
-				if(IsOK(tps.ConvertSourceToTarget(flpSource, flpTarget)))
+				// Source 좌표의 공간을 Destination 좌표 공간으로 변환 // Convert the space of source coordinates to destination coordinate space
+				if(IsOK(tps.ConvertSourceToDestination(flpSource, flpDestination)))
 				{
-					// Source 좌표에서 Target 좌표로 변환된 좌표를 View에 Display // Display coordinates converted from source coordinates to target coordinates on the View
-					if(IsFail(res = layer[1].DrawFigureImage(&flpTarget, LIME)))
+					// Source 좌표에서 Destination 좌표로 변환된 좌표를 View에 Display // Display coordinates converted from source coordinates to destination coordinates on the View
+					if(IsFail(res = layer[1].DrawFigureImage(&flpDestination, LIME)))
 					{
 						ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 						break;
 					}
 
-					// 변환된 Target 좌표를 그대로 Source 좌표로 변환해서 자신의 위치로 제대로 돌아오는지 검증
-					// Verify that the converted target coordinates are converted to source coordinates as they are and return to their own position properly
-					if(IsOK(tps.ConvertTargetToSource(flpTarget, flpConvertedSource)))
+					// 변환된 Destination 좌표를 그대로 Source 좌표로 변환해서 자신의 위치로 제대로 돌아오는지 검증
+					// Verify that the converted destination coordinates are converted to source coordinates as they are and return to their own position properly
+					if(IsOK(tps.ConvertDestinationToSource(flpDestination, flpConvertedSource)))
 					{
-						printf("Source (%.03lf,%.03lf) -> Target (%.03lf,%.03lf) -> Source (%.03lf,%.03lf)\n", flpSource.x, flpSource.y, flpTarget.x, flpTarget.y, flpConvertedSource.x, flpConvertedSource.y);
+						printf("Source (%.03lf,%.03lf) -> Destination (%.03lf,%.03lf) -> Source (%.03lf,%.03lf)\n", flpSource.x, flpSource.y, flpDestination.x, flpDestination.y, flpConvertedSource.x, flpConvertedSource.y);
 
 						// 변환된 좌표를 View에 Display // Display the converted coordinates in the View
 						if(IsFail(res = layer[2].DrawFigureImage(&flpConvertedSource, CYAN)))
