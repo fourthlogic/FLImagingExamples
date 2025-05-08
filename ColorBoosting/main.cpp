@@ -83,10 +83,10 @@ int main()
 			break;
 		}
 
-		// 연산 속도 설정 // Set the operation speed.
-		if(IsFail(eResult = ColorBoosting.SetOperationSpeed(CColorBoosting::EOperationSpeed_Fast)))
+		// 연산 타입 설정 // Set the operation Type.
+		if(IsFail(eResult = ColorBoosting.SetOperationType(CColorBoosting::EOperationType_Constant)))
 		{
-			ErrorPrint(eResult, "Failed to set Operation Speed.");
+			ErrorPrint(eResult, "Failed to set Operation Type.");
 			break;
 		}
 
