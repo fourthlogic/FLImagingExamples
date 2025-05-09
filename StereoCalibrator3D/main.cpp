@@ -214,7 +214,7 @@ bool Calibration(CStereoCalibrator3D& sSC, CFLImage& fliLearnImage, CFLImage& fl
 		}
 
 		// Optimal solution accuracy 설정 // Set optimal solution accuracy
-		if((res = sSC.SetOptimalSoutionAcccuracy(1e-5)).IsFail())
+		if((res = sSC.SetOptimalSolutionAccuracy(1e-5)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to set Optimal Solution Accuracy.\n");
 			break;
