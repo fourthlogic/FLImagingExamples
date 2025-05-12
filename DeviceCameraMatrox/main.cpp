@@ -41,7 +41,9 @@ public:
 		if(m_pViewImage && m_pViewImage->IsAvailable())
 		{
 			// 카메라에서 취득 한 이미지를 얻어온다.
+			m_pImage->Lock();
 			pDeviceImage->GetAcquiredImage(m_pImage);
+			m_pImage->Unlock();
 
 			if(m_pViewImage->GetImagePtr() != m_pImage)
 			{
