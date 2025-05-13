@@ -64,8 +64,8 @@ int main()
 
 			// View 정보를 디스플레이 한다. // Display view information
 			CFLPoint<double> flpTopLeft(0, 0);
-			if((res = layerViewSrc.DrawTextCanvas(&flpTopLeft, L"Source Object(Point Cloud)", YELLOW, BLACK, 20)).IsFail() ||
-			   (res = layerViewDst.DrawTextCanvas(&flpTopLeft, L"Destination Object(Convex Hull)", YELLOW, BLACK, 20)).IsFail())
+			if((res = layerViewSrc.DrawTextCanvas(flpTopLeft, L"Source Object(Point Cloud)", YELLOW, BLACK, 20)).IsFail() ||
+			   (res = layerViewDst.DrawTextCanvas(flpTopLeft, L"Destination Object(Convex Hull)", YELLOW, BLACK, 20)).IsFail())
 			{
 				ErrorPrint(res, L"Failed to draw text.\n");
 				break;

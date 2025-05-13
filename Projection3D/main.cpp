@@ -97,8 +97,8 @@ int main()
 		// View 정보를 디스플레이한다. // Display view information
 		// 함수 DrawTextCanvas는 Screen 좌표를 기준으로 하는 문자열을 드로잉한다. // The function DrawTextCanvas below draws a String based on the screen coordinates.
 		CFLPoint<double> flpTopLeft(0, 0);
-		if((res = layer3DSrc.DrawTextCanvas(&flpTopLeft, L"Source Object", YELLOW, BLACK, 20)).IsFail() ||
-		   (res = layer3DDst.DrawTextCanvas(&flpTopLeft, L"Destination Image", YELLOW, BLACK, 20)).IsFail())
+		if((res = layer3DSrc.DrawTextCanvas(flpTopLeft, L"Source Object", YELLOW, BLACK, 20)).IsFail() ||
+		   (res = layer3DDst.DrawTextCanvas(flpTopLeft, L"Destination Image", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text.\n");
 			break;

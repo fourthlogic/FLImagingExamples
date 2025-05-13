@@ -114,14 +114,14 @@ int main()
 		// 알고리즘 동작 결과 // Algorithm execution result
 		CResult res = EResult_UnknownError;
 
-		// Source 3D 이미지 뷰 생성 // Create the Source 3D image view
+		// Source 3D 뷰 생성 // Create the Source 3D view
 		if((res = view3DSrc.Create(100, 0, 600, 500)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination 3D 이미지 뷰 생성 // Create the destination 3D image view
+		// Destination 3D 뷰 생성 // Create the destination 3D view
 		if((res = view3DDst.Create(600, 0, 1100, 500)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
@@ -133,9 +133,9 @@ int main()
 		// Distance Transform 3D 객체 생성 // Create Distance Transform 3D object
 		CDistanceTransform3D DistanceTransform3D;
 
-		TPoint3<float> tpPosition = TPoint3<float>(0.0f, 0.0f, 0.0f);
-		TPoint3<float> tpDirection = TPoint3<float>(-0.1f, 0.0f, -1.0f);
-		TPoint3<float> tpUpVector = TPoint3<float>(0.0f, 1.0f, 0.0f);
+		TPoint3<float> tpPosition(0.0f, 0.0f, 0.0f);
+		TPoint3<float> tpDirection(-0.1f, 0.0f, -1.0f);
+		TPoint3<float> tpUpVector(0.0f, 1.0f, 0.0f);
 
 		// Source 객체 설정 // Set the source object
 		DistanceTransform3D.SetSourceObject(&fl3DObject);
@@ -179,13 +179,10 @@ int main()
 		view3DSrc.PushObject(fl3DObject);
 		view3DSrc.ZoomFit();
 
-		if((res = layer3DSrc.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Source Object", YELLOW, BLACK, 20)).IsFail())
-		{
-			ErrorPrint(res, L"Failed to draw text.\n");
-			break;
-		}
+		CFLPoint<double> flpTopLeft(0, 0);
 
-		if((res = layer3DDst.DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination Object", YELLOW, BLACK, 20)).IsFail())
+		if((res = layer3DSrc.DrawTextCanvas(flpTopLeft, L"Source Object", YELLOW, BLACK, 20)).IsFail() ||
+		   (res = layer3DDst.DrawTextCanvas(flpTopLeft, L"Destination Object", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to draw text.\n");
 			break;

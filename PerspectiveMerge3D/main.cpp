@@ -18,21 +18,21 @@ int main()
 
 	do
 	{
-		// Source 3D 이미지 뷰 생성 // Create the Source 3D image view
+		// Source 3D 뷰 생성 // Create the Source 3D view
 		if((res = view3DSrc.Create(100, 0, 600, 500)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Source 3D 이미지 뷰 생성 // Create the Source 3D image view
+		// Source 3D 뷰 생성 // Create the Source 3D view
 		if((res = view3DSrc2.Create(600, 0, 1100, 500)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// Destination 3D 이미지 뷰 생성 // Create the destination 3D image view
+		// Destination 3D 뷰 생성 // Create the destination 3D view
 		if((res = view3DDst.Create(1100, 0, 1600, 500)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
@@ -52,10 +52,10 @@ int main()
 
 		algoObject.SetEulerSequence(EEulerSequence_Intrinsic_ZXY);
 
-		TPoint3<float> tpPosition = TPoint3<float>(-0.152f, 0.0f, 0.0f);
-		TPoint3<float> tpRotation = TPoint3<float>(90.0f, -8.0f, 29.0f);
-		TPoint3<float> tpPosition2 = TPoint3<float>(0.152f, 0.0f, 0.0f);
-		TPoint3<float> tpRotation2 = TPoint3<float>(90.0f, -8.0f, -29.0f);
+		TPoint3<float> tpPosition(-0.152f, 0.0f, 0.0f);
+		TPoint3<float> tpRotation(90.0f, -8.0f, 29.0f);
+		TPoint3<float> tpPosition2(0.152f, 0.0f, 0.0f);
+		TPoint3<float> tpRotation2(90.0f, -8.0f, -29.0f);
 
 		// 카메라 1, 2의 Source 객체 설정 // Set the source object of camera 1, 2
 		algoObject.AddSourceObject(&fl3DObjectSrc, tpPosition, tpRotation);
@@ -84,20 +84,11 @@ int main()
 		CGUIView3DLayerWrap layer3DSrc2 = view3DSrc2.GetLayer(0);
 		CGUIView3DLayerWrap layer3DDst = view3DDst.GetLayer(0);
 
-		CFLPoint<double> flp(0, 0);
+		CFLPoint<double> flpTopLeft(0, 0);
 
-		if((res = layer3DSrc.DrawTextCanvas(flp, L"Left Camera", YELLOW, BLACK, 20)).IsFail())
-		{
-			ErrorPrint(res, "Failed to draw text.\n");
-			break;
-		}
-
-		if((res = layer3DSrc2.DrawTextCanvas(flp, L"Right Camera", YELLOW, BLACK, 20)).IsFail())
-		{
-			ErrorPrint(res, "Failed to draw text.\n");
-			break;
-		}
-		if((res = layer3DDst.DrawTextCanvas(flp, L"Result", YELLOW, BLACK, 20)).IsFail())
+		if((res = layer3DSrc.DrawTextCanvas(flpTopLeft, L"Left Camera", YELLOW, BLACK, 20)).IsFail() ||
+		   (res = layer3DSrc2.DrawTextCanvas(flpTopLeft, L"Right Camera", YELLOW, BLACK, 20)).IsFail() || 
+		   (res = layer3DDst.DrawTextCanvas(flpTopLeft, L"Result", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text.\n");
 			break;
@@ -107,7 +98,7 @@ int main()
 		viewTestDescription.SetImagePtr(&fliTestDescription);
 		CGUIViewImageLayerWrap layerTestDescription = viewTestDescription.GetLayer(0);
 
-		if((res = layerTestDescription.DrawTextCanvas(flp, L"Test Environment", YELLOW, BLACK, 20)).IsFail())
+		if((res = layerTestDescription.DrawTextCanvas(flpTopLeft, L"Test Environment", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text.\n");
 			break;

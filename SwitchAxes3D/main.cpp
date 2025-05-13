@@ -32,22 +32,15 @@ int main()
 		fl3DObjectSrc.Load(L"../../ExampleImages/DistanceTransform3D/binary-vertex.ply");
 
 		// Perspective Transform 3D 객체 생성 // Create Perspective Transform 3D object
-		CPerspectiveTransform3D PerspectiveTransform3D;
+		CSwitchAxes3D SwitchAxes3D;
 
-		TPoint3<float> tpPosition = TPoint3<float>(2.0, 0.0f, 1.5f);
-		TPoint3<float> tpDirection = TPoint3<float>(-1.0f, 0.0f, -1.0f);
-		TPoint3<float> tpUpVector = TPoint3<float>(0.0f, 1.0f, 0.0f);
-
-		// 파라미터 설정 // Set parameter
-		PerspectiveTransform3D.SetSourceObject(fl3DObjectSrc);
-		PerspectiveTransform3D.SetDestinationObject(fl3DObjectDst);
-		PerspectiveTransform3D.SetPosition(tpPosition);
-		PerspectiveTransform3D.SetDirection(tpDirection);
-		PerspectiveTransform3D.SetDirectionType(EDirectionType_Decrement);
-		PerspectiveTransform3D.SetUpVector(tpUpVector);
+		// 알고리즘 파라미터 설정 // set algorithm parameters
+		SwitchAxes3D.SetSourceObject(fl3DObjectSrc);
+		SwitchAxes3D.SetDestinationObject(fl3DObjectDst);
+		SwitchAxes3D.SetAxisOrder(SwitchAxes3D.EAxisOrder_YZX);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((res = PerspectiveTransform3D.Execute()).IsFail())
+		if((res = SwitchAxes3D.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute multiFocus.");
 			break;
@@ -68,7 +61,7 @@ int main()
 
 		view3DDst.PushObject(fl3DObjectDst);
 		view3DDst.ZoomFit();
-		
+
 		CFLPoint<double> flpTopLeft(0, 0);
 
 		if((res = layer3DSrc.DrawTextCanvas(flpTopLeft, L"Source Object", YELLOW, BLACK, 20)).IsFail() ||
