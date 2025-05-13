@@ -24,6 +24,11 @@
         - The example of an algorithm that detect the edge of a given point clouds.
         - 주어진 포인트 클라우드의 엣지를 검출하는 알고리즘 예제.
 
+    - [Convex Hull]
+      - Convex Hull 3D
+        - An example of an algorithm that calucalates the convex hull of a point cloud.
+        - 3D 포인트 클라우드의 볼록껍질을 구하는 알고리즘 예제.
+
   - [Filter]
     
     - [Smoothing 3D]
@@ -105,15 +110,16 @@
       - Residual Evaluator3D
         - The example of an algorithm that measures the residuals of two given objects.
         - 주어진 두 오브젝트의 잔차를 측정하는 알고리즘 예제.
+
+    - [Voxel Grid]
+      - VoxelGrid3D
+        - The example of an algorithm that sampling a given point cloud.
+        - 주어진 포인트 클라우드를 샘플링하는 알고리즘 예제.
+
     - [Projection]
       - Projection 3D
         - An example of an algorithm that projects a 3D object into an image.
         - 3D 객체를 이미지로 투영하는 알고리즘 예제.
-    - [Convex Hull]
-      - Convex Hull 3D
-        - An example of an algorithm that calucalates the convex hull of a point cloud.
-        - 3D 포인트 클라우드의 볼록껍질을 구하는 알고리즘 예제.
-
 
 - [Advanced Functions]
 
