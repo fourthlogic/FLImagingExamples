@@ -525,6 +525,9 @@
   - Paste_withBlob 
      - The example of an algorithm that pastes a ROI from a source image to a destination image with Blob.
      - 소스 이미지에서 관심 영역을 Blob 결과로 설정하고 대상 이미지에 붙여넣는 알고리즘 예제.
+  - Measurement
+     - The example of an algorithm that measure the actual size and position of a measurement point after camera view calibration with Orthogonal Calibration.
+     - Orthogonal Calibration으로 카메라 시점 보정 후 측정 지점에 대한 실제 크기 및 위치를 측정하는 알고리즘 예제.
 
 - [Devices]
 
