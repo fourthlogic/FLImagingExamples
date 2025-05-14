@@ -29,14 +29,14 @@ int main()
 		// Source 3D 뷰 생성
 		if(IsFail(eResult = view3DSource.Create(612, 0, 1124, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the Destination 3D view.\n");
+			ErrorPrint(eResult, "Failed to create the Source 3D view.\n");
 			break;
 		}
 
 		// Dst 3D 뷰 생성
 		if(IsFail(eResult = view3DDst.Create(1124, 0, 1636, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the Dst 3D view.\n");
+			ErrorPrint(eResult, "Failed to create the Destination 3D view.\n");
 			break;
 		}
 

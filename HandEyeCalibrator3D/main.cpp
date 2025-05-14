@@ -102,14 +102,14 @@ int main()
 		// 이미지 뷰 생성 // Create image view
 		if(IsFail(eResult = viewImage.Create(100, 0, 612, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the Source 3D view.\n");
+			ErrorPrint(eResult, "Failed to create the Source image view.\n");
 			break;
 		}
 
 		// 결과 3D 뷰 생성 // Create result 3D view
 		if(IsFail(eResult = view3D.Create(612, 0, 1124, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the Source 3D view.\n");
+			ErrorPrint(eResult, "Failed to create the Result 3D view.\n");
 			break;
 		}
 
@@ -139,7 +139,7 @@ int main()
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((eResult = HandEyeCalibrator3D.Execute()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute Camera Pose 3D.");
+			ErrorPrint(eResult, L"Failed to execute Hand Eye Calibrator 3D.");
 			break;
 		}
 
