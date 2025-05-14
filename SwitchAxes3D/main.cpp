@@ -31,7 +31,7 @@ int main()
 
 		fl3DObjectSrc.Load(L"../../ExampleImages/DistanceTransform3D/binary-vertex.ply");
 
-		// Perspective Transform 3D 객체 생성 // Create Perspective Transform 3D object
+		// Switch Axes 3D 객체 생성 // Create Switch Axes 3D object
 		CSwitchAxes3D SwitchAxes3D;
 
 		// 알고리즘 파라미터 설정 // set algorithm parameters
@@ -42,7 +42,7 @@ int main()
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = SwitchAxes3D.Execute()).IsFail())
 		{
-			ErrorPrint(res, L"Failed to execute multiFocus.");
+			ErrorPrint(res, L"Failed to execute.");
 			break;
 		}
 

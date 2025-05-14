@@ -70,7 +70,7 @@ int main()
 
 		viewImageSrc.SetFixThumbnailView(true);
 
-		// Multi Focus 객체 생성 // Create Multi Focus object
+		// Laser Triangulation 객체 생성 // Create Laser Triangulation object
 		CLaserTriangulation3D LaserTriangulation;
 
 		CFL3DObjectHeightMap fl3DOHM;
