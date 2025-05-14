@@ -73,9 +73,9 @@ int main()
 		CVertexMatch3D VertexMatch3D;
 
 		// Learn object 설정 // Set the learn object
-		VertexMatch3D.CAlgorithmFeature_3D_LO_SO::SetLearnObject(fl3DOLearnObject);
+		VertexMatch3D.SetLearnObject(fl3DOLearnObject);
 		// Source object 설정 // Set the source object
-		VertexMatch3D.CAlgorithmFeature_3D_LO_SO::SetSourceObject(fl3DOSourceObject);
+		VertexMatch3D.SetSourceObject(fl3DOSourceObject);
 		// Min score 설정 // Set the min score
 		VertexMatch3D.SetMinScore(0.3);
 		// 최대 결과 개수 설정 // Set the max count of match result
