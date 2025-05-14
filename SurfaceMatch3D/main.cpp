@@ -37,21 +37,21 @@ int main()
 		// Learn 3D 뷰 생성
 		if(IsFail(eResult = view3DLearn.Create(100, 0, 612, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the Source 3D view.\n");
+			ErrorPrint(eResult, "Failed to create the Learn 3D view.\n");
 			break;
 		}
 
 		// Source 3D 뷰 생성
 		if(IsFail(eResult = view3DSource.Create(612, 0, 1124, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the Learn 3D view.\n");
+			ErrorPrint(eResult, "Failed to create the Source 3D view.\n");
 			break;
 		}
 
 		// Dst 3D 뷰 생성
 		if(IsFail(eResult = view3DDst.Create(1124, 0, 1636, 512)))
 		{
-			ErrorPrint(eResult, "Failed to create the Dst 3D view.\n");
+			ErrorPrint(eResult, "Failed to create the Destination 3D view.\n");
 			break;
 		}
 
@@ -96,7 +96,7 @@ int main()
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((eResult = SurfaceMatch3D.Learn()).IsFail())
 		{
-			ErrorPrint(eResult, L"Failed to execute Surface Match 3D.");
+			ErrorPrint(eResult, L"Failed to learn Surface Match 3D.");
 			break;
 		}
 
