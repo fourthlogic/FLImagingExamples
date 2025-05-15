@@ -84,7 +84,7 @@ int main()
 		}
 
 		// Factor 설정 // Set Factor.
-		if(IsFail(eResult = FLColorBoostingtype1.SetFactor(1.5)))
+		if(IsFail(eResult = FLColorBoostingtype1.SetFactor(3)))
 		{
 			ErrorPrint(eResult, "Failed to set Factor.");
 			break;
