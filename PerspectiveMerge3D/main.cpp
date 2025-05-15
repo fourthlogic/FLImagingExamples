@@ -50,12 +50,12 @@ int main()
 
 		CPerspectiveMerge3D algoObject;
 
-		algoObject.SetEulerSequence(EEulerSequence_Intrinsic_ZXY);
+		algoObject.SetEulerSequence(EEulerSequence_Extrinsic_ZXY);
 
 		TPoint3<float> tpPosition(-0.152f, 0.0f, 0.0f);
-		TPoint3<float> tpRotation(90.0f, -8.0f, 29.0f);
+		TPoint3<float> tpRotation(-90.0f, 8.0f, -29.0f);
 		TPoint3<float> tpPosition2(0.152f, 0.0f, 0.0f);
-		TPoint3<float> tpRotation2(90.0f, -8.0f, -29.0f);
+		TPoint3<float> tpRotation2(-90.0f, 8.0f, 29.0f);
 
 		// 카메라 1, 2의 Source 객체 설정 // Set the source object of camera 1, 2
 		algoObject.AddSourceObject(&fl3DObjectSrc, tpPosition, tpRotation);
