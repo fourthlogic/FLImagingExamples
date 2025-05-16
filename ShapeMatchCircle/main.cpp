@@ -52,6 +52,9 @@ int main()
 		// 학습할 원의 반지름 설정 // Set the radius of the circle to learn
 		shapeMatch.SetRadius(30);
 
+		// 검출할 객체의 색상을 설정합니다. // Sets the color of the object to be detected.
+		shapeMatch.SetObjectColor(EShapeMatchObjectColor_Bright);
+
 		// 도형 학습 // Learn shape
 		if(IsFail(res = shapeMatch.Learn()))
 		{
@@ -63,8 +66,6 @@ int main()
 		shapeMatch.SetSourceImage(fliImage);
 		// 검출 시 사용될 유효 변경 크기범위를 설정합니다. // Set the effective change size range to be used for detection.
 		shapeMatch.SetScaleRange(0.9, 1.1);
-		// 검출할 객체의 색상을 설정합니다. // Sets the color of the object to be detected.
-		shapeMatch.SetObjectColor(EShapeMatchObjectColor_Bright);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if(IsFail(res = shapeMatch.Execute()))

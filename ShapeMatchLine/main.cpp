@@ -52,6 +52,9 @@ int main()
 		// 학습할 선의 길이 설정 // Set the length of the line to learn
 		shapeMatch.SetLength(380);
 
+		// 검출할 객체의 색상을 설정합니다. // Sets the color of the object to be detected.
+		shapeMatch.SetTransitionType(CShapeMatchLine::ETransitionType_DarkToBright);
+
 		// 도형 학습 // Learn shape
 		if(IsFail(res = shapeMatch.Learn()))
 		{
@@ -63,8 +66,6 @@ int main()
 		shapeMatch.SetSourceImage(fliImage);
 		// 검출 시 사용될 유효 변경 크기범위를 설정합니다. // Set the effective change size range to be used for detection.
 		shapeMatch.SetScaleRange(0.95, 1.05);
-		// 검출할 객체의 색상을 설정합니다. // Sets the color of the object to be detected.
-		shapeMatch.SetTransitionType(CShapeMatchLine::ETransitionType_DarkToBright);
 		// 검출할 각도를 설정합니다. // Sets the angle to detect.
 		shapeMatch.SetAngleBias(90);
 		// 검출할 각도 범위를 설정합니다. // Sets the angle range to be detected.
