@@ -131,8 +131,7 @@ int main()
 		// Destination 이미지 설정 // Set the destination Image
 		emphasizeFilter.SetDestinationImage(arrFliImage[EType_Destination2]);
 		// 파라미터 값 설정 // Set parameters
-		emphasizeFilter.SetMaskWidth(3);
-		emphasizeFilter.SetMaskHeight(3);
+		emphasizeFilter.SetKernel(3, 3);
 		emphasizeFilter.SetFactor(2.5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute the algorithm according to the previously set parameters
