@@ -895,6 +895,9 @@
     - ChannelMin
       - The example of an algorithm that extracts minimum value of each pixel from a multichannel image.
       - 다채널 이미지에서 각 픽셀의 최소값을 추출하여 이미지화 하는 알고리즘 예제.
+    - ChannelRemoval
+      - The example of an algorithm that removes particular channels from a multichannel image.
+      - 다채널 이미지에서 특정 채널을 제거하는 알고리즘 예제.
     - ChannelStdev
       - The example of an algorithm that extracts standard deviation value of each pixel from a multichannel image.
       - 다채널 이미지에서 각 픽셀의 표준편차값을 추출하여 이미지화 하는 알고리즘 예제.
