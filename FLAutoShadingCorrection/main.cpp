@@ -25,7 +25,7 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Loads image
-		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/AutoShadingCorrection/wall.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/FLAutoShadingCorrection/wall.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -80,17 +80,17 @@ int main()
 			break;
 		}
 
-		// Auto Shading Correction 객체 생성 // Create Auto Shading Correction object
-		CAutoShadingCorrection autoshadingcorrection;
+		// FL Auto Shading Correction 객체 생성 // Create FL Auto Shading Correction object
+		CFLAutoShadingCorrection flAutoShadingCorrection;
 		// Source 이미지 설정 // Set source image
-		autoshadingcorrection.SetSourceImage(arrFliImage[EType_Source]);
+		flAutoShadingCorrection.SetSourceImage(arrFliImage[EType_Source]);
 		// Destination 이미지 설정 // Set destination image 
-		autoshadingcorrection.SetDestinationImage(arrFliImage[EType_Destination]);
+		flAutoShadingCorrection.SetDestinationImage(arrFliImage[EType_Destination]);
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = autoshadingcorrection.Execute()).IsFail())
+		if((res = flAutoShadingCorrection.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute Auto Shading correction.");
+			ErrorPrint(res, "Failed to execute FL Auto Shading correction.");
 			break;
 		}
 

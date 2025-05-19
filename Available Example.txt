@@ -1210,15 +1210,15 @@
     - AdaptiveEqualization
       - Algorithm that processes images through values of local equalization.
       - 지역 균일화 값을 통해 이미지를 처리하는 알고리즘 예제.
-    - AutoShadingCorrection
-      - The example of an algorithm that processes a shading correction.
-      - 불균일한 조명을 보정하는 알고리즘 예제.
     - Demoire
       - Algorithm that remove moire pattern.
       - Moire 패턴을 제거하는 알고리즘 예제.
     - Equalization
       - The example of an algorithm that processes a equalize.
       - 이미지에서 균일화 처리하는 알고리즘 예제.
+    - FLAutoShadingCorrection
+      - The example of an algorithm that processes a shading correction.
+      - 불균일한 조명을 보정하는 알고리즘 예제.
     - HighDynamicRange
       - The example of an algorithm that converts multiple exposure images with different exposure into a single image of even brightness.
       - 노출 정도가 다른 다중 노출 이미지들을 한장의 밝기가 고른 이미지로 만드는 알고리즘 예제.
