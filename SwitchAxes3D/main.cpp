@@ -37,7 +37,8 @@ int main()
 		// 알고리즘 파라미터 설정 // set algorithm parameters
 		SwitchAxes3D.SetSourceObject(fl3DObjectSrc);
 		SwitchAxes3D.SetDestinationObject(fl3DObjectDst);
-		SwitchAxes3D.SetAxisOrder(SwitchAxes3D.EAxisOrder_YZX);
+
+		SwitchAxes3D.SetAxisMappings(CSwitchAxes3D::EAxisMapping_From_PX, CSwitchAxes3D::EAxisMapping_From_NY, CSwitchAxes3D::EAxisMapping_Deduce);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = SwitchAxes3D.Execute()).IsFail())
