@@ -84,11 +84,8 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		censusTransform.SetDestinationImage(fliDestinationImage);
 
-		// Kernel의 높이 설정 // Set the height of the kernel
-		censusTransform.SetKernelHeight(7);
-
-		// Kernel의 높이 설정 // Set the width of the kernel
-		censusTransform.SetKernelWidth(9);
+		// Kernel의 크기 설정 // Set the size of the kernel
+		censusTransform.SetKernel(9, 7);
 
 		// Kernel의 픽셀 간의 크기를 설정 // Set the width between each pixel in the kernel
 		censusTransform.SetSparseLength(1);
