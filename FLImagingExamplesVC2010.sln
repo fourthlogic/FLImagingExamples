@@ -1632,7 +1632,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ActiveContour", "ActiveCont
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Convex Hull 3D", "Convex Hull 3D", "{D733D482-8DA3-432B-8644-9136D64B0FD0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LineSegmentDetector.vcxproj", "LineSegmentDetector\LineSegmentDetector.vcxproj.vcxproj", "{82060922-4B4F-4F51-97A1-45BE82A758C8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LineSegmentDetector", "LineSegmentDetector\LineSegmentDetector.vcxproj", "{82060922-4B4F-4F51-97A1-45BE82A758C8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceLightControllerProtecPMSC_CH03", "DeviceLightControllerProtecPMSC_CH03\DeviceLightControllerProtecPMSC_CH03.vcxproj", "{E3713EA8-85E5-48F2-A870-90C46320E53E}"
 EndProject
