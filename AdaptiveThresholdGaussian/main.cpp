@@ -74,10 +74,10 @@ int main()
 		// Destination 이미지 설정 // Set destination image
 		threshold.SetDestinationImage(fliIDstImage);
 
-		// 하프 사이즈 입력 (실제 Kernel 11x11) // set half size(Real Kernel 11x11) 
-		threshold.SetHalfSize(5);
+		// 커널 사이즈 입력 // Set kernel size
+		threshold.SetKernel(11);
 
-		// 임계값 옵셋 설정 // set threshold offset 
+		// 임계값 옵셋 설정 // Set threshold offset 
 		threshold.SetThresholdOffset(5);
 
 		// 알고리즘 수행 // Execute the algorithm
