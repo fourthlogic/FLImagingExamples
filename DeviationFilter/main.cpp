@@ -118,8 +118,7 @@ int main()
 		// Destination 이미지 설정 // Set destination image
 		DeviationFilter.SetDestinationImage(arrFliImage[EType_Destination1]);
 		// 파라미터 값 설정 // Set parameter value
-		DeviationFilter.SetFilterWidth(5);
-		DeviationFilter.SetFilterHeight(5);
+		DeviationFilter.SetKernel(5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((result = DeviationFilter.Execute()).IsFail())
@@ -131,8 +130,7 @@ int main()
 		// Destination 이미지 설정 // Set destination image
 		DeviationFilter.SetDestinationImage(arrFliImage[EType_Destination2]);
 		// 파라미터 값 설정 // Set parameter value
-		DeviationFilter.SetFilterWidth(25);
-		DeviationFilter.SetFilterHeight(25);
+		DeviationFilter.SetKernel(25);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((result = DeviationFilter.Execute()).IsFail())

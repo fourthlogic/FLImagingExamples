@@ -84,7 +84,7 @@ int main()
 		}
 
 		// Kernel 크기 설정 // Set the Kernel Size.
-		if(IsFail(res = FLDenoisingType1.SetKernelSize(5)))
+		if(IsFail(res = FLDenoisingType1.SetKernel(5)))
 		{
 			ErrorPrint(res, "Failed to set Kernel Size.");
 			break;
