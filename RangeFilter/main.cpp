@@ -97,8 +97,8 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		rangeFilter.SetDestinationImage(fliDstImage);
 
-		// 처리할 Filter의 Radius 설정 // Set the radius of the filter
-		rangeFilter.SetRadius(3);
+		// 처리할 필터의 커널 크기 설정 // Set the kernel size of the filter
+		rangeFilter.SetKernel(7);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = rangeFilter.Execute()))

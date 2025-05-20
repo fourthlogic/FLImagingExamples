@@ -97,8 +97,8 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		contraharmonicMeanFilter.SetDestinationImage(fliDstImage);
 
-		// 처리할 Filter의 Radius 설정 // Set the radius of the filter
-		contraharmonicMeanFilter.SetRadius(2);
+		// 처리할 Filter의 커널 크기 설정 // Set the kernel size of the filter
+		contraharmonicMeanFilter.SetKernel(5);
 
 		// 차수 설정 // Set the order
 		contraharmonicMeanFilter.SetOrder(1);
