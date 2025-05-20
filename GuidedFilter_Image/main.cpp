@@ -129,8 +129,8 @@ int main()
 		// Image Operation 소스로 설정 // Set Operation Source to image
 		guidedFilter.SetOperationSource(EOperationSource_Image);
 
-		// filter mask radius = 2 설정
-		guidedFilter.SetRadius(3);
+		// Kernel Size = 7 설정
+		guidedFilter.SetKernel(7);
 
 		// amplitude = 10 설정
 		guidedFilter.SetAmplitude(20);

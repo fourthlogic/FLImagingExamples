@@ -84,10 +84,8 @@ int main()
 		entropyFilter.SetDestinationImage(fliDestinationImage);
 
 		// Kernel Width = 5 설정 // Set the Kernel Width = 5
-		entropyFilter.SetKernelWidth(5);
-
 		// Kernel Height = 5 설정 // Set the Kernel Height = 5
-		entropyFilter.SetKernelHeight(5);
+		entropyFilter.SetKernel(5, 5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = entropyFilter.Execute()).IsFail())

@@ -99,11 +99,9 @@ int main()
 		// Destination1 이미지 설정 // Set the destination1 image
 		snnFilter.SetDestinationImage(arrFliImage[EType_Destination1]);
 
-		// Filter Width 설정 // Set the Filter Width
-		snnFilter.SetFilterWidth(9);
-
-		// Filter Height 값 설정 // Set the Filter Height
-		snnFilter.SetFilterHeight(9);
+		// Kernel Width = 9 설정 // Set the Kernel Width = 9
+		// Kernel Height = 9 설정 // Set the Kernel Height = 9
+		snnFilter.SetKernel(9, 9);
 
 		// Distribution 설정 // Set the Distribution
 		snnFilter.SetDistribution(CSymmetricNearestNeighborFilter::EDistribution_Uniform);

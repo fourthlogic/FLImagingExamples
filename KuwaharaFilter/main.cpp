@@ -83,11 +83,9 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		kuwaharaFilter.SetDestinationImage(fliDestinationImage);
 
-		// Filter Width = 5 설정 // Set the Filter Width = 5
-		kuwaharaFilter.SetFilterWidth(5);
-
-		// Filter Height = 5 설정 // Set the Filter Height = 5
-		kuwaharaFilter.SetFilterHeight(5);
+		// Kernel Width = 5 설정 // Set the Kernel Width = 5
+		// Kernel Height = 5 설정 // Set the Kernel Height = 5
+		kuwaharaFilter.SetKernel(5, 5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = kuwaharaFilter.Execute()).IsFail())

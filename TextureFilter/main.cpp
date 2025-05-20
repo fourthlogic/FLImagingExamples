@@ -101,17 +101,11 @@ int main()
 		// Destination1 이미지 설정 // Set the destination1 image
 		textureFilter.SetDestinationImage(arrFliImage[EType_Destination1]);
 
-		// Filter Width 설정 // Set the Filter Width
-		textureFilter.SetFilterWidth(3);
-
-		// Filter Height 값 설정 // Set the Filter Height
-		textureFilter.SetFilterHeight(3);
-
-		// Filter Type Width 설정 // Set the Filter Type Width
-		textureFilter.SetFilterTypeWidth(CTextureFilter::EFilterType_Level);
-
-		// Filter Type Height 값 설정 // Set the Filter Type Height
-		textureFilter.SetFilterTypeHeight(CTextureFilter::EFilterType_Edge);
+		// Kernel Width 설정 // Set the Kernel Width
+		// Kernel Height 값 설정 // Set the Kernel Height
+		// Kernel Type Width 설정 // Set the Kernel Type Width
+		// Kernel Type Height 값 설정 // Set the Kernel Type Height
+		textureFilter.SetKernel(3, 3, CTextureFilter::EFilterType_Level, CTextureFilter::EFilterType_Edge);
 
 		// Shift value 설정 // Set the Shift value
 		textureFilter.SetShift(0);
@@ -126,17 +120,11 @@ int main()
 		// Destination2 이미지 설정 // Set the destination2 image
 		textureFilter.SetDestinationImage(arrFliImage[EType_Destination2]);
 
-		// Filter Width 설정 // Set the Filter Width
-		textureFilter.SetFilterWidth(5);
-
-		// Filter Height 값 설정 // Set the Filter Height
-		textureFilter.SetFilterHeight(5);
-
-		// Filter Type Width 설정 // Set the Filter Type Width
-		textureFilter.SetFilterTypeWidth(CTextureFilter::EFilterType_Spot);
-
-		// Filter Type Height 값 설정 // Set the Filter Type Height
-		textureFilter.SetFilterTypeHeight(CTextureFilter::EFilterType_Spot);
+		// Kernel Width 설정 // Set the Kernel Width
+		// Kernel Height 값 설정 // Set the Kernel Height
+		// Kernel Type Width 설정 // Set the Kernel Type Width
+		// Kernel Type Height 값 설정 // Set the Kernel Type Height
+		textureFilter.SetKernel(5, 5, CTextureFilter::EFilterType_Spot, CTextureFilter::EFilterType_Spot);
 
 		//Shift value 설정 // Set the Shift value
 		textureFilter.SetShift(1);
@@ -151,17 +139,11 @@ int main()
 		// Destination3 이미지 설정 // Set the destination3 image
 		textureFilter.SetDestinationImage(arrFliImage[EType_Destination3]);
 
-		// Filter Width 설정 // Set the Filter Width
-		textureFilter.SetFilterWidth(5);
-
-		// Filter Height 값 설정 // Set the Filter Height
-		textureFilter.SetFilterHeight(5);
-
-		// Filter Type Width 설정 // Set the Filter Type Width
-		textureFilter.SetFilterTypeWidth(CTextureFilter::EFilterType_Level);
-
-		// Filter Type Height 값 설정 // Set the Filter Type Height
-		textureFilter.SetFilterTypeHeight(CTextureFilter::EFilterType_Ripple);
+		// Kernel Width 설정 // Set the Kernel Width
+		// Kernel Height 값 설정 // Set the Kernel Height
+		// Kernel Type Width 설정 // Set the Kernel Type Width
+		// Kernel Type Height 값 설정 // Set the Kernel Type Height
+		textureFilter.SetKernel(5, 5, CTextureFilter::EFilterType_Level, CTextureFilter::EFilterType_Ripple);
 
 		// Shift value 설정 // Set the Shift value
 		textureFilter.SetShift(-3);
@@ -176,17 +158,11 @@ int main()
 		// Destination4 이미지 설정 // Set the destination4 image
 		textureFilter.SetDestinationImage(arrFliImage[EType_Destination4]);
 
-		// Filter Width 설정 // Set the Filter Width
-		textureFilter.SetFilterWidth(7);
-
-		// Filter Height 값 설정 // Set the Filter Height
-		textureFilter.SetFilterHeight(7);
-
-		// Filter Type Width 설정 // Set the Filter Type Width
-		textureFilter.SetFilterTypeWidth(CTextureFilter::EFilterType_Undulation);
-
-		// Filter Type Height 값 설정 // Set the Filter Type Height
-		textureFilter.SetFilterTypeHeight(CTextureFilter::EFilterType_Undulation);
+		// Kernel Width 설정 // Set the Kernel Width
+		// Kernel Height 값 설정 // Set the Kernel Height
+		// Kernel Type Width 설정 // Set the Kernel Type Width
+		// Kernel Type Height 값 설정 // Set the Kernel Type Height
+		textureFilter.SetKernel(7, 7, CTextureFilter::EFilterType_Undulation, CTextureFilter::EFilterType_Undulation);
 
 		// Shift value 설정 // Set the Shift value
 		textureFilter.SetShift(-2);

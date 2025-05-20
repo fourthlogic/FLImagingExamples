@@ -83,8 +83,8 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		symmetryFilter.SetDestinationImage(fliDestinationImage);
 
-		// Mask Size = 50 설정 // Set the Mask Size = 50
-		symmetryFilter.SetMaskSize(50);
+		// Kernel Size = 101 설정 // Set the Kernel Size = 101
+		symmetryFilter.SetKernel(101);
 
 		// Exponent = 0.3 설정 // Set the Exponent = 0.3
 		symmetryFilter.SetExponent(0.3);
