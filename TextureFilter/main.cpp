@@ -105,7 +105,7 @@ int main()
 		// Kernel Height 값 설정 // Set the Kernel Height
 		// Kernel Type Width 설정 // Set the Kernel Type Width
 		// Kernel Type Height 값 설정 // Set the Kernel Type Height
-		textureFilter.SetKernel(3, 3, CTextureFilter::EFilterType_Level, CTextureFilter::EFilterType_Edge);
+		textureFilter.SetKernel(3, 3, CTextureFilter::EKernelType_Level, CTextureFilter::EKernelType_Edge);
 
 		// Shift value 설정 // Set the Shift value
 		textureFilter.SetShift(0);
@@ -124,7 +124,7 @@ int main()
 		// Kernel Height 값 설정 // Set the Kernel Height
 		// Kernel Type Width 설정 // Set the Kernel Type Width
 		// Kernel Type Height 값 설정 // Set the Kernel Type Height
-		textureFilter.SetKernel(5, 5, CTextureFilter::EFilterType_Spot, CTextureFilter::EFilterType_Spot);
+		textureFilter.SetKernel(5, 5, CTextureFilter::EKernelType_Spot, CTextureFilter::EKernelType_Spot);
 
 		//Shift value 설정 // Set the Shift value
 		textureFilter.SetShift(1);
@@ -143,7 +143,7 @@ int main()
 		// Kernel Height 값 설정 // Set the Kernel Height
 		// Kernel Type Width 설정 // Set the Kernel Type Width
 		// Kernel Type Height 값 설정 // Set the Kernel Type Height
-		textureFilter.SetKernel(5, 5, CTextureFilter::EFilterType_Level, CTextureFilter::EFilterType_Ripple);
+		textureFilter.SetKernel(5, 5, CTextureFilter::EKernelType_Level, CTextureFilter::EKernelType_Ripple);
 
 		// Shift value 설정 // Set the Shift value
 		textureFilter.SetShift(-3);
@@ -162,7 +162,7 @@ int main()
 		// Kernel Height 값 설정 // Set the Kernel Height
 		// Kernel Type Width 설정 // Set the Kernel Type Width
 		// Kernel Type Height 값 설정 // Set the Kernel Type Height
-		textureFilter.SetKernel(7, 7, CTextureFilter::EFilterType_Undulation, CTextureFilter::EFilterType_Undulation);
+		textureFilter.SetKernel(7, 7, CTextureFilter::EKernelType_Undulation, CTextureFilter::EKernelType_Undulation);
 
 		// Shift value 설정 // Set the Shift value
 		textureFilter.SetShift(-2);
