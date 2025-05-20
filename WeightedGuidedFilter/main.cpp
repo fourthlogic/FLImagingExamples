@@ -126,10 +126,10 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		weightedGuidedFilter.SetDestinationImage(fliDestinationImage);
 
-		// filter mask radius = 3 설정
-		weightedGuidedFilter.SetRadius(3);
+		// Kernel 크기 설정 // Set kernel size
+		weightedGuidedFilter.SetKernel(7);
 
-		// amplitude = 300 설정
+		// Amplitude 설정 // Set amplitude
 		weightedGuidedFilter.SetAmplitude(300);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters

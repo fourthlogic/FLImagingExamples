@@ -1228,6 +1228,9 @@
     - LowLuminanceCorrectionType1
       - The example of an algorithm that processes a low luminance correction.
       - 저휘도 이미지를 보정하는 알고리즘 예제.
+    - LowLuminanceCorrectionType2
+      - The example of an algorithm that processes a low luminance correction.
+      - 저휘도 이미지를 보정하는 알고리즘 예제.
     - ColorBoosting
       - The example of the RGB color contrast boosting.
       - 색상 대비를 강화해 주는 알고리즘 예제.
