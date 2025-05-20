@@ -74,8 +74,8 @@ int main()
 		// Destination 이미지 설정 // Set destination image
 		threshold.SetDestinationImage(fliIDstImage);
 
-		// 하프 사이즈 입력 (Kernel 3x3) // set half size(Kernel 3x3) 
-		threshold.SetHalfSize(3, 3);
+		// 커널 사이즈 입력 (Kernel 7x7) // set kernel size(Kernel 7x7) 
+		threshold.SetKernel(7, 7);
 
 		// 임계값 옵셋 설정 // set threshold offset 
 		threshold.SetThresholdOffset(5);
