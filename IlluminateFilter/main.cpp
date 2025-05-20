@@ -118,8 +118,7 @@ int main()
 		// Destination 이미지 설정 // Set destination image
 		illuminateFilter.SetDestinationImage(arrFliImage[EType_Destination1]);
 		// 파라미터 값 설정 // Set parameter value
-		illuminateFilter.SetFilterWidth(41);
-		illuminateFilter.SetFilterHeight(41);
+		illuminateFilter.SetKernel(41);
 		illuminateFilter.SetFactor(0.55f);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
@@ -132,8 +131,7 @@ int main()
 		// Destination 이미지 설정 // Set destination image
 		illuminateFilter.SetDestinationImage(arrFliImage[EType_Destination2]);
 		// 파라미터 값 설정 // Set parameter value
-		illuminateFilter.SetFilterWidth(151);
-		illuminateFilter.SetFilterHeight(151);
+		illuminateFilter.SetKernel(151);
 		illuminateFilter.SetFactor(0.8f);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
