@@ -97,11 +97,11 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		nonLocalMeansFilter.SetDestinationImage(fliDstImage);
 
-		// 처리할 Filter의 Patch Radius 설정 // Set the patch radius of the filter
-		nonLocalMeansFilter.SetPatchRadius(1);
+		// 처리할 Filter의 패치 커널 크기 설정 // Set the patch kernel size of the filter
+		nonLocalMeansFilter.SetPatchKernel(3);
 
-		// 처리할 Filter의 Window Radius 설정 // Set the window radius of the filter
-		nonLocalMeansFilter.SetWindowRadius(3);
+		// 처리할 Filter의 윈도우 커널 크기 설정 // Set the window kernel size of the filter
+		nonLocalMeansFilter.SetWindowKernel(7);
 
 		// Sigma (노이즈의 표준편차) 설정 // Set the sigma (standard deviation of the noise)
 		nonLocalMeansFilter.SetSigma(0.3);
