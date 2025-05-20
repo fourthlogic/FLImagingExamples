@@ -137,8 +137,8 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		topographicThreshold.SetDestinationImage(arrFliImage[1]);
 
-		// Radius 설정 // Set the Radius value
-		topographicThreshold.SetRadius(2);
+		// 커널 크기 설정 // Set the Kernel Size
+		topographicThreshold.SetKernel(5);
 
 		// 앞에서 설정된 파라미터 대로 Topographic Threshold 수행 // Execute Topographic Threshold algorithm according to previously set parameters
 		if((res = topographicThreshold.Execute()).IsFail())
@@ -151,8 +151,8 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		topographicThreshold.SetDestinationImage(arrFliImage[2]);
 
-		// Radius 설정 // Set the Radius value
-		topographicThreshold.SetRadius(3);
+		// 커널 크기 설정 // Set the Kernel Size
+		topographicThreshold.SetKernel(7);
 
 		// 앞에서 설정된 파라미터 대로 Topographic Threshold 수행 // Execute Topographic Threshold algorithm according to previously set parameters
 		if((res = topographicThreshold.Execute()).IsFail())
@@ -165,8 +165,8 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		topographicThreshold.SetDestinationImage(arrFliImage[3]);
 
-		// Radius 설정 // Set the Radius value
-		topographicThreshold.SetRadius(4);
+		// 커널 크기 설정 // Set the Kernel Size
+		topographicThreshold.SetKernel(9);
 
 		// 앞에서 설정된 파라미터 대로 Topographic Threshold 수행 // Execute Topographic Threshold algorithm according to previously set parameters
 		if((res = topographicThreshold.Execute()).IsFail())
@@ -201,19 +201,19 @@ int main()
 			break;
 		}
 
-		if((res = arrLayer[1].DrawTextCanvas(&CFLPointD(0, 0), L"Destination1 Image\nRadius: 2", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[1].DrawTextCanvas(&CFLPointD(0, 0), L"Destination1 Image\nKernel Size: 5", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if((res = arrLayer[2].DrawTextCanvas(&CFLPointD(0, 0), L"Destination2 Image\nRadius: 3", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[2].DrawTextCanvas(&CFLPointD(0, 0), L"Destination2 Image\nKernel Size: 7", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if((res = arrLayer[3].DrawTextCanvas(&CFLPointD(0, 0), L"Destination3 Image\nRadius: 4", YELLOW, BLACK, 20)).IsFail())
+		if((res = arrLayer[3].DrawTextCanvas(&CFLPointD(0, 0), L"Destination3 Image\nKernel Size: 9", YELLOW, BLACK, 20)).IsFail())
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
