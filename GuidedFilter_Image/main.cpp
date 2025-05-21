@@ -132,8 +132,8 @@ int main()
 		// Kernel Size = 7 설정
 		guidedFilter.SetKernel(7);
 
-		// amplitude = 10 설정
-		guidedFilter.SetAmplitude(20);
+		// amplitude = 50 설정
+		guidedFilter.SetAmplitude(50);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = guidedFilter.Execute()).IsFail())

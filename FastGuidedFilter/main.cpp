@@ -129,8 +129,8 @@ int main()
 		// Kernel Size = 7 설정
 		fastGuidedFilter.SetKernel(7);
 
-		// amplitude = 20 설정
-		fastGuidedFilter.SetAmplitude(20);
+		// amplitude = 30 설정
+		fastGuidedFilter.SetAmplitude(30);
 
 		// Sampling Factor = 5 설정
 		fastGuidedFilter.SetSamplingFactor(4);
