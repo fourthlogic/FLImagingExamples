@@ -74,7 +74,7 @@ int main()
 	{
 		wchar_t arrInput[4096] = { 0, };
 
-		CDeviceGenICamBase::EDeviceType eDeviceType = CDeviceGenICamBase::EDeviceType_GigE;
+		CDeviceGenICamTypeBase::EDeviceType eDeviceType = CDeviceGenICamTypeBase::EDeviceType_GigE;
 		bool bAutoDetect = false;
 		int32_t i32SelectDevice = -1;
 		CDeviceGenICamBase::EConnectionMethod eConnectionMethod = CDeviceGenICamBase::EConnectionMethod_SerialNumber;
@@ -95,11 +95,11 @@ int main()
 			switch(i32Select)
 			{
 			case 1:
-				eDeviceType = CDeviceGenICamBase::EDeviceType_GigE;
+				eDeviceType = CDeviceGenICamTypeBase::EDeviceType_GigE;
 				break;
 
 			case 2:
-				eDeviceType = CDeviceGenICamBase::EDeviceType_USB;
+				eDeviceType = CDeviceGenICamTypeBase::EDeviceType_USB;
 				break;
 
 			default:
@@ -157,11 +157,11 @@ int main()
 			// 연결되어 있는 카메라의 시리얼 번호를 얻는다.
 			switch(eDeviceType)
 			{
-			case CDeviceGenICamBase::EDeviceType_GigE:
+			case CDeviceGenICamTypeBase::EDeviceType_GigE:
 				drReturn = camCrevis.GetAutoDetectGigECameraSerialNumbers(flarrSerialNumbers);
 				break;
 
-			case CDeviceGenICamBase::EDeviceType_USB:
+			case CDeviceGenICamTypeBase::EDeviceType_USB:
 				drReturn = camCrevis.GetAutoDetectUSBCameraSerialNumbers(flarrSerialNumbers);
 				break;
 
@@ -209,7 +209,7 @@ int main()
 		}
 		else
 		{
-			if(eDeviceType == CDeviceGenICamBase::EDeviceType_GigE)
+			if(eDeviceType == CDeviceGenICamTypeBase::EDeviceType_GigE)
 			{
 				// 연결 방법을 선택합니다.
 				while(true)
@@ -275,11 +275,11 @@ int main()
 		{
 			switch(eDeviceType)
 			{
-			case CDeviceGenICamBase::EDeviceType_GigE:
+			case CDeviceGenICamTypeBase::EDeviceType_GigE:
 				drReturn = camCrevis.AutoDetectGigECamera(i32SelectDevice);
 				break;
 
-			case CDeviceGenICamBase::EDeviceType_USB:
+			case CDeviceGenICamTypeBase::EDeviceType_USB:
 				drReturn = camCrevis.AutoDetectUSBCamera(i32SelectDevice);
 				break;
 
