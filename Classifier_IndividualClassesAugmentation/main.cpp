@@ -208,7 +208,7 @@ int main()
 		augSpec.SetCommonInterpolationMethod(EInterpolationMethod_Bilinear);
 
 		classifier.SetLearningAugmentationSpec(&augSpec);
-		classifier.EnableLearningIndividualAugmentation(true);
+		classifier.EnableLearningIndividualClassesAugmentation(true);
 		CAugmentationSpec augSpecClass0;
 
 		augSpecClass0.EnableAugmentation(true);
@@ -219,7 +219,7 @@ int main()
 		augSpecClass0.EnableRotation(true);
 		augSpecClass0.SetRotationParam(-30.000000, 30.000000, false, false, 1.000000);
 
-		classifier.AddLearningIndividualAugmentationSpec(0, augSpecClass0);
+		classifier.AddLearningIndividualClassesAugmentationSpec(0, augSpecClass0);
 		CAugmentationSpec augSpecClass1;
 
 		augSpecClass1.EnableAugmentation(true);
@@ -230,7 +230,7 @@ int main()
 		augSpecClass0.EnableRotation(true);
 		augSpecClass0.SetRotationParam(-30.000000, 30.000000, false, false, 1.000000);
 
-		classifier.AddLearningIndividualAugmentationSpec(1, augSpecClass1);
+		classifier.AddLearningIndividualClassesAugmentationSpec(1, augSpecClass1);
 		CAugmentationSpec augSpecClass2;
 
 		augSpecClass2.EnableAugmentation(true);
@@ -241,7 +241,7 @@ int main()
 		augSpecClass2.EnableRotation(true);
 		augSpecClass2.SetRotationParam(-180.000000, 180.000000, false, false, 1.000000);
 
-		classifier.AddLearningIndividualAugmentationSpec(2, augSpecClass2);
+		classifier.AddLearningIndividualClassesAugmentationSpec(2, augSpecClass2);
 		CAugmentationSpec augSpecClass3;
 
 		augSpecClass3.EnableAugmentation(true);
@@ -252,7 +252,7 @@ int main()
 		augSpecClass3.EnableScale(true);
 		augSpecClass3.SetScaleParam(0.670000, 1.500000, 0.670000, 1.500000, true, 1.000000);
 
-		classifier.AddLearningIndividualAugmentationSpec(3, augSpecClass3);
+		classifier.AddLearningIndividualClassesAugmentationSpec(3, augSpecClass3);
 		CAugmentationSpec augSpecClass4;
 
 		augSpecClass4.EnableAugmentation(true);
@@ -263,7 +263,7 @@ int main()
 		augSpecClass4.EnableQuarterRotation(true);
 		augSpecClass4.SetQuarterRotationParam(true, false, true, false, 1.000000);
 
-		classifier.AddLearningIndividualAugmentationSpec(4, augSpecClass4);
+		classifier.AddLearningIndividualClassesAugmentationSpec(4, augSpecClass4);
 		CAugmentationSpec augSpecClass5;
 
 		augSpecClass5.EnableAugmentation(true);
@@ -273,7 +273,7 @@ int main()
 
 		augSpecClass5.EnableQuarterRotation(true);
 		augSpecClass5.SetQuarterRotationParam(true, false, true, false, 1.000000);
-		classifier.AddLearningIndividualAugmentationSpec(5, augSpecClass4);
+		classifier.AddLearningIndividualClassesAugmentationSpec(5, augSpecClass5);
 		// Learn 동작을 하는 핸들 객체 선언 // Declare HANDLE object execute learn function
 		HANDLE hThread;
 
