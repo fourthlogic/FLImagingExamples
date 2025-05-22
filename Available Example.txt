@@ -491,6 +491,10 @@
        - Example of an algorithm for classifying validation images with figures using models learned through classifier for training images with figures.
        - Figure가 있는 학습 이미지들에 대해 classifier를 통하여 학습한 모델을 사용하여 Figure가 있는 검증 이미지를 분류하는 알고리즘 예제.
 
+    - Classifier_IndividualClassesAugmentation
+       - An example of an algorithm that classifies validation images using a model learned through classifier on training images using class-specific augmentation specifications.
+       - 클래스 별 증강 스펙을 사용하여 학습 이미지들에 대해 classifeir를 통하여 학습한 모델을 사용하여 검증 이미지를 분류하는 알고리즘 예제.
+
     - FullyConnected_XOR
        - Example of training a model with XOR results using CComputationalGraph Operation layer.
        - CComputationalGraph 연산 layer들을 사용하여 XOR와 같은 결과 나오는 모델을 학습하는 예제.
