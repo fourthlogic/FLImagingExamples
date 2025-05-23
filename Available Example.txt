@@ -1593,6 +1593,9 @@
     - HysteresisThreshold
       - An algorithm that binarizes an image using global dual thresholds and local connectivity.
       - 전역 이중 임계값과 지역 연결성을 통해 이미지를 이진화하는 알고리즘
+    - ImageThreshold
+      - An algorithm that binarizes an image using operand image as thresholds.
+      - Operand Image로 임계값 연산을 통해 이미지를 이진화하는 알고리즘.
     - IsoDataThreshold
       - Algorithm to calculate global image thresholds using the ISO Data method.
       - Iso Data 방법을 사용하여 전역 이미지 임계값을 계산하는 알고리즘.
