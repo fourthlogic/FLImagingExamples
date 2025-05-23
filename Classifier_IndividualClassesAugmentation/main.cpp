@@ -227,8 +227,8 @@ int main()
 		augSpecClass1.SetCommonIoUThreshold(0.000000);
 		augSpecClass1.SetCommonInterpolationMethod(EInterpolationMethod_NearestNeighbor);
 
-		augSpecClass0.EnableRotation(true);
-		augSpecClass0.SetRotationParam(-30.000000, 30.000000, false, false, 1.000000);
+		augSpecClass1.EnableRotation(true);
+		augSpecClass1.SetRotationParam(-30.000000, 30.000000, false, false, 1.000000);
 
 		classifier.AddLearningIndividualClassesAugmentationSpec(1, augSpecClass1);
 		CAugmentationSpec augSpecClass2;
