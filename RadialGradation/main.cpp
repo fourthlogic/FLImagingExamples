@@ -82,11 +82,11 @@ int main()
 		RadialGradation.SetSourceROI(flcRadialRegion);
 
 		// 시작 Alpha 값 설정 // Set start alpha value
-		CMultiVar<double> mvStartAlpha(1., 0.3, 0.3);
+		CMultiVar<double> mvStartAlpha(0.0, 0.0, 0.0);
 		RadialGradation.SetStartAlpha(mvStartAlpha);
 
 		// 끝 Alpha 값 설정 // Set end alpha value
-		CMultiVar<double> mvEndAlpha(0.1, 0.5, 0.5);
+		CMultiVar<double> mvEndAlpha(0.7, 0.5, 0.5);
 		RadialGradation.SetEndAlpha(mvEndAlpha);
 
 		// RadialGradation Start Value 설정(3Ch) // Set RadialGradation Start Value(3Ch)
@@ -130,13 +130,13 @@ int main()
 		}
 
 		// text를 출력합니다. // Display text.
-		if(IsFail(res = layer1.DrawTextImage(flcRadialRegion.GetCenter(), L"Start Value(255, 0, 0)\nStart Alpha(1.0, 0.3, 0.3)", YELLOW, BLACK, 13, false, EGUIViewImageTextAlignment_RIGHT)))
+		if(IsFail(res = layer1.DrawTextImage(flcRadialRegion.GetCenter(), L"Start Value(255, 0, 0)\nStart Alpha(0.0, 0.0, 0.0)", YELLOW, BLACK, 13, false, EGUIViewImageTextAlignment_RIGHT)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layer1.DrawTextImage(flpCenter, L"End Value(100, 255, 255)\nEnd Alpha(0.1, 0.5, 0.5)", YELLOW, BLACK, 13)))
+		if(IsFail(res = layer1.DrawTextImage(flpCenter, L"End Value(100, 255, 255)\nEnd Alpha(0.7, 0.5, 0.5)", YELLOW, BLACK, 13)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
