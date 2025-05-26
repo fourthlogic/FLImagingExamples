@@ -105,8 +105,8 @@ int main()
 		// Destination ROI 설정
 		hybridMedianFilter.SetDestinationROI(flrROI);
 
-		// 처리할 Filter의 Kernel Size 설정 (KernelSize = 11 일 경우, Kernel Size : 11x11, 홀수만 설정가능)
-		hybridMedianFilter.SetKernel(7);
+		// 처리할 Filter의 Kernel Size 설정 (KernelSize = 15 일 경우, Kernel Size : 15x15, 홀수만 설정가능)
+		hybridMedianFilter.SetKernel(15);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = hybridMedianFilter.Execute()))
