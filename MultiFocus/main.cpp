@@ -71,7 +71,7 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		multiFocus.SetDestinationImage(fliDstImage);
 		// 필터 커널 사이즈 설정 // Set the kernel size
-		multiFocus.SetKernel(20);
+		multiFocus.SetKernel(41);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = multiFocus.Execute()).IsFail())

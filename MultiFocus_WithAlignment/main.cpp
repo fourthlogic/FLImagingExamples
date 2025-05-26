@@ -183,7 +183,7 @@ int main()
 		// Destination 이미지 설정 // Set the destination image
 		multiFocus.SetDestinationImage(fliDstImage);
 		// 필터 커널 사이즈 설정 // Set the kernel size
-		multiFocus.SetKernel(11);
+		multiFocus.SetKernel(23);
 		// 첫번째 페이지 Alignment 설정 // Set first page alignment
 		multiFocus.SetFirstPageAlignment(flqFirstPageAlignment);
 		// 마지막 페이지 Alignment 설정 // Set last page alignment
