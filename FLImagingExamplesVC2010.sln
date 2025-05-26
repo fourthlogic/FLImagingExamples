@@ -71,11 +71,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageViewIntoDialog", "Imag
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Morphology", "Morphology", "{1DA34D5A-A8DC-4743-83B8-8ACC526D473F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyErode_HalfSize", "Morphology_Erode\Morphology_Erode.vcxproj", "{07AE70F4-A85D-4583-874E-C01A4721CED0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyErode_Kernel", "Morphology_Erode\Morphology_Erode.vcxproj", "{07AE70F4-A85D-4583-874E-C01A4721CED0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyDilate_HalfSize", "Morphology_Dilate\Morphology_Dilate.vcxproj", "{7EA3E437-276D-4A2F-A18C-CE06B0F9FEBE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyDilate_Kernel", "Morphology_Dilate\Morphology_Dilate.vcxproj", "{7EA3E437-276D-4A2F-A18C-CE06B0F9FEBE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyOpen_HalfSize", "Morphology_Open\Morphology_Open.vcxproj", "{42E803C8-2436-4195-A4EF-940B4E3AD48F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyOpen_Kernel", "Morphology_Open\Morphology_Open.vcxproj", "{42E803C8-2436-4195-A4EF-940B4E3AD48F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Perspective", "Perspective\Perspective.vcxproj", "{EB1202C3-B7EF-407F-BB33-CCAE5438E848}"
 EndProject
@@ -83,7 +83,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FourierTransform", "Fourier
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataMatrixDecoder_CountAll", "DataMatrix_Decoder_CountAll\DataMatrix_Decoder_CountAll.vcxproj", "{A09C8160-CBA6-4F2E-95FC-C901C89780A7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyClose_HalfSize", "Morphology_Close\Morphology_Close.vcxproj", "{51431637-7036-49BC-9AB9-2A2072118A99}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyClose_Kernel", "Morphology_Close\Morphology_Close.vcxproj", "{51431637-7036-49BC-9AB9-2A2072118A99}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image Operation", "Image Operation", "{590384A6-7E54-44D1-868A-FC73B4B7AB51}"
 EndProject
@@ -232,9 +232,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphLeastSquares", "GraphL
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Rotation", "Rotation\Rotation.vcxproj", "{F72F8CF1-B858-4194-A4AA-F98AC5736F60}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyTopHat_HalfSize", "Morphology_TopHat\Morphology_TopHat.vcxproj", "{DD50AA00-F352-457B-93F4-7CFB29E34687}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyTopHat_Kernel", "Morphology_TopHat\Morphology_TopHat.vcxproj", "{DD50AA00-F352-457B-93F4-7CFB29E34687}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyGradient_HalfSize", "Morphology_Gradient\Morphology_Gradient.vcxproj", "{965E3110-0114-48B5-8CA7-8D1FF3A29377}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyGradient_Kernel", "Morphology_Gradient\Morphology_Gradient.vcxproj", "{965E3110-0114-48B5-8CA7-8D1FF3A29377}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Equation", "Equation\Equation.vcxproj", "{95198863-1EF5-4837-88F6-917EE90EF925}"
 EndProject
@@ -1733,6 +1733,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image Threshold", "Image Threshold", "{B649D71D-4733-47EB-BDF4-D749D4FC5C68}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageThreshold", "ImageThreshold\ImageThreshold.vcxproj", "{0031C0C6-8774-4583-8D50-E7FC16464452}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReduceDimensionHarMean2Dto1D", "ReduceDimensionHarMean2Dto1D\ReduceDimensionHarMean2Dto1D.vcxproj", "{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -6364,6 +6366,14 @@ Global
 		{0031C0C6-8774-4583-8D50-E7FC16464452}.Release|Win32.Build.0 = Release|Win32
 		{0031C0C6-8774-4583-8D50-E7FC16464452}.Release|x64.ActiveCfg = Release|x64
 		{0031C0C6-8774-4583-8D50-E7FC16464452}.Release|x64.Build.0 = Release|x64
+		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}.Debug|Win32.Build.0 = Debug|Win32
+		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}.Debug|x64.ActiveCfg = Debug|x64
+		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}.Debug|x64.Build.0 = Debug|x64
+		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}.Release|Win32.ActiveCfg = Release|Win32
+		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}.Release|Win32.Build.0 = Release|Win32
+		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}.Release|x64.ActiveCfg = Release|x64
+		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -7216,6 +7226,7 @@ Global
 		{5F1B2588-8396-4D57-9184-56B482B41A79} = {6278C4E0-C1E1-4082-B817-1FDAB13437A0}
 		{A3D5B0EA-993D-4D6D-A506-30621E3C4859} = {6278C4E0-C1E1-4082-B817-1FDAB13437A0}
 		{A25F67BA-913E-48AB-B68C-517F9321D535} = {6278C4E0-C1E1-4082-B817-1FDAB13437A0}
+		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2} = {6278C4E0-C1E1-4082-B817-1FDAB13437A0}
 		{7699928C-A6E5-41E3-BDE7-AF2363A9503F} = {39068B5C-3AF6-4891-982E-7E7C1159BD4B}
 		{956E154F-86A8-4636-A49E-A0C291FA4DE9} = {39068B5C-3AF6-4891-982E-7E7C1159BD4B}
 		{17A21DC5-EA95-4C6B-BE64-91D88C4EB13B} = {511C69F2-64A6-4626-897D-48F747B62F47}
@@ -7225,7 +7236,7 @@ Global
 		{0031C0C6-8774-4583-8D50-E7FC16464452} = {B649D71D-4733-47EB-BDF4-D749D4FC5C68}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
+		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 	EndGlobalSection
 EndGlobal
