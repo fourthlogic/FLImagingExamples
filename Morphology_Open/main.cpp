@@ -102,9 +102,9 @@ int main()
 		// Destination ROI 설정
 		morphologyOpen.SetDestinationROI(flrROI);
 
-		// 처리할 Morphology Kernel 의 HalfSize 설정 (HalfSize = 3 일 경우, Kernel Size : 7x7) // Setting HalfSize 3(Kernel Radius : 7x7)
+		// 처리할 Morphology Kernel 의 Kernel Size 설정 (Kernel Size = 7 일 경우, Kernel Size : 7x7) // Setting Kernel Size 7(Kernel Radius : 7x7)
 		morphologyOpen.SetKernelShape(EKernelShape_Circle);
-		morphologyOpen.SetKernel(3);
+		morphologyOpen.SetKernel(7);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = morphologyOpen.Execute()))

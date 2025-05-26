@@ -22,7 +22,7 @@
     <ProjectGuid>{965E3110-0114-48B5-8CA7-8D1FF3A29377}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Morphology_Gradient</RootNamespace>
-    <ProjectName>MorphologyGradient_HalfSize</ProjectName>
+    <ProjectName>MorphologyGradient_Kernel</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

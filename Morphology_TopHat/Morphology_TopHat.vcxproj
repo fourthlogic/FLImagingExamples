@@ -22,7 +22,7 @@
     <ProjectGuid>{DD50AA00-F352-457B-93F4-7CFB29E34687}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Morphology_TopHat</RootNamespace>
-    <ProjectName>MorphologyTopHat_HalfSize</ProjectName>
+    <ProjectName>MorphologyTopHat_Kernel</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

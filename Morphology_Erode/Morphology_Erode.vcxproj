@@ -22,7 +22,7 @@
     <ProjectGuid>{07AE70F4-A85D-4583-874E-C01A4721CED0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Morphology_Erode</RootNamespace>
-    <ProjectName>MorphologyErode_HalfSize</ProjectName>
+    <ProjectName>MorphologyErode_Kernel</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

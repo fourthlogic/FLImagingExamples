@@ -22,7 +22,7 @@
     <ProjectGuid>{7EA3E437-276D-4A2F-A18C-CE06B0F9FEBE}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Morphology_Dilate</RootNamespace>
-    <ProjectName>MorphologyDilate_HalfSize</ProjectName>
+    <ProjectName>MorphologyDilate_Kernel</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
