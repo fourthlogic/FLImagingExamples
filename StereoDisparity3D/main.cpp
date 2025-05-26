@@ -140,7 +140,7 @@ int main()
 		// P2 값 설정 // Set P2 Value
 		disparity.SetP2(2000);
 		// Median Morphology 커널 사이즈 설정 // Set the median morphology kernel size
-		disparity.SetMedianKernelSize(5);
+		disparity.SetFilterSize(5);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = disparity.Execute()).IsFail())
