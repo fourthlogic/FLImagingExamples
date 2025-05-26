@@ -107,22 +107,22 @@ int main()
 			layer[i].DrawFigureImage(flrgSourceFig, LIME, 3);
 		}
 		
-		// Dilate 함수 실행 (HalfSize : 10, default kernel : Rectangle)
-		// Dilate function execution (HalfSize : 10, default kernel : Rectangle)
+		// Dilate 함수 실행 (KernelSize : 21, default kernel : Rectangle)
+		// Dilate function execution (KernelSize : 21, default kernel : Rectangle)
 		CFLFigureArray flfaResult1;
-		int64_t i64HalfSize = 10;
+		int64_t i64KernelSize = 21;
 
-		if((res = flrgSourceFig.Dilate(i64HalfSize, i64HalfSize, &flfaResult1)).IsFail())
+		if((res = flrgSourceFig.Dilate(i64KernelSize, i64KernelSize, &flfaResult1)).IsFail())
 		{
 			ErrorPrint(res, "Failed to calculate.\n");
 			break;
 		}
 
-		// Dilate 함수 실행 (HalfSize : 10, kernel shape : Circle)
-		// Dilate function execution (HalfSize : 10, kernel shape : Circle)
+		// Dilate 함수 실행 (KernelSize : 21, kernel shape : Circle)
+		// Dilate function execution (KernelSize : 21, kernel shape : Circle)
 		CFLFigureArray flfaResult2;
 
-		if((res = flrgSourceFig.Dilate(i64HalfSize, i64HalfSize, &flfaResult2, EKernelShape_Circle)).IsFail())
+		if((res = flrgSourceFig.Dilate(i64KernelSize, i64KernelSize, &flfaResult2, EKernelShape_Circle)).IsFail())
 		{
 			ErrorPrint(res, "Failed to calculate.\n");
 			break;
@@ -150,8 +150,8 @@ int main()
 		layer[2].DrawFigureImage(flfaResult2, YELLOW, 3);
 		layer[3].DrawFigureImage(flfaResult3, BLACK, 5);
 		layer[3].DrawFigureImage(flfaResult3, LIGHTRED, 3);
-		layer[1].DrawTextCanvas(&CFLPoint<int32_t>(0, 40), L"Rectangle (HalfSize : 10)", YELLOW, BLACK, 20);
-		layer[2].DrawTextCanvas(&CFLPoint<int32_t>(0, 40), L"Circle (HalfSize : 10)", YELLOW, BLACK, 20);
+		layer[1].DrawTextCanvas(&CFLPoint<int32_t>(0, 40), L"Rectangle (KernelSize : 21)", YELLOW, BLACK, 20);
+		layer[2].DrawTextCanvas(&CFLPoint<int32_t>(0, 40), L"Circle (KernelSize : 21)", YELLOW, BLACK, 20);
 		layer[3].DrawTextCanvas(&CFLPoint<int32_t>(0, 40), L"User Defined Kernel", YELLOW, BLACK, 20);
 		layer[3].DrawFigureCanvas(fleForDrawing, LIGHTRED, 1, LIGHTRED, GUI::EGUIViewImagePenStyle_Solid, 1.f, 0.5f);
 
@@ -159,10 +159,10 @@ int main()
    		wprintf(L"\n<Source Figure>\n\n");
 		wprintf(L"%s", CFigureUtilities::ConvertFigureObjectToString(flrgSourceFig).GetString());
    
- 		wprintf(L"\n\n<Dilate Result1>\nHalfSize = %lld\nKernel Shape = Default(Rectangle)\n\n", i64HalfSize);
+ 		wprintf(L"\n\n<Dilate Result1>\nKernelSize = %lld\nKernel Shape = Default(Rectangle)\n\n", i64KernelSize);
 		wprintf(L"Result1 Figure : %s", CFigureUtilities::ConvertFigureObjectToString(flfaResult1).GetString());
 
-		wprintf(L"\n\n<Dilate Result2>\nHalfSize = %lld\nKernel Shape = Circle\n\n", i64HalfSize);
+		wprintf(L"\n\n<Dilate Result2>\nKernelSize = %lld\nKernel Shape = Circle\n\n", i64KernelSize);
 		wprintf(L"Result2 Figure : %s", CFigureUtilities::ConvertFigureObjectToString(flfaResult2).GetString());
 
 		wprintf(L"\n\n<Dilate Result3>\nKernel Shape = User Defined Kernel\n");
