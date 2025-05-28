@@ -554,7 +554,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Coherence Enhancing Diffusi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kirsch Filter", "Kirsch Filter", "{ABF71650-A762-4EFC-AB8D-67A106765C47}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KirschFIlter", "KirschFilter\KirschFIlter.vcxproj", "{A3E29013-D55F-4734-8577-01C7CFFF7FB9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KirschFilter", "KirschFilter\KirschFIlter.vcxproj", "{A3E29013-D55F-4734-8577-01C7CFFF7FB9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Binomial Filter", "Binomial Filter", "{BA78F5F0-26BD-4084-97FC-DDE79C7D6736}"
 EndProject
@@ -660,7 +660,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyErode_Region", "M
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MorphologyOpen_Region", "Morphology_Open_Region\Morphology_Open_Region.vcxproj", "{C346062A-65BC-4985-A10D-3D3E8C0D8C6B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlinearSplineWarping", "BilinearSplineWarping\BilinearSplineWarping.vcxproj", "{A1E18F1D-5BFD-483C-979B-596A279CA0AB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BilinearSplineWarping", "BilinearSplineWarping\BilinearSplineWarping.vcxproj", "{A1E18F1D-5BFD-483C-979B-596A279CA0AB}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ThinPlateSplineWarping", "ThinPlateSplineWarping\ThinPlateSplineWarping.vcxproj", "{6817C1E6-ADCC-4DBB-8E61-D39C2DEAC84A}"
 EndProject
@@ -990,7 +990,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AlignmentTiling", "Alignmen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Robinson Filter", "Robinson Filter", "{ED054042-44A5-4B66-87B8-BF07255883F2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RobinsonFIlter", "RobinsonFilter\RobinsonFIlter.vcxproj", "{2297EE4D-B7FF-4BCC-83B3-AB4611DED9A3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RobinsonFilter", "RobinsonFilter\RobinsonFIlter.vcxproj", "{2297EE4D-B7FF-4BCC-83B3-AB4611DED9A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Texture Filter", "Texture Filter", "{03DB934C-2102-47E4-ABEE-583A74B102EE}"
 EndProject
@@ -1416,9 +1416,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StereoCalibrator3D", "Stere
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StereoDisparity3D", "StereoDisparity3D\StereoDisparity3D.vcxproj", "{409AF828-3587-43F5-859F-8DA92A83BCFF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LaserTriangulation3D_Profile", "LaserTriangulation3D_Image\LaserTriangulation3D_Image.vcxproj", "{4DCA0034-330D-4198-9F53-5CCFFA75F241}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LaserTriangulation3D_Image", "LaserTriangulation3D_Image\LaserTriangulation3D_Image.vcxproj", "{4DCA0034-330D-4198-9F53-5CCFFA75F241}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LaserTriangulation3D_Image", "LaserTriangulation3D_Profile\LaserTriangulation3D_Profile.vcxproj", "{05DB68A8-F21D-4895-AE7E-6D29E0189044}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LaserTriangulation3D_Profile", "LaserTriangulation3D_Profile\LaserTriangulation3D_Profile.vcxproj", "{05DB68A8-F21D-4895-AE7E-6D29E0189044}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhotometricStereo3D", "PhotometricStereo3D\PhotometricStereo3D.vcxproj", "{02F2501A-4B48-44B0-81BC-05D8B1239C65}"
 EndProject
@@ -1475,8 +1475,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OCV", "OCV\OCV.vcxproj", "{D98247E2-40C2-4894-8338-DA2AE8717F4F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OCV_Regex", "OCV_Regex\OCV_Regex.vcxproj", "{99792BF5-617E-43A4-9F2E-9378270DCD8A}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OCV_Quality", "OCV_Quailty\OCV_Quality.vcxproj", "{A8D715A4-6830-4594-A359-6D3E7C8CB683}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChannelL2Norm", "ChannelL2Norm\ChannelL2Norm.vcxproj", "{68A47330-DBF5-4872-85B0-ECDF85EA050A}"
 EndProject
@@ -1710,7 +1708,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReduceDimensionGeoMean2Dto1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Colorized Point Cloud Generator 3D", "Colorized Point Cloud Generator 3D", "{9D58A54E-1E81-4299-BFFE-84D0C83F797F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ColorizedPointCloudGenerator3D_Calibration", "ColorizedPointCloudGenerator3D\ColorizedPointCloudGenerator3D_Calibration.vcxproj", "{477B915A-A98D-4489-BCF8-4D5329A56C9D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ColorizedPointCloudGenerator3D", "ColorizedPointCloudGenerator3D\ColorizedPointCloudGenerator3D_Calibration.vcxproj", "{477B915A-A98D-4489-BCF8-4D5329A56C9D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FLColorBoostingType1", "FLColorBoostingType1\FLColorBoostingType1.vcxproj", "{47A9032F-EE5B-441D-BE94-5BF1F7CE94DE}"
 EndProject
@@ -1735,6 +1733,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageThreshold", "ImageThreshold\ImageThreshold.vcxproj", "{0031C0C6-8774-4583-8D50-E7FC16464452}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReduceDimensionHarMean2Dto1D", "ReduceDimensionHarMean2Dto1D\ReduceDimensionHarMean2Dto1D.vcxproj", "{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OCV_Quality", "OCV_Quality\OCV_Quality.vcxproj", "{A8D715A4-6830-4594-A359-6D3E7C8CB683}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -5660,14 +5660,6 @@ Global
 		{99792BF5-617E-43A4-9F2E-9378270DCD8A}.Release|Win32.Build.0 = Release|Win32
 		{99792BF5-617E-43A4-9F2E-9378270DCD8A}.Release|x64.ActiveCfg = Release|x64
 		{99792BF5-617E-43A4-9F2E-9378270DCD8A}.Release|x64.Build.0 = Release|x64
-		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Debug|Win32.ActiveCfg = Debug|Win32
-		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Debug|Win32.Build.0 = Debug|Win32
-		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Debug|x64.ActiveCfg = Debug|x64
-		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Debug|x64.Build.0 = Debug|x64
-		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Release|Win32.ActiveCfg = Release|Win32
-		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Release|Win32.Build.0 = Release|Win32
-		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Release|x64.ActiveCfg = Release|x64
-		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Release|x64.Build.0 = Release|x64
 		{68A47330-DBF5-4872-85B0-ECDF85EA050A}.Debug|Win32.ActiveCfg = Debug|Win32
 		{68A47330-DBF5-4872-85B0-ECDF85EA050A}.Debug|Win32.Build.0 = Debug|Win32
 		{68A47330-DBF5-4872-85B0-ECDF85EA050A}.Debug|x64.ActiveCfg = Debug|x64
@@ -6374,6 +6366,14 @@ Global
 		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}.Release|Win32.Build.0 = Release|Win32
 		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}.Release|x64.ActiveCfg = Release|x64
 		{B7019D69-B8BB-4866-AEAD-E4BD656EC7E2}.Release|x64.Build.0 = Release|x64
+		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Debug|Win32.Build.0 = Debug|Win32
+		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Debug|x64.ActiveCfg = Debug|x64
+		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Debug|x64.Build.0 = Debug|x64
+		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Release|Win32.ActiveCfg = Release|Win32
+		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Release|Win32.Build.0 = Release|Win32
+		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Release|x64.ActiveCfg = Release|x64
+		{A8D715A4-6830-4594-A359-6D3E7C8CB683}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -7236,7 +7236,7 @@ Global
 		{0031C0C6-8774-4583-8D50-E7FC16464452} = {B649D71D-4733-47EB-BDF4-D749D4FC5C68}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
 		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
+		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
 	EndGlobalSection
 EndGlobal
