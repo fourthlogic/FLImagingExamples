@@ -509,13 +509,25 @@
        - Example of an algorithm for SuperResolution validation images using models learned through high resolution for training images with figures.
        - SuperResolution을 통하여 학습한 모델을 사용하여 고화질 이미지를 만다는 알고리즘 예제.
  
-    - OCR
-       - Examples of optical character recognition algorithms based on deep learning.
-       - 딥러닝 기반의 광학 문자 인식 알고리즘 예제.
+    - Character Based OCR
+       - Examples of character-level optical character recognition algorithms based on deep learning.
+       - 딥러닝 기반의 문자 단위 광학 문자 인식 알고리즘 예제.
+
+    - String Based OCR
+       - Examples of string-level optical character recognition algorithms based on deep learning.
+       - 딥러닝 기반의 문자열 단위 광학 문자 인식 알고리즘 예제.
 
     - ObjectDetection
        - Example of finding a desired object using a Bounding Box based on deep learning
        - 딥러닝 기반의 원하는 객체를 Bounding Box로 찾는 알고리즘 예제
+
+    - Generative Adversarial Network
+       - Examples of image creation algorithms based on deep learning.
+       - 딥러닝 기반의 이미지 생성 알고리즘 예제.
+
+    - Generative Adversarial Network Inpainting
+       - Examples of image creation and inpainting algorithms based on deep learning.
+       - 딥러닝 기반의 이미지 생성 및 보간 알고리즘 예제.
 
     - InstanceSegmentation
        - An example of an algorithm that classifies validation images with Figures using a model learned through InstanceSegmentation on training images with Figures.
