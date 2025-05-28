@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{85C44410-6FF3-4696-9CF6-2039C4E7DDF7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ConnectedComponent_Contour</RootNamespace>
+    <RootNamespace>OpticalFlowPolynomialExpansion</RootNamespace>
     <ProjectName>OpticalFlowPolynomialExpansion</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

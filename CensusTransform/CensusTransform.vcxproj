@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BBC9189F-FCFE-426E-AF0D-6074406F65EA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Census Transform</RootNamespace>
+    <RootNamespace>CensusTransform</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

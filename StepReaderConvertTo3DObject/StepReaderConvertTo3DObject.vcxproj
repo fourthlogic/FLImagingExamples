@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3B8DC95C-74BF-43C6-81D3-B44303274260}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ROIUtilities3D</RootNamespace>
+    <RootNamespace>StepReaderConvertTo3DObject</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

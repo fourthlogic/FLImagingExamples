@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DD5288F3-B8B9-4BAF-AF12-94EBBBB0F944}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>FreiFIlter</RootNamespace>
+    <RootNamespace>FreiFilter</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

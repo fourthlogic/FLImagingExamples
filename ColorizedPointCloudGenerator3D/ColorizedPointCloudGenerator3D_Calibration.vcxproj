@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{477B915A-A98D-4489-BCF8-4D5329A56C9D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ColorizedPointCloudGenerator3D_Calibration</RootNamespace>
-    <ProjectName>ColorizedPointCloudGenerator3D_Calibration</ProjectName>
+    <RootNamespace>ColorizedPointCloudGenerator3D</RootNamespace>
+    <ProjectName>ColorizedPointCloudGenerator3D</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

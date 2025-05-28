@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A3E29013-D55F-4734-8577-01C7CFFF7FB9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>KirschFIlter</RootNamespace>
-    <ProjectName>KirschFIlter</ProjectName>
+    <RootNamespace>KirschFilter</RootNamespace>
+    <ProjectName>KirschFilter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

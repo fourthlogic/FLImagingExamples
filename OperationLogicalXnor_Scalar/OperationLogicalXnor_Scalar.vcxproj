@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C1456598-8562-4EF8-85EB-470519D4B14E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OpeationLogicalXnor_Scalar</RootNamespace>
+    <RootNamespace>OperationLogicalXnor_Scalar</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

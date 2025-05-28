@@ -22,7 +22,7 @@
     <ProjectGuid>{4DCA0034-330D-4198-9F53-5CCFFA75F241}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>LaserTriangulation3D_Image</RootNamespace>
-    <ProjectName>LaserTriangulation3D_Profile</ProjectName>
+    <ProjectName>LaserTriangulation3D_Image</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

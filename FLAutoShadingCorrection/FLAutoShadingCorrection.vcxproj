@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{99125A63-86B6-4C08-921A-6EF7C6C0D8EC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>FLFLAutoShadingCorrection</RootNamespace>
+    <RootNamespace>FLAutoShadingCorrection</RootNamespace>
     <ProjectName>FLAutoShadingCorrection</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

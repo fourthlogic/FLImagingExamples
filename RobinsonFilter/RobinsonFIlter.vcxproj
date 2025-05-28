@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2297EE4D-B7FF-4BCC-83B3-AB4611DED9A3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>RobinsonFIlter</RootNamespace>
-    <ProjectName>RobinsonFIlter</ProjectName>
+    <RootNamespace>RobinsonFilter</RootNamespace>
+    <ProjectName>RobinsonFilter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
