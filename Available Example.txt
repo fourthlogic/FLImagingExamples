@@ -952,6 +952,9 @@
         - ReduceDimensionMean2Dto1D
           - The example of an algorithm that reduces dimension of an image based on the mean value.
           - 평균값을 기반으로 이미지의 차원을 축소하는 알고리즘 예제.
+        - ReduceDimensionMedian2Dto1D
+          - The example of an algorithm that reduces dimension of an image based on the median value.
+          - 중앙값을 기반으로 이미지의 차원을 축소하는 알고리즘 예제.
         - ReduceDimensionMin2Dto1D
           - The example of an algorithm that reduces dimension of an image based on the minimum value.
           - 최솟값을 기반으로 이미지의 차원을 축소하는 알고리즘 예제.
