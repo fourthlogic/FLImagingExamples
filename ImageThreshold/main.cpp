@@ -7,9 +7,9 @@
 int main()
 {
 	// 이미지 객체 선언 // Declare the image object
-	CFLImage fliISrcImage;
-	CFLImage fliIOprImage;
-	CFLImage fliIDstImage;
+	CFLImage fliSrcImage;
+	CFLImage fliOprImage;
+	CFLImage fliDstImage;
 
 	// 이미지 뷰 선언 // Declare the image view
 	CGUIViewImageWrap viewImage[3];
@@ -20,13 +20,13 @@ int main()
 		CResult res = EResult_UnknownError;
 
 		// 이미지 로드 // Load image
-		if(IsFail(res = fliISrcImage.Load(L"../../ExampleImages/ImageThreshold/SunSrc.flif")))
+		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/ImageThreshold/SunSrc.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		if(IsFail(res = fliIOprImage.Load(L"../../ExampleImages/ImageThreshold/SunOpr.flif")))
+		if(IsFail(res = fliOprImage.Load(L"../../ExampleImages/ImageThreshold/SunOpr.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -52,19 +52,19 @@ int main()
 		}
 
 		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-		if(IsFail(res = viewImage[0].SetImagePtr(&fliISrcImage)))
+		if(IsFail(res = viewImage[0].SetImagePtr(&fliSrcImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(res = viewImage[1].SetImagePtr(&fliIOprImage)))
+		if(IsFail(res = viewImage[1].SetImagePtr(&fliOprImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		if(IsFail(res = viewImage[2].SetImagePtr(&fliIDstImage)))
+		if(IsFail(res = viewImage[2].SetImagePtr(&fliDstImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
@@ -100,13 +100,13 @@ int main()
 		CImageThreshold threshold;
 
 		// Source 이미지 설정 // Set source image 
-		threshold.SetSourceImage(fliISrcImage);
+		threshold.SetSourceImage(fliSrcImage);
 
 		// Operand 이미지 설정 // Set operand image 
-		threshold.SetOperandImage(fliIOprImage);
+		threshold.SetOperandImage(fliOprImage);
 
 		// Destination 이미지 설정 // Set destination image
-		threshold.SetDestinationImage(fliIDstImage);
+		threshold.SetDestinationImage(fliDstImage);
 
 		// 임계값 오프셋 설정 // set threshold offset 
 		threshold.SetThresholdOffset(5);
