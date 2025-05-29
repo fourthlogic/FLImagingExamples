@@ -14,21 +14,21 @@ int main()
 
 	do
 	{ 
-		// 이미지 로드 // Loads image
+		// 이미지 로드 // Load image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Moment/airEdge.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// 이미지 뷰 생성 // Creates imageview
+		// 이미지 뷰 생성 // Create image view
 		if(IsFail(res = viewImage.Create(600, 0, 1424, 768)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the imageview
+		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -79,7 +79,7 @@ int main()
 
 		layer.Clear();
 		
-		// ROI영역이 어디인지 알기 위해 디스플레이 한다 // Display to know where the ROI area is
+		// ROI 영역이 어디인지 알기 위해 디스플레이 한다 // Display to know where the ROI area is
 		if(IsFail(res = layer.DrawFigureImage(&flrROI, BLUE)))
 		{
 			ErrorPrint(res, "Failed to draw figure\n");

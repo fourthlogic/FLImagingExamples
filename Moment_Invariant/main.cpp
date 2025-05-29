@@ -14,21 +14,21 @@ int main()
 
 	do
 	{
-		// 이미지 로드 // Loads image
+		// 이미지 로드 // Load image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/Moment/airEdge.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// 이미지 뷰 생성 // Creates imageview
+		// 이미지 뷰 생성 // Create image view
 		if(IsFail(res = viewImage.Create(400, 0, 1424, 768)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 		 
-		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the imageview
+		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
@@ -47,8 +47,8 @@ int main()
 		moment.SetSourceImage(fliImage);
 		// 처리할 ROI 설정 // Set the ROI to be processed
 		moment.SetSourceROI(flrROI);
-		// 처리할 이미지의 이진화이미지로 판단 유무 설정 // Set whether to judge the image to be processed as a binarized image
-		// 이진화이미지로 판단할 경우 0이 아닌 모든 화소값은 1로 처리함 // When judging as a binarized image, all non-zero pixel values ??are treated as 1.
+		// 처리할 이미지의 이진화 이미지로 판단 유무 설정 // Set whether to judge the image to be processed as a binarized image
+		// 이진화 이미지로 판단할 경우 0이 아닌 모든 화소값은 1로 처리함 // When judging as a binarized image, all non-zero pixel values are treated as 1.
 		moment.EnableBinaryImage(true);
 
 		bool bCalcGeometricMoment = true;
@@ -79,7 +79,7 @@ int main()
 		CMoment::SMoments results;
 		moment.GetMoment(results);
 
-		// 모멘트 결과를 Console창에 출력 // Output the moment result to the console window
+		// 모멘트 결과를 Console 창에 출력 // Output the moment result to the console window
 		if(bCalcGeometricMoment)
 		{
 			printf("< Geometric Moment > \n");
@@ -153,7 +153,7 @@ int main()
 
 		layer.Clear();
 
-		// ROI영역이 어디인지 알기 위해 디스플레이 한다 // Display to know where the ROI area is
+		// ROI 영역이 어디인지 알기 위해 디스플레이 한다 // Display to know where the ROI area is
 		if(IsFail(res = layer.DrawFigureImage(&flrROI, BLUE)))
 		{
 			ErrorPrint(res, "Failed to draw figure\n");
