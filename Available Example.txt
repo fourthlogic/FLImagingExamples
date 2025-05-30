@@ -900,7 +900,7 @@
     - ChannelCombination
       - The example of an algorithm that combines channels selected from multiple images.
       - 여러 이미지에서 선택된 채널들을 결합하는 알고리즘 예제.
-    - Channel Insertion
+    - ChannelInsertion
       - The example of an algorithm that Inserts channels selected from multiple images.
       - 여러 이미지에서 선택된 채널들을 삽입하는 알고리즘 예제. 
     - ChannelL1Norm
