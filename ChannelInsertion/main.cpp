@@ -137,8 +137,8 @@ int main()
 		// 추출할 채널을 저장할 Array 선언 // Declare an Array to extract the channels
 		Base::CFLArray<int64_t> vctInsertionChannels;
 
-		// 삽입할 위치를 저장할 Array 선언 // Declare an Array to store the positions
-		Base::CFLArray<int64_t> vctInsertionPositions;
+		// 삽입할 색인을 저장할 Array 선언 // Declare an Array to store the indices
+		Base::CFLArray<int64_t> vctInsertionIndices;
 
 		// Source 이미지 입력 // source images push
 		vctInsertionImages.PushBack(&fliInsertionImage[0]);
@@ -148,15 +148,15 @@ int main()
 		vctInsertionChannels.PushBack(EChannelSelection_Channel_0);
 		vctInsertionChannels.PushBack(EChannelSelection_Channel_0);
 
-		// 추출한 채널을 삽입할 위치 입력 // positions push
-		vctInsertionPositions.PushBack(0);
-		vctInsertionPositions.PushBack(1);
+		// 추출한 채널을 삽입할 색인 입력 // indices push
+		vctInsertionIndices.PushBack(0);
+		vctInsertionIndices.PushBack(1);
 
 		// 소스 이미지 설정 // Set Source image
 		channelInsertion.SetSourceImage(fliSourceImage);
 
-		// 삽입할 이미지, 추출할 채널, 삽입 할 위치 설정 // Set insertion images, insertion channels, and insertion positions
-		channelInsertion.SetInsertionImage(vctInsertionImages, vctInsertionChannels, vctInsertionPositions);
+		// 삽입할 이미지, 추출할 채널, 삽입 할 색인 설정 // Set insertion images, insertion channels, and insertion indices
+		channelInsertion.SetInsertionImage(vctInsertionImages, vctInsertionChannels, vctInsertionIndices);
 
 		// 결합 결과를 저장할 이미지 설정 // Set destination image
 		channelInsertion.SetDestinationImage(fliDestinationImage);
