@@ -154,9 +154,9 @@ int main()
 			double f64RotationError, f64TranslationError;
 
 			// 캘리브레이션 결과 얻어오기 // Get the calibration result
-			HandEyeCalibrator3D.GetResultRotationVector(matResultRotationVector, false);
-			HandEyeCalibrator3D.GetResultTranslationVector(tp3ResultTranslationVector, false);
-			HandEyeCalibrator3D.GetResultEulerAngle(flaResultEulerAngle, false);
+			HandEyeCalibrator3D.GetResultHandToEyeRotationVector(matResultRotationVector);
+			HandEyeCalibrator3D.GetResultHandToEyeTranslationVector(tp3ResultTranslationVector);
+			HandEyeCalibrator3D.GetResultHandToEyeEulerAngle(flaResultEulerAngle);
 			HandEyeCalibrator3D.GetResultRotationError(f64RotationError);
 			HandEyeCalibrator3D.GetResultTranslationError(f64TranslationError);
 			
