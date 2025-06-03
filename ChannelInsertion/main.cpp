@@ -193,12 +193,12 @@ int main()
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
-		if(IsFail(res = layerSource[1].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Insertion Image 0", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource[1].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Insertion Image 1", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
-		if(IsFail(res = layerSource[2].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Insertion Image 1", YELLOW, BLACK, 30)))
+		if(IsFail(res = layerSource[2].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Insertion Image 2", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
