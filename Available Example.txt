@@ -16,15 +16,34 @@
         - The example that estimates the relative rotation and translation between two cameras to color XYZ points using an RGB image.
         - 두 카메라 간의 회전과 변환을 추정하여 XYZ 점에 RGB 이미지를 사용하여 색을 입히는 알고리즘 예제.
 
-    - [Hand Eye Calibrator 3D]
-      - HandEyeCalibrator3D
-        - The example that estimating the matrix between the camera and the end effector.
-        - 카메라와 엔드 이펙터의 관계 행렬을 추정하는 알고리즘 예제.
-
     - [Coordinate Frame Unification 3D]
       - CoordinateFrameUnification3D
         - The example an algorithm that merge 3d objects from multiple camera by using transformation estimated by point correspondence.
         - 대응점 관계로 추정한 변환을 이용하여 여러 카메라에서 얻은 객체를 하나로 합치는 알고리즘 예제.
+
+    - [Hand Eye Calibrator 3D]
+      - HandEyeCalibrator3D
+        - The example that estimating the matrix between the camera and the end effector.
+        - 카메라와 엔드 이펙터의 관계 행렬을 추정하는 알고리즘 예제.
+        
+  - [Feature Extraction]
+    
+    - [Edge Detector 3D]
+      - EdgeDetector3D
+        - The example of an algorithm that detect the edge of a given point clouds.
+        - 주어진 포인트 클라우드의 엣지를 검출하는 알고리즘 예제.
+
+    - [Convex Hull]
+      - ConvexHull3D
+        - An example of an algorithm that calucalates the convex hull of a point cloud.
+        - 3D 포인트 클라우드의 볼록껍질을 구하는 알고리즘 예제.
+
+  - [Filter]
+    
+    - [Smoothing 3D]
+      - Smoothing3D
+        - The example of an algorithm that smooth a given point cloud.
+        - 주어진 포인트 클라우드를 스무딩하는 알고리즘 예제.
 
   - [Match]
     
@@ -42,26 +61,6 @@
       - Registration 3D
         - The example of an algorithm that estimate pose matrix for a given point clouds.
         - 주어진 포인트 클라우드에 대해 포즈 행렬을 추정하는 알고리즘 예제.
-
-
-  - [Feature Extraction]
-    
-    - [Edge Detector 3D]
-      - EdgeDetector3D
-        - The example of an algorithm that detect the edge of a given point clouds.
-        - 주어진 포인트 클라우드의 엣지를 검출하는 알고리즘 예제.
-
-    - [Convex Hull]
-      - Convex Hull 3D
-        - An example of an algorithm that calucalates the convex hull of a point cloud.
-        - 3D 포인트 클라우드의 볼록껍질을 구하는 알고리즘 예제.
-
-  - [Filter]
-    
-    - [Smoothing 3D]
-      - Smoothing3D
-        - The example of an algorithm that smooth a given point cloud.
-        - 주어진 포인트 클라우드를 스무딩하는 알고리즘 예제.
 
   - [Reconstruction]
 
@@ -132,6 +131,11 @@
         - 축의 순서를 바꾸는 알고리즘 예제
 
   - [Utilities]
+
+    - [Projection]
+      - Projection 3D
+        - An example of an algorithm that projects a 3D object into an image.
+        - 3D 객체를 이미지로 투영하는 알고리즘 예제.
     
     - [Residual Evaluator]
       - Residual Evaluator3D
@@ -142,11 +146,6 @@
       - VoxelGrid3D
         - The example of an algorithm that sampling a given point cloud.
         - 주어진 포인트 클라우드를 샘플링하는 알고리즘 예제.
-
-    - [Projection]
-      - Projection 3D
-        - An example of an algorithm that projects a 3D object into an image.
-        - 3D 객체를 이미지로 투영하는 알고리즘 예제.
 
 - [Advanced Functions]
 
