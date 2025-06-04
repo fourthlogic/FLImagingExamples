@@ -21,6 +21,11 @@
         - The example that estimating the matrix between the camera and the end effector.
         - 카메라와 엔드 이펙터의 관계 행렬을 추정하는 알고리즘 예제.
 
+    - [Coordinate Frame Unification 3D]
+      - CoordinateFrameUnification3D
+        - The example an algorithm that merge 3d objects from multiple camera by using transformation estimated by point correspondence.
+        - 대응점 관계로 추정한 변환을 이용하여 여러 카메라에서 얻은 객체를 하나로 합치는 알고리즘 예제.
+
   - [Match]
     
     - [Surface]
