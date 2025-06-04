@@ -161,7 +161,7 @@ int main()
 		COrthogonalCalibrator orthogonalCalibrator;
 
 		// Learn 이미지 로드 // Load the Learn image
-		if(IsFail(res = fliDistortionChessBoard.Load(L"C:\\source\\repos\\FLImaging\\ExampleImages\\Measurement\\ChessBoard.flif")))
+		if(IsFail(res = fliDistortionChessBoard.Load(L"C:\\Users\\Public\\Documents\\FLImaging\\ExampleImages\\Measurement\\ChessBoard.flif")))
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
@@ -181,7 +181,7 @@ int main()
 			break;
 
 		// 측정 이미지 로드 // Load the measurement image
-		if((res = fliDistortedMeasurementImage.Load(L"C:\\source\\repos\\FLImaging\\ExampleImages\\Measurement\\Measurement.flif")).IsFail())
+		if((res = fliDistortedMeasurementImage.Load(L"C:\\Users\\Public\\Documents\\FLImaging\\ExampleImages\\Measurement\\Measurement.flif")).IsFail())
 		{
 			ErrorPrint(res, L"Failed to load the image file.\n");
 			break;
