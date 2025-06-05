@@ -96,7 +96,6 @@ int main()
 		{
 			ErrorPrint(res, "Failed to execute Reduce Dimension Var 2D to 1D.\n");
 
-			ErrorPrint(res, "\n");
 			break;
 		}
 
@@ -111,7 +110,6 @@ int main()
 		{
 			ErrorPrint(res, "Failed to execute Reduce Dimension Var 2D to 1D.\n");
 
-			ErrorPrint(res, "\n");
 			break;
 		}
 
