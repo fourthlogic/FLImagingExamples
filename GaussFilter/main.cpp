@@ -126,8 +126,11 @@ int main()
 		// Destination2 ROI 설정 // Set the destination2 ROI
 		GaussFilter.SetDestinationROI(flrROI);
 
-		// gauss filter 커널 크기 설정
+		// Sigma 값 설정 // Set the sigma value
 		GaussFilter.SetSigma(1);
+
+		// 커널 크기 설정 // Set the kernel size
+		GaussFilter.SetKernel(7);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = GaussFilter.Execute()).IsFail())
@@ -144,6 +147,9 @@ int main()
 		// Sigma 값 설정 // Set the sigma value
 		GaussFilter.SetSigma(3);
 
+		// 커널 크기 설정 // Set the kernel size
+		GaussFilter.SetKernel(19);
+
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = GaussFilter.Execute()).IsFail())
 		{
@@ -158,6 +164,9 @@ int main()
 
 		// Sigma 값 설정 // Set the sigma value
 		GaussFilter.SetSigma(5);
+
+		// 커널 크기 설정 // Set the kernel size
+		GaussFilter.SetKernel(31);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((res = GaussFilter.Execute()).IsFail())
