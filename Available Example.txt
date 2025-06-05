@@ -975,6 +975,9 @@
           - The example of an algorithm that reduces dimension of an image based on the variance.
           - 분산을 기반으로 이미지의 차원을 축소하는 알고리즘 예제.
       - [Multi Page To 2D]
+        - ReduceDimensionMaxMultiPageTo2D
+          - The example of an algorithm that reduces dimension of images based on the maximum value.
+          - 최댓값을 기반으로 이미지의 차원을 축소하는 알고리즘 예제.
         - ReduceDimensionMinMultiPageTo2D
           - The example of an algorithm that reduces dimension of images based on the minimum value.
           - 최솟값을 기반으로 이미지의 차원을 축소하는 알고리즘 예제.

@@ -1762,6 +1762,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Multi Page To 2D", "Multi P
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReduceDimensionMinMultiPageTo2D", "ReduceDimensionMinMultiPageTo2D\ReduceDimensionMinMultiPageTo2D.vcxproj", "{3A558C3D-A8E8-43C8-A36C-0EC48BEE8C5F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReduceDimensionMaxMultiPageTo2D", "ReduceDimensionMaxMultiPageTo2D\ReduceDimensionMaxMultiPageTo2D.vcxproj", "{0CC31B62-71D6-4ED0-9141-8D99E3CA63AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -6432,6 +6434,14 @@ Global
 		{3A558C3D-A8E8-43C8-A36C-0EC48BEE8C5F}.Release|Win32.Build.0 = Release|Win32
 		{3A558C3D-A8E8-43C8-A36C-0EC48BEE8C5F}.Release|x64.ActiveCfg = Release|x64
 		{3A558C3D-A8E8-43C8-A36C-0EC48BEE8C5F}.Release|x64.Build.0 = Release|x64
+		{0CC31B62-71D6-4ED0-9141-8D99E3CA63AD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0CC31B62-71D6-4ED0-9141-8D99E3CA63AD}.Debug|Win32.Build.0 = Debug|Win32
+		{0CC31B62-71D6-4ED0-9141-8D99E3CA63AD}.Debug|x64.ActiveCfg = Debug|x64
+		{0CC31B62-71D6-4ED0-9141-8D99E3CA63AD}.Debug|x64.Build.0 = Debug|x64
+		{0CC31B62-71D6-4ED0-9141-8D99E3CA63AD}.Release|Win32.ActiveCfg = Release|Win32
+		{0CC31B62-71D6-4ED0-9141-8D99E3CA63AD}.Release|Win32.Build.0 = Release|Win32
+		{0CC31B62-71D6-4ED0-9141-8D99E3CA63AD}.Release|x64.ActiveCfg = Release|x64
+		{0CC31B62-71D6-4ED0-9141-8D99E3CA63AD}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -7305,9 +7315,10 @@ Global
 		{0031C0C6-8774-4583-8D50-E7FC16464452} = {B649D71D-4733-47EB-BDF4-D749D4FC5C68}
 		{939A7DD9-BA65-4830-AEA0-AC788AEBCFD7} = {D366AFE3-4059-482A-9285-7C9EDAE32ACE}
 		{3A558C3D-A8E8-43C8-A36C-0EC48BEE8C5F} = {AC01824E-0680-4281-8112-28B83023F519}
+		{0CC31B62-71D6-4ED0-9141-8D99E3CA63AD} = {AC01824E-0680-4281-8112-28B83023F519}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
+		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 	EndGlobalSection
 EndGlobal
