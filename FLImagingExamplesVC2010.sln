@@ -1766,6 +1766,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReduceDimensionMaxMultiPage
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReduceDimensionMeanMultiPageTo2D", "ReduceDimensionMeanMultiPageTo2D\ReduceDimensionMeanMultiPageTo2D.vcxproj", "{1FB04144-DD85-4E00-8256-C80F9894F992}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReduceDimensionMedianMultiPageTo2D", "ReduceDimensionMedianMultiPageTo2D\ReduceDimensionMedianMultiPageTo2D.vcxproj", "{8E66AFE0-7399-4971-8658-17688328B37B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -6452,6 +6454,14 @@ Global
 		{1FB04144-DD85-4E00-8256-C80F9894F992}.Release|Win32.Build.0 = Release|Win32
 		{1FB04144-DD85-4E00-8256-C80F9894F992}.Release|x64.ActiveCfg = Release|x64
 		{1FB04144-DD85-4E00-8256-C80F9894F992}.Release|x64.Build.0 = Release|x64
+		{8E66AFE0-7399-4971-8658-17688328B37B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8E66AFE0-7399-4971-8658-17688328B37B}.Debug|Win32.Build.0 = Debug|Win32
+		{8E66AFE0-7399-4971-8658-17688328B37B}.Debug|x64.ActiveCfg = Debug|x64
+		{8E66AFE0-7399-4971-8658-17688328B37B}.Debug|x64.Build.0 = Debug|x64
+		{8E66AFE0-7399-4971-8658-17688328B37B}.Release|Win32.ActiveCfg = Release|Win32
+		{8E66AFE0-7399-4971-8658-17688328B37B}.Release|Win32.Build.0 = Release|Win32
+		{8E66AFE0-7399-4971-8658-17688328B37B}.Release|x64.ActiveCfg = Release|x64
+		{8E66AFE0-7399-4971-8658-17688328B37B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -7327,9 +7337,10 @@ Global
 		{3A558C3D-A8E8-43C8-A36C-0EC48BEE8C5F} = {AC01824E-0680-4281-8112-28B83023F519}
 		{0CC31B62-71D6-4ED0-9141-8D99E3CA63AD} = {AC01824E-0680-4281-8112-28B83023F519}
 		{1FB04144-DD85-4E00-8256-C80F9894F992} = {AC01824E-0680-4281-8112-28B83023F519}
+		{8E66AFE0-7399-4971-8658-17688328B37B} = {AC01824E-0680-4281-8112-28B83023F519}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 		{379F97DA-0EE3-4124-A963-33ABEEFE32A1} = {39779CA1-70D5-403B-8C62-76AE9B1E6579}
+		SolutionGuid = {07E193DD-ADA4-44A2-B540-804102AB78BA}
 	EndGlobalSection
 EndGlobal
