@@ -129,6 +129,8 @@ int main()
 		photometric.SetCalibrationCircleROI(CFLCircle<double>(386.439657, 346.491239, 259.998140, 0.000000, 0.000000, 360.000000, EArcClosingMethod_EachOther));
 		// 동작 방식 설정 // Set operation mode
 		photometric.SetReconstructionMode(CPhotometricStereo3D::EReconstructionMode_Poisson_FP32);
+		// Valid 픽셀의 기준 설정 // Set valid pixel ratio
+		photometric.SetValidPixelThreshold(0.125);
 
 		CMatrix<double> cmatdTemp(3, 3);
 
