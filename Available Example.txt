@@ -142,6 +142,11 @@
         - The example of an algorithm that measures the residuals of two given objects.
         - 주어진 두 오브젝트의 잔차를 측정하는 알고리즘 예제.
 
+    - [Scanned Point Cloud Generator]
+      - Scanned Point Cloud Generator 3D
+        - The example of an algorithm that generate a point cloud from 3D data that contains face information.
+        - 표면 정보를 포함하고 있는 3D 데이터에서 포인트 클라우드를 생성하는 알고리즘 예제.
+
     - [Voxel Grid]
       - VoxelGrid3D
         - The example of an algorithm that sampling a given point cloud.

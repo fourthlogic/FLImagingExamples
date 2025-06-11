@@ -143,9 +143,6 @@ int main() {
 		view3DSource.SetCamera(srcCam);
 		view3DDst.SetCamera(srcCam);
 
-		view3DSource.ZoomFit();
-		view3DDst.ZoomFit();
-
 		view3DDst.SynchronizePointOfView(&view3DSource);
 
 		// 이미지 뷰를 갱신 합니다. // Update image view
