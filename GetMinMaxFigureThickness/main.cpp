@@ -42,7 +42,7 @@ int main()
 			break;
 		}
 
-		// SourceView, DstView 의 0번 레이어 가져오기 // Get Layer 0 of SourceView, DstView
+		// Minimum Thickness View, Maximum Thickness View 의 0번 레이어 가져오기 // Get Layer 0 of Minimum Thickness View, Maximum Thickness View
 		CGUIViewImageLayerWrap layerMin0 = viewImage[0].GetLayer(0);
 		CGUIViewImageLayerWrap layerMax0 = viewImage[1].GetLayer(0);
 		CGUIViewImageLayerWrap layerMin1 = viewImage[2].GetLayer(0);
@@ -152,6 +152,7 @@ int main()
 		layerMax1.DrawFigureImage(pFlfSource, LIME);
 
 
+		// 각각의 레이어에 결과 Point Figure 와 거리값 그리기 // Draw the resulting point figure and distance value on each layer.
 		layerMin0.DrawFigureImage(flpaResultMinPoints1, BLACK, 3);
 		layerMin0.DrawFigureImage(flpaResultMinPoints1, MAGENTA);
 		layerMin0.DrawTextImage(flpaResultMinPoints1.GetCenter() + CFLPoint<double>(0, 20), CFLString<wchar_t>().Format(L"%.3lf", f64MinimumThickness1), YELLOW, BLACK, 12, false, 0, EGUIViewImageTextAlignment_CENTER_TOP);
