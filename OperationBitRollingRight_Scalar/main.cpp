@@ -135,7 +135,7 @@ int main()
 		rollingRight.SetScalarValue(CMultiVar<double>(7, 7, 7));
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((res =rollingRight.Execute()))
+		if((res =rollingRight.Execute()).IsFail())
 		{
 			ErrorPrint(res, L"Failed to execute operation rolling.");
 			break;
