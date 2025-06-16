@@ -66,7 +66,7 @@ int main()
 		CFLPoint<double> flpFocalLength(428.668823242188, 428.268188476563);
 		CFLPoint<double> flpPrincipalPoint(422.934997558594, 240.188659667969);
 
-		HandEyeCalibrator3D.SetCalibrationCameraMatrix(flpPrincipalPoint, flpFocalLength);
+		HandEyeCalibrator3D.SetCalibrationCameraMatrix(flpFocalLength, flpPrincipalPoint);
 
 		// 셀 간격 설정 // Set the board cell pitch
 		HandEyeCalibrator3D.SetCalibrationBoardCellPitch(15, 15);
