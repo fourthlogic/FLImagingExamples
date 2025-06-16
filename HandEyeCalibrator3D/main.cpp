@@ -137,7 +137,7 @@ int main()
 		}
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-		if((eResult = HandEyeCalibrator3D.Execute()).IsFail())
+		if((eResult = HandEyeCalibrator3D.Calibrate()).IsFail())
 		{
 			ErrorPrint(eResult, L"Failed to execute Hand Eye Calibrator 3D.");
 			break;
