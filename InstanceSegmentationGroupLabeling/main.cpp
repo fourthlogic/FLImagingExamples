@@ -22,7 +22,7 @@ unsigned int __stdcall LearnThread(void* pParam)
 
 int main()
 {
-	// 이미지 객체 선언 // Declare the image object
+		// 이미지 객체 선언 // Declare the image object
 	CFLImage fliLearnImage;
 	CFLImage fliValidationImage;
 	CFLImage fliResultBoxContourImage;
@@ -194,16 +194,18 @@ int main()
 		intanceSegmentation.SetLearningImage(fliLearnImage);
 		// 검증할 이미지 설정 // Set the image to validate
 		intanceSegmentation.SetLearningValidationImage(fliValidationImage);
+		// 검증 IoU Threshold를 0.3으로 설정 // Set the validation IoU Threshold to 0.3
+		intanceSegmentation.SetValidationIoUThreshold(.3f);
 		// 학습할 intanceSegmentation 모델 설정 // Set up intanceSegmentation model to learn
 		intanceSegmentation.SetModel(CInstanceSegmentationDL::EModel_R_FLSegNet);
 		// 학습할 intanceSegmentation 모델의 버전 설정 // Set up intanceSegmentation model version to learn
-		intanceSegmentation.SetModelVersion(CInstanceSegmentationDL::EModelVersion_R_FLSegNet_V1_256);
+		intanceSegmentation.SetModelVersion(CInstanceSegmentationDL::EModelVersion_R_FLSegNet_V1_512);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
 		intanceSegmentation.SetLearningEpoch(500);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
 		intanceSegmentation.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 		// 학습 중단 조건 설정 // Set the condtiion of stopping learning
-		intanceSegmentation.SetLearningStopCondition(L"cost <= 0 | validation >= 0.8");
+		intanceSegmentation.SetLearningStopCondition(L"mAP >= 0.9");
 
 		// Optimizer의 학습률 설정 // Set learning rate of Optimizer
 		optSpec.SetLearningRate(1e-4f);
@@ -228,7 +230,7 @@ int main()
 
 		// 학습을 종료할 조건식 설정. map값이 0.9 이상인 경우 학습 종료한다. metric와 동일한 값입니다.
 		// Set Conditional Expression to End Learning. If the map value is 0.9 or higher, end the learning. Same value as metric.
-		intanceSegmentation.SetLearningStopCondition(L"map >= 0.9");
+
 
 		// 자동 저장 옵션 설정 // Set Auto-Save Options
 		CAutoSaveSpec autoSaveSpec;
@@ -256,6 +258,7 @@ int main()
 		int32_t i32PrevEpoch = 0;
 		int32_t i32PrevCostCount = 0;
 		int32_t i32PrevValidationCount = 0;
+		float f32MeanAP;
 
 		while(true)
 		{
@@ -275,7 +278,7 @@ int main()
 				// 마지막 학습 결과 비용 받기 // Get the last cost of the learning result
 				float f32CurrCost = intanceSegmentation.GetLearningResultLastCost();
 				// 마지막 검증 결과 받기 // Get the last validation result
-				float f32MeanAP = intanceSegmentation.GetLearningResultLastMeanAP();
+				f32MeanAP = intanceSegmentation.GetLearningResultLastMeanAP();
 
 				// 해당 epoch의 비용과 검증 결과 값 출력 // Print cost and validation value for the relevant epoch
 				printf("Cost : %.6f mAP : %.6f Epoch %d / %d\n", f32CurrCost, f32MeanAP, i32Epoch, i32MaxEpoch);
@@ -333,6 +336,8 @@ int main()
 				break;
 			}
 		}
+
+		f32MeanAP = intanceSegmentation.GetLearningResultLastMeanAP();
 
 		// Result Image에 Box & Contour 모두 출력하는 Execute // Execute to print both Box& Contour in Result Image
 		// 분류할 이미지 설정 // Set the image to classify
