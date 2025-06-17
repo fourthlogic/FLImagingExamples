@@ -168,6 +168,7 @@ int main()
 		// Calibrate를 실행한 결과를 Console창에 출력합니다. // Output the calibration result to the console window.
 		int32_t i32CalibPageNum = fliCalImage.GetPageCount();
 
+		// Angle Degrees 데이터 출력
 		printf(" < Calibration Angle - Degrees >\n");
 
 		for(int i = 0; i < i32CalibPageNum; i++)
@@ -175,8 +176,8 @@ int main()
 
 		printf("\n");
 
-		// 기하학적 패턴 검출 결과를 Console창에 출력합니다. // Output the geometric pattern detection result to the console window.
-		printf(" < Calibration Angle - Degrees >\n");
+		// Positions 데이터 출력
+		printf(" < Calibration Positions >\n");
 
 		for(int i = 0; i < i32CalibPageNum; i++)
 			printf("Image %d ->\tX: %0.7lf\tY: %0.7lf \tZ: %0.7lf\n", i, *cmatdPosition.GetValue(i, 0), *cmatdPosition.GetValue(i, 1), *cmatdPosition.GetValue(i, 2));
