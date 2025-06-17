@@ -379,7 +379,9 @@ const CResult FLImaging::GUI::CPropertyMenuFullyConnectedXOR::UpdateSimpleDialog
 
 				if(m_pStopButton->GetClickCount() == 1)
 				{
-					m_tsrCost.CopyDeviceToHost();
+					if(m_tsrCost.IsCudaActivated())
+						m_tsrCost.CopyDeviceToHost();
+
 					break;
 				}
 
