@@ -139,7 +139,7 @@ int main()
 						if(k)
 							printf(",");
 
-						CFLPoint<double>* pFlpVertex = (CFLPoint<double>*)pFlrg->GetAt(k);
+						CFLPoint<double>* pFlpVertex = (CFLPoint<double>*)pFlrgExclusive->GetAt(k);
 
 						printf("(%lf,%lf)", pFlpVertex->x, pFlpVertex->y);
 					}
