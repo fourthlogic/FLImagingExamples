@@ -46,10 +46,12 @@ int main()
 		blob.SetSourceImage(fliImage);
 		// 처리할 ROI 설정
 		blob.SetSourceROI(flrROI);
+		// Threshold 모드 설정. 여기서는 2중 Threshold에 두개의 조건의 And 조건을 참으로 설정한다.
+		blob.SetThresholdMode(EThresholdMode_Dual_And);
 		// 논리 조건 설정
-		blob.SetLogicalCondition(ELogicalCondition_Greater);
+		blob.SetLogicalCondition(ELogicalCondition_Greater, ELogicalCondition_Less);
 		// 임계값 설정,  위의 조건과 아래의 조건이 합쳐지면 127보다 크고 240보다 작은 객체를 검출
-		blob.SetThreshold(127);
+		blob.SetThreshold(127, 240);
 
 		// 2중 임계 값 설정을 아래와 같이 할 수도 있음.
 //		blob.SetThreshold(127, EThresholdIndex_First);
