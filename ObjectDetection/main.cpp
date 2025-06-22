@@ -329,6 +329,9 @@ int main()
 			break;
 		}
 
+		// 결과 이미지를 이미지 뷰에 맞게 조정합니다. // Fit the result image to the image view.
+		viewImagesLabel.ZoomFit();
+
 		// 이미지 뷰를 갱신 // Update the image view.
 		viewImageLearn.RedrawWindow();
 		viewImageValidation.RedrawWindow();

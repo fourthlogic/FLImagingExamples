@@ -22,7 +22,7 @@ unsigned int __stdcall LearnThread(void* pParam)
 
 int main()
 {
-				// 이미지 객체 선언 // Declare the image object
+	// 이미지 객체 선언 // Declare the image object
 	CFLImage fliLearnImage;
 	CFLImage fliValidationImage;
 	CFLImage fliResultLabelImage;
@@ -389,6 +389,10 @@ int main()
 
 		// ResultLabel 뷰에 Floating Value Range를 설정 // Set Floating Value Range in ResultLabel view
 		viewImagesLabel.SetFloatingImageValueRange(0.f, (float)semanticSegmentation.GetLearningResultClassCount());
+
+		// 결과 이미지를 이미지 뷰에 맞게 조정합니다. // Fit the result image to the image view.
+		viewImagesLabel.ZoomFit();
+		viewImagesLabelFigure.ZoomFit();
 
 		// 이미지 뷰를 갱신 // Update the image view.
 		viewImageLearn.RedrawWindow();
