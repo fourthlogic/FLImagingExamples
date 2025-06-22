@@ -162,7 +162,8 @@ int main()
 		CAutoSaveSpec autoSaveSpec;
 
 		// 자동 저장 활성화 // Enable Auto-Save
-		autoSaveSpec.EnableAutoSave(true);
+		// 저장 때문에 발생하는 속도 저하를 막기 위해 예제에서는 코드 사용법만 표시하고 옵션은 끔 // To prevent performance degradation caused by saving, the examples only demonstrate how to use the code, with the saving option disabled.
+		autoSaveSpec.EnableAutoSave(false);
 		// 저장할 모델 경로 설정 // Set Model path to save
 		autoSaveSpec.SetAutoSavePath(L"model.flcf");
 		// 자동 저장 조건식 설정. 현재 f1score값이 최대 값인 경우 저장 활성화
