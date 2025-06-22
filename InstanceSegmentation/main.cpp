@@ -202,8 +202,9 @@ int main()
 		intanceSegmentation.SetLearningEpoch(500);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
 		intanceSegmentation.SetInterpolationMethod(EInterpolationMethod_Bilinear);
-		// 학습 중단 조건 설정 // Set the condtiion of stopping learning
-		intanceSegmentation.SetLearningStopCondition(L"cost <= 0 | validation >= 0.8");
+		// 학습을 종료할 조건식 설정. mAP값이 0.85 이상인 경우 학습 종료한다. metric와 동일한 값입니다.
+		// Set Conditional Expression to End Learning. If the mAP value is 0.85 or higher, end the learning. Same value as metric.
+		intanceSegmentation.SetLearningStopCondition(L"mAP >= 0.85");
 
 		// Optimizer의 학습률 설정 // Set learning rate of Optimizer
 		optSpec.SetLearningRate(1e-4f);
@@ -228,9 +229,9 @@ int main()
 
 		intanceSegmentation.SetLearningAugmentationSpec(&augSpec);
 
-		// 학습을 종료할 조건식 설정. map값이 0.9 이상인 경우 학습 종료한다. metric와 동일한 값입니다.
-		// Set Conditional Expression to End Learning. If the map value is 0.9 or higher, end the learning. Same value as metric.
-		intanceSegmentation.SetLearningStopCondition(L"map >= 0.9");
+		// 학습을 종료할 조건식 설정. mAP값이 0.85 이상인 경우 학습 종료한다. metric와 동일한 값입니다.
+		// Set Conditional Expression to End Learning. If the mAP value is 0.85 or higher, end the learning. Same value as metric.
+		intanceSegmentation.SetLearningStopCondition(L"map >= 0.85");
 
 		// 자동 저장 옵션 설정 // Set Auto-Save Options
 		CAutoSaveSpec autoSaveSpec;

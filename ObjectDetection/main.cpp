@@ -177,8 +177,9 @@ int main()
 		objectDetection.SetLearningRequiredAvgCostForValidation(5.f);
 		// 모델의 최적의 상태를 추적 후 마지막에 최적의 상태로 적용할 지 여부 설정 // Set whether to track the optimal state of the model and apply it as the optimal state at the end.
 		objectDetection.EnableOptimalLearningStatePreservation(true);
-		// 학습 중단 Metrics 값 설정 // Set Learning Stop Metrics Values
-		objectDetection.SetLearningStopCondition(L"mAP >= 0.9");
+		// 학습을 종료할 조건식 설정. mAP값이 0.85 이상인 경우 학습 종료한다. metric와 동일한 값입니다.
+		// Set Conditional Expression to End Learning. If the mAP value is 0.85 or higher, end the learning. Same value as metric.
+		objectDetection.SetLearningStopCondition(L"mAP >= 0.85");
 		// Optimizer의 학습률 설정 // Set learning rate of Optimizer
 		optSpec.SetLearningRate(1e-4f);
 		optSpec.SetWeightDecay(0.f);
@@ -201,9 +202,9 @@ int main()
 
 		objectDetection.SetLearningAugmentationSpec(&augSpec);
 
-		// 학습을 종료할 조건식 설정. map값이 0.9 이상인 경우 학습 종료한다. metric와 동일한 값입니다.
-		// Set Conditional Expression to End Learning. If the map value is 0.9 or higher, end the learning. Same value as metric.
-		objectDetection.SetLearningStopCondition(L"map >= 0.9");
+		// 학습을 종료할 조건식 설정. mAP값이 0.85 이상인 경우 학습 종료한다. metric와 동일한 값입니다.
+		// Set Conditional Expression to End Learning. If the mAP value is 0.85 or higher, end the learning. Same value as metric.
+		objectDetection.SetLearningStopCondition(L"map >= 0.85");
 
 		// 자동 저장 옵션 설정 // Set Auto-Save Options
 		CAutoSaveSpec autoSaveSpec;

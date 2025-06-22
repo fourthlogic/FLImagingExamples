@@ -302,9 +302,9 @@ int main()
 
 		superResolution.SetLearningAugmentationSpec(&augSpec);
 
-		// 학습을 종료할 조건식 설정. cost가 0.1 이하이고 accuracy값이 0.9 이상인 경우 학습 종료한다.
-		// Set Conditional Expression to End Learning. If cost is 0.1 or less and the accumulation value is 0.9 or more, end learning.
-		superResolution.SetLearningStopCondition(L"cost <= 0.1 & accuracy >= 0.98");
+		// 학습을 종료할 조건식 설정. accuracy값이 0.9 이상인 경우 학습 종료한다.
+		// Set Conditional Expression to End Learning. If the accuracy value is 0.9 or more, end learning.
+		superResolution.SetLearningStopCondition(L"accuracy >= 0.9");
 
 		// 자동 저장 옵션 설정 // Set Auto-Save Options
 		CAutoSaveSpec autoSaveSpec;

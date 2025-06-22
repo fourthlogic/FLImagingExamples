@@ -172,7 +172,7 @@ int main()
 		// 학습할 AnomalyDetection 모델의 버전 설정 // Set up AnomalyDetection model version to learn
 		anomalyDetection.SetModelVersion(CAnomalyDetectionDL::EModelVersion_FLDefNet_V1_64);
 		// 학습 epoch 값을 설정 // Set the learn epoch value 
-		anomalyDetection.SetLearningEpoch(1000);
+		anomalyDetection.SetLearningEpoch(10000);
 		// 학습 이미지 Interpolation 방식 설정 // Set Interpolation method of learn image
 		anomalyDetection.SetInterpolationMethod(EInterpolationMethod_Bilinear);
 		// 모델의 최적의 상태를 추적 후 마지막에 최적의 상태로 적용할 지 여부 설정 // Set whether to track the optimal state of the model and apply it as the optimal state at the end.
@@ -203,9 +203,9 @@ int main()
 
 		anomalyDetection.SetLearningAugmentationSpec(&augSpec);
 
-		// 학습을 종료할 조건식 설정. cost가 0.1 이하이고 accuracy값이 0.9 이상인 경우 학습 종료한다.
-		// Set Conditional Expression to End Learning. If cost is 0.1 or less and the accumulation value is 0.9 or more, end learning.
-		anomalyDetection.SetLearningStopCondition(L"cost <= 0.1 & accuracy >= 0.98");
+		// 학습을 종료할 조건식 설정. accuracy값이 0.9 이상인 경우 학습 종료한다.
+		// Set Conditional Expression to End Learning. If the accuracy value is 0.9 or more, end learning.
+		anomalyDetection.SetLearningStopCondition(L"accuracy >= 0.9");
 
 		// 자동 저장 옵션 설정 // Set Auto-Save Options
 		CAutoSaveSpec autoSaveSpec;

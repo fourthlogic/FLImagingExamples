@@ -201,9 +201,9 @@ int main()
 
 		ocr.SetLearningAugmentationSpec(&augSpec);
 
-		// 학습을 종료할 조건식 설정. map값이 0.9 이상인 경우 학습 종료한다. metric와 동일한 값입니다.
-		// Set Conditional Expression to End Learning. If the map value is 0.9 or higher, end the learning. Same value as metric.
-		ocr.SetLearningStopCondition(L"map >= 0.9");
+		// 학습을 종료할 조건식 설정. map값이 0.85 이상인 경우 학습 종료한다. metric와 동일한 값입니다.
+		// Set Conditional Expression to End Learning. If the map value is 0.85 or higher, end the learning. Same value as metric.
+		ocr.SetLearningStopCondition(L"mAP >= 0.85");
 
 		// 자동 저장 옵션 설정 // Set Auto-Save Options
 		CAutoSaveSpec autoSaveSpec;

@@ -197,9 +197,9 @@ int main()
 
 		ocrdl.SetLearningAugmentationSpec(&augSpec);
 
-		// 학습을 종료할 조건식 설정. Metric 값이 1.0 이상인 경우 학습 종료한다. Metric = (1-NED + mAP) / 2
-		// Set Conditional Expression to End Learning. If the metric value is 1.0 or higher, end the learning. Metric = (1-NED + mAP) / 2
-		ocrdl.SetLearningStopCondition(L"metric >= 1");
+		// 학습을 종료할 조건식 설정. Metric 값이 0.9 이상인 경우 학습 종료한다. Metric = (1-NED + mAP) / 2
+		// Set Conditional Expression to End Learning. If the metric value is 0.9 or higher, end the learning. Metric = (1-NED + mAP) / 2
+		ocrdl.SetLearningStopCondition(L"metric >= 0.9");
 
 		// 자동 저장 옵션 설정 // Set Auto-Save Options
 		CAutoSaveSpec autoSaveSpec;
