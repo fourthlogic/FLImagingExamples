@@ -547,7 +547,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::Frus
 
 				for(int64_t i = 0; i < i64ROICount; ++i)
 				{
-					CFLFrustum<float>* pFrustumROI = (CFLFrustum<float>*)flfaFrustum.GetAt(i);
+					CFLFrustum3<float>* pFrustumROI = (CFLFrustum3<float>*)flfaFrustum.GetAt(i);
 					
 					if(!pFrustumROI)
 						continue;
