@@ -89,7 +89,9 @@ int main()
 		// 클러스터링 범위 설정 // Set the clustering range
 		VertexMatch3D.SetClusterRange(0.02);
 		// 포즈 조정 반복 횟수 설정 // Set the iteration value of pose refinement
-		VertexMatch3D.SetIteration(5);
+		VertexMatch3D.SetIteration(15);
+		// 초기 점수 설정 // Set the initial score
+		VertexMatch3D.SetInitialScore(0.2);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((eResult = VertexMatch3D.Learn()).IsFail())
@@ -159,7 +161,7 @@ int main()
 		}
 
 
-		CVertexMatch3D::SPoseMatrixParameters sResult;
+		ThreeDim::SPoseMatrixParameters sResult;
 		int64_t i64ResultCount = VertexMatch3D.GetResultCount();
 		TPoint3<double> tp3F64Rotation, tp3F64RotVec;
 		CFLString<wchar_t> strText;
@@ -193,15 +195,11 @@ int main()
 
 			f64Residual = sResult.f64Residual;
 			f64Score = sResult.f64Score;
-			tp3F64Rotation.x = sResult.f64Rx;
-			tp3F64Rotation.y = sResult.f64Ry;
-			tp3F64Rotation.z = sResult.f64Rz;
-			tp3F64RotVec.x = sResult.f64RotationVectorX;
-			tp3F64RotVec.y = sResult.f64RotationVectorY;
-			tp3F64RotVec.z = sResult.f64RotationVectorZ;
-			flp3F64Translation.x = sResult.f64Tx;
-			flp3F64Translation.y = sResult.f64Ty;
-			flp3F64Translation.z = sResult.f64Tz;
+			tp3F64Rotation = sResult.tp3Angle;
+			tp3F64RotVec = sResult.tp3RotationVector;
+			flp3F64Translation.x = sResult.tp3TranslationVector.x;
+			flp3F64Translation.y = sResult.tp3TranslationVector.y;
+			flp3F64Translation.z = sResult.tp3TranslationVector.z;
 
 			// 추정한 포즈 결과를 Console창에 출력한다 // Print the estimated pose matrix to the console window
 			printf(" ▷ Pose Matrix %d\n", (int32_t)i);
