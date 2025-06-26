@@ -45,6 +45,13 @@
         - The example of an algorithm that smooth a given point cloud.
         - 주어진 포인트 클라우드를 스무딩하는 알고리즘 예제.
 
+  - [Generator]
+
+    - [Point Cloud Generator]
+      - Point Cloud Generator 3D
+        - The example of an algorithm that generate a point cloud from predefined 3d object.
+        - 미리 정의된 3D 데이터에서 포인트 클라우드를 생성하는 알고리즘 예제.
+
   - [Match]
     
     - [Surface]
