@@ -709,6 +709,12 @@
     - Figure_Erode
       - The example of Erode operation in Figure Morphology.
       - Figure Morphology 중 Erode 동작에 관한 예제.
+    - Figure_FLQuadrilateralSolid3
+      - The example of creating an FLQuadrilateralSolid3 object.
+      - Figure FLQuadrilateralSolid3 객체 생성에 관한 예제.
+    - Figure_FLTriangularSolid3
+      - The example of creating an FLTriangularSolid3 object.
+      - Figure FLTriangularSolid3 객체 생성에 관한 예제.
     - Figure_Open
       - The example of Open operation in Figure Morphology.
       - Figure Morphology 중 Open 동작에 관한 예제.
