@@ -207,32 +207,32 @@
         - The example of an algorithm that encodes the input string into a datamatrix.
         - 입력한 문자열을 데이터 매트릭스로 인코딩하는 알고리즘 예제.
       - DataMatrixVerifier
-        - The example algorithm for inspecting the print quality of a Data Matrix.
-        - 데이터 매트릭스의 인쇄 품질을 검사하는 알고리즘 예제.
+        - The example of an algorithm to evaluate print quality after detecting and decoding Data Matrix within an image.
+        - 이미지 내의 데이터 매트릭스를 검출 및 디코딩 후 인쇄 품질을 평가하는 알고리즘 예제.
 
     - [QR Code]
     
       - QRCodeDecoder
         - The example of an algorithm that detects and decodes QR code in an image.
-        - 이미지 내의 QR 코드를 검출 및 디코딩하는 알고리즘 예제.
+        - 이미지 내의 QR Code를 검출 및 디코딩하는 알고리즘 예제.
       - QRCodeEncoder
         - The example of an algorithm that encodes the input string into a QR code.
-        - 입력한 문자열을 QR 코드로 인코딩하는 알고리즘 예제.
+        - 입력한 문자열을 QR Code로 인코딩하는 알고리즘 예제.
       - QRCodeVerifier
-        - The example algorithm for inspecting the print quality of a QR Code.
-        - QR Code의 인쇄 품질을 검사하는 알고리즘 예제.
+        - The example of an algorithm to evaluate print quality after detecting and decoding QR Code within an image.
+        - 이미지 내의 QR Code를 검출 및 디코딩 후 인쇄 품질을 평가하는 알고리즘 예제.
         
     - [Micro QR Code]
     
       - MicroQRCodeDecoder
         - The example of an algorithm that detects and decodes Micro QR code in an image.
-        - 이미지 내의 Micro QR 코드를 검출 및 디코딩하는 알고리즘 예제.
+        - 이미지 내의 Micro QR Code를 검출 및 디코딩하는 알고리즘 예제.
       - MicroQRCodeEncoder
         - The example of an algorithm that encodes the input string into a Micro QR code.
-        - 입력한 문자열을 Micro QR 코드로 인코딩하는 알고리즘 예제.
+        - 입력한 문자열을 Micro QR Code로 인코딩하는 알고리즘 예제.
       - MicroQRCodeVerifier
-        - The example algorithm for inspecting the print quality of a Micro QR code.
-        - Micro QR code의 인쇄 품질을 검사하는 알고리즘 예제.
+        - The example of an algorithm to evaluate print quality after detecting and decoding Micro QR Code within an image.
+        - 이미지 내의 Micro QR Code를 검출 및 디코딩 후 인쇄 품질을 평가하는 알고리즘 예제.
         
     - [Unified Data Code]
     
