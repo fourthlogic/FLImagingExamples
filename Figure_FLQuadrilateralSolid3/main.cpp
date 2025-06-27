@@ -74,10 +74,10 @@ int main()
 			layer3D[i] = view3D[i].GetLayer(0);
 
 		// 각 레이어 캔버스에 텍스트 그리기 // Draw text to each Layer Canvas
-		layer3D[0].DrawTextCanvas(CFLPoint<double>(3, 0), L"Figure A", YELLOW, BLACK, 20);
-		layer3D[1].DrawTextCanvas(CFLPoint<double>(3, 0), L"Figure A", YELLOW, BLACK, 20);
-		layer3D[2].DrawTextCanvas(CFLPoint<double>(3, 0), L"Figure B", YELLOW, BLACK, 20);
-		layer3D[3].DrawTextCanvas(CFLPoint<double>(3, 0), L"Figure B", YELLOW, BLACK, 20);
+		layer3D[0].DrawTextCanvas(CFLPoint<double>(3, 0), L"Figure A (Regular Quad)", YELLOW, BLACK, 20);
+		layer3D[1].DrawTextCanvas(CFLPoint<double>(3, 0), L"Figure A (Regular Quad)", YELLOW, BLACK, 20);
+		layer3D[2].DrawTextCanvas(CFLPoint<double>(3, 0), L"Figure B (Distorted Quad)", YELLOW, BLACK, 20);
+		layer3D[3].DrawTextCanvas(CFLPoint<double>(3, 0), L"Figure B (Distorted Quad)", YELLOW, BLACK, 20);
 
 		layer3D[0].DrawTextCanvas(CFLPoint<double>(3, 30), L"Base Plane", YELLOW, BLACK, 15);
 		layer3D[1].DrawTextCanvas(CFLPoint<double>(3, 30), L"Length : +20", YELLOW, BLACK, 15);
@@ -85,12 +85,11 @@ int main()
 		layer3D[3].DrawTextCanvas(CFLPoint<double>(3, 30), L"Length : -20", YELLOW, BLACK, 15);
 
 		// Figure A 의 한쪽 면 생성 // Create one side of Figure A
-		CFLPoint3<double> flpFigA0(0, 0, 0);
-		CFLPoint3<double> flpFigA1(0, 10, 0);
+		CFLPoint3<double> flpFigA0(0, 0, 5);
+		CFLPoint3<double> flpFigA1(0, 10, 5);
 		CFLPoint3<double> flpFigA2(10, 10, 0);
 		CFLPoint3<double> flpFigA3(10, 0, 0);
 		CFLQuad3<double> flqBasePlaneFigA(flpFigA0, flpFigA1, flpFigA2, flpFigA3);
-		CFLQuadrilateralSolid3<double> flqsBasePlaneFigA(flqBasePlaneFigA, flqBasePlaneFigA);
 
 		// 두 번째 평면의 각 꼭짓점은 첫 번째 평면의 각 꼭짓점에서 면의 법선 방향으로 `Length`만큼 떨어진 위치에 계산됩니다.
 		// 각 꼭짓점마다 독립적으로 법선을 구하며, 이는 주어진 꼭짓점과 그 주변 두 꼭짓점으로 구성된 삼각형의 법선을 기반으로 합니다.
@@ -127,12 +126,11 @@ int main()
 		CFLQuadrilateralSolid3<double> flqsSolidFigA(flqBasePlaneFigA, f64LengthA);
 
 		// Figure B 의 한쪽 면 생성 // Create one side of Figure B
-		CFLPoint3<double> flpFigB0(0, 0, 0);
-		CFLPoint3<double> flpFigB1(-1, 9, -2);
-		CFLPoint3<double> flpFigB2(10, 10, 0);
-		CFLPoint3<double> flpFigB3(11, 2, 1);
+		CFLPoint3<double> flpFigB0(0, 0, -3);
+		CFLPoint3<double> flpFigB1(-1, 9, -4);
+		CFLPoint3<double> flpFigB2(10, 10, 1);
+		CFLPoint3<double> flpFigB3(11, 2, 0);
 		CFLQuad3<double> flqBasePlaneFigB(flpFigB0, flpFigB1, flpFigB2, flpFigB3);
-		CFLQuadrilateralSolid3<double> flqsBasePlaneFigB(flqBasePlaneFigB, flqBasePlaneFigB);
 
 		// 위와 같은 로직으로 Figure B 의 반대쪽 면을 생성하며, length 가 음수인 경우 법선 벡터의 반대방향으로 반대쪽 면 생성
 		// The opposite side of Figure B is created using the same logic as above, and if length is a negative number, the opposite side is created in the opposite direction of the normal vector.
@@ -141,17 +139,23 @@ int main()
 
 
 		// 3D 뷰에 3D figure 추가 // Add 3D figures to the 3D view
-		view3D[0].PushBackROI(&flqsBasePlaneFigA);
-		view3D[1].PushBackROI(&flqsSolidFigA);
-		view3D[2].PushBackROI(&flqsBasePlaneFigB);
-		view3D[3].PushBackROI(&flqsSolidFigB);
+		CGUIView3DObject view3DObj;
+		view3DObj.SetTopologyType(ETopologyType3D_Wireframe);
+
+		CFLFigure* arrFigures[4] = { &flqBasePlaneFigA , &flqsSolidFigA , &flqBasePlaneFigB , &flqsSolidFigB };
+
+		for(int64_t i = 0; i < 4; ++i)
+		{
+			view3DObj.Set3DObject(CFL3DObject(arrFigures[i]));
+			view3D[i].PushObject(view3DObj);
+		}
 
 		// 추가한 3D 객체가 화면 안에 들어오도록 Zoom Fit // Perform Zoom Fit to ensure added 3D objects are within the view
 		view3D[1].ZoomFit();
 		view3D[3].ZoomFit();
 
 		// 3D 뷰어의 시점(카메라) 변경 // Change the viewpoint (camera) of the 3D viewer
-		view3D[1].GetCamera()->SetPosition(CFLPoint3<float>(18.48, -32.13, 7.31));
+		view3D[1].GetCamera()->SetPosition(CFLPoint3<float>(21.40, -30.30, 9.04));
 		view3D[1].GetCamera()->SetDirection(CFLPoint3<float>(-0.38, 0.92, 0.06));
 		view3D[1].GetCamera()->SetDirectionUp(CFLPoint3<float>(0.03, -0.05, 1.00));
 

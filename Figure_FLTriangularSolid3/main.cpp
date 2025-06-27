@@ -57,11 +57,10 @@ int main()
 		layer3D[1].DrawTextCanvas(CFLPoint<double>(3, 30), L"Length : +20", YELLOW, BLACK, 15);
 
 		// Figure A 의 한쪽 면 생성 // Create one side of Figure A
-		CFLPoint3<double> flpFigA0(0, 0, 0);
-		CFLPoint3<double> flpFigA1(0, 10, 0);
+		CFLPoint3<double> flpFigA0(0, 0, 5);
+		CFLPoint3<double> flpFigA1(0, 10, 5);
 		CFLPoint3<double> flpFigA2(10, 0, 0);
 		CFLTriangle3<double> fltBasePlaneFigA(flpFigA0, flpFigA1, flpFigA2);
-		CFLTriangularSolid3<double> fltsBasePlaneFigA(fltBasePlaneFigA, fltBasePlaneFigA);
 
 		// 두 번째 평면은 첫 번째 평면의 법선 방향으로 `Length`만큼 떨어진 위치에 계산됩니다.
 		// The second plane is calculated at a distance of `Length` in the normal direction of the first plane.
@@ -70,16 +69,24 @@ int main()
 
 
 		// 3D 뷰에 3D figure 추가 // Add 3D figures to the 3D view
-		view3D[0].PushBackROI(&fltsBasePlaneFigA);
-		view3D[1].PushBackROI(&fltsSolidFigA);
+		CGUIView3DObject view3DObj;
+		view3DObj.SetTopologyType(ETopologyType3D_Wireframe);
+
+		CFLFigure* arrFigures[2] = { &fltBasePlaneFigA , &fltsSolidFigA };
+
+		for(int64_t i = 0; i < 2; ++i)
+		{
+			view3DObj.Set3DObject(CFL3DObject(arrFigures[i]));
+			view3D[i].PushObject(view3DObj);
+		}
 
 		// 추가한 3D 객체가 화면 안에 들어오도록 Zoom Fit // Perform Zoom Fit to ensure added 3D objects are within the view
 		view3D[1].ZoomFit();
 
 		// 3D 뷰어의 시점(카메라) 변경 // Change the viewpoint (camera) of the 3D viewer
-		view3D[1].GetCamera()->SetPosition(CFLPoint3<float>(18.48, -32.13, 7.31));
-		view3D[1].GetCamera()->SetDirection(CFLPoint3<float>(-0.38, 0.92, 0.06));
-		view3D[1].GetCamera()->SetDirectionUp(CFLPoint3<float>(0.03, -0.05, 1.00));
+		view3D[1].GetCamera()->SetPosition(CFLPoint3<float>(22.43, -30.54, 7.29));
+		view3D[1].GetCamera()->SetDirection(CFLPoint3<float>(-0.41, 0.90, 0.12));
+		view3D[1].GetCamera()->SetDirectionUp(CFLPoint3<float>(0.06, -0.10, 0.99));
 
 
 		// Console 출력 // Console output
