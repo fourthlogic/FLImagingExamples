@@ -60,18 +60,18 @@ int main()
 		CFLPoint3<double> flpFigA0(0, 0, 0);
 		CFLPoint3<double> flpFigA1(0, 10, 0);
 		CFLPoint3<double> flpFigA2(10, 0, 0);
-		CFLTriangle3<double> flqBasePlaneFigA(flpFigA0, flpFigA1, flpFigA2);
-		CFLTriangularSolid3<double> flqsBasePlaneFigA(flqBasePlaneFigA, flqBasePlaneFigA);
+		CFLTriangle3<double> fltBasePlaneFigA(flpFigA0, flpFigA1, flpFigA2);
+		CFLTriangularSolid3<double> fltsBasePlaneFigA(fltBasePlaneFigA, fltBasePlaneFigA);
 
 		// 두 번째 평면은 첫 번째 평면의 법선 방향으로 `Length`만큼 떨어진 위치에 계산됩니다.
 		// The second plane is calculated at a distance of `Length` in the normal direction of the first plane.
 		double f64LengthA = 20.;
-		CFLTriangularSolid3<double> flqsSolidFigA(flqBasePlaneFigA, f64LengthA);
+		CFLTriangularSolid3<double> fltsSolidFigA(fltBasePlaneFigA, f64LengthA);
 
 
 		// 3D 뷰에 3D figure 추가 // Add 3D figures to the 3D view
-		view3D[0].PushBackROI(&flqsBasePlaneFigA);
-		view3D[1].PushBackROI(&flqsSolidFigA);
+		view3D[0].PushBackROI(&fltsBasePlaneFigA);
+		view3D[1].PushBackROI(&fltsSolidFigA);
 
 		// 추가한 3D 객체가 화면 안에 들어오도록 Zoom Fit // Perform Zoom Fit to ensure added 3D objects are within the view
 		view3D[1].ZoomFit();
@@ -82,11 +82,10 @@ int main()
 		view3D[1].GetCamera()->SetDirectionUp(CFLPoint3<float>(0.03, -0.05, 1.00));
 
 
-
 		// Console 출력 // Console output
 		wprintf(L"<Figure A>\n");
-		wprintf(L"Base Plane : \n%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flqBasePlaneFigA).GetString());
-		wprintf(L"Solid Figure : \n%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&flqsSolidFigA).GetString());
+		wprintf(L"Base Plane : \n%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&fltBasePlaneFigA).GetString());
+		wprintf(L"Solid Figure : \n%s\n\n", CFigureUtilities::ConvertFigureObjectToString(&fltsSolidFigA).GetString());
 
 		// 3D 뷰들을 갱신 합니다. // Update the 3D views.
 		for(int32_t i = 0; i < 2; ++i)
