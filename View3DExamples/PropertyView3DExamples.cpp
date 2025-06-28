@@ -385,12 +385,12 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::ROIU
 				if(!pObj || !pObj->IsSelectionEnabled())
 					continue;
 
-				CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+				CFL3DObject* p3DObject = (CFL3DObject*)pObj->Get3DObject();
 
-				if(!pObjData)
+				if(!p3DObject)
 					continue;
 
-				roiUtil3D.PushBack3DObject(pObjData);
+				roiUtil3D.PushBack3DObject(p3DObject);
 			}
 
 			CFLArray<CFLArray<int32_t>> flfaResultROIIndexInclude, flfaResultROIIndexExclude;
@@ -427,9 +427,9 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::ROIU
 					if(!pObj || !pObj->IsSelectionEnabled())
 						continue;
 
-					CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+					CFL3DObject* p3DObject = (CFL3DObject*)pObj->Get3DObject();
 
-					if(!pObjData)
+					if(!p3DObject)
 						continue;
 
 					CFLArray<int32_t>& flaCollisionIndex = flfaResultROIIndexInclude.GetAt(i32IndexRes);
@@ -439,7 +439,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::ROIU
 						continue;
 
 					int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
-					CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)pObjData->GetVertexColors();
+					CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)p3DObject->GetVertexColors();
 
 					for(int32_t j = 0; j < i32CollisionIndexCount; ++j)
 						pFlaVertexColor->SetAt(flaCollisionIndex.GetAt(j), TPoint3<uint8_t>(255, 0, 0)); // RED
@@ -460,9 +460,9 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::ROIU
 					if(!pObj || !pObj->IsSelectionEnabled())
 						continue;
 
-					CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+					CFL3DObject* p3DObject = (CFL3DObject*)pObj->Get3DObject();
 
-					if(!pObjData)
+					if(!p3DObject)
 						continue;
 
 					CFLArray<int32_t>& flaCollisionIndex = flfaResultROIIndexExclude.GetAt(i32IndexRes);
@@ -472,7 +472,7 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::ROIU
 						continue;
 
 					int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
-					CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)pObjData->GetVertexColors();
+					CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)p3DObject->GetVertexColors();
 
 					for(int32_t j = 0; j < i32CollisionIndexCount; ++j)
 						pFlaVertexColor->SetAt(flaCollisionIndex.GetAt(j), TPoint3<uint8_t>(0, 0, 255)); // BLUE
@@ -538,9 +538,9 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::Frus
 				if(!pObj)
 					continue;
 
-				CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+				CFL3DObject* p3DObject = (CFL3DObject*)pObj->Get3DObject();
 
-				if(!pObjData)
+				if(!p3DObject)
 					continue;
 
 				bool bUpdate = false;
@@ -554,13 +554,13 @@ CPropertyItemButtonClickProcedure* FLImaging::GUI::CPropertyView3DExamples::Frus
 
 					CFLArray<int32_t> flaCollisionIndex;
 
-					if(pFrustumROI->Contains(pObjData->GetVertices(), flaCollisionIndex).IsFail())
+					if(pFrustumROI->Contains(p3DObject->GetVertices(), flaCollisionIndex).IsFail())
 						continue;
 
 					int32_t i32CollisionIndexCount = (int32_t)flaCollisionIndex.GetCount();
 					bUpdate |= i32CollisionIndexCount > 0 ? true : false;
 
-					CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)pObjData->GetVertexColors();
+					CFLArray<Base::TPoint3<uint8_t>>* pFlaVertexColor = (CFLArray<Base::TPoint3<uint8_t>>*)p3DObject->GetVertexColors();
 
 					for(int32_t j = 0; j < i32CollisionIndexCount; ++j)
 						pFlaVertexColor->SetAt(flaCollisionIndex.GetAt(j), TPoint3<uint8_t>(0, 255, 0)); // GREEN
@@ -858,13 +858,13 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectPLY(CGUIView3D*
 		// 버텍스, 컬러 등의 정보는 내부 데이터 객체인 CFL3DObject 안에 있음
 		// Retrieve the internal data pointer of the displayed CGUIView3DObject
 		// Information such as vertices, colors, etc., are inside the internal data object CFL3DObject
-		CFL3DObject* pObjData = (CFL3DObject*)pView3DObject->GetData();
+		CFL3DObject* p3DObject = (CFL3DObject*)pView3DObject->Get3DObject();
 
 		// CFL3DObject 객체의 Load() 함수 호출을 통해 PLY 파일을 로드하여 
 		// 객체에 버텍스, 컬러, 노멀, 페이스 등의 정보를 저장
 		// Load the PLY file through the Load() function of the CFL3DObject object
 		// and store information such as vertices, colors, normals, faces, etc., in the object
-		if((res = pObjData->Load(L"../../ExampleImages/View3DExamples/Car wheel example.ply")).IsFail())
+		if((res = p3DObject->Load(L"../../ExampleImages/View3DExamples/Car wheel example.ply")).IsFail())
 			break;
 
 		// CGUIView3DObject 객체의 내부 데이터 객체인 CFL3DObject 가 변경되었으므로 
@@ -1010,7 +1010,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectHeightMap(CGUIV
 		// 버텍스, 컬러 등의 정보는 내부 데이터 객체인 CFL3DObjectHeightMap 안에 있음
 		// Retrieve the internal data pointer of the displayed CGUIView3DObjectHeightMap
 		// Information such as vertices, colors, etc., are inside the internal data object CFL3DObjectHeightMap
-		CFL3DObjectHeightMap* pObjData = (CFL3DObjectHeightMap*)pObjHeightMap->GetData();
+		CFL3DObjectHeightMap* p3DObject = (CFL3DObjectHeightMap*)pObjHeightMap->Get3DObject();
 
 		// 높이 맵으로 사용할 이미지 객체 선언
 		// Declares an image object to be used as a height map.
@@ -1022,7 +1022,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectHeightMap(CGUIV
 
 		// 이미지 객체를 CFL3DObjectHeightMap 객체에 Assign
 		// Assigns the image object to a CFL3DObjectHeightMap object.
-		pObjData->Assign(fliHeightMap);
+		p3DObject->Assign(fliHeightMap);
 
 		// CGUIView3DObjectHeightMap 객체의 내부 데이터 객체인 CFL3DObjectHeightMap 이 변경되었으므로 
 		// 뷰에서도 변경 사항을 반영해서 디스플레이 하기 위해 업데이트 플래그 설정
@@ -1090,7 +1090,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectHeightMapAndTex
 		// 버텍스, 컬러 등의 정보는 내부 데이터 객체인 CFL3DObjectHeightMap 안에 있음
 		// Retrieve the internal data pointer of the displayed CGUIView3DObjectHeightMap
 		// Information such as vertices, colors, etc., are inside the internal data object CFL3DObjectHeightMap
-		CFL3DObjectHeightMap* pObjData = (CFL3DObjectHeightMap*)pObjHeightMap->GetData();
+		CFL3DObjectHeightMap* p3DObject = (CFL3DObjectHeightMap*)pObjHeightMap->Get3DObject();
 
 		// 높이 맵으로 사용할 이미지 객체 선언
 		// Declares an image object to be used as a height map.
@@ -1110,12 +1110,12 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectHeightMapAndTex
 
 		// 높이 맵 이미지 객체를 CFL3DObjectHeightMap 객체에 Assign
 		// Assigns the height map image object to a CFL3DObjectHeightMap object.
-		pObjData->Assign(fliHeightMap);
+		p3DObject->Assign(fliHeightMap);
 
 		// 텍스쳐 이미지 객체를 CFL3DObjectHeightMap 객체에 Assign
 		// Assigns the texture image object to a CFL3DObjectHeightMap object.
-		pObjData->SetTextureImage(fliTexture);
-		pObjData->ActivateVertexColorTexture(true);
+		p3DObject->SetTextureImage(fliTexture);
+		p3DObject->ActivateVertexColorTexture(true);
 
 		// CGUIView3DObjectHeightMap 객체의 내부 데이터 객체인 CFL3DObjectHeightMap 이 변경되었으므로 
 		// 뷰에서도 변경 사항을 반영해서 디스플레이 하기 위해 업데이트 플래그 설정
@@ -1248,8 +1248,8 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectUnselectableAxi
 			// Rotate the arrow using CFL3DObjectUtilities.
 			// Parameter order: start point vector -> end point vector -> object to rotate
 			// Rotates by the angle between the start and end vectors.
-			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(1, 0, 0), *(Foundation::CFL3DObject*)mesh1.GetData());
-			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(1, 0, 0), *(Foundation::CFL3DObject*)mesh2.GetData());
+			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(1, 0, 0), *(Foundation::CFL3DObject*)mesh1.Get3DObject());
+			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(1, 0, 0), *(Foundation::CFL3DObject*)mesh2.Get3DObject());
 
 			// CGUIView3DObject 객체를 뷰에 디스플레이
 			// Display the CGUIView3DObject in the view
@@ -1258,8 +1258,8 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectUnselectableAxi
 
 			// 다음 축(Y축)을 그리기 위해 클리어
 			// Clear the objects to prepare for drawing the next axis (Y axis).
-			((Foundation::CFL3DObject*)mesh1.GetData())->Clear();
-			((Foundation::CFL3DObject*)mesh2.GetData())->Clear();
+			((Foundation::CFL3DObject*)mesh1.Get3DObject())->Clear();
+			((Foundation::CFL3DObject*)mesh2.Get3DObject())->Clear();
 		}
 
 		// Y 축 // Axis y
@@ -1274,8 +1274,8 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectUnselectableAxi
 			// Rotate the arrow using CFL3DObjectUtilities.
 			// Parameter order: start point vector -> end point vector -> object to rotate
 			// Rotates by the angle between the start and end vectors.
-			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(0, 1, 0), *(Foundation::CFL3DObject*)mesh1.GetData());
-			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(0, 1, 0), *(Foundation::CFL3DObject*)mesh2.GetData());
+			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(0, 1, 0), *(Foundation::CFL3DObject*)mesh1.Get3DObject());
+			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(0, 1, 0), *(Foundation::CFL3DObject*)mesh2.Get3DObject());
 
 			// CGUIView3DObject 객체를 뷰에 디스플레이
 			// Display the CGUIView3DObject in the view
@@ -1284,8 +1284,8 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::PushObjectUnselectableAxi
 
 			// 다음 축(Z축)을 그리기 위해 클리어
 			// Clear the objects to prepare for drawing the next axis (Z axis).
-			((Foundation::CFL3DObject*)mesh1.GetData())->Clear();
-			((Foundation::CFL3DObject*)mesh2.GetData())->Clear();
+			((Foundation::CFL3DObject*)mesh1.Get3DObject())->Clear();
+			((Foundation::CFL3DObject*)mesh2.Get3DObject())->Clear();
 		}
 
 		// Z 축 // Axis z
@@ -1337,9 +1337,9 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::RotateObject(CGUIView3D* 
 			if(!pObj || !pObj->IsSelectionEnabled())
 				continue;
 
-			CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+			CFL3DObject* p3DObject = (CFL3DObject*)pObj->Get3DObject();
 
-			if(!pObjData)
+			if(!p3DObject)
 				continue;
 
 			// CFL3DObjectUtilities 를 사용하여 간편하게 회전
@@ -1348,7 +1348,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::RotateObject(CGUIView3D* 
 			// Rotate the object using CFL3DObjectUtilities.
 			// Parameter order: start point vector -> end point vector -> object to rotate
 			// Rotates by the angle between the start and end vectors.
-			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(1, 0, 0), *pObjData);
+			CFL3DObjectUtilities::Rotate(CFLGeometry3DVector<float>(0, 0, 1), CFLGeometry3DVector<float>(1, 0, 0), *p3DObject);
 
 			pObj->UpdateVertex();
 			pView3D->UpdateObject(i);
@@ -1389,9 +1389,9 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::RotateObjectWithPivot(CGU
 			if(!pObj || !pObj->IsSelectionEnabled())
 				continue;
 
-			CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+			CFL3DObject* p3DObject = (CFL3DObject*)pObj->Get3DObject();
 
-			if(!pObjData)
+			if(!p3DObject)
 				continue;
 
 			// 피봇을 중심으로 회전
@@ -1399,7 +1399,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::RotateObjectWithPivot(CGU
 			CFL3DObjectUtilities::Rotate(CFLPoint3<float>(0, 0, 30), // Pivot
 										 CFLGeometry3DQuaternion<float>(CFLGeometry3DVector<float>(0.f, 1.f, 0.f), 
 																		CFLGeometry3DVector<float>(0.f, 0.5f, 0.5f)), 
-										 *pObjData);
+										 *p3DObject);
 
 			pObj->UpdateVertex();
 			pView3D->UpdateObject(i);
@@ -1440,14 +1440,14 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::TranslateObject(CGUIView3
 			if(!pObj || !pObj->IsSelectionEnabled())
 				continue;
 
-			CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+			CFL3DObject* p3DObject = (CFL3DObject*)pObj->Get3DObject();
 
-			if(!pObjData)
+			if(!p3DObject)
 				continue;
 
 			// CFL3DObjectUtilities 를 사용하여 간편하게 이동
 			// Translate the object using CFL3DObjectUtilities.
-			CFL3DObjectUtilities::Translate(CFLGeometry3DVector<float>(4, 0, 0), *pObjData);
+			CFL3DObjectUtilities::Translate(CFLGeometry3DVector<float>(4, 0, 0), *p3DObject);
 
 			pObj->UpdateVertex();
 			pView3D->UpdateObject(i);
@@ -1488,14 +1488,14 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::ScaleObject(CGUIView3D* p
 			if(!pObj || !pObj->IsSelectionEnabled())
 				continue;
 
-			CFL3DObject* pObjData = (CFL3DObject*)pObj->GetData();
+			CFL3DObject* p3DObject = (CFL3DObject*)pObj->Get3DObject();
 
-			if(!pObjData)
+			if(!p3DObject)
 				continue;
 
 			// CFL3DObjectUtilities 를 사용하여 간편하게 스케일
 			// Scales the object using CFL3DObjectUtilities.
-			CFL3DObjectUtilities::Scale(CFLGeometry3DVector<float>(0, 0, 0), 2.f, *pObjData);
+			CFL3DObjectUtilities::Scale(CFLGeometry3DVector<float>(0, 0, 0), 2.f, *p3DObject);
 
 			pObj->UpdateVertex();
 			pView3D->UpdateObject(i);
@@ -1520,7 +1520,7 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::GetSphereObject(CGUIView3
 		if((cReturn = CGUIView3DUtils::CreateSphere(f32Radius, u32SliceCount, u32StackCount, sFaceData)).IsFail())
 			break;
 
-		CFL3DObject* pObjectData = (CFL3DObject*)meshSphere.GetData();
+		CFL3DObject* pObjectData = (CFL3DObject*)meshSphere.Get3DObject();
 		int32_t i32VertexCount = (int32_t)sFaceData.m_vctVertex.size();
 		int32_t i32IndexCount = (int32_t)sFaceData.m_vctIndices32.size();
 
@@ -1614,8 +1614,8 @@ const CResult FLImaging::GUI::CPropertyView3DExamples::GetArrowObject(CGUIView3D
 		if(cReturn.IsFail())
 			break;
 
-		CFL3DObject* pObjectData1 = (CFL3DObject*)mesh1.GetData();
-		CFL3DObject* pObjectData2 = (CFL3DObject*)mesh2.GetData();
+		CFL3DObject* pObjectData1 = (CFL3DObject*)mesh1.Get3DObject();
+		CFL3DObject* pObjectData2 = (CFL3DObject*)mesh2.Get3DObject();
 
 		int32_t i32VertexCount1 = (int32_t)sFaceData1.m_vctVertex.size();
 		int32_t i32VertexCount2 = (int32_t)sFaceData2.m_vctVertex.size();
