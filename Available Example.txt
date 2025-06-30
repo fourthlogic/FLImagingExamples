@@ -25,6 +25,11 @@
       - HandEyeCalibrator3D
         - The example that estimating the matrix between the camera and the end effector.
         - 카메라와 엔드 이펙터의 관계 행렬을 추정하는 알고리즘 예제.
+
+    - [Point Cloud Based Hand Eye Calibrator 3D]
+      - PointCloudBasedHandEyeCalibrator3D
+        - The example that estimating the matrix between the camera and the end effector.
+        - 카메라와 엔드 이펙터의 관계 행렬을 추정하는 알고리즘 예제.
         
   - [Feature Extraction]
     
