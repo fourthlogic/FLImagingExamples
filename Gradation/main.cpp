@@ -111,8 +111,8 @@ int main()
 		CFLFigureArray flfaDrawVector;
 		flfaDrawVector.Load(L"../../ExampleImages/Gradation/DrawVector.fig");
 
-		CFLRect<double> fllRect1(fllVector.flpPoints[0] - 15, fllVector.flpPoints[0] + 15);
-		CFLRect<double> fllRect2(fllVector.flpPoints[1] - 15, fllVector.flpPoints[1] + 15);
+		CFLRect<double> fllRect1(fllVector.flpPoints[0] - 12, fllVector.flpPoints[0] + 12);
+		CFLRect<double> fllRect2(fllVector.flpPoints[1] - 12, fllVector.flpPoints[1] + 12);
 
 		if(IsFail(res = layer1.DrawFigureImage(&fllRect1, BLUE, 5, BLUE, EGUIViewImagePenStyle_Solid)))
 		{
@@ -140,13 +140,13 @@ int main()
 		}
 
 		// text를 출력합니다. // Display text.
-		if(IsFail(res = layer1.DrawTextImage(&fllVector.flpPoints[0], L"Start Value(255, 0, 0)/Start Alpha(0, 0, 0)", YELLOW, BLACK, 15, false, EGUIViewImageTextAlignment_RIGHT)))
+		if(IsFail(res = layer1.DrawTextImage(&fllVector.flpPoints[0], L"Start Value(255, 0, 0)/Start Alpha(0, 0, 0)", YELLOW, BLACK, 12, false, 0, EGUIViewImageTextAlignment_RIGHT)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = layer1.DrawTextImage(&fllVector.flpPoints[1], L"End(0, 0, 255)/Start Alpha(0.1, 0.6, 0.9)", YELLOW, BLACK, 15)))
+		if(IsFail(res = layer1.DrawTextImage(&fllVector.flpPoints[1], L"End Value(0, 0, 255)/End Alpha(0.1, 0.6, 0.9)", YELLOW, BLACK, 12)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
