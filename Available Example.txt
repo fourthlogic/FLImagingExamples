@@ -691,12 +691,6 @@
       - Example of using ROIUtilities3D. This example demonstrates setting the ROI area for a 3D object and obtaining the parts included in the ROI.
       - ROIUtilities3D 사용에 관한 예제. 3D 객체에 대해 ROI 영역을 설정하고, ROI 에 포함되는 부분을 얻어 오는 예제입니다.
       
-  - [Controls]
-
-    - TreeCtrlExample
-      - The example of using tree control(CGUITreeCtrl). Available in Visual Studio 2015 (vc14.0) later versions.
-      - 트리 컨트롤(CGUITreeCtrl) 사용에 관한 예제. Visual Studio 2015 (vc14.0) 이상의 버전에서 실행 가능합니다.
-
   - [Figure]
   
     - ArrayOperation
