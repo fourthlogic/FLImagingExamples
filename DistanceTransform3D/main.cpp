@@ -1,6 +1,6 @@
 ﻿#include <cstdio>
 #include <FLImaging.h>
-#include "../CommomHeader/ErrorPrint.h"
+#include "../CommonHeader/ErrorPrint.h"
 
 const CResult DrawResult(GUI::CGUIView3DWrap* pView3D, const Base::CFLArray<Base::TPoint3<float>>* pFlaPlyData, Base::CFLArray<Base::TPoint3<float>>& arrResult, Base::CFLString<wchar_t> strDirection)
 {

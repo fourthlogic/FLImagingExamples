@@ -1,8 +1,8 @@
 ﻿#include <cstdio>
 
 #include <FLImaging.h>
-#include "../CommomHeader/ErrorPrint.h"
-#include "../CommomHeader/ErrorMessageBox.h"
+#include "../CommonHeader/ErrorPrint.h"
+#include "../CommonHeader/ErrorMessageBox.h"
 
 
 int main()

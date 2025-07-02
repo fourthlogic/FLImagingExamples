@@ -1,5 +1,5 @@
 ﻿#include <cstdio>
-#include "../CommomHeader/ErrorPrint.h"
+#include "../CommonHeader/ErrorPrint.h"
 
 #include <FLImaging.h>
 

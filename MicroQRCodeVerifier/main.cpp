@@ -1,53 +1,53 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 
 #include <FLImaging.h>
-#include "../CommomHeader/ErrorPrint.h"
+#include "../CommonHeader/ErrorPrint.h"
 
 
 int main()
 {
-	// ÀÌ¹ÌÁö °´Ã¼ ¼±¾ğ // Declare image object
+	// ì´ë¯¸ì§€ ê°ì²´ ì„ ì–¸ // Declare image object
 	CFLImage fliImage;
 
-	// ÀÌ¹ÌÁö ºä ¼±¾ğ // Declare image view
+	// ì´ë¯¸ì§€ ë·° ì„ ì–¸ // Declare image view
 	CGUIViewImageWrap viewImage;
 
 	do
 	{
 		CResult res = EResult_UnknownError;
-		// ÀÌ¹ÌÁö ·Îµå // Load image
+		// ì´ë¯¸ì§€ ë¡œë“œ // Load image
 		if(IsFail(res = fliImage.Load(L"../../ExampleImages/MicroQRCode/FLImaging.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä »ı¼º // Create image view
+		// ì´ë¯¸ì§€ ë·° ìƒì„± // Create image view
 		if(IsFail(res = viewImage.Create(400, 0, 1424, 768)))
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
 			break;
 		}
 
-		// ÀÌ¹ÌÁö ºä¿¡ ÀÌ¹ÌÁö¸¦ µğ½ºÇÃ·¹ÀÌ // Display an image in an image view
+		// ì´ë¯¸ì§€ ë·°ì— ì´ë¯¸ì§€ë¥¼ ë””ìŠ¤í”Œë ˆì´ // Display an image in an image view
 		if(IsFail(res = viewImage.SetImagePtr(&fliImage)))
 		{
 			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
-		// MicroQR Code Verifier °´Ã¼ »ı¼º // Create MicroQR Code Verifier object
+		// MicroQR Code Verifier ê°ì²´ ìƒì„± // Create MicroQR Code Verifier object
 		CMicroQRCodeVerifier qrCodeVerifier;
 
-		// ROI ¹üÀ§ ¼³Á¤
+		// ROI ë²”ìœ„ ì„¤ì •
 		CFLRect<int32_t> flrROI(112, 349, 217, 454);
 
-		// Ã³¸®ÇÒ ÀÌ¹ÌÁö ¼³Á¤
+		// ì²˜ë¦¬í•  ì´ë¯¸ì§€ ì„¤ì •
 		qrCodeVerifier.SetSourceImage(fliImage);
-		// Ã³¸®ÇÒ ROI ¼³Á¤
+		// ì²˜ë¦¬í•  ROI ì„¤ì •
 		qrCodeVerifier.SetSourceROI(flrROI);
 
-		// ¾Õ¼­ ¼³Á¤µÈ ÆÄ¶ó¹ÌÅÍ ´ë·Î ¾Ë°í¸®Áò ¼öÇà // Execute algorithm according to previously set parameters
+		// ì•ì„œ ì„¤ì •ëœ íŒŒë¼ë¯¸í„° ëŒ€ë¡œ ì•Œê³ ë¦¬ì¦˜ ìˆ˜í–‰ // Execute algorithm according to previously set parameters
 
 		if(IsFail(res = qrCodeVerifier.Execute()))
 		{
@@ -56,82 +56,82 @@ int main()
 			break;
 		}
 
-		// È­¸é¿¡ Ãâ·ÂÇÏ±â À§ÇØ Image View¿¡¼­ ·¹ÀÌ¾î 0¹øÀ» ¾ò¾î¿È // Obtain layer 0 number from image view for display
-		// ÀÌ °´Ã¼´Â ÀÌ¹ÌÁö ºä¿¡ ¼ÓÇØÀÖ±â ¶§¹®¿¡ µû·Î ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ¾øÀ½ // This object belongs to an image view and does not need to be released separately
+		// í™”ë©´ì— ì¶œë ¥í•˜ê¸° ìœ„í•´ Image Viewì—ì„œ ë ˆì´ì–´ 0ë²ˆì„ ì–»ì–´ì˜´ // Obtain layer 0 number from image view for display
+		// ì´ ê°ì²´ëŠ” ì´ë¯¸ì§€ ë·°ì— ì†í•´ìˆê¸° ë•Œë¬¸ì— ë”°ë¡œ í•´ì œí•  í•„ìš”ê°€ ì—†ìŒ // This object belongs to an image view and does not need to be released separately
 		CGUIViewImageLayerWrap layer = viewImage.GetLayer(0);
 
-		// ±âÁ¸¿¡ Layer¿¡ ±×·ÁÁø µµÇüµéÀ» »èÁ¦ // Clear the figures drawn on the existing layer
+		// ê¸°ì¡´ì— Layerì— ê·¸ë ¤ì§„ ë„í˜•ë“¤ì„ ì‚­ì œ // Clear the figures drawn on the existing layer
 		layer.Clear();
 
 
-		// ROI¿µ¿ªÀÌ ¾îµğÀÎÁö ¾Ë±â À§ÇØ µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù // Display to find out where ROI is
-		// FLImagingÀÇ Figure °´Ã¼µéÀº ¾î¶² µµÇü¸ğ¾çÀÌµç »ó°ü¾øÀÌ ÇÏ³ªÀÇ ÇÔ¼ö·Î µğ½ºÇÃ·¹ÀÌ°¡ °¡´É // FLimaging's Figure objects can be displayed as a function regardless of the shape
-		// ¾Æ·¡ ÇÔ¼ö DrawFigureImage´Â ImageÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â Figure¸¦ Drawing ÇÑ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç // The function DrawFigureImage below means drawing a picture based on the image coordinates
-		// ¸Ç ¸¶Áö¸· µÎ°³ÀÇ ÆÄ¶ó¹ÌÅÍ´Â ºÒÅõ¸íµµ °ªÀÌ°í 1ÀÏ°æ¿ì ºÒÅõ¸í, 0ÀÏ°æ¿ì ¿ÏÀü Åõ¸íÀ» ÀÇ¹ÌÇÑ´Ù. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
-		// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> Figure °´Ã¼ -> ¼± »ö -> ¼± µÎ²² -> ¸é »ö -> Ææ ½ºÅ¸ÀÏ -> ¼± ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
+		// ROIì˜ì—­ì´ ì–´ë””ì¸ì§€ ì•Œê¸° ìœ„í•´ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤ // Display to find out where ROI is
+		// FLImagingì˜ Figure ê°ì²´ë“¤ì€ ì–´ë–¤ ë„í˜•ëª¨ì–‘ì´ë“  ìƒê´€ì—†ì´ í•˜ë‚˜ì˜ í•¨ìˆ˜ë¡œ ë””ìŠ¤í”Œë ˆì´ê°€ ê°€ëŠ¥ // FLimaging's Figure objects can be displayed as a function regardless of the shape
+		// ì•„ë˜ í•¨ìˆ˜ DrawFigureImageëŠ” Imageì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Figureë¥¼ Drawing í•œë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©° // The function DrawFigureImage below means drawing a picture based on the image coordinates
+		// ë§¨ ë§ˆì§€ë§‰ ë‘ê°œì˜ íŒŒë¼ë¯¸í„°ëŠ” ë¶ˆíˆ¬ëª…ë„ ê°’ì´ê³  1ì¼ê²½ìš° ë¶ˆíˆ¬ëª…, 0ì¼ê²½ìš° ì™„ì „ íˆ¬ëª…ì„ ì˜ë¯¸í•œë‹¤. // The last two parameters are opacity values, which mean opacity for 1 day and complete transparency for 0 day.
+		// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> Figure ê°ì²´ -> ì„  ìƒ‰ -> ì„  ë‘ê»˜ -> ë©´ ìƒ‰ -> íœ ìŠ¤íƒ€ì¼ -> ì„  ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) // Parameter order: Layer -> Figure object -> Line color -> Line thickness -> Face color -> Pen style -> Line alpha value (opacity) -> Area alpha value (opacity)
 		if(IsFail(res = layer.DrawFigureImage(&flrROI, BLUE, 3)))
 		{
 			ErrorPrint(res, "Failed to draw figures objects on the image view.\n");
 			break;
 		}
 
-		// MicroQR Code Verifier °á°ú °³¼ö¸¦ ¾ò´Â´Ù.
+		// MicroQR Code Verifier ê²°ê³¼ ê°œìˆ˜ë¥¼ ì–»ëŠ”ë‹¤.
 		int64_t i64Results = qrCodeVerifier.GetResultCount();
 
 		for(int64_t i = 0; i < i64Results; ++i)
 		{
 
-			// MicroQR Code Verifier °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FLQuadD ¼±¾ğ
+			// MicroQR Code Verifier ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FLQuadD ì„ ì–¸
 			CFLQuad<double> flqdRegion;
 
-			// MicroQR Code Verifier °á°úµé Áß Data Region À» ¾ò¾î¿È
+			// MicroQR Code Verifier ê²°ê³¼ë“¤ ì¤‘ Data Region ì„ ì–»ì–´ì˜´
 			if(IsFail(res = qrCodeVerifier.GetResultDataRegion(i, flqdRegion)))
 			{
 				ErrorPrint(res, "Failed to get data region from the MicroQR code decoder object.");
 				continue;
 			}
 
-			// MicroQR Code ÀÇ ¿µ¿ªÀ» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù.
+			// MicroQR Code ì˜ ì˜ì—­ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤.
 			if(IsFail(res = layer.DrawFigureImage(&flqdRegion, LIME, 2)))
 			{
 				ErrorPrint(res, "Failed to draw figure object on the image view.\n");
 				continue;
 			}
 
-			// MicroQR Code Verifier °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FigureArray ¼±¾ğ
+			// MicroQR Code Verifier ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FigureArray ì„ ì–¸
 			CFLFigureArray flfaGridRegion;
 
-			// MicroQR Code Verifier °á°úµé Áß Grid Region À» ¾ò¾î¿È
+			// MicroQR Code Verifier ê²°ê³¼ë“¤ ì¤‘ Grid Region ì„ ì–»ì–´ì˜´
 			if(IsFail(res = qrCodeVerifier.GetResultGridRegion(i, flfaGridRegion)))
 			{
 				ErrorPrint(res, "Failed to get grid region from the MicroQR code decoder object.");
 				continue;
 			}
 
-			// MicroQR Code ÀÇ Grid Region À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù.
+			// MicroQR Code ì˜ Grid Region ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤.
 			if(IsFail(res = layer.DrawFigureImage(&flfaGridRegion, LIME, 2)))
 			{
 				ErrorPrint(res, "Failed to draw figure objects on the image view.\n");
 				continue;
 			}
 
-			// MicroQR Code Verifier °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FLFigureArray ¼±¾ğ
+			// MicroQR Code Verifier ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FLFigureArray ì„ ì–¸
 			CFLFigureArray flfaFinderPattern;
 
-			// MicroQR Code Verifier °á°úµé Áß Finder Pattern À» ¾ò¾î¿È
+			// MicroQR Code Verifier ê²°ê³¼ë“¤ ì¤‘ Finder Pattern ì„ ì–»ì–´ì˜´
 			qrCodeVerifier.GetResultFinderPattern(i, flfaFinderPattern);
 
-			// MicroQR Code ÀÇ Finder Pattern À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù.
+			// MicroQR Code ì˜ Finder Pattern ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤.
 			if(IsFail(res = layer.DrawFigureImage(&flfaFinderPattern, CYAN, 5)))
 			{
 				ErrorPrint(res, "Failed to draw figure object on the image view.\n");
 				continue;
 			}
 
-			// MicroQR Code Verifier °á°ú¸¦ ¾ò¾î¿À±â À§ÇØ FLStringW ¼±¾ğ
+			// MicroQR Code Verifier ê²°ê³¼ë¥¼ ì–»ì–´ì˜¤ê¸° ìœ„í•´ FLStringW ì„ ì–¸
 			CFLString<wchar_t> flstrDecoded;
 
-			// MicroQR Code Verifier °á°úµé Áß Decoded String À» ¾ò¾î¿È
+			// MicroQR Code Verifier ê²°ê³¼ë“¤ ì¤‘ Decoded String ì„ ì–»ì–´ì˜´
 			if(IsFail(res = qrCodeVerifier.GetResultDecodedString(i, flstrDecoded)))
 			{
 				ErrorPrint(res, "Failed to get decoded string from the MicroQR code decoder object.");
@@ -187,11 +187,11 @@ int main()
 			wprintf(L"%s", flsAdditionalData.GetString());
 			wprintf(L", %s\n", flstrDecoded.GetString());
 
-			// Decoded String À» µğ½ºÇÃ·¹ÀÌ ÇÑ´Ù.
-			// ¾Æ·¡ ÇÔ¼ö DrawTextCanvas ´Â ScreenÁÂÇ¥¸¦ ±âÁØÀ¸·Î ÇÏ´Â StringÀ» Drawing ÇÑ´Ù. // The function DrawTextCanvas below draws a String based on the screen coordinates.
-			// »ö»ó ÆÄ¶ó¹ÌÅÍ¸¦ EGUIViewImageLayerTransparencyColor À¸·Î ³Ö¾îÁÖ°ÔµÇ¸é ¹è°æ»öÀ¸·Î Ã³¸®ÇÔÀ¸·Î ºÒÅõ¸íµµ¸¦ 0À¸·Î ÇÑ°Í°ú °°Àº È¿°ú°¡ ÀÖ´Ù. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
-			// ÆÄ¶ó¹ÌÅÍ ¼ø¼­ : ·¹ÀÌ¾î -> ±âÁØ ÁÂÇ¥ Figure °´Ã¼ -> ¹®ÀÚ¿­ -> ÆùÆ® »ö -> ¸é »ö -> ÆùÆ® Å©±â -> ½ÇÁ¦ Å©±â À¯¹« -> °¢µµ ->
-			//                 ¾ó¶óÀÎ -> ÆùÆ® ÀÌ¸§ -> ÆùÆ® ¾ËÆÄ°ª(ºÒÅõ¸íµµ) -> ¸é ¾ËÆÄ°ª (ºÒÅõ¸íµµ) -> ÆùÆ® µÎ²² -> ÆùÆ® ÀÌÅÚ¸¯
+			// Decoded String ì„ ë””ìŠ¤í”Œë ˆì´ í•œë‹¤.
+			// ì•„ë˜ í•¨ìˆ˜ DrawTextCanvas ëŠ” Screenì¢Œí‘œë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ëŠ” Stringì„ Drawing í•œë‹¤. // The function DrawTextCanvas below draws a String based on the screen coordinates.
+			// ìƒ‰ìƒ íŒŒë¼ë¯¸í„°ë¥¼ EGUIViewImageLayerTransparencyColor ìœ¼ë¡œ ë„£ì–´ì£¼ê²Œë˜ë©´ ë°°ê²½ìƒ‰ìœ¼ë¡œ ì²˜ë¦¬í•¨ìœ¼ë¡œ ë¶ˆíˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ í•œê²ƒê³¼ ê°™ì€ íš¨ê³¼ê°€ ìˆë‹¤. // If the color parameter is added as EGUIViewImageLayerTransparencyColor, it has the same effect as setting the opacity to 0 by processing it as a background color.
+			// íŒŒë¼ë¯¸í„° ìˆœì„œ : ë ˆì´ì–´ -> ê¸°ì¤€ ì¢Œí‘œ Figure ê°ì²´ -> ë¬¸ìì—´ -> í°íŠ¸ ìƒ‰ -> ë©´ ìƒ‰ -> í°íŠ¸ í¬ê¸° -> ì‹¤ì œ í¬ê¸° ìœ ë¬´ -> ê°ë„ ->
+			//                 ì–¼ë¼ì¸ -> í°íŠ¸ ì´ë¦„ -> í°íŠ¸ ì•ŒíŒŒê°’(ë¶ˆíˆ¬ëª…ë„) -> ë©´ ì•ŒíŒŒê°’ (ë¶ˆíˆ¬ëª…ë„) -> í°íŠ¸ ë‘ê»˜ -> í°íŠ¸ ì´í…”ë¦­
 			// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
 			//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
 			if(IsFail(res = layer.DrawTextImage(&flqdRegion.flpPoints[0], flsAdditionalData, YELLOW, BLACK, 20, false, 0., EGUIViewImageTextAlignment_LEFT_BOTTOM)))
@@ -207,7 +207,7 @@ int main()
 			}
 
 
-			// Micro QR Code Verifier °á°úµé Áß ÀÎ¼â Ç°ÁúÀ» ¾ò¾î¿È // Get print quality among Micro QR Code Verifier results
+			// Micro QR Code Verifier ê²°ê³¼ë“¤ ì¤‘ ì¸ì‡„ í’ˆì§ˆì„ ì–»ì–´ì˜´ // Get print quality among Micro QR Code Verifier results
 			CMicroQRCodePrintQuality_ISOIEC_15415 printQuality;
 
 			if(IsFail(res = qrCodeVerifier.GetResultPrintQuality_ISOIEC_15415(i, printQuality)))
@@ -216,7 +216,7 @@ int main()
 				continue;
 			}
 
-			// µî±Ş °è»êÀÌ Ã³¸®µÇ¾ú´Â Áö È®ÀÎ
+			// ë“±ê¸‰ ê³„ì‚°ì´ ì²˜ë¦¬ë˜ì—ˆëŠ” ì§€ í™•ì¸
 			if(printQuality.IsGraded())
 			{
 				CFLString<wchar_t> flsGrade;
@@ -235,10 +235,10 @@ int main()
 			}
 		}
 
-		// ÀÌ¹ÌÁö ºä¸¦ °»½Å ÇÕ´Ï´Ù. // Update image view
+		// ì´ë¯¸ì§€ ë·°ë¥¼ ê°±ì‹  í•©ë‹ˆë‹¤. // Update image view
 		viewImage.Invalidate(true);
 
-		// ÀÌ¹ÌÁö ºä°¡ Á¾·áµÉ ¶§ ±îÁö ±â´Ù¸² // Wait for the image view to close
+		// ì´ë¯¸ì§€ ë·°ê°€ ì¢…ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦¼ // Wait for the image view to close
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}

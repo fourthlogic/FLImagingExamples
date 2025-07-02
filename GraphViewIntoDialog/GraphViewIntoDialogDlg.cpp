@@ -8,7 +8,7 @@
 #include "afxdialogex.h"
 #include <time.h>
 
-#include "../CommomHeader/ErrorMessageBox.h"
+#include "../CommonHeader/ErrorMessageBox.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

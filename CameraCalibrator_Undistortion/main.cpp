@@ -1,7 +1,7 @@
 ﻿#include <cstdio>
 
 #include <FLImaging.h>
-#include "../CommomHeader/ErrorPrint.h"
+#include "../CommonHeader/ErrorPrint.h"
 
 bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fliDestinationImage, CGUIViewImageWrap& viewImageSource, CGUIViewImageWrap& viewImageDestination)
 {

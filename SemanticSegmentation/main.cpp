@@ -1,7 +1,7 @@
 ﻿#include <cstdio>
 
 #include <FLImaging.h>
-#include "../CommomHeader/ErrorPrint.h"
+#include "../CommonHeader/ErrorPrint.h"
 #include <cfloat>
 #include <cmath>
 #include <iostream>

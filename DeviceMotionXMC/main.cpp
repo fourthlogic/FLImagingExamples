@@ -2,7 +2,7 @@
 
 #include <FLImaging.h>
 
-#include "../CommomHeader/ErrorPrint.h" 
+#include "../CommonHeader/ErrorPrint.h" 
 
 // 모션 타입 enum // motion type enum
 enum EMotion

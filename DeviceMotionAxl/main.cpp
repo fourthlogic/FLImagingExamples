@@ -1,7 +1,7 @@
 ﻿#include <cstdio>
 
 #include <FLImaging.h>
-#include "../CommomHeader/ErrorPrint.h" 
+#include "../CommonHeader/ErrorPrint.h" 
 
 // 모션 기능 enum // motion feature enum
 enum EMotionFeature

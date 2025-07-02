@@ -1,6 +1,6 @@
 ﻿#include <cstdio>
 #include <FLImaging.h>
-#include "../CommomHeader/ErrorPrint.h"
+#include "../CommonHeader/ErrorPrint.h"
 
 int main() {
 	// 3D 객체 선언 // Declare 3D object

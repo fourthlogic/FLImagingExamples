@@ -1,7 +1,7 @@
 ﻿#include <cstdio>
 
 #include <FLImaging.h>
-#include "../CommomHeader/ErrorPrint.h" 
+#include "../CommonHeader/ErrorPrint.h" 
 
 
 // 카메라에서 이미지 취득 이벤트를 받기 위해 CDeviceEventImageBase 를 상속 받아서 구현
