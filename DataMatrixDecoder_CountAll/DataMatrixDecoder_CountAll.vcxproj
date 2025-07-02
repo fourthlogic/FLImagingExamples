@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A09C8160-CBA6-4F2E-95FC-C901C89780A7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>DataMatrix_Decoder_CountAll</RootNamespace>
+    <RootNamespace>DataMatrixDecoder_CountAll</RootNamespace>
     <ProjectName>DataMatrixDecoder_CountAll</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

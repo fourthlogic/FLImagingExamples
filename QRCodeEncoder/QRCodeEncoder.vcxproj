@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{32AA30EC-408D-431C-BC81-FDF65330102B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>QRCode_Encoder</RootNamespace>
+    <RootNamespace>QRCodeEncoder</RootNamespace>
     <ProjectName>QRCodeEncoder</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

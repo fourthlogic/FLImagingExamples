@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7F822CE2-EB5F-4DC2-9895-006E13CB11A4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>MicroQRCode_Decoder</RootNamespace>
+    <RootNamespace>MicroQRCodeDecoder</RootNamespace>
     <ProjectName>MicroQRCodeDecoder</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
