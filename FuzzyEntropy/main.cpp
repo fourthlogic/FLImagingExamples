@@ -47,13 +47,9 @@ int main()
 		// Source ROI 설정 // Set the Source ROI
 		fuzzyentropy.SetSourceROI(flrROI);
 
-		// Parameter A, C 생성 (A: 0, C: 255) // Create the parameter A and C (A: 0, C: 255)
-		const Base::CMultiVar<double> flmvParameterA = Base::CMultiVar<double>(0.);
-		const Base::CMultiVar<double> flmvParameterC = Base::CMultiVar<double>(255.);
-
 		// Parameter 설정(A: 0, C: 255) // Set the parameter(A: 0, C: 255)
-		fuzzyentropy.SetParameterA(flmvParameterA);
-		fuzzyentropy.SetParameterC(flmvParameterC);
+		fuzzyentropy.SetParameterA(0);
+		fuzzyentropy.SetParameterC(255);
 
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = fuzzyentropy.Execute()).IsFail())
@@ -66,13 +62,6 @@ int main()
 		CMultiVar<double> mvFuzzyEntropy;
 
 		// 이미지 전체(혹은 ROI 영역) 픽셀값의 Fuzzy Entropy를 구하는 함수 // Function that calculate the fuzzy entropy of the image(or the region of ROI)
-		if((res = fuzzyentropy.GetResultFuzzyEntropy(mvFuzzyEntropy)).IsFail())
-		{
-			ErrorPrint(res, "Failed to process.");
-			break;
-		}
-
-		// 이미지 전체(혹은 ROI 영역) 픽셀값의 최소값을 구하는 함수 // Function that calculate the min of the pixel value of the image(or the region of ROI)
 		if((res = fuzzyentropy.GetResultFuzzyEntropy(mvFuzzyEntropy)).IsFail())
 		{
 			ErrorPrint(res, "Failed to process.");
