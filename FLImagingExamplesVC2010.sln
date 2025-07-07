@@ -1556,7 +1556,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mish", "Mish", "{42231D70-4
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationMish", "OperationMish\OperationMish.vcxproj", "{6492FEBD-10D8-4A71-9BC6-BB37EFBC3889}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ColorAdjustment", "Color Adjustment\ColorAdjustment.vcxproj", "{35A460F4-6B98-446A-8B35-7AAA73FE4B09}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ColorAdjustment", "ColorAdjustment\ColorAdjustment.vcxproj", "{35A460F4-6B98-446A-8B35-7AAA73FE4B09}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CensusTransform", "CensusTransform\CensusTransform.vcxproj", "{BBC9189F-FCFE-426E-AF0D-6074406F65EA}"
 EndProject

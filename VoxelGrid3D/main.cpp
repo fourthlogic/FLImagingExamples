@@ -63,7 +63,7 @@ int main()
 		voxelGrid3D.SetSamplingMethod(CVoxelGrid3D::ESamplingMethod_Mean);
 
 		// 점 색상 포함 여부 설정 // Set whether the color of the vertex is included
-		voxelGrid3D.EnableIncludeVertexColor(true);
+		voxelGrid3D.EnableIncludingVertexColor(true);
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if((eResult = voxelGrid3D.Execute()).IsFail())
