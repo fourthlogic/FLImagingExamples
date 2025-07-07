@@ -144,6 +144,11 @@
 
   - [Utilities]
 
+    - [Depth Map To Point Cloud Converter 3D]
+      - DepthMapToPointCloudConverter3D
+        - An example of an algorithm that create a point cloud with a depth map image and an camera intrinsic parameter.
+        - 깊이맵 이미지와 카메라 내부 행렬로 포인트 클라우드를 생성하는 알고리즘 예제.
+
     - [Projection]
       - Projection 3D
         - An example of an algorithm that projects a 3D object into an image.
@@ -153,6 +158,11 @@
       - Residual Evaluator3D
         - The example of an algorithm that measures the residuals of two given objects.
         - 주어진 두 오브젝트의 잔차를 측정하는 알고리즘 예제.
+
+    - [Point Cloud To Depth Map Converter 3D]
+      - PointCloudToDepthMapConverter3D
+        - An example of an algorithm that generate depth images using a given point cloud and internal camera matrix.
+        - 포인트 클라우드 및 카메라 내부 행렬을 입력 받아 깊이 이미지를 생성하는 알고리즘 예제.
 
     - [Scanned Point Cloud Generator]
       - Scanned Point Cloud Generator 3D
