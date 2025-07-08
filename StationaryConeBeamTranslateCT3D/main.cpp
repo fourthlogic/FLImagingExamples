@@ -58,7 +58,7 @@ int main()
 		}
 
 		// Destination 이미지 뷰 생성 // Create the destination image view
-		if((res = viewImageDstSino.Create(100, 448, 548, 996)).IsFail())
+		if((res = viewImageDstSino.Create(100, 448, 548, 896)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
@@ -72,7 +72,7 @@ int main()
 		}
 
 		// Destination 3D 이미지 뷰 생성 // Create the destination 3D image view
-		if((res = view3DDst.Create(548, 448, 996, 996)).IsFail())
+		if((res = view3DDst.Create(548, 448, 996, 896)).IsFail())
 		{
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
@@ -82,8 +82,6 @@ int main()
 
 		// StationaryConeBeamTranslateCT3D 객체 생성 // Create StationaryConeBeamTranslateCT3D object
 		CStationaryConeBeamTranslateCT3D algStationaryConeBeamTranslateCT3D;
-
-
 
 		// Source 이미지 설정 // Set the source image
 		if((res = algStationaryConeBeamTranslateCT3D.SetSourceImage(&fliSrcImage)).IsFail()) break;
@@ -126,7 +124,7 @@ int main()
 			break;
 		}
 
-		// 3D 이미지 뷰에 Height Map (Dst Image) 이미지를 디스플레이
+		// 3D 이미지 뷰에 Destination Object 를 디스플레이
 		CFL3DObject* pFloDestinationAlg = dynamic_cast<CFL3DObject*>(algStationaryConeBeamTranslateCT3D.GetDestinationObject());
 		if((res = view3DDst.PushObject(*pFloDestinationAlg)).IsFail())
 		{
