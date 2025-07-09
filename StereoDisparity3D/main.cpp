@@ -130,15 +130,15 @@ int main()
 		// Disparity 범위 설정 // Set the range of disparity
 		disparity.SetMaximumDisparity(0);
 		// Matched Block 크기 설정 // Set the matched block size
-		disparity.SetMatchBlockSize(5);
+		disparity.SetMatchBlockSize(3);
 		// 좌우 간 최대 허용 차이 값 설정 // Set maximum allowed difference value between left and right
 		disparity.SetMaximumDifference(30);
 		// 고유비 값 설정 // Set the uniqueness ratio value
 		disparity.SetUniquenessRatio(0);
 		// P1 값 설정 // Set P1 Value
-		disparity.SetP1(300);
+		disparity.SetP1(200);
 		// P2 값 설정 // Set P2 Value
-		disparity.SetP2(2000);
+		disparity.SetP2(800);
 		// Median Morphology 커널 사이즈 설정 // Set the median morphology kernel size
 		disparity.SetFilterSize(5);
 
