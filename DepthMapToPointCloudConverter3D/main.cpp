@@ -69,7 +69,7 @@ int main()
 		DepthMapToPointCloudConverter3D.EnableIncludingNormalVector(false);
 
 		// Z축 방향 설정 // Set z-axis direction.
-		DepthMapToPointCloudConverter3D.SetDirectionType(EDirectionType::EDirectionType_Increment);
+		DepthMapToPointCloudConverter3D.SetDirectionType(EDirectionType_Increment);
 
 		// Destination 3D Object 설정 // Set the destination 3D object
 		DepthMapToPointCloudConverter3D.SetDestinationObject(floDestination);

@@ -58,7 +58,7 @@ int main()
 		PointCloudToDepthMapConverter3D.SetDistortionCoefficient(flaDistortionCoefficient);
 
 		// Z축 방향 설정 // Set z-axis direction.
-		PointCloudToDepthMapConverter3D.SetDirectionType(EDirectionType::EDirectionType_Increment);
+		PointCloudToDepthMapConverter3D.SetDirectionType(EDirectionType_Increment);
 
 		// Source 3D Object 설정 // Set the source 3D object
 		PointCloudToDepthMapConverter3D.SetSourceObject(floSource);
