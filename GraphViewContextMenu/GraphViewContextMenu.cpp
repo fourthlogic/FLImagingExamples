@@ -65,7 +65,7 @@ BOOL CGraphViewContextMenuApp::InitInstance()
 	// Change the registry key under which our settings are stored
 	// TODO: You should modify this string to be something appropriate
 	// such as the name of your company or organization
-	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
+	SetRegistryKey(L"Fourth Logic Incorporated");
 
 	CGraphViewContextMenuDlg dlg;
 	m_pMainWnd = &dlg;

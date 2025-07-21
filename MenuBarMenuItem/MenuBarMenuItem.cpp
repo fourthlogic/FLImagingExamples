@@ -38,7 +38,7 @@ CMenuBarMenuItemApp theApp;
 BOOL CMenuBarMenuItemApp::InitInstance()
 {
 	CWinAppEx::InitInstance();
-	SetRegistryKey(_T("MenuBarMenuItem examples"));
+	SetRegistryKey(L"Fourth Logic Incorporated");
 
 	// GUI Manager 초기화 전처리를 수행합니다.
 	// Perform pre-initialization for the GUI Manager.

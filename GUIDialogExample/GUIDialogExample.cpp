@@ -37,7 +37,7 @@ CGUIDialogExampleApp theApp;
 BOOL CGUIDialogExampleApp::InitInstance()
 {
 	CWinAppEx::InitInstance();
-	SetRegistryKey(_T("GUIDialogExample examples"));
+	SetRegistryKey(L"Fourth Logic Incorporated");
 
 	// GUI Manager 초기화 전처리를 수행합니다.
 	CGUIManager::PreInitialize();
