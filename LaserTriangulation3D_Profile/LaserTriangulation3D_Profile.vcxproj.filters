@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="LaserTriangulation3D_Profile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
