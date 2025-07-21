@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="SemanticSegmentation_SingleAxisTiling.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
