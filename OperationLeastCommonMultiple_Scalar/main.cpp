@@ -26,21 +26,7 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationLeastCommonMultiple/Plate.flif")))
-		{
-			ErrorPrint(res, "Failed to load the image file.\n");
-			break;
-		}
-
-		// Destination1 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination1 image as same as source image
-		if(IsFail(res = arrFliImage[EType_Destination1].Load(L"../../ExampleImages/OperationLeastCommonMultiple/PlateDestination.flif")))
-		{
-			ErrorPrint(res, "Failed to load the image file.\n");
-			break;
-		}
-
-		// Destination1 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination1 image as same as source image
-		if(IsFail(res = arrFliImage[EType_Destination2].Load(L"../../ExampleImages/OperationLeastCommonMultiple/PlateDestination.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationLeastCommonMultiple/Gradient.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
@@ -120,7 +106,7 @@ int main()
 		// 연산 방식 설정 // Set operation source
 		lcm.SetOperationSource(EOperationSource_Scalar);
 		// LCM 값 설정 // Set LCM value
-		lcm.SetScalarValue(CMultiVar<uint64_t>(255, 255, 255));
+		lcm.SetScalarValue(CMultiVar<uint64_t>(5));
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = lcm.Execute()))
@@ -134,7 +120,7 @@ int main()
 		// 연산 방식 설정 // Set operation source
 		lcm.SetOperationSource(EOperationSource_Scalar);
 		// lcm 값 설정 // Set lcm value
-		lcm.SetScalarValue(CMultiVar<uint64_t>(251, 251, 251));
+		lcm.SetScalarValue(CMultiVar<uint64_t>(17));
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
 		if(IsFail(res = lcm.Execute()))
@@ -168,13 +154,13 @@ int main()
 			break;
 		}
 
-		if(IsFail(res = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination1 Image(lcm 255)", YELLOW, BLACK, 30)))
+		if(IsFail(res = arrLayer[EType_Destination1].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination1 Image(lcm 5)", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;
 		}
 
-		if(IsFail(res = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination2 Image(lcm 251)", YELLOW, BLACK, 30)))
+		if(IsFail(res = arrLayer[EType_Destination2].DrawTextCanvas(&CFLPoint<double>(0, 0), L"Destination2 Image(lcm 17)", YELLOW, BLACK, 30)))
 		{
 			ErrorPrint(res, "Failed to draw text\n");
 			break;

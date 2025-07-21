@@ -26,23 +26,16 @@ int main()
 	do
 	{
 		// Source 이미지 로드 // Load the source image
-		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationLeastCommonMultiple/Plate.flif")))
+		if(IsFail(res = arrFliImage[EType_Source].Load(L"../../ExampleImages/OperationLeastCommonMultiple/Gradient.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// Operand 이미지 로드 // Loads the operand image
-		if(IsFail(res = arrFliImage[EType_Operand].Load(L"../../ExampleImages/OperationLeastCommonMultiple/Gradient.flif")))
+		if(IsFail(res = arrFliImage[EType_Operand].Load(L"../../ExampleImages/OperationLeastCommonMultiple/GradientVertical.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
-			break;
-		}
-
-		// Destination 이미지를 Source 이미지와 동일한 이미지로 생성 // Create destination image as same as source image
-		if(IsFail(res = arrFliImage[EType_Destination].Load(L"../../ExampleImages/OperationLeastCommonMultiple/PlateDestination.flif")))
-		{
-			ErrorPrint(res, "Failed to assign the image file.\n");
 			break;
 		}
 
