@@ -273,7 +273,7 @@ int main()
 			CFLFigureArray flfaResultPoints;
 
 			FLGeometricMatchMultiLoad.GetResult(i, results);
-			FLGeometricMatchMultiLoad.GetResultForDetectedFeature(i, flfaResultPoints);
+			FLGeometricMatchMultiLoad.GetResultDetectedFeature(i, flfaResultPoints);
 
 			float f32Score = results.f32Score;
 			float f32Angle = results.f32Angle;
