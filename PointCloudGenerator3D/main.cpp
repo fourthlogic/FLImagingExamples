@@ -6,8 +6,7 @@ int main()
 {
 	// 이미지 뷰 선언 // Declare image view
 	CGUIView3DWrap view3DDst;
-	CFL3DObject fl3DObjectDst;
-
+	
 	do
 	{
 		// 알고리즘 동작 결과 // Algorithm execution result
@@ -19,6 +18,10 @@ int main()
 			ErrorPrint(res, L"Failed to create the image view.\n");
 			break;
 		}
+
+		view3DDst.PushObject(CFL3DObject());
+		CGUIView3DObject* pViewObject = (CGUIView3DObject *)view3DDst.GetView3DObject(0);
+		CFL3DObject& fl3DObjectDst = *(CFL3DObject*)pViewObject->Get3DObject();
 
 		// Perspective Transform 3D 객체 생성 // Create Perspective Transform 3D object
 		CPointCloudGenerator3D alg;
@@ -45,16 +48,6 @@ int main()
 		arrI64count[2] = 0;
 
 
-		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
-
-		if((res = alg.Execute()).IsFail())
-		{
-			ErrorPrint(res, L"Failed to execute.");
-			break;
-		}
-
-		view3DDst.PushObject(fl3DObjectDst);
-		view3DDst.ZoomFit();
 
 		// 화면에 출력하기 위해 Image View에서 레이어 0번을 얻어옴 // Obtain layer 0 number from image view for display
 		// 이 객체는 이미지 뷰에 속해있기 때문에 따로 해제할 필요가 없음 // This object belongs to an image view and does not need to be released separately
@@ -71,9 +64,34 @@ int main()
 			break;
 		}
 
-		// 이미지 뷰, 3D 뷰가 종료될 때 까지 기다림
+		if((res = alg.Execute()).IsFail())
+		{
+			ErrorPrint(res, L"Failed to execute.");
+			break;
+		}
+
+		pViewObject->UpdateAll();
+		view3DDst.UpdateObject(0);
+		view3DDst.ZoomFit();
+
+		// 뷰가 종료될 때까지 계속 실행
 		while(view3DDst.IsAvailable())
-			CThreadUtilities::Sleep(1);
+		{
+			if((res = alg.Execute()).IsFail())
+			{
+				ErrorPrint(res, L"Failed to execute.");
+				break;
+			}
+			
+			if(!view3DDst.IsAvailable())
+				break;
+
+			pViewObject->UpdateVertex();
+			view3DDst.UpdateObject(0);
+
+			view3DDst.UpdateScreen();
+			CThreadUtilities::Sleep(100);
+		}
 	}
 	while(false);
 
