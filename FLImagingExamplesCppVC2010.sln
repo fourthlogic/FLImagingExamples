@@ -1474,7 +1474,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mean Shift Filter", "Mean S
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MeanShiftFilter", "MeanShiftFilter\MeanShiftFilter.vcxproj", "{D1973DA6-971C-4EB8-859D-E1ED9078302F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Projection3D", "Projection3D\Projection3D.vcxproj.vcxproj", "{2E29B56F-5324-4B3C-9156-5FB1373816F8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Projection3D", "Projection3D\Projection3D.vcxproj", "{2E29B56F-5324-4B3C-9156-5FB1373816F8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Harmonic Mean Filter", "Harmonic Mean Filter", "{31501863-C19A-4D22-B36A-6DC9840E15EE}"
 EndProject
@@ -1496,7 +1496,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Soft Shrinkage", "Soft Shri
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperationSoftShrinkage", "OperationSoftShrinkage\OperationSoftShrinkage.vcxproj", "{90F7545D-5789-4FEB-BA81-7194BDF8F18D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConvexHull3D", "ConvexHull3D\ConvexHull3D.vcxproj.vcxproj", "{3F5FEE9F-A415-4586-B21D-DCD479881A4E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConvexHull3D", "ConvexHull3D\ConvexHull3D.vcxproj", "{3F5FEE9F-A415-4586-B21D-DCD479881A4E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PReLU", "PReLU", "{3006CD80-0B82-4D92-976F-E9FCB4F896FD}"
 EndProject
