@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="ConditionalExtractor_Scalar_Dual.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
