@@ -105,9 +105,9 @@ int main()
 		CFL3DCamera cam;
 
 		cam.SetProjectionType(E3DCameraProjectionType_Perspective);
-		cam.SetDirection(CFLPoint3D(0.34, -0.126, -0.94));
-		cam.SetDirectionUp(CFLPoint3D(0.14, 0.987, -0.081));
-		cam.SetPosition(CFLPoint3D(-0.70, 0.16, 1.));
+		cam.SetDirection(CFLPoint3<float>(0.337466, -0.125061, -0.932993));
+		cam.SetDirectionUp(CFLPoint3<float>(0.139977, 0.986837, -0.080987));
+		cam.SetPosition(CFLPoint3<float>(-0.70, 0.16, 1.0));
 		cam.SetAngleOfViewY(45);
 
 		view3DWorld.SetCamera(cam);
