@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Mask_withBlob.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
