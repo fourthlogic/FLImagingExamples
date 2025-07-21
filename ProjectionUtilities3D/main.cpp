@@ -32,6 +32,9 @@ int main()
 			break;
 		}
 
+		viewImage[0].SynchronizeWindow(&viewImage[1]);
+		viewImage[0].SynchronizeWindow(&viewImage[2]);
+
 		// 3D Object 파일 로드 // Load 3D Object file
 		CFL3DObject* pObj3D = new CFL3DObject();
 		pObj3D->Load(L"../../ExampleImages/ProjectionUtilities3D/Cylinder.step");
@@ -45,12 +48,12 @@ int main()
 
 		// CProjectionUtilities3D 객체에 3D Object 를 추가 // Add 3D Object to CProjectionUtilities3D object
 		pu.PushBack3DObject(pObj3D);
- 
- 		if(pObj3D)
- 		{
- 			delete pObj3D;
- 			pObj3D = nullptr;
- 		}
+
+		if(pObj3D)
+		{
+			delete pObj3D;
+			pObj3D = nullptr;
+		}
 
 		// 결과 이미지 크기 설정 // Set result image size
 		pu.SetResultImageSize(400, 400);
@@ -117,6 +120,8 @@ int main()
 		viewImage[0].GetIntrinsicImage()->Assign(fliFinal0);
 		viewImage[0].SetImagePtr(viewImage[0].GetIntrinsicImage());
 		viewImage[0].SetFixThumbnailView(true);
+		viewImage[0].ShowImageMiniMap(false);
+		viewImage[0].ShowPageIndex(false);
 
 
 		// 2. 카메라 1과 카메라 2 사이의 시점에 대한 프로젝션 // 2. Projection for viewpoints between Camera 1 and Camera 2		
@@ -142,7 +147,7 @@ int main()
 			// 결과 이미지에 정보 텍스트 추가 // Add information text to result image
 			CFLString<wchar_t> str;
 			str.Format(L"2. Projection(Camera Interpolation T=%.1f)", f32T);
-			figureText.Set(CFLPoint<int32_t>(10, 10), str, YELLOW, BLACK, 15, false, 0., EFigureTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EFigureTextFontWeight_SEMIBOLD, false);
+			figureText.Set(CFLPoint<int32_t>(10, 10), str, YELLOW, BLACK, 17, false, 0., EFigureTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EFigureTextFontWeight_SEMIBOLD, false);
 			fliRes.PushBackFigure(CFigureUtilities::ConvertFigureObjectToString(&figureText));
 
 			// 최종 이미지에 투영 결과 이미지 추가 // Add projection result image to final image
@@ -156,6 +161,8 @@ int main()
 		viewImage[1].GetIntrinsicImage()->Assign(fliFinal1);
 		viewImage[1].SetImagePtr(viewImage[1].GetIntrinsicImage());
 		viewImage[1].SetFixThumbnailView(true);
+		viewImage[1].ShowImageMiniMap(false);
+		viewImage[1].ShowPageIndex(false);
 
 		// 3. Zoom Fit 시점의 이미지 얻기 // 3. Get image at Zoom Fit viewpoint
 		pu.ZoomFitCamera();
@@ -178,6 +185,8 @@ int main()
 		viewImage[2].GetIntrinsicImage()->Assign(fliFinal2);
 		viewImage[2].SetImagePtr(viewImage[2].GetIntrinsicImage());
 		viewImage[2].SetFixThumbnailView(true);
+		viewImage[2].ShowImageMiniMap(false);
+		viewImage[2].ShowPageIndex(false);
 
 		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable() && viewImage[2].IsAvailable())
 			CThreadUtilities::Sleep(1);
