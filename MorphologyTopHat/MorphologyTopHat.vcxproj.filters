@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OperationDifference_Scalar.cpp">
+    <ClCompile Include="MorphologyTopHat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

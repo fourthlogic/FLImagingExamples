@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5F32E8CA-5557-42E7-BDEB-6823D9BFCA98}</ProjectGuid>
+    <ProjectGuid>{7EA3E437-276D-4A2F-A18C-CE06B0F9FEBE}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationDifference_Image</RootNamespace>
-    <ProjectName>OperationDifference_Image</ProjectName>
+    <RootNamespace>MorphologyDilate</RootNamespace>
+    <ProjectName>MorphologyDilate_Kernel</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -154,7 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="OperationDifference_Image.cpp" />
+    <ClCompile Include="MorphologyDilate.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

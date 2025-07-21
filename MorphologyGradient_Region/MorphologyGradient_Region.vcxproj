@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5F32E8CA-5557-42E7-BDEB-6823D9BFCA98}</ProjectGuid>
+    <ProjectGuid>{BA00CDB2-CD72-44A6-A17F-08970EA38EF8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationDifference_Image</RootNamespace>
-    <ProjectName>OperationDifference_Image</ProjectName>
+    <RootNamespace>MorphologyGradient_Region</RootNamespace>
+    <ProjectName>MorphologyGradient_Region</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -154,7 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="OperationDifference_Image.cpp" />
+    <ClCompile Include="MorphologyGradient_Region.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

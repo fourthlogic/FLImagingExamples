@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5F32E8CA-5557-42E7-BDEB-6823D9BFCA98}</ProjectGuid>
+    <ProjectGuid>{EA3BD320-7ACE-482E-9AD0-541F648D789F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperationDifference_Image</RootNamespace>
-    <ProjectName>OperationDifference_Image</ProjectName>
+    <RootNamespace>MorphologyErode_Region</RootNamespace>
+    <ProjectName>MorphologyErode_Region</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -154,7 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="OperationDifference_Image.cpp" />
+    <ClCompile Include="MorphologyErode_Region.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
