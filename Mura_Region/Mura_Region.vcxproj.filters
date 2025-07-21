@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Mura_Region.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

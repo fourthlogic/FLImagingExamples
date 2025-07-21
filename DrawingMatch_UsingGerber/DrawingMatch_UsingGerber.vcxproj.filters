@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="DrawingMatch_UsingGerber.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
