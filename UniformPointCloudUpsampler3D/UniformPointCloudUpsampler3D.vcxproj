@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{07E4DB1F-663A-4667-95B1-01F9169A3650}</ProjectGuid>
+    <ProjectGuid>{80BDD460-BBAE-010F-90D6-2C4000AAC30E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>MorphologyClose</RootNamespace>
-    <ProjectName>MorphologyClose_Kernel</ProjectName>
+    <RootNamespace>UniformPointCloudUpsampler3D</RootNamespace>
+    <ProjectName>UniformPointCloudUpsampler3D</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -154,7 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MorphologyClose.cpp" />
+    <ClCompile Include="UniformPointCloudUpsampler3D.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
