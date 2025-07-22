@@ -50,7 +50,7 @@ int main()
 		// 처리할 이미지의 이진화이미지로 판단 유무 설정 // Set whether to judge the image to be processed as a binarized image
 		moment.EnableBinaryImage(true);
 
-		// 계산 대상에 저니키 모멘트 N, M 파라미터를 추가합니다. // Add Journey Moment N, M parameters to the calculation target.
+		// 계산 대상에 저니키 모멘트 N, M 파라미터를 추가합니다. // Add Zernike Moment N, M parameters to the calculation target.
  		moment.AddZernike(1, -1);
  		moment.AddZernike(1, 1);
  		moment.AddZernike(3, -3);
