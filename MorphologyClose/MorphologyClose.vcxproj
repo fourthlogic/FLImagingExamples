@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{07E4DB1F-663A-4667-95B1-01F9169A3650}</ProjectGuid>
+    <ProjectGuid>{51431637-7036-49BC-9AB9-2A2072118A99}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MorphologyClose</RootNamespace>
     <ProjectName>MorphologyClose_Kernel</ProjectName>
