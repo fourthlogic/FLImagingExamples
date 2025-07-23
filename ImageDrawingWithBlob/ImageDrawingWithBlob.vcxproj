@@ -21,7 +21,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{02A97EB2-494F-4F63-B425-5CB9E09F4868}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ImageDrawing2</RootNamespace>
+    <RootNamespace>ImageDrawingWithBlob</RootNamespace>
+    <ProjectName>ImageDrawingWithBlob</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -153,7 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ImageDrawing2.cpp" />
+    <ClCompile Include="ImageDrawingWithBlob.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

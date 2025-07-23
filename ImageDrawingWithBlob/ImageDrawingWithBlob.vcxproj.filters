@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ImageDrawing2.cpp">
+    <ClCompile Include="ImageDrawingWithBlob.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
