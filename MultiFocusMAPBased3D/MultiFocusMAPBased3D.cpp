@@ -62,27 +62,44 @@ int main()
 		// 알고리즘 객체 생성 // Create algorithm object
 		CMultiFocusMAPBased3D algObject;
 
-		if((res = algObject.SetSourceImage(fliSrcImage)).IsFail()) break;
-		if((res = algObject.SetDestinationHeightMapImage(fliDstImage)).IsFail()) break;
-		if((res = algObject.SetDestinationTextureImage(&fliTxtImage)).IsFail()) break;
+		if((res = algObject.SetSourceImage(fliSrcImage)).IsFail())
+			break;
+		if((res = algObject.SetDestinationHeightMapImage(fliDstImage)).IsFail())
+			break;
+		if((res = algObject.SetDestinationTextureImage(&fliTxtImage)).IsFail())
+			break;
 
-		if((res = algObject.SetFMBiasPageIndex(3)).IsFail()) break;
-		if((res = algObject.SetFMBiasValue(0.02)).IsFail()) break;
-		if((res = algObject.SetFocusMeasureMethod(CMultiFocusMAPBased3D::EFocusMeasureMethod_DoG)).IsFail()) break;
-		if((res = algObject.SetSigma1(0.4)).IsFail()) break;
-		if((res = algObject.SetSigma2(0.8)).IsFail()) break;
+		if((res = algObject.SetFMBiasPageIndex(3)).IsFail())
+			break;
+		if((res = algObject.SetFMBiasValue(0.02)).IsFail())
+			break;
+		if((res = algObject.SetFocusMeasureMethod(CMultiFocusMAPBased3D::EFocusMeasureMethod_DoG)).IsFail())
+			break;
+		if((res = algObject.SetSigma1(0.4)).IsFail())
+			break;
+		if((res = algObject.SetSigma2(0.8)).IsFail())
+			break;
 
-		if((res = algObject.SetLocalRegularizationFactor(0.02)).IsFail()) break;
-		if((res = algObject.SetGlobalRegularizationFactor(0.00000000001)).IsFail()) break;
-		if((res = algObject.SetCGMTolerance(0.00001)).IsFail()) break;
-		if((res = algObject.SetCGMMaxIterations(100)).IsFail()) break;
+		if((res = algObject.SetLocalRegularizationFactor(0.02)).IsFail())
+			break;
+		if((res = algObject.SetGlobalRegularizationFactor(0.00000000001)).IsFail())
+			break;
+		if((res = algObject.SetCGMTolerance(0.00001)).IsFail())
+			break;
+		if((res = algObject.SetCGMMaxIterations(100)).IsFail())
+			break;
 
-		if((res = algObject.SetDirection(CMultiFocusMAPBased3D::EDirection_BottomToTop)).IsFail()) break;
-		if((res = algObject.SetPixelAccuracy(1.0)).IsFail()) break;
-		if((res = algObject.SetDepthPitch(2.0)).IsFail()) break;
+		if((res = algObject.SetDirection(CMultiFocusMAPBased3D::EDirection_BottomToTop)).IsFail())
+			break;
+		if((res = algObject.SetPixelAccuracy(1.0)).IsFail())
+			break;
+		if((res = algObject.SetDepthPitch(2.0)).IsFail())
+			break;
 
-		if((res = algObject.Enable3DObjectGeneration(true)).IsFail()) break;
-		if((res = algObject.SetDestinationObject(floDstObject)).IsFail()) break;
+		if((res = algObject.Enable3DObjectGeneration(true)).IsFail())
+			break;
+		if((res = algObject.SetDestinationObject(floDstObject)).IsFail())
+			break;
 
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = algObject.Execute()).IsFail())

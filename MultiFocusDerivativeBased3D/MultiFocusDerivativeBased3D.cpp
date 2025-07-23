@@ -62,17 +62,28 @@ int main()
 		// 알고리즘 객체 생성 // Create algorithm object
 		CMultiFocusDerivativeBased3D algObject;
 
-		if((res = algObject.SetSourceImage(fliSrcImage)).IsFail()) break;
-		if((res = algObject.SetDestinationHeightMapImage(fliDstImage)).IsFail()) break;
-		if((res = algObject.SetDestinationTextureImage(&fliTxtImage)).IsFail()) break;
-		if((res = algObject.SetDestinationObject(floDstObject)).IsFail()) break;
-		if((res = algObject.SetPixelAccuracy(0.1)).IsFail()) break;
-		if((res = algObject.SetDepthPitch(0.2)).IsFail()) break;
-		if((res = algObject.SetFilter(CMultiFocusDerivativeBased3D::EFilter_FLDenoisingType1)).IsFail()) break;
-		if((res = algObject.SetFLDenoisingKernel(7)).IsFail()) break;
-		if((res = algObject.SetFLDenoisingSigma(15.00)).IsFail()) break;
-		if((res = algObject.SetFLDenoisingAmplitude(15.00)).IsFail()) break;
-		if((res = algObject.EnableGaussianInterpolation(true)).IsFail())break;
+		if((res = algObject.SetSourceImage(fliSrcImage)).IsFail())
+			break;
+		if((res = algObject.SetDestinationHeightMapImage(fliDstImage)).IsFail())
+			break;
+		if((res = algObject.SetDestinationTextureImage(&fliTxtImage)).IsFail())
+			break;
+		if((res = algObject.SetDestinationObject(floDstObject)).IsFail())
+			break;
+		if((res = algObject.SetPixelAccuracy(0.1)).IsFail())
+			break;
+		if((res = algObject.SetDepthPitch(0.2)).IsFail())
+			break;
+		if((res = algObject.SetFilter(CMultiFocusDerivativeBased3D::EFilter_FLDenoisingType1)).IsFail())
+			break;
+		if((res = algObject.SetFLDenoisingKernel(7)).IsFail())
+			break;
+		if((res = algObject.SetFLDenoisingSigma(15.00)).IsFail())
+			break;
+		if((res = algObject.SetFLDenoisingAmplitude(15.00)).IsFail())
+			break;
+		if((res = algObject.EnableGaussianInterpolation(true)).IsFail()
+		   break;
 
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = algObject.Execute()).IsFail())

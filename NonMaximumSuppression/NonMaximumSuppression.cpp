@@ -7,125 +7,107 @@
 int main()
 {
 	// 이미지 객체 선언 // Declare the image object
-	CFLImage fliISrcImage;
-	CFLImage fliIDstImage;
+	CFLImage fliSrcImage;
+	CFLImage fliDstImage;
 
 	// 이미지 뷰 선언 // Declare the image view
-	CGUIViewImageWrap viewImage[2];
+	CGUIViewImageWrap viewImageSrc;
+	CGUIViewImageWrap viewImageDst;
+
+	CResult res = EResult_UnknownError;
 
 	do
 	{
-		// 동작 결과 // operation result
-		CResult res = EResult_UnknownError;
-
 		// 이미지 로드 // Loads image
-		if(IsFail(res = fliISrcImage.Load(L"../../ExampleImages/NonMaximumSuppression/Circuit Board.flif")))
+		if(IsFail(res = fliSrcImage.Load(L"../../ExampleImages/NonMaximumSuppression/Circuit Board.flif")))
 		{
 			ErrorPrint(res, "Failed to load the image file.\n");
 			break;
 		}
 
 		// 이미지 뷰 생성 // Create image view
-		if(IsFail(res = viewImage[0].Create(300, 0, 300 + 520, 430)))
+		if((res = viewImageSrc.Create(100, 0, 600, 500)).IsFail() ||
+		   (res = viewImageDst.Create(600, 0, 1100, 500)).IsFail())
 		{
 			ErrorPrint(res, "Failed to create the image view.\n");
-			break;
-		}
-
-		if(IsFail(res = viewImage[1].Create(300 + 520, 0, 300 + 520 * 2, 430)))
-		{
-			ErrorPrint(res, "Failed to create the image view.\n");
-			break;
-		}
-
-		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
-		if(IsFail(res = viewImage[0].SetImagePtr(&fliISrcImage)))
-		{
-			ErrorPrint(res, "Failed to set image object on the image view.\n");
-			break;
-		}
-
-		if(IsFail(res = viewImage[1].SetImagePtr(&fliIDstImage)))
-		{
-			ErrorPrint(res, "Failed to set image object on the image view.\n");
 			break;
 		}
 
 		// 두 이미지 뷰의 시점을 동기화 한다 // Synchronize the viewpoints of the two image views. 
-		if(IsFail(res = viewImage[0].SynchronizePointOfView(&viewImage[1])))
+		if(IsFail(res = viewImageSrc.SynchronizePointOfView(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to synchronize view\n");
 			break;
 		}
 
 		// 두 이미지 뷰 윈도우의 위치를 동기화 한다 // Synchronize the positions of the two image view windows
-		if(IsFail(res = viewImage[0].SynchronizeWindow(&viewImage[1])))
+		if(IsFail(res = viewImageSrc.SynchronizeWindow(&viewImageDst)))
 		{
 			ErrorPrint(res, "Failed to synchronize window\n");
 			break;
 		}
 
-		// Non Maximum Suppression 객체 생성 // Create Non Maximum Suppression object
-		CNonMaximumSuppression nms;
+		// 이미지 뷰에 이미지를 디스플레이 // Display the image in the image view
+		if((res = viewImageSrc.SetImagePtr(&fliSrcImage)).IsFail() ||
+		   (res = viewImageDst.SetImagePtr(&fliDstImage)).IsFail())
+		{
+			ErrorPrint(res, "Failed to set image object on the image view. \n");
+			break;
+		}
 
-		// Source 이미지 설정 // Set source image 
-		nms.SetSourceImage(fliISrcImage);
 
-		// Destination 이미지 설정 // Set destination image
-		nms.SetDestinationImage(fliIDstImage);
+		// 알고리즘 객체 생성 // Create algorithm object
+		CNonMaximumSuppression algObject;
 
-		// Filter 설정 // Set Filter
-		nms.SetFilter(CNonMaximumSuppression::EFilter_Sobel);
-
-		// Grayscale 옵션 설정 // Set grayscale option
-		nms.EnableGrayscale(false);
-
-		// Conflict Handling Method 설정 // Set conflict handling method
-		nms.SetConflictHandlingMethod(CNonMaximumSuppression::EConflictHandlingMethod_KeepAll);
-
-		// NMS Interpolation Method 설정 // Set NMS interpolation method
-		nms.SetNMSInterpolationMethod(CNonMaximumSuppression::ENMSInterpolationMethod_NearestNeighbor);
+		if((res = algObject.SetSourceImage(fliSrcImage)).IsFail())
+			break;
+		if((res = algObject.SetDestinationImage(fliDstImage)).IsFail())
+			break;
+		if((res = algObject.SetFilter(CNonMaximumSuppression::EFilter_Sobel)).IsFail())
+			break;
+		if((res = algObject.EnableGrayscale(false)).IsFail())
+			break;
+		if((res = algObject.SetConflictHandlingMethod(CNonMaximumSuppression::EConflictHandlingMethod_KeepAll)).IsFail())
+			break;
+		if((res = algObject.SetNMSInterpolationMethod(CNonMaximumSuppression::ENMSInterpolationMethod_NearestNeighbor)).IsFail())
+			break;
 
 		// 알고리즘 수행 // Execute the algorithm
-		if((res = nms.Execute()).IsFail())
+		if((res = algObject.Execute()).IsFail())
 		{
-			ErrorPrint(res, "Failed to execute Non Maximum Suppression.");
-
+			ErrorPrint(res, "Failed to execute the algorithm.");
 			break;
 		}
 
-		// 이미지 뷰 출력 문자열 // image view string
-		Base::CFLString<wchar_t> flsText1 = L"Source Image";
-		Base::CFLString<wchar_t> flsText2 = L"Destination Image";
 
-		// 레이어는 따로 해제하지 않아도 View가 해제 될 때 같이 해제된다. // The layer is released together when View is released without releasing it separately.
-		CGUIViewImageLayerWrap layer1 = viewImage[0].GetLayer(0);
-		CGUIViewImageLayerWrap layer2 = viewImage[1].GetLayer(0);
+		// 출력을 위한 이미지 레이어를 얻어옵니다. //  Gets the image layer for output.
+		// 따로 해제할 필요 없음 // No need to release separately
+		CGUIViewImageLayerWrap layerSrc = viewImageSrc.GetLayer(0);
+		CGUIViewImageLayerWrap layerDst = viewImageDst.GetLayer(0);
+
+		// 기존에 Layer에 그려진 도형들을 삭제 // Delete the shapes drawn on the existing layer
+		layerSrc.Clear();
+		layerDst.Clear();
 
 		// View 정보를 디스플레이 합니다. // Display View information.
-		// 아래 함수 DrawTextCanvas 는 Screen좌표를 기준으로 하는 String을 Drawing 한다.// The function DrawTextCanvas below draws a String based on the screen coordinates.
-		// 파라미터 순서 : 레이어 -> 기준 좌표 Figure 객체 -> 문자열 -> 폰트 색 -> 면 색 -> 폰트 크기 -> 실제 크기 유무 -> 각도 ->
-		//                 얼라인 -> 폰트 이름 -> 폰트 알파값(불투명도) -> 면 알파값 (불투명도) -> 폰트 두께 -> 폰트 이텔릭
-		// Parameter order: layer -> reference coordinate Figure object -> string -> font color -> Area color -> font size -> actual size -> angle ->
-		//                  Align -> Font Name -> Font Alpha Value (Opaqueness) -> Cotton Alpha Value (Opaqueness) -> Font Thickness -> Font Italic
-		if(IsFail(res = layer1.DrawTextCanvas(&CFLPoint<double>(0, 0), flsText1.GetBuffer(), YELLOW, BLACK, 30, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false)))
+		CFLPoint<double> flpPoint = new CFLPoint<double>(0, 0);
+		if((res = (layerSrc.DrawTextCanvas(flpPoint, L"Source Image", YELLOW, BLACK, 30))).IsFail() ||
+		   (res = layerDst.DrawTextCanvas(flpPoint, L"Destination Image", YELLOW, BLACK, 30)).IsFail())
 		{
-			ErrorPrint(res, "Failed to draw text on the image view.\n");
+			ErrorPrint(res, "Failed to draw text. \n");
 			break;
 		}
 
-		if(IsFail(res = layer2.DrawTextCanvas(&CFLPoint<double>(0, 0), flsText2.GetBuffer(), YELLOW, BLACK, 30, false, 0, EGUIViewImageTextAlignment_LEFT_TOP, L"", 1.f, 1.f, EGUIViewImageFontWeight_BOLD, false)))
-		{
-			ErrorPrint(res, "Failed to draw text on the image view.\n");
-			break;
-		}
+		// Zoom Fit
+		viewImageSrc.ZoomFit();
+		viewImageDst.ZoomFit();
 
 		// 이미지 뷰를 갱신 합니다. // Update the image view.
-		viewImage[0].Invalidate(true);
-		viewImage[1].Invalidate(true);
+		viewImageSrc.Invalidate(true);
+		viewImageDst.Invalidate(true);
 
 		// 이미지 뷰가 종료될 때 까지 기다림 // Wait for the image view to close
-		while(viewImage[0].IsAvailable() && viewImage[1].IsAvailable())
+		while(viewImageSrc.IsAvailable() && viewImageDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);

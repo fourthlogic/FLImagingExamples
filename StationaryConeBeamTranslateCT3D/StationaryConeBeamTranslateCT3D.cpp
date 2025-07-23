@@ -83,35 +83,60 @@ int main()
 		// 알고리즘 객체 생성 // Create algorithm object
 		CStationaryConeBeamTranslateCT3D algObject;
 
-		if((res = algObject.SetSourceImage(&fliSrcImage)).IsFail()) break;
-		if((res = algObject.SetDestinationImage(&fliDstImage)).IsFail()) break;
-		if((res = algObject.SetDestinationSinogramImage(&fliDstSinoImage)).IsFail()) break;
-		if((res = algObject.SetDestinationObject(&floDstObject)).IsFail()) break;
+		if((res = algObject.SetSourceImage(&fliSrcImage)).IsFail())
+			break;
+		if((res = algObject.SetDestinationImage(&fliDstImage)).IsFail())
+			break;
+		if((res = algObject.SetDestinationSinogramImage(&fliDstSinoImage)).IsFail())
+			break;
+		if((res = algObject.SetDestinationObject(&floDstObject)).IsFail())
+			break;
 
-		if((res = algObject.SetDestinationSinogramIndex(15)).IsFail()) break;
+		if((res = algObject.SetDestinationSinogramIndex(15)).IsFail())
+			break;
 
-		if((res = algObject.SetDetectorCellSizeUnit(0.08354)).IsFail()) break;
-		if((res = algObject.SetObjectTranslateDirection(CStationaryConeBeamTranslateCT3D::EObjectTranslateDirection_RightToLeft)).IsFail()) break;
-		if((res = algObject.SetSourceObjectDistanceUnit(13.60)).IsFail()) break;
-		if((res = algObject.SetSourceDetectorDistanceUnit(60.00)).IsFail()) break;
-		if((res = algObject.SetObjectTranslationDistanceUnit(24.00)).IsFail()) break;
-		if((res = algObject.SetPrincipalDeltaXPixel(0.00)).IsFail()) break;
+		if((res = algObject.SetDetectorCellSizeUnit(0.08354)).IsFail())
+			break;
+		if((res = algObject.SetObjectTranslateDirection(CStationaryConeBeamTranslateCT3D::EObjectTranslateDirection_RightToLeft)).IsFail())
+			break;
+		if((res = algObject.SetSourceObjectDistanceUnit(13.60)).IsFail())
+			break;
+		if((res = algObject.SetSourceDetectorDistanceUnit(60.00)).IsFail())
+			break;
+		if((res = algObject.SetObjectTranslationDistanceUnit(24.00)).IsFail())
+			break;
+		if((res = algObject.SetPrincipalDeltaXPixel(0.00)).IsFail())
+			break;
 
-		if((res = algObject.SetNormalizedAirThreshold(0.60)).IsFail()) break;
-		if((res = algObject.SetSinogramKeepRatio(0.30)).IsFail()) break;
-		if((res = algObject.SetInterpolationCoefficient(6)).IsFail()) break;
-		if((res = algObject.SetMergeCoefficient(21)).IsFail()) break;
-		if((res = algObject.EnableFrequencyRampFilter(true)).IsFail()) break;
-		if((res = algObject.SetFrequencyWindow(CStationaryConeBeamTranslateCT3D::EFrequencyWindow_Gaussian)).IsFail()) break;
-		if((res = algObject.SetSigma(0.50)).IsFail()) break;
+		if((res = algObject.SetNormalizedAirThreshold(0.60)).IsFail())
+			break;
+		if((res = algObject.SetSinogramKeepRatio(0.30)).IsFail())
+			break;
+		if((res = algObject.SetInterpolationCoefficient(6)).IsFail())
+			break;
+		if((res = algObject.SetMergeCoefficient(21)).IsFail())
+			break;
+		if((res = algObject.EnableFrequencyRampFilter(true)).IsFail())
+			break;
+		if((res = algObject.SetFrequencyWindow(CStationaryConeBeamTranslateCT3D::EFrequencyWindow_Gaussian)).IsFail())
+			break;
+		if((res = algObject.SetSigma(0.50)).IsFail())
+			break;
 
-		if((res = algObject.SetReconstructionPlaneCount(140)).IsFail()) break;
-		if((res = algObject.EnableNegativeClip(true)).IsFail()) break;
-		if((res = algObject.EnableCircularMask(true)).IsFail()) break;
-		if((res = algObject.EnableSigmoid(true)).IsFail()) break;
-		if((res = algObject.SetSigmoidB(1.00)).IsFail()) break;
-		if((res = algObject.SetSigmoidM(1.00)).IsFail()) break;
-		if((res = algObject.SetIntensityThreshold(190)).IsFail()) break;
+		if((res = algObject.SetReconstructionPlaneCount(140)).IsFail())
+			break;
+		if((res = algObject.EnableNegativeClip(true)).IsFail())
+			break;
+		if((res = algObject.EnableCircularMask(true)).IsFail())
+			break;
+		if((res = algObject.EnableSigmoid(true)).IsFail())
+			break;
+		if((res = algObject.SetSigmoidB(1.00)).IsFail())
+			break;
+		if((res = algObject.SetSigmoidM(1.00)).IsFail())
+			break;
+		if((res = algObject.SetIntensityThreshold(190)).IsFail())
+			break;
 
 		// 알고리즘 수행 // Execute the algorithm
 		if((res = algObject.Execute()).IsFail())
