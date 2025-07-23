@@ -82,7 +82,7 @@ int main()
 			break;
 		if((res = algObject.SetFLDenoisingAmplitude(15.00)).IsFail())
 			break;
-		if((res = algObject.EnableGaussianInterpolation(true)).IsFail()
+		if((res = algObject.EnableGaussianInterpolation(true)).IsFail())
 		   break;
 
 		// 알고리즘 수행 // Execute the algorithm
