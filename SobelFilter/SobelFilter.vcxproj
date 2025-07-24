@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1517840C-AEDB-4BB8-BE3D-FE4770D42D01}</ProjectGuid>
+    <ProjectGuid>{FB738A00-5316-4E97-A53C-08EAA68D021E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Gradient_Filter</RootNamespace>
-    <ProjectName>GradientFilter</ProjectName>
+    <RootNamespace>Sobel_Filter</RootNamespace>
+    <ProjectName>SobelFilter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -154,7 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="SobelFilter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
