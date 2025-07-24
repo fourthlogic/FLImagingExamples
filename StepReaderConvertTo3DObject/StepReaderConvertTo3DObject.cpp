@@ -6,14 +6,14 @@
 
 int main()
 {
-	// 3D 뷰 선언
-	CGUIView3DWrap view3D[2];
-
 	CResult res = EResult_UnknownError;
-
 
 	do
 	{
+		// 3D 뷰 선언
+		// Declare 3D views.
+		CGUIView3DWrap view3D[2];
+
 		// 3D 뷰 생성
 		// Create 3D views.
 		if(IsFail(res = view3D[0].Create(100, 0, 612, 512)))
@@ -28,10 +28,11 @@ int main()
 			break;
 		}
 
+		view3D[0].SynchronizeWindow(&view3D[1]);
 		view3D[0].SetTopologyType(ETopologyType3D_Wireframe);
 		view3D[1].SetTopologyType(ETopologyType3D_Wireframe);
 
-		//곡선의 접선에서 코드(Chord, 곡선의 두 점을 직선으로 연결한 선분)가 벗어날 수 있는 최대 거리를 나타냅니다. 
+		// 곡선의 접선에서 코드(Chord, 곡선의 두 점을 직선으로 연결한 선분)가 벗어날 수 있는 최대 거리를 나타냅니다. 
 		// 이 값이 클수록 분할된 삼각형의 수가 적어지며, 
 		// 반대로 값이 작을수록 더 많은 삼각형이 형성되어 곡선을 더 정밀하게 근사합니다. 
 		// 기본값 0을 입력하면 step 모델에서 적절한 chordal deviation 값을 자동으로 계산합니다.
@@ -42,7 +43,7 @@ int main()
 		double f64ChordalDeviation = 0.;
 
 		// 방법 1. CFL3DObject 에서 Step 파일 로드
-		// Method 1. Load the STEP file in CFL3DObject
+		// Method 1. Load the STEP file directly into a CFL3DObject
 		CFL3DObject fl3DObj0;
 
 		if((res = fl3DObj0.LoadSTEP("../../ExampleImages/StepReaderConvertTo3DObject/Cylinder.step", f64ChordalDeviation)).IsFail())

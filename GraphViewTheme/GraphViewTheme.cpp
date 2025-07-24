@@ -74,6 +74,7 @@ int main()
 		viewGraphLight.ZoomFit();
 
 		// 그래프 뷰가 종료될 때 까지 기다림
+		// Wait until the Graph views are closed before exiting
 		while(viewGraphDark.IsAvailable() && viewGraphLight.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
