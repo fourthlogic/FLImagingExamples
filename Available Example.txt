@@ -900,6 +900,12 @@
     - IntensityClamping
       - algorithm that clips the image values to a specific range.
       - 이미지의 값을 특정 범위 값으로 잘라내는 알고리즘
+    - GammaCorrection
+      - Algorithm example for correcting the Luminance of an image.
+      - 이미지의 밝기를 보정하는 알고리즘 예제.
+    - WhiteBalance
+      - An example of correcting the white balance of an image.
+      - 이미지의 화이트 밸런스를 보정하는 예제.
 
   - [Analysis]
 
@@ -1892,9 +1898,6 @@
     - FormatConverter
       - The algorithm example for converting a pixelformat in an image.
       - 이미지의 포맷을 변환하는 알고리즘 예제.
-    - GammaCorrection
-      - Algorithm example for correcting the Luminance of an image.
-      - 이미지의 밝기를 보정하는 알고리즘 예제.
     - Mask 
       - The algorithm example for masking the pixel values of an image to set value.
       - 이미지의 픽셀값을 원하는 값으로 변경하는 알고리즘 예제.
@@ -1919,9 +1922,6 @@
     - HoleFilling
       - Example of an algorithm that extracts a figure of a hole region from the source image and interpolates inside that region.
       - 소스 이미지에서 Hole region 의 Figure 를 추출하고 그 영역 내부를 보간하는 알고리즘 예제.
-    - WhiteBalance
-      - An example of correcting the white balance of an image.
-      - 이미지의 화이트 밸런스를 보정하는 예제.
 
   - [Warping]
   
