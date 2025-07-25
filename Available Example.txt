@@ -1715,6 +1715,9 @@
     - IsoDataThreshold
       - Algorithm to calculate global image thresholds using the ISO Data method.
       - Iso Data 방법을 사용하여 전역 이미지 임계값을 계산하는 알고리즘.
+    - KMeansClusterThreshold
+      - Algorithm that performs a quantization operation through K-means Clustering.
+      - K-평균 균집화를 통해 양자화 연산을 수행하는 알고리즘.
     - MaximumEntropyThreshold
       - Algorithm that calculates global image thresholds through maximum entropy values.
       - 최대 엔트로피값을 통해 전역 이미지 임계값을 계산하는 알고리즘.
