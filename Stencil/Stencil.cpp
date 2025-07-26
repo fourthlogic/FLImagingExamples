@@ -139,10 +139,11 @@ int main()
 		// 레이어에 도형을 그리기 // Draw the figure on a layer.
 		layer.DrawFigureImage(flfaRes, BLACK, 1, CYAN);
 
-		// 이미지 뷰를 갱신 합니다.
+		// 이미지 뷰를 갱신 // Refresh the image viewer
 		viewImage.Invalidate(true);
 
-		// 이미지 뷰가 꺼지면 종료로 간주
+		// 이미지 뷰가 닫힐 때까지 대기
+		// Wait until the image view is closed
 		while(viewImage.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
