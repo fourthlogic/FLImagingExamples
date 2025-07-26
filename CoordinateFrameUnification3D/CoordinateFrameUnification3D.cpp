@@ -12,7 +12,7 @@ int main()
 	CFL3DObject floSource0;
 	CFL3DObject floSource1;
 	CFL3DObject floWorld;
-	CFL3DObject fl3DObjectDst;
+	CFL3DObject floDst;
 
 	CResult res = EResult_UnknownError;
 
@@ -66,8 +66,7 @@ int main()
 
 		cfu.AddSourceObject(floSource1, flaWorld1, flaScene1);
 
-		CFL3DObject floDestination;
-		cfu.SetDestinationObject(floDestination);
+		cfu.SetDestinationObject(floDst);
 
 
 		// 앞서 설정된 파라미터 대로 알고리즘 수행 // Execute algorithm according to previously set parameters
@@ -94,7 +93,7 @@ int main()
 		view3DSrc0.PushObject(floSource0);
 		view3DWorld.PushObject(floWorld);
 		view3DSrc1.PushObject(floSource1);
-		view3DDst.PushObject(floDestination);
+		view3DDst.PushObject(floDst);
 
 		view3DDst.SynchronizePointOfView(&view3DSrc0);
 		view3DDst.SynchronizePointOfView(&view3DWorld);
@@ -135,7 +134,7 @@ int main()
 		view3DDst.Invalidate(true);
 
 		// 뷰가 종료될 때까지 기다림 // Wait for the view to close
-		while(view3DSrc0.IsAvailable() && view3DSrc1.IsAvailable() && view3DWorld .IsAvailable() && view3DDst.IsAvailable())
+		while(view3DSrc0.IsAvailable() && view3DSrc1.IsAvailable() && view3DWorld.IsAvailable() && view3DDst.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);

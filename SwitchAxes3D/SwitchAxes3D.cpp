@@ -7,8 +7,8 @@ int main()
 	// 이미지 뷰 선언 // Declare image view
 	CGUIView3DWrap view3DSrc;
 	CGUIView3DWrap view3DDst;
-	CFL3DObject fl3DObjectSrc;
-	CFL3DObject fl3DObjectDst;
+	CFL3DObject floSrc;
+	CFL3DObject floDst;
 
 	do
 	{
@@ -29,14 +29,14 @@ int main()
 			break;
 		}
 
-		fl3DObjectSrc.Load(L"../../ExampleImages/DistanceTransform3D/binary-vertex.ply");
+		floSrc.Load(L"../../ExampleImages/DistanceTransform3D/binary-vertex.ply");
 
 		// Switch Axes 3D 객체 생성 // Create Switch Axes 3D object
 		CSwitchAxes3D SwitchAxes3D;
 
 		// 알고리즘 파라미터 설정 // set algorithm parameters
-		SwitchAxes3D.SetSourceObject(fl3DObjectSrc);
-		SwitchAxes3D.SetDestinationObject(fl3DObjectDst);
+		SwitchAxes3D.SetSourceObject(floSrc);
+		SwitchAxes3D.SetDestinationObject(floDst);
 
 		SwitchAxes3D.SetAxisMappings(CSwitchAxes3D::EAxisMapping_From_PX, CSwitchAxes3D::EAxisMapping_From_NY, CSwitchAxes3D::EAxisMapping_Deduce);
 
@@ -57,10 +57,10 @@ int main()
 		layer3DDst.Clear();
 
 		// Destination 이미지가 새로 생성됨으로 Zoom fit 을 통해 디스플레이 되는 이미지 배율을 화면에 맞춰준다. // With the newly created Destination image, the image magnification displayed through Zoom fit is adjusted to the screen.
-		view3DSrc.PushObject(fl3DObjectSrc);
+		view3DSrc.PushObject(floSrc);
 		view3DSrc.ZoomFit();
 
-		view3DDst.PushObject(fl3DObjectDst);
+		view3DDst.PushObject(floDst);
 		view3DDst.ZoomFit();
 
 		CFLPoint<double> flpTopLeft(0, 0);
