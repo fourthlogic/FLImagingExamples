@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="BlobSubsampled_Mean_Variance_StandardDeviation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

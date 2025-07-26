@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Blob_Sort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

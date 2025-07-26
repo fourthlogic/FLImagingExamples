@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Blob_BoundaryRect_ResultInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

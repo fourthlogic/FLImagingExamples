@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="BlobSubsampled_Min_Max.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
