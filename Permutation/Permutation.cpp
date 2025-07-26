@@ -5,6 +5,10 @@
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	// 순열 객체 선언 // Declare permutation object
 	CPermutation P;
 

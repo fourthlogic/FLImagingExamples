@@ -23,6 +23,10 @@ unsigned int __stdcall LearnThread(void* pParam)
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	// 이미지 객체 선언 // Declare the image object
 	CFLImage fliLearnImage;
 	CFLImage fliSourceImage;

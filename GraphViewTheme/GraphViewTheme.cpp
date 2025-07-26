@@ -6,6 +6,10 @@
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	// 그래프 뷰 선언 // Declare the graph view
 	CGUIViewGraphWrap viewGraphDark;
 	CGUIViewGraphWrap viewGraphLight;

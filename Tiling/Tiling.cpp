@@ -4,8 +4,12 @@
 #include "../CommonHeader/ErrorPrint.h"
 
 
-int main() // Tiling
+int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	const int32_t i32SrcImageCount = 4;
 
 	// 이미지 객체 선언 // Declare image object

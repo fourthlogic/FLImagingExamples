@@ -4,6 +4,10 @@
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	// 3D 객체 선언 // Declare 3D object
 	CFL3DObject floDestinationObject;
 	CFL3DObject floLearnObject;

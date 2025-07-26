@@ -4,6 +4,10 @@
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	CFLArray<CFLImage*> flaFliLrnImage;
 	CFLArray<CFLImage*> flaFliSrcImage;
 	CFLImage fliLearnImage[2];

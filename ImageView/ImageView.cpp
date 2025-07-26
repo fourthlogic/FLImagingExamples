@@ -1,4 +1,4 @@
-
+﻿
 // ImageView.cpp : Defines the class behaviors for the application.
 //
 
@@ -39,6 +39,10 @@ CImageViewApp theApp;
 
 BOOL CImageViewApp::InitInstance()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
 	// visual styles.  Otherwise, any window creation will fail.

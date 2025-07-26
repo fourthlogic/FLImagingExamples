@@ -5,6 +5,10 @@
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	CResult res;
 
 	// Axl DIO 장치를 선언 // Declare Axl DIO device

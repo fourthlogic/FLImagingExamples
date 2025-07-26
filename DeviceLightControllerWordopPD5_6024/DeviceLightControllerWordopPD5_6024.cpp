@@ -6,6 +6,10 @@
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	CResult res = EResult_UnknownError;
 
 	// 조명 컨트롤러 WordopPD5_6024 선언 // Declare the WordopPD5_6024 Light Controller

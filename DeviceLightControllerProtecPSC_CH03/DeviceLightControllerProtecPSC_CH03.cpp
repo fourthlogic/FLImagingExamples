@@ -6,6 +6,10 @@
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	CResult res = EResult_UnknownError;
 
 	// 조명 컨트롤러 ProtecPSC_CH03 선언 // Declare the ProtecPSC_CH03 Light Controller

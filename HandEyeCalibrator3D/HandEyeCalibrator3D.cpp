@@ -5,6 +5,10 @@
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	std::map<Foundation::EEulerSequence, std::wstring> mapEulerString;
 
 	mapEulerString[Foundation::EEulerSequence_Extrinsic_XYZ] = L"Ext_XYZ";

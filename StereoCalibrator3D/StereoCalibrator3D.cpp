@@ -301,6 +301,10 @@ bool Undistortion(CStereoCalibrator3D& sSC, CFLImage& fliSourceImage, CFLImage& 
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	// 이미지 객체 선언 // Declare the image object
 	CFLImage fliLearnImage, fliSourceImage, fliDestinationImage;
 	CFLImage fliLearnImage2, fliSourceImage2, fliDestinationImage2;

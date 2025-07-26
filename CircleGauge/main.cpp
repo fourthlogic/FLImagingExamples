@@ -5,6 +5,10 @@
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	const int32_t i32ExampleCount = 12;
 	const wchar_t* arrWcsViewText[] =
 	{

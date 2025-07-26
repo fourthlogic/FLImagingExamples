@@ -6,6 +6,10 @@
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	CResult res = EResult_UnknownError;
 
 	do

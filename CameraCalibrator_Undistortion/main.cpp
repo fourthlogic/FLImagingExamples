@@ -134,6 +134,10 @@ bool Undistortion(CCameraCalibrator& sCC, CFLImage& fliSourceImage, CFLImage& fl
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	CResult res;
 
 	// 이미지 객체 선언 // Declare the image object

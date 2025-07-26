@@ -5,6 +5,10 @@
 
 int main()
 {
+	// You must call the following function once
+	// before using any features of the FLImaging(R) library
+	CLibraryUtilities::Initialize();
+
 	CFLImage fliSource, fliTexture;
 	CFL3DObject floDestination;
 	CGUIView3DWrap view3D;
