@@ -260,7 +260,7 @@ int main()
 		viewImageUndistortionMeasurement.ZoomFit();
 
 		// 이미지 뷰가 꺼지면 종료로 간주
-		while(viewImageDistortionChessBoard.IsAvailable() || viewImageUndistortionChessBoard.IsAvailable() || viewImageDistortionMeasurement.IsAvailable() || viewImageUndistortionMeasurement.IsAvailable())
+		while(viewImageDistortionChessBoard.IsAvailable() && viewImageUndistortionChessBoard.IsAvailable() && viewImageDistortionMeasurement.IsAvailable() && viewImageUndistortionMeasurement.IsAvailable())
 			CThreadUtilities::Sleep(1);
 	}
 	while(false);
