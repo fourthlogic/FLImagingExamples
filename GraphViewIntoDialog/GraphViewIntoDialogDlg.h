@@ -1,4 +1,4 @@
-
+﻿
 // GraphViewIntoDialogDlg.h : header file
 //
 

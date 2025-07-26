@@ -1,4 +1,4 @@
-
+﻿
 // ImageViewIntoDialogDlg.h : header file
 //
 

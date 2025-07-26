@@ -1,4 +1,4 @@
-
+﻿
 // ImageViewDlg.h : header file
 //
 

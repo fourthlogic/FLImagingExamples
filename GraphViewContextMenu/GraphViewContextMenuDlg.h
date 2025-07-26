@@ -1,4 +1,4 @@
-
+﻿
 // GraphViewContextMenuDlg.h : header file
 //
 

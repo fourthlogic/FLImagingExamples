@@ -1,4 +1,4 @@
-
+﻿
 // GraphViewDlg.h : header file
 //
 

@@ -1,4 +1,4 @@
-
+﻿
 // SNAPViewIntoDialogDlg.h : header file
 //
 

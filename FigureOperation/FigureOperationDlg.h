@@ -1,4 +1,4 @@
-
+﻿
 // FigureOperationDlg.h : header file
 //
 

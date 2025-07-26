@@ -1,4 +1,4 @@
-
+﻿
 // GraphLeastSquaresDlg.h : header file
 //
 
